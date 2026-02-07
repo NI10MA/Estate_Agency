@@ -3086,7 +3086,7 @@ kharid_maskoni_page.title("خرید مسکونی")
 kharid_maskoni_page.geometry("800x600")
 kharid_maskoni_page.withdraw()
 
-bg_image = Image.open("las-vegas-cityscape-hd-1920x1200.jpg")
+bg_image = Image.open("evening-houses-skyscrapers-qatar-5k-g2-1920x1200.jpg")
 bg_image = bg_image.resize((800, 600))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
@@ -3184,7 +3184,7 @@ option_label_kharid_maskoni.pack(side="right",padx=1)
 plus_button_kharid_maskoni=tk.Button(option_frame_options_kharid_maskoni,image=plus,command=open_option9,border=0)
 plus_button_kharid_maskoni.pack()
 
-bg_image = Image.open("las-vegas-cityscape-hd-1920x1200.jpg")
+bg_image = Image.open("evening-houses-skyscrapers-qatar-5k-g2-1920x1200.jpg")
 bg_image = bg_image.resize((800, 380))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
@@ -3249,7 +3249,7 @@ kharid_edari_tejari.title(" خرید اداری / تجاری")
 kharid_edari_tejari.geometry("800x600")
 kharid_edari_tejari.withdraw()
 
-bg_image = Image.open("france-paris-city-4k-im-1920x1200.jpg")
+bg_image = Image.open("paris-beautiful-city-1920x1200.jpg")
 bg_image = bg_image.resize((800, 600))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
@@ -3359,7 +3359,7 @@ option_label_kharid_edari_tejari.pack(side="right",padx=1)
 plus_button_kharid_eedari_tejari=tk.Button(option_frame_options_kharid_edari_tejari,image=plus,command=open_option10,border=0)
 plus_button_kharid_eedari_tejari.pack()
 
-bg_image = Image.open("france-paris-city-4k-im-1920x1200.jpg")
+bg_image = Image.open("paris-beautiful-city-1920x1200.jpg")
 bg_image = bg_image.resize((800, 380))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
@@ -3416,7 +3416,7 @@ kharid_bagh_zamin.title("خرید باغ و زمین")
 kharid_bagh_zamin.geometry("800x600")
 kharid_bagh_zamin.withdraw()
 
-bg_image = Image.open("amazing-beautiful-places-1920x1200.jpg")
+bg_image = Image.open("vilnius-cityscape-4k-el-1920x1200.jpg")
 bg_image = bg_image.resize((800, 600))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
@@ -3509,7 +3509,7 @@ option_file_frame_kharid_bagh_zamin.withdraw()
 option_frame_kharid_bagh_zamin=tk.Frame(option_file_frame_kharid_bagh_zamin)
 option_frame_kharid_bagh_zamin.place(x=50,y=50)
 
-bg_image = Image.open("amazing-beautiful-places-1920x1200.jpg")
+bg_image = Image.open("vilnius-cityscape-4k-el-1920x1200.jpg")
 bg_image = bg_image.resize((800, 650))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
