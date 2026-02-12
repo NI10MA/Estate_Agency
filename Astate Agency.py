@@ -1,4 +1,4 @@
-#-------------------------------------  کتابخانه ها-----------------
+#-------------------------------------  کتابخانه ها   --------------------
 #region
 import tkinter as tk
 from tkinter import ttk
@@ -675,26 +675,26 @@ def change_bagh_zamin1(event):
     co=karbari_zamin_combo.get()
     if co=="باغ":
         fram_option_zamin_ejareh_bagh_zamin.place_forget()
-        option_frame_options_ejareh_bagh_zamin.place(x=60,y=60)
+        option_frame_options_ejareh_bagh_zamin.place(x=1,y=60,relwidth=1,relheight=1)
     else:
         option_frame_options_ejareh_bagh_zamin.place_forget()
-        fram_option_zamin_ejareh_bagh_zamin.place(x=60,y=60)
+        fram_option_zamin_ejareh_bagh_zamin.place(x=1,y=60,relwidth=1,relheight=1)
 def change_bagh_zamin_forosh_bagh(event):
     co=karbary_zamin_forosh_bagh_zamin_combo.get()
     if co=="باغ":
         option_frame_option2_forosh_bagh_zamin.place_forget()
-        option_frame_forosh_bagh_zamin.place(x=60,y=60)#فریم باغ
+        option_frame_forosh_bagh_zamin.place(x=1,y=60,relwidth=1,relheight=1)#فریم باغ
     else:
         option_frame_forosh_bagh_zamin.place_forget()
-        option_frame_option2_forosh_bagh_zamin.place(x=60,y=60)
+        option_frame_option2_forosh_bagh_zamin.place(x=1,y=60,relwidth=1,relheight=1)
 def change_bagh_zamin_kharid_bagh(event):
     co=karbary_zamin_kharid_bagh_zamin_combo.get()
     if co=="باغ":
         option_frame_option2_kharid_bagh_zamin.place_forget()
-        option_frame_kharid_bagh_zamin.place(x=60,y=60)
+        option_frame_kharid_bagh_zamin.place(x=1,y=60,relwidth=1,relheight=1)
     else:
         option_frame_kharid_bagh_zamin.place_forget()
-        option_frame_option2_kharid_bagh_zamin.place(x=60,y=60)
+        option_frame_option2_kharid_bagh_zamin.place(x=1,y=60,relwidth=1,relheight=1)
 #=============================================================      
 #---------------------قسمت اضافه کردن اپشن های تفریحی و درختان در قسمت باغ و زمین------------
 selected_trees=[]
@@ -1047,15 +1047,12 @@ ejareh_kargah_radio = tk.Radiobutton(box_rehn_ejareh,text="ثبت فایل کا�
     font=("Shabnam", 11))
 ejareh_kargah_radio.place(x=330, y=170)
 
-
-
-
 back_to_home_box_ejareh=tk.Button(box_rehn_ejareh,text="بازگشت",bg="#00BFFF",fg="#000000",width=12,height=2,command=back_rehn_ejareh_exit)
-back_to_home_box_ejareh.place(x=190,y=210)
+back_to_home_box_ejareh.place(x=50,y=210)
 
 
 zakhire_radio_box_ejareh=tk.Button(box_rehn_ejareh,text="ادامه",bg="#00BFFF",fg="#000000",width=12,height=2,command=sabt_radio_rehn)
-zakhire_radio_box_ejareh.place(x=50,y=210)
+zakhire_radio_box_ejareh.place(x=190,y=210)
 
 box_rehn_ejareh.protocol("WM_DELETE_WINDOW", lambda: None)
 box_rehn_ejareh.resizable(False, False) 
@@ -1088,10 +1085,10 @@ forosh_kargah_radio.place(x=330,y=170)
 
 
 back_to_home_box_forosh=tk.Button(box_forosh,text="بازگشت",bg="#00BFFF",fg="#000000",width=12,height=2,command=back_forosh_exit)
-back_to_home_box_forosh.place(x=190,y=210)
+back_to_home_box_forosh.place(x=50,y=210)
 
 zakhire_radio_box_forosh=tk.Button(box_forosh,text="ادامه",bg="#00BFFF",fg="#000000",width=12,height=2,command=sabt_radio_frosh)
-zakhire_radio_box_forosh.place(x=50,y=210)
+zakhire_radio_box_forosh.place(x=190,y=210)
 
 box_forosh.protocol("WM_DELETE_WINDOW", lambda: None)
 box_forosh.resizable(False, False) 
@@ -1264,10 +1261,10 @@ gheimat_pish_ejare_maskoni_entry = tk.Entry(ejareh_rehn_page, bg="#FFFFFF", fg="
 gheimat_pish_ejare_maskoni_entry.place(x=start_x + 190, y=start_y + 370, width=150, height=25)
 
 back_to_home_ejareh_maskoni=tk.Button(ejareh_rehn_page,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_ejare_maskoni)
-back_to_home_ejareh_maskoni.place(x=270,y=520)
+back_to_home_ejareh_maskoni.place(x=120,y=520)
 
 save_button_ejareh_maskooni=tk.Button(ejareh_rehn_page,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=save_rehn_maskkoni)
-save_button_ejareh_maskooni.place(x=120,y=520)
+save_button_ejareh_maskooni.place(x=270,y=520)
 
 # 1. لیبل نگهدارنده تصویر
 photo_lbl2_ejare_maskoni = tk.Label(ejareh_rehn_page, text="[تصویر ملک]", bg="#FFFFFF", width=50, height=15,relief="solid", bd=1)
@@ -1346,10 +1343,10 @@ toilet_ejare_maskoni_combo.place(x=120, y=230)
 
 # --- دکمه‌های پایین صفحه ---
 save_optoin_ejareh_maskoni = tk.Button(option_file_frame_ejareh_maskoni, text="ذخیره", command=None, bg="#00BFFF", fg="#000000", width=10, height=1)
-save_optoin_ejareh_maskoni.place(x=95, y=320)
+save_optoin_ejareh_maskoni.place(x=215, y=320)
 
 back_to_ejare_maskoni = tk.Button(option_file_frame_ejareh_maskoni, text="بازگشت", command=back_to_ejareh_maskoni_page, bg="#00BFFF", fg="#000000", width=10, height=1)
-back_to_ejare_maskoni.place(x=215, y=320)
+back_to_ejare_maskoni.place(x=95, y=320)
 
 option_file_frame_ejareh_maskoni.protocol("WM_DELETE_WINDOW", lambda: None)
 option_file_frame_ejareh_maskoni.resizable(False, False)
@@ -1450,10 +1447,10 @@ rahn_kamel_checkbutton_ejareh_edari_tejari=tk.Checkbutton(ejareh_edari_tejari,bg
 rahn_kamel_checkbutton_ejareh_edari_tejari.place(x=start_x + 10, y=start_y + 425)
 
 back_to_home_ejareh_edari_tejari=tk.Button(ejareh_edari_tejari,text="بازگشت",bg="#00BFFF",fg="#000000",width=10,height=2,command=back_home_ejareh_edari_tejari)
-back_to_home_ejareh_edari_tejari.place(x=280,y=520)
+back_to_home_ejareh_edari_tejari.place(x=130,y=520)
 
 zakhire_ejareh_edari_tejari=tk.Button(ejareh_edari_tejari,text="ذخیره",bg="#00BFFF",fg="#000000",width=10,height=2,command=save_rehn_edari)
-zakhire_ejareh_edari_tejari.place(x=130,y=520)
+zakhire_ejareh_edari_tejari.place(x=280,y=520)
 
 photo_lbl2_ejareh_edari_tejari = tk.Label(ejareh_edari_tejari, text="[تصویر ملک]", bg="#FFFFFF", width=50, height=15)
 photo_lbl2_ejareh_edari_tejari.place(x=60, y=85)
@@ -1517,10 +1514,10 @@ garmayesh_combo_emkanat_ejareh_edari_tejari["state"]=["readonly"]
 garmayesh_combo_emkanat_ejareh_edari_tejari.place(x=120, y=190)
 
 save_optoin_ejareh_maskoni=tk.Button(option_file_frame_ejareh_edari_tajari,text="ذخیره",command=None,background="#00BFFF",fg="#000000",width=10,height=1)
-save_optoin_ejareh_maskoni.place(x=95,y=320)
+save_optoin_ejareh_maskoni.place(x=215,y=320)
 
 back_to_home_ejareh_edari_tejari=tk.Button(option_file_frame_ejareh_edari_tajari,text="بازگشت",command=back_to_ejareh_edari_tejari,background="#00BFFF",fg="#000000",width=10,height=1)
-back_to_home_ejareh_edari_tejari.place(x=215,y=320)
+back_to_home_ejareh_edari_tejari.place(x=95,y=320)
 
 option_file_frame_ejareh_edari_tajari.protocol("WM_DELETE_WINDOW", lambda: None)
 option_file_frame_ejareh_edari_tajari.resizable(False, False)
@@ -1778,114 +1775,121 @@ mohavate_ejareh_bagh_zamin.place(x=320, y=510)
 
 divar_ejareh_bagh_zamin=tk.Checkbutton(option_file_frame_ejareh_bagh_zamin,text="دیوار کشی",background="#052340",fg="#00BFFF",font=("Shabnam",9))
 divar_ejareh_bagh_zamin.place(x=180, y=510)
-
-zakhire_option_ejareh_bagh_zamin=tk.Button(option_file_frame_ejareh_bagh_zamin,text="ذخیره",background="#00BFFF",fg="#000000",width=10,height=1)
-zakhire_option_ejareh_bagh_zamin.place(x=95,y=580)
-
-back_to_ejareh_bagh_zamin=tk.Button(option_file_frame_ejareh_bagh_zamin,text="بازگشت",command=back_to_ejareh_bagh_zamin,background="#00BFFF",fg="#000000",width=10,height=1)
-back_to_ejareh_bagh_zamin.place(x=215,y=580)
-
-option_file_frame_ejareh_bagh_zamin.protocol("WM_DELETE_WINDOW", lambda: None)
-option_file_frame_ejareh_bagh_zamin.resizable(False, False)
-
 #endregion
 #-------------------تعویض کاربری به زمین در قسمت اجاره باغ/زمین--------------
 #region
-fram_option_zamin_ejareh_bagh_zamin=tk.Frame(option_file_frame_ejareh_bagh_zamin,width=445,height=290,background="#052340")
+fram_option_zamin_ejareh_bagh_zamin=tk.Frame(option_file_frame_ejareh_bagh_zamin)
 fram_option_zamin_ejareh_bagh_zamin.place_forget()
 
+bg_image = Image.open("empire-state-building-night-5k-oa-1920x1200.jpg")
+bg_image = bg_image.resize((800, 650))
+bg_photo = ImageTk.PhotoImage(bg_image)
+
+bg_label = tk.Label(fram_option_zamin_ejareh_bagh_zamin, image=bg_photo)
+bg_label.image = bg_photo 
+bg_label.place(x=0, y=0, relwidth=1, relheight=1)
+
 metraj_zamin_ejareh_bagh_zamin2=tk.Label(fram_option_zamin_ejareh_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="متراژ زمین")
-metraj_zamin_ejareh_bagh_zamin2.grid(padx=10,pady=5,row=0,column=4)
+metraj_zamin_ejareh_bagh_zamin2.place(x=448, y=10)
 
 metraj_zamin_ejareh_bagh_zamin_entry2=tk.Entry(fram_option_zamin_ejareh_bagh_zamin,width=10,bg="#746f6f",fg="#000000")
-metraj_zamin_ejareh_bagh_zamin_entry2.grid(padx=10,pady=5,row=0,column=3)
+metraj_zamin_ejareh_bagh_zamin_entry2.place(x=312, y=13)
 
 karbari_ejareh_ejareh_bagh_zamin=tk.Label(fram_option_zamin_ejareh_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="نوع کاربری")
-karbari_ejareh_ejareh_bagh_zamin.grid(padx=10,pady=5,row=1,column=4)
+karbari_ejareh_ejareh_bagh_zamin.place(x=458, y=45)
 
 karbari_ejareh_ejareh_bagh_zamin_combo=ttk.Combobox(fram_option_zamin_ejareh_bagh_zamin)
 karbari_ejareh_ejareh_bagh_zamin_combo["values"]=(" ","زراعی","باغی","گلخانه ای","دامداری ","مرغداری",
                                "دامداری و مرغداری","آیش")     
 karbari_ejareh_ejareh_bagh_zamin_combo["state"]=["readonly"]                        
 karbari_ejareh_ejareh_bagh_zamin_combo.set(" ")
-karbari_ejareh_ejareh_bagh_zamin_combo.grid(padx=10,pady=5,row=1,column=3)
+karbari_ejareh_ejareh_bagh_zamin_combo.place(x=273, y=45)
 
 khak_ejareh_ejareh_bagh_zamin=tk.Label(fram_option_zamin_ejareh_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="نوع خاک")
-khak_ejareh_ejareh_bagh_zamin.grid(padx=10,pady=5,row=2,column=4)
+khak_ejareh_ejareh_bagh_zamin.place(x=458, y=80)
 
 khak_ejareh_ejareh_bagh_zamin_combo=ttk.Combobox(fram_option_zamin_ejareh_bagh_zamin)
 khak_ejareh_ejareh_bagh_zamin_combo["values"]=(" ","رسی","شنی","لومی","رسی_شنی","شنی_لومی",
                                "رسی_لومی")
 khak_ejareh_ejareh_bagh_zamin_combo["state"]=["readonly"]                              
 khak_ejareh_ejareh_bagh_zamin_combo.set(" ")
-khak_ejareh_ejareh_bagh_zamin_combo.grid(padx=10,pady=5,row=2,column=3)
+khak_ejareh_ejareh_bagh_zamin_combo.place(x=273, y=80)
 
-ab_ejareh_ejareh_bagh_zamin=tk.Label(fram_option_zamin_ejareh_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="منبع اب")
-ab_ejareh_ejareh_bagh_zamin.grid(padx=10,pady=5,row=3,column=4)
+ab_ejareh_ejareh_bagh_zamin=tk.Label(fram_option_zamin_ejareh_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="منبع آب")
+ab_ejareh_ejareh_bagh_zamin.place(x=458, y=115)
 
 ab_ejareh_ejareh_bagh_zamin_combo=ttk.Combobox(fram_option_zamin_ejareh_bagh_zamin)
 ab_ejareh_ejareh_bagh_zamin_combo["values"]=(" ","چاه","قنات","رودخانه","کانال ابیاری","چشمه",
                                "آب لوله کشی کشاورزی","تانکر","استخر") 
 ab_ejareh_ejareh_bagh_zamin_combo["state"]=["readonly"]                             
 ab_ejareh_ejareh_bagh_zamin_combo.set(" ")
-ab_ejareh_ejareh_bagh_zamin_combo.grid(padx=10,pady=5,row=3,column=3)
+ab_ejareh_ejareh_bagh_zamin_combo.place(x=273, y=115)
 
 zamin_shekl_ejareh_bagh_zamin=tk.Label(fram_option_zamin_ejareh_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="توپوگرافی")
-zamin_shekl_ejareh_bagh_zamin.grid(padx=10,pady=5,row=4,column=4)
+zamin_shekl_ejareh_bagh_zamin.place(x=458, y=150)
 
 zamin_shekl_ejareh_bagh_zamin_combo=ttk.Combobox(fram_option_zamin_ejareh_bagh_zamin)
 zamin_shekl_ejareh_bagh_zamin_combo["values"]=(" "," صاف و یکدست"," شیب دار"," باتلاقی","سنگی ")         
 zamin_shekl_ejareh_bagh_zamin_combo["state"]=["readonly"]                     
 zamin_shekl_ejareh_bagh_zamin_combo.set(" ")
-zamin_shekl_ejareh_bagh_zamin_combo.grid(padx=10,pady=5,row=4,column=3)
+zamin_shekl_ejareh_bagh_zamin_combo.place(x=273, y=150)
 
 add_topo_button=tk.Button(fram_option_zamin_ejareh_bagh_zamin,text=" مورد دلخواه",command=add_topo1,bg="#00BFFF",font=("Shabnam",9),width=10,height=1)
-add_topo_button.grid(padx=10,pady=5,row=4,column=2)
+add_topo_button.place(x=170, y=147)
 label_natige_topo_add_ejareh_bagh_zamin=tk.Label(fram_option_zamin_ejareh_bagh_zamin,text="")
-label_natige_topo_add_ejareh_bagh_zamin.grid(padx=10,pady=5,row=4,column=1)
+label_natige_topo_add_ejareh_bagh_zamin.place(x=90, y=150)
 
 kesht_ejareh_bagh_zamin=tk.Label(fram_option_zamin_ejareh_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="سطح زیر کشت")
-kesht_ejareh_bagh_zamin.grid(padx=10,pady=5,row=5,column=4)
+kesht_ejareh_bagh_zamin.place(x=458, y=185)
 
 kesht_ejareh_bagh_zamin_combo=ttk.Combobox(fram_option_zamin_ejareh_bagh_zamin)
 kesht_ejareh_bagh_zamin_combo["values"]=("بدون کشت"," زیر کشت")                             
 kesht_ejareh_bagh_zamin_combo.set("بدون کشت ")
 kesht_ejareh_bagh_zamin_combo["state"]=["readonly"] 
-kesht_ejareh_bagh_zamin_combo.grid(padx=10,pady=5,row=5,column=3)
+kesht_ejareh_bagh_zamin_combo.place(x=273, y=185)
 kesht_ejareh_bagh_zamin_combo.bind("<<ComboboxSelected>>",choos_kesht)
 
 kesht_ejareh_bagh_zamin_label=tk.Label(fram_option_zamin_ejareh_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=11,text="محصول زیرکشت")
-kesht_ejareh_bagh_zamin_label.grid(padx=10,pady=5,row=5,column=2)
+kesht_ejareh_bagh_zamin_label.place(x=168, y=185)
 
 kesht_ejareh_bagh_zamin_entry=tk.Entry(fram_option_zamin_ejareh_bagh_zamin,width=10,bg="#00BFFF",fg="#ffffff",state="disabled")
-kesht_ejareh_bagh_zamin_entry.grid(padx=10,pady=5,row=5,column=1)
+kesht_ejareh_bagh_zamin_entry.place(x=60, y=185)
 
 security_room_zamin_ejareh_bagh_zamin=tk.Checkbutton(fram_option_zamin_ejareh_bagh_zamin,text="اتاق نگهبان",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-security_room_zamin_ejareh_bagh_zamin.grid(padx=10,pady=6,row=6,column=0)
+security_room_zamin_ejareh_bagh_zamin.place(x=450, y=230)
 
 bargh_tak_faz_zamin_ejareh_bagh_zamin=tk.Checkbutton(fram_option_zamin_ejareh_bagh_zamin,text="برق تک فاز",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-bargh_tak_faz_zamin_ejareh_bagh_zamin.grid(padx=10,pady=6,row=6,column=1)
+bargh_tak_faz_zamin_ejareh_bagh_zamin.place(x=350, y=230)
 
 bargh_se_faz_zamin_ejareh_bagh_zamin=tk.Checkbutton(fram_option_zamin_ejareh_bagh_zamin,text="برق سه فاز",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-bargh_se_faz_zamin_ejareh_bagh_zamin.grid(padx=10,pady=6,row=6,column=2)
+bargh_se_faz_zamin_ejareh_bagh_zamin.place(x=250, y=230)
 
 anbar_zamin_ejareh_bagh_zamin=tk.Checkbutton(fram_option_zamin_ejareh_bagh_zamin,text="انبار/سوله",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-anbar_zamin_ejareh_bagh_zamin.grid(padx=10,pady=6,row=6,column=3)
+anbar_zamin_ejareh_bagh_zamin.place(x=150, y=230)
 
 fans_zamin_ejareh_bagh_zamin=tk.Checkbutton(fram_option_zamin_ejareh_bagh_zamin,text="فنس/دیوار",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-fans_zamin_ejareh_bagh_zamin.grid(padx=10,pady=6,row=6,column=4)
+fans_zamin_ejareh_bagh_zamin.place(x=60, y=230)
 
 mojavez_golkhane_zamin_ejareh_bagh_zamin=tk.Checkbutton(fram_option_zamin_ejareh_bagh_zamin,text="اجازه ساخت گلخانه",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-mojavez_golkhane_zamin_ejareh_bagh_zamin.grid(padx=10,pady=6,row=7,column=0)
+mojavez_golkhane_zamin_ejareh_bagh_zamin.place(x=400, y=280)
 
 mojavaz_chah_zamin_ejareh_bagh_zamin=tk.Checkbutton(fram_option_zamin_ejareh_bagh_zamin,text="اجازه حفر چاه",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-mojavaz_chah_zamin_ejareh_bagh_zamin.grid(padx=10,pady=6,row=7,column=1)
+mojavaz_chah_zamin_ejareh_bagh_zamin.place(x=300, y=280)
 
 bardasht_zamin_ejareh_bagh_zamin=tk.Checkbutton(fram_option_zamin_ejareh_bagh_zamin,text="حق برداشت ",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-bardasht_zamin_ejareh_bagh_zamin.grid(padx=10,pady=6,row=7,column=2)
+bardasht_zamin_ejareh_bagh_zamin.place(x=200, y=280)
 
 dam_zamin_ejareh_bagh_zamin=tk.Checkbutton(fram_option_zamin_ejareh_bagh_zamin,text="اجازه ورود دام",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-dam_zamin_ejareh_bagh_zamin.grid(padx=10,pady=6,row=7,column=3)
+dam_zamin_ejareh_bagh_zamin.place(x=95, y=280)
+
+zakhire_option_ejareh_bagh_zamin=tk.Button(option_file_frame_ejareh_bagh_zamin,text="ذخیره",background="#00BFFF",fg="#000000",width=10,height=1)
+zakhire_option_ejareh_bagh_zamin.place(x=215,y=580)
+
+back_to_ejareh_bagh_zamin=tk.Button(option_file_frame_ejareh_bagh_zamin,text="بازگشت",command=back_to_ejareh_bagh_zamin,background="#00BFFF",fg="#000000",width=10,height=1)
+back_to_ejareh_bagh_zamin.place(x=95,y=580)
+
+option_file_frame_ejareh_bagh_zamin.protocol("WM_DELETE_WINDOW", lambda: None)
+option_file_frame_ejareh_bagh_zamin.resizable(False, False)
 
 #=======================================================================
 #endregion
@@ -1961,10 +1965,10 @@ add_img_btn_ejareh_kargah = tk.Button(ejareh_karghah, text="افزودن تصو�
 add_img_btn_ejareh_kargah.place(x=60, y=370)
 
 back_to_home_ejareh_kargah=tk.Button(ejareh_karghah,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_ejareh_karghah)
-back_to_home_ejareh_kargah.place(x=290,y=520)
+back_to_home_ejareh_kargah.place(x=140,y=520)
 
 zakhire_ejareh_kargah=tk.Button(ejareh_karghah,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=save_ejareh_karghah)
-zakhire_ejareh_kargah.place(x=140,y=520)
+zakhire_ejareh_kargah.place(x=290,y=520)
 
 ejareh_karghah.protocol("WM_DELETE_WINDOW", lambda: None)
 ejareh_karghah.resizable(False, False)
@@ -2080,10 +2084,10 @@ otagh_ejareh_kargah_combo["state"]=["readonly"]
 otagh_ejareh_kargah_combo.place(x=70, y=350)
 
 zakhire_options_ejareh_kargah=tk.Button(option_file_frame_ejareh_kargah,text="ذخیره",background="#00BFFF",fg="#000000",width=10,height=1)
-zakhire_options_ejareh_kargah.place(x=50,y=450)
+zakhire_options_ejareh_kargah.place(x=170,y=450)
 
 back_to_ejareh_kargah=tk.Button(option_file_frame_ejareh_kargah,text="بازگشت",command=back_to_ejareh_karghah,background="#00BFFF",fg="#000000",width=10,height=1)
-back_to_ejareh_kargah.place(x=170,y=450)
+back_to_ejareh_kargah.place(x=50,y=450)
 
 option_file_frame_ejareh_kargah.protocol("WM_DELETE_WINDOW", lambda: None)
 option_file_frame_ejareh_kargah.resizable(False, False)
@@ -2176,10 +2180,10 @@ gheimat_forosh_maskoni_entry.place(x=start_x + 10, y=start_y + 328, width=150, h
 
 
 back_to_home_forosh_maskoni=tk.Button(forosh_rehn_page,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_forosh_maskoni)
-back_to_home_forosh_maskoni.place(x=270,y=520)
+back_to_home_forosh_maskoni.place(x=120,y=520)
 
 zakhire_forosh_maskoni=tk.Button(forosh_rehn_page,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=save_forosh_maskkoni)
-zakhire_forosh_maskoni.place(x=120,y=520)
+zakhire_forosh_maskoni.place(x=270,y=520)
 
 photo_lbl2_forosh_maskoni = tk.Label(forosh_rehn_page, text="[تصویر ملک]", bg="#ffffff", width=50, height=15)
 photo_lbl2_forosh_maskoni.place(x=60, y=85)
@@ -2253,10 +2257,10 @@ toilet_combo_forosh_maskoni["values"] = ("ایرانی","فرنگی","هردو")
 toilet_combo_forosh_maskoni.place(x=120, y=230)
 
 zakhire_options_forosh_maskini=tk.Button(option_file_frame_forosh_maskoni,text="ذخیره",command=None,background="#00BFFF",fg="#000000",width=10,height=1)
-zakhire_options_forosh_maskini.place(x=95, y=320)
+zakhire_options_forosh_maskini.place(x=215, y=320)
 
 back_to_home_forosh_maskoni=tk.Button(option_file_frame_forosh_maskoni,text="بازگشت",command=back_to_forosh_maskoni_page,background="#00BFFF",fg="#000000",width=10,height=1)
-back_to_home_forosh_maskoni.place(x=215, y=320)
+back_to_home_forosh_maskoni.place(x=95, y=320)
 
 option_file_frame_forosh_maskoni.protocol("WM_DELETE_WINDOW", lambda: None)
 option_file_frame_forosh_maskoni.resizable(False, False)
@@ -2355,10 +2359,10 @@ rahn_kamel_check_btn_forosh_edari_tejari.place(x=start_x + 10, y=start_y + 425)
 
 
 back_to_home_forosh_edari_tejari=tk.Button(forosh_edari_tejari,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_forosh_edari_tejari)
-back_to_home_forosh_edari_tejari.place(x=280,y=520)
+back_to_home_forosh_edari_tejari.place(x=130,y=520)
 
 zakhire_forosh_edari_tejari=tk.Button(forosh_edari_tejari,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=save_forosh_edari)
-zakhire_forosh_edari_tejari.place(x=130,y=520)
+zakhire_forosh_edari_tejari.place(x=280,y=520)
 
 photo_lbl2_forosh_edari_tejari = tk.Label(forosh_edari_tejari, text="[تصویر ملک]", bg="#ffffff", width=50, height=15)
 photo_lbl2_forosh_edari_tejari.place(x=60, y=85)
@@ -2422,10 +2426,10 @@ garmayesh_combo_emkanat_forosh_edari_tejari["state"]=["readonly"]
 garmayesh_combo_emkanat_forosh_edari_tejari.place(x=120, y=190)
 
 zakhire_options_forosh_edari_tejari=tk.Button(option_file_frame_forosh_edari_tejari,text="ذخیره",command=None,background="#00BFFF",fg="#000000",width=10,height=1)
-zakhire_options_forosh_edari_tejari.place(x=95,y=320)
+zakhire_options_forosh_edari_tejari.place(x=215,y=320)
 
 back_to_home_forosh_edari_tejari=tk.Button(option_file_frame_forosh_edari_tejari,text="بازگشت",command=back_to_forosh_edari_tejari,background="#00BFFF",fg="#000000",width=10,height=1)
-back_to_home_forosh_edari_tejari.place(x=215,y=320)
+back_to_home_forosh_edari_tejari.place(x=95,y=320)
 
 option_file_frame_forosh_edari_tejari.protocol("WM_DELETE_WINDOW", lambda: None)
 option_file_frame_forosh_edari_tejari.resizable(False, False)
@@ -2614,13 +2618,8 @@ gas_keshi_forosh_bagh_zamin.place(x=80, y=220)
 
 var0_forosh_bagh_zamin=tk.IntVar(value=0)#چک باتن پیش فرض تیک نخورده باشه
 
-<<<<<<< HEAD
 otagh_check_btn_forosh_bagh_zamin=tk.Checkbutton(option_frame_forosh_bagh_zamin,variable=var0_forosh_bagh_zamin,image=warehouse_pic,background="#052340",text="ساختمان",command=home_true_false2)
-otagh_check_btn_forosh_bagh_zamin.grid(padx=10,pady=5,row=6,column=4)
-=======
-otagh_check_btn_forosh_bagh_zamin=tk.Checkbutton(option_file_frame_forosh_bagh_zamin,variable=var0,image=warehouse_pic,background="#052340",text="ساختمان",command=home_true_false2)
 otagh_check_btn_forosh_bagh_zamin.place(x=470, y=250)
->>>>>>> c2c5c41b73a743f87b7496946ebf394e9cb3ed20
 
 metraj_vila_forosh_bagh_zamin=tk.Label(option_file_frame_forosh_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="متراژ سازه")
 metraj_vila_forosh_bagh_zamin.place(x=450, y=300)
@@ -2693,113 +2692,122 @@ mohavate_sazi_check_btn_forosh_bagh_zamin.place(x=320, y=510)
 
 divar_forosh_bagh_zamin=tk.Checkbutton(option_file_frame_forosh_bagh_zamin,text="دیوار کشی",background="#052340",fg="#00BFFF",font=("Shabnam",9))
 divar_forosh_bagh_zamin.place(x=180, y=510)
-
-zakhire_options_forosh_bagh_zamin=tk.Button(option_file_frame_forosh_bagh_zamin,text="ذخیره",background="#00BFFF",fg="#000000",width=10,height=1)
-zakhire_options_forosh_bagh_zamin.place(x=95,y=580)
-
-back_to_forosh_bagh_zamin=tk.Button(option_file_frame_forosh_bagh_zamin,text="بازگشت",command=back_to_forosh_bagh_zamin,background="#00BFFF",fg="#000000",width=10,height=1)
-back_to_forosh_bagh_zamin.place(x=215,y=580)
-
-option_file_frame_forosh_bagh_zamin.protocol("WM_DELETE_WINDOW", lambda: None)
-option_file_frame_forosh_bagh_zamin.resizable(False, False)
 #endregion
 #-------------------------تعویض کاربری به زمین در قسمت فروش باغ/زمین-------------
 #region
-option_frame_option2_forosh_bagh_zamin=tk.Frame(option_file_frame_forosh_bagh_zamin,width=445,height=290,background="#052340")
+option_frame_option2_forosh_bagh_zamin=tk.Frame(option_file_frame_forosh_bagh_zamin)
 option_frame_option2_forosh_bagh_zamin.place_forget()
 
+bg_image = Image.open("santa-monica-pier-5k-8m-1920x1200.jpg")
+bg_image = bg_image.resize((800, 650))
+bg_photo = ImageTk.PhotoImage(bg_image)
+
+bg_label = tk.Label(option_frame_option2_forosh_bagh_zamin, image=bg_photo)
+bg_label.image = bg_photo 
+bg_label.place(x=0, y=0, relwidth=1, relheight=1)
+
 metraj_zamin2_forosh_bagh_zamin_lable=tk.Label(option_frame_option2_forosh_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="متراژ زمین")
-metraj_zamin2_forosh_bagh_zamin_lable.grid(padx=10,pady=5,row=0,column=4)
+metraj_zamin2_forosh_bagh_zamin_lable.place(x=448, y=10)
 
 metraj_zamin2_forosh_bagh_zamin_entry=tk.Entry(option_frame_option2_forosh_bagh_zamin,width=10,bg="#746f6f",fg="#000000")
-metraj_zamin2_forosh_bagh_zamin_entry.grid(padx=10,pady=5,row=0,column=3)
+metraj_zamin2_forosh_bagh_zamin_entry.place(x=312, y=13)
 
 karbari_forosh_bagh_zamin_lable=tk.Label(option_frame_option2_forosh_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="نوع کاربری")
-karbari_forosh_bagh_zamin_lable.grid(padx=10,pady=5,row=1,column=4)
+karbari_forosh_bagh_zamin_lable.place(x=458, y=45)
 
 karbari_forosh_bagh_zamin_combo=ttk.Combobox(option_frame_option2_forosh_bagh_zamin)
 karbari_forosh_bagh_zamin_combo["values"]=(" ","زراعی","باغی","گلخانه ای","دامداری ","مرغداری",
                                "دامداری و مرغداری","آیش")        
 karbari_forosh_bagh_zamin_combo["state"]=["readonly"]                        
 karbari_forosh_bagh_zamin_combo.set(" ")
-karbari_forosh_bagh_zamin_combo.grid(padx=10,pady=5,row=1,column=3)
+karbari_forosh_bagh_zamin_combo.place(x=273, y=45)
 
 khak_forosh_bagh_zamin=tk.Label(option_frame_option2_forosh_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="نوع خاک")
-khak_forosh_bagh_zamin.grid(padx=10,pady=5,row=2,column=4)
+khak_forosh_bagh_zamin.place(x=458, y=80)
 
 khak_forosh_bagh_zamin_combo=ttk.Combobox(option_frame_option2_forosh_bagh_zamin)
 khak_forosh_bagh_zamin_combo["values"]=(" ","رسی","شنی","لومی","رسی_شنی","شنی_لومی",
                                "رسی_لومی")       
 khak_forosh_bagh_zamin_combo["state"]=["readonly"]                         
 khak_forosh_bagh_zamin_combo.set(" ")
-khak_forosh_bagh_zamin_combo.grid(padx=10,pady=5,row=2,column=3)
+khak_forosh_bagh_zamin_combo.place(x=273, y=80)
 
 ab_forosh_bagh_zamin=tk.Label(option_frame_option2_forosh_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="منبع اب")
-ab_forosh_bagh_zamin.grid(padx=10,pady=5,row=3,column=4)
+ab_forosh_bagh_zamin.place(x=458, y=115)
 
 ab_forosh_bagh_zamin_combo=ttk.Combobox(option_frame_option2_forosh_bagh_zamin)
 ab_forosh_bagh_zamin_combo["values"]=(" ","چاه","قنات","رودخانه","کانال ابیاری","چشمه",
                                "آب لوله کشی کشاورزی","تانکر","استخر")    
 ab_forosh_bagh_zamin_combo["state"]=["readonly"]                            
 ab_forosh_bagh_zamin_combo.set(" ")
-ab_forosh_bagh_zamin_combo.grid(padx=10,pady=5,row=3,column=3)
+ab_forosh_bagh_zamin_combo.place(x=273, y=115)
 
 zamin_shekl_forosh_bagh_zamin_forosh_lable=tk.Label(option_frame_option2_forosh_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="توپوگرافی")
-zamin_shekl_forosh_bagh_zamin_forosh_lable.grid(padx=10,pady=5,row=4,column=4)
+zamin_shekl_forosh_bagh_zamin_forosh_lable.place(x=458, y=150)
 
 zamin_shekl_forosh_bagh_zamin_combo=ttk.Combobox(option_frame_option2_forosh_bagh_zamin)
 zamin_shekl_forosh_bagh_zamin_combo["values"]=(" "," صاف و یکدست"," شیب دار"," باتلاقی","سنگی ")   
 zamin_shekl_forosh_bagh_zamin_combo["state"]=["readonly"]                          
 zamin_shekl_forosh_bagh_zamin_combo.set(" ")
-zamin_shekl_forosh_bagh_zamin_combo.grid(padx=10,pady=5,row=4,column=3)
+zamin_shekl_forosh_bagh_zamin_combo.place(x=273, y=150)
 
 add_topo2_button_forosh_bagh_zamin=tk.Button(option_frame_option2_forosh_bagh_zamin,text=" مورد دلخواه",command=add_topo2,bg="#00BFFF",font=("Shabnam",9),width=10)
-add_topo2_button_forosh_bagh_zamin.grid(padx=10,pady=5,row=4,column=2)
+add_topo2_button_forosh_bagh_zamin.place(x=170, y=147)
+
 label_natige_topo_add_forosh_bagh_zamin=tk.Label(option_frame_option2_forosh_bagh_zamin,text="")
-label_natige_topo_add_forosh_bagh_zamin.grid(padx=10,pady=5,row=4,column=1)
+label_natige_topo_add_forosh_bagh_zamin.place(x=90, y=150)
 
 kesht_forosh_bagh_zamin=tk.Label(option_frame_option2_forosh_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="سطح زیر کشت")
-kesht_forosh_bagh_zamin.grid(padx=10,pady=5,row=5,column=4)
+kesht_forosh_bagh_zamin.place(x=458, y=185)
 
 kesht_forosh_bagh_zamin_combo=ttk.Combobox(option_frame_option2_forosh_bagh_zamin)
 kesht_forosh_bagh_zamin_combo["values"]=("بدون کشت"," زیر کشت")                             
 kesht_forosh_bagh_zamin_combo.set("بدون کشت ")
 kesht_forosh_bagh_zamin_combo["state"]=["readonly"]   
-kesht_forosh_bagh_zamin_combo.grid(padx=10,pady=5,row=5,column=3)
+kesht_forosh_bagh_zamin_combo.place(x=273, y=185)
 kesht_forosh_bagh_zamin_combo.bind("<<ComboboxSelected>>",choos_kesht2)
 
 kesht_forosh_bagh_zamin_label=tk.Label(option_frame_option2_forosh_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=11,text="محصول زیرکشت")
-kesht_forosh_bagh_zamin_label.grid(padx=10,pady=5,row=5,column=2)
+kesht_forosh_bagh_zamin_label.place(x=168, y=185)
 
 kesht_forosh_bagh_zamin_entry=tk.Entry(option_frame_option2_forosh_bagh_zamin,width=10,bg="#746f6f",fg="#000000",state="disabled")
-kesht_forosh_bagh_zamin_entry.grid(padx=10,pady=5,row=5,column=1)
+kesht_forosh_bagh_zamin_entry.place(x=60, y=185)
 
 security_zamin_forosh_bagh_zamin=tk.Checkbutton(option_frame_option2_forosh_bagh_zamin,text="اتاق نگهبان",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-security_zamin_forosh_bagh_zamin.grid(padx=10,pady=6,row=6,column=0)
+security_zamin_forosh_bagh_zamin.place(x=450, y=230)
 
 bargh_kesi_zamin_forosh_bagh_zamin=tk.Checkbutton(option_frame_option2_forosh_bagh_zamin,text="برق تک فاز",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-bargh_kesi_zamin_forosh_bagh_zamin.grid(padx=10,pady=6,row=6,column=1)
+bargh_kesi_zamin_forosh_bagh_zamin.place(x=350, y=230)
 
 bargh_keshi_zamin_forosh_bagh_zamin2=tk.Checkbutton(option_frame_option2_forosh_bagh_zamin,text="برق سه فاز",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-bargh_keshi_zamin_forosh_bagh_zamin2.grid(padx=10,pady=6,row=6,column=2)
+bargh_keshi_zamin_forosh_bagh_zamin2.place(x=250, y=230)
 
 anbar_zamin_forosh_bagh_zamin=tk.Checkbutton(option_frame_option2_forosh_bagh_zamin,text="انبار/سوله",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-anbar_zamin_forosh_bagh_zamin.grid(padx=10,pady=6,row=6,column=3)
+anbar_zamin_forosh_bagh_zamin.place(x=150, y=230)
 
 fans_zamin_forosh_bagh_zamin=tk.Checkbutton(option_frame_option2_forosh_bagh_zamin,text="فنس/دیوار",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-fans_zamin_forosh_bagh_zamin.grid(padx=10,pady=6,row=6,column=4)
+fans_zamin_forosh_bagh_zamin.place(x=60, y=230)
 
 mojavez_golkhane_zamin_forosh_bagh_zamin=tk.Checkbutton(option_frame_option2_forosh_bagh_zamin,text="اجازه ساخت گلخانه",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-mojavez_golkhane_zamin_forosh_bagh_zamin.grid(padx=10,pady=6,row=7,column=0)
+mojavez_golkhane_zamin_forosh_bagh_zamin.place(x=400, y=280)
 
 mojavez_chah_zamin_forosh_bagh_zamin=tk.Checkbutton(option_frame_option2_forosh_bagh_zamin,text="اجازه حفر چاه",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-mojavez_chah_zamin_forosh_bagh_zamin.grid(padx=10,pady=6,row=7,column=1)
+mojavez_chah_zamin_forosh_bagh_zamin.place(x=300, y=280)
 
 bardasht_zamin_forosh_bagh_zamin=tk.Checkbutton(option_frame_option2_forosh_bagh_zamin,text="حق برداشت ",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-bardasht_zamin_forosh_bagh_zamin.grid(padx=10,pady=6,row=7,column=2)
+bardasht_zamin_forosh_bagh_zamin.place(x=200, y=280)
 
 dam_zamin_forosh_bagh_zamin=tk.Checkbutton(option_frame_option2_forosh_bagh_zamin,text="اجازه ورود دام",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-dam_zamin_forosh_bagh_zamin.grid(padx=10,pady=6,row=7,column=3)
+dam_zamin_forosh_bagh_zamin.place(x=95, y=280)
+
+zakhire_options_forosh_bagh_zamin=tk.Button(option_file_frame_forosh_bagh_zamin,text="ذخیره",background="#00BFFF",fg="#000000",width=10,height=1)
+zakhire_options_forosh_bagh_zamin.place(x=215,y=580)
+
+back_to_forosh_bagh_zamin=tk.Button(option_file_frame_forosh_bagh_zamin,text="بازگشت",command=back_to_forosh_bagh_zamin,background="#00BFFF",fg="#000000",width=10,height=1)
+back_to_forosh_bagh_zamin.place(x=95,y=580)
+
+option_file_frame_forosh_bagh_zamin.protocol("WM_DELETE_WINDOW", lambda: None)
+option_file_frame_forosh_bagh_zamin.resizable(False, False)
 #endregion
 #-------------------پنجره فروش کارگاه------------------------
 #region
@@ -2873,10 +2881,10 @@ add_img_btn_forosh_kargah = tk.Button(forosh_karghah, text="افزودن تصو�
 add_img_btn_forosh_kargah.place(x=60, y=370)
 
 back_to_home_forosh_kargah=tk.Button(forosh_karghah,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_forosh_karghah)
-back_to_home_forosh_kargah.place(x=290,y=520)
+back_to_home_forosh_kargah.place(x=140,y=520)
 
 zakhire_forosh_kargah=tk.Button(forosh_karghah,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=save_forosh_karghah)
-zakhire_forosh_kargah.place(x=140,y=520)
+zakhire_forosh_kargah.place(x=290,y=520)
 
 forosh_karghah.protocol("WM_DELETE_WINDOW", lambda: None)
 forosh_karghah.resizable(False, False)
@@ -2992,10 +3000,10 @@ otagh_forosh_kargah_combo["state"]=["readonly"]
 otagh_forosh_kargah_combo.place(x=70, y=350)
 
 zakhire_options_forosh_kargah=tk.Button(option_file_frame_forosh_kargah,text="ذخیره",background="#00BFFF",fg="#000000",width=10,height=1)
-zakhire_options_forosh_kargah.place(x=50,y=450)
+zakhire_options_forosh_kargah.place(x=170,y=450)
 
 back_to_forosh_kargah=tk.Button(option_file_frame_forosh_kargah,text="بازگشت",command=back_to_forosh_karghah,background="#00BFFF",fg="#000000",width=10,height=1)
-back_to_forosh_kargah.place(x=170,y=450)
+back_to_forosh_kargah.place(x=50,y=450)
 
 option_file_frame_forosh_kargah.protocol("WM_DELETE_WINDOW", lambda: None)
 option_file_frame_forosh_kargah.resizable(False, False)
@@ -3081,10 +3089,10 @@ gheimat_kharid_maskoni_entry=tk.Entry(kharid_maskoni_page,bg="#ffffff", fg="#000
 gheimat_kharid_maskoni_entry.place(x=start_x + 10, y=start_y + 330, width=150, height=25)
 
 back_to_home_kharid_maskoni=tk.Button(kharid_maskoni_page,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_kharid_maskoni)
-back_to_home_kharid_maskoni.place(x=270,y=520)
+back_to_home_kharid_maskoni.place(x=120,y=520)
 
 zakhire_kharid_maskoni=tk.Button(kharid_maskoni_page,text="ذخیره",bg="#00BFFF",fg="black",width=10,height=2,command=save_forosh_maskkoni)
-zakhire_kharid_maskoni.place(x=120,y=520)
+zakhire_kharid_maskoni.place(x=270,y=520)
 
 photo_lbl2_kharid_maskoni = tk.Label(kharid_maskoni_page, text="[تصویر ملک]", bg="#ffffff", width=50, height=15)
 photo_lbl2_kharid_maskoni.place(x=60, y=85)
@@ -3156,10 +3164,10 @@ toilet_combo_kharid_maskoni["values"] = ("ایرانی","فرنگی","هردو")
 toilet_combo_kharid_maskoni.place(x=120, y=230)
 
 zakhire_options_kharid_maskini=tk.Button(option_file_frame_kharid_maskoni,text="ذخیره",command=None,background="#00BFFF",fg="#000000",width=10,height=1)
-zakhire_options_kharid_maskini.place(x=95, y=320)
+zakhire_options_kharid_maskini.place(x=215, y=320)
 
 back_to_home_kharid_maskoni=tk.Button(option_file_frame_kharid_maskoni,text="بازگشت",command=back_to_kharid_maskoni_page,background="#00BFFF",fg="#000000",width=10,height=1)
-back_to_home_kharid_maskoni.place(x=215, y=320)
+back_to_home_kharid_maskoni.place(x=95, y=320)
 
 option_file_frame_kharid_maskoni.protocol("WM_DELETE_WINDOW", lambda: None)
 option_file_frame_kharid_maskoni.resizable(False, False)
@@ -3256,10 +3264,10 @@ rahn_kamel_check_btn_kharid_edari_tejari=tk.Checkbutton(kharid_edari_tejari,bg="
 rahn_kamel_check_btn_kharid_edari_tejari.place(x=start_x + 10, y=start_y + 425)
 
 back_to_home_kharid_edari_tejari=tk.Button(kharid_edari_tejari,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_kharid_edari_tejari)
-back_to_home_kharid_edari_tejari.place(x=280,y=520)
+back_to_home_kharid_edari_tejari.place(x=130,y=520)
 
 zakhire_kharid_edari_tejari=tk.Button(kharid_edari_tejari,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=None)
-zakhire_kharid_edari_tejari.place(x=130,y=520)
+zakhire_kharid_edari_tejari.place(x=280,y=520)
 
 photo_lbl2_kharid_edari_tejari = tk.Label(kharid_edari_tejari, text="[تصویر ملک]", bg="#ffffff", width=50, height=15)
 photo_lbl2_kharid_edari_tejari.place(x=60, y=85)
@@ -3323,10 +3331,10 @@ garmayesh_combo_emkanat_kharid_edari_tejari["state"]=["readonly"]
 garmayesh_combo_emkanat_kharid_edari_tejari.place(x=120, y=190)
 
 zakhire_options_kharid_edari_tejari=tk.Button(option_file_frame_kharid_edari_tejari,text="ذخیره",command=None,background="#00BFFF",fg="#000000",width=10,height=1)
-zakhire_options_kharid_edari_tejari.place(x=95,y=320)
+zakhire_options_kharid_edari_tejari.place(x=215,y=320)
 
 back_to_home_kharid_edari_tejari=tk.Button(option_file_frame_kharid_edari_tejari,text="بازگشت",command=back_to_kharid_edari_tejari,background="#00BFFF",fg="#000000",width=10,height=1)
-back_to_home_kharid_edari_tejari.place(x=215,y=320)
+back_to_home_kharid_edari_tejari.place(x=95,y=320)
 
 option_file_frame_kharid_edari_tejari.protocol("WM_DELETE_WINDOW", lambda: None)
 option_file_frame_kharid_edari_tejari.resizable(False, False)
@@ -3399,6 +3407,7 @@ gheimat_har_metr_babagh_zamin_kharid_bagh_zamin_entry.place(x=start_x + 10, y=st
 
 photo_kharid_bagh_zamin_lable= tk.Label(kharid_bagh_zamin, text="[تصویر ملک]", bg="#ffffff", width=50, height=15)
 photo_kharid_bagh_zamin_lable.place(x=60, y=85)
+
 add_img_btn_kharid_bagh_zamin = tk.Button(kharid_bagh_zamin, text="افزودن تصویر", bg="#00BFFF", fg="#000000",command=open_file,height=2,width=13)
 add_img_btn_kharid_bagh_zamin.place(x=60, y=370)
 
@@ -3480,13 +3489,8 @@ type_tree_kharid_bagh_zamin_combo.set("گردو")
 type_tree_kharid_bagh_zamin_combo["state"]=["readonly"]
 type_tree_kharid_bagh_zamin_combo.place(x=273, y=160)
 
-<<<<<<< HEAD
-label_natige_kharid_bagh_zamin=tk.Label(option_frame_kharid_bagh_zamin,text="")
-label_natige_kharid_bagh_zamin.grid(padx=10,pady=5,row=4,column=3)
-=======
 type_tree_kharid_btn=tk.Button(option_file_frame_kharid_bagh_zamin,text="افزودن درخت",command=add_tree3,bg="#00BFFF",font=("Shabnam",9),width=10)
 type_tree_kharid_btn.place(x=460, y=190)
->>>>>>> c2c5c41b73a743f87b7496946ebf394e9cb3ed20
 
 label_natige_kharid_bagh_zamin=tk.Label(option_file_frame_kharid_bagh_zamin,text="")
 label_natige_kharid_bagh_zamin.place(x=305, y=190)
@@ -3508,13 +3512,8 @@ gas_keshi_kharid_bagh_zamin.place(x=80, y=220)
 
 var0_kharid_bagh_zamin=tk.IntVar(value=0)#چک باتن پیش فرض تیک نخورده باشه
 
-<<<<<<< HEAD
-otagh_check_btn_kharid_bagh_zamin=tk.Checkbutton(option_frame_kharid_bagh_zamin,variable=var0_kharid_bagh_zamin,image=warehouse_pic,background="#052340",text="ساختمان",command=home_true_false3)
-otagh_check_btn_kharid_bagh_zamin.grid(padx=10,pady=5,row=6,column=4)
-=======
 otagh_check_btn_kharid_bagh_zamin=tk.Checkbutton(option_file_frame_kharid_bagh_zamin,variable=var0,image=warehouse_pic,background="#052340",text="ساختمان",command=home_true_false3)
 otagh_check_btn_kharid_bagh_zamin.place(x=470, y=250)
->>>>>>> c2c5c41b73a743f87b7496946ebf394e9cb3ed20
 
 metraj_vila_kharid_bagh_zamin=tk.Label(option_file_frame_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="متراژ سازه")
 metraj_vila_kharid_bagh_zamin.place(x=450, y=300)
@@ -3574,10 +3573,6 @@ add_option_button_kharid_bagh_zamin.place(x=180, y=480)
 lable_natige_add_kharid_bagh_zamin=tk.Label(option_file_frame_kharid_bagh_zamin,text="")
 lable_natige_add_kharid_bagh_zamin.place(x=100, y=480)
 
-<<<<<<< HEAD
-divar_kharid_bagh_zamin=tk.Checkbutton(option_frame_kharid_bagh_zamin,text="دیوار کشی",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-divar_kharid_bagh_zamin.grid(padx=10,pady=5,row=5,column=2)
-=======
 mojavez_sakht_check_btn_kharid_bagh_zamin=tk.Checkbutton(option_file_frame_kharid_bagh_zamin,text="مجوز ساختن",background="#052340",fg="#00BFFF",font=("Shabnam",9),state="disabled")
 mojavez_sakht_check_btn_kharid_bagh_zamin.place(x=450, y=510)
 
@@ -3586,114 +3581,122 @@ mohavate_sazi_check_btn_kharid_bagh_zamin.place(x=320, y=510)
 
 divar_kharid_bagh_zamin=tk.Checkbutton(option_file_frame_kharid_bagh_zamin,text="دیوار کشی",background="#052340",fg="#00BFFF",font=("Shabnam",9))
 divar_kharid_bagh_zamin.place(x=180, y=510)
->>>>>>> c2c5c41b73a743f87b7496946ebf394e9cb3ed20
-
-zakhire_options_kharid_bagh_zamin=tk.Button(option_file_frame_kharid_bagh_zamin,command=None,text="ذخیره",background="#00BFFF",fg="#000000",width=10,height=1)
-zakhire_options_kharid_bagh_zamin.place(x=95,y=580)
-
-back_to_kharid_bagh_zamin=tk.Button(option_file_frame_kharid_bagh_zamin,text="بازگشت",command=back_to_kharid_bagh_zamin,background="#00BFFF",fg="#000000",width=10,height=1)
-back_to_kharid_bagh_zamin.place(x=215,y=580)
-
-option_file_frame_kharid_bagh_zamin.protocol("WM_DELETE_WINDOW", lambda: None)
-option_file_frame_kharid_bagh_zamin.resizable(False, False)
 #endregion
 #-------------------------تعویض کاربری به زمین در قسمت خرید باغ/زمین-------------
 #region
-option_frame_option2_kharid_bagh_zamin=tk.Frame(option_file_frame_kharid_bagh_zamin,width=445,height=290,background="#052340")
+option_frame_option2_kharid_bagh_zamin=tk.Frame(option_file_frame_kharid_bagh_zamin)
 option_frame_option2_kharid_bagh_zamin.place_forget()
 
+bg_image = Image.open("vilnius-cityscape-4k-el-1920x1200.jpg")
+bg_image = bg_image.resize((800, 650))
+bg_photo = ImageTk.PhotoImage(bg_image)
+
+bg_label = tk.Label(option_frame_option2_kharid_bagh_zamin, image=bg_photo)
+bg_label.image = bg_photo 
+bg_label.place(x=0, y=0, relwidth=1, relheight=1)
+
 metraj_zamin2_kharid_bagh_zamin_lable=tk.Label(option_frame_option2_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="متراژ زمین")
-metraj_zamin2_kharid_bagh_zamin_lable.grid(padx=10,pady=5,row=0,column=4)
+metraj_zamin2_kharid_bagh_zamin_lable.place(x=448, y=10)
 
 metraj_zamin2_kharid_bagh_zamin_entry=tk.Entry(option_frame_option2_kharid_bagh_zamin,width=10,bg="#746f6f",fg="#000000")
-metraj_zamin2_kharid_bagh_zamin_entry.grid(padx=10,pady=5,row=0,column=3)
+metraj_zamin2_kharid_bagh_zamin_entry.place(x=312, y=13)
 
 karbari_kharid_bagh_zamin_lable=tk.Label(option_frame_option2_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="نوع کاربری")
-karbari_kharid_bagh_zamin_lable.grid(padx=10,pady=5,row=1,column=4)
+karbari_kharid_bagh_zamin_lable.place(x=458, y=45)
 
 karbari_kharid_bagh_zamin_combo=ttk.Combobox(option_frame_option2_kharid_bagh_zamin)
 karbari_kharid_bagh_zamin_combo["values"]=(" ","زراعی","باغی","گلخانه ای","دامداری ","مرغداری",
                                "دامداری و مرغداری","آیش")           
 karbari_kharid_bagh_zamin_combo["state"]=["readonly"]                  
 karbari_kharid_bagh_zamin_combo.set(" ")
-karbari_kharid_bagh_zamin_combo.grid(padx=10,pady=5,row=1,column=3)
+karbari_kharid_bagh_zamin_combo.place(x=273, y=45)
 
 khak_kharid_bagh_zamin=tk.Label(option_frame_option2_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="نوع خاک")
-khak_kharid_bagh_zamin.grid(padx=10,pady=5,row=2,column=4)
+khak_kharid_bagh_zamin.place(x=458, y=80)
 
 khak_kharid_bagh_zamin_combo=ttk.Combobox(option_frame_option2_kharid_bagh_zamin)
 khak_kharid_bagh_zamin_combo["values"]=(" ","رسی","شنی","لومی","رسی_شنی","شنی_لومی",
                                "رسی_لومی")        
 khak_kharid_bagh_zamin_combo["state"]=["readonly"]                     
 khak_kharid_bagh_zamin_combo.set(" ")
-khak_kharid_bagh_zamin_combo.grid(padx=10,pady=5,row=2,column=3)
+khak_kharid_bagh_zamin_combo.place(x=273, y=80)
 
 ab_kharid_bagh_zamin=tk.Label(option_frame_option2_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="منبع اب")
-ab_kharid_bagh_zamin.grid(padx=10,pady=5,row=3,column=4)
+ab_kharid_bagh_zamin.place(x=458, y=115)
 
 ab_kharid_bagh_zamin_combo=ttk.Combobox(option_frame_option2_kharid_bagh_zamin)
 ab_kharid_bagh_zamin_combo["values"]=(" ","چاه","قنات","رودخانه","کانال ابیاری","چشمه",
                                "آب لوله کشی کشاورزی","تانکر","استخر")  
 ab_kharid_bagh_zamin_combo["state"]=["readonly"]
 ab_kharid_bagh_zamin_combo.set(" ")
-ab_kharid_bagh_zamin_combo.grid(padx=10,pady=5,row=3,column=3)
+ab_kharid_bagh_zamin_combo.place(x=273, y=115)
 
 zamin_shekl_kharid_bagh_zamin_kharid_lable=tk.Label(option_frame_option2_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="توپوگرافی")
-zamin_shekl_kharid_bagh_zamin_kharid_lable.grid(padx=10,pady=5,row=4,column=4)
+zamin_shekl_kharid_bagh_zamin_kharid_lable.place(x=458, y=150)
 
 zamin_shekl_kharid_bagh_zamin_combo=ttk.Combobox(option_frame_option2_kharid_bagh_zamin)
 zamin_shekl_kharid_bagh_zamin_combo["values"]=(" "," صاف و یکدست"," شیب دار"," باتلاقی","سنگی ")     
 zamin_shekl_kharid_bagh_zamin_combo["state"]=["readonly"]                        
 zamin_shekl_kharid_bagh_zamin_combo.set(" ")
-zamin_shekl_kharid_bagh_zamin_combo.grid(padx=10,pady=5,row=4,column=3)
+zamin_shekl_kharid_bagh_zamin_combo.place(x=273, y=150)
 
 add_topo2_button_kharid_bagh_zamin=tk.Button(option_frame_option2_kharid_bagh_zamin,text=" مورد دلخواه",command=add_topo3,bg="#00BFFF",font=("Shabnam",9),width=10)
-add_topo2_button_kharid_bagh_zamin.grid(padx=10,pady=5,row=4,column=2)
+add_topo2_button_kharid_bagh_zamin.place(x=170, y=147)
+
 label_natige_topo_add_kharid_bagh_zamin=tk.Label(option_frame_option2_kharid_bagh_zamin,text="")
-label_natige_topo_add_kharid_bagh_zamin.grid(padx=10,pady=5,row=4,column=1)
+label_natige_topo_add_kharid_bagh_zamin.place(x=90, y=150)
 
 kesht_kharid_bagh_zamin=tk.Label(option_frame_option2_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="سطح زیر کشت")
-kesht_kharid_bagh_zamin.grid(padx=10,pady=5,row=5,column=4)
+kesht_kharid_bagh_zamin.place(x=458, y=185)
 
 kesht_kharid_bagh_zamin_combo=ttk.Combobox(option_frame_option2_kharid_bagh_zamin)
 kesht_kharid_bagh_zamin_combo["values"]=("بدون کشت"," زیر کشت")                             
 kesht_kharid_bagh_zamin_combo.set("بدون کشت ")
 kesht_kharid_bagh_zamin_combo["state"]=["readonly"]
-kesht_kharid_bagh_zamin_combo.grid(padx=10,pady=5,row=5,column=3)
+kesht_kharid_bagh_zamin_combo.place(x=273, y=185)
 kesht_kharid_bagh_zamin_combo.bind("<<ComboboxSelected>>",choos_kesht3)
 
 kesht_kharid_bagh_zamin_label=tk.Label(option_frame_option2_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=11,text="محصول زیرکشت")
-kesht_kharid_bagh_zamin_label.grid(padx=10,pady=5,row=5,column=2)
+kesht_kharid_bagh_zamin_label.place(x=168, y=185)
 
 kesht_kharid_bagh_zamin_entry=tk.Entry(option_frame_option2_kharid_bagh_zamin,width=10,bg="#746f6f",fg="#000000",state="disabled")
-kesht_kharid_bagh_zamin_entry.grid(padx=10,pady=5,row=5,column=1)
+kesht_kharid_bagh_zamin_entry.place(x=60, y=185)
 
 security_zamin_kharid_bagh_zamin=tk.Checkbutton(option_frame_option2_kharid_bagh_zamin,text="اتاق نگهبان",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-security_zamin_kharid_bagh_zamin.grid(padx=10,pady=6,row=6,column=0)
+security_zamin_kharid_bagh_zamin.place(x=450, y=230)
 
 bargh_kesi_zamin_kharid_bagh_zamin=tk.Checkbutton(option_frame_option2_kharid_bagh_zamin,text="برق تک فاز",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-bargh_kesi_zamin_kharid_bagh_zamin.grid(padx=10,pady=6,row=6,column=1)
+bargh_kesi_zamin_kharid_bagh_zamin.place(x=350, y=230)
 
 bargh_keshi_zamin_kharid_bagh_zamin2=tk.Checkbutton(option_frame_option2_kharid_bagh_zamin,text="برق سه فاز",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-bargh_keshi_zamin_kharid_bagh_zamin2.grid(padx=10,pady=6,row=6,column=2)
+bargh_keshi_zamin_kharid_bagh_zamin2.place(x=250, y=230)
 
 anbar_zamin_kharid_bagh_zamin=tk.Checkbutton(option_frame_option2_kharid_bagh_zamin,text="انبار/سوله",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-anbar_zamin_kharid_bagh_zamin.grid(padx=10,pady=6,row=6,column=3)
+anbar_zamin_kharid_bagh_zamin.place(x=150, y=230)
 
 fans_zamin_kharid_bagh_zamin=tk.Checkbutton(option_frame_option2_kharid_bagh_zamin,text="فنس/دیوار",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-fans_zamin_kharid_bagh_zamin.grid(padx=10,pady=6,row=6,column=4)
+fans_zamin_kharid_bagh_zamin.place(x=60, y=230)
 
 mojavez_golkhane_zamin_kharid_bagh_zamin=tk.Checkbutton(option_frame_option2_kharid_bagh_zamin,text="اجازه ساخت گلخانه",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-mojavez_golkhane_zamin_kharid_bagh_zamin.grid(padx=10,pady=6,row=7,column=0)
+mojavez_golkhane_zamin_kharid_bagh_zamin.place(x=400, y=280)
 
 mojavez_chah_zamin_kharid_bagh_zamin=tk.Checkbutton(option_frame_option2_kharid_bagh_zamin,text="اجازه حفر چاه",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-mojavez_chah_zamin_kharid_bagh_zamin.grid(padx=10,pady=6,row=7,column=1)
+mojavez_chah_zamin_kharid_bagh_zamin.place(x=300, y=280)
 
 bardasht_zamin_kharid_bagh_zamin=tk.Checkbutton(option_frame_option2_kharid_bagh_zamin,text="حق برداشت ",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-bardasht_zamin_kharid_bagh_zamin.grid(padx=10,pady=6,row=7,column=2)
+bardasht_zamin_kharid_bagh_zamin.place(x=200, y=280)
 
 dam_zamin_kharid_bagh_zamin=tk.Checkbutton(option_frame_option2_kharid_bagh_zamin,text="اجازه ورود دام",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-dam_zamin_kharid_bagh_zamin.grid(padx=10,pady=6,row=7,column=3)
+dam_zamin_kharid_bagh_zamin.place(x=95, y=280)
+
+zakhire_options_kharid_bagh_zamin=tk.Button(option_file_frame_kharid_bagh_zamin,command=None,text="ذخیره",background="#00BFFF",fg="#000000",width=10,height=1)
+zakhire_options_kharid_bagh_zamin.place(x=215,y=580)
+
+back_to_kharid_bagh_zamin=tk.Button(option_file_frame_kharid_bagh_zamin,text="بازگشت",command=back_to_kharid_bagh_zamin,background="#00BFFF",fg="#000000",width=10,height=1)
+back_to_kharid_bagh_zamin.place(x=95,y=580)
+
+option_file_frame_kharid_bagh_zamin.protocol("WM_DELETE_WINDOW", lambda: None)
+option_file_frame_kharid_bagh_zamin.resizable(False, False)
 #endregion
 #-------------------پنجره خرید کارگاه------------------------
 #region
@@ -3757,10 +3760,10 @@ add_img_btn_kharid_kargah = tk.Button(kharid_kargah, text="افزودن تصوی
 add_img_btn_kharid_kargah.place(x=60, y=370)
 
 back_to_home_kharid_kargah=tk.Button(kharid_kargah,text="بازگشت",bg="#00BFFF",fg="#000000",width=10,height=2,command=back_home_kharid_kargah)
-back_to_home_kharid_kargah.place(x=290,y=520)
+back_to_home_kharid_kargah.place(x=140,y=520)
 
 zakhire_kharid_kargah=tk.Button(kharid_kargah,text="ذخیره",bg="#00BFFF",fg="#000000",width=10,height=2,command=save_kharid_karghah)
-zakhire_kharid_kargah.place(x=140,y=520)
+zakhire_kharid_kargah.place(x=290,y=520)
 
 kharid_kargah.protocol("WM_DELETE_WINDOW", lambda: None)
 kharid_kargah.resizable(False, False)
@@ -3879,10 +3882,10 @@ otagh_kharid_kargah_combo["state"]=["readonly"]
 otagh_kharid_kargah_combo.place(x=70, y=350)
 
 zakhire_options_kharid_kargah=tk.Button(option_file_frame_kharid_kargah,text="ذخیره",background="#00BFFF",fg="#000000",width=10,height=1)
-zakhire_options_kharid_kargah.place(x=50,y=450)
+zakhire_options_kharid_kargah.place(x=170,y=450)
 
 back_to_kharid_kargah=tk.Button(option_file_frame_kharid_kargah,text="بازگشت",command=back_to_kharid_kargah,background="#00BFFF",fg="#000000",width=10,height=1)
-back_to_kharid_kargah.place(x=170,y=450)
+back_to_kharid_kargah.place(x=50,y=450)
 
 option_file_frame_kharid_kargah.protocol("WM_DELETE_WINDOW", lambda: None)
 option_file_frame_kharid_kargah.resizable(False, False)
