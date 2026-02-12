@@ -90,7 +90,7 @@ title_label.pack(pady=25)
 #---------------------فریم منو----------------------
 #region
 menu_frame=tk.Frame(main_frame,bg="#ffffff", relief="flat",height=1)
-menu_frame.pack(padx=2, pady=2, fill="both", expand=True)
+menu_frame.pack(padx=2, pady=2, fill="x")
 #endregion
 # ------------- لیست کشویی فیلد فایل های ثبتی-----------
 #region
@@ -719,55 +719,13 @@ def add_topo2():
     topo2=zamin_shekl_forosh_bagh_zamin_combo.get()
     if topo2 and topo2 not in selected_topo2:
         selected_topo2.append(topo2)
-        lable_natige_add_forosh_bagh_zamin.config(text=','.join(selected_topo2))
+        label_natige_topo_add_forosh_bagh_zamin.config(text=','.join(selected_topo2))
 selected_topo3=[]
 def add_topo3():
     topo3=zamin_shekl_kharid_bagh_zamin_combo.get()
     if topo3 and topo3 not in selected_topo3:
         selected_topo3.append(topo3)
         label_natige_topo_add_kharid_bagh_zamin.config(text=','.join(selected_topo3))
-def home_true_false1(): # برای فعال یا غیر فعال کردن ویجت های خونه باغ در اجاره
-    if var0.get()==1:
-        metraj_vila_bagh_entry.config(state="normal")
-        sal_sakht_vila_bagh_entry.config(state="normal")
-        type_vila_ejareh_bagh_zamin_combo.config(state="readonly")
-        toilet_bagh_combo.config(state="readonly")
-        hamam_bagh_combo.config(state="readonly")
-        sanad_bagh_combo.config(state="readonly")
-        option_ejareh_bagh_zamin_combo.config(state="readonly")
-        mojavez_sakht_ejareh_bagh_zamin.config(state="normal")
-        mohavate_ejareh_bagh_zamin.config(state="normal")
-    else:
-        metraj_vila_bagh_entry.config(state="disabled")
-        sal_sakht_vila_bagh_entry.config(state="disabled")
-        type_vila_ejareh_bagh_zamin_combo.config(state="disabled")
-        toilet_bagh_combo.config(state="disabled")
-        hamam_bagh_combo.config(state="disabled")
-        sanad_bagh_combo.config(state="disabled")
-        option_ejareh_bagh_zamin_combo.config(state="disabled")
-        mojavez_sakht_ejareh_bagh_zamin.config(state="disabled")
-        mohavate_ejareh_bagh_zamin.config(state="disabled")
-def home_true_false2(): #برای فعال یا غیر فعال کردن ویجت های خونه باغ در فروش
-    if var0.get()==1:
-        metraj_vila_forosh_bagh_zamin_entry.config(state="normal")
-        sal_sakht_vila_forosh_bagh_zamin_entry.config(state="normal")
-        type_vila_forosh_bagh_zamin_combo.config(state="readonly")
-        toilet_forosh_bagh_zamin_combo.config(state="readonly")
-        hamam_forosh_bagh_zamin_combo.config(state="readonly")
-        sanad_forosh_bagh_zamin_combo.config(state="readonly")
-        option_forosh_bagh_zamin_combo.config(state="readonly")
-        mojavez_sakht_check_btn_forosh_bagh_zamin.config(state="normal")
-        mohavate_sazi_check_btn_forosh_bagh_zamin.config(state="normal")
-    else:
-        metraj_vila_forosh_bagh_zamin_entry.config(state="disabled")
-        sal_sakht_vila_forosh_bagh_zamin_entry.config(state="disabled")
-        type_vila_forosh_bagh_zamin_combo.config(state="disabled")
-        toilet_forosh_bagh_zamin_combo.config(state="disabled")
-        hamam_forosh_bagh_zamin_combo.config(state="disabled")
-        sanad_forosh_bagh_zamin_combo.config(state="disabled")
-        option_forosh_bagh_zamin_combo.config(state="disabled")
-        mojavez_sakht_check_btn_forosh_bagh_zamin.config(state="disabled")
-        mohavate_sazi_check_btn_forosh_bagh_zamin.config(state="disabled")
 def choos_kesht(event):
     a=kesht_ejareh_bagh_zamin_combo.get()
     if a=="بدون کشت":
@@ -791,7 +749,7 @@ def add_tree2():
     t3=type_tree_forosh_bagh_zamin_combo.get()
     if t3 and t3 not in selected_trees2:
         selected_trees2.append(t3)
-        type_tree_forosh_btn.config(text=','.join(selected_trees2))
+        label_natige_forosh_bagh_zamin.config(text=','.join(selected_trees2))
 selected_option2=[]
 def add_option2():
     op2=option_forosh_bagh_zamin_combo.get()
@@ -803,7 +761,7 @@ def add_tree3():
     t4=type_tree_kharid_bagh_zamin_combo.get()
     if t4 and t4 not in selected_trees3:
         selected_trees3.append(t4)
-        type_tree_kharid_btn.config(text=','.join(selected_trees3))
+        label_natige_kharid_bagh_zamin.config(text=','.join(selected_trees3))
 selected_option3=[]
 def add_option3():
     op3=option_kharid_bagh_zamin_combo.get()
@@ -811,32 +769,6 @@ def add_option3():
         selected_option3.append(op3)
         lable_natige_add_kharid_bagh_zamin.config(text=','.join(selected_option3))
 #====================================================================================
-#---------------------قسمت اضافه کردن اپشن های تفریحی و درختان در قسمت باغ و زمین------------
-selected_trees=[]
-def add_tree():# برای اضافه کردن درخت به صورت دستی
-    t=type_tree_combo.get()
-    if t and t not in selected_trees:
-        selected_trees.append(t)
-        label_result_add.config(text=','.join(selected_trees))
-selected_option=[]
-def add_option():
-    op=option_ejareh_bagh_zamin_combo.get()
-    if op and op not in selected_option:
-        selected_option.append(op)
-        label_result2_add.config(text=','.join(selected_option))
-selected_topo1=[]
-def add_topo1():
-    topo=zamin_shekl_ejareh_bagh_zamin_combo.get()
-    if topo and topo not in selected_topo1:
-        selected_topo1.append(topo)
-        label_natige_topo_add_ejareh_bagh_zamin.config(text=','.join(selected_topo1))
-selected_topo2=[]
-def add_topo2():
-    topo2=zamin_shekl_forosh_bagh_zamin_combo.get()
-    if topo2 and topo2 not in selected_topo2:
-
-        selected_topo2.append(topo2)
-        add_topo2_button_forosh_bagh_zamin.config(text=','.join(selected_topo2))
 #=====================================================================================
 def home_true_false1(): # برای فعال یا غیر فعال کردن ویجت های خونه باغ در اجاره
     if var0.get()==1:
@@ -846,7 +778,7 @@ def home_true_false1(): # برای فعال یا غیر فعال کردن ویج
         toilet_bagh_combo.config(state="readonly")
         hamam_bagh_combo.config(state="readonly")
         sanad_bagh_combo.config(state="readonly")
-        option_forosh_bagh_zamin_combo.config(state="readonly")
+        option_ejareh_bagh_zamin_combo.config(state="readonly")
         mojavez_sakht_ejareh_bagh_zamin.config(state="normal")
         mohavate_ejareh_bagh_zamin.config(state="normal")
     else:
@@ -856,7 +788,7 @@ def home_true_false1(): # برای فعال یا غیر فعال کردن ویج
         toilet_bagh_combo.config(state="disabled")
         hamam_bagh_combo.config(state="disabled")
         sanad_bagh_combo.config(state="disabled")
-        option_forosh_bagh_zamin_combo.config(state="disabled")
+        option_ejareh_bagh_zamin_combo.config(state="disabled")
         mojavez_sakht_ejareh_bagh_zamin.config(state="disabled")
         mohavate_ejareh_bagh_zamin.config(state="disabled")
 def home_true_false2(): #برای فعال یا غیر فعال کردن ویجت های خونه باغ در فروش
@@ -903,30 +835,13 @@ def home_true_false3(): #برای فعال یا غیر فعال کردن ویج�
         option_kharid_bagh_zamin_combo.config(state="disabled")
         mojavez_sakht_check_btn_kharid_bagh_zamin.config(state="disabled")
         mohavate_sazi_check_btn_kharid_bagh_zamin.config(state="disabled")
-def choos_kesht(event):
-    a=kesht_ejareh_bagh_zamin_combo.get()
-    if a=="بدون کشت":
-        kesht_ejareh_bagh_zamin_entry.config(state="disabled")
-    else:
-        kesht_ejareh_bagh_zamin_entry.config(state="readonly")
-def choos_kesht2(event):
-    b=kesht_forosh_bagh_zamin_combo.get()
-    if b=="بدون کشت":
-        kesht_forosh_bagh_zamin_entry.config(state="disabled")
-    else:
-        kesht_forosh_bagh_zamin_entry.config(state="readonly")
 selected_trees2=[]
 def add_tree2():
     t3=type_tree_forosh_bagh_zamin_combo.get()
     if t3 and t3 not in selected_trees2:
         selected_trees2.append(t3)
-        type_tree_forosh_btn.config(text=','.join(selected_trees2))
-selected_option2=[]
-def add_option2():
-    op2=option_forosh_bagh_zamin_combo.get()
-    if op2 and op2 not in selected_option2:
-        selected_option2.append(op2)
-        add_option_button_forosh_bagh_zamin.config(text=','.join(selected_option2))
+        label_natige_forosh_bagh_zamin.config(text=','.join(selected_trees2))
+
 #endregion
 #---#----#----#----#----#----------  گرافیک   ----------#----#----#----#-----#-----------
 # ---------دکمه فایل با منوی کشویی ------------------
@@ -991,8 +906,10 @@ menubar.add_cascade(label="کاربران", menu=file_menu_karbaran)
 #========================================================
 # -----------باکس سمت چپ - جستجو در فایل های ملک----------
 #region
-frame_jostojo_melk_left= tk.LabelFrame(root, text="جستجوی ملک", width=200, bg="#052340",fg="#00BFFF", font=("Shabnam", 16))
-frame_jostojo_melk_left.pack(side="left", fill="y", padx=6, pady=15)
+contant_frame=tk.Frame(root)
+contant_frame.pack(fill="both",expand=True)
+frame_jostojo_melk_left= tk.LabelFrame(contant_frame, text="جستجوی ملک", width=200, bg="#052340",fg="#00BFFF", font=("Shabnam", 16))
+frame_jostojo_melk_left.pack(side="left", fill="both",expand=True, padx=6, pady=15)
 
 box_jostojo_malk1= tk.Frame(frame_jostojo_melk_left,bg="#052340")
 box_jostojo_malk1.pack(padx=6, pady=15)
@@ -1048,7 +965,7 @@ search_btn.pack(pady=10)
 #endregion
 # ---------------------------باکس وسط - نمایش جستجوی --------------
 #region
-frame_list_amlack_centre = tk.LabelFrame(root, text="لیست املاک", bg="#052340",fg="#00BFFF", font=("Shabnam", 13))
+frame_list_amlack_centre = tk.LabelFrame(contant_frame, text="لیست املاک", bg="#052340",fg="#00BFFF", font=("Shabnam", 13))
 frame_list_amlack_centre.pack(side="left", fill="both", expand=True, padx=4, pady=15)
 
 columns = ["آدرس", "قیمت ", "نوع ملک ", "متراژ"]
@@ -1061,8 +978,8 @@ tree.pack(fill="both", expand=True)
 #endregion
 # --------------------باکس سمت راست - نمایش جزئیات فایل های موجود املاک---------------
 #region
-frame_joziat_amlack = tk.LabelFrame(root, text="جزئیات ملک", width=200, bg="#052340",fg="#00BFFF", font=("Shabnam", 13))
-frame_joziat_amlack.pack(side="right", fill="y", padx=6, pady=15)
+frame_joziat_amlack = tk.LabelFrame(contant_frame, text="جزئیات ملک", width=200, bg="#052340",fg="#00BFFF", font=("Shabnam", 13))
+frame_joziat_amlack.pack(side="right", fill="both",expand=True, padx=6, pady=15)
 
 photo_melk_lbl = tk.Label(frame_joziat_amlack, text="[تصویر ملک]", bg="#FFFFFF", width=20, height=10)
 photo_melk_lbl.pack(pady=10)
@@ -1209,10 +1126,10 @@ kharid_kargah_radio.place(x=330,y=170)
 
 
 back_to_home_box_kharid=tk.Button(box_kharid,text="بازگشت",bg="#00BFFF",fg="#000000",width=12,height=2,command=back_kharid_exit)
-back_to_home_box_kharid.place(x=190,y=210)
+back_to_home_box_kharid.place(x=50,y=210)
 
 zakhire_radio_box_kharid=tk.Button(box_kharid,text="ادامه",bg="#00BFFF",fg="#000000",width=12,height=2,command=sabt_radio_kharid)
-zakhire_radio_box_kharid.place(x=50,y=210)
+zakhire_radio_box_kharid.place(x=190,y=210)
 
 box_kharid.protocol("WM_DELETE_WINDOW", lambda: None)
 box_kharid.resizable(False, False)
@@ -1627,10 +1544,10 @@ add_img_btn_ejareh_bagh_zamin = tk.Button(photo_box_ejareh_bagh_zamin, text="ا�
 add_img_btn_ejareh_bagh_zamin.place(x=30,y=330)
 
 back_to_home_ejareh_bagh_zamin=tk.Button(ejareh_bagh_zamin,text="بازگشت",bg="#00BFFF",fg="#000000",width=10,height=2,command=back_home_ejareh_bagh)
-back_to_home_ejareh_bagh_zamin.place(x=290,y=520)
+back_to_home_ejareh_bagh_zamin.place(x=140,y=520)
 
 zakhire_ejareh_bagh_zamin=tk.Button(ejareh_bagh_zamin,text="ذخیره",bg="#00BFFF",fg="#000000",width=10,height=2,command=save_rehn_bagh)
-zakhire_ejareh_bagh_zamin.place(x=140,y=520)
+zakhire_ejareh_bagh_zamin.place(x=290,y=520)
 
 ejareh_bagh_zamin.protocol("WM_DELETE_WINDOW", lambda: None)
 ejareh_bagh_zamin.resizable(False, False)
@@ -2458,10 +2375,10 @@ add_img_btn_forosh_bagh_zamin = tk.Button(photo_box_forosh_bagh_zamin, text="ا�
 add_img_btn_forosh_bagh_zamin.place(x=30,y=330)
 
 back_to_home_forosh_bagh_zamin=tk.Button(forosh_bagh_zamin,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_forosh_bagh)
-back_to_home_forosh_bagh_zamin.place(x=290,y=520)
+back_to_home_forosh_bagh_zamin.place(x=140,y=520)
 
 zakhire_forosh_bagh_zamin=tk.Button(forosh_bagh_zamin,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=save_forosh_bagh)
-zakhire_forosh_bagh_zamin.place(x=140,y=520)
+zakhire_forosh_bagh_zamin.place(x=290,y=520)
 
 forosh_bagh_zamin.protocol("WM_DELETE_WINDOW", lambda: None)
 forosh_bagh_zamin.resizable(False, False)
@@ -2552,7 +2469,7 @@ gas_keshi_forosh_bagh_zamin.grid(padx=0,pady=5,row=5,column=4)
 
 var0_forosh_bagh_zamin=tk.IntVar(value=0)#چک باتن پیش فرض تیک نخورده باشه
 
-otagh_check_btn_forosh_bagh_zamin=tk.Checkbutton(option_frame_forosh_bagh_zamin,variable=var0,image=warehouse_pic,background="#052340",text="ساختمان",command=home_true_false2)
+otagh_check_btn_forosh_bagh_zamin=tk.Checkbutton(option_frame_forosh_bagh_zamin,variable=var0_forosh_bagh_zamin,image=warehouse_pic,background="#052340",text="ساختمان",command=home_true_false2)
 otagh_check_btn_forosh_bagh_zamin.grid(padx=10,pady=5,row=6,column=4)
 
 metraj_vila_forosh_bagh_zamin=tk.Label(option_frame_forosh_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="متراژ سازه")
@@ -3287,10 +3204,10 @@ add_img_btn_kharid_bagh_zamin = tk.Button(photo_box_kharid_bagh_zamin, text="ا�
 add_img_btn_kharid_bagh_zamin.place(x=30,y=330)
 
 back_to_home_kharid_bagh_zamin=tk.Button(kharid_bagh_zamin,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_kharid_bagh)
-back_to_home_kharid_bagh_zamin.place(x=290,y=520)
+back_to_home_kharid_bagh_zamin.place(x=140,y=520)
 
 zakhire_kharid_bagh_zamin=tk.Button(kharid_bagh_zamin,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=None)
-zakhire_kharid_bagh_zamin.place(x=140,y=520)
+zakhire_kharid_bagh_zamin.place(x=290,y=520)
 
 kharid_bagh_zamin.protocol("WM_DELETE_WINDOW", lambda: None)
 kharid_bagh_zamin.resizable(False, False)
@@ -3360,7 +3277,7 @@ type_tree_kharid_bagh_zamin_combo.grid(padx=10,pady=5,row=3,column=3)
 type_tree_kharid_btn=tk.Button(option_frame_kharid_bagh_zamin,text="افزودن درخت",command=add_tree3,bg="#00BFFF",font=("Shabnam",9),width=10)
 type_tree_kharid_btn.grid(padx=10,pady=5,row=4,column=4)
 
-label_natige_kharid_bagh_zamin=tk.Label(option_frame_forosh_bagh_zamin,text="")
+label_natige_kharid_bagh_zamin=tk.Label(option_frame_kharid_bagh_zamin,text="")
 label_natige_kharid_bagh_zamin.grid(padx=10,pady=5,row=4,column=3)
 
 chah_kharid_bagh_zamin=tk.Checkbutton(option_frame_kharid_bagh_zamin,text="چاه",background="#052340",fg="#00BFFF",font=("Shabnam",9))
@@ -3380,7 +3297,7 @@ gas_keshi_kharid_bagh_zamin.grid(padx=0,pady=5,row=5,column=4)
 
 var0_kharid_bagh_zamin=tk.IntVar(value=0)#چک باتن پیش فرض تیک نخورده باشه
 
-otagh_check_btn_kharid_bagh_zamin=tk.Checkbutton(option_frame_kharid_bagh_zamin,variable=var0,image=warehouse_pic,background="#052340",text="ساختمان",command=home_true_false3)
+otagh_check_btn_kharid_bagh_zamin=tk.Checkbutton(option_frame_kharid_bagh_zamin,variable=var0_kharid_bagh_zamin,image=warehouse_pic,background="#052340",text="ساختمان",command=home_true_false3)
 otagh_check_btn_kharid_bagh_zamin.grid(padx=10,pady=5,row=6,column=4)
 
 metraj_vila_kharid_bagh_zamin=tk.Label(option_frame_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="متراژ سازه")
@@ -3446,7 +3363,7 @@ mohavate_sazi_check_btn_kharid_bagh_zamin=tk.Checkbutton(option_frame_kharid_bag
 mohavate_sazi_check_btn_kharid_bagh_zamin.grid(padx=10,pady=5,row=14,column=3)
 
 divar_kharid_bagh_zamin=tk.Checkbutton(option_frame_kharid_bagh_zamin,text="دیوار کشی",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-divar_kharid_bagh_zamin.grid(padx=10,pady=5,row=14,column=2)
+divar_kharid_bagh_zamin.grid(padx=10,pady=5,row=5,column=2)
 
 zakhire_options_kharid_bagh_zamin=tk.Button(option_file_frame_kharid_bagh_zamin,command=None,text="ذخیره",background="#00BFFF",fg="#000000",width=10,height=1)
 zakhire_options_kharid_bagh_zamin.place(x=200,y=580)
