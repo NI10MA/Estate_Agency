@@ -1,4 +1,4 @@
-#-------------------------------------  کتابخانه ها   --------------------
+ #-------------------------------------  کتابخانه ها   --------------------
 #region
 import tkinter as tk
 from tkinter import ttk
@@ -1774,7 +1774,7 @@ mohavate_ejareh_bagh_zamin=tk.Checkbutton(option_file_frame_ejareh_bagh_zamin,te
 mohavate_ejareh_bagh_zamin.place(x=320, y=510)
 
 divar_ejareh_bagh_zamin=tk.Checkbutton(option_file_frame_ejareh_bagh_zamin,text="دیوار کشی",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-divar_ejareh_bagh_zamin.place(x=180, y=510)
+divar_ejareh_bagh_zamin.place(x=180, y=250)
 #endregion
 #-------------------تعویض کاربری به زمین در قسمت اجاره باغ/زمین--------------
 #region
@@ -1837,7 +1837,7 @@ zamin_shekl_ejareh_bagh_zamin_combo.place(x=273, y=150)
 add_topo_button=tk.Button(fram_option_zamin_ejareh_bagh_zamin,text=" مورد دلخواه",command=add_topo1,bg="#00BFFF",font=("Shabnam",9),width=10,height=1)
 add_topo_button.place(x=170, y=147)
 label_natige_topo_add_ejareh_bagh_zamin=tk.Label(fram_option_zamin_ejareh_bagh_zamin,text="")
-label_natige_topo_add_ejareh_bagh_zamin.place(x=90, y=150)
+label_natige_topo_add_ejareh_bagh_zamin.place(x=70, y=150)
 
 kesht_ejareh_bagh_zamin=tk.Label(fram_option_zamin_ejareh_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="سطح زیر کشت")
 kesht_ejareh_bagh_zamin.place(x=458, y=185)
@@ -2502,14 +2502,6 @@ gheimat_har_matr_babagh_zamin_forosh_bagh_zamin_lable.place(x=start_x + 320, y=s
 gheimat_har_metr_babagh_zamin_forosh_bagh_zamin_entry=tk.Entry(forosh_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
 gheimat_har_metr_babagh_zamin_forosh_bagh_zamin_entry.place(x=start_x + 10, y=start_y + 275, width=150, height=25)
 
-#time_bagh_forosh_bagh_zamin=tk.Label(frame_asli_forosh_bagh_zamin,text="مدت اجاره",bg="#052340",fg="#ffffff",width=10)
-#time_bagh_forosh_bagh.grid(padx=8,pady=15,sticky="e",row=5,column=1)
-
-#bagh_time_forosh_bagh_combo=ttk.Combobox(frame_asli_forosh_bagh_zamin,state="readonly")
-#bagh_time_forosh_bagh_zamin_combo["values"]=("بلندمدت","کوتاه مدت","فصلی","سالانه")
-#.set("فصلی")
-#bagh_time_forosh_bagh_zamin_combo.grid(padx=8,pady=15,sticky="w",row=5,column=0)
-
 photo_forosh_bagh_zamin_lable= tk.Label(forosh_bagh_zamin, text="[تصویر ملک]", bg="#ffffff", width=50, height=15)
 photo_forosh_bagh_zamin_lable.place(x=60, y=85)
 add_img_btn_forosh_bagh_zamin = tk.Button(forosh_bagh_zamin, text="افزودن تصویر", bg="#00BFFF", fg="black",command=open_file,height=2,width=13)
@@ -2618,7 +2610,7 @@ gas_keshi_forosh_bagh_zamin.place(x=80, y=220)
 
 var0_forosh_bagh_zamin=tk.IntVar(value=0)#چک باتن پیش فرض تیک نخورده باشه
 
-otagh_check_btn_forosh_bagh_zamin=tk.Checkbutton(option_frame_forosh_bagh_zamin,variable=var0_forosh_bagh_zamin,image=warehouse_pic,background="#052340",text="ساختمان",command=home_true_false2)
+otagh_check_btn_forosh_bagh_zamin=tk.Checkbutton(option_file_frame_forosh_bagh_zamin,variable=var0_forosh_bagh_zamin,image=warehouse_pic,background="#052340",text="ساختمان",command=home_true_false2)
 otagh_check_btn_forosh_bagh_zamin.place(x=470, y=250)
 
 metraj_vila_forosh_bagh_zamin=tk.Label(option_file_frame_forosh_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="متراژ سازه")
@@ -2691,7 +2683,7 @@ mohavate_sazi_check_btn_forosh_bagh_zamin=tk.Checkbutton(option_file_frame_foros
 mohavate_sazi_check_btn_forosh_bagh_zamin.place(x=320, y=510)
 
 divar_forosh_bagh_zamin=tk.Checkbutton(option_file_frame_forosh_bagh_zamin,text="دیوار کشی",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-divar_forosh_bagh_zamin.place(x=180, y=510)
+divar_forosh_bagh_zamin.place(x=180, y=250)
 #endregion
 #-------------------------تعویض کاربری به زمین در قسمت فروش باغ/زمین-------------
 #region
@@ -2755,7 +2747,7 @@ add_topo2_button_forosh_bagh_zamin=tk.Button(option_frame_option2_forosh_bagh_za
 add_topo2_button_forosh_bagh_zamin.place(x=170, y=147)
 
 label_natige_topo_add_forosh_bagh_zamin=tk.Label(option_frame_option2_forosh_bagh_zamin,text="")
-label_natige_topo_add_forosh_bagh_zamin.place(x=90, y=150)
+label_natige_topo_add_forosh_bagh_zamin.place(x=70, y=150)
 
 kesht_forosh_bagh_zamin=tk.Label(option_frame_option2_forosh_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="سطح زیر کشت")
 kesht_forosh_bagh_zamin.place(x=458, y=185)
@@ -3512,7 +3504,7 @@ gas_keshi_kharid_bagh_zamin.place(x=80, y=220)
 
 var0_kharid_bagh_zamin=tk.IntVar(value=0)#چک باتن پیش فرض تیک نخورده باشه
 
-otagh_check_btn_kharid_bagh_zamin=tk.Checkbutton(option_file_frame_kharid_bagh_zamin,variable=var0,image=warehouse_pic,background="#052340",text="ساختمان",command=home_true_false3)
+otagh_check_btn_kharid_bagh_zamin=tk.Checkbutton(option_file_frame_kharid_bagh_zamin,variable=var0_kharid_bagh_zamin,image=warehouse_pic,background="#052340",text="ساختمان",command=home_true_false3)
 otagh_check_btn_kharid_bagh_zamin.place(x=470, y=250)
 
 metraj_vila_kharid_bagh_zamin=tk.Label(option_file_frame_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="متراژ سازه")
@@ -3580,7 +3572,7 @@ mohavate_sazi_check_btn_kharid_bagh_zamin=tk.Checkbutton(option_file_frame_khari
 mohavate_sazi_check_btn_kharid_bagh_zamin.place(x=320, y=510)
 
 divar_kharid_bagh_zamin=tk.Checkbutton(option_file_frame_kharid_bagh_zamin,text="دیوار کشی",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-divar_kharid_bagh_zamin.place(x=180, y=510)
+divar_kharid_bagh_zamin.place(x=180, y=250)
 #endregion
 #-------------------------تعویض کاربری به زمین در قسمت خرید باغ/زمین-------------
 #region
@@ -3644,7 +3636,7 @@ add_topo2_button_kharid_bagh_zamin=tk.Button(option_frame_option2_kharid_bagh_za
 add_topo2_button_kharid_bagh_zamin.place(x=170, y=147)
 
 label_natige_topo_add_kharid_bagh_zamin=tk.Label(option_frame_option2_kharid_bagh_zamin,text="")
-label_natige_topo_add_kharid_bagh_zamin.place(x=90, y=150)
+label_natige_topo_add_kharid_bagh_zamin.place(x=60, y=150)
 
 kesht_kharid_bagh_zamin=tk.Label(option_frame_option2_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="سطح زیر کشت")
 kesht_kharid_bagh_zamin.place(x=458, y=185)
