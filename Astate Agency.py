@@ -1048,11 +1048,11 @@ ejareh_kargah_radio = tk.Radiobutton(box_rehn_ejareh,text="ثبت فایل کا�
 ejareh_kargah_radio.place(x=330, y=170)
 
 back_to_home_box_ejareh=tk.Button(box_rehn_ejareh,text="بازگشت",bg="#00BFFF",fg="#000000",width=12,height=2,command=back_rehn_ejareh_exit)
-back_to_home_box_ejareh.place(x=50,y=210)
+back_to_home_box_ejareh.place(x=190,y=210)
 
 
 zakhire_radio_box_ejareh=tk.Button(box_rehn_ejareh,text="ادامه",bg="#00BFFF",fg="#000000",width=12,height=2,command=sabt_radio_rehn)
-zakhire_radio_box_ejareh.place(x=190,y=210)
+zakhire_radio_box_ejareh.place(x=50,y=210)
 
 box_rehn_ejareh.protocol("WM_DELETE_WINDOW", lambda: None)
 box_rehn_ejareh.resizable(False, False) 
@@ -1085,10 +1085,10 @@ forosh_kargah_radio.place(x=330,y=170)
 
 
 back_to_home_box_forosh=tk.Button(box_forosh,text="بازگشت",bg="#00BFFF",fg="#000000",width=12,height=2,command=back_forosh_exit)
-back_to_home_box_forosh.place(x=50,y=210)
+back_to_home_box_forosh.place(x=190,y=210)
 
 zakhire_radio_box_forosh=tk.Button(box_forosh,text="ادامه",bg="#00BFFF",fg="#000000",width=12,height=2,command=sabt_radio_frosh)
-zakhire_radio_box_forosh.place(x=190,y=210)
+zakhire_radio_box_forosh.place(x=50,y=210)
 
 box_forosh.protocol("WM_DELETE_WINDOW", lambda: None)
 box_forosh.resizable(False, False) 
@@ -1124,10 +1124,10 @@ kharid_kargah_radio.place(x=330,y=170)
 
 
 back_to_home_box_kharid=tk.Button(box_kharid,text="بازگشت",bg="#00BFFF",fg="#000000",width=12,height=2,command=back_kharid_exit)
-back_to_home_box_kharid.place(x=50,y=210)
+back_to_home_box_kharid.place(x=190,y=210)
 
 zakhire_radio_box_kharid=tk.Button(box_kharid,text="ادامه",bg="#00BFFF",fg="#000000",width=12,height=2,command=sabt_radio_kharid)
-zakhire_radio_box_kharid.place(x=190,y=210)
+zakhire_radio_box_kharid.place(x=50,y=210)
 
 box_kharid.protocol("WM_DELETE_WINDOW", lambda: None)
 box_kharid.resizable(False, False)
@@ -1261,10 +1261,10 @@ gheimat_pish_ejare_maskoni_entry = tk.Entry(ejareh_rehn_page, bg="#FFFFFF", fg="
 gheimat_pish_ejare_maskoni_entry.place(x=start_x + 190, y=start_y + 370, width=150, height=25)
 
 back_to_home_ejareh_maskoni=tk.Button(ejareh_rehn_page,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_ejare_maskoni)
-back_to_home_ejareh_maskoni.place(x=120,y=520)
+back_to_home_ejareh_maskoni.place(x=270,y=520)
 
 save_button_ejareh_maskooni=tk.Button(ejareh_rehn_page,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=save_rehn_maskkoni)
-save_button_ejareh_maskooni.place(x=270,y=520)
+save_button_ejareh_maskooni.place(x=120,y=520)
 
 # 1. لیبل نگهدارنده تصویر
 photo_lbl2_ejare_maskoni = tk.Label(ejareh_rehn_page, text="[تصویر ملک]", bg="#FFFFFF", width=50, height=15,relief="solid", bd=1)
@@ -1343,10 +1343,10 @@ toilet_ejare_maskoni_combo.place(x=120, y=230)
 
 # --- دکمه‌های پایین صفحه ---
 save_optoin_ejareh_maskoni = tk.Button(option_file_frame_ejareh_maskoni, text="ذخیره", command=None, bg="#00BFFF", fg="#000000", width=10, height=1)
-save_optoin_ejareh_maskoni.place(x=215, y=320)
+save_optoin_ejareh_maskoni.place(x=95, y=320)
 
 back_to_ejare_maskoni = tk.Button(option_file_frame_ejareh_maskoni, text="بازگشت", command=back_to_ejareh_maskoni_page, bg="#00BFFF", fg="#000000", width=10, height=1)
-back_to_ejare_maskoni.place(x=95, y=320)
+back_to_ejare_maskoni.place(x=215, y=320)
 
 option_file_frame_ejareh_maskoni.protocol("WM_DELETE_WINDOW", lambda: None)
 option_file_frame_ejareh_maskoni.resizable(False, False)
@@ -1447,10 +1447,10 @@ rahn_kamel_checkbutton_ejareh_edari_tejari=tk.Checkbutton(ejareh_edari_tejari,bg
 rahn_kamel_checkbutton_ejareh_edari_tejari.place(x=start_x + 10, y=start_y + 425)
 
 back_to_home_ejareh_edari_tejari=tk.Button(ejareh_edari_tejari,text="بازگشت",bg="#00BFFF",fg="#000000",width=10,height=2,command=back_home_ejareh_edari_tejari)
-back_to_home_ejareh_edari_tejari.place(x=130,y=520)
+back_to_home_ejareh_edari_tejari.place(x=280,y=520)
 
 zakhire_ejareh_edari_tejari=tk.Button(ejareh_edari_tejari,text="ذخیره",bg="#00BFFF",fg="#000000",width=10,height=2,command=save_rehn_edari)
-zakhire_ejareh_edari_tejari.place(x=280,y=520)
+zakhire_ejareh_edari_tejari.place(x=130,y=520)
 
 photo_lbl2_ejareh_edari_tejari = tk.Label(ejareh_edari_tejari, text="[تصویر ملک]", bg="#FFFFFF", width=50, height=15)
 photo_lbl2_ejareh_edari_tejari.place(x=60, y=85)
@@ -1514,10 +1514,10 @@ garmayesh_combo_emkanat_ejareh_edari_tejari["state"]=["readonly"]
 garmayesh_combo_emkanat_ejareh_edari_tejari.place(x=120, y=190)
 
 save_optoin_ejareh_maskoni=tk.Button(option_file_frame_ejareh_edari_tajari,text="ذخیره",command=None,background="#00BFFF",fg="#000000",width=10,height=1)
-save_optoin_ejareh_maskoni.place(x=215,y=320)
+save_optoin_ejareh_maskoni.place(x=95,y=320)
 
 back_to_home_ejareh_edari_tejari=tk.Button(option_file_frame_ejareh_edari_tajari,text="بازگشت",command=back_to_ejareh_edari_tejari,background="#00BFFF",fg="#000000",width=10,height=1)
-back_to_home_ejareh_edari_tejari.place(x=95,y=320)
+back_to_home_ejareh_edari_tejari.place(x=215,y=320)
 
 option_file_frame_ejareh_edari_tajari.protocol("WM_DELETE_WINDOW", lambda: None)
 option_file_frame_ejareh_edari_tajari.resizable(False, False)
@@ -1605,10 +1605,10 @@ add_img_btn_ejareh_bagh_zamin = tk.Button(ejareh_bagh_zamin, text="افزودن 
 add_img_btn_ejareh_bagh_zamin.place(x=60, y=370)
 
 back_to_home_ejareh_bagh_zamin=tk.Button(ejareh_bagh_zamin,text="بازگشت",bg="#00BFFF",fg="#000000",width=10,height=2,command=back_home_ejareh_bagh)
-back_to_home_ejareh_bagh_zamin.place(x=140,y=520)
+back_to_home_ejareh_bagh_zamin.place(x=290,y=520)
 
 zakhire_ejareh_bagh_zamin=tk.Button(ejareh_bagh_zamin,text="ذخیره",bg="#00BFFF",fg="#000000",width=10,height=2,command=save_rehn_bagh)
-zakhire_ejareh_bagh_zamin.place(x=290,y=520)
+zakhire_ejareh_bagh_zamin.place(x=140,y=520)
 
 ejareh_bagh_zamin.protocol("WM_DELETE_WINDOW", lambda: None)
 ejareh_bagh_zamin.resizable(False, False)
@@ -1883,10 +1883,10 @@ dam_zamin_ejareh_bagh_zamin=tk.Checkbutton(fram_option_zamin_ejareh_bagh_zamin,t
 dam_zamin_ejareh_bagh_zamin.place(x=95, y=280)
 
 zakhire_option_ejareh_bagh_zamin=tk.Button(option_file_frame_ejareh_bagh_zamin,text="ذخیره",background="#00BFFF",fg="#000000",width=10,height=1)
-zakhire_option_ejareh_bagh_zamin.place(x=215,y=580)
+zakhire_option_ejareh_bagh_zamin.place(x=95,y=580)
 
 back_to_ejareh_bagh_zamin=tk.Button(option_file_frame_ejareh_bagh_zamin,text="بازگشت",command=back_to_ejareh_bagh_zamin,background="#00BFFF",fg="#000000",width=10,height=1)
-back_to_ejareh_bagh_zamin.place(x=95,y=580)
+back_to_ejareh_bagh_zamin.place(x=215,y=580)
 
 option_file_frame_ejareh_bagh_zamin.protocol("WM_DELETE_WINDOW", lambda: None)
 option_file_frame_ejareh_bagh_zamin.resizable(False, False)
@@ -1965,10 +1965,10 @@ add_img_btn_ejareh_kargah = tk.Button(ejareh_karghah, text="افزودن تصو�
 add_img_btn_ejareh_kargah.place(x=60, y=370)
 
 back_to_home_ejareh_kargah=tk.Button(ejareh_karghah,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_ejareh_karghah)
-back_to_home_ejareh_kargah.place(x=140,y=520)
+back_to_home_ejareh_kargah.place(x=290,y=520)
 
 zakhire_ejareh_kargah=tk.Button(ejareh_karghah,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=save_ejareh_karghah)
-zakhire_ejareh_kargah.place(x=290,y=520)
+zakhire_ejareh_kargah.place(x=140,y=520)
 
 ejareh_karghah.protocol("WM_DELETE_WINDOW", lambda: None)
 ejareh_karghah.resizable(False, False)
@@ -2084,10 +2084,10 @@ otagh_ejareh_kargah_combo["state"]=["readonly"]
 otagh_ejareh_kargah_combo.place(x=70, y=350)
 
 zakhire_options_ejareh_kargah=tk.Button(option_file_frame_ejareh_kargah,text="ذخیره",background="#00BFFF",fg="#000000",width=10,height=1)
-zakhire_options_ejareh_kargah.place(x=170,y=450)
+zakhire_options_ejareh_kargah.place(x=50,y=450)
 
 back_to_ejareh_kargah=tk.Button(option_file_frame_ejareh_kargah,text="بازگشت",command=back_to_ejareh_karghah,background="#00BFFF",fg="#000000",width=10,height=1)
-back_to_ejareh_kargah.place(x=50,y=450)
+back_to_ejareh_kargah.place(x=170,y=450)
 
 option_file_frame_ejareh_kargah.protocol("WM_DELETE_WINDOW", lambda: None)
 option_file_frame_ejareh_kargah.resizable(False, False)
@@ -2180,10 +2180,10 @@ gheimat_forosh_maskoni_entry.place(x=start_x + 10, y=start_y + 328, width=150, h
 
 
 back_to_home_forosh_maskoni=tk.Button(forosh_rehn_page,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_forosh_maskoni)
-back_to_home_forosh_maskoni.place(x=120,y=520)
+back_to_home_forosh_maskoni.place(x=270,y=520)
 
 zakhire_forosh_maskoni=tk.Button(forosh_rehn_page,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=save_forosh_maskkoni)
-zakhire_forosh_maskoni.place(x=270,y=520)
+zakhire_forosh_maskoni.place(x=120,y=520)
 
 photo_lbl2_forosh_maskoni = tk.Label(forosh_rehn_page, text="[تصویر ملک]", bg="#ffffff", width=50, height=15)
 photo_lbl2_forosh_maskoni.place(x=60, y=85)
@@ -2257,10 +2257,10 @@ toilet_combo_forosh_maskoni["values"] = ("ایرانی","فرنگی","هردو")
 toilet_combo_forosh_maskoni.place(x=120, y=230)
 
 zakhire_options_forosh_maskini=tk.Button(option_file_frame_forosh_maskoni,text="ذخیره",command=None,background="#00BFFF",fg="#000000",width=10,height=1)
-zakhire_options_forosh_maskini.place(x=215, y=320)
+zakhire_options_forosh_maskini.place(x=95, y=320)
 
 back_to_home_forosh_maskoni=tk.Button(option_file_frame_forosh_maskoni,text="بازگشت",command=back_to_forosh_maskoni_page,background="#00BFFF",fg="#000000",width=10,height=1)
-back_to_home_forosh_maskoni.place(x=95, y=320)
+back_to_home_forosh_maskoni.place(x=215, y=320)
 
 option_file_frame_forosh_maskoni.protocol("WM_DELETE_WINDOW", lambda: None)
 option_file_frame_forosh_maskoni.resizable(False, False)
@@ -2359,10 +2359,10 @@ rahn_kamel_check_btn_forosh_edari_tejari.place(x=start_x + 10, y=start_y + 425)
 
 
 back_to_home_forosh_edari_tejari=tk.Button(forosh_edari_tejari,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_forosh_edari_tejari)
-back_to_home_forosh_edari_tejari.place(x=130,y=520)
+back_to_home_forosh_edari_tejari.place(x=280,y=520)
 
 zakhire_forosh_edari_tejari=tk.Button(forosh_edari_tejari,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=save_forosh_edari)
-zakhire_forosh_edari_tejari.place(x=280,y=520)
+zakhire_forosh_edari_tejari.place(x=130,y=520)
 
 photo_lbl2_forosh_edari_tejari = tk.Label(forosh_edari_tejari, text="[تصویر ملک]", bg="#ffffff", width=50, height=15)
 photo_lbl2_forosh_edari_tejari.place(x=60, y=85)
@@ -2426,10 +2426,10 @@ garmayesh_combo_emkanat_forosh_edari_tejari["state"]=["readonly"]
 garmayesh_combo_emkanat_forosh_edari_tejari.place(x=120, y=190)
 
 zakhire_options_forosh_edari_tejari=tk.Button(option_file_frame_forosh_edari_tejari,text="ذخیره",command=None,background="#00BFFF",fg="#000000",width=10,height=1)
-zakhire_options_forosh_edari_tejari.place(x=215,y=320)
+zakhire_options_forosh_edari_tejari.place(x=95,y=320)
 
 back_to_home_forosh_edari_tejari=tk.Button(option_file_frame_forosh_edari_tejari,text="بازگشت",command=back_to_forosh_edari_tejari,background="#00BFFF",fg="#000000",width=10,height=1)
-back_to_home_forosh_edari_tejari.place(x=95,y=320)
+back_to_home_forosh_edari_tejari.place(x=215,y=320)
 
 option_file_frame_forosh_edari_tejari.protocol("WM_DELETE_WINDOW", lambda: None)
 option_file_frame_forosh_edari_tejari.resizable(False, False)
@@ -2508,10 +2508,10 @@ add_img_btn_forosh_bagh_zamin = tk.Button(forosh_bagh_zamin, text="افزودن 
 add_img_btn_forosh_bagh_zamin.place(x=60, y=370)
 
 back_to_home_forosh_bagh_zamin=tk.Button(forosh_bagh_zamin,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_forosh_bagh)
-back_to_home_forosh_bagh_zamin.place(x=140,y=520)
+back_to_home_forosh_bagh_zamin.place(x=290,y=520)
 
 zakhire_forosh_bagh_zamin=tk.Button(forosh_bagh_zamin,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=save_forosh_bagh)
-zakhire_forosh_bagh_zamin.place(x=290,y=520)
+zakhire_forosh_bagh_zamin.place(x=140,y=520)
 
 forosh_bagh_zamin.protocol("WM_DELETE_WINDOW", lambda: None)
 forosh_bagh_zamin.resizable(False, False)
@@ -2793,10 +2793,10 @@ dam_zamin_forosh_bagh_zamin=tk.Checkbutton(option_frame_option2_forosh_bagh_zami
 dam_zamin_forosh_bagh_zamin.place(x=95, y=280)
 
 zakhire_options_forosh_bagh_zamin=tk.Button(option_file_frame_forosh_bagh_zamin,text="ذخیره",background="#00BFFF",fg="#000000",width=10,height=1)
-zakhire_options_forosh_bagh_zamin.place(x=215,y=580)
+zakhire_options_forosh_bagh_zamin.place(x=95,y=580)
 
 back_to_forosh_bagh_zamin=tk.Button(option_file_frame_forosh_bagh_zamin,text="بازگشت",command=back_to_forosh_bagh_zamin,background="#00BFFF",fg="#000000",width=10,height=1)
-back_to_forosh_bagh_zamin.place(x=95,y=580)
+back_to_forosh_bagh_zamin.place(x=215,y=580)
 
 option_file_frame_forosh_bagh_zamin.protocol("WM_DELETE_WINDOW", lambda: None)
 option_file_frame_forosh_bagh_zamin.resizable(False, False)
@@ -2873,10 +2873,10 @@ add_img_btn_forosh_kargah = tk.Button(forosh_karghah, text="افزودن تصو�
 add_img_btn_forosh_kargah.place(x=60, y=370)
 
 back_to_home_forosh_kargah=tk.Button(forosh_karghah,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_forosh_karghah)
-back_to_home_forosh_kargah.place(x=140,y=520)
+back_to_home_forosh_kargah.place(x=290,y=520)
 
 zakhire_forosh_kargah=tk.Button(forosh_karghah,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=save_forosh_karghah)
-zakhire_forosh_kargah.place(x=290,y=520)
+zakhire_forosh_kargah.place(x=140,y=520)
 
 forosh_karghah.protocol("WM_DELETE_WINDOW", lambda: None)
 forosh_karghah.resizable(False, False)
@@ -2992,10 +2992,10 @@ otagh_forosh_kargah_combo["state"]=["readonly"]
 otagh_forosh_kargah_combo.place(x=70, y=350)
 
 zakhire_options_forosh_kargah=tk.Button(option_file_frame_forosh_kargah,text="ذخیره",background="#00BFFF",fg="#000000",width=10,height=1)
-zakhire_options_forosh_kargah.place(x=170,y=450)
+zakhire_options_forosh_kargah.place(x=50,y=450)
 
 back_to_forosh_kargah=tk.Button(option_file_frame_forosh_kargah,text="بازگشت",command=back_to_forosh_karghah,background="#00BFFF",fg="#000000",width=10,height=1)
-back_to_forosh_kargah.place(x=50,y=450)
+back_to_forosh_kargah.place(x=170,y=450)
 
 option_file_frame_forosh_kargah.protocol("WM_DELETE_WINDOW", lambda: None)
 option_file_frame_forosh_kargah.resizable(False, False)
@@ -3081,10 +3081,10 @@ gheimat_kharid_maskoni_entry=tk.Entry(kharid_maskoni_page,bg="#ffffff", fg="#000
 gheimat_kharid_maskoni_entry.place(x=start_x + 10, y=start_y + 330, width=150, height=25)
 
 back_to_home_kharid_maskoni=tk.Button(kharid_maskoni_page,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_kharid_maskoni)
-back_to_home_kharid_maskoni.place(x=120,y=520)
+back_to_home_kharid_maskoni.place(x=270,y=520)
 
 zakhire_kharid_maskoni=tk.Button(kharid_maskoni_page,text="ذخیره",bg="#00BFFF",fg="black",width=10,height=2,command=save_forosh_maskkoni)
-zakhire_kharid_maskoni.place(x=270,y=520)
+zakhire_kharid_maskoni.place(x=120,y=520)
 
 photo_lbl2_kharid_maskoni = tk.Label(kharid_maskoni_page, text="[تصویر ملک]", bg="#ffffff", width=50, height=15)
 photo_lbl2_kharid_maskoni.place(x=60, y=85)
@@ -3156,10 +3156,10 @@ toilet_combo_kharid_maskoni["values"] = ("ایرانی","فرنگی","هردو")
 toilet_combo_kharid_maskoni.place(x=120, y=230)
 
 zakhire_options_kharid_maskini=tk.Button(option_file_frame_kharid_maskoni,text="ذخیره",command=None,background="#00BFFF",fg="#000000",width=10,height=1)
-zakhire_options_kharid_maskini.place(x=215, y=320)
+zakhire_options_kharid_maskini.place(x=95, y=320)
 
 back_to_home_kharid_maskoni=tk.Button(option_file_frame_kharid_maskoni,text="بازگشت",command=back_to_kharid_maskoni_page,background="#00BFFF",fg="#000000",width=10,height=1)
-back_to_home_kharid_maskoni.place(x=95, y=320)
+back_to_home_kharid_maskoni.place(x=215, y=320)
 
 option_file_frame_kharid_maskoni.protocol("WM_DELETE_WINDOW", lambda: None)
 option_file_frame_kharid_maskoni.resizable(False, False)
@@ -3256,10 +3256,10 @@ rahn_kamel_check_btn_kharid_edari_tejari=tk.Checkbutton(kharid_edari_tejari,bg="
 rahn_kamel_check_btn_kharid_edari_tejari.place(x=start_x + 10, y=start_y + 425)
 
 back_to_home_kharid_edari_tejari=tk.Button(kharid_edari_tejari,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_kharid_edari_tejari)
-back_to_home_kharid_edari_tejari.place(x=130,y=520)
+back_to_home_kharid_edari_tejari.place(x=280,y=520)
 
 zakhire_kharid_edari_tejari=tk.Button(kharid_edari_tejari,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=None)
-zakhire_kharid_edari_tejari.place(x=280,y=520)
+zakhire_kharid_edari_tejari.place(x=130,y=520)
 
 photo_lbl2_kharid_edari_tejari = tk.Label(kharid_edari_tejari, text="[تصویر ملک]", bg="#ffffff", width=50, height=15)
 photo_lbl2_kharid_edari_tejari.place(x=60, y=85)
@@ -3323,10 +3323,10 @@ garmayesh_combo_emkanat_kharid_edari_tejari["state"]=["readonly"]
 garmayesh_combo_emkanat_kharid_edari_tejari.place(x=120, y=190)
 
 zakhire_options_kharid_edari_tejari=tk.Button(option_file_frame_kharid_edari_tejari,text="ذخیره",command=None,background="#00BFFF",fg="#000000",width=10,height=1)
-zakhire_options_kharid_edari_tejari.place(x=215,y=320)
+zakhire_options_kharid_edari_tejari.place(x=95,y=320)
 
 back_to_home_kharid_edari_tejari=tk.Button(option_file_frame_kharid_edari_tejari,text="بازگشت",command=back_to_kharid_edari_tejari,background="#00BFFF",fg="#000000",width=10,height=1)
-back_to_home_kharid_edari_tejari.place(x=95,y=320)
+back_to_home_kharid_edari_tejari.place(x=215,y=320)
 
 option_file_frame_kharid_edari_tejari.protocol("WM_DELETE_WINDOW", lambda: None)
 option_file_frame_kharid_edari_tejari.resizable(False, False)
@@ -3404,10 +3404,10 @@ add_img_btn_kharid_bagh_zamin = tk.Button(kharid_bagh_zamin, text="افزودن 
 add_img_btn_kharid_bagh_zamin.place(x=60, y=370)
 
 back_to_home_kharid_bagh_zamin=tk.Button(kharid_bagh_zamin,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_kharid_bagh)
-back_to_home_kharid_bagh_zamin.place(x=140,y=520)
+back_to_home_kharid_bagh_zamin.place(x=290,y=520)
 
 zakhire_kharid_bagh_zamin=tk.Button(kharid_bagh_zamin,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=None)
-zakhire_kharid_bagh_zamin.place(x=290,y=520)
+zakhire_kharid_bagh_zamin.place(x=140,y=520)
 
 kharid_bagh_zamin.protocol("WM_DELETE_WINDOW", lambda: None)
 kharid_bagh_zamin.resizable(False, False)
@@ -3682,10 +3682,10 @@ dam_zamin_kharid_bagh_zamin=tk.Checkbutton(option_frame_option2_kharid_bagh_zami
 dam_zamin_kharid_bagh_zamin.place(x=95, y=280)
 
 zakhire_options_kharid_bagh_zamin=tk.Button(option_file_frame_kharid_bagh_zamin,command=None,text="ذخیره",background="#00BFFF",fg="#000000",width=10,height=1)
-zakhire_options_kharid_bagh_zamin.place(x=215,y=580)
+zakhire_options_kharid_bagh_zamin.place(x=95,y=580)
 
 back_to_kharid_bagh_zamin=tk.Button(option_file_frame_kharid_bagh_zamin,text="بازگشت",command=back_to_kharid_bagh_zamin,background="#00BFFF",fg="#000000",width=10,height=1)
-back_to_kharid_bagh_zamin.place(x=95,y=580)
+back_to_kharid_bagh_zamin.place(x=215,y=580)
 
 option_file_frame_kharid_bagh_zamin.protocol("WM_DELETE_WINDOW", lambda: None)
 option_file_frame_kharid_bagh_zamin.resizable(False, False)
@@ -3752,10 +3752,10 @@ add_img_btn_kharid_kargah = tk.Button(kharid_kargah, text="افزودن تصوی
 add_img_btn_kharid_kargah.place(x=60, y=370)
 
 back_to_home_kharid_kargah=tk.Button(kharid_kargah,text="بازگشت",bg="#00BFFF",fg="#000000",width=10,height=2,command=back_home_kharid_kargah)
-back_to_home_kharid_kargah.place(x=140,y=520)
+back_to_home_kharid_kargah.place(x=290,y=520)
 
 zakhire_kharid_kargah=tk.Button(kharid_kargah,text="ذخیره",bg="#00BFFF",fg="#000000",width=10,height=2,command=save_kharid_karghah)
-zakhire_kharid_kargah.place(x=290,y=520)
+zakhire_kharid_kargah.place(x=140,y=520)
 
 kharid_kargah.protocol("WM_DELETE_WINDOW", lambda: None)
 kharid_kargah.resizable(False, False)
@@ -3874,10 +3874,10 @@ otagh_kharid_kargah_combo["state"]=["readonly"]
 otagh_kharid_kargah_combo.place(x=70, y=350)
 
 zakhire_options_kharid_kargah=tk.Button(option_file_frame_kharid_kargah,text="ذخیره",background="#00BFFF",fg="#000000",width=10,height=1)
-zakhire_options_kharid_kargah.place(x=170,y=450)
+zakhire_options_kharid_kargah.place(x=50,y=450)
 
 back_to_kharid_kargah=tk.Button(option_file_frame_kharid_kargah,text="بازگشت",command=back_to_kharid_kargah,background="#00BFFF",fg="#000000",width=10,height=1)
-back_to_kharid_kargah.place(x=50,y=450)
+back_to_kharid_kargah.place(x=170,y=450)
 
 option_file_frame_kharid_kargah.protocol("WM_DELETE_WINDOW", lambda: None)
 option_file_frame_kharid_kargah.resizable(False, False)
