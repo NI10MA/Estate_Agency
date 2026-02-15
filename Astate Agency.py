@@ -70,10 +70,26 @@ root = tk.Tk()
 root.title("Astate Agency")
 root.geometry("1100x700")
 #تصاویر پروژه
-plus=tk.PhotoImage(file="pluse.png")
-elvator_pic=tk.PhotoImage(file="elvator.png")
-parking_pic=tk.PhotoImage(file="parking.png")
-warehouse_pic=tk.PhotoImage(file="anbari.png")
+plus=tk.PhotoImage(file="Images/pluse.png")
+elvator_pic=tk.PhotoImage(file="Images/elvator.png")
+parking_pic=tk.PhotoImage(file="Images/parking.png")
+warehouse_pic=tk.PhotoImage(file="Images/anbari.png")
+#--------------------- تصاویر صفحه های اجاره -------------------------------
+image_ejareh_maskoni=Image.open("Images/ejareh_maskoni.jpg")
+image_ejareh_edari_tajari=Image.open("Images/ejareh_edari_tajari.jpg")
+image_ejareh_bagh_zamin=Image.open("Images/ejareh_bagh_zamin.jpg")
+image_ejareh_karghah=Image.open("Images/ejareh_karghah.jpg")
+#---------------------- تصاویر صفحه های فروش ------------------------------- 
+image_forosh_maskoni=Image.open("Images/forosh_maskoni.jpg")
+image_forosh_edari_tejari=Image.open("Images/forosh_edari_tejari.jpg")
+image_forosh_bagh_zamin=Image.open("Images/forosh_bagh_zamin.jpg")
+image_forosh_karghah=Image.open("Images/forosh_karghah.jpg")
+#---------------------- تصاویر صفحه های خرید -------------------------------
+image_kharid_maskoni=Image.open("Images/kharid_maskoni.jpg")
+image_kharid_edari_tejari=Image.open("Images/kharid_edari_tejari.jpg")
+image_kharid_bagh_zamin=Image.open("Images/kharid_bagh_zamin.jpg")
+image_kharid_kargah=Image.open("Images/kharid_kargah.jpg")
+
 # root.attributes("-fullscreen", True) <<<-----  App فول اسکرین شدن
 root.configure(bg="#052340")
 main_frame=tk.Frame(root)
@@ -1168,7 +1184,7 @@ ejareh_rehn_page.geometry("800x600")
 ejareh_rehn_page.withdraw()
 
 # بارگذاری تصویر
-bg_image = Image.open("large_a94eba63-7081-44d1-9491-d81113e6c266.jpg")
+bg_image = Image.open("Images/ejareh_maskoni.jpg")
 bg_image = bg_image.resize((800, 600))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
@@ -1289,7 +1305,7 @@ add_option_frame_ejare_maskoni.pack(side="right",padx=1)
 plus_button_ejare_maskoni=tk.Button(option_frame_ejare_maskoni,image=plus,command=open_option1,border=0)
 plus_button_ejare_maskoni.pack()
 
-bg_image = Image.open("large_a94eba63-7081-44d1-9491-d81113e6c266.jpg")
+bg_image = Image.open("Images/ejareh_maskoni.jpg")
 bg_image = bg_image.resize((800, 380))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
@@ -1360,7 +1376,7 @@ ejareh_edari_tejari.geometry("800x600")
 ejareh_edari_tejari.withdraw()
 
 # بارگذاری تصویر
-bg_image = Image.open("singapore-skyscrapers-marina-bay-sands-evening-4k-es-1920x1200.jpg")
+bg_image = Image.open("Images/ejareh_edari_tajari.jpg")
 bg_image = bg_image.resize((800, 600))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
@@ -1472,7 +1488,7 @@ option_label_ejareh_edari_tejari.pack(side="right",padx=1)
 plus_button_ejareh_edari_tejari=tk.Button(option_frame_ejareh_edari_tejari,image=plus,command=open_option3,border=0)
 plus_button_ejareh_edari_tejari.pack(side="right",padx=1)
 
-bg_image = Image.open("singapore-skyscrapers-marina-bay-sands-evening-4k-es-1920x1200.jpg")
+bg_image = Image.open("Images/ejareh_edari_tajari.jpg")
 bg_image = bg_image.resize((800, 380))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
@@ -1530,7 +1546,7 @@ ejareh_bagh_zamin.title(" اجاره باغ و زمین")
 ejareh_bagh_zamin.geometry("800x600")
 ejareh_bagh_zamin.withdraw()
 
-bg_image = Image.open("empire-state-building-night-5k-oa-1920x1200.jpg")
+bg_image = Image.open("Images/ejareh_bagh_zamin.jpg")
 bg_image = bg_image.resize((800, 600))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
@@ -1542,7 +1558,7 @@ bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 frame_ejareh_bagh_zamin= tk.Frame(ejareh_bagh_zamin,bd=0,highlightthickness=0)
 frame_ejareh_bagh_zamin.pack(side="left", fill="y", padx=6, pady=15)
 
-title_lbl = tk.Label(ejareh_bagh_zamin,text="اجاره باغ و زمین",bg="#000000",fg="#00BFFF",font=("Shabnam", 15))
+title_lbl = tk.Label(ejareh_bagh_zamin,text="اجاره باغ و زمین",bg="#052340",fg="#00BFFF",font=("Shabnam", 15))
 title_lbl.place(x=60, y=25)
 
 start_x = 450
@@ -1634,7 +1650,7 @@ option_file_frame_ejareh_bagh_zamin.withdraw()
 option_frame_options_ejareh_bagh_zamin=tk.Frame(option_file_frame_ejareh_bagh_zamin)
 option_frame_options_ejareh_bagh_zamin.place(x=50,y=50)
 
-bg_image = Image.open("empire-state-building-night-5k-oa-1920x1200.jpg")
+bg_image = Image.open("Images/ejareh_bagh_zamin.jpg")
 bg_image = bg_image.resize((800, 650))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
@@ -1664,7 +1680,7 @@ tree_count.place(x=460, y=100)
 tree_count_entry=tk.Entry(option_file_frame_ejareh_bagh_zamin,width=10,bg="#746f6f",fg="#000000")
 tree_count_entry.place(x=305, y=100)
 
-abyari=tk.Label(option_file_frame_ejareh_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="نوع ابیاری")
+abyari=tk.Label(option_file_frame_ejareh_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="نوع آبیاری")
 abyari.place(x=460, y=130)
 
 abyari_combo=ttk.Combobox(option_file_frame_ejareh_bagh_zamin)
@@ -1678,7 +1694,7 @@ type_tree.place(x=460, y=160)
 
 type_tree_combo=ttk.Combobox(option_file_frame_ejareh_bagh_zamin)
 type_tree_combo["values"]=(" ","پسته","بادام","گردو","شلیل","هلو","سیب","انگور"
-                           ,"انجیر","زردالو","گیلاس","البالو")
+                           ,"انجیر","زردالو","گیلاس","آلبالو")
 type_tree_combo["state"]=["readonly"]
 type_tree_combo.set("گردو")
 type_tree_combo.place(x=273, y=160)
@@ -1695,7 +1711,7 @@ chah_bagh.place(x=480, y=220)
 estakhr_bagh=tk.Checkbutton(option_file_frame_ejareh_bagh_zamin,text="استخر",font=("Shabnam",9),background="#052340",fg="#00BFFF")
 estakhr_bagh.place(x=380, y=220)
 
-loleh_bagh=tk.Checkbutton(option_file_frame_ejareh_bagh_zamin,text="اب لوله کشی",font=("Shabnam",9),background="#052340",fg="#00BFFF")
+loleh_bagh=tk.Checkbutton(option_file_frame_ejareh_bagh_zamin,text="آب لوله کشی",font=("Shabnam",9),background="#052340",fg="#00BFFF")
 loleh_bagh.place(x=280, y=220)
 
 bargh_bagh=tk.Checkbutton(option_file_frame_ejareh_bagh_zamin,text="برق کشی",font=("Shabnam",9),background="#052340",fg="#00BFFF")
@@ -1774,14 +1790,14 @@ mohavate_ejareh_bagh_zamin=tk.Checkbutton(option_file_frame_ejareh_bagh_zamin,te
 mohavate_ejareh_bagh_zamin.place(x=320, y=510)
 
 divar_ejareh_bagh_zamin=tk.Checkbutton(option_file_frame_ejareh_bagh_zamin,text="دیوار کشی",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-divar_ejareh_bagh_zamin.place(x=180, y=250)
+divar_ejareh_bagh_zamin.place(x=180, y=510)
 #endregion
 #-------------------تعویض کاربری به زمین در قسمت اجاره باغ/زمین--------------
 #region
 fram_option_zamin_ejareh_bagh_zamin=tk.Frame(option_file_frame_ejareh_bagh_zamin)
 fram_option_zamin_ejareh_bagh_zamin.place_forget()
 
-bg_image = Image.open("empire-state-building-night-5k-oa-1920x1200.jpg")
+bg_image = Image.open("Images/ejareh_bagh_zamin.jpg")
 bg_image = bg_image.resize((800, 650))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
@@ -1819,7 +1835,7 @@ ab_ejareh_ejareh_bagh_zamin=tk.Label(fram_option_zamin_ejareh_bagh_zamin,bg="#05
 ab_ejareh_ejareh_bagh_zamin.place(x=458, y=115)
 
 ab_ejareh_ejareh_bagh_zamin_combo=ttk.Combobox(fram_option_zamin_ejareh_bagh_zamin)
-ab_ejareh_ejareh_bagh_zamin_combo["values"]=(" ","چاه","قنات","رودخانه","کانال ابیاری","چشمه",
+ab_ejareh_ejareh_bagh_zamin_combo["values"]=(" ","چاه","قنات","رودخانه","کانال آبیاری","چشمه",
                                "آب لوله کشی کشاورزی","تانکر","استخر") 
 ab_ejareh_ejareh_bagh_zamin_combo["state"]=["readonly"]                             
 ab_ejareh_ejareh_bagh_zamin_combo.set(" ")
@@ -1900,7 +1916,7 @@ ejareh_karghah.title(" اجاره کارگاه")
 ejareh_karghah.geometry("800x600")
 ejareh_karghah.withdraw()
 
-bg_image = Image.open("yokohama-at-night-noen-city-4k-00-1920x1200.jpg")
+bg_image = Image.open("Images/ejareh_karghah.jpg")
 bg_image = bg_image.resize((800, 600))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
@@ -1990,7 +2006,7 @@ option_file_frame_ejareh_kargah.geometry("500x500")
 option_file_frame_ejareh_kargah.pack_propagate(False)
 option_file_frame_ejareh_kargah.withdraw()
 
-bg_image = Image.open("yokohama-at-night-noen-city-4k-00-1920x1200.jpg")
+bg_image = Image.open("Images/ejareh_karghah.jpg")
 bg_image = bg_image.resize((800, 650))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
@@ -2102,7 +2118,7 @@ forosh_rehn_page.geometry("800x600")
 forosh_rehn_page.withdraw()
 
 # بارگذاری تصویر
-bg_image = Image.open("singapore-city-skyline-5k-kb-1920x1200.jpg")
+bg_image = Image.open("Images/forosh_maskoni.jpg")
 bg_image = bg_image.resize((800, 600))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
@@ -2122,7 +2138,7 @@ option_file_frame_forosh_maskoni.withdraw()
 frame_forosh_maskoni= tk.Frame(forosh_rehn_page,bd=0,highlightthickness=0)
 frame_forosh_maskoni.pack(side="left", fill="y", padx=6, pady=15)
 
-title_lbl = tk.Label(forosh_rehn_page,text="فروش مسکونی",bg="#052340",fg="#00BFFF",font=("Shabnam", 15))
+title_lbl = tk.Label(forosh_rehn_page,text="فروش مسکونی",bg="#000000",fg="#00BFFF",font=("Shabnam", 15))
 title_lbl.place(x=60, y=25)   
 
 # تعیین نقطه شروع (جایی که فریم قبلی قرار داشت)
@@ -2205,7 +2221,7 @@ option_label_forosh_maskoni.pack(side="right",padx=1)
 plus_button_forosh_maskoni=tk.Button(option_frame_options_forosh_maskoni,image=plus,command=open_option2,border=0)
 plus_button_forosh_maskoni.pack()
 
-bg_image = Image.open("singapore-city-skyline-5k-kb-1920x1200.jpg")
+bg_image = Image.open("Images/forosh_maskoni.jpg")
 bg_image = bg_image.resize((800, 380))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
@@ -2272,7 +2288,7 @@ forosh_edari_tejari.title(" فروش اداری / تجاری")
 forosh_edari_tejari.geometry("800x600")
 forosh_edari_tejari.withdraw()
 
-bg_image = Image.open("aesthetic-city-night-lights-5s-1920x1200.jpg")
+bg_image = Image.open("Images/forosh_edari_tejari.jpg")
 bg_image = bg_image.resize((800, 600))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
@@ -2384,7 +2400,7 @@ option_label_forosh_edari_tejari.pack(side="right",padx=1)
 plus_button_forosh_eedari_tejari=tk.Button(option_frame_options_forosh_edari_tejari,image=plus,command=open_option4,border=0)
 plus_button_forosh_eedari_tejari.pack()
 
-bg_image = Image.open("aesthetic-city-night-lights-5s-1920x1200.jpg")
+bg_image = Image.open("Images/forosh_edari_tejari.jpg")
 bg_image = bg_image.resize((800, 380))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
@@ -2441,7 +2457,7 @@ forosh_bagh_zamin.title("فروش باغ و زمین")
 forosh_bagh_zamin.geometry("800x600")
 forosh_bagh_zamin.withdraw()
 
-bg_image = Image.open("santa-monica-pier-5k-8m-1920x1200.jpg")
+bg_image = Image.open("Images/forosh_bagh_zamin.jpg")
 bg_image = bg_image.resize((800, 600))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
@@ -2536,7 +2552,7 @@ option_file_frame_forosh_bagh_zamin.withdraw()
 option_frame_forosh_bagh_zamin=tk.Frame(option_file_frame_forosh_bagh_zamin)
 option_frame_forosh_bagh_zamin.place(x=50,y=50)
 
-bg_image = Image.open("santa-monica-pier-5k-8m-1920x1200.jpg")
+bg_image = Image.open("Images/forosh_bagh_zamin.jpg")
 bg_image = bg_image.resize((800, 650))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
@@ -2567,7 +2583,7 @@ tedad_derakht_forosh_bagh_zamin_lable.place(x=460, y=100)
 tedad_derakht_forosh_bagh_zamin_entry=tk.Entry(option_file_frame_forosh_bagh_zamin,width=10,bg="#746f6f",fg="#000000")
 tedad_derakht_forosh_bagh_zamin_entry.place(x=305, y=100)
 
-abyari_forosh_bagh_zamin_lable=tk.Label(option_file_frame_forosh_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="نوع ابیاری")
+abyari_forosh_bagh_zamin_lable=tk.Label(option_file_frame_forosh_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="نوع آبیاری")
 abyari_forosh_bagh_zamin_lable.place(x=460, y=130)
 
 abyari_forosh_bagh_zamin_combo=ttk.Combobox(option_file_frame_forosh_bagh_zamin)
@@ -2581,7 +2597,7 @@ type_tree_forosh_bagh_zamin_lable.place(x=460, y=160)
 
 type_tree_forosh_bagh_zamin_combo=ttk.Combobox(option_file_frame_forosh_bagh_zamin)
 type_tree_forosh_bagh_zamin_combo["values"]=(" ","پسته","بادام","گردو","شلیل","هلو","سیب","انگور"
-                           ,"انجیر","زردالو","گیلاس","البالو")
+                           ,"انجیر","زردالو","گیلاس","آلبالو")
 type_tree_forosh_bagh_zamin_combo["state"]=["readonly"]
 type_tree_forosh_bagh_zamin_combo.set("گردو")
 type_tree_forosh_bagh_zamin_combo.place(x=273, y=160)
@@ -2598,7 +2614,7 @@ chah_forosh_bagh_zamin.place(x=480, y=220)
 estakhr_forosh_bagh_zamin=tk.Checkbutton(option_file_frame_forosh_bagh_zamin,text="استخر",background="#052340",fg="#00BFFF",font=("Shabnam",9))
 estakhr_forosh_bagh_zamin.place(x=380, y=220)
 
-loleh_keshi_ab_forosh_bagh_zamin=tk.Checkbutton(option_file_frame_forosh_bagh_zamin,text="اب لوله کشی",background="#052340",fg="#00BFFF",font=("Shabnam",9))
+loleh_keshi_ab_forosh_bagh_zamin=tk.Checkbutton(option_file_frame_forosh_bagh_zamin,text="آب لوله کشی",background="#052340",fg="#00BFFF",font=("Shabnam",9))
 loleh_keshi_ab_forosh_bagh_zamin.place(x=280, y=220)
 
 bargh_keshi_forosh_bagh_zamin=tk.Checkbutton(option_file_frame_forosh_bagh_zamin,text="برق کشی",background="#052340",fg="#00BFFF",font=("Shabnam",9))
@@ -2683,14 +2699,14 @@ mohavate_sazi_check_btn_forosh_bagh_zamin=tk.Checkbutton(option_file_frame_foros
 mohavate_sazi_check_btn_forosh_bagh_zamin.place(x=320, y=510)
 
 divar_forosh_bagh_zamin=tk.Checkbutton(option_file_frame_forosh_bagh_zamin,text="دیوار کشی",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-divar_forosh_bagh_zamin.place(x=180, y=250)
+divar_forosh_bagh_zamin.place(x=180, y=510)
 #endregion
 #-------------------------تعویض کاربری به زمین در قسمت فروش باغ/زمین-------------
 #region
 option_frame_option2_forosh_bagh_zamin=tk.Frame(option_file_frame_forosh_bagh_zamin)
 option_frame_option2_forosh_bagh_zamin.place_forget()
 
-bg_image = Image.open("santa-monica-pier-5k-8m-1920x1200.jpg")
+bg_image = Image.open("Images/forosh_bagh_zamin.jpg")
 bg_image = bg_image.resize((800, 650))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
@@ -2724,11 +2740,11 @@ khak_forosh_bagh_zamin_combo["state"]=["readonly"]
 khak_forosh_bagh_zamin_combo.set(" ")
 khak_forosh_bagh_zamin_combo.place(x=273, y=80)
 
-ab_forosh_bagh_zamin=tk.Label(option_frame_option2_forosh_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="منبع اب")
+ab_forosh_bagh_zamin=tk.Label(option_frame_option2_forosh_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="منبع آب")
 ab_forosh_bagh_zamin.place(x=458, y=115)
 
 ab_forosh_bagh_zamin_combo=ttk.Combobox(option_frame_option2_forosh_bagh_zamin)
-ab_forosh_bagh_zamin_combo["values"]=(" ","چاه","قنات","رودخانه","کانال ابیاری","چشمه",
+ab_forosh_bagh_zamin_combo["values"]=(" ","چاه","قنات","رودخانه","کانال آبیاری","چشمه",
                                "آب لوله کشی کشاورزی","تانکر","استخر")    
 ab_forosh_bagh_zamin_combo["state"]=["readonly"]                            
 ab_forosh_bagh_zamin_combo.set(" ")
@@ -2808,7 +2824,7 @@ forosh_karghah.title(" فروش کارگاه")
 forosh_karghah.geometry("800x600")
 forosh_karghah.withdraw()
 
-bg_image = Image.open("dubai-cityscape-buildings-lights-8k-ar-1920x1200.jpg")
+bg_image = Image.open("Images/forosh_karghah.jpg")
 bg_image = bg_image.resize((800, 600))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
@@ -2898,7 +2914,7 @@ option_file_frame_forosh_kargah.geometry("500x500")
 option_file_frame_forosh_kargah.pack_propagate(False)
 option_file_frame_forosh_kargah.withdraw()
 
-bg_image = Image.open("dubai-cityscape-buildings-lights-8k-ar-1920x1200.jpg")
+bg_image = Image.open("Images/forosh_karghah.jpg")
 bg_image = bg_image.resize((800, 650))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
@@ -3008,7 +3024,7 @@ kharid_maskoni_page.title("خرید مسکونی")
 kharid_maskoni_page.geometry("800x600")
 kharid_maskoni_page.withdraw()
 
-bg_image = Image.open("evening-houses-skyscrapers-qatar-5k-g2-1920x1200.jpg")
+bg_image = Image.open("Images/kharid_maskoni.jpg")
 bg_image = bg_image.resize((800, 600))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
@@ -3106,7 +3122,7 @@ option_label_kharid_maskoni.pack(side="right",padx=1)
 plus_button_kharid_maskoni=tk.Button(option_frame_options_kharid_maskoni,image=plus,command=open_option9,border=0)
 plus_button_kharid_maskoni.pack()
 
-bg_image = Image.open("evening-houses-skyscrapers-qatar-5k-g2-1920x1200.jpg")
+bg_image = Image.open("Images/kharid_maskoni.jpg")
 bg_image = bg_image.resize((800, 380))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
@@ -3171,7 +3187,7 @@ kharid_edari_tejari.title(" خرید اداری / تجاری")
 kharid_edari_tejari.geometry("800x600")
 kharid_edari_tejari.withdraw()
 
-bg_image = Image.open("paris-beautiful-city-1920x1200.jpg")
+bg_image = Image.open("Images/kharid_edari_tejari.jpg")
 bg_image = bg_image.resize((800, 600))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
@@ -3281,7 +3297,7 @@ option_label_kharid_edari_tejari.pack(side="right",padx=1)
 plus_button_kharid_eedari_tejari=tk.Button(option_frame_options_kharid_edari_tejari,image=plus,command=open_option10,border=0)
 plus_button_kharid_eedari_tejari.pack()
 
-bg_image = Image.open("paris-beautiful-city-1920x1200.jpg")
+bg_image = Image.open("Images/kharid_edari_tejari.jpg")
 bg_image = bg_image.resize((800, 380))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
@@ -3338,7 +3354,7 @@ kharid_bagh_zamin.title("خرید باغ و زمین")
 kharid_bagh_zamin.geometry("800x600")
 kharid_bagh_zamin.withdraw()
 
-bg_image = Image.open("vilnius-cityscape-4k-el-1920x1200.jpg")
+bg_image = Image.open("Images/kharid_bagh_zamin.jpg")
 bg_image = bg_image.resize((800, 600))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
@@ -3432,7 +3448,7 @@ option_file_frame_kharid_bagh_zamin.withdraw()
 option_frame_kharid_bagh_zamin=tk.Frame(option_file_frame_kharid_bagh_zamin)
 option_frame_kharid_bagh_zamin.place(x=50,y=50)
 
-bg_image = Image.open("vilnius-cityscape-4k-el-1920x1200.jpg")
+bg_image = Image.open("Images/kharid_bagh_zamin.jpg")
 bg_image = bg_image.resize((800, 650))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
@@ -3462,7 +3478,7 @@ tedad_derakht_kharid_bagh_zamin_lable.place(x=460, y=100)
 tedad_derakht_kharid_bagh_zamin_entry=tk.Entry(option_file_frame_kharid_bagh_zamin,width=10,bg="#746f6f",fg="#000000")
 tedad_derakht_kharid_bagh_zamin_entry.place(x=305, y=100)
 
-abyari_kharid_bagh_zamin_lable=tk.Label(option_file_frame_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="نوع ابیاری")
+abyari_kharid_bagh_zamin_lable=tk.Label(option_file_frame_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="نوع آبیاری")
 abyari_kharid_bagh_zamin_lable.place(x=460, y=130)
 
 abyari_kharid_bagh_zamin_combo=ttk.Combobox(option_file_frame_kharid_bagh_zamin)
@@ -3476,7 +3492,7 @@ type_tree_kharid_bagh_zamin_lable.place(x=460, y=160)
 
 type_tree_kharid_bagh_zamin_combo=ttk.Combobox(option_file_frame_kharid_bagh_zamin)
 type_tree_kharid_bagh_zamin_combo["values"]=(" ","پسته","بادام","گردو","شلیل","هلو","سیب","انگور"
-                           ,"انجیر","زردالو","گیلاس","البالو")
+                           ,"انجیر","زردالو","گیلاس","آلبالو")
 type_tree_kharid_bagh_zamin_combo.set("گردو")
 type_tree_kharid_bagh_zamin_combo["state"]=["readonly"]
 type_tree_kharid_bagh_zamin_combo.place(x=273, y=160)
@@ -3493,7 +3509,7 @@ chah_kharid_bagh_zamin.place(x=480, y=220)
 estakhr_kharid_bagh_zamin=tk.Checkbutton(option_file_frame_kharid_bagh_zamin,text="استخر",background="#052340",fg="#00BFFF",font=("Shabnam",9))
 estakhr_kharid_bagh_zamin.place(x=380, y=220)
 
-loleh_keshi_ab_kharid_bagh_zamin=tk.Checkbutton(option_file_frame_kharid_bagh_zamin,text="اب لوله کشی",background="#052340",fg="#00BFFF",font=("Shabnam",9))
+loleh_keshi_ab_kharid_bagh_zamin=tk.Checkbutton(option_file_frame_kharid_bagh_zamin,text="آب لوله کشی",background="#052340",fg="#00BFFF",font=("Shabnam",9))
 loleh_keshi_ab_kharid_bagh_zamin.place(x=280, y=220)
 
 bargh_keshi_kharid_bagh_zamin=tk.Checkbutton(option_file_frame_kharid_bagh_zamin,text="برق کشی",background="#052340",fg="#00BFFF",font=("Shabnam",9))
@@ -3572,14 +3588,14 @@ mohavate_sazi_check_btn_kharid_bagh_zamin=tk.Checkbutton(option_file_frame_khari
 mohavate_sazi_check_btn_kharid_bagh_zamin.place(x=320, y=510)
 
 divar_kharid_bagh_zamin=tk.Checkbutton(option_file_frame_kharid_bagh_zamin,text="دیوار کشی",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-divar_kharid_bagh_zamin.place(x=180, y=250)
+divar_kharid_bagh_zamin.place(x=180, y=510)
 #endregion
 #-------------------------تعویض کاربری به زمین در قسمت خرید باغ/زمین-------------
 #region
 option_frame_option2_kharid_bagh_zamin=tk.Frame(option_file_frame_kharid_bagh_zamin)
 option_frame_option2_kharid_bagh_zamin.place_forget()
 
-bg_image = Image.open("vilnius-cityscape-4k-el-1920x1200.jpg")
+bg_image = Image.open("Images/kharid_bagh_zamin.jpg")
 bg_image = bg_image.resize((800, 650))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
@@ -3613,11 +3629,11 @@ khak_kharid_bagh_zamin_combo["state"]=["readonly"]
 khak_kharid_bagh_zamin_combo.set(" ")
 khak_kharid_bagh_zamin_combo.place(x=273, y=80)
 
-ab_kharid_bagh_zamin=tk.Label(option_frame_option2_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="منبع اب")
+ab_kharid_bagh_zamin=tk.Label(option_frame_option2_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="منبع آب")
 ab_kharid_bagh_zamin.place(x=458, y=115)
 
 ab_kharid_bagh_zamin_combo=ttk.Combobox(option_frame_option2_kharid_bagh_zamin)
-ab_kharid_bagh_zamin_combo["values"]=(" ","چاه","قنات","رودخانه","کانال ابیاری","چشمه",
+ab_kharid_bagh_zamin_combo["values"]=(" ","چاه","قنات","رودخانه","کانال آبیاری","چشمه",
                                "آب لوله کشی کشاورزی","تانکر","استخر")  
 ab_kharid_bagh_zamin_combo["state"]=["readonly"]
 ab_kharid_bagh_zamin_combo.set(" ")
@@ -3697,7 +3713,7 @@ kharid_kargah.title("خرید کارگاه")
 kharid_kargah.geometry("800x600")
 kharid_kargah.withdraw()
 
-bg_image = Image.open("monaco-purple-clouds-sunset-1920x1200.jpg")
+bg_image = Image.open("Images/kharid_kargah.jpg")
 bg_image = bg_image.resize((800, 600))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
@@ -3780,7 +3796,7 @@ option_file_frame_kharid_kargah.withdraw()
 option_frame_asli_kharid_kargah=tk.Frame(option_file_frame_kharid_kargah)
 option_frame_asli_kharid_kargah.place(x=50,y=50)
 
-bg_image = Image.open("monaco-purple-clouds-sunset-1920x1200.jpg")
+bg_image = Image.open("Images/kharid_kargah.jpg")
 bg_image = bg_image.resize((800, 650))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
