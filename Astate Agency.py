@@ -1184,8 +1184,8 @@ ejareh_rehn_page.geometry("800x600")
 ejareh_rehn_page.withdraw()
 
 # بارگذاری تصویر
-bg_image = Image.open("Images/ejareh_maskoni.jpg")
-bg_image = bg_image.resize((800, 600))
+bg_image = image_ejareh_maskoni
+bg_image = image_ejareh_maskoni.resize((800, 600))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
 # لیبل پس‌زمینه
@@ -1305,8 +1305,8 @@ add_option_frame_ejare_maskoni.pack(side="right",padx=1)
 plus_button_ejare_maskoni=tk.Button(option_frame_ejare_maskoni,image=plus,command=open_option1,border=0)
 plus_button_ejare_maskoni.pack()
 
-bg_image = Image.open("Images/ejareh_maskoni.jpg")
-bg_image = bg_image.resize((800, 380))
+bg_image = image_ejareh_maskoni
+bg_image = image_ejareh_maskoni.resize((800, 380))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
 bg_label = tk.Label(option_file_frame_ejareh_maskoni, image=bg_photo)
@@ -1376,8 +1376,8 @@ ejareh_edari_tejari.geometry("800x600")
 ejareh_edari_tejari.withdraw()
 
 # بارگذاری تصویر
-bg_image = Image.open("Images/ejareh_edari_tajari.jpg")
-bg_image = bg_image.resize((800, 600))
+bg_image = image_ejareh_edari_tajari
+bg_image = image_ejareh_edari_tajari.resize((800, 600))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
 # لیبل پس‌زمینه
@@ -1488,8 +1488,8 @@ option_label_ejareh_edari_tejari.pack(side="right",padx=1)
 plus_button_ejareh_edari_tejari=tk.Button(option_frame_ejareh_edari_tejari,image=plus,command=open_option3,border=0)
 plus_button_ejareh_edari_tejari.pack(side="right",padx=1)
 
-bg_image = Image.open("Images/ejareh_edari_tajari.jpg")
-bg_image = bg_image.resize((800, 380))
+bg_image = image_ejareh_edari_tajari
+bg_image = image_ejareh_edari_tajari.resize((800, 380))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
 bg_label = tk.Label(option_file_frame_ejareh_edari_tajari, image=bg_photo)
@@ -1546,8 +1546,8 @@ ejareh_bagh_zamin.title(" اجاره باغ و زمین")
 ejareh_bagh_zamin.geometry("800x600")
 ejareh_bagh_zamin.withdraw()
 
-bg_image = Image.open("Images/ejareh_bagh_zamin.jpg")
-bg_image = bg_image.resize((800, 600))
+bg_image = image_ejareh_bagh_zamin
+bg_image = image_ejareh_bagh_zamin.resize((800, 600))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
 bg_label = tk.Label(ejareh_bagh_zamin, image=bg_photo)
@@ -1650,8 +1650,8 @@ option_file_frame_ejareh_bagh_zamin.withdraw()
 option_frame_options_ejareh_bagh_zamin=tk.Frame(option_file_frame_ejareh_bagh_zamin)
 option_frame_options_ejareh_bagh_zamin.place(x=50,y=50)
 
-bg_image = Image.open("Images/ejareh_bagh_zamin.jpg")
-bg_image = bg_image.resize((800, 650))
+bg_image = image_ejareh_bagh_zamin
+bg_image = image_ejareh_bagh_zamin.resize((800, 650))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
 bg_label = tk.Label(option_file_frame_ejareh_bagh_zamin, image=bg_photo)
@@ -1797,8 +1797,8 @@ divar_ejareh_bagh_zamin.place(x=180, y=510)
 fram_option_zamin_ejareh_bagh_zamin=tk.Frame(option_file_frame_ejareh_bagh_zamin)
 fram_option_zamin_ejareh_bagh_zamin.place_forget()
 
-bg_image = Image.open("Images/ejareh_bagh_zamin.jpg")
-bg_image = bg_image.resize((800, 650))
+bg_image = image_ejareh_bagh_zamin
+bg_image = image_ejareh_bagh_zamin.resize((800, 650))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
 bg_label = tk.Label(fram_option_zamin_ejareh_bagh_zamin, image=bg_photo)
@@ -1916,8 +1916,8 @@ ejareh_karghah.title(" اجاره کارگاه")
 ejareh_karghah.geometry("800x600")
 ejareh_karghah.withdraw()
 
-bg_image = Image.open("Images/ejareh_karghah.jpg")
-bg_image = bg_image.resize((800, 600))
+bg_image = image_ejareh_karghah
+bg_image = image_ejareh_karghah.resize((800, 600))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
 bg_label = tk.Label(ejareh_karghah, image=bg_photo)
@@ -2006,8 +2006,8 @@ option_file_frame_ejareh_kargah.geometry("500x500")
 option_file_frame_ejareh_kargah.pack_propagate(False)
 option_file_frame_ejareh_kargah.withdraw()
 
-bg_image = Image.open("Images/ejareh_karghah.jpg")
-bg_image = bg_image.resize((800, 650))
+bg_image = image_ejareh_karghah
+bg_image = image_ejareh_karghah.resize((800, 650))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
 bg_label = tk.Label(option_file_frame_ejareh_kargah, image=bg_photo)
@@ -2118,8 +2118,8 @@ forosh_rehn_page.geometry("800x600")
 forosh_rehn_page.withdraw()
 
 # بارگذاری تصویر
-bg_image = Image.open("Images/forosh_maskoni.jpg")
-bg_image = bg_image.resize((800, 600))
+bg_image = image_forosh_maskoni
+bg_image = image_forosh_maskoni.resize((800, 600))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
 # لیبل پس‌زمینه
@@ -2221,8 +2221,8 @@ option_label_forosh_maskoni.pack(side="right",padx=1)
 plus_button_forosh_maskoni=tk.Button(option_frame_options_forosh_maskoni,image=plus,command=open_option2,border=0)
 plus_button_forosh_maskoni.pack()
 
-bg_image = Image.open("Images/forosh_maskoni.jpg")
-bg_image = bg_image.resize((800, 380))
+bg_image = image_forosh_maskoni
+bg_image = image_forosh_maskoni.resize((800, 380))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
 bg_label = tk.Label(option_file_frame_forosh_maskoni, image=bg_photo)
@@ -2288,8 +2288,8 @@ forosh_edari_tejari.title(" فروش اداری / تجاری")
 forosh_edari_tejari.geometry("800x600")
 forosh_edari_tejari.withdraw()
 
-bg_image = Image.open("Images/forosh_edari_tejari.jpg")
-bg_image = bg_image.resize((800, 600))
+bg_image = image_forosh_edari_tejari
+bg_image = image_forosh_edari_tejari.resize((800, 600))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
 # لیبل پس‌زمینه
@@ -2400,8 +2400,8 @@ option_label_forosh_edari_tejari.pack(side="right",padx=1)
 plus_button_forosh_eedari_tejari=tk.Button(option_frame_options_forosh_edari_tejari,image=plus,command=open_option4,border=0)
 plus_button_forosh_eedari_tejari.pack()
 
-bg_image = Image.open("Images/forosh_edari_tejari.jpg")
-bg_image = bg_image.resize((800, 380))
+bg_image = image_forosh_edari_tejari
+bg_image = image_forosh_edari_tejari.resize((800, 380))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
 bg_label = tk.Label(option_file_frame_forosh_edari_tejari, image=bg_photo)
@@ -2457,8 +2457,8 @@ forosh_bagh_zamin.title("فروش باغ و زمین")
 forosh_bagh_zamin.geometry("800x600")
 forosh_bagh_zamin.withdraw()
 
-bg_image = Image.open("Images/forosh_bagh_zamin.jpg")
-bg_image = bg_image.resize((800, 600))
+bg_image = image_forosh_bagh_zamin
+bg_image = image_forosh_bagh_zamin.resize((800, 600))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
 bg_label = tk.Label(forosh_bagh_zamin, image=bg_photo)
@@ -2552,8 +2552,8 @@ option_file_frame_forosh_bagh_zamin.withdraw()
 option_frame_forosh_bagh_zamin=tk.Frame(option_file_frame_forosh_bagh_zamin)
 option_frame_forosh_bagh_zamin.place(x=50,y=50)
 
-bg_image = Image.open("Images/forosh_bagh_zamin.jpg")
-bg_image = bg_image.resize((800, 650))
+bg_image = image_forosh_bagh_zamin
+bg_image = image_forosh_bagh_zamin.resize((800, 650))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
 bg_label = tk.Label(option_file_frame_forosh_bagh_zamin, image=bg_photo)
@@ -2632,13 +2632,13 @@ otagh_check_btn_forosh_bagh_zamin.place(x=470, y=250)
 metraj_vila_forosh_bagh_zamin=tk.Label(option_file_frame_forosh_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="متراژ سازه")
 metraj_vila_forosh_bagh_zamin.place(x=450, y=300)
 
-metraj_vila_forosh_bagh_zamin_entry=tk.Entry(option_file_frame_forosh_bagh_zamin,width=10,bg="#746f6f",fg="#000000",state="disabled")
+metraj_vila_forosh_bagh_zamin_entry=tk.Entry(option_file_frame_forosh_bagh_zamin,width=10,bg="#00BFFF",fg="#000000",state="disabled")
 metraj_vila_forosh_bagh_zamin_entry.place(x=305, y=300)
 
 sal_sakht_vila_forosh_bagh_zamin_lable=tk.Label(option_file_frame_forosh_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="سال ساخت")
 sal_sakht_vila_forosh_bagh_zamin_lable.place(x=450, y=330)
 
-sal_sakht_vila_forosh_bagh_zamin_entry=tk.Entry(option_file_frame_forosh_bagh_zamin,width=10,bg="#746f6f",fg="#000000",state="disabled")
+sal_sakht_vila_forosh_bagh_zamin_entry=tk.Entry(option_file_frame_forosh_bagh_zamin,width=10,bg="#00BFFF",fg="#000000",state="disabled")
 sal_sakht_vila_forosh_bagh_zamin_entry.place(x=305, y=330)
 
 type_vila_forosh_bagh_zamin=tk.Label(option_file_frame_forosh_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="نوع سازه")
@@ -2706,8 +2706,8 @@ divar_forosh_bagh_zamin.place(x=180, y=510)
 option_frame_option2_forosh_bagh_zamin=tk.Frame(option_file_frame_forosh_bagh_zamin)
 option_frame_option2_forosh_bagh_zamin.place_forget()
 
-bg_image = Image.open("Images/forosh_bagh_zamin.jpg")
-bg_image = bg_image.resize((800, 650))
+bg_image = image_forosh_bagh_zamin
+bg_image = image_forosh_bagh_zamin.resize((800, 650))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
 bg_label = tk.Label(option_frame_option2_forosh_bagh_zamin, image=bg_photo)
@@ -2824,8 +2824,8 @@ forosh_karghah.title(" فروش کارگاه")
 forosh_karghah.geometry("800x600")
 forosh_karghah.withdraw()
 
-bg_image = Image.open("Images/forosh_karghah.jpg")
-bg_image = bg_image.resize((800, 600))
+bg_image = image_forosh_karghah
+bg_image = image_forosh_karghah.resize((800, 600))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
 bg_label = tk.Label(forosh_karghah, image=bg_photo)
@@ -2914,8 +2914,8 @@ option_file_frame_forosh_kargah.geometry("500x500")
 option_file_frame_forosh_kargah.pack_propagate(False)
 option_file_frame_forosh_kargah.withdraw()
 
-bg_image = Image.open("Images/forosh_karghah.jpg")
-bg_image = bg_image.resize((800, 650))
+bg_image = image_forosh_karghah
+bg_image = image_forosh_karghah.resize((800, 650))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
 bg_label = tk.Label(option_file_frame_forosh_kargah, image=bg_photo)
@@ -3024,8 +3024,8 @@ kharid_maskoni_page.title("خرید مسکونی")
 kharid_maskoni_page.geometry("800x600")
 kharid_maskoni_page.withdraw()
 
-bg_image = Image.open("Images/kharid_maskoni.jpg")
-bg_image = bg_image.resize((800, 600))
+bg_image = image_kharid_maskoni
+bg_image = image_kharid_maskoni.resize((800, 600))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
 # لیبل پس‌زمینه
@@ -3122,8 +3122,8 @@ option_label_kharid_maskoni.pack(side="right",padx=1)
 plus_button_kharid_maskoni=tk.Button(option_frame_options_kharid_maskoni,image=plus,command=open_option9,border=0)
 plus_button_kharid_maskoni.pack()
 
-bg_image = Image.open("Images/kharid_maskoni.jpg")
-bg_image = bg_image.resize((800, 380))
+bg_image = image_kharid_maskoni
+bg_image = image_kharid_maskoni.resize((800, 380))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
 bg_label = tk.Label(option_file_frame_kharid_maskoni, image=bg_photo)
@@ -3187,8 +3187,8 @@ kharid_edari_tejari.title(" خرید اداری / تجاری")
 kharid_edari_tejari.geometry("800x600")
 kharid_edari_tejari.withdraw()
 
-bg_image = Image.open("Images/kharid_edari_tejari.jpg")
-bg_image = bg_image.resize((800, 600))
+bg_image = image_kharid_edari_tejari
+bg_image = image_kharid_edari_tejari.resize((800, 600))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
 # لیبل پس‌زمینه
@@ -3297,8 +3297,8 @@ option_label_kharid_edari_tejari.pack(side="right",padx=1)
 plus_button_kharid_eedari_tejari=tk.Button(option_frame_options_kharid_edari_tejari,image=plus,command=open_option10,border=0)
 plus_button_kharid_eedari_tejari.pack()
 
-bg_image = Image.open("Images/kharid_edari_tejari.jpg")
-bg_image = bg_image.resize((800, 380))
+bg_image = image_kharid_edari_tejari
+bg_image = image_kharid_edari_tejari.resize((800, 380))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
 bg_label = tk.Label(option_file_frame_kharid_edari_tejari, image=bg_photo)
@@ -3354,8 +3354,8 @@ kharid_bagh_zamin.title("خرید باغ و زمین")
 kharid_bagh_zamin.geometry("800x600")
 kharid_bagh_zamin.withdraw()
 
-bg_image = Image.open("Images/kharid_bagh_zamin.jpg")
-bg_image = bg_image.resize((800, 600))
+bg_image = image_kharid_bagh_zamin
+bg_image = image_kharid_bagh_zamin.resize((800, 600))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
 bg_label = tk.Label(kharid_bagh_zamin, image=bg_photo)
@@ -3448,8 +3448,8 @@ option_file_frame_kharid_bagh_zamin.withdraw()
 option_frame_kharid_bagh_zamin=tk.Frame(option_file_frame_kharid_bagh_zamin)
 option_frame_kharid_bagh_zamin.place(x=50,y=50)
 
-bg_image = Image.open("Images/kharid_bagh_zamin.jpg")
-bg_image = bg_image.resize((800, 650))
+bg_image = image_kharid_bagh_zamin
+bg_image = image_kharid_bagh_zamin.resize((800, 650))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
 bg_label = tk.Label(option_file_frame_kharid_bagh_zamin, image=bg_photo)
@@ -3526,13 +3526,13 @@ otagh_check_btn_kharid_bagh_zamin.place(x=470, y=250)
 metraj_vila_kharid_bagh_zamin=tk.Label(option_file_frame_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="متراژ سازه")
 metraj_vila_kharid_bagh_zamin.place(x=450, y=300)
 
-metraj_vila_kharid_bagh_zamin_entry=tk.Entry(option_file_frame_kharid_bagh_zamin,width=10,bg="#746f6f",fg="#ffffff",state="disabled")
+metraj_vila_kharid_bagh_zamin_entry=tk.Entry(option_file_frame_kharid_bagh_zamin,width=10,bg="#00BFFF",fg="#ffffff",state="disabled")
 metraj_vila_kharid_bagh_zamin_entry.place(x=305, y=300)
 
 sal_sakht_vila_kharid_bagh_zamin_lable=tk.Label(option_file_frame_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="سال ساخت")
 sal_sakht_vila_kharid_bagh_zamin_lable.place(x=450, y=330)
 
-sal_sakht_vila_kharid_bagh_zamin_entry=tk.Entry(option_file_frame_kharid_bagh_zamin,width=10,bg="#746f6f",fg="#ffffff",state="disabled")
+sal_sakht_vila_kharid_bagh_zamin_entry=tk.Entry(option_file_frame_kharid_bagh_zamin,width=10,bg="#00BFFF",fg="#ffffff",state="disabled")
 sal_sakht_vila_kharid_bagh_zamin_entry.place(x=305, y=330)
 
 type_vila_kharid_bagh_zamin=tk.Label(option_file_frame_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="نوع سازه")
@@ -3595,8 +3595,8 @@ divar_kharid_bagh_zamin.place(x=180, y=510)
 option_frame_option2_kharid_bagh_zamin=tk.Frame(option_file_frame_kharid_bagh_zamin)
 option_frame_option2_kharid_bagh_zamin.place_forget()
 
-bg_image = Image.open("Images/kharid_bagh_zamin.jpg")
-bg_image = bg_image.resize((800, 650))
+bg_image = image_kharid_bagh_zamin
+bg_image = image_kharid_bagh_zamin.resize((800, 650))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
 bg_label = tk.Label(option_frame_option2_kharid_bagh_zamin, image=bg_photo)
@@ -3713,8 +3713,8 @@ kharid_kargah.title("خرید کارگاه")
 kharid_kargah.geometry("800x600")
 kharid_kargah.withdraw()
 
-bg_image = Image.open("Images/kharid_kargah.jpg")
-bg_image = bg_image.resize((800, 600))
+bg_image = image_kharid_kargah
+bg_image = image_kharid_kargah.resize((800, 600))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
 bg_label = tk.Label(kharid_kargah, image=bg_photo)
@@ -3796,8 +3796,8 @@ option_file_frame_kharid_kargah.withdraw()
 option_frame_asli_kharid_kargah=tk.Frame(option_file_frame_kharid_kargah)
 option_frame_asli_kharid_kargah.place(x=50,y=50)
 
-bg_image = Image.open("Images/kharid_kargah.jpg")
-bg_image = bg_image.resize((800, 650))
+bg_image = image_kharid_kargah
+bg_image = image_kharid_kargah.resize((800, 650))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
 bg_label = tk.Label(option_file_frame_kharid_kargah, image=bg_photo)
