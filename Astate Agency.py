@@ -181,7 +181,6 @@ def open_option12():
 #=======================================================
 #-----------توابع برگشت صفحات ثبتی به فرم اصلی----------
 #-----برگشت از صفحه اجاره مسکونی-------------------------
-#region
 def back_home_ejare_maskoni():
     root.deiconify()
     ejareh_rehn_page.withdraw()
@@ -199,9 +198,7 @@ def back_home_ejare_maskoni():
     kaf_ejare_maskoni_combo.set("")
     toilet_ejare_maskoni_combo.set("")
     delete_root()
-#endregion
 #-----برگشت از صفحه فروش مسکونی-------------------------
-#region
 def back_home_forosh_maskoni():
     root.deiconify()
     forosh_rehn_page.withdraw()
@@ -217,9 +214,7 @@ def back_home_forosh_maskoni():
     kaf_combo_forosh_maskoni.set("")
     toilet_combo_forosh_maskoni.set("")
     delete_root()
-#endregion
 #------------------------برگشت از صفحه اجاره اداری/تجاری---------------------
-#region
 def back_home_ejareh_edari_tejari():
     root.deiconify()
     ejareh_edari_tejari.withdraw()
@@ -234,7 +229,6 @@ def back_home_ejareh_edari_tejari():
     sarmayesh_combo_emkanat_ejareh_edari_tejari.set("")
     garmayesh_combo_emkanat_ejareh_edari_tejari.set("")
     delete_root()
-#endregion
 #---------------------------برگشت از صفحه فروش اداری/تجاری--------------------
 def back_home_forosh_edari_tejari():
     root.deiconify()
@@ -327,7 +321,6 @@ def back_home_forosh_bagh():
     zamin_shekl_forosh_bagh_zamin_combo.set("")
     kesht_forosh_bagh_zamin_combo.set("")
     delete_root()
-#=========================================================
 #----------------------- برگشت از صفحه اجاره کارگاه--------------------
 def back_home_ejareh_karghah():
     ejareh_karghah.withdraw()
@@ -438,39 +431,39 @@ def back_home_kharid_maskoni():
 #=========================================================
 #--------برگشت از امکانات فایل ها به صفحه اصلی ثبتی-------
 #-------برگشت اجاره مسکونی------------------
-def back_to_ejareh_maskoni_page():
+def back_to_ejareh_maskoni():
     option_file_frame_ejareh_maskoni.withdraw()
     option_file_frame_ejareh_maskoni.grab_release()
-#-------برگشت فروش مسکونی------------------    
-def back_to_forosh_maskoni_page():
-    option_file_frame_forosh_maskoni.withdraw()
-    option_file_frame_forosh_maskoni.grab_release()
 #--------برگشت اجاره اداری/تجاری----------------- 
 def back_to_ejareh_edari_tejari():
     option_file_frame_ejareh_edari_tajari.withdraw()
     option_file_frame_ejareh_edari_tajari.grab_release()
-#--------برگشت فروش اداری/تجاری----------------- 
-def back_to_forosh_edari_tejari():
-    option_file_frame_forosh_edari_tejari.withdraw()
-    option_file_frame_forosh_edari_tejari.grab_release()
 #-------برگشت اجاره باغ و زمین------------------
 def back_to_ejareh_bagh_zamin():
     option_file_frame_ejareh_bagh_zamin.withdraw()
     option_file_frame_ejareh_bagh_zamin.grab_release()
-#--------------------برگشت فروش باغ و زمین------------------------------------------------
-def  back_to_forosh_bagh_zamin():
-     option_file_frame_forosh_bagh_zamin.withdraw()
-     option_file_frame_forosh_bagh_zamin.grab_release()
 #--------------------برگشت اجاره کارگاه------------------------------------------------
 def  back_to_ejareh_karghah():
      option_file_frame_ejareh_kargah.withdraw()
      option_file_frame_ejareh_kargah.grab_release()
+#-------برگشت فروش مسکونی------------------    
+def back_to_forosh_maskoni():
+    option_file_frame_forosh_maskoni.withdraw()
+    option_file_frame_forosh_maskoni.grab_release()
+#--------برگشت فروش اداری/تجاری----------------- 
+def back_to_forosh_edari_tejari():
+    option_file_frame_forosh_edari_tejari.withdraw()
+    option_file_frame_forosh_edari_tejari.grab_release()
+#--------------------برگشت فروش باغ و زمین------------------------------------------------
+def  back_to_forosh_bagh_zamin():
+     option_file_frame_forosh_bagh_zamin.withdraw()
+     option_file_frame_forosh_bagh_zamin.grab_release()
 #--------------------برگشت فروش کارگاه------------------------------------------------
 def  back_to_forosh_karghah():
      option_file_frame_forosh_kargah.withdraw()
      option_file_frame_forosh_kargah.grab_release()
 #-----------------------------برگشت خرید مسکونی--------------------------
-def back_to_kharid_maskoni_page():
+def back_to_kharid_maskoni():
     option_file_frame_kharid_maskoni.withdraw()
     option_file_frame_kharid_maskoni.grab_release()
 #--------برگشت خرید اداری/تجاری----------------- 
@@ -1361,8 +1354,8 @@ toilet_ejare_maskoni_combo.place(x=120, y=230)
 save_optoin_ejareh_maskoni = tk.Button(option_file_frame_ejareh_maskoni, text="ذخیره", command=None, bg="#00BFFF", fg="#000000", width=10, height=1)
 save_optoin_ejareh_maskoni.place(x=95, y=320)
 
-back_to_ejare_maskoni = tk.Button(option_file_frame_ejareh_maskoni, text="بازگشت", command=back_to_ejareh_maskoni_page, bg="#00BFFF", fg="#000000", width=10, height=1)
-back_to_ejare_maskoni.place(x=215, y=320)
+back_to_ejareh_maskoni = tk.Button(option_file_frame_ejareh_maskoni, text="بازگشت", command=back_to_ejareh_maskoni, bg="#00BFFF", fg="#000000", width=10, height=1)
+back_to_ejareh_maskoni.place(x=215, y=320)
 
 option_file_frame_ejareh_maskoni.protocol("WM_DELETE_WINDOW", lambda: None)
 option_file_frame_ejareh_maskoni.resizable(False, False)
@@ -1412,11 +1405,11 @@ melk_type_ejareh_edari_tejari_entry.place(x=start_x + 10, y=start_y + 25, width=
 melk_type_ejareh_edari_tejari_entry.insert(0,"اجاره اداری و تجاری")
 melk_type_ejareh_edari_tejari_entry.config(state="disable")
 
-melk_type_ejareh_edari_tejari_lable=tk.Label(ejareh_edari_tejari, text=" متراژ ملک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-melk_type_ejareh_edari_tejari_lable.place(x=start_x + 320, y=start_y + 85, anchor="e")
+metraj_melk_ejareh_edari_tejari_lable=tk.Label(ejareh_edari_tejari, text=" متراژ ملک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+metraj_melk_ejareh_edari_tejari_lable.place(x=start_x + 320, y=start_y + 85, anchor="e")
 
-melk_type_ejareh_edari_tejari_entry=tk.Entry(ejareh_edari_tejari, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
-melk_type_ejareh_edari_tejari_entry.place(x=start_x + 10, y=start_y + 75, width=150, height=25)
+metraj_melk_ejareh_edari_tejari_entry=tk.Entry(ejareh_edari_tejari, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
+metraj_melk_ejareh_edari_tejari_entry.place(x=start_x + 10, y=start_y + 75, width=150, height=25)
 
 sal_sakht_ejareh_edari_tejari_lable=tk.Label(ejareh_edari_tejari, text="سال ساخت", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 sal_sakht_ejareh_edari_tejari_lable.place(x=start_x + 320, y=start_y + 135, anchor="e")
@@ -2272,10 +2265,10 @@ toilet_combo_forosh_maskoni["state"]=["readonly"]
 toilet_combo_forosh_maskoni["values"] = ("ایرانی","فرنگی","هردو")
 toilet_combo_forosh_maskoni.place(x=120, y=230)
 
-zakhire_options_forosh_maskini=tk.Button(option_file_frame_forosh_maskoni,text="ذخیره",command=None,background="#00BFFF",fg="#000000",width=10,height=1)
-zakhire_options_forosh_maskini.place(x=95, y=320)
+zakhire_options_forosh_maskoni=tk.Button(option_file_frame_forosh_maskoni,text="ذخیره",command=None,background="#00BFFF",fg="#000000",width=10,height=1)
+zakhire_options_forosh_maskoni.place(x=95, y=320)
 
-back_to_home_forosh_maskoni=tk.Button(option_file_frame_forosh_maskoni,text="بازگشت",command=back_to_forosh_maskoni_page,background="#00BFFF",fg="#000000",width=10,height=1)
+back_to_home_forosh_maskoni=tk.Button(option_file_frame_forosh_maskoni,text="بازگشت",command=back_to_forosh_maskoni,background="#00BFFF",fg="#000000",width=10,height=1)
 back_to_home_forosh_maskoni.place(x=215, y=320)
 
 option_file_frame_forosh_maskoni.protocol("WM_DELETE_WINDOW", lambda: None)
@@ -2324,11 +2317,11 @@ melk_type_forosh_edari_tejari_entry.place(x=start_x + 10, y=start_y + 25, width=
 melk_type_forosh_edari_tejari_entry.insert(0,"فروش اداری و تجاری")
 melk_type_forosh_edari_tejari_entry.config(state="disable")
 
-melk_type_forosh_edari_tejari_lable=tk.Label(forosh_edari_tejari,text="متراژ ملک ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-melk_type_forosh_edari_tejari_lable.place(x=start_x + 320, y=start_y + 85, anchor="e")
+metraj_melk_forosh_edari_tejari_lable=tk.Label(forosh_edari_tejari,text="متراژ ملک ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+metraj_melk_forosh_edari_tejari_lable.place(x=start_x + 320, y=start_y + 85, anchor="e")
 
-melk_type_forosh_edari_tejari_entry=tk.Entry(forosh_edari_tejari,bg="#FFFFFF", fg="#000000",font=("Shabnam", 10))
-melk_type_forosh_edari_tejari_entry.place(x=start_x + 10, y=start_y + 75, width=150, height=25)
+metraj_melk_forosh_edari_tejari_entry=tk.Entry(forosh_edari_tejari,bg="#FFFFFF", fg="#000000",font=("Shabnam", 10))
+metraj_melk_forosh_edari_tejari_entry.place(x=start_x + 10, y=start_y + 75, width=150, height=25)
 
 sal_sakht_forosh_edari_tejari_lable=tk.Label(forosh_edari_tejari,text="سال ساخت",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
 sal_sakht_forosh_edari_tejari_lable.place(x=start_x + 320, y=start_y + 135, anchor="e")
@@ -3171,10 +3164,10 @@ toilet_combo_kharid_maskoni["state"]=["readonly"]
 toilet_combo_kharid_maskoni["values"] = ("ایرانی","فرنگی","هردو")
 toilet_combo_kharid_maskoni.place(x=120, y=230)
 
-zakhire_options_kharid_maskini=tk.Button(option_file_frame_kharid_maskoni,text="ذخیره",command=None,background="#00BFFF",fg="#000000",width=10,height=1)
-zakhire_options_kharid_maskini.place(x=95, y=320)
+zakhire_options_kharid_maskoni=tk.Button(option_file_frame_kharid_maskoni,text="ذخیره",command=None,background="#00BFFF",fg="#000000",width=10,height=1)
+zakhire_options_kharid_maskoni.place(x=95, y=320)
 
-back_to_home_kharid_maskoni=tk.Button(option_file_frame_kharid_maskoni,text="بازگشت",command=back_to_kharid_maskoni_page,background="#00BFFF",fg="#000000",width=10,height=1)
+back_to_home_kharid_maskoni=tk.Button(option_file_frame_kharid_maskoni,text="بازگشت",command=back_to_kharid_maskoni,background="#00BFFF",fg="#000000",width=10,height=1)
 back_to_home_kharid_maskoni.place(x=215, y=320)
 
 option_file_frame_kharid_maskoni.protocol("WM_DELETE_WINDOW", lambda: None)
@@ -3222,11 +3215,11 @@ melk_type_kharid_edari_tejari_entry.place(x=start_x + 10, y=start_y + 25, width=
 melk_type_kharid_edari_tejari_entry.insert(0,"اجاره اداری و تجاری")
 melk_type_kharid_edari_tejari_entry.config(state="disable")
 
-melk_type_kharid_edari_tejari_lable=tk.Label(kharid_edari_tejari,text="متراژ ملک ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-melk_type_kharid_edari_tejari_lable.place(x=start_x + 320, y=start_y + 85, anchor="e")
+metraj_melk_kharid_edari_tejari_lable=tk.Label(kharid_edari_tejari,text="متراژ ملک ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+metraj_melk_kharid_edari_tejari_lable.place(x=start_x + 320, y=start_y + 85, anchor="e")
 
-melk_type_kharid_edari_tejari_entry=tk.Entry(kharid_edari_tejari,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
-melk_type_kharid_edari_tejari_entry.place(x=start_x + 10, y=start_y + 75, width=150, height=25)
+metraj_melk_kharid_edari_tejari_entry=tk.Entry(kharid_edari_tejari,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
+metraj_melk_kharid_edari_tejari_entry.place(x=start_x + 10, y=start_y + 75, width=150, height=25)
 
 sal_sakht_kharid_edari_tejari_lable=tk.Label(kharid_edari_tejari,text="سال ساخت",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
 sal_sakht_kharid_edari_tejari_lable.place(x=start_x + 320, y=start_y + 135, anchor="e")
