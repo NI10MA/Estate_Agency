@@ -197,6 +197,9 @@ def back_home_ejare_maskoni():
     garmaesh_ejare_maskoni_combo.set("")
     kaf_ejare_maskoni_combo.set("")
     toilet_ejare_maskoni_combo.set("")
+    parking_checkbutton_btn_ejareh_maskoni.deselect()
+    asansor_checkbutton_btn_ejareh_maskoni.deselect()
+    anbari_checkbutton_btn_ejareh_maskoni.deselect()
     delete_root()
 #-----برگشت از صفحه فروش مسکونی-------------------------
 def back_home_forosh_maskoni():
@@ -213,21 +216,29 @@ def back_home_forosh_maskoni():
     garmaesh_combo_forosh_maskoni.set("")
     kaf_combo_forosh_maskoni.set("")
     toilet_combo_forosh_maskoni.set("")
+    parking_ch_btn_forosh_maskoni.deselect()
+    asansor_ch_btn_forosh_maskoni.deselect()
+    anbari_checkbuton_forosh_maskoni.deselect()
     delete_root()
 #------------------------برگشت از صفحه اجاره اداری/تجاری---------------------
 def back_home_ejareh_edari_tejari():
     root.deiconify()
     ejareh_edari_tejari.withdraw()
     sal_sakht_ejareh_edari_tejari_entry.delete(0,tk.END)
+    metraj_melk_ejareh_edari_tejari_entry.delete(0,tk.END)
     addrres_ejareh_edari_tejari_entry.delete(0,tk.END)
     tabaghe_ejareh_edari_tejari_entry.delete(0,tk.END)
     vahed_ejareh_edari_tejari_entry.delete(0,tk.END)
     mablagh_ejare_ejareh_edari_tejari_entry.delete(0,tk.END)
-    mablagh_pish_ejareh_edari_tejari_entry.delete(0,tk.END) 
+    mablagh_pish_ejareh_edari_tejari_entry.delete(0,tk.END)
+    rahn_kamel_checkbutton_ejareh_edari_tejari.deselect() 
     #پنجره امکانات
     ab_va_gaz_combo_emkanat_ejareh_edari_tejari.set("")
     sarmayesh_combo_emkanat_ejareh_edari_tejari.set("")
     garmayesh_combo_emkanat_ejareh_edari_tejari.set("")
+    parking_ch_btn_ejareh_edari_tejari.deselect()
+    warehouse_ch_btn_ejareh_edari_tejari.deselect()
+    elvator_ch_btn_ejareh_edari_tejari.deselect()
     delete_root()
 #---------------------------برگشت از صفحه فروش اداری/تجاری--------------------
 def back_home_forosh_edari_tejari():
@@ -239,10 +250,15 @@ def back_home_forosh_edari_tejari():
     vahed_forosh_edari_tejari_entry.delete(0,tk.END)
     mablagh_ejare_forosh_edari_tejari_entry.delete(0,tk.END)
     mablagh_pish_forosh_edari_tejari_entry.delete(0,tk.END)
+    metraj_melk_forosh_edari_tejari_entry.delete(0,tk.END)
+    rahn_kamel_check_btn_forosh_edari_tejari.deselect()
     #پنجره امکانات
     aab_va_gaz_combo_emkanat_forosh_edari_tejari.set("")
     sarmayesh_combo_emkanat_forosh_edari_tejari.set("")
     garmayesh_combo_emkanat_forosh_edari_tejari.set("")
+    asansor_check_btn_forosh_edari_tejari.deselect()
+    parking_check_btn_forosh_edari_tejari.deselect()
+    anbari_check_btn_forosh_edari_tejari.deselect()
     delete_root()
 #---------------------------برگشت از صفحه خرید اداری/تجاری--------------------
 def back_home_kharid_edari_tejari():
@@ -254,6 +270,8 @@ def back_home_kharid_edari_tejari():
     vahed_kharid_edari_tejari_entry.delete(0,tk.END)
     mablagh_ejare_kharid_edari_tejari_entry.delete(0,tk.END)
     mablagh_pish_kharid_edari_tejari_entry.delete(0,tk.END)
+    metraj_melk_kharid_edari_tejari_entry.delete(0,tk.END)
+    rahn_kamel_check_btn_kharid_edari_tejari.deselect()
     #پنجره امکانات
     aab_va_gaz_combo_emkanat_kharid_edari_tejari.set("")
     sarmayesh_combo_emkanat_kharid_edari_tejari.set("")
@@ -264,8 +282,11 @@ def back_home_ejareh_bagh():
     ejareh_bagh_zamin.withdraw()
     root.deiconify()
     metraj_zamin_ejareh_bagh_zamin_entry.delete(0,tk.END)
-    mablagh_ejare_ejareh_edari_tejari_entry.delete(0,tk.END)
-    mablagh_ejare_ejareh_edari_tejari_entry.delete(0,tk.END)
+    bagh_loctaion_entry.delete(0,tk.END)
+    bagh_gheimat_ejareh_bagh_zamin_entry.delete(0,tk.END)
+    bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.delete(0,tk.END)
+    room_bagh_checkbutton.deselect()
+
     # امکانات فروش باغ و زمین
     type_vila_ejareh_bagh_zamin_combo.set("")
     option_ejareh_bagh_zamin_combo.set("")
@@ -280,6 +301,11 @@ def back_home_ejareh_bagh():
     toilet_bagh_combo.set("")
     hamam_bagh_combo.set("")
     sanad_bagh_combo.set("")
+    chah_bagh.deselect()
+    estakhr_bagh.deselect()
+    bargh_bagh.deselect()
+    gas_bagh.deselect()
+    divar_ejareh_bagh_zamin.deselect()
     #تغییر کاربری
     metraj_zamin_ejareh_bagh_zamin_entry2.delete(0,tk.END)
     karbari_ejareh_ejareh_bagh_zamin_combo.set("")
@@ -338,6 +364,12 @@ def back_home_ejareh_karghah():
     toilet_ejareh_kargah_combo.set("")
     hamam_ejareh_kargah__combo.set("")
     otagh_ejareh_kargah_combo.set("")
+    sarmayesh_fan_ejareh_kargah.deselect()
+    sarmayesh_panke_ejareh_kargah.deselect()
+    sarmayesh_kooler_abi_ejareh_kargah.deselect()
+    sarmayesh_kooler_gazi_ejareh_kargah.deselect()
+
+
     delete_root()
 #----------------------- برگشت از صفحه فروش کارگاه--------------------
 def back_home_forosh_karghah():
@@ -346,16 +378,24 @@ def back_home_forosh_karghah():
     metraj_kargah_entry.delete(0,tk.END)
     loctaion_forosh_kargah_entry.delete(0,tk.END)
     mablagh_pish_forosh_kargah_entry.delete(0,tk.END)
-    gheimat_har_metr_forosh_kargah_entry.delete(0,tk.END) 
+    gheimat_har_metr_forosh_kargah_entry.delete(0,tk.END)
+    metraj_forosh_kargah_entry.delete(0,tk.END)
     #پنجره امکانات
     sal_sakht_forosh_kargah_entry.delete(0,tk.END)
     vaziat_bargh_forosh_kargah_combo.set("")
     garmayesh_type_forosh_kargah_combo.set("")
     vaziat_ab_forosh_kargah_combo.set("")
-    abzarforosh_kargah_combo.set("")
+    abzar_forosh_kargah_combo.set("")
     toilet_forosh_kargah_combo.set("")
     hamam_forosh_kargah_combo.set("")
     otagh_forosh_kargah_combo.set("")
+    sarmayesh_fan_forosh_kargah.deselect()
+    sarmayesh_panke_forosh_kargah.deselect()
+    sarmayesh_kooler_abi_forosh_kargah.deselect()
+    sarmayesh_kooler_gazi_forosh_kargah.deselect()
+
+
+
     delete_root()
 #----------------------------برگشت از صفحه اجاره کارگاه------------------
 def back_to_ejareh_karghah():
@@ -411,6 +451,10 @@ def back_home_kharid_kargah():
     toilet_kharid_kargah_combo.set("")
     hamam_kharid_kargah__combo.set("")
     otagh_kharid_kargah_combo.set("")
+    sarmayesh_panke_kharid_kargah.deselect()
+    sarmayesh_kooler_abi_kharid_kargah.deselect()
+    sarmayesh_kooler_gazi_kharid_kargah.deselect()
+    sarmayesh_fan_kharid_kargah.deselect()
     delete_root()
 #----------------------------برگشت از صفحه خرید مسکونی-------------------
 def back_home_kharid_maskoni():
@@ -427,6 +471,9 @@ def back_home_kharid_maskoni():
     garmaesh_combo_kharid_maskoni.set("")
     kaf_combo_kharid_maskoni.set("")
     toilet_combo_kharid_maskoni.set("")
+    parking_ch_btn_kharid_maskoni.deselect()
+    asansor_ch_btn_kharid_maskoni.deselect()
+    anbari_checkbuton_kharid_maskoni.deselect()
     delete_root()
 #=========================================================
 #--------برگشت از امکانات فایل ها به صفحه اصلی ثبتی-------
@@ -454,6 +501,7 @@ def back_to_forosh_maskoni():
 def back_to_forosh_edari_tejari():
     option_file_frame_forosh_edari_tejari.withdraw()
     option_file_frame_forosh_edari_tejari.grab_release()
+
 #--------------------برگشت فروش باغ و زمین------------------------------------------------
 def  back_to_forosh_bagh_zamin():
      option_file_frame_forosh_bagh_zamin.withdraw()
@@ -470,6 +518,9 @@ def back_to_kharid_maskoni():
 def back_to_kharid_edari_tejari():
     option_file_frame_kharid_edari_tejari.withdraw()
     option_file_frame_kharid_edari_tejari.grab_release()
+    parking_check_btn_kharid_edari_tejari.deselect()
+    asansor_check_btn_kharid_edari_tejari.deselect()
+    anbari_check_btn_kharid_edari_tejari.deselect()
 #--------------------برگشت خرید باغ و زمین------------------------------------------------
 def  back_to_kharid_bagh_zamin():
      option_file_frame_kharid_bagh_zamin.withdraw()
@@ -510,7 +561,7 @@ def ejareh_edari_tejari():
     ejareh_edari_tejari.deiconify() 
     box_rehn_ejareh.grab_release()
 #-----بستن باکس و باز کردن صفحه اجاره باغ/زمین---------
-def ejarebagh_zamin():
+def ejareh_bagh_zamin():
     box_rehn_ejareh.withdraw()
     root.withdraw()
     ejareh_bagh_zamin.deiconify()
@@ -1595,8 +1646,8 @@ bagh_gheimat_ejareh_bagh_zamin_entry.place(x=start_x + 10, y=start_y + 225, widt
 bagh_gheimat_har_metr_ejareh_bagh_zamin_lable=tk.Label(ejareh_bagh_zamin, text="قیمت هر متر", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 bagh_gheimat_har_metr_ejareh_bagh_zamin_lable.place(x=start_x + 320, y=start_y + 285, anchor="e")
 
-bagh_gheimat_ejareh_bagh_zamin_entry=tk.Entry(ejareh_bagh_zamin, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
-bagh_gheimat_ejareh_bagh_zamin_entry.place(x=start_x + 10, y=start_y + 275, width=150, height=25)
+bagh_gheimat_har_metr_ejareh_bagh_zamin_entry=tk.Entry(ejareh_bagh_zamin, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
+bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.place(x=start_x + 10, y=start_y + 275, width=150, height=25)
 
 time_bagh_ejareh_bagh_zamin_lable=tk.Label(ejareh_bagh_zamin,text="مدت اجاره",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
 time_bagh_ejareh_bagh_zamin_lable.place(x=start_x + 320, y=start_y + 335, anchor="e")
@@ -1783,7 +1834,7 @@ mohavate_ejareh_bagh_zamin=tk.Checkbutton(option_file_frame_ejareh_bagh_zamin,te
 mohavate_ejareh_bagh_zamin.place(x=320, y=510)
 
 divar_ejareh_bagh_zamin=tk.Checkbutton(option_file_frame_ejareh_bagh_zamin,text="دیوار کشی",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-divar_ejareh_bagh_zamin.place(x=180, y=510)
+divar_ejareh_bagh_zamin.place(x=180, y=240)
 #endregion
 #-------------------تعویض کاربری به زمین در قسمت اجاره باغ/زمین--------------
 #region
@@ -2018,8 +2069,8 @@ vaziat_bagh_ejareh_kargah=tk.Label(option_file_frame_ejareh_kargah,bg="#052340",
 vaziat_bagh_ejareh_kargah.place(x=295, y=80)
 
 vaziat_bargh_ejareh_kargah_combo=ttk.Combobox(option_file_frame_ejareh_kargah)
-vaziat_bargh_ejareh_kargah_combo["values"]=("برق شهری","سه فاز","تک فاز")
-vaziat_bargh_ejareh_kargah_combo.set("برق شهری")
+vaziat_bargh_ejareh_kargah_combo["values"]=("","برق شهری","سه فاز","تک فاز")
+vaziat_bargh_ejareh_kargah_combo.set("")
 vaziat_bargh_ejareh_kargah_combo["state"]=["readonly"]
 vaziat_bargh_ejareh_kargah_combo.place(x=70, y=80)
 
@@ -2027,8 +2078,8 @@ garmayesh_ejareh_kargah=tk.Label(option_file_frame_ejareh_kargah,bg="#052340",fg
 garmayesh_ejareh_kargah.place(x=295, y=110)
 
 garmayesh_type_ejareh_kargah_combo=ttk.Combobox(option_file_frame_ejareh_kargah)
-garmayesh_type_ejareh_kargah_combo["values"]=("بخاری ","شوفاژ ","فن کوئل(گرما) ")
-garmayesh_type_ejareh_kargah_combo.set(" بخاری")
+garmayesh_type_ejareh_kargah_combo["values"]=("","بخاری ","شوفاژ ","فن کوئل(گرما) ")
+garmayesh_type_ejareh_kargah_combo.set("")
 garmayesh_type_ejareh_kargah_combo["state"]=["readonly"]
 garmayesh_type_ejareh_kargah_combo.place(x=70, y=110)
 
@@ -2051,8 +2102,8 @@ vaziat_ab_ejareh_kargah=tk.Label(option_file_frame_ejareh_kargah,bg="#052340",fg
 vaziat_ab_ejareh_kargah.place(x=303, y=230)
 
 vaziat_ab_ejareh_kargah_combo=ttk.Combobox(option_file_frame_ejareh_kargah,width=35)
-vaziat_ab_ejareh_kargah_combo["values"]=(" آب مستقیم لوله کشی (بدون فشار) " ," آب مستقیم لوله کشی (همراه موتور فشار) ","دارای منبع(همراه موتور فشار)","دارای منبع(بدون فشار)")
-vaziat_ab_ejareh_kargah_combo.set(" آب مستقیم لوله کشی (بدون فشار) ")
+vaziat_ab_ejareh_kargah_combo["values"]=(""," آب مستقیم لوله کشی (بدون فشار) " ," آب مستقیم لوله کشی (همراه موتور فشار) ","دارای منبع(همراه موتور فشار)","دارای منبع(بدون فشار)")
+vaziat_ab_ejareh_kargah_combo.set("")
 vaziat_ab_ejareh_kargah_combo["state"]=["readonly"]
 vaziat_ab_ejareh_kargah_combo.place(x=30, y=230)
 
@@ -2060,8 +2111,8 @@ abzar_ejareh_kargah=tk.Label(option_file_frame_ejareh_kargah,bg="#052340",fg="#f
 abzar_ejareh_kargah.place(x=298, y=260)
 
 abzaar_ejareh_kargah_combo=ttk.Combobox(option_file_frame_ejareh_kargah,width=23)
-abzaar_ejareh_kargah_combo["values"]=("(کارگاه خالی) بدون دستگاه ","دارای دستگاه های تولیدی")
-abzaar_ejareh_kargah_combo.set("(کارگاه خالی) بدون دستگاه ")
+abzaar_ejareh_kargah_combo["values"]=("","(کارگاه خالی) بدون دستگاه ","دارای دستگاه های تولیدی")
+abzaar_ejareh_kargah_combo.set("")
 abzaar_ejareh_kargah_combo["state"]=["readonly"]
 abzaar_ejareh_kargah_combo.place(x=58, y=260)
 
@@ -2069,8 +2120,8 @@ toilet_ejareh_kargah=tk.Label(option_file_frame_ejareh_kargah,bg="#052340",fg="#
 toilet_ejareh_kargah.place(x=298, y=290)
 
 toilet_ejareh_kargah_combo=ttk.Combobox(option_file_frame_ejareh_kargah)
-toilet_ejareh_kargah_combo["values"]=("دارد","ندارد")
-toilet_ejareh_kargah_combo.set("دارد")
+toilet_ejareh_kargah_combo["values"]=("","دارد","ندارد")
+toilet_ejareh_kargah_combo.set("")
 toilet_ejareh_kargah_combo["state"]=["readonly"]
 toilet_ejareh_kargah_combo.place(x=70, y=290)
 
@@ -2078,8 +2129,8 @@ hamam_ejareh_kargah=tk.Label(option_file_frame_ejareh_kargah,bg="#052340",fg="#f
 hamam_ejareh_kargah.place(x=303, y=320)
 
 hamam_ejareh_kargah__combo=ttk.Combobox(option_file_frame_ejareh_kargah)
-hamam_ejareh_kargah__combo["values"]=("ندارد","دارد")
-hamam_ejareh_kargah__combo.set("ندارد")
+hamam_ejareh_kargah__combo["values"]=("","ندارد","دارد")
+hamam_ejareh_kargah__combo.set("")
 hamam_ejareh_kargah__combo["state"]=["readonly"]
 hamam_ejareh_kargah__combo.place(x=70, y=320)
 
@@ -2087,8 +2138,8 @@ otagh_ejareh_kargah=tk.Label(option_file_frame_ejareh_kargah,bg="#052340",fg="#f
 otagh_ejareh_kargah.place(x=294, y=350)
 
 otagh_ejareh_kargah_combo=ttk.Combobox(option_file_frame_ejareh_kargah)
-otagh_ejareh_kargah_combo["values"]=("ندارد","دارد")
-otagh_ejareh_kargah_combo.set("ندارد")
+otagh_ejareh_kargah_combo["values"]=("","ندارد","دارد")
+otagh_ejareh_kargah_combo.set("")
 otagh_ejareh_kargah_combo["state"]=["readonly"]
 otagh_ejareh_kargah_combo.place(x=70, y=350)
 
@@ -2926,8 +2977,8 @@ vaziat_bargh_forosh_kargah=tk.Label(option_file_frame_forosh_kargah,bg="#052340"
 vaziat_bargh_forosh_kargah.place(x=295, y=80)
 
 vaziat_bargh_forosh_kargah_combo=ttk.Combobox(option_file_frame_forosh_kargah)
-vaziat_bargh_forosh_kargah_combo["values"]=("برق شهری","سه فاز","تک فاز")
-vaziat_bargh_forosh_kargah_combo.set("برق شهری")
+vaziat_bargh_forosh_kargah_combo["values"]=("برق شهری","سه فاز","تک فاز","")
+vaziat_bargh_forosh_kargah_combo.set("")
 vaziat_bargh_forosh_kargah_combo["state"]=["readonly"]
 vaziat_bargh_forosh_kargah_combo.place(x=70, y=80)
 
@@ -2935,8 +2986,8 @@ garmayesh_forosh_kargah=tk.Label(option_file_frame_forosh_kargah,bg="#052340",fg
 garmayesh_forosh_kargah.place(x=295, y=110)
 
 garmayesh_type_forosh_kargah_combo=ttk.Combobox(option_file_frame_forosh_kargah)
-garmayesh_type_forosh_kargah_combo["values"]=("بخاری ","شوفاژ ","فن کوئل(گرما) ")
-garmayesh_type_forosh_kargah_combo.set(" بخاری")
+garmayesh_type_forosh_kargah_combo["values"]=("","بخاری ","شوفاژ ","فن کوئل(گرما) ")
+garmayesh_type_forosh_kargah_combo.set("")
 garmayesh_type_forosh_kargah_combo["state"]=["readonly"]
 garmayesh_type_forosh_kargah_combo.place(x=70, y=110)
 
@@ -2959,26 +3010,26 @@ vaziat_ab_forosh_kargah=tk.Label(option_file_frame_forosh_kargah,bg="#052340",fg
 vaziat_ab_forosh_kargah.place(x=303, y=230)
 
 vaziat_ab_forosh_kargah_combo=ttk.Combobox(option_file_frame_forosh_kargah,width=35)
-vaziat_ab_forosh_kargah_combo["values"]=(" آب مستقیم لوله کشی (بدون فشار) " ," آب مستقیم لوله کشی (همراه موتور فشار) ","دارای منبع(همراه موتور فشار)","دارای منبع(بدون فشار)")
-vaziat_ab_forosh_kargah_combo.set(" آب مستقیم لوله کشی (بدون فشار) ")
+vaziat_ab_forosh_kargah_combo["values"]=(""," آب مستقیم لوله کشی (بدون فشار) " ," آب مستقیم لوله کشی (همراه موتور فشار) ","دارای منبع(همراه موتور فشار)","دارای منبع(بدون فشار)")
+vaziat_ab_forosh_kargah_combo.set("")
 vaziat_ab_forosh_kargah_combo["state"]=["readonly"]
 vaziat_ab_forosh_kargah_combo.place(x=30, y=230)
 
 abzar_forosh_kargah=tk.Label(option_file_frame_forosh_kargah,bg="#052340",fg="#ffffff",font=("Shabnam", 9),width=15,text=" ابزار صنعتی ")
 abzar_forosh_kargah.place(x=298, y=260)
 
-abzarforosh_kargah_combo=ttk.Combobox(option_file_frame_forosh_kargah,width=23)
-abzarforosh_kargah_combo["values"]=("(کارگاه خالی) بدون دستگاه ","دارای دستگاه های تولیدی")
-abzarforosh_kargah_combo.set("(کارگاه خالی) بدون دستگاه ")
-abzarforosh_kargah_combo["state"]=["readonly"]
-abzarforosh_kargah_combo.place(x=58, y=260)
+abzar_forosh_kargah_combo=ttk.Combobox(option_file_frame_forosh_kargah,width=23)
+abzar_forosh_kargah_combo["values"]=("(کارگاه خالی) بدون دستگاه ","دارای دستگاه های تولیدی","")
+abzar_forosh_kargah_combo.set("")
+abzar_forosh_kargah_combo["state"]=["readonly"]
+abzar_forosh_kargah_combo.place(x=58, y=260)
 
 toilet_forosh_kargah=tk.Label(option_file_frame_forosh_kargah,bg="#052340",fg="#ffffff",font=("Shabnam", 9),width=15,text="سرویس بهداشتی")
 toilet_forosh_kargah.place(x=298, y=290)
 
 toilet_forosh_kargah_combo=ttk.Combobox(option_file_frame_forosh_kargah)
-toilet_forosh_kargah_combo["values"]=("دارد","ندارد")
-toilet_forosh_kargah_combo.set("دارد")
+toilet_forosh_kargah_combo["values"]=("دارد","ندارد","")
+toilet_forosh_kargah_combo.set("")
 toilet_forosh_kargah_combo["state"]=["readonly"]
 toilet_forosh_kargah_combo.place(x=70, y=290)
 
@@ -2986,8 +3037,8 @@ hamam_forosh_kargah=tk.Label(option_file_frame_forosh_kargah,bg="#052340",fg="#f
 hamam_forosh_kargah.place(x=303, y=320)
 
 hamam_forosh_kargah_combo=ttk.Combobox(option_file_frame_forosh_kargah)
-hamam_forosh_kargah_combo["values"]=("ندارد","دارد")
-hamam_forosh_kargah_combo.set("ندارد")
+hamam_forosh_kargah_combo["values"]=("ندارد","دارد","")
+hamam_forosh_kargah_combo.set("")
 hamam_forosh_kargah_combo["state"]=["readonly"]
 hamam_forosh_kargah_combo.place(x=70, y=320)
 
@@ -2995,8 +3046,8 @@ otagh_forosh_kargah=tk.Label(option_file_frame_forosh_kargah,bg="#052340",fg="#f
 otagh_forosh_kargah.place(x=294, y=350)
 
 otagh_forosh_kargah_combo=ttk.Combobox(option_file_frame_forosh_kargah)
-otagh_forosh_kargah_combo["values"]=("ندارد","دارد")
-otagh_forosh_kargah_combo.set("ندارد")
+otagh_forosh_kargah_combo["values"]=("ندارد","دارد","")
+otagh_forosh_kargah_combo.set("")
 otagh_forosh_kargah_combo["state"]=["readonly"]
 otagh_forosh_kargah_combo.place(x=70, y=350)
 
@@ -3287,8 +3338,8 @@ option_frame_options_kharid_edari_tejari.place(x=250,y=373)
 option_label_kharid_edari_tejari=tk.Label(option_frame_options_kharid_edari_tejari,text='افزودن امکانات فایل',font=("Shabnam",12,"bold"),background="#052340",fg="#00BFFF")
 option_label_kharid_edari_tejari.pack(side="right",padx=1)
 
-plus_button_kharid_eedari_tejari=tk.Button(option_frame_options_kharid_edari_tejari,image=plus,command=open_option10,border=0)
-plus_button_kharid_eedari_tejari.pack()
+plus_button_kharid_edari_tejari=tk.Button(option_frame_options_kharid_edari_tejari,image=plus,command=open_option10,border=0)
+plus_button_kharid_edari_tejari.pack()
 
 bg_image = image_kharid_edari_tejari
 bg_image = image_kharid_edari_tejari.resize((800, 380))
@@ -3400,11 +3451,11 @@ gheimat_bagh_kharid_bagh_zamin_lable.place(x=start_x + 320, y=start_y + 235, anc
 gheimat_bagh_kharid_bagh_zamin_entry=tk.Entry(kharid_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
 gheimat_bagh_kharid_bagh_zamin_entry.place(x=start_x + 10, y=start_y + 225, width=150, height=25)
 
-gheimat_har_matr_babagh_zamin_kharid_bagh_zamin_lable=tk.Label(kharid_bagh_zamin,text='قیمت هر متر',bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
-gheimat_har_matr_babagh_zamin_kharid_bagh_zamin_lable.place(x=start_x + 320, y=start_y + 285, anchor="e")
+gheimat_har_matr_bagh_zamin_kharid_bagh_zamin_lable=tk.Label(kharid_bagh_zamin,text='قیمت هر متر',bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
+gheimat_har_matr_bagh_zamin_kharid_bagh_zamin_lable.place(x=start_x + 320, y=start_y + 285, anchor="e")
 
-gheimat_har_metr_babagh_zamin_kharid_bagh_zamin_entry=tk.Entry(kharid_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
-gheimat_har_metr_babagh_zamin_kharid_bagh_zamin_entry.place(x=start_x + 10, y=start_y + 275, width=150, height=25)
+gheimat_har_metr_bagh_zamin_kharid_bagh_zamin_entry=tk.Entry(kharid_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
+gheimat_har_metr_bagh_zamin_kharid_bagh_zamin_entry.place(x=start_x + 10, y=start_y + 275, width=150, height=25)
 
 photo_kharid_bagh_zamin_lable= tk.Label(kharid_bagh_zamin, text="[تصویر ملک]", bg="#ffffff", width=50, height=15)
 photo_kharid_bagh_zamin_lable.place(x=60, y=85)
@@ -3808,8 +3859,8 @@ vaziat_bagh_kharid_kargah=tk.Label(option_file_frame_kharid_kargah,bg="#052340",
 vaziat_bagh_kharid_kargah.place(x=295, y=80)
 
 vaziat_bargh_kharid_kargah_combo=ttk.Combobox(option_file_frame_kharid_kargah)
-vaziat_bargh_kharid_kargah_combo["values"]=("برق شهری","سه فاز","تک فاز")
-vaziat_bargh_kharid_kargah_combo.set("برق شهری")
+vaziat_bargh_kharid_kargah_combo["values"]=("","برق شهری","سه فاز","تک فاز")
+vaziat_bargh_kharid_kargah_combo.set("")
 vaziat_bargh_kharid_kargah_combo["state"]=["readonly"]
 vaziat_bargh_kharid_kargah_combo.place(x=70, y=80)
 
@@ -3817,8 +3868,8 @@ garmayesh_kharid_kargah=tk.Label(option_file_frame_kharid_kargah,bg="#052340",fg
 garmayesh_kharid_kargah.place(x=295, y=110)
 
 garmayesh_type_kharid_kargah_combo=ttk.Combobox(option_file_frame_kharid_kargah)
-garmayesh_type_kharid_kargah_combo["values"]=("بخاری ","شوفاژ ","فن کوئل(گرما) ")
-garmayesh_type_kharid_kargah_combo.set(" بخاری")
+garmayesh_type_kharid_kargah_combo["values"]=("","بخاری ","شوفاژ ","فن کوئل(گرما) ")
+garmayesh_type_kharid_kargah_combo.set("")
 garmayesh_type_kharid_kargah_combo["state"]=["readonly"]
 garmayesh_type_kharid_kargah_combo.place(x=70, y=110)
 
@@ -3841,8 +3892,8 @@ vaziat_ab_kharid_kargah=tk.Label(option_file_frame_kharid_kargah,bg="#052340",fg
 vaziat_ab_kharid_kargah.place(x=303, y=230)
 
 vaziat_ab_kharid_kargah_combo=ttk.Combobox(option_file_frame_kharid_kargah,width=35)
-vaziat_ab_kharid_kargah_combo["values"]=(" آب مستقیم لوله کشی (بدون فشار) " ," آب مستقیم لوله کشی (همراه موتور فشار) ","دارای منبع(همراه موتور فشار)","دارای منبع(بدون فشار)")
-vaziat_ab_kharid_kargah_combo.set(" آب مستقیم لوله کشی (بدون فشار) ")
+vaziat_ab_kharid_kargah_combo["values"]=(""," آب مستقیم لوله کشی (بدون فشار) " ," آب مستقیم لوله کشی (همراه موتور فشار) ","دارای منبع(همراه موتور فشار)","دارای منبع(بدون فشار)")
+vaziat_ab_kharid_kargah_combo.set("")
 vaziat_ab_kharid_kargah_combo["state"]=["readonly"]
 vaziat_ab_kharid_kargah_combo.place(x=30, y=230)
 
@@ -3850,8 +3901,8 @@ abzar_kharid_kargah=tk.Label(option_file_frame_kharid_kargah,bg="#052340",fg="#f
 abzar_kharid_kargah.place(x=298, y=260)
 
 abzaar_kharid_kargah_combo=ttk.Combobox(option_file_frame_kharid_kargah,width=23)
-abzaar_kharid_kargah_combo["values"]=("(کارگاه خالی) بدون دستگاه ","دارای دستگاه های تولیدی")
-abzaar_kharid_kargah_combo.set("(کارگاه خالی) بدون دستگاه ")
+abzaar_kharid_kargah_combo["values"]=("","(کارگاه خالی) بدون دستگاه ","دارای دستگاه های تولیدی")
+abzaar_kharid_kargah_combo.set("")
 abzaar_kharid_kargah_combo["state"]=["readonly"]
 abzaar_kharid_kargah_combo.place(x=58, y=260)
 
@@ -3859,8 +3910,8 @@ toilet_kharid_kargah=tk.Label(option_file_frame_kharid_kargah,bg="#052340",fg="#
 toilet_kharid_kargah.place(x=298, y=290)
 
 toilet_kharid_kargah_combo=ttk.Combobox(option_file_frame_kharid_kargah)
-toilet_kharid_kargah_combo["values"]=("دارد","ندارد")
-toilet_kharid_kargah_combo.set("دارد")
+toilet_kharid_kargah_combo["values"]=("","دارد","ندارد")
+toilet_kharid_kargah_combo.set("")
 toilet_kharid_kargah_combo["state"]=["readonly"]
 toilet_kharid_kargah_combo.place(x=70, y=290)
 
@@ -3868,8 +3919,8 @@ hamam_kharid_kargah=tk.Label(option_file_frame_kharid_kargah,bg="#052340",fg="#f
 hamam_kharid_kargah.place(x=303, y=320)
 
 hamam_kharid_kargah__combo=ttk.Combobox(option_file_frame_kharid_kargah)
-hamam_kharid_kargah__combo["values"]=("ندارد","دارد")
-hamam_kharid_kargah__combo.set("ندارد")
+hamam_kharid_kargah__combo["values"]=("","ندارد","دارد")
+hamam_kharid_kargah__combo.set("")
 hamam_kharid_kargah__combo["state"]=["readonly"]
 hamam_kharid_kargah__combo.place(x=70, y=320)
 
@@ -3877,8 +3928,8 @@ otagh_kharid_kargah=tk.Label(option_file_frame_kharid_kargah,bg="#052340",fg="#f
 otagh_kharid_kargah.place(x=294, y=350)
 
 otagh_kharid_kargah_combo=ttk.Combobox(option_file_frame_kharid_kargah)
-otagh_kharid_kargah_combo["values"]=("ندارد","دارد")
-otagh_kharid_kargah_combo.set("ندارد")
+otagh_kharid_kargah_combo["values"]=("","ندارد","دارد")
+otagh_kharid_kargah_combo.set("")
 otagh_kharid_kargah_combo["state"]=["readonly"]
 otagh_kharid_kargah_combo.place(x=70, y=350)
 
