@@ -375,7 +375,6 @@ def back_home_ejareh_karghah():
 def back_home_forosh_karghah():
     forosh_karghah.withdraw()
     root.deiconify()
-    metraj_kargah_entry.delete(0,tk.END)
     loctaion_forosh_kargah_entry.delete(0,tk.END)
     mablagh_pish_forosh_kargah_entry.delete(0,tk.END)
     gheimat_har_metr_forosh_kargah_entry.delete(0,tk.END)
