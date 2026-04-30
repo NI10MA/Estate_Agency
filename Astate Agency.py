@@ -15,34 +15,6 @@ def get_connection():
         password="Mmmm9905",
         #database="state_agency"
     )
-
-def get_option_forosh_maskoni():
-    option_forosh_maskoni=[]
-    try:
-        if parking_ch_btn_forosh_maskoni.get():
-            option_forosh_maskoni.append("پارکینگ")
-        if asansor_ch_btn_forosh_maskoni.get():
-            option_forosh_maskoni.append("آسانسور")
-        if anbari_checkbuton_forosh_maskoni.get():
-                option_forosh_maskoni.append("انباری")
-        sarmayesh_m_f=sarmaesh_combo_forosh_maskoni.get()
-        if sarmayesh_m_f:
-            option_forosh_maskoni.append(sarmayesh_m_f)
-        garmayesh_m_f=garmaesh_combo_forosh_maskoni.get()
-        if garmayesh_m_f:
-            option_forosh_maskoni.append(garmayesh_m_f)
-        kaf_m_f=kaf_combo_forosh_maskoni.get()
-        if kaf_m_f:
-            option_forosh_maskoni.append(kaf_m_f)
-        toilet_m_f=toilet_combo_forosh_maskoni.get()
-        if  toilet_m_f:
-              option_forosh_maskoni.append(toilet_m_f)
-        return ",".join(option_forosh_maskoni)
-    except:
-        return
-
-        
-
 #endregion
 #---#----#----#----#----#----------  توابع   ----------#----#----#----#-------------
 #-------------------------تابع بستن پروژه-----------------
@@ -545,6 +517,13 @@ def back_home_kharid_maskoni():
     asansor_ch_btn_kharid_maskoni.deselect()
     anbari_checkbuton_kharid_maskoni.deselect()
     delete_root()
+#region #توابع ادامه اپشن ها 
+#==============================
+def save_option_forosh_maskoni():
+    option_file_frame_forosh_maskoni.withdraw()
+    option_file_frame_forosh_maskoni.grab_release()
+    
+#endregion
 #=========================================================
 #--------برگشت از امکانات فایل ها به صفحه اصلی ثبتی-------
 #-------برگشت اجاره مسکونی------------------
@@ -974,7 +953,7 @@ def add_tree2():
         label_natige_forosh_bagh_zamin.config(text=','.join(selected_trees2))
 #region توابع ثبتی دیتابیس
 #تابع ثبت فروش  
-def sabt_forosh():
+def sabt_forosh_maskoni():
     db = None
     try:
         db = get_connection()
@@ -985,7 +964,7 @@ def sabt_forosh():
 
         # دستور ساده و انگلیسی خالص
         sql_create = """
-        CREATE TABLE IF NOT EXISTS sabt_forosh (
+        CREATE TABLE IF NOT EXISTS sabt_forosh_maskoni (
             id INT AUTO_INCREMENT PRIMARY KEY,
             type_melk VARCHAR(50) NOT NULL,
             sal_sakht VARCHAR(20),
@@ -993,20 +972,23 @@ def sabt_forosh():
             floor VARCHAR(10),
             block VARCHAR(20),
             room_count INT,
-            option_forosh_maskoni VARCHAR(100),
+            parking VARCHAR(20),
+            asansor VARCHAR(20),
+            anbari VARCHAR(20),
+            sarmayesh VARCHAR(20),
+            garmayesh VARCHAR(20),
+            kaf VARCHAR(20),
+            toilet VARCHAR(20),
             price DECIMAL(15,2)
         )
         """
         cursor.execute(sql_create)
 
         sql_insert = """
-        INSERT INTO sabt_forosh 
-        (type_melk, sal_sakht, address, floor, block, room_count, option_forosh_maskoni, price)
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+        INSERT INTO sabt_forosh_maskoni 
+        (type_melk,sal_sakht,address,floor,block,room_count,parking,asansor,anbari,sarmayesh,garmayesh,kaf,toilet, price)
+        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
         """
-        
-        options = get_option_forosh_maskoni()
-        
         values = (
             melk_type_forosh_maskoni_entry.get(),
             sal_sakht_forosh_maskoni_entry.get(),
@@ -1014,7 +996,13 @@ def sabt_forosh():
             tabaghe_forosh_maskoni_entry.get(),
             vahed_forosh_maskoni_entry.get(),
             otagh_forosh_maskoni_entry.get(),
-            options,
+            parking_forosh_maskoni_var.get(),
+            asansor_forosh_maskoni_var.get(),
+            anbari_forosh_maskoni_var.get(),
+            sarmaesh_combo_forosh_maskoni.get(),
+            garmaesh_combo_forosh_maskoni.get(),
+            kaf_combo_forosh_maskoni.get(),
+            toilet_combo_forosh_maskoni.get(),
             float(gheimat_forosh_maskoni_entry.get())
         )
 
@@ -2369,7 +2357,7 @@ gheimat_forosh_maskoni_entry.place(x=start_x + 10, y=start_y + 328, width=150, h
 back_to_home_forosh_maskoni=tk.Button(forosh_rehn_page,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_forosh_maskoni)
 back_to_home_forosh_maskoni.place(x=270,y=520)
 
-zakhire_forosh_maskoni=tk.Button(forosh_rehn_page,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=sabt_forosh)
+zakhire_forosh_maskoni=tk.Button(forosh_rehn_page,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=sabt_forosh_maskoni)
 zakhire_forosh_maskoni.place(x=120,y=520)
 
 photo_lbl2_forosh_maskoni = tk.Label(forosh_rehn_page, text="[تصویر ملک]", bg="#ffffff", width=50, height=15)
@@ -2400,14 +2388,17 @@ bg_label = tk.Label(option_file_frame_forosh_maskoni, image=bg_photo)
 bg_label.image = bg_photo  
 bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
+parking_forosh_maskoni_var=tk.IntVar(value=0)
+anbari_forosh_maskoni_var=tk.IntVar(value=0)
+asansor_forosh_maskoni_var=tk.IntVar(value=0)
 
-parking_ch_btn_forosh_maskoni=tk.Checkbutton(option_file_frame_forosh_maskoni, image=parking_pic, bg="#052340")
+parking_ch_btn_forosh_maskoni=tk.Checkbutton(option_file_frame_forosh_maskoni,variable=parking_forosh_maskoni_var,image=parking_pic, bg="#052340")
 parking_ch_btn_forosh_maskoni.place(x=140, y=50)
 
-asansor_ch_btn_forosh_maskoni=tk.Checkbutton(option_file_frame_forosh_maskoni,image=elvator_pic,background="#052340")
+asansor_ch_btn_forosh_maskoni=tk.Checkbutton(option_file_frame_forosh_maskoni,variable=asansor_forosh_maskoni_var,image=elvator_pic,background="#052340")
 asansor_ch_btn_forosh_maskoni.place(x=240, y=50)
 
-anbari_checkbuton_forosh_maskoni=tk.Checkbutton(option_file_frame_forosh_maskoni,image=warehouse_pic,background="#052340")
+anbari_checkbuton_forosh_maskoni=tk.Checkbutton(option_file_frame_forosh_maskoni,variable=anbari_forosh_maskoni_var,image=warehouse_pic,background="#052340")
 anbari_checkbuton_forosh_maskoni.place(x=340, y=50)
 
 sarmaesh_forosh_maskoni=tk.Label(option_file_frame_forosh_maskoni, text="سرمایش", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
@@ -2443,7 +2434,7 @@ toilet_combo_forosh_maskoni["state"]=["readonly"]
 toilet_combo_forosh_maskoni["values"] = ("ایرانی","فرنگی","هردو")
 toilet_combo_forosh_maskoni.place(x=120, y=230)
 
-zakhire_options_forosh_maskoni=tk.Button(option_file_frame_forosh_maskoni,text="ذخیره",command=None,background="#00BFFF",fg="#000000",width=10,height=1)
+zakhire_options_forosh_maskoni=tk.Button(option_file_frame_forosh_maskoni,text="ادامه",command=save_option_forosh_maskoni,background="#00BFFF",fg="#000000",width=10,height=1)
 zakhire_options_forosh_maskoni.place(x=95, y=320)
 
 back_to_home_forosh_maskoni=tk.Button(option_file_frame_forosh_maskoni,text="بازگشت",command=back_to_forosh_maskoni,background="#00BFFF",fg="#000000",width=10,height=1)
