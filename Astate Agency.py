@@ -1,11 +1,48 @@
- #-------------------------------------  کتابخانه ها   --------------------
+#-------------------------------------  کتابخانه ها   --------------------
 #region
 import tkinter as tk
+import mysql.connector
 from tkinter import ttk
 from PIL import Image, ImageTk
 from tkinter import filedialog,messagebox,font,scrolledtext
 import subprocess
 import os
+
+def get_connection():
+    return mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="Mmmm9905",
+        #database="state_agency"
+    )
+
+def get_option_forosh_maskoni():
+    option_forosh_maskoni=[]
+    try:
+        if parking_ch_btn_forosh_maskoni.get():
+            option_forosh_maskoni.append("پارکینگ")
+        if asansor_ch_btn_forosh_maskoni.get():
+            option_forosh_maskoni.append("آسانسور")
+        if anbari_checkbuton_forosh_maskoni.get():
+                option_forosh_maskoni.append("انباری")
+        sarmayesh_m_f=sarmaesh_combo_forosh_maskoni.get()
+        if sarmayesh_m_f:
+            option_forosh_maskoni.append(sarmayesh_m_f)
+        garmayesh_m_f=garmaesh_combo_forosh_maskoni.get()
+        if garmayesh_m_f:
+            option_forosh_maskoni.append(garmayesh_m_f)
+        kaf_m_f=kaf_combo_forosh_maskoni.get()
+        if kaf_m_f:
+            option_forosh_maskoni.append(kaf_m_f)
+        toilet_m_f=toilet_combo_forosh_maskoni.get()
+        if  toilet_m_f:
+              option_forosh_maskoni.append(toilet_m_f)
+        return ",".join(option_forosh_maskoni)
+    except:
+        return
+
+        
+
 #endregion
 #---#----#----#----#----#----------  توابع   ----------#----#----#----#-------------
 #-------------------------تابع بستن پروژه-----------------
@@ -45,8 +82,6 @@ def delete_root():
 #------------توابع اصلی ذخیره----------------------
 #region
 def save_rehn_maskkoni():#ذخیره پنجره اجاره مسکونی
-    pass
-def save_forosh_maskkoni():#ذخیره پنجره فروش مسکونی
     pass
 def save_rehn_edari():#ذخیره پنجره اجاره اداری
     pass
@@ -305,6 +340,7 @@ def back_home_ejareh_bagh():
     estakhr_bagh.deselect()
     bargh_bagh.deselect()
     gas_bagh.deselect()
+    loleh_bagh.deselect()
     divar_ejareh_bagh_zamin.deselect()
     #تغییر کاربری
     metraj_zamin_ejareh_bagh_zamin_entry2.delete(0,tk.END)
@@ -313,6 +349,15 @@ def back_home_ejareh_bagh():
     ab_ejareh_ejareh_bagh_zamin_combo.set("")
     zamin_shekl_ejareh_bagh_zamin_combo.set("")
     kesht_ejareh_bagh_zamin_combo.set("")
+    metraj_vila_bagh_entry.config(state="disabled")
+    sal_sakht_vila_bagh_entry.config(state="disabled")
+    type_vila_ejareh_bagh_zamin_combo.config(state="disabled")
+    toilet_bagh_combo.config(state="disabled")
+    hamam_bagh_combo.config(state="disabled")
+    sanad_bagh_combo.config(state="disabled")
+    option_ejareh_bagh_zamin_combo.config(state="disabled")
+    mojavez_sakht_ejareh_bagh_zamin.config(state="disabled")
+    mohavate_ejareh_bagh_zamin.config(state="disabled")
     kesht_ejareh_bagh_zamin_entry.delete(0,tk.END)
 #-----------------------------برگشت از صفحه فروش باغ / زمین------------------
 def back_home_forosh_bagh():
@@ -320,8 +365,8 @@ def back_home_forosh_bagh():
     root.deiconify()    
     metraj_zamin_forosh_bagh_zamin_entry.delete(0,tk.END)
     bagh_loctaion_forosh_bagh_zamin_entry.delete(0,tk.END)
-    mablagh_ejare_forosh_edari_tejari_entry.delete(0,tk.END)
-    mablagh_ejare_forosh_edari_tejari_entry.delete(0,tk.END)
+    gheimat_bagh_forosh_bagh_zamin_entry.delete(0,tk.END)
+    gheimat_har_metr_babagh_zamin_forosh_bagh_zamin_entry.delete(0,tk.END)
     metraj_derakht_forosh_bagh_zamin_entry.delete(0,tk.END)
     tedad_derakht_forosh_bagh_zamin_entry.delete(0,tk.END)
     metraj_vila_forosh_bagh_zamin_entry.delete(0,tk.END)
@@ -339,6 +384,11 @@ def back_home_forosh_bagh():
     hamam_forosh_bagh_zamin_combo.set("")
     sanad_forosh_bagh_zamin_combo.set("")
     option_forosh_bagh_zamin_combo.set("")
+    chah_forosh_bagh_zamin.deselect()
+    estakhr_forosh_bagh_zamin.deselect()
+    loleh_keshi_ab_forosh_bagh_zamin.deselect()
+    bargh_keshi_forosh_bagh_zamin.deselect()
+    gas_keshi_forosh_bagh_zamin.deselect()
     #تغییر کاربری
     metraj_zamin2_forosh_bagh_zamin_entry.delete(0,tk.END)
     karbari_forosh_bagh_zamin_combo.set("")
@@ -346,6 +396,16 @@ def back_home_forosh_bagh():
     ab_forosh_bagh_zamin_combo.set("")
     zamin_shekl_forosh_bagh_zamin_combo.set("")
     kesht_forosh_bagh_zamin_combo.set("")
+    metraj_vila_forosh_bagh_zamin_entry.config(state="disabled")
+    sal_sakht_vila_forosh_bagh_zamin_entry.config(state="disabled")
+    type_vila_forosh_bagh_zamin_combo.config(state="disabled")
+    toilet_forosh_bagh_zamin_combo.config(state="disabled")
+    hamam_forosh_bagh_zamin_combo.config(state="disabled")
+    sanad_forosh_bagh_zamin_combo.config(state="disabled")
+    option_forosh_bagh_zamin_combo.config(state="disabled")
+    mojavez_sakht_check_btn_forosh_bagh_zamin.config(state="disabled")
+    mohavate_sazi_check_btn_forosh_bagh_zamin.config(state="disabled")
+    otagh_check_btn_forosh_bagh_zamin.deselect()
     delete_root()
 #----------------------- برگشت از صفحه اجاره کارگاه--------------------
 def back_home_ejareh_karghah():
@@ -368,8 +428,6 @@ def back_home_ejareh_karghah():
     sarmayesh_panke_ejareh_kargah.deselect()
     sarmayesh_kooler_abi_ejareh_kargah.deselect()
     sarmayesh_kooler_gazi_ejareh_kargah.deselect()
-
-
     delete_root()
 #----------------------- برگشت از صفحه فروش کارگاه--------------------
 def back_home_forosh_karghah():
@@ -392,9 +450,6 @@ def back_home_forosh_karghah():
     sarmayesh_panke_forosh_kargah.deselect()
     sarmayesh_kooler_abi_forosh_kargah.deselect()
     sarmayesh_kooler_gazi_forosh_kargah.deselect()
-
-
-
     delete_root()
 #----------------------------برگشت از صفحه اجاره کارگاه------------------
 def back_to_ejareh_karghah():
@@ -406,8 +461,8 @@ def back_home_kharid_bagh():
     root.deiconify()    
     metraj_zamin_kharid_bagh_zamin_entry.delete(0,tk.END)
     bagh_loctaion_kharid_bagh_zamin_entry.delete(0,tk.END)
-    mablagh_ejare_kharid_edari_tejari_entry.delete(0,tk.END)
-    mablagh_ejare_kharid_edari_tejari_entry.delete(0,tk.END)
+    gheimat_bagh_kharid_bagh_zamin_entry.delete(0,tk.END)
+    gheimat_har_metr_bagh_zamin_kharid_bagh_zamin_entry.delete(0,tk.END)
     metraj_derakht_kharid_bagh_zamin_entry.delete(0,tk.END)
     tedad_derakht_kharid_bagh_zamin_entry.delete(0,tk.END)
     metraj_vila_kharid_bagh_zamin_entry.delete(0,tk.END)
@@ -425,6 +480,11 @@ def back_home_kharid_bagh():
     hamam_kharid_bagh_zamin_combo.set("")
     sanad_kharid_bagh_zamin_combo.set("")
     option_kharid_bagh_zamin_combo.set("")
+    chah_kharid_bagh_zamin.deselect()
+    estakhr_kharid_bagh_zamin.deselect()
+    loleh_keshi_ab_kharid_bagh_zamin.deselect()
+    bargh_keshi_kharid_bagh_zamin.deselect()
+    gas_keshi_kharid_bagh_zamin.deselect()
     #تغییر کاربری
     metraj_zamin2_kharid_bagh_zamin_entry.delete(0,tk.END)
     karbari_kharid_bagh_zamin_combo.set("")
@@ -432,6 +492,17 @@ def back_home_kharid_bagh():
     ab_kharid_bagh_zamin_combo.set("")
     zamin_shekl_kharid_bagh_zamin_combo.set("")
     kesht_kharid_bagh_zamin_combo.set("")
+    metraj_vila_kharid_bagh_zamin_entry.config(state="disabled")
+    sal_sakht_vila_kharid_bagh_zamin_entry.config(state="disabled")
+    type_vila_kharid_bagh_zamin_combo.config(state="disabled")
+    toilet_kharid_bagh_zamin_combo.config(state="disabled")
+    hamam_kharid_bagh_zamin_combo.config(state="disabled")
+    sanad_kharid_bagh_zamin_combo.config(state="disabled")
+    option_kharid_bagh_zamin_combo.config(state="disabled")
+    mojavez_sakht_check_btn_kharid_bagh_zamin.config(state="disabled")
+    mohavate_sazi_check_btn_kharid_bagh_zamin.config(state="disabled")
+    otagh_check_btn_kharid_bagh_zamin.deselect()
+
     delete_root()
 #-----------------------------برگشت از صفحه خرید کارگاه--------------------
 def back_home_kharid_kargah():
@@ -901,7 +972,64 @@ def add_tree2():
     if t3 and t3 not in selected_trees2:
         selected_trees2.append(t3)
         label_natige_forosh_bagh_zamin.config(text=','.join(selected_trees2))
+#region توابع ثبتی دیتابیس
+#تابع ثبت فروش  
+def sabt_forosh():
+    db = None
+    try:
+        db = get_connection()
+        cursor = db.cursor()
+        
+        cursor.execute("CREATE DATABASE IF NOT EXISTS state_agency")
+        cursor.execute("USE state_agency")
 
+        # دستور ساده و انگلیسی خالص
+        sql_create = """
+        CREATE TABLE IF NOT EXISTS sabt_forosh (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            type_melk VARCHAR(50) NOT NULL,
+            sal_sakht VARCHAR(20),
+            address VARCHAR(225),
+            floor VARCHAR(10),
+            block VARCHAR(20),
+            room_count INT,
+            option_forosh_maskoni VARCHAR(100),
+            price DECIMAL(15,2)
+        )
+        """
+        cursor.execute(sql_create)
+
+        sql_insert = """
+        INSERT INTO sabt_forosh 
+        (type_melk, sal_sakht, address, floor, block, room_count, option_forosh_maskoni, price)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+        """
+        
+        options = get_option_forosh_maskoni()
+        
+        values = (
+            melk_type_forosh_maskoni_entry.get(),
+            sal_sakht_forosh_maskoni_entry.get(),
+            addrres_forosh_maskoni_entry.get(),
+            tabaghe_forosh_maskoni_entry.get(),
+            vahed_forosh_maskoni_entry.get(),
+            otagh_forosh_maskoni_entry.get(),
+            options,
+            float(gheimat_forosh_maskoni_entry.get())
+        )
+
+        cursor.execute(sql_insert, values)
+        last_id = cursor.lastrowid
+        user_idcode = f"ID-{last_id}"
+        messagebox.showinfo("Success", f"ثبت با کد {user_idcode} انجام شد.")
+        db.commit()
+
+    except Exception as e:
+        messagebox.showerror("Error", f"خطا: {e}")
+    finally:
+        if db and db.is_connected():
+            db.close()
+#endregion
 #endregion
 #---#----#----#----#----#----------  گرافیک   ----------#----#----#----#-----#-----------
 # ---------دکمه فایل با منوی کشویی ------------------
@@ -2241,7 +2369,7 @@ gheimat_forosh_maskoni_entry.place(x=start_x + 10, y=start_y + 328, width=150, h
 back_to_home_forosh_maskoni=tk.Button(forosh_rehn_page,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_forosh_maskoni)
 back_to_home_forosh_maskoni.place(x=270,y=520)
 
-zakhire_forosh_maskoni=tk.Button(forosh_rehn_page,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=save_forosh_maskkoni)
+zakhire_forosh_maskoni=tk.Button(forosh_rehn_page,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=sabt_forosh)
 zakhire_forosh_maskoni.place(x=120,y=520)
 
 photo_lbl2_forosh_maskoni = tk.Label(forosh_rehn_page, text="[تصویر ملک]", bg="#ffffff", width=50, height=15)
@@ -2401,20 +2529,8 @@ vahed_forosh_edari_tejari_entry.place(x=start_x + 10, y=start_y + 275, width=150
 mablagh_pish_forosh_edari_tejari_lable=tk.Label(forosh_edari_tejari,text="مبلغ ودیعه",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
 mablagh_pish_forosh_edari_tejari_lable.place(x=start_x + 320, y=start_y + 335, anchor="e")
 
-mablagh_pish_forosh_edari_tejari_entry=tk.Entry(forosh_edari_tejari,bg="#FFFFFF", fg="#000000",font=("Shabnam", 10),)
-mablagh_pish_forosh_edari_tejari_entry.place(x=start_x + 10, y=start_y + 325, width=150, height=25)
-
-mablagh_ejare_forosh_edari_tejari_lable=tk.Label(forosh_edari_tejari,text=" مبلغ اجاره",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-mablagh_ejare_forosh_edari_tejari_lable.place(x=start_x + 320, y=start_y + 385, anchor="e")
-
-mablagh_ejare_forosh_edari_tejari_entry=tk.Entry(forosh_edari_tejari,bg="#FFFFFF", fg="#000000",font=("Shabnam", 10),)
-mablagh_ejare_forosh_edari_tejari_entry.place(x=start_x + 10, y=start_y + 375, width=150, height=25)
-
-rahn_kamel_forosh_edari_tejari_lable=tk.Label(forosh_edari_tejari,text=" رهن کامل؟ ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-rahn_kamel_forosh_edari_tejari_lable.place(x=start_x + 320, y=start_y + 435, anchor="e")
-
-rahn_kamel_check_btn_forosh_edari_tejari=tk.Checkbutton(forosh_edari_tejari,bg="#FFFFFF", fg="#000000",font=("Shabnam", 10))
-rahn_kamel_check_btn_forosh_edari_tejari.place(x=start_x + 10, y=start_y + 425)
+mablagh_forosh_edari_tejari_entry=tk.Entry(forosh_edari_tejari,bg="#FFFFFF", fg="#000000",font=("Shabnam", 10),)
+mablagh_forosh_edari_tejari_entry.place(x=start_x + 10, y=start_y + 325, width=150, height=25)
 
 
 back_to_home_forosh_edari_tejari=tk.Button(forosh_edari_tejari,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_forosh_edari_tejari)
@@ -2742,7 +2858,7 @@ mohavate_sazi_check_btn_forosh_bagh_zamin=tk.Checkbutton(option_file_frame_foros
 mohavate_sazi_check_btn_forosh_bagh_zamin.place(x=320, y=510)
 
 divar_forosh_bagh_zamin=tk.Checkbutton(option_file_frame_forosh_bagh_zamin,text="دیوار کشی",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-divar_forosh_bagh_zamin.place(x=180, y=510)
+divar_forosh_bagh_zamin.place(x=180, y=220)
 #endregion
 #-------------------------تعویض کاربری به زمین در قسمت فروش باغ/زمین-------------
 #region
@@ -3142,7 +3258,7 @@ gheimat_kharid_maskoni_entry.place(x=start_x + 10, y=start_y + 330, width=150, h
 back_to_home_kharid_maskoni=tk.Button(kharid_maskoni_page,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_kharid_maskoni)
 back_to_home_kharid_maskoni.place(x=270,y=520)
 
-zakhire_kharid_maskoni=tk.Button(kharid_maskoni_page,text="ذخیره",bg="#00BFFF",fg="black",width=10,height=2,command=save_forosh_maskkoni)
+zakhire_kharid_maskoni=tk.Button(kharid_maskoni_page,text="ذخیره",bg="#00BFFF",fg="black",width=10,height=2,command=None)
 zakhire_kharid_maskoni.place(x=120,y=520)
 
 photo_lbl2_kharid_maskoni = tk.Label(kharid_maskoni_page, text="[تصویر ملک]", bg="#ffffff", width=50, height=15)
@@ -3631,7 +3747,7 @@ mohavate_sazi_check_btn_kharid_bagh_zamin=tk.Checkbutton(option_file_frame_khari
 mohavate_sazi_check_btn_kharid_bagh_zamin.place(x=320, y=510)
 
 divar_kharid_bagh_zamin=tk.Checkbutton(option_file_frame_kharid_bagh_zamin,text="دیوار کشی",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-divar_kharid_bagh_zamin.place(x=180, y=510)
+divar_kharid_bagh_zamin.place(x=180, y=220)
 #endregion
 #-------------------------تعویض کاربری به زمین در قسمت خرید باغ/زمین-------------
 #region
