@@ -175,17 +175,17 @@ def back_home_ejare_maskoni():
     ejareh_rehn_page.withdraw()
     #خالی کردن  باکس های اجاره مسکونی
     sal_sakht_ejareh_maskoni_entry.delete(0,tk.END)
-    addrres_ejare_maskoni_entry.delete(0,tk.END)
-    tabaghe_ejare_maskoni_entry.delete(0,tk.END)
-    vahed_ejare_maskoni_entry.delete(0,tk.END)
-    otagh_ejare_maskoni_entry.delete(0,tk.END)
+    addrres_ejareh_maskoni_entry.delete(0,tk.END)
+    tabaghe_ejareh_maskoni_entry.delete(0,tk.END)
+    vahed_ejareh_maskoni_entry.delete(0,tk.END)
+    otagh_ejareh_maskoni_entry.delete(0,tk.END)
     gheimat_ejare_ejare_maskoni_entry.delete(0,tk.END)
     gheimat_pish_ejare_maskoni_entry.delete(0,tk.END)
     #پنجره امکانات
-    sarmaesh_ejare_maskoni_combo.set("")
-    garmaesh_ejare_maskoni_combo.set("")
-    kaf_ejare_maskoni_combo.set("")
-    toilet_ejare_maskoni_combo.set("")
+    sarmaesh_ejareh_maskoni_combo.set("")
+    garmaesh_ejareh_maskoni_combo.set("")
+    kaf_ejareh_maskoni_combo.set("")
+    toilet_ejareh_maskoni_combo.set("")
     parking_checkbutton_btn_ejareh_maskoni.deselect()
     asansor_checkbutton_btn_ejareh_maskoni.deselect()
     anbari_checkbutton_btn_ejareh_maskoni.deselect()
@@ -1358,7 +1358,70 @@ def sabt_forosh_karghah():
 #----------------------------تابع ثبت اجاره----------------------------------
 #----------------------- ejareh_maskoni Database -------------------------------
 def sabt_ejareh_maskoni():
-    pass
+    db = None
+    try:
+        db = get_connection()
+        cursor = db.cursor()
+        
+        cursor.execute("CREATE DATABASE IF NOT EXISTS state_agency")
+        cursor.execute("USE state_agency")
+
+        sql_create = """
+            CREATE TABLE IF NOT EXISTS sabt_ejareh_maskoni (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            type_melk VARCHAR(50) NOT NULL,
+            sal_sakht VARCHAR(20),
+            address VARCHAR(225),
+            floor VARCHAR(10),
+            block VARCHAR(20),
+            room_count INT,
+            parking VARCHAR(20),
+            asansor VARCHAR(20),
+            anbari VARCHAR(20),
+            sarmayesh VARCHAR(20),
+            garmayesh VARCHAR(20),
+            kaf VARCHAR(20),
+            toilet VARCHAR(20),
+        )
+        """
+
+        cursor.execute(sql_create)
+
+        sql_insert = """
+        INSERT INTO sabt_ejareh_maskoni 
+        (type_melk,sal_sakht,address,floor,block,room_count,parking,asansor,anbari,sarmayesh,garmayesh,kaf,toilet)
+        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+        """
+
+        values = (
+            melk_type_ejareh_maskoni_entry.get(),
+            sal_sakht_ejareh_maskoni_entry.get(),
+            addrres_ejareh_maskoni_entry.get(),
+            tabaghe_ejareh_maskoni_entry.get(),
+            vahed_ejareh_maskoni_entry.get(),
+            otagh_ejareh_maskoni_entry.get(),
+            parking_ejareh_maskoni_var.get(),
+            asansor_ejareh_maskoni_var.get(),
+            anbari_ejareh_maskoni_var.get(),
+            sarmaesh_ejareh_maskoni_combo.get(),
+            garmaesh_ejareh_maskoni_combo.get(),
+            kaf_ejareh_maskoni_combo.get(),
+            toilet_ejareh_maskoni_combo.get()
+
+        )
+
+        cursor.execute(sql_insert, values)
+        last_id = cursor.lastrowid
+        user_idcode = f"ID-{last_id}"
+        messagebox.showinfo("Success", f"ثبت با کد {user_idcode} انجام شد.")
+        db.commit()
+
+    except Exception as e:
+        messagebox.showerror("Error", f"خطا: {e}")
+    finally:
+        if db and db.is_connected():
+            db.close()
+
 
 #---------------------ejareh_edari/tejari Database------------------------------
 def sabt_ejareh_edari_tejari():
@@ -1989,29 +2052,29 @@ sal_sakht_ejareh_maskoni_entry.place(x=start_x + 10, y=start_y + 75, width=150, 
 addrres_ejareh_maskoni_lable = tk.Label(ejareh_rehn_page, text="آدرس", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 addrres_ejareh_maskoni_lable.place(x=start_x + 320, y=start_y + 135, anchor="e")
 
-addrres_ejare_maskoni_entry = tk.Entry(ejareh_rehn_page, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
-addrres_ejare_maskoni_entry.place(x=start_x + 10, y=start_y + 125, width=150, height=25)
+addrres_ejareh_maskoni_entry = tk.Entry(ejareh_rehn_page, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
+addrres_ejareh_maskoni_entry.place(x=start_x + 10, y=start_y + 125, width=150, height=25)
 
 # ردیف 4: طبقه
 tabaghe_ejare_maskoni_lable = tk.Label(ejareh_rehn_page, text="طبقه", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 tabaghe_ejare_maskoni_lable.place(x=start_x + 320, y=start_y + 185, anchor="e")
 
-tabaghe_ejare_maskoni_entry = tk.Entry(ejareh_rehn_page, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
-tabaghe_ejare_maskoni_entry.place(x=start_x + 10, y=start_y + 175, width=150, height=25)
+tabaghe_ejareh_maskoni_entry = tk.Entry(ejareh_rehn_page, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
+tabaghe_ejareh_maskoni_entry.place(x=start_x + 10, y=start_y + 175, width=150, height=25)
 
 # ردیف 5: واحد
 vahed_ejare_maskoni_lable = tk.Label(ejareh_rehn_page, text="واحد", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 vahed_ejare_maskoni_lable.place(x=start_x + 320, y=start_y + 235, anchor="e")
 
-vahed_ejare_maskoni_entry = tk.Entry(ejareh_rehn_page, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
-vahed_ejare_maskoni_entry.place(x=start_x + 10, y=start_y + 225, width=150, height=25)
+vahed_ejareh_maskoni_entry = tk.Entry(ejareh_rehn_page, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
+vahed_ejareh_maskoni_entry.place(x=start_x + 10, y=start_y + 225, width=150, height=25)
 
 # ردیف 6: اتاق
 otagh_ejare_maskoni_lable = tk.Label(ejareh_rehn_page, text="اتاق", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 otagh_ejare_maskoni_lable.place(x=start_x + 320, y=start_y + 285, anchor="e")
 
-otagh_ejare_maskoni_entry = tk.Entry(ejareh_rehn_page, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
-otagh_ejare_maskoni_entry.place(x=start_x + 10, y=start_y + 275, width=150, height=25)
+otagh_ejareh_maskoni_entry = tk.Entry(ejareh_rehn_page, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
+otagh_ejareh_maskoni_entry.place(x=start_x + 10, y=start_y + 275, width=150, height=25)
 
 # ردیف 7: قیمت اجاره و پیش (دو ستون کنار هم)
 # مبلغ اجاره
@@ -2067,46 +2130,52 @@ bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
 # --- چک‌باکس‌ها (پارکینگ، آسانسور، انباری) ---
 # چیدمان افقی در بالای فرم
-parking_checkbutton_btn_ejareh_maskoni = tk.Checkbutton(option_file_frame_ejareh_maskoni, image=parking_pic, bg="#052340")
+
+parking_ejareh_maskoni_var=tk.IntVar(value=0)
+anbari_ejareh_maskoni_var=tk.IntVar(value=0)
+asansor_ejareh_maskoni_var=tk.IntVar(value=0)
+
+
+parking_checkbutton_btn_ejareh_maskoni = tk.Checkbutton(option_file_frame_ejareh_maskoni, image=parking_pic,variable=parking_ejareh_maskoni_var,bg="#052340")
 parking_checkbutton_btn_ejareh_maskoni.place(x=140, y=50)
 
-asansor_checkbutton_btn_ejareh_maskoni = tk.Checkbutton(option_file_frame_ejareh_maskoni, image=elvator_pic, bg="#052340")
+asansor_checkbutton_btn_ejareh_maskoni = tk.Checkbutton(option_file_frame_ejareh_maskoni, image=elvator_pic,variable=asansor_ejareh_maskoni_var, bg="#052340")
 asansor_checkbutton_btn_ejareh_maskoni.place(x=240, y=50)
 
-anbari_checkbutton_btn_ejareh_maskoni = tk.Checkbutton(option_file_frame_ejareh_maskoni, image=warehouse_pic, bg="#052340")
+anbari_checkbutton_btn_ejareh_maskoni = tk.Checkbutton(option_file_frame_ejareh_maskoni, image=warehouse_pic,variable=anbari_ejareh_maskoni_var,bg="#052340")
 anbari_checkbutton_btn_ejareh_maskoni.place(x=340, y=50)
 
 # 1. سرمایش
-sarmaesh_ejare_maskoni = tk.Label(option_file_frame_ejareh_maskoni, text="سرمایش", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
-sarmaesh_ejare_maskoni.place(x=320, y=110)
-sarmaesh_ejare_maskoni_combo = ttk.Combobox(option_file_frame_ejareh_maskoni, width=15)
-sarmaesh_ejare_maskoni_combo["values"] = ("ندارد", "پنکه سقفی", "کولر ابی", "کولر گازی ", "ابی/گازی")
-sarmaesh_ejare_maskoni_combo["state"] = "readonly"
-sarmaesh_ejare_maskoni_combo.place(x=120, y=110)
+sarmaesh_ejareh_maskoni = tk.Label(option_file_frame_ejareh_maskoni, text="سرمایش", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
+sarmaesh_ejareh_maskoni.place(x=320, y=110)
+sarmaesh_ejareh_maskoni_combo = ttk.Combobox(option_file_frame_ejareh_maskoni, width=15)
+sarmaesh_ejareh_maskoni_combo["values"] = ("ندارد", "پنکه سقفی", "کولر ابی", "کولر گازی ", "ابی/گازی")
+sarmaesh_ejareh_maskoni_combo["state"] = "readonly"
+sarmaesh_ejareh_maskoni_combo.place(x=120, y=110)
 
 # 2. گرمایش
-garmaesh_ejare_maskoni = tk.Label(option_file_frame_ejareh_maskoni, text="گرمایش", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
-garmaesh_ejare_maskoni.place(x=320, y=150)
-garmaesh_ejare_maskoni_combo = ttk.Combobox(option_file_frame_ejareh_maskoni, width=15)
-garmaesh_ejare_maskoni_combo["values"] = ("ندارد", "بخاری", " شوفاژ", "گرمایش از کف ")
-garmaesh_ejare_maskoni_combo["state"] = "readonly"
-garmaesh_ejare_maskoni_combo.place(x=120, y=150)
+garmaesh_ejareh_maskoni = tk.Label(option_file_frame_ejareh_maskoni, text="گرمایش", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
+garmaesh_ejareh_maskoni.place(x=320, y=150)
+garmaesh_ejareh_maskoni_combo = ttk.Combobox(option_file_frame_ejareh_maskoni, width=15)
+garmaesh_ejareh_maskoni_combo["values"] = ("ندارد", "بخاری", " شوفاژ", "گرمایش از کف ")
+garmaesh_ejareh_maskoni_combo["state"] = "readonly"
+garmaesh_ejareh_maskoni_combo.place(x=120, y=150)
 
 # 3. کف
-kaf_ejare_maskoni = tk.Label(option_file_frame_ejareh_maskoni, text="کف", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
-kaf_ejare_maskoni.place(x=320, y=190)
-kaf_ejare_maskoni_combo = ttk.Combobox(option_file_frame_ejareh_maskoni, width=15)
-kaf_ejare_maskoni_combo["values"] = ("سرامیک", "موزاییک", "پارکت")
-kaf_ejare_maskoni_combo["state"] = "readonly"
-kaf_ejare_maskoni_combo.place(x=120, y=190)
+kaf_ejareh_maskoni = tk.Label(option_file_frame_ejareh_maskoni, text="کف", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
+kaf_ejareh_maskoni.place(x=320, y=190)
+kaf_ejareh_maskoni_combo = ttk.Combobox(option_file_frame_ejareh_maskoni, width=15)
+kaf_ejareh_maskoni_combo["values"] = ("سرامیک", "موزاییک", "پارکت")
+kaf_ejareh_maskoni_combo["state"] = "readonly"
+kaf_ejareh_maskoni_combo.place(x=120, y=190)
 
 # 4. سرویس بهداشتی
-toilet_ejare_maskoni = tk.Label(option_file_frame_ejareh_maskoni, text="سرویس بهداشتی", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
-toilet_ejare_maskoni.place(x=320, y=230)
-toilet_ejare_maskoni_combo = ttk.Combobox(option_file_frame_ejareh_maskoni, width=15)
-toilet_ejare_maskoni_combo["values"] = ("ایرانی", "فرنگی", "هردو")
-toilet_ejare_maskoni_combo["state"] = "readonly"
-toilet_ejare_maskoni_combo.place(x=120, y=230)
+toilet_ejareh_maskoni = tk.Label(option_file_frame_ejareh_maskoni, text="سرویس بهداشتی", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
+toilet_ejareh_maskoni.place(x=320, y=230)
+toilet_ejareh_maskoni_combo = ttk.Combobox(option_file_frame_ejareh_maskoni, width=15)
+toilet_ejareh_maskoni_combo["values"] = ("ایرانی", "فرنگی", "هردو")
+toilet_ejareh_maskoni_combo["state"] = "readonly"
+toilet_ejareh_maskoni_combo.place(x=120, y=230)
 
 
 # --- دکمه‌های پایین صفحه ---
