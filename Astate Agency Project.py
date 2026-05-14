@@ -12,7 +12,7 @@ def get_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="Nima10.N10",
+        password="SobhanA2026",
         #database="state_agency"
     )
 #endregion
@@ -557,6 +557,10 @@ def save_option_ejareh_kargah():
     option_file_frame_ejareh_kargah.withdraw()
     option_file_frame_ejareh_kargah.grab_release()
 
+def save_option_ejareh_maskoni():
+    option_file_frame_ejareh_maskoni.withdraw()
+    option_file_frame_ejareh_maskoni.grab_release()
+
 #endregion
 #=========================================================
 #--------برگشت از امکانات فایل ها به صفحه اصلی ثبتی-------
@@ -994,9 +998,9 @@ def sabt_forosh_maskoni():
             type_melk VARCHAR(50) NOT NULL,
             sal_sakht VARCHAR(20),
             address VARCHAR(225),
-            floor VARCHAR(10),
-            block VARCHAR(20),
-            room_count INT,
+            tabaghe VARCHAR(10),
+            vahed VARCHAR(20),
+            otagh INT,
             parking VARCHAR(20),
             asansor VARCHAR(20),
             anbari VARCHAR(20),
@@ -1004,14 +1008,14 @@ def sabt_forosh_maskoni():
             garmayesh VARCHAR(20),
             kaf VARCHAR(20),
             toilet VARCHAR(20),
-            price DECIMAL(15,2)
+            gheimat DECIMAL(15,2)
         )
         """
         cursor.execute(sql_create)
 
         sql_insert = """
         INSERT INTO sabt_forosh_maskoni 
-        (type_melk,sal_sakht,address,floor,block,room_count,parking,asansor,anbari,sarmayesh,garmayesh,kaf,toilet, price)
+        (type_melk,sal_sakht,address,tabaghe,vahed,otagh,parking,asansor,anbari,sarmayesh,garmayesh,kaf,toilet,gheimat)
         VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
         """
         values = (
@@ -1058,22 +1062,22 @@ def sabt_forosh_edari_tejari():
             metraj_melk VARCHAR(20),
             sal_sakht VARCHAR(20),
             address VARCHAR(225),
-            floor VARCHAR(10),
-            block VARCHAR(20),
+            tabaghe VARCHAR(10),
+            vahed VARCHAR(20),
             parking VARCHAR(20),
             asansor VARCHAR(20),
             anbari VARCHAR(20),
             aab_va_gaz VARCHAR(20),
             system_sarmayesh VARCHAR(20),
             system_garmayesh VARCHAR(20),
-            price DECIMAL(15,2)
+            gheimat DECIMAL(15,2)
         )
         """
         cursor.execute(sql_create)
 
         sql_insert = """
         INSERT INTO sabt_forosh_edari_tejari
-        (type_melk,metraj_melk,sal_sakht,address,floor,block,parking,asansor,anbari,aab_va_gaz,system_sarmayesh,system_garmayesh,price)
+        (type_melk,metraj_melk,sal_sakht,address,tabaghe,vahed,parking,asansor,anbari,aab_va_gaz,system_sarmayesh,system_garmayesh,gheimat)
         VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
         """
         values = (
@@ -1299,9 +1303,9 @@ def sabt_forosh_karghah():
             id INT AUTO_INCREMENT PRIMARY KEY,
             karbari_zamin VARCHAR(50) NOT NULL,
             metraj VARCHAR(20),
-            loctaion_and_address VARCHAR(225),
-            mablagh DECIMAL(15,2),
-            price DECIMAL(15,2),
+            address VARCHAR(225),
+            gheimat_vadie DECIMAL(15,2),
+            gheimat_metrazh DECIMAL(15,2),
             time_ejare VARCHAR(20),
             sal_sakht VARCHAR(20),
             vaziat_bargh VARCHAR(20),
@@ -1320,7 +1324,7 @@ def sabt_forosh_karghah():
         cursor.execute(sql_create)
         sql_insert = """
         INSERT INTO sabt_forosh_karghah
-        (karbari_zamin,metraj,loctaion_and_address,mablagh,price,time_ejare,sal_sakht,vaziat_bargh,garmayesh,fan,panke,kooler_abi,kooler_gazi,vaziat_ab,abzar,toilet,hamam,otagh)
+        (karbari_zamin,metraj,address,gheimat_vadie,gheimat_metrazh,time_ejare,sal_sakht,vaziat_bargh,garmayesh,fan,panke,kooler_abi,kooler_gazi,vaziat_ab,abzar,toilet,hamam,otagh)
         VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
         """
         values = (
@@ -1372,9 +1376,9 @@ def sabt_ejareh_maskoni():
             type_melk VARCHAR(50) NOT NULL,
             sal_sakht VARCHAR(20),
             address VARCHAR(225),
-            floor VARCHAR(10),
-            block VARCHAR(20),
-            room_count INT,
+            tabaghe VARCHAR(10),
+            vahed VARCHAR(20),
+            otagh INT,
             parking VARCHAR(20),
             asansor VARCHAR(20),
             anbari VARCHAR(20),
@@ -1382,6 +1386,8 @@ def sabt_ejareh_maskoni():
             garmayesh VARCHAR(20),
             kaf VARCHAR(20),
             toilet VARCHAR(20),
+            ejareh VARCHAR(20),
+            pish VARCHAR(20)
         )
         """
 
@@ -1389,8 +1395,8 @@ def sabt_ejareh_maskoni():
 
         sql_insert = """
         INSERT INTO sabt_ejareh_maskoni 
-        (type_melk,sal_sakht,address,floor,block,room_count,parking,asansor,anbari,sarmayesh,garmayesh,kaf,toilet)
-        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+        (type_melk,sal_sakht,address,tabaghe,vahed,otagh,parking,asansor,anbari,sarmayesh,garmayesh,kaf,toilet,ejareh,pish)
+        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
         """
 
         values = (
@@ -1406,7 +1412,9 @@ def sabt_ejareh_maskoni():
             sarmaesh_ejareh_maskoni_combo.get(),
             garmaesh_ejareh_maskoni_combo.get(),
             kaf_ejareh_maskoni_combo.get(),
-            toilet_ejareh_maskoni_combo.get()
+            toilet_ejareh_maskoni_combo.get(),
+            float(gheimat_ejare_ejare_maskoni_entry.get()),
+            float(gheimat_pish_ejare_maskoni_entry.get())
 
         )
 
@@ -1439,16 +1447,16 @@ def sabt_ejareh_edari_tejari():
             metraj_melk VARCHAR(20),
             sal_sakht VARCHAR(20),
             address VARCHAR(225),
-            floor VARCHAR(10),
-            block VARCHAR(20),
+            tabaghe VARCHAR(10),
+            vahed VARCHAR(20),
             parking VARCHAR(20),
             asansor VARCHAR(20),
             anbari VARCHAR(20),
             aab_va_gaz VARCHAR(20),
             system_sarmayesh VARCHAR(20),
             system_garmayesh VARCHAR(20),
-            price DECIMAL(15,2),
-            ejareh_price DECIMAL(15,2),
+            gheimat_vadie DECIMAL(15,2),
+            gheimat_ejareh DECIMAL(15,2),
             rahn_kamel VARCHAR(20)
         )
         """
@@ -1456,7 +1464,7 @@ def sabt_ejareh_edari_tejari():
 
         sql_insert = """
         INSERT INTO sabt_ejareh_edari_tejari
-        (type_melk,metraj_melk,sal_sakht,address,floor,block,parking,asansor,anbari,aab_va_gaz,system_sarmayesh,system_garmayesh,price,ejareh_price,rahn_kamel)
+        (type_melk,metraj_melk,sal_sakht,address,tabaghe,vahed,parking,asansor,anbari,aab_va_gaz,system_sarmayesh,system_garmayesh,gheimat_vadie,gheimat_ejareh,rahn_kamel)
         VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
         """
         values = (
@@ -1620,8 +1628,8 @@ def sabt_ejareh_karghah():
             karbari_zamin VARCHAR(50) NOT NULL,
             metraj VARCHAR(20),
             loctaion_and_address VARCHAR(225),
-            mablagh DECIMAL(15,2),
-            price DECIMAL(15,2),
+            gheimat_vadie DECIMAL(15,2),
+            gheimat_metrazh DECIMAL(15,2),
             time_ejare VARCHAR(20),
             sal_sakht VARCHAR(20),
             vaziat_bargh VARCHAR(30),
@@ -1640,7 +1648,7 @@ def sabt_ejareh_karghah():
         cursor.execute(sql_create)
         sql_insert = """
         INSERT INTO sabt_ejareh_karghah
-        (karbari_zamin,metraj,loctaion_and_address,mablagh,price,time_ejare,sal_sakht,vaziat_bargh,garmayesh,fan,panke,kooler_abi,kooler_gazi,vaziat_ab,abzar,toilet,hamam,otagh)
+        (karbari_zamin,metraj,loctaion_and_address,gheimat_vadie,gheimat_metrazh,time_ejare,sal_sakht,vaziat_bargh,garmayesh,fan,panke,kooler_abi,kooler_gazi,vaziat_ab,abzar,toilet,hamam,otagh)
         VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
         """
         values = (
@@ -2179,7 +2187,7 @@ toilet_ejareh_maskoni_combo.place(x=120, y=230)
 
 
 # --- دکمه‌های پایین صفحه ---
-save_optoin_ejareh_maskoni = tk.Button(option_file_frame_ejareh_maskoni, text="ذخیره", command=None, bg="#00BFFF", fg="#000000", width=10, height=1)
+save_optoin_ejareh_maskoni = tk.Button(option_file_frame_ejareh_maskoni, text="تایید", command=save_option_ejareh_maskoni, bg="#00BFFF", fg="#000000", width=10, height=1)
 save_optoin_ejareh_maskoni.place(x=95, y=320)
 
 back_to_ejareh_maskoni = tk.Button(option_file_frame_ejareh_maskoni, text="بازگشت", command=back_to_ejareh_maskoni, bg="#00BFFF", fg="#000000", width=10, height=1)
@@ -2883,7 +2891,7 @@ vaziat_ab_ejareh_kargah=tk.Label(option_file_frame_ejareh_kargah,bg="#052340",fg
 vaziat_ab_ejareh_kargah.place(x=303, y=230)
 
 vaziat_ab_ejareh_kargah_combo=ttk.Combobox(option_file_frame_ejareh_kargah,width=35)
-vaziat_ab_ejareh_kargah_combo["values"]=(""," آب مستقیم لوله کشی (بدون فشار) " ," آب مستقیم لوله کشی (همراه موتور فشار) ","دارای منبع(همراه موتور فشار)","دارای منبع(بدون فشار)")
+vaziat_ab_ejareh_kargah_combo["values"]=(""," آب  لوله کشی (بدون فشار) " ," آب لوله کشی (همراه موتور فشار) ","دارای منبع(همراه موتور فشار)","دارای منبع(بدون فشار)")
 vaziat_ab_ejareh_kargah_combo.set("")
 vaziat_ab_ejareh_kargah_combo["state"]=["readonly"]
 vaziat_ab_ejareh_kargah_combo.place(x=30, y=230)
@@ -2892,7 +2900,7 @@ abzar_ejareh_kargah=tk.Label(option_file_frame_ejareh_kargah,bg="#052340",fg="#f
 abzar_ejareh_kargah.place(x=298, y=260)
 
 abzaar_ejareh_kargah_combo=ttk.Combobox(option_file_frame_ejareh_kargah,width=23)
-abzaar_ejareh_kargah_combo["values"]=("","(کارگاه خالی) بدون دستگاه ","دارای دستگاه های تولیدی")
+abzaar_ejareh_kargah_combo["values"]=("","(کارگاه خالی) بدون دستگاه ","دارای دستگاه")
 abzaar_ejareh_kargah_combo.set("")
 abzaar_ejareh_kargah_combo["state"]=["readonly"]
 abzaar_ejareh_kargah_combo.place(x=58, y=260)
