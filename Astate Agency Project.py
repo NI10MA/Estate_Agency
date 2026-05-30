@@ -72,11 +72,11 @@ image_forosh_maskoni=Image.open("Images/forosh_maskoni.jpg")
 image_forosh_edari_tejari=Image.open("Images/forosh_edari_tejari.jpg")
 image_forosh_bagh_zamin=Image.open("Images/forosh_bagh_zamin.jpg")
 image_forosh_karghah=Image.open("Images/forosh_karghah.jpg")
-#---------------------- تصاویر صفحه های خرید -------------------------------
-image_kharid_maskoni=Image.open("Images/kharid_maskoni.jpg")
-image_kharid_edari_tejari=Image.open("Images/kharid_edari_tejari.jpg")
-image_kharid_bagh_zamin=Image.open("Images/kharid_bagh_zamin.jpg")
-image_kharid_kargah=Image.open("Images/kharid_kargah.jpg")
+#---------------------- تصاویر صفحه های درخواست -------------------------------
+image_darkhast_maskoni=Image.open("Images/darkhast_maskoni.jpg")
+image_darkhast_edari_tejari=Image.open("Images/darkhast_edari_tejari.jpg")
+image_darkhast_bagh_zamin=Image.open("Images/darkhast_bagh_zamin.jpg")
+image_darkhast_kargah=Image.open("Images/darkhast_kargah.jpg")
 
 # root.attributes("-fullscreen", True) <<<-----  App فول اسکرین شدن
 root.configure(bg="#052340")
@@ -99,9 +99,9 @@ menu_frame.pack(padx=2, pady=2, fill="x")
 #endregion
 # ------------- لیست کشویی فیلد فایل های ثبتی-----------
 #region
-def kharid():
-    box_kharid.deiconify()
-    box_kharid.grab_set()
+def darkhast():
+    box_darkhast.deiconify()
+    box_darkhast.grab_set()
 
 def forosh():
     box_forosh.deiconify()
@@ -150,20 +150,20 @@ def open_option8():
     option_file_frame_forosh_kargah.grab_set()
 
 def open_option9():
-    option_file_frame_kharid_maskoni.deiconify()
-    option_file_frame_kharid_maskoni.grab_set()
+    option_file_frame_darkhast_maskoni.deiconify()
+    option_file_frame_darkhast_maskoni.grab_set()
 
 def open_option10():
-    option_file_frame_kharid_edari_tejari.deiconify()
-    option_file_frame_kharid_edari_tejari.grab_set()
+    option_file_frame_darkhast_edari_tejari.deiconify()
+    option_file_frame_darkhast_edari_tejari.grab_set()
 
 def open_option11():
-    option_file_frame_kharid_bagh_zamin.deiconify()
-    option_file_frame_kharid_bagh_zamin.grab_set()
+    option_file_frame_darkhast_bagh_zamin.deiconify()
+    option_file_frame_darkhast_bagh_zamin.grab_set()
 
 def open_option12():
-    option_file_frame_kharid_kargah.deiconify()
-    option_file_frame_kharid_kargah.grab_set()
+    option_file_frame_darkhast_kargah.deiconify()
+    option_file_frame_darkhast_kargah.grab_set()
 
 #endregion
 #=======================================================
@@ -181,6 +181,8 @@ def back_home_ejare_maskoni():
     otagh_ejareh_maskoni_entry.delete(0,tk.END)
     gheimat_ejare_ejare_maskoni_entry.delete(0,tk.END)
     gheimat_pish_ejare_maskoni_entry.delete(0,tk.END)
+    name_malek_ejareh_maskoni_entry.delete(0,tk.END)
+    shomareh_malek_ejareh_maskoni_entry.delete(0,tk.END)
     #پنجره امکانات
     sarmaesh_ejareh_maskoni_combo.set("")
     garmaesh_ejareh_maskoni_combo.set("")
@@ -200,6 +202,8 @@ def back_home_forosh_maskoni():
     vahed_forosh_maskoni_entry.delete(0,tk.END)
     otagh_forosh_maskoni_entry.delete(0,tk.END)
     gheimat_forosh_maskoni_entry.delete(0,tk.END)
+    name_malek_forosh_maskoni_entry.delete(0,tk.END)
+    shomareh_malek_forosh_maskoni_entry.delete(0,tk.END)
     #پنجره امکانات
     sarmaesh_combo_forosh_maskoni.set("")
     garmaesh_combo_forosh_maskoni.set("")
@@ -220,7 +224,8 @@ def back_home_ejareh_edari_tejari():
     vahed_ejareh_edari_tejari_entry.delete(0,tk.END)
     mablagh_ejare_ejareh_edari_tejari_entry.delete(0,tk.END)
     mablagh_pish_ejareh_edari_tejari_entry.delete(0,tk.END)
-    rahn_kamel_checkbutton_ejareh_edari_tejari.deselect() 
+    name_malek_ejareh_edari_tejari_entry.delete(0,tk.END)
+    shomareh_malek_ejareh_edari_tejari_entry.delete(0,tk.END)
     #پنجره امکانات
     ab_va_gaz_combo_emkanat_ejareh_edari_tejari.set("")
     sarmayesh_combo_emkanat_ejareh_edari_tejari.set("")
@@ -239,6 +244,8 @@ def back_home_forosh_edari_tejari():
     vahed_forosh_edari_tejari_entry.delete(0,tk.END)
     mablagh_pish_forosh_edari_tejari_entry.delete(0,tk.END)
     metraj_melk_forosh_edari_tejari_entry.delete(0,tk.END)
+    name_malek_forosh_edari_tejari_entry.delete(0,tk.END)
+    shomareh_malek_forosh_edari_tejari_entry.delete(0,tk.END)
     #پنجره امکانات
     aab_va_gaz_combo_emkanat_forosh_edari_tejari.set("")
     sarmayesh_combo_emkanat_forosh_edari_tejari.set("")
@@ -247,22 +254,21 @@ def back_home_forosh_edari_tejari():
     parking_check_btn_forosh_edari_tejari.deselect()
     anbari_check_btn_forosh_edari_tejari.deselect()
     delete_root()
-#---------------------------برگشت از صفحه خرید اداری/تجاری--------------------
-def back_home_kharid_edari_tejari():
+#---------------------------برگشت از صفحه درخواست اداری/تجاری--------------------
+def back_home_darkhast_edari_tejari():
     root.deiconify()
-    kharid_edari_tejari.withdraw()
-    sal_sakht_kharid_edari_tejari_entry.delete(0,tk.END)
-    addrres_kharid_edari_tejari_entry.delete(0,tk.END)
-    tabaghe_kharid_edari_tejari_entry.delete(0,tk.END)
-    vahed_kharid_edari_tejari_entry.delete(0,tk.END)
-    mablagh_ejare_kharid_edari_tejari_entry.delete(0,tk.END)
-    mablagh_pish_kharid_edari_tejari_entry.delete(0,tk.END)
-    metraj_melk_kharid_edari_tejari_entry.delete(0,tk.END)
-    rahn_kamel_check_btn_kharid_edari_tejari.deselect()
+    darkhast_edari_tejari.withdraw()
+    sal_sakht_darkhast_edari_tejari_entry.delete(0,tk.END)
+    addrres_darkhast_edari_tejari_entry.delete(0,tk.END)
+    tabaghe_darkhast_edari_tejari_entry.delete(0,tk.END)
+    vahed_darkhast_edari_tejari_entry.delete(0,tk.END)
+    mablagh_kharid_darkhast_edari_tejari_entry.delete(0,tk.END)
+    metraj_melk_darkhast_edari_tejari_entry.delete(0,tk.END)
+
     #پنجره امکانات
-    aab_va_gaz_combo_emkanat_kharid_edari_tejari.set("")
-    sarmayesh_combo_emkanat_kharid_edari_tejari.set("")
-    garmayesh_combo_emkanat_kharid_edari_tejari.set("")
+    aab_va_gaz_combo_emkanat_darkhast_edari_tejari.set("")
+    sarmayesh_combo_emkanat_darkhast_edari_tejari.set("")
+    garmayesh_combo_emkanat_darkhast_edari_tejari.set("")
     delete_root()
 #----------------------------برگشت از صفحه اجاره باغ / زمین------------------
 def back_home_ejareh_bagh():
@@ -280,7 +286,6 @@ def back_home_ejareh_bagh():
     # امکانات فروش باغ و زمین
     type_vila_ejareh_bagh_zamin_combo.set("")
     option_ejareh_bagh_zamin_combo.set("")
-    karbari_zamin_combo.set("")
     tree_count_entry.delete(0,tk.END)
     metraj_tree_entry.delete(0,tk.END)
     abyari_combo.set("")
@@ -332,7 +337,6 @@ def back_home_forosh_bagh():
     number_malek_forosh_bagh_entry.delete(0,tk.END)
     number_malek_forosh_bagh_entry.delete(0,tk.END)
     # امکانات فروش باغ و زمین
-    karbary_zamin_forosh_bagh_zamin_combo.set("")
     metraj_derakht_forosh_bagh_zamin_entry.delete(0,tk.END)
     tedad_derakht_forosh_bagh_zamin_entry.delete(0,tk.END)
     abyari_forosh_bagh_zamin_combo.set("")
@@ -381,6 +385,8 @@ def back_home_ejareh_karghah():
     loctaion_ejareh_kargah_entry.delete(0,tk.END)
     gheimat_har_metr_ejareh_kargah_entry.delete(0,tk.END)
     mablagh_pish_ejareh_kargah_entry.delete(0,tk.END) 
+    name_malek_ejareh_kargah_entry.delete(0,tk.END) 
+    shomareh_malek_ejareh_kargah_entry.delete(0,tk.END) 
     #پنجره امکانات
     sal_sakht_ejareh_kargah_entry.delete(0,tk.END)
     vaziat_bargh_ejareh_kargah_combo.set("")
@@ -403,6 +409,8 @@ def back_home_forosh_karghah():
     mablagh_pish_forosh_kargah_entry.delete(0,tk.END)
     gheimat_har_metr_forosh_kargah_entry.delete(0,tk.END)
     metraj_forosh_kargah_entry.delete(0,tk.END)
+    name_malek_forosh_kargah_entry.delete(0,tk.END)
+    shomareh_malek_forosh_kargah_entry.delete(0,tk.END)
     #پنجره امکانات
     sal_sakht_forosh_kargah_entry.delete(0,tk.END)
     vaziat_bargh_forosh_kargah_combo.set("")
@@ -421,106 +429,98 @@ def back_home_forosh_karghah():
 def back_to_ejareh_karghah():
     option_file_frame_ejareh_kargah.withdraw()
     ejareh_karghah.deiconify()
-#-----------------------------برگشت از صفحه خرید باغ / زمین------------------
-def back_home_kharid_bagh():
-    kharid_bagh_zamin.withdraw()
+#-----------------------------برگشت از صفحه درخواست باغ / زمین------------------
+def back_home_darkhast_bagh():
+    darkhast_bagh_zamin.withdraw()
     root.deiconify()    
-    metraj_zamin_kharid_bagh_zamin_entry.delete(0,tk.END)
-    bagh_loctaion_kharid_bagh_zamin_entry.delete(0,tk.END)
-    gheimat_bagh_kharid_bagh_zamin_entry.delete(0,tk.END)
-    gheimat_har_metr_bagh_zamin_kharid_bagh_zamin_entry.delete(0,tk.END)
-    metraj_derakht_kharid_bagh_zamin_entry.delete(0,tk.END)
-    tedad_derakht_kharid_bagh_zamin_entry.delete(0,tk.END)
-    metraj_vila_kharid_bagh_zamin_entry.delete(0,tk.END)
-    sal_sakht_vila_kharid_bagh_zamin_entry.delete(0,tk.END)
+    metraj_zamin_darkhast_bagh_zamin_entry.delete(0,tk.END)
+    bagh_loctaion_darkhast_bagh_zamin_entry.delete(0,tk.END)
+    gheimat_har_metr_bagh_zamin_darkhast_entry.delete(0,tk.END)
+    metraj_derakht_darkhast_bagh_zamin_entry.delete(0,tk.END)
+    tedad_derakht_darkhast_bagh_zamin_entry.delete(0,tk.END)
+    metraj_vila_darkhast_bagh_zamin_entry.delete(0,tk.END)
+    sal_sakht_vila_darkhast_bagh_zamin_entry.delete(0,tk.END)
     # امکانات فروش باغ و زمین
-    karbary_zamin_kharid_bagh_zamin_combo.set("")
-    metraj_derakht_kharid_bagh_zamin_entry.delete(0,tk.END)
-    tedad_derakht_kharid_bagh_zamin_entry.delete(0,tk.END)
-    abyari_kharid_bagh_zamin_combo.set("")
-    type_tree_kharid_bagh_zamin_combo.set("")
-    lable_natige_add_kharid_bagh_zamin.config(text="")
-    label_natige_kharid_bagh_zamin.config(text="")
-    metraj_vila_kharid_bagh_zamin_entry.delete(0,tk.END)
-    sal_sakht_vila_kharid_bagh_zamin_entry.delete(0,tk.END)
-    type_vila_kharid_bagh_zamin_combo.set("")
-    toilet_kharid_bagh_zamin_combo.set("")
-    hamam_kharid_bagh_zamin_combo.set("")
-    sanad_kharid_bagh_zamin_combo.set("")
-    option_kharid_bagh_zamin_combo.set("")
-    chah_kharid_bagh_zamin.deselect()
-    estakhr_kharid_bagh_zamin.deselect()
-    loleh_keshi_ab_kharid_bagh_zamin.deselect()
-    bargh_keshi_kharid_bagh_zamin.deselect()
-    gas_keshi_kharid_bagh_zamin.deselect()
+    metraj_derakht_darkhast_bagh_zamin_entry.delete(0,tk.END)
+    tedad_derakht_darkhast_bagh_zamin_entry.delete(0,tk.END)
+    abyari_darkhast_bagh_zamin_combo.set("")
+    type_tree_darkhast_bagh_zamin_combo.set("")
+    lable_natige_add_darkhast_bagh_zamin.config(text="")
+    label_natige_darkhast_bagh_zamin.config(text="")
+    metraj_vila_darkhast_bagh_zamin_entry.delete(0,tk.END)
+    sal_sakht_vila_darkhast_bagh_zamin_entry.delete(0,tk.END)
+    type_vila_darkhast_bagh_zamin_combo.set("")
+    toilet_darkhast_bagh_zamin_combo.set("")
+    hamam_darkhast_bagh_zamin_combo.set("")
+    sanad_darkhast_bagh_zamin_combo.set("")
+    option_darkhast_bagh_zamin_combo.set("")
+    chah_darkhast_bagh_zamin.deselect()
+    estakhr_darkhast_bagh_zamin.deselect()
+    bargh_keshi_darkhast_bagh_zamin.deselect()
+ 
     #تغییر کاربری
-    metraj_zamin2_kharid_bagh_zamin_entry.delete(0,tk.END)
-    karbari_kharid_bagh_zamin_combo.set("")
-    khak_kharid_bagh_zamin_combo.set("")
-    ab_kharid_bagh_zamin_combo.set("")
-    zamin_shekl_kharid_bagh_zamin_combo.set("")
-    kesht_kharid_bagh_zamin_combo.set("")
-    metraj_vila_kharid_bagh_zamin_entry.config(state="disabled")
-    sal_sakht_vila_kharid_bagh_zamin_entry.config(state="disabled")
-    type_vila_kharid_bagh_zamin_combo.config(state="disabled")
-    toilet_kharid_bagh_zamin_combo.config(state="disabled")
-    hamam_kharid_bagh_zamin_combo.config(state="disabled")
-    sanad_kharid_bagh_zamin_combo.config(state="disabled")
-    option_kharid_bagh_zamin_combo.config(state="disabled")
-    mojavez_sakht_check_btn_kharid_bagh_zamin.config(state="disabled")
-    mohavate_sazi_check_btn_kharid_bagh_zamin.config(state="disabled")
-    otagh_check_btn_kharid_bagh_zamin.deselect()
-    security_zamin_kharid_bagh_zamin.deselect()
-    bargh_kesi_zamin_kharid_bagh_zamin.deselect()
-    bargh_keshi_zamin_kharid_bagh_zamin2.deselect()
-    anbar_zamin_kharid_bagh_zamin.deselect()
-    fans_zamin_kharid_bagh_zamin.deselect()
-    mojavez_golkhane_zamin_kharid_bagh_zamin.deselect()
-    mojavez_chah_zamin_kharid_bagh_zamin.deselect()
-    bardasht_zamin_kharid_bagh_zamin.deselect()
-    dam_zamin_kharid_bagh_zamin.deselect()
-    divar_kharid_bagh_zamin.deselect()
+    metraj_zamin2_darkhast_bagh_zamin_entry.delete(0,tk.END)
+    karbari_darkhast_bagh_zamin_combo.set("")
+    khak_darkhast_bagh_zamin_combo.set("")
+    ab_darkhast_bagh_zamin_combo.set("")
+    metraj_vila_darkhast_bagh_zamin_entry.config(state="disabled")
+    sal_sakht_vila_darkhast_bagh_zamin_entry.config(state="disabled")
+    type_vila_darkhast_bagh_zamin_combo.config(state="disabled")
+    toilet_darkhast_bagh_zamin_combo.config(state="disabled")
+    hamam_darkhast_bagh_zamin_combo.config(state="disabled")
+    sanad_darkhast_bagh_zamin_combo.config(state="disabled")
+    option_darkhast_bagh_zamin_combo.config(state="disabled")
+    mojavez_sakht_check_btn_darkhast_bagh_zamin.config(state="disabled")
+    mohavate_sazi_check_btn_darkhast_bagh_zamin.config(state="disabled")
+    otagh_check_btn_darkhast_bagh_zamin.deselect()
+    security_zamin_darkhast_bagh_zamin.deselect()
+    bargh_kesi_zamin_darkhast_bagh_zamin.deselect()
+    bargh_keshi_zamin_darkhast_bagh_zamin2.deselect()
+    anbar_zamin_darkhast_bagh_zamin.deselect()
+    fans_zamin_darkhast_bagh_zamin.deselect()
+    mojavez_chah_zamin_darkhast_bagh_zamin.deselect()
+    divar_darkhast_bagh_zamin.deselect()
     delete_root()
-#-----------------------------برگشت از صفحه خرید کارگاه--------------------
-def back_home_kharid_kargah():
-    kharid_kargah.withdraw()   
+#-----------------------------برگشت از صفحه درخواست کارگاه--------------------
+def back_home_darkhast_kargah():
+    darkhast_kargah.withdraw()   
     root.deiconify()
-    metraj_kharid_kargah_entry.delete(0,tk.END)
-    loctaion_kharid_kargah_entry.delete(0,tk.END)
-    gheimat_har_metr_kharid_kargah_entry.delete(0,tk.END)
-    mablagh_pish_kharid_kargah_entry.delete(0,tk.END)
+    metraj_darkhast_kargah_entry.delete(0,tk.END)
+    loctaion_darkhast_kargah_entry.delete(0,tk.END)
+    gheimat_har_metr_darkhast_kargah_entry.delete(0,tk.END)
+    mablagh_pish_darkhast_kargah_entry.delete(0,tk.END)
     #پنجره امکانات
-    sal_sakht_kharid_kargah_entry.delete(0,tk.END)
-    vaziat_bargh_kharid_kargah_combo.set("")
-    garmayesh_type_kharid_kargah_combo.set("")
-    vaziat_ab_kharid_kargah_combo.set("")
-    abzaar_kharid_kargah_combo.set("")
-    toilet_kharid_kargah_combo.set("")
-    hamam_kharid_kargah__combo.set("")
-    otagh_kharid_kargah_combo.set("")
-    sarmayesh_panke_kharid_kargah.deselect()
-    sarmayesh_kooler_abi_kharid_kargah.deselect()
-    sarmayesh_kooler_gazi_kharid_kargah.deselect()
-    sarmayesh_fan_kharid_kargah.deselect()
+    sal_sakht_darkhast_kargah_entry.delete(0,tk.END)
+    vaziat_bargh_darkhast_kargah_combo.set("")
+    garmayesh_type_darkhast_kargah_combo.set("")
+    vaziat_ab_darkhast_kargah_combo.set("")
+    abzaar_darkhast_kargah_combo.set("")
+    toilet_darkhast_kargah_combo.set("")
+    hamam_darkhast_kargah__combo.set("")
+    otagh_darkhast_kargah_combo.set("")
+    sarmayesh_panke_darkhast_kargah.deselect()
+    sarmayesh_kooler_abi_darkhast_kargah.deselect()
+    sarmayesh_kooler_gazi_darkhast_kargah.deselect()
+    sarmayesh_fan_darkhast_kargah.deselect()
     delete_root()
-#----------------------------برگشت از صفحه خرید مسکونی-------------------
-def back_home_kharid_maskoni():
+#----------------------------برگشت از صفحه درخواست مسکونی-------------------
+def back_home_darkhast_maskoni():
     root.deiconify()
-    kharid_maskoni_page.withdraw()
-    sal_sakht_kharid_maskoni_entry.delete(0,tk.END)
-    addrres_kharid_maskoni_entry.delete(0,tk.END)
-    tabaghe_kharid_maskoni_entry.delete(0,tk.END)
-    vahed_kharid_maskoni_entry.delete(0,tk.END)
-    otagh_kharid_maskoni_entry.delete(0,tk.END)
-    gheimat_kharid_maskoni_entry.delete(0,tk.END)
+    darkhast_maskoni_page.withdraw()
+    sal_sakht_darkhast_maskoni_entry.delete(0,tk.END)
+    addrres_darkhast_maskoni_entry.delete(0,tk.END)
+    tabaghe_darkhast_maskoni_entry.delete(0,tk.END)
+    vahed_darkhast_maskoni_entry.delete(0,tk.END)
+    otagh_darkhast_maskoni_entry.delete(0,tk.END)
+    gheimat_darkhast_maskoni_entry.delete(0,tk.END)
     #پنجره امکانات
-    sarmaesh_combo_kharid_maskoni.set("")
-    garmaesh_combo_kharid_maskoni.set("")
-    kaf_combo_kharid_maskoni.set("")
-    toilet_combo_kharid_maskoni.set("")
-    parking_ch_btn_kharid_maskoni.deselect()
-    asansor_ch_btn_kharid_maskoni.deselect()
-    anbari_checkbuton_kharid_maskoni.deselect()
+    sarmaesh_combo_darkhast_maskoni.set("")
+    garmaesh_combo_darkhast_maskoni.set("")
+    kaf_combo_darkhast_maskoni.set("")
+    toilet_combo_darkhast_maskoni.set("")
+    parking_ch_btn_darkhast_maskoni.deselect()
+    asansor_ch_btn_darkhast_maskoni.deselect()
+    anbari_checkbuton_darkhast_maskoni.deselect()
     delete_root()
 #endregion
 #region #توابع تایید اپشن ها 
@@ -533,17 +533,17 @@ def save_option_forosh_edari_tejari():
     option_file_frame_forosh_edari_tejari.withdraw()
     option_file_frame_forosh_edari_tejari.grab_release()
 
-def save_option_forosh_kargah():
-    option_file_frame_forosh_kargah.withdraw()
-    option_file_frame_forosh_kargah.grab_release()
-    
-def save_option_kharid_maskoni():
-    option_file_frame_kharid_maskoni.withdraw()
-    option_file_frame_kharid_maskoni.grab_release()
-
 def save_option_forosh_bagh_zamin():
     option_file_frame_forosh_bagh_zamin.withdraw()
     option_file_frame_forosh_bagh_zamin.grab_release()
+
+def save_option_forosh_kargah():
+    option_file_frame_forosh_kargah.withdraw()
+    option_file_frame_forosh_kargah.grab_release()
+
+def save_option_ejareh_maskoni():
+    option_file_frame_ejareh_maskoni.withdraw()
+    option_file_frame_ejareh_maskoni.grab_release()
 
 def save_option_ejareh_edari_tejari():
     option_file_frame_ejareh_edari_tajari.withdraw()
@@ -557,10 +557,21 @@ def save_option_ejareh_kargah():
     option_file_frame_ejareh_kargah.withdraw()
     option_file_frame_ejareh_kargah.grab_release()
 
-def save_option_ejareh_maskoni():
-    option_file_frame_ejareh_maskoni.withdraw()
-    option_file_frame_ejareh_maskoni.grab_release()
+def save_option_darkhast_maskoni():
+    option_file_frame_darkhast_maskoni.withdraw()
+    option_file_frame_darkhast_maskoni.grab_release()
 
+def save_option_darkhast_edari_tejari():
+    option_file_frame_darkhast_edari_tejari.withdraw()
+    option_file_frame_darkhast_edari_tejari.grab_release()
+
+def save_option_darkhast_bagh_zamin():
+    option_file_frame_darkhast_bagh_zamin.withdraw()
+    option_file_frame_darkhast_bagh_zamin.grab_release()
+
+def save_option_darkhast_kargah():
+    option_file_frame_darkhast_kargah.withdraw()
+    option_file_frame_darkhast_kargah.grab_release()
 #endregion
 #=========================================================
 #--------برگشت از امکانات فایل ها به صفحه اصلی ثبتی-------
@@ -598,25 +609,25 @@ def  back_to_forosh_bagh_zamin():
 def  back_to_forosh_karghah():
      option_file_frame_forosh_kargah.withdraw()
      option_file_frame_forosh_kargah.grab_release()
-#-----------------------------برگشت خرید مسکونی--------------------------
-def back_to_kharid_maskoni():
-    option_file_frame_kharid_maskoni.withdraw()
-    option_file_frame_kharid_maskoni.grab_release()
-#--------برگشت خرید اداری/تجاری----------------- 
-def back_to_kharid_edari_tejari():
-    option_file_frame_kharid_edari_tejari.withdraw()
-    option_file_frame_kharid_edari_tejari.grab_release()
-    parking_check_btn_kharid_edari_tejari.deselect()
-    asansor_check_btn_kharid_edari_tejari.deselect()
-    anbari_check_btn_kharid_edari_tejari.deselect()
-#--------------------برگشت خرید باغ و زمین------------------------------------------------
-def  back_to_kharid_bagh_zamin():
-     option_file_frame_kharid_bagh_zamin.withdraw()
-     option_file_frame_kharid_bagh_zamin.grab_release()
-#-------------------برگشت خرید کارگاه---------------------------
-def  back_to_kharid_kargah():
-     option_file_frame_kharid_kargah.withdraw()
-     option_file_frame_kharid_kargah.grab_release()
+#-----------------------------برگشت درخواست مسکونی--------------------------
+def back_to_darkhast_maskoni():
+    option_file_frame_darkhast_maskoni.withdraw()
+    option_file_frame_darkhast_maskoni.grab_release()
+#--------برگشت درخواست اداری/تجاری----------------- 
+def back_to_darkhast_edari_tejari():
+    option_file_frame_darkhast_edari_tejari.withdraw()
+    option_file_frame_darkhast_edari_tejari.grab_release()
+    parking_check_btn_darkhast_edari_tejari.deselect()
+    asansor_check_btn_darkhast_edari_tejari.deselect()
+    anbari_check_btn_darkhast_edari_tejari.deselect()
+#--------------------برگشت درخواست باغ و زمین------------------------------------------------
+def  back_to_darkhast_bagh_zamin():
+     option_file_frame_darkhast_bagh_zamin.withdraw()
+     option_file_frame_darkhast_bagh_zamin.grab_release()
+#-------------------برگشت درخواست کارگاه---------------------------
+def  back_to_darkhast_kargah():
+     option_file_frame_darkhast_kargah.withdraw()
+     option_file_frame_darkhast_kargah.grab_release()
 #----------برگشت باکس ها(نوع ملک)-------------
 def back_forosh_exit():
     box_forosh.withdraw()
@@ -626,9 +637,9 @@ def back_rehn_ejareh_exit():
     box_rehn_ejareh.withdraw()
     box_rehn_ejareh.grab_release()
 
-def back_kharid_exit():
-    box_kharid.withdraw()
-    box_kharid.grab_release()
+def back_darkhast_exit():
+    box_darkhast.withdraw()
+    box_darkhast.grab_release()
 
 def back_mosharekat_exit():
     box_mosharekat.withdraw()
@@ -636,7 +647,6 @@ def back_mosharekat_exit():
 #endregion
 
 #============================================
-#region
 #--------باز و بسته کردن بین باکس ها----------------
 #-----بستن باکس و باز کردن صفحه اجاره مسکونی-----------
 def ejareh_rehn_page():
@@ -686,30 +696,30 @@ def forosh_karghah():
     root.withdraw()
     forosh_karghah.deiconify() 
     box_forosh.grab_release()
-#--------بستن باکس و باز کردن صفحه خرید مسکونی--------
-def kharid_maskoni_page():
-    box_kharid.withdraw()
+#--------بستن باکس و باز کردن صفحه درخواست مسکونی--------
+def darkhast_maskoni_page():
+    box_darkhast.withdraw()
     root.withdraw()
-    kharid_maskoni_page.deiconify() 
-    box_kharid.grab_release()
-#-----بستن باکس و باز کردن صفحه خرید اداری/تجاری-----------
-def kharid_edari_tejari():
-    box_kharid.withdraw()
+    darkhast_maskoni_page.deiconify() 
+    box_darkhast.grab_release()
+#-----بستن باکس و باز کردن صفحه درخواست اداری/تجاری-----------
+def darkhast_edari_tejari():
+    box_darkhast.withdraw()
     root.withdraw()
-    kharid_edari_tejari.deiconify()
-    box_kharid.grab_release()
-#-----بستن باکس و باز کردن صفحه خرید باغ/زمین---------
-def kharid_bagh_zamin():
-    box_kharid.withdraw()
+    darkhast_edari_tejari.deiconify()
+    box_darkhast.grab_release()
+#-----بستن باکس و باز کردن صفحه درخواست باغ/زمین---------
+def darkhast_bagh_zamin():
+    box_darkhast.withdraw()
     root.withdraw()
-    kharid_bagh_zamin.deiconify()
-    box_kharid.grab_release()   
-#------بستن باکس و باز کردن صفحه خرید کارگاه-----------
-def kharid_kargah():
-    box_kharid.withdraw()
+    darkhast_bagh_zamin.deiconify()
+    box_darkhast.grab_release()   
+#------بستن باکس و باز کردن صفحه درخواست کارگاه-----------
+def darkhast_kargah():
+    box_darkhast.withdraw()
     root.withdraw()
-    kharid_kargah.deiconify()
-    box_kharid.grab_release()   
+    darkhast_kargah.deiconify()
+    box_darkhast.grab_release()   
 
 #-------------رادیو باتن باکس-------------------
 #تابع رادیو باتن باز و بسته کردن صفحات فروش
@@ -768,33 +778,33 @@ def sabt_radio_rehn():
             ejareh_karghah.deiconify()
             box_rehn_ejareh.grab_release()
 
-#تابع رادیو باتن باز و بسته کردن صفحات خرید
-def sabt_radio_kharid():
-    selected = kharid_radio_value.get()
+#تابع رادیو باتن باز و بسته کردن صفحات درخواست
+def sabt_radio_darkhast():
+    selected = darkhast_radio_value.get()
 
     if selected==0:
-            box_kharid.withdraw()
+            box_darkhast.withdraw()
             root.withdraw()
-            kharid_maskoni_page.deiconify()
-            box_kharid.grab_release()
+            darkhast_maskoni_page.deiconify()
+            box_darkhast.grab_release()
         
     elif selected==2:
-        box_kharid.withdraw()
+        box_darkhast.withdraw()
         root.withdraw()
-        kharid_edari_tejari.deiconify()
-        box_kharid.grab_release()
+        darkhast_edari_tejari.deiconify()
+        box_darkhast.grab_release()
 
     elif selected==4:
-        box_kharid.withdraw()
+        box_darkhast.withdraw()
         root.withdraw()
-        kharid_bagh_zamin.deiconify()
-        box_kharid.grab_release()
+        darkhast_bagh_zamin.deiconify()
+        box_darkhast.grab_release()
 
     elif selected==6:
-        box_kharid.withdraw()
+        box_darkhast.withdraw()
         root.withdraw()
-        kharid_kargah.deiconify()
-        box_kharid.grab_release()
+        darkhast_kargah.deiconify()
+        box_darkhast.grab_release()
 
 #تابع رادیو باتن باز و بسته کردن صفحات مشارکت
 def sabt_radio_mosharekat():
@@ -818,13 +828,12 @@ def sabt_radio_mosharekat():
         root.withdraw()
         #pishforosh_page.deiconify()
         box_mosharekat.grab_release()
-#endregion
-            
+#endregion        
 #=======================================================
 #region
-#---------------/جابه جایی کاربری باغ و زمین در قسمت های فروش/خرید/اجاره-------------
+#---------------/جابه جایی کاربری باغ و زمین در قسمت های فروش/درخواست/اجاره-------------
 def change_bagh_zamin1(event):
-    co=karbari_zamin_combo.get()
+    co=bagh_type_combo.get()
     if co=="باغ":
         fram_option_zamin_ejareh_bagh_zamin.place_forget()
         option_frame_options_ejareh_bagh_zamin.place(x=1,y=60,relwidth=1,relheight=1)
@@ -832,21 +841,21 @@ def change_bagh_zamin1(event):
         option_frame_options_ejareh_bagh_zamin.place_forget()
         fram_option_zamin_ejareh_bagh_zamin.place(x=1,y=60,relwidth=1,relheight=1)
 def change_bagh_zamin_forosh_bagh(event):
-    co=karbary_zamin_forosh_bagh_zamin_combo.get()
+    co=bagh_type_forosh_bagh_zamin_combo.get()
     if co=="باغ":
         option_frame_option2_forosh_bagh_zamin.place_forget()
         option_frame_forosh_bagh_zamin.place(x=1,y=60,relwidth=1,relheight=1)#فریم باغ
     else:
         option_frame_forosh_bagh_zamin.place_forget()
         option_frame_option2_forosh_bagh_zamin.place(x=1,y=60,relwidth=1,relheight=1)
-def change_bagh_zamin_kharid_bagh(event):
-    co=karbary_zamin_kharid_bagh_zamin_combo.get()
+def change_bagh_zamin_darkhast_bagh(event):
+    co=bagh_type_darkhast_bagh_zamin_combo.get()
     if co=="باغ":
-        option_frame_option2_kharid_bagh_zamin.place_forget()
-        option_frame_kharid_bagh_zamin.place(x=1,y=60,relwidth=1,relheight=1)
+        option_frame_option2_darkhast_bagh_zamin.place_forget()
+        option_frame_darkhast_bagh_zamin.place(x=1,y=60,relwidth=1,relheight=1)
     else:
-        option_frame_kharid_bagh_zamin.place_forget()
-        option_frame_option2_kharid_bagh_zamin.place(x=1,y=60,relwidth=1,relheight=1)
+        option_frame_darkhast_bagh_zamin.place_forget()
+        option_frame_option2_darkhast_bagh_zamin.place(x=1,y=60,relwidth=1,relheight=1)
 #endregion
 #=============================================================  
 #region    
@@ -864,21 +873,6 @@ def add_option():
         selected_option.append(op)
         label_result2_add.config(text=','.join(selected_option))
 
-
-
-selected_topo3=[]
-def add_topo3():
-    topo3=zamin_shekl_kharid_bagh_zamin_combo.get()
-    if topo3 and topo3 not in selected_topo3:
-        selected_topo3.append(topo3)
-        label_natige_topo_add_kharid_bagh_zamin.config(text=','.join(selected_topo3))
-
-def choos_kesht3(event):
-    c=kesht_kharid_bagh_zamin_combo.get()
-    if c=="بدون کشت":
-        kesht_kharid_bagh_zamin_entry.config(state="disabled")
-    else:
-        kesht_kharid_bagh_zamin_entry.config(state="normal")
 selected_trees2=[]
 def add_tree2():
     t3=type_tree_forosh_bagh_zamin_combo.get()
@@ -893,16 +887,16 @@ def add_option2():
         lable_natige_add_forosh_bagh_zamin.config(text=','.join(selected_option2))
 selected_trees3=[]
 def add_tree3():
-    t4=type_tree_kharid_bagh_zamin_combo.get()
+    t4=type_tree_darkhast_bagh_zamin_combo.get()
     if t4 and t4 not in selected_trees3:
         selected_trees3.append(t4)
-        label_natige_kharid_bagh_zamin.config(text=','.join(selected_trees3))
+        label_natige_darkhast_bagh_zamin.config(text=','.join(selected_trees3))
 selected_option3=[]
 def add_option3():
-    op3=option_kharid_bagh_zamin_combo.get()
+    op3=option_darkhast_bagh_zamin_combo.get()
     if op3 and op3 not in selected_option3:
         selected_option3.append(op3)
-        lable_natige_add_kharid_bagh_zamin.config(text=','.join(selected_option3))
+        lable_natige_add_darkhast_bagh_zamin.config(text=','.join(selected_option3))
 #endregion
 #====================================================================================
 #=====================================================================================
@@ -950,28 +944,28 @@ def home_true_false2(): #برای فعال یا غیر فعال کردن ویج�
         option_forosh_bagh_zamin_combo.config(state="disabled")
         mojavez_sakht_check_btn_forosh_bagh_zamin.config(state="disabled")
         mohavate_sazi_check_btn_forosh_bagh_zamin.config(state="disabled")
-def home_true_false3(): #برای فعال یا غیر فعال کردن ویجت های خونه باغ در خرید
-    if var0_kharid_bagh_zamin.get()==1:
-        metraj_vila_kharid_bagh_zamin_entry.config(state="normal")
-        sal_sakht_vila_kharid_bagh_zamin_entry.config(state="normal")
-        type_vila_kharid_bagh_zamin_combo.config(state="readonly")
-        toilet_kharid_bagh_zamin_combo.config(state="readonly")
-        hamam_kharid_bagh_zamin_combo.config(state="readonly")
-        sanad_kharid_bagh_zamin_combo.config(state="readonly")
-        option_kharid_bagh_zamin_combo.config(state="readonly")
-        divar_kharid_bagh_zamin.config(state="normal")
-        mojavez_sakht_check_btn_kharid_bagh_zamin.config(state="normal")
-        mohavate_sazi_check_btn_kharid_bagh_zamin.config(state="normal")
+def home_true_false3(): #برای فعال یا غیر فعال کردن ویجت های خونه باغ در درخواست
+    if var0_darkhast_bagh_zamin.get()==1:
+        metraj_vila_darkhast_bagh_zamin_entry.config(state="normal")
+        sal_sakht_vila_darkhast_bagh_zamin_entry.config(state="normal")
+        type_vila_darkhast_bagh_zamin_combo.config(state="readonly")
+        toilet_darkhast_bagh_zamin_combo.config(state="readonly")
+        hamam_darkhast_bagh_zamin_combo.config(state="readonly")
+        sanad_darkhast_bagh_zamin_combo.config(state="readonly")
+        option_darkhast_bagh_zamin_combo.config(state="readonly")
+        divar_darkhast_bagh_zamin.config(state="normal")
+        mojavez_sakht_check_btn_darkhast_bagh_zamin.config(state="normal")
+        mohavate_sazi_check_btn_darkhast_bagh_zamin.config(state="normal")
     else:
-        metraj_vila_kharid_bagh_zamin_entry.config(state="disabled")
-        sal_sakht_vila_kharid_bagh_zamin_entry.config(state="disabled")
-        type_vila_kharid_bagh_zamin_combo.config(state="disabled")
-        toilet_kharid_bagh_zamin_combo.config(state="disabled")
-        hamam_kharid_bagh_zamin_combo.config(state="disabled")
-        sanad_kharid_bagh_zamin_combo.config(state="disabled")
-        option_kharid_bagh_zamin_combo.config(state="disabled")
-        mojavez_sakht_check_btn_kharid_bagh_zamin.config(state="disabled")
-        mohavate_sazi_check_btn_kharid_bagh_zamin.config(state="disabled")
+        metraj_vila_darkhast_bagh_zamin_entry.config(state="disabled")
+        sal_sakht_vila_darkhast_bagh_zamin_entry.config(state="disabled")
+        type_vila_darkhast_bagh_zamin_combo.config(state="disabled")
+        toilet_darkhast_bagh_zamin_combo.config(state="disabled")
+        hamam_darkhast_bagh_zamin_combo.config(state="disabled")
+        sanad_darkhast_bagh_zamin_combo.config(state="disabled")
+        option_darkhast_bagh_zamin_combo.config(state="disabled")
+        mojavez_sakht_check_btn_darkhast_bagh_zamin.config(state="disabled")
+        mohavate_sazi_check_btn_darkhast_bagh_zamin.config(state="disabled")
 selected_trees2=[]
 def add_tree2():
     t3=type_tree_forosh_bagh_zamin_combo.get()
@@ -1008,15 +1002,19 @@ def sabt_forosh_maskoni():
             garmayesh VARCHAR(20),
             kaf VARCHAR(20),
             toilet VARCHAR(20),
-            gheimat DECIMAL(15,2)
+            gheimat DECIMAL(15,2),
+            name_malk VARCHAR(20),
+            shomareh_malk INT
+
         )
         """
         cursor.execute(sql_create)
 
         sql_insert = """
         INSERT INTO sabt_forosh_maskoni 
-        (type_melk,sal_sakht,address,tabaghe,vahed,otagh,parking,asansor,anbari,sarmayesh,garmayesh,kaf,toilet,gheimat)
-        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+        (type_melk,sal_sakht,address,tabaghe,vahed,otagh,parking,asansor,
+        anbari,sarmayesh,garmayesh,kaf,toilet,gheimat,name_malk,shomareh_malk)
+        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
         """
         values = (
             melk_type_forosh_maskoni_entry.get(),
@@ -1032,7 +1030,10 @@ def sabt_forosh_maskoni():
             garmaesh_combo_forosh_maskoni.get(),
             kaf_combo_forosh_maskoni.get(),
             toilet_combo_forosh_maskoni.get(),
+            name_malek_forosh_maskoni_entry.get(),
+            shomareh_malek_forosh_maskoni_entry.get(),
             float(gheimat_forosh_maskoni_entry.get())
+
         )
 
         cursor.execute(sql_insert, values)
@@ -1070,15 +1071,19 @@ def sabt_forosh_edari_tejari():
             aab_va_gaz VARCHAR(20),
             system_sarmayesh VARCHAR(20),
             system_garmayesh VARCHAR(20),
-            gheimat DECIMAL(15,2)
+            mablagh DECIMAL(15,2),
+            name_malk VARCHAR(20),
+            shomareh_malk INT
+
         )
         """
         cursor.execute(sql_create)
 
         sql_insert = """
         INSERT INTO sabt_forosh_edari_tejari
-        (type_melk,metraj_melk,sal_sakht,address,tabaghe,vahed,parking,asansor,anbari,aab_va_gaz,system_sarmayesh,system_garmayesh,gheimat)
-        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+        (type_melk,metraj_melk,sal_sakht,address,tabaghe,vahed,parking,
+        asansor,anbari,aab_va_gaz,system_sarmayesh,system_garmayesh,mablagh,name_malk,shomareh_malk)
+        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
         """
         values = (
             melk_type_forosh_edari_tejari_entry.get(),
@@ -1093,8 +1098,10 @@ def sabt_forosh_edari_tejari():
             aab_va_gaz_combo_emkanat_forosh_edari_tejari.get(),
             sarmayesh_combo_emkanat_forosh_edari_tejari.get(),
             garmayesh_combo_emkanat_forosh_edari_tejari.get(),
-            float(mablagh_pish_forosh_edari_tejari_entry.get())
-        )
+            float(mablagh_pish_forosh_edari_tejari_entry.get()),
+            name_malek_forosh_edari_tejari_entry.get(),
+            shomareh_malek_forosh_edari_tejari_entry.get())
+        
         cursor.execute(sql_insert, values)
         last_id = cursor.lastrowid
         user_idcode = f"ID-{last_id}"
@@ -1121,10 +1128,17 @@ def sabt_forosh_bagh_zamin_main():
         cursor = db.cursor()
         cursor.execute("CREATE DATABASE IF NOT EXISTS state_agency")
         cursor.execute("USE state_agency")
+
+                # ========== دریافت مقادیر ==========
+        karbari = bagh_type_forosh_bagh_zamin_combo.get()
+        gheimat_str = gheimat_har_metr_babagh_zamin_forosh_entry.get()
+        if not gheimat_str or gheimat_str == "":
+            gheimat_str = "0"
+        gheimat_value = float(gheimat_str)
         
-        # ========== ساخت جدول اصلی ==========
-        cursor.execute("""
-            CREATE TABLE IF NOT EXISTS main_forosh_lands(
+        if karbari == "باغ": 
+            cursor.execute("""
+            CREATE TABLE IF NOT EXISTS forosh_bagh(
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 type_melk VARCHAR(50) NOT NULL,
                 metraj VARCHAR(20),
@@ -1132,16 +1146,7 @@ def sabt_forosh_bagh_zamin_main():
                 address VARCHAR(255),
                 mablagh_metri DECIMAL(15,2),
                 name_malek VARCHAR(50),
-                number_malek VARCHAR(30),
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )
-        """)
-        
-        # ========== ساخت جدول باغ ==========
-        cursor.execute("""
-            CREATE TABLE IF NOT EXISTS bagh_forosh(
-                id INT AUTO_INCREMENT PRIMARY KEY,
-                property_id INT NOT NULL,
+                shomareh_malek VARCHAR(30),
                 metraj_derakht VARCHAR(10),
                 tedad_derakht VARCHAR(10),
                 type_derakht TEXT,
@@ -1150,7 +1155,7 @@ def sabt_forosh_bagh_zamin_main():
                 estakhr VARCHAR(10),
                 divar VARCHAR(10),
                 sazeh VARCHAR(10),
-                metraj VARCHAR(10),
+                metraj_sazeh VARCHAR(10),
                 sal_sakht VARCHAR(10),
                 type_sazeh VARCHAR(20),
                 emkanat TEXT,
@@ -1160,78 +1165,33 @@ def sabt_forosh_bagh_zamin_main():
                 sanad VARCHAR(20),
                 mohavate VARCHAR(10),
                 bargh VARCHAR (10),
-                FOREIGN KEY (property_id) REFERENCES main_forosh_lands(id) ON DELETE CASCADE
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
-        """)
-        
-        # ========== ساخت جدول زمین (بدون hagh_bardasht) ==========
-        cursor.execute("""
-            CREATE TABLE IF NOT EXISTS zamin_forosh(
-                id INT AUTO_INCREMENT PRIMARY KEY,
-                property_id INT NOT NULL,
-                metraj_zamin INT,
-                karbari_zamin VARCHAR(50),
-                type_khak VARCHAR(20),
-                manba_ab VARCHAR(20),
-                negahbani VARCHAR(20),
-                bargh_takfaz VARCHAR(20),
-                bargh_sefaz VARCHAR(20),
-                anbar VARCHAR(20),
-                fans VARCHAR(20),
-                chah VARCHAR(20),
-                FOREIGN KEY (property_id) REFERENCES main_forosh_lands(id) ON DELETE CASCADE
-            )
-        """)
-        
-        # ========== دریافت مقادیر ==========
-        karbari = karbary_zamin_forosh_bagh_zamin_combo.get()
-        
-        # آماده‌سازی مقادیر جدول اصلی
-        gheimat_str = gheimat_har_metr_babagh_zamin_forosh_entry.get()
-        if not gheimat_str or gheimat_str == "":
-            gheimat_str = "0"
-        gheimat_value = float(gheimat_str)
-        
-        values_main =(
-            melk_type_forosh_bagh_zamin_entry.get(),
-            metraj_zamin_forosh_bagh_zamin_entry.get(),
-            karbari,
-            bagh_loctaion_forosh_bagh_zamin_entry.get(),
-            gheimat_value,
-            name_malek_forosh_bagh_entry.get(),
-            number_malek_forosh_bagh_entry.get()
-        )
-        
-        # ========== INSERT در جدول اصلی ==========
-        sql_main = """
-            INSERT INTO main_forosh_lands(type_melk, metraj, karbari, address, mablagh_metri,name_malek,number_malek)
-            VALUES(%s, %s, %s, %s, %s,%s,%s)
-        """
-        cursor.execute(sql_main, values_main)
-        last_id = cursor.lastrowid
-        
-        if last_id is None or last_id == 0:
-            messagebox.showerror("Error", "خطا: ثبت در جدول اصلی انجام نشد")
-            return
-        
-        # ========== INSERT در جدول فرزند ==========
-        if karbari == "باغ":  
+        """) 
             type_derakht_value = ",".join(selected_trees2) if selected_trees2 else ""
             tedad_derakht_value = str(len(selected_trees2)) if selected_trees2 else "0"
             emkanat_value = ",".join(selected_option2) if selected_option2 else ""
             
             sql_bagh = """
-                INSERT INTO bagh_forosh(
-                    property_id, metraj_derakht, tedad_derakht, type_derakht,
-                    system_ab, chah, estakhr, divar,sazeh, metraj,
+                INSERT INTO forosh_bagh(
+                    type_melk,metraj,karbari,address,mablagh_metri,name_malek,shomareh_malek,
+                    metraj_derakht, tedad_derakht, type_derakht,
+                    system_ab, chah, estakhr, divar,sazeh, metraj_sazeh,
                     sal_sakht, type_sazeh, emkanat, WC, hamam,
                     javaz_sakht, sanad, mohavate,bargh
                 )
-                VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s)
+                VALUES( %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s
+                ,%s,%s,%s,%s,%s,%s,%s)
             """
             
             values_bagh = (
-                last_id,
+                melk_type_forosh_bagh_zamin_entry.get(),
+                metraj_zamin_forosh_bagh_zamin_entry.get(),
+                bagh_type_forosh_bagh_zamin_combo.get(),
+                bagh_loctaion_forosh_bagh_zamin_entry.get(),
+                gheimat_har_metr_babagh_zamin_forosh_entry.get(),
+                name_malek_forosh_bagh_entry.get(),
+                number_malek_forosh_bagh_entry.get(),
                 metraj_derakht_forosh_bagh_zamin_entry.get(),
                 tedad_derakht_value,
                 type_derakht_value,
@@ -1252,21 +1212,56 @@ def sabt_forosh_bagh_zamin_main():
                 bargh_keshi_forosh_bagh_var.get()
             )
             cursor.execute(sql_bagh, values_bagh)
-            
-        elif karbari == "زمین کشاورزی":  
+
+            last_id = cursor.lastrowid
+            if last_id is None or last_id == 0:
+                messagebox.showerror("Error", "خطا: ثبت در جدول  انجام نشد")
+                return
+        elif karbari == "زمین کشاورزی":
+            cursor.execute("""
+            CREATE TABLE IF NOT EXISTS forosh_zamin(
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                type_melk VARCHAR(50) NOT NULL,
+                metraj VARCHAR(20),
+                karbari VARCHAR(20),
+                address VARCHAR(255),
+                mablagh_metri DECIMAL(15,2),
+                name_malek VARCHAR(50),
+                shomareh_malek VARCHAR(30),
+                metraj_zamin VARCHAR(30),
+                karbari_zamin VARCHAR(50),
+                type_khak VARCHAR(20),
+                manba_ab VARCHAR(20),
+                negahbani VARCHAR(20),
+                bargh_takfaz VARCHAR(20),
+                bargh_sefaz VARCHAR(20),
+                anbar VARCHAR(20),
+                fans VARCHAR(20),
+                chah VARCHAR(20),
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP  
+            )
+        """)
+
             sql_zamin = """
-                INSERT INTO zamin_forosh(
-                    property_id, metraj_zamin, karbari_zamin, type_khak,
+                INSERT INTO forosh_zamin(
+                    type_melk,metraj,karbari,address,mablagh_metri,name_malek,shomareh_malek,
+                    metraj_zamin, karbari_zamin,type_khak,
                     manba_ab, negahbani, bargh_takfaz, bargh_sefaz,
                     anbar, fans, chah
                 )
-                VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                VALUES( %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s,%s,%s,%s,%s,%s,%s)
             """
             
             values_zamin = (
-                last_id,
+                melk_type_forosh_bagh_zamin_entry.get(),
+                metraj_zamin_forosh_bagh_zamin_entry.get(),
+                bagh_type_forosh_bagh_zamin_combo.get(),
+                bagh_loctaion_forosh_bagh_zamin_entry.get(),
+                gheimat_har_metr_babagh_zamin_forosh_entry.get(),
+                name_malek_forosh_bagh_entry.get(),
+                number_malek_forosh_bagh_entry.get(),
                 metraj_zamin2_forosh_bagh_zamin_entry.get(),
-                karbary_zamin_forosh_bagh_zamin_combo.get(),
+                bagh_type_forosh_bagh_zamin_combo.get(),
                 khak_forosh_bagh_zamin_combo.get(),
                 ab_forosh_bagh_zamin_combo.get(),
                 security_zamin_forosh_zamin_var.get(),
@@ -1277,10 +1272,14 @@ def sabt_forosh_bagh_zamin_main():
                 javaz_chah_zamin_forosh_zamin_var.get()
             )
             cursor.execute(sql_zamin, values_zamin)
+            last_id = cursor.lastrowid
+            if last_id is None or last_id == 0:
+                messagebox.showerror("Error", "خطا: ثبت در جدول  انجام نشد")
+                return
         
         db.commit()
         user_idcode = f"ID-{last_id}"
-        messagebox.showinfo("Success", f"ثبت با کد {user_idcode} انجام شد.")
+        messagebox.showinfo("Success", f"ثبت با کد {user_idcode} انجام شد.")      
         
     except Exception as e:
         messagebox.showerror("Error", f"خطا در ثبت داده: {e}")
@@ -1318,14 +1317,17 @@ def sabt_forosh_karghah():
             abzar VARCHAR(30),
             toilet VARCHAR(20),
             hamam VARCHAR(20),
-            otagh VARCHAR(20)
+            otagh VARCHAR(20),
+            name_malk VARCHAR(20),
+            shomareh_malk INT
         )
         """
         cursor.execute(sql_create)
         sql_insert = """
         INSERT INTO sabt_forosh_karghah
-        (karbari_zamin,metraj,address,gheimat_vadie,gheimat_metrazh,time_ejare,sal_sakht,vaziat_bargh,garmayesh,fan,panke,kooler_abi,kooler_gazi,vaziat_ab,abzar,toilet,hamam,otagh)
-        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+        (karbari_zamin,metraj,address,gheimat_vadie,gheimat_metrazh,time_ejare,sal_sakht,
+        vaziat_bargh,garmayesh,fan,panke,kooler_abi,kooler_gazi,vaziat_ab,abzar,toilet,hamam,otagh,name_malk,shomareh_malk)
+        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
         """
         values = (
             karbari_forosh_kargah_entry.get(),
@@ -1345,7 +1347,9 @@ def sabt_forosh_karghah():
             abzar_forosh_kargah_combo.get(),
             toilet_forosh_kargah_combo.get(),
             hamam_forosh_kargah_combo.get(),
-            otagh_forosh_kargah_combo.get()
+            otagh_forosh_kargah_combo.get(),
+            name_malek_forosh_kargah_entry.get(),
+            shomareh_malek_forosh_kargah_entry.get()
         )
         cursor.execute(sql_insert, values)
         last_id = cursor.lastrowid
@@ -1387,7 +1391,9 @@ def sabt_ejareh_maskoni():
             kaf VARCHAR(20),
             toilet VARCHAR(20),
             ejareh VARCHAR(20),
-            pish VARCHAR(20)
+            pish VARCHAR(20),
+            name_malk VARCHAR(20),
+            shomareh_malk INT
         )
         """
 
@@ -1395,8 +1401,9 @@ def sabt_ejareh_maskoni():
 
         sql_insert = """
         INSERT INTO sabt_ejareh_maskoni 
-        (type_melk,sal_sakht,address,tabaghe,vahed,otagh,parking,asansor,anbari,sarmayesh,garmayesh,kaf,toilet,ejareh,pish)
-        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+        (type_melk,sal_sakht,address,tabaghe,vahed,otagh,parking,
+        asansor,anbari,sarmayesh,garmayesh,kaf,toilet,ejareh,pish,name_malk,shomareh_malk)
+        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
         """
 
         values = (
@@ -1414,7 +1421,9 @@ def sabt_ejareh_maskoni():
             kaf_ejareh_maskoni_combo.get(),
             toilet_ejareh_maskoni_combo.get(),
             float(gheimat_ejare_ejare_maskoni_entry.get()),
-            float(gheimat_pish_ejare_maskoni_entry.get())
+            float(gheimat_pish_ejare_maskoni_entry.get()),
+            name_malek_ejareh_maskoni_entry.get(),
+            shomareh_malek_ejareh_maskoni_entry.get()
 
         )
 
@@ -1429,8 +1438,6 @@ def sabt_ejareh_maskoni():
     finally:
         if db and db.is_connected():
             db.close()
-
-
 #---------------------ejareh_edari/tejari Database------------------------------
 def sabt_ejareh_edari_tejari():
     db = None
@@ -1457,15 +1464,18 @@ def sabt_ejareh_edari_tejari():
             system_garmayesh VARCHAR(20),
             gheimat_vadie DECIMAL(15,2),
             gheimat_ejareh DECIMAL(15,2),
-            rahn_kamel VARCHAR(20)
+            name_malk VARCHAR(20),
+            shomareh_malk INT
         )
         """
         cursor.execute(sql_create)
 
         sql_insert = """
         INSERT INTO sabt_ejareh_edari_tejari
-        (type_melk,metraj_melk,sal_sakht,address,tabaghe,vahed,parking,asansor,anbari,aab_va_gaz,system_sarmayesh,system_garmayesh,gheimat_vadie,gheimat_ejareh,rahn_kamel)
-        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+        (type_melk,metraj_melk,sal_sakht,address,tabaghe,vahed,parking,asansor,
+        anbari,aab_va_gaz,system_sarmayesh,system_garmayesh,
+        gheimat_vadie,gheimat_ejareh,name_malk,shomareh_malk)
+        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
         """
         values = (
             melk_type_ejareh_edari_tejari_entry.get(),
@@ -1482,7 +1492,8 @@ def sabt_ejareh_edari_tejari():
             garmayesh_combo_emkanat_ejareh_edari_tejari.get(),
             float(mablagh_pish_ejareh_edari_tejari_entry.get()),
             float(mablagh_ejare_ejareh_edari_tejari_entry.get()),
-            rahn_kamel_ejareh_edari_tejari_var.get()
+            name_malek_ejareh_edari_tejari_entry.get(),
+            shomareh_malek_ejareh_edari_tejari_entry.get()
 
 
         )
@@ -1497,7 +1508,6 @@ def sabt_ejareh_edari_tejari():
     finally:
         if db and db.is_connected():
             db.close()
-
 #-----------------ejareh_bagh/zamin Database------------------------------------
 selected_option=[]
 selected_trees=[]
@@ -1508,29 +1518,29 @@ def sabt_ejareh_bagh_zamin():
         cursor = db.cursor()
         cursor.execute("CREATE DATABASE IF NOT EXISTS state_agency")
         cursor.execute("USE state_agency")
-        
+        karbari = bagh_type_combo.get()
+        gheimat_str =bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.get()
+        if not gheimat_str or gheimat_str == "":
+            gheimat_str = "0"
+        gheimat_value = float(gheimat_str)
         # ========== ساخت جدول اصلی ==========
-        cursor.execute("""
-            CREATE TABLE IF NOT EXISTS main_ejareh_lands(
+        if karbari == "باغ":  
+            type_derakht_value = ",".join(selected_trees) if selected_trees else ""
+            tedad_derakht_value = str(len(selected_trees)) if selected_trees else "0"
+            emkanat_value = ",".join(selected_option) if selected_option else ""
+
+            cursor.execute("""
+            CREATE TABLE IF NOT EXISTS ejareh_bagh(
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 type_melk VARCHAR(50) NOT NULL,
                 metraj VARCHAR(20),
                 karbari VARCHAR(20),
                 address VARCHAR(255),
                 mablagh_pish VARCHAR(20),
-                mablagh_metri DECIMAL(15,2),
+                mablagh_ejareh DECIMAL(15,2),
                 zaman_ejareh VARCHAR(30),
                 name_malek VARCHAR(50),
-                number_malek VARCHAR(30),
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )
-        """)
-        
-        # ========== ساخت جدول باغ ==========
-        cursor.execute("""
-            CREATE TABLE IF NOT EXISTS bagh_ejareh(
-                id INT AUTO_INCREMENT PRIMARY KEY,
-                property_id INT NOT NULL,
+                shomareh_malek VARCHAR(50),
                 metraj_derakht VARCHAR(10),
                 tedad_derakht VARCHAR(10),
                 type_derakht TEXT,
@@ -1540,7 +1550,7 @@ def sabt_ejareh_bagh_zamin():
                 divar VARCHAR(10),
                 bargh VARCHAR(10),
                 sazeh VARCHAR(10),
-                metraj VARCHAR(10),
+                metraj_sazeh VARCHAR(10),
                 sal_sakht VARCHAR(10),
                 type_sazeh VARCHAR(20),
                 emkanat TEXT,
@@ -1549,16 +1559,71 @@ def sabt_ejareh_bagh_zamin():
                 javaz_sakht VARCHAR(10),
                 sanad VARCHAR(20),
                 mohavate VARCHAR(10),
-                FOREIGN KEY (property_id) REFERENCES main_ejareh_lands(id) ON DELETE CASCADE
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         """)
-        
-        # ========== ساخت جدول زمین (بدون hagh_bardasht) ==========
-        cursor.execute("""
-            CREATE TABLE IF NOT EXISTS zamin_ejareh(
+            
+            sql_bagh = """
+                INSERT INTO ejareh_bagh(type_melk, metraj, karbari, address,mablagh_pish,
+                    mablagh_ejareh,zaman_ejareh,name_malek,shomareh_malek,
+                    metraj_derakht,tedad_derakht, type_derakht,
+                    system_ab, chah, estakhr, divar,sazeh, metraj_sazeh,
+                    sal_sakht, type_sazeh, emkanat, WC, hamam,
+                    javaz_sakht, sanad, mohavate,bargh
+                )
+                VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s,%s,
+                %s,%s,%s,%s,%s,%s,%s,%s)
+            """
+            
+            values_bagh = (
+                melk_type_ejareh_bagh_zamin_entry.get(),
+                metraj_zamin_ejareh_bagh_zamin_entry.get(),
+                karbari,
+                bagh_loctaion_entry.get(),
+                bagh_gheimat_ejareh_bagh_zamin_entry.get(),
+                gheimat_value,
+                bagh_time_combo.get(),
+                name_malek_bagh_zamin_entry.get(),
+                number_malek_bagh_zamin_entry.get(),
+                metraj_tree_entry.get(),
+                tedad_derakht_value,
+                type_derakht_value,
+                abyari_combo.get(),
+                chah_bagh_ejareh_var.get(),
+                estakhr_bagh_var.get(),
+                divar_ejareh_bagh_var.get(),
+                var0.get(),
+                metraj_vila_bagh_entry.get(),
+                sal_sakht_vila_bagh_entry.get(),
+                type_vila_ejareh_bagh_zamin_combo.get(),
+                emkanat_value,
+                toilet_bagh_combo.get(),
+                hamam_bagh_combo.get(),
+                mojavez_sakht_ejareh_bagh_var.get(),
+                sanad_bagh_combo.get(),
+                mohavate_ejareh_bagh_var.get(),
+                bargh_bagh_var.get()
+            )
+            cursor.execute(sql_bagh, values_bagh)
+            last_id = cursor.lastrowid
+            if last_id is None or last_id == 0:
+               messagebox.showerror("Error", "خطا: ثبت در جدول اصلی انجام نشد")
+               return
+            
+        elif karbari == "زمین کشاورزی": 
+            cursor.execute("""
+            CREATE TABLE IF NOT EXISTS ejareh_zamin(
                 id INT AUTO_INCREMENT PRIMARY KEY,
-                property_id INT NOT NULL,
-                metraj_zamin INT,
+                type_melk VARCHAR(50) NOT NULL,
+                metraj VARCHAR(20),
+                karbari VARCHAR(20),
+                address VARCHAR(255),
+                mablagh_pish VARCHAR(20),
+                mablagh_metri DECIMAL(15,2),
+                zaman_ejareh VARCHAR(30),
+                name_malek VARCHAR(50),
+                shomareh_malek VARCHAR(30),
+                metraj_zamin VARCHAR(30),
                 karbari_zamin VARCHAR(50),
                 type_khak VARCHAR(20),
                 manba_ab VARCHAR(20),
@@ -1568,50 +1633,57 @@ def sabt_ejareh_bagh_zamin():
                 anbar VARCHAR(20),
                 fans VARCHAR(20),
                 chah VARCHAR(20),
-                FOREIGN KEY (property_id) REFERENCES main_ejareh_lands(id) ON DELETE CASCADE
+               created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
-        """)
+        """) 
+            sql_zamin = """
+                INSERT INTO ejareh_zamin(type_melk, metraj, karbari, address,mablagh_pish,
+                    mablagh_metri,zaman_ejareh,name_malek,shomareh_malek,
+                    metraj_zamin, karbari_zamin, type_khak,
+                    manba_ab, negahbani, bargh_takfaz, bargh_sefaz,
+                    anbar, fans, chah
+                )
+                VALUES(%s, %s,%s, %s, %s, %s, %s, %s, %s, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+            """
+        # ========== ساخت جدول زمین (بدون hagh_bardasht) ==========
+
+            values_zamin = (
+                melk_type_ejareh_bagh_zamin_entry.get(),
+                metraj_zamin_ejareh_bagh_zamin_entry.get(),
+                karbari,
+                bagh_loctaion_entry.get(),
+                bagh_gheimat_ejareh_bagh_zamin_entry.get(),
+                gheimat_value,
+                bagh_time_combo.get(),
+                name_malek_bagh_zamin_entry.get(),
+                number_malek_bagh_zamin_entry.get(),
+                metraj_zamin_ejareh_bagh_zamin_entry2.get(),
+                karbari_ejareh_ejareh_bagh_zamin_combo.get(),
+                khak_ejareh_ejareh_bagh_zamin_combo.get(),
+                ab_ejareh_ejareh_bagh_zamin_combo.get(),
+                security_zamin_ejareh_var.get(),
+                bargh_tak_ejareh_zamin_var.get(),
+                bargh_se_faz_ejareh_zamin_var.get(),
+                anbar_ejareh_zamin_var.get(),
+                fans_ejareh_zamin_var.get(),
+                mojavaz_chah_ejareh_zamin_var.get()
+            )
+            cursor.execute(sql_zamin, values_zamin)
+            last_id = cursor.lastrowid
         
-        # ========== دریافت مقادیر ==========
-        karbari = karbari_zamin_combo.get()
-        
-        # آماده‌سازی مقادیر جدول اصلی
-        gheimat_str =bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.get()
-        if not gheimat_str or gheimat_str == "":
-            gheimat_str = "0"
-        gheimat_value = float(gheimat_str)
-        
-        values_main = (
-            melk_type_ejareh_bagh_zamin_entry.get(),
-            metraj_zamin_ejareh_bagh_zamin_entry.get(),
-            karbari,
-            bagh_loctaion_entry.get(),
-            bagh_gheimat_ejareh_bagh_zamin_entry.get(),
-            gheimat_value,
-            bagh_time_combo.get(),
-            name_malek_bagh_zamin_entry.get(),
-            number_malek_bagh_zamin_entry.get()
-        )
-        
-        # ========== INSERT در جدول اصلی ==========
-        sql_main = """
-            INSERT INTO main_ejareh_lands(type_melk, metraj, karbari, address,mablagh_pish,mablagh_metri,zaman_ejareh,
-            name_malek,number_malek)
-            VALUES(%s, %s, %s, %s, %s,%s,%s,%s,%s)
-        """
-        cursor.execute(sql_main, values_main)
-        last_id = cursor.lastrowid
-        
-        if last_id is None or last_id == 0:
-            messagebox.showerror("Error", "خطا: ثبت در جدول اصلی انجام نشد")
-            return
-        
+            if last_id is None or last_id == 0:
+               messagebox.showerror("Error", "خطا: ثبت در جدول اصلی انجام نشد")
+               return
+            
+        db.commit()
+        user_idcode = f"ID-{last_id}"
+        messagebox.showinfo("Success", f"ثبت با کد {user_idcode} انجام شد")
+ 
     except Exception as e:
         messagebox.showerror("Error", f"خطا: {e}")
     finally:
         if db and db.is_connected():
             db.close()
-
 #-----------------ejareh_kargah Database----------------------------------------
 def sabt_ejareh_karghah():
     db = None
@@ -1642,14 +1714,19 @@ def sabt_ejareh_karghah():
             abzar VARCHAR(30),
             toilet VARCHAR(20),
             hamam VARCHAR(20),
-            otagh VARCHAR(20)
+            otagh VARCHAR(20),
+            name_malk VARCHAR(20),
+            shomareh_malk INT
+
         )
         """
         cursor.execute(sql_create)
         sql_insert = """
         INSERT INTO sabt_ejareh_karghah
-        (karbari_zamin,metraj,loctaion_and_address,gheimat_vadie,gheimat_metrazh,time_ejare,sal_sakht,vaziat_bargh,garmayesh,fan,panke,kooler_abi,kooler_gazi,vaziat_ab,abzar,toilet,hamam,otagh)
-        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+        (karbari_zamin,metraj,loctaion_and_address,
+        gheimat_vadie,gheimat_metrazh,time_ejare,sal_sakht,vaziat_bargh,
+        garmayesh,fan,panke,kooler_abi,kooler_gazi,vaziat_ab,abzar,toilet,hamam,otagh,name_malk,shomareh_malk)
+        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
         """
         values = (
             karbari_ejareh_kargah_entry.get(),
@@ -1669,7 +1746,9 @@ def sabt_ejareh_karghah():
             abzaar_ejareh_kargah_combo.get(),
             toilet_ejareh_kargah_combo.get(),
             hamam_ejareh_kargah__combo.get(),
-            otagh_ejareh_kargah_combo.get()
+            otagh_ejareh_kargah_combo.get(),
+            name_malek_ejareh_kargah_entry.get(),
+            shomareh_malek_ejareh_kargah_entry.get()
         )
         cursor.execute(sql_insert, values)
         last_id = cursor.lastrowid
@@ -1682,8 +1761,889 @@ def sabt_ejareh_karghah():
     finally:
         if db and db.is_connected():
             db.close()
-
 #------------------------پایان تابع اجاره-----------------------------------
+#endregion
+#----------------------تابع ثبت درخواست--------------------------------
+#region
+#---------------darkhast_maskoni Database------------------------
+skip_save=False
+def sabt_darkhast_maskoni(event=None):
+    global skip_save
+    db = None
+    try:
+        db = get_connection()
+        cursor = db.cursor()
+        
+        cursor.execute("CREATE DATABASE IF NOT EXISTS state_agency")
+        cursor.execute("USE state_agency")
+
+        change_type= melk_type_darkhast_maskoni_entry.get()
+        #فیلد های خرید
+        gheimat_darkhast_maskoni_lable.place_forget()
+        gheimat_darkhast_maskoni_entry.place_forget()
+        #فیلد های اجاره
+        mablagh_ejare_darkhast_maskoni_lable.place_forget()
+        mablagh_ejare_darkhast_maskoni_entry.place_forget()
+        gheimat_pish_darkhast_maskoni_lable.place_forget()
+        gheimat_pish_darkhast_maskoni_entry.place_forget()
+        # فیلد های مشترک
+        name_moshtari_darkhast_maskoni_lable.place_forget()
+        name_moshtari_darkhast_maskoni_entry.place_forget()
+        shomareh_moshtari_darkhast_maskoni_lable.place_forget()
+        shomareh_moshtari_darkhast_maskoni_entry.place_forget()
+        
+        if change_type=="درخواست خرید مسکونی":
+
+            gheimat_darkhast_maskoni_lable.place(x=start_x + 320, y=start_y + 340, anchor="e")
+            gheimat_darkhast_maskoni_entry.place(x=start_x + 10, y=start_y + 330, width=150, height=25)
+            name_moshtari_darkhast_maskoni_lable.place(x=start_x + 320, y=start_y + 390,anchor="e")
+            name_moshtari_darkhast_maskoni_entry.place(x=start_x + 10, y=start_y + 380, width=150, height=25)
+            shomareh_moshtari_darkhast_maskoni_lable.place(x=start_x + 320, y=start_y + 445,anchor="e")
+            shomareh_moshtari_darkhast_maskoni_entry.place(x=start_x + 10, y=start_y + 430, width=150, height=25)
+
+        elif change_type=="درخواست اجاره مسکونی":
+           
+           mablagh_ejare_darkhast_maskoni_lable.place(x=start_x + 130, y=start_y + 340, anchor="e")
+           mablagh_ejare_darkhast_maskoni_entry.place(x=start_x + 10, y=start_y + 370, width=150, height=25)
+           gheimat_pish_darkhast_maskoni_lable.place(x=start_x + 320, y=start_y + 340, anchor="e")
+           gheimat_pish_darkhast_maskoni_entry.place(x=start_x + 190, y=start_y + 370, width=150, height=25)
+           name_moshtari_darkhast_maskoni_lable.place(x=start_x + 320, y=start_y + 442,anchor="e")
+           name_moshtari_darkhast_maskoni_entry.place(x=start_x + 10, y=start_y + 430, width=150, height=25)
+           shomareh_moshtari_darkhast_maskoni_lable.place(x=start_x + 320, y=start_y + 486,anchor="e")
+           shomareh_moshtari_darkhast_maskoni_entry.place(x=start_x + 10, y=start_y + 475, width=150, height=25)
+        if event is not None:#خیلی مهم 
+           return
+        
+        if change_type=="درخواست خرید مسکونی":
+            cursor.execute( """
+            CREATE TABLE IF NOT EXISTS sabt_darkhast_kharid_maskoni (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            type_melk VARCHAR(50) NOT NULL,
+            sal_sakht VARCHAR(20),
+            address VARCHAR(225),
+            tabaghe VARCHAR(10),
+            vahed VARCHAR(20),
+            otagh INT,
+            parking VARCHAR(20),
+            asansor VARCHAR(20),
+            anbari VARCHAR(20),
+            sarmayesh VARCHAR(20),
+            garmayesh VARCHAR(20),
+            kaf VARCHAR(20),
+            toilet VARCHAR(20),
+            gheimat VARCHAR(20),
+            name_moshtari VARCHAR(20),
+            shomareh_moshtari INT
+            )
+            """)
+
+            sql_kharid = """
+            INSERT INTO sabt_darkhast_kharid_maskoni 
+            (type_melk,sal_sakht,address,tabaghe,vahed,otagh,parking,asansor,
+            anbari,sarmayesh,garmayesh,kaf,toilet,gheimat,name_moshtari,shomareh_moshtari)
+            VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+            """
+
+            values_darkhast_kharid_maskoni = (
+            melk_type_darkhast_maskoni_entry.get(),
+            sal_sakht_darkhast_maskoni_entry.get(),
+            addrres_darkhast_maskoni_entry.get(),
+            tabaghe_darkhast_maskoni_entry.get(),
+            vahed_darkhast_maskoni_entry.get(),
+            otagh_darkhast_maskoni_entry.get(),
+            parking_darkhast_maskoni_var.get(),
+            asansor_darkhast_maskoni_var.get(),
+            anbari_darkhast_maskoni_var.get(),
+            sarmaesh_combo_darkhast_maskoni.get(),
+            garmaesh_combo_darkhast_maskoni.get(),
+            kaf_combo_darkhast_maskoni.get(),
+            toilet_combo_darkhast_maskoni.get(),
+            gheimat_darkhast_maskoni_entry.get(),
+            name_moshtari_darkhast_maskoni_entry.get(),
+            shomareh_moshtari_darkhast_maskoni_entry.get()     
+            )
+
+            cursor.execute(sql_kharid, values_darkhast_kharid_maskoni)
+        
+            last_id = cursor.lastrowid
+            if last_id is None or last_id == 0:
+                messagebox.showerror("Error", "خطا: ثبت در جدول  انجام نشد")
+                return
+
+        elif change_type=="درخواست اجاره مسکونی":
+
+            cursor.execute( """
+            CREATE TABLE IF NOT EXISTS sabt_darkhast_ejareh_maskoni (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            type_melk VARCHAR(50) NOT NULL,
+            sal_sakht VARCHAR(20),
+            address VARCHAR(225),
+            tabaghe VARCHAR(10),
+            vahed VARCHAR(20),
+            otagh INT,
+            parking VARCHAR(20),
+            asansor VARCHAR(20),
+            anbari VARCHAR(20),
+            sarmayesh VARCHAR(20),
+            garmayesh VARCHAR(20),
+            kaf VARCHAR(20),
+            toilet VARCHAR(20),
+            ejareh VARCHAR(20),
+            pish VARCHAR(20),
+            name_moshtari VARCHAR(20),
+            shomareh_moshtari INT
+            )
+             """)
+
+            sql_ejareh = """
+            INSERT INTO sabt_darkhast_ejareh_maskoni 
+            (type_melk,sal_sakht,address,tabaghe,vahed,otagh,parking,
+            asansor,anbari,sarmayesh,garmayesh,kaf,toilet,ejareh,pish,name_moshtari,shomareh_moshtari)
+            VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+            """
+
+            values_darkhast_ejareh_maskoni= (
+            melk_type_darkhast_maskoni_entry.get(),
+            sal_sakht_darkhast_maskoni_entry.get(),
+            addrres_darkhast_maskoni_entry.get(),
+            tabaghe_darkhast_maskoni_entry.get(),
+            vahed_darkhast_maskoni_entry.get(),
+            otagh_darkhast_maskoni_entry.get(),
+            parking_darkhast_maskoni_var.get(),
+            asansor_darkhast_maskoni_var.get(),
+            anbari_darkhast_maskoni_var.get(),
+            sarmaesh_combo_darkhast_maskoni.get(),
+            garmaesh_combo_darkhast_maskoni.get(),
+            kaf_combo_darkhast_maskoni.get(),
+            toilet_combo_darkhast_maskoni.get(),
+            mablagh_ejare_darkhast_maskoni_entry.get(),
+            gheimat_pish_darkhast_maskoni_entry.get(),
+            name_moshtari_darkhast_maskoni_entry.get(),
+            shomareh_moshtari_darkhast_maskoni_entry.get()
+            )
+
+            cursor.execute(sql_ejareh, values_darkhast_ejareh_maskoni)
+            last_id = cursor.lastrowid
+            if last_id is None or last_id == 0:
+                messagebox.showerror("Error", "خطا: ثبت در جدول  انجام نشد")
+                return
+
+
+        db.commit()
+        user_idcode = f"ID-{last_id}"
+        messagebox.showinfo("Success", f"ثبت با کد {user_idcode} انجام شد.")      
+    except Exception as e:
+        messagebox.showerror("Error", f"خطا در ثبت داده: {e}")
+        
+    finally:
+        if db and db.is_connected():
+            db.close()
+
+#---------------darkhast_edari/tejari Database--------------------
+skip_save=False
+def sabt_darkhast_edari_tejari(event=None):
+    global skip_save
+    db = None
+    try:
+        db = get_connection()
+        cursor = db.cursor()
+        
+        cursor.execute("CREATE DATABASE IF NOT EXISTS state_agency")
+        cursor.execute("USE state_agency")
+
+        change_type= combo_darkhast_edari_tejari_entry.get()
+        #فیلد های خرید
+        mablagh_kharid_darkhast_edari_tejari_lable.place_forget()
+        mablagh_kharid_darkhast_edari_tejari_entry.place_forget()
+        #فیلد های اجاره
+        mablagh_vadie_darkhast_edari_tejari_lable.place_forget()
+        mablagh_vadie_darkhast_edari_tejari_entry.place_forget()
+        mablagh_ejareh_darkhast_edari_tejari_lable.place_forget()
+        mablagh_ejareh_darkhast_edari_tejari_entry.place_forget()
+        # فیلد های مشترک
+        name_moshtari_darkhast_edari_tejari_lable.place_forget()
+        name_moshtari_darkhast_edari_tejari_entry.place_forget()
+        shomareh_moshtari_darkhast_edari_tejari_lable.place_forget()
+        shomareh_moshtari_darkhast_edari_tejari_entry.place_forget()
+
+        if change_type=="درخواست خرید اداری/تجاری":
+
+            mablagh_kharid_darkhast_edari_tejari_lable.place(x=start_x + 320, y=start_y + 335, anchor="e")
+            mablagh_kharid_darkhast_edari_tejari_entry.place(x=start_x + 10, y=start_y + 325, width=150, height=25)
+            name_moshtari_darkhast_edari_tejari_lable.place(x=start_x + 320, y=start_y + 385, anchor="e")
+            name_moshtari_darkhast_edari_tejari_entry.place(x=start_x + 10, y=start_y + 375, width=150, height=25)
+            shomareh_moshtari_darkhast_edari_tejari_lable.place(x=start_x + 320, y=start_y + 435, anchor="e")
+            shomareh_moshtari_darkhast_edari_tejari_entry.place(x=start_x + 10, y=start_y + 425, width=150, height=25)
+
+        elif change_type=="درخواست اجاره اداری/تجاری":
+           
+           mablagh_vadie_darkhast_edari_tejari_lable.place(x=start_x + 320, y=start_y + 335, anchor="e")
+           mablagh_vadie_darkhast_edari_tejari_entry.place(x=start_x + 10, y=start_y + 325, width=150, height=25)
+           mablagh_ejareh_darkhast_edari_tejari_lable.place(x=start_x + 320, y=start_y + 385, anchor="e")
+           mablagh_ejareh_darkhast_edari_tejari_entry.place(x=start_x + 10, y=start_y + 375, width=150, height=25)
+           name_moshtari_darkhast_edari_tejari_lable.place(x=start_x + 320, y=start_y + 438, anchor="e")
+           name_moshtari_darkhast_edari_tejari_entry.place(x=start_x + 10, y=start_y + 425, width=150, height=25)
+           shomareh_moshtari_darkhast_edari_tejari_lable.place(x=start_x + 320, y=start_y + 487, anchor="e")
+           shomareh_moshtari_darkhast_edari_tejari_entry.place(x=start_x + 10, y=start_y + 475, width=150, height=25)
+        if event is not None:#خیلی مهم 
+           return
+        
+        if change_type=="درخواست خرید اداری/تجاری":
+            cursor.execute("""
+            CREATE TABLE IF NOT EXISTS sabt_darkhast_kharid_edari_tejari (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            type_melk VARCHAR(50) NOT NULL,
+            metraj_melk VARCHAR(20),
+            sal_sakht VARCHAR(20),
+            address VARCHAR(225),
+            tabaghe VARCHAR(10),
+            vahed VARCHAR(20),
+            parking VARCHAR(20),
+            asansor VARCHAR(20),
+            anbari VARCHAR(20),
+            aab_va_gaz VARCHAR(20),
+            system_sarmayesh VARCHAR(20),
+            system_garmayesh VARCHAR(20),
+            mablagh_kharid VARCHAR(20),
+            name_moshtari VARCHAR(20),
+            shomareh_moshtari INT
+            )
+            """)
+
+            sql_kharid = """
+            INSERT INTO sabt_darkhast_kharid_edari_tejari
+            (type_melk,metraj_melk,sal_sakht,address,tabaghe,vahed,parking,
+            asansor,anbari,aab_va_gaz,system_sarmayesh,system_garmayesh,mablagh_kharid,name_moshtari,shomareh_moshtari)
+            VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+            """
+
+            values_darkhast_kharid_edari_tejari = (
+            combo_darkhast_edari_tejari_entry.get(),
+            metraj_melk_darkhast_edari_tejari_entry.get(),
+            sal_sakht_darkhast_edari_tejari_entry.get(),
+            addrres_darkhast_edari_tejari_entry.get(),
+            tabaghe_darkhast_edari_tejari_entry.get(),
+            vahed_darkhast_edari_tejari_entry.get(),
+            parking_darkhast_edari_tejari_var.get(),
+            asansor_darkhast_edari_tejari_var.get(),
+            anbari_darkhast_edari_tejari_var.get(),
+            aab_va_gaz_combo_emkanat_darkhast_edari_tejari.get(),
+            sarmayesh_combo_emkanat_darkhast_edari_tejari.get(),
+            garmayesh_combo_emkanat_darkhast_edari_tejari.get(),
+            mablagh_kharid_darkhast_edari_tejari_entry.get(),
+            name_moshtari_darkhast_edari_tejari_entry.get(),
+            shomareh_moshtari_darkhast_edari_tejari_entry.get()
+            )
+            
+            cursor.execute(sql_kharid,values_darkhast_kharid_edari_tejari)
+
+            last_id = cursor.lastrowid
+            if last_id is None or last_id == 0:
+                messagebox.showerror("Error", "خطا: ثبت در جدول  انجام نشد")
+                return
+            
+        elif change_type=="درخواست اجاره اداری/تجاری":
+            cursor.execute( """
+            CREATE TABLE IF NOT EXISTS sabt_darkhast_ejareh_edari_tejari (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            type_melk VARCHAR(50) NOT NULL,
+            metraj_melk VARCHAR(20),
+            sal_sakht VARCHAR(20),
+            address VARCHAR(225),
+            tabaghe VARCHAR(10),
+            vahed VARCHAR(20),
+            parking VARCHAR(20),
+            asansor VARCHAR(20),
+            anbari VARCHAR(20),
+            aab_va_gaz VARCHAR(20),
+            system_sarmayesh VARCHAR(20),
+            system_garmayesh VARCHAR(20),
+            mablagh_vadie VARCHAR(20),
+            mablagh_ejareh VARCHAR(20),
+            name_moshtari VARCHAR(20),
+            shomareh_moshtari INT
+            )
+            """)
+
+            sql_ejareh = """
+            INSERT INTO sabt_darkhast_ejareh_edari_tejari
+            (type_melk,metraj_melk,sal_sakht,address,tabaghe,vahed,parking,asansor,
+            anbari,aab_va_gaz,system_sarmayesh,system_garmayesh,
+            mablagh_vadie,mablagh_ejareh,name_moshtari,shomareh_moshtari)
+            VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+            """
+            values_darkhast_ejareh_edari_tejari = (
+            combo_darkhast_edari_tejari_entry.get(),
+            metraj_melk_darkhast_edari_tejari_entry.get(),
+            sal_sakht_darkhast_edari_tejari_entry.get(),
+            addrres_darkhast_edari_tejari_entry.get(),
+            tabaghe_darkhast_edari_tejari_entry.get(),
+            vahed_darkhast_edari_tejari_entry.get(),
+            parking_darkhast_edari_tejari_var.get(),
+            asansor_darkhast_edari_tejari_var.get(),
+            anbari_darkhast_edari_tejari_var.get(),
+            aab_va_gaz_combo_emkanat_darkhast_edari_tejari.get(),
+            sarmayesh_combo_emkanat_darkhast_edari_tejari.get(),
+            garmayesh_combo_emkanat_darkhast_edari_tejari.get(),
+            mablagh_vadie_darkhast_edari_tejari_entry.get(),
+            mablagh_ejareh_darkhast_edari_tejari_entry.get(),
+            name_moshtari_darkhast_edari_tejari_entry.get(),
+            shomareh_moshtari_darkhast_edari_tejari_entry.get()
+            )
+            
+            cursor.execute(sql_ejareh,values_darkhast_ejareh_edari_tejari)
+
+            last_id = cursor.lastrowid
+            if last_id is None or last_id == 0:
+                messagebox.showerror("Error", "خطا: ثبت در جدول  انجام نشد")
+                return
+
+        db.commit()
+        user_idcode = f"ID-{last_id}"
+        messagebox.showinfo("Success", f"ثبت با کد {user_idcode} انجام شد.")      
+    except Exception as e:
+        messagebox.showerror("Error", f"خطا در ثبت داده: {e}")
+        
+    finally:
+        if db and db.is_connected():
+            db.close()
+
+#--------------darkhast_bagh/zamin Database-----------------------
+selected_option3=[]
+selected_trees3=[]
+skip_save=False
+def sabt_darkhast_bagh_zamin(event=None):
+    global skip_save
+    db = None
+    
+    try:
+        db = get_connection()
+        cursor = db.cursor()
+        cursor.execute("CREATE DATABASE IF NOT EXISTS state_agency")
+        cursor.execute("USE state_agency")
+        change_type=melk_type_darkhast_bagh_zamin_entry.get()
+        karbari = bagh_type_darkhast_bagh_zamin_combo.get()
+        gheimat_str =gheimat_har_metr_bagh_zamin_darkhast_entry.get()
+        if not gheimat_str or gheimat_str == "":
+            gheimat_str = "0"
+        gheimat_value = float(gheimat_str)
+        gheimat_har_matr_bagh_zamin_darkhast_lable.place_forget()
+        gheimat_har_metr_bagh_zamin_darkhast_entry.place_forget()
+        time_ejareh_bagh_darkhast_zamin_lable.place_forget()
+        bagh_time_darkhast_combo.place_forget()
+        gheimat_ejareh_bagh_darkhast_zamin_lable.place_forget()
+        gheimat_ejareh_bagh_darkhast_zamin_entry.place_forget()
+        mablagh_ejareh_mahaneh_darkhast_lable.place_forget()
+        mablagh_ejareh_mahaneh_darkhast_entry.place_forget()
+        mablagh_ejareh_mahaneh_darkhast_lable.place_forget()
+        mablagh_ejareh_mahaneh_darkhast_entry.place_forget()
+        gheimat_ejareh_bagh_darkhast_zamin_lable.place_forget()#ودیعه
+        gheimat_ejareh_bagh_darkhast_zamin_entry.place_forget()#ودیعه
+        gheimat_har_matr_bagh_zamin_darkhast_lable.place_forget()
+        gheimat_har_metr_bagh_zamin_darkhast_entry.place_forget()
+        time_ejareh_bagh_darkhast_zamin_lable.place_forget()
+        bagh_time_darkhast_combo.place_forget()   
+        if change_type=="درخواست خرید باغ زمین":
+            gheimat_har_matr_bagh_zamin_darkhast_lable.place(x=start_x + 320, y=start_y + 235, anchor="e")
+            gheimat_har_metr_bagh_zamin_darkhast_entry.place(x=start_x + 10, y=start_y + 225, width=150, height=25)
+        elif change_type=="درخواست اجاره باغ زمین":
+           mablagh_ejareh_mahaneh_darkhast_lable.place(x=start_x + 225, y=start_y + 420, width=100, height=25)
+           mablagh_ejareh_mahaneh_darkhast_entry.place(x=start_x + 10, y=start_y + 419, width=150, height=25)
+           gheimat_ejareh_bagh_darkhast_zamin_lable.place(x=start_x + 320, y=start_y + 235, anchor="e")#ودیعه
+           gheimat_ejareh_bagh_darkhast_zamin_entry.place(x=start_x + 10, y=start_y + 225, width=150, height=25)#ودیعه
+           time_ejareh_bagh_darkhast_zamin_lable.place(x=start_x + 320, y=start_y +390, anchor="e")
+           bagh_time_darkhast_combo.place(x=start_x + 10, y=start_y + 375, width=150, height=25)
+        if event is not None:#خیلی مهم 
+           return
+        
+
+        if change_type=="درخواست خرید باغ زمین":
+            if karbari=="باغ":
+                cursor.execute("""
+                CREATE TABLE IF NOT EXISTS darkhast_kharid_bagh(
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                type_melk VARCHAR(50) NOT NULL,
+                metraj VARCHAR(20),
+                karbari VARCHAR(20),
+                address VARCHAR(255),
+                mablagh_metri DECIMAL(15,2),
+                name_malek VARCHAR(50),
+                shomareh_malek VARCHAR(30),
+                metraj_derakht VARCHAR(10),
+                tedad_derakht VARCHAR(10),
+                type_derakht TEXT,
+                system_ab VARCHAR(25),
+                chah VARCHAR(10),
+                estakhr VARCHAR(10),
+                divar VARCHAR(10),
+                sazeh VARCHAR(10),
+                metraj_sazeh VARCHAR(10),
+                sal_sakht VARCHAR(10),
+                type_sazeh VARCHAR(20),
+                emkanat TEXT,
+                WC VARCHAR(10),
+                hamam VARCHAR(10),
+                javaz_sakht VARCHAR(10),
+                sanad VARCHAR(20),
+                mohavate VARCHAR(10),
+                bargh VARCHAR (10),
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                 )
+               """) 
+                type_derakht_value = ",".join(selected_trees3) if selected_trees3 else ""
+                tedad_derakht_value = str(len(selected_trees3)) if selected_trees3 else "0"
+                emkanat_value = ",".join(selected_option3) if selected_option3 else ""
+            
+                sql_bagh = """
+                INSERT INTO darkhast_kharid_bagh(
+                    type_melk,metraj,karbari,address,mablagh_metri,name_malek,shomareh_malek,
+                    metraj_derakht, tedad_derakht, type_derakht,
+                    system_ab, chah, estakhr, divar,sazeh, metraj_sazeh,
+                    sal_sakht, type_sazeh, emkanat, WC, hamam,
+                    javaz_sakht, sanad, mohavate,bargh
+                )
+                VALUES( %s, %s, %s, %s, %s, %s, %s, %s, %s,%s, %s, %s, %s, %s, %s, %s, %s,%s
+                ,%s,%s,%s,%s,%s,%s,%s)
+                 """
+                values_kharid=(
+                melk_type_darkhast_bagh_zamin_entry.get(),
+                metraj_zamin_darkhast_bagh_zamin_entry.get(),
+                karbari,
+                bagh_loctaion_darkhast_bagh_zamin_entry.get(),
+                gheimat_value,
+                name_moshtari_darkhast_bagh_entry.get(),
+                shomareh_moshtari_darkhast_bagh_entry.get(),
+                metraj_derakht_darkhast_bagh_zamin_entry.get(),
+                tedad_derakht_darkhast_bagh_zamin_entry.get(),
+                type_tree_darkhast_bagh_zamin_combo.get(),
+                abyari_darkhast_bagh_zamin_combo.get(),
+                chah_darkhast_bagh_zamin_var.get(),
+                estakhr_darkhast_bagh_zamin_var.get(),
+                divar_darkhast_bagh_zamin_var.get(),
+                var0_darkhast_bagh_zamin.get(),
+                metraj_vila_darkhast_bagh_zamin_entry.get(),
+                sal_sakht_vila_darkhast_bagh_zamin_entry.get(),
+                type_vila_darkhast_bagh_zamin_combo.get(),
+                toilet_darkhast_bagh_zamin_combo.get(),
+                hamam_darkhast_bagh_zamin_combo.get(),
+                sanad_darkhast_bagh_zamin_combo.get(),
+                option_darkhast_bagh_zamin_combo.get(),
+                mojavez_sakht_darkhast_bagh_zamin_var.get(),
+                mohavate_sazi_darkhast_bagh_zamin_var.get(),
+                bargh_keshi_darkhast_bagh_zamin_var.get()
+                )
+                cursor.execute(sql_bagh, values_kharid)
+
+                last_id = cursor.lastrowid
+                if last_id is None or last_id == 0:
+                       messagebox.showerror("Error", "خطا: ثبت در جدول  انجام نشد")
+                       return
+            elif karbari=="زمین کشاورزی":
+                cursor.execute("""
+                CREATE TABLE IF NOT EXISTS darkhast_kharid_zamin(
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                type_melk VARCHAR(50) NOT NULL,
+                metraj VARCHAR(20),
+                karbari VARCHAR(20),
+                address VARCHAR(255),
+                mablagh_metri DECIMAL(15,2),
+                name_moshtari VARCHAR(50),
+                shomareh_moshtari VARCHAR(30),
+                metraj_zamin VARCHAR(30),
+                karbari_zamin VARCHAR(50),
+                type_khak VARCHAR(20),
+                manba_ab VARCHAR(20),
+                negahbani VARCHAR(20),
+                bargh_takfaz VARCHAR(20),
+                bargh_sefaz VARCHAR(20),
+                anbar VARCHAR(20),
+                fans VARCHAR(20),
+                chah VARCHAR(20),
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP  
+                )
+              """)
+
+                sql_zamin = """
+               INSERT INTO darkhast_kharid_zamin(
+                    type_melk,metraj,karbari,address,mablagh_metri,name_moshtari,shomareh_moshtari,
+                    metraj_zamin, karbari_zamin,type_khak,
+                    manba_ab, negahbani, bargh_takfaz, bargh_sefaz,
+                    anbar, fans, chah
+                )
+                VALUES( %s, %s, %s, %s, %s, %s, %s,%s,%s, %s,%s,%s,%s,%s,%s,%s,%s)
+               """
+                values_kharid_zamin=(
+                   change_type,
+                   metraj_zamin_darkhast_bagh_zamin_entry.get(),
+                   karbari,
+                   bagh_loctaion_darkhast_bagh_zamin_entry.get(),
+                   gheimat_value,
+                   name_moshtari_darkhast_bagh_entry.get(),
+                   shomareh_moshtari_darkhast_bagh_entry.get(),
+                   metraj_zamin2_darkhast_bagh_zamin_entry.get(),
+                   karbari_darkhast_bagh_zamin_combo.get(),
+                   khak_darkhast_bagh_zamin_combo.get(),
+                   ab_darkhast_bagh_zamin_combo.get(),
+                   security_zamin_darkhast_bagh_zamin_var.get(),
+                   bargh_kesi_zamin_darkhast_bagh_zamin_var.get(),
+                   bargh_zamin_darkhast_bagh_zamin2_var.get(),
+                   anbar_zamin_darkhast_bagh_zamin_var.get(),
+                   fans_zamin_darkhast_bagh_zamin_var.get(),
+                   mojavez_chah_zamin_darkhast_bagh_zamin_var.get())
+            
+                cursor.execute(sql_zamin, values_kharid_zamin)
+                last_id = cursor.lastrowid
+                if last_id is None or last_id == 0:
+                   messagebox.showerror("Error", "خطا: ثبت در جدول  انجام نشد")
+                return
+            
+        
+        elif change_type=="درخواست اجاره باغ زمین":
+           if karbari=="باغ":
+                cursor.execute("""
+                CREATE TABLE IF NOT EXISTS darkhast_ejareh_bagh(
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                type_melk VARCHAR(50) NOT NULL,
+                metraj VARCHAR(20),
+                karbari VARCHAR(20),
+                address VARCHAR(255),
+                name_moshtari VARCHAR(50),
+                shomareh_moshtari VARCHAR(30),
+                zaman_ejareh VARCHAR(40),
+                mablagh_pish VARCHAR(30),
+                mablagh_ejareh VARCHAR(30),
+                metraj_derakht VARCHAR(10),
+                tedad_derakht VARCHAR(10),
+                type_derakht TEXT,
+                system_ab VARCHAR(25),
+                chah VARCHAR(10),
+                estakhr VARCHAR(10),
+                divar VARCHAR(10),
+                sazeh VARCHAR(10),
+                metraj_sazeh VARCHAR(10),
+                sal_sakht VARCHAR(10),
+                type_sazeh VARCHAR(20),
+                emkanat TEXT,
+                WC VARCHAR(10),
+                hamam VARCHAR(10),
+                javaz_sakht VARCHAR(10),
+                sanad VARCHAR(20),
+                mohavate VARCHAR(10),
+                bargh VARCHAR (10),
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                 )
+               """) 
+                type_derakht_value = ",".join(selected_trees3) if selected_trees3 else ""
+                tedad_derakht_value = str(len(selected_trees3)) if selected_trees3 else "0"
+                emkanat_value = ",".join(selected_option3) if selected_option3 else ""
+            
+                sql_bagh = """
+                INSERT INTO darkhast_ejareh_bagh(
+                    type_melk,metraj,karbari,address,name_moshtari,shomareh_moshtari,
+                    zaman_ejareh,mablagh_pish,mablagh_ejareh,
+                    metraj_derakht, tedad_derakht, type_derakht,
+                    system_ab, chah, estakhr, divar,sazeh, metraj_sazeh,
+                    sal_sakht, type_sazeh, emkanat, WC, hamam,
+                    javaz_sakht, sanad, mohavate,bargh
+                )
+                VALUES( %s, %s, %s, %s, %s, %s, %s, %s, %s,%s,%s, %s, %s, %s, %s, %s,%s
+                ,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+                 """
+                values_ejareh=(
+                melk_type_darkhast_bagh_zamin_entry.get(),
+                metraj_zamin_darkhast_bagh_zamin_entry.get(),
+                karbari,
+                bagh_loctaion_darkhast_bagh_zamin_entry.get(),
+                name_moshtari_darkhast_bagh_entry.get(),
+                shomareh_moshtari_darkhast_bagh_entry.get(),
+                bagh_time_darkhast_combo.get(),
+                gheimat_ejareh_bagh_darkhast_zamin_entry.get(),
+                mablagh_ejareh_mahaneh_darkhast_entry.get(),
+                metraj_derakht_darkhast_bagh_zamin_entry.get(),
+                tedad_derakht_darkhast_bagh_zamin_entry.get(),
+                type_tree_darkhast_bagh_zamin_combo.get(),
+                abyari_darkhast_bagh_zamin_combo.get(),
+                chah_darkhast_bagh_zamin_var.get(),
+                estakhr_darkhast_bagh_zamin_var.get(),
+                divar_darkhast_bagh_zamin_var.get(),
+                var0_darkhast_bagh_zamin.get(),
+                metraj_vila_darkhast_bagh_zamin_entry.get(),
+                sal_sakht_vila_darkhast_bagh_zamin_entry.get(),
+                type_vila_darkhast_bagh_zamin_combo.get(),
+                toilet_darkhast_bagh_zamin_combo.get(),
+                hamam_darkhast_bagh_zamin_combo.get(),
+                sanad_darkhast_bagh_zamin_combo.get(),
+                option_darkhast_bagh_zamin_combo.get(),
+                mojavez_sakht_darkhast_bagh_zamin_var.get(),
+                mohavate_sazi_darkhast_bagh_zamin_var.get(),
+                bargh_keshi_darkhast_bagh_zamin_var.get()
+                )
+                cursor.execute(sql_bagh, values_ejareh)
+
+                last_id = cursor.lastrowid
+                if last_id is None or last_id == 0:
+                       messagebox.showerror("Error", "خطا: ثبت در جدول")
+                       return
+           elif karbari=="زمین کشاورزی":
+                cursor.execute("""
+                CREATE TABLE IF NOT EXISTS darkhast_ejareh_zamin(
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                type_melk VARCHAR(50) NOT NULL,
+                metraj VARCHAR(20),
+                karbari VARCHAR(20),
+                address VARCHAR(255),
+                mablagh_pish VARCHAR(30),
+                mablagh_ejareh VARCHAR(30),
+                zaman_ejareh VARCHAR(40),
+                name_moshtari VARCHAR(50),
+                shomareh_moshtari VARCHAR(30),
+                metraj_zamin VARCHAR(30),
+                karbari_zamin VARCHAR(50),
+                type_khak VARCHAR(20),
+                manba_ab VARCHAR(20),
+                negahbani VARCHAR(20),
+                bargh_takfaz VARCHAR(20),
+                bargh_sefaz VARCHAR(20),
+                anbar VARCHAR(20),
+                fans VARCHAR(20),
+                chah VARCHAR(20),
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP  
+                )
+              """)
+
+                sql_zamin = """
+               INSERT INTO darkhast_ejareh_zamin(
+                    type_melk,metraj,karbari,address,mablagh_pish,mablagh_ejareh,zaman_ejareh,name_moshtari,shomareh_moshtari,
+                    metraj_zamin, karbari_zamin,type_khak,
+                    manba_ab, negahbani, bargh_takfaz, bargh_sefaz,
+                    anbar, fans, chah
+                )
+                VALUES( %s, %s, %s, %s, %s, %s, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+               """
+                values_ejareh_zamin=(
+                   change_type,
+                   metraj_zamin_darkhast_bagh_zamin_entry.get(),
+                   karbari,
+                   bagh_loctaion_darkhast_bagh_zamin_entry.get(),
+                   gheimat_ejareh_bagh_darkhast_zamin_entry.get(),
+                   mablagh_ejareh_mahaneh_darkhast_entry.get(),
+                   bagh_time_darkhast_combo.get(),
+                   name_moshtari_darkhast_bagh_entry.get(),
+                   shomareh_moshtari_darkhast_bagh_entry.get(),
+                   metraj_zamin2_darkhast_bagh_zamin_entry.get(),
+                   karbari_darkhast_bagh_zamin_combo.get(),
+                   khak_darkhast_bagh_zamin_combo.get(),
+                   ab_darkhast_bagh_zamin_combo.get(),
+                   security_zamin_darkhast_bagh_zamin_var.get(),
+                   bargh_kesi_zamin_darkhast_bagh_zamin_var.get(),
+                   bargh_zamin_darkhast_bagh_zamin2_var.get(),
+                   anbar_zamin_darkhast_bagh_zamin_var.get(),
+                   fans_zamin_darkhast_bagh_zamin_var.get(),
+                   mojavez_chah_zamin_darkhast_bagh_zamin_var.get())
+            
+                cursor.execute(sql_zamin, values_ejareh_zamin)
+                last_id = cursor.lastrowid
+                if last_id is None or last_id == 0:
+                   messagebox.showerror("Error", "خطا: ثبت در جدول  انجام نشد")
+                return    
+                    
+        db.commit()
+        user_idcode = f"ID-{last_id}"
+        messagebox.showinfo("Success", f"ثبت با کد {user_idcode} انجام شد.")      
+    except Exception as e:
+        messagebox.showerror("Error", f"خطا در ثبت داده: {e}")
+        
+    finally:
+        if db and db.is_connected():
+            db.close()
+                
+#------------darkhast_kargah Database--------------------------
+skip_save=False
+def sabt_darkhast_kargah(event=None):
+    global skip_save
+    db = None
+    try:
+        db = get_connection()
+        cursor = db.cursor()
+        
+        cursor.execute("CREATE DATABASE IF NOT EXISTS state_agency")
+        cursor.execute("USE state_agency")
+
+        change_type= combo_darkhast_kargah.get()
+        #فیلد های خرید
+        mablagh_pish_darkhast_kargah_lable.place_forget()
+        mablagh_pish_darkhast_kargah_entry.place_forget()
+        #فیلد های اجاره
+        mablagh_pish_darkhast_kargah_lable.place_forget()
+        mablagh_pish_darkhast_kargah_entry.place_forget()
+        gheimat_har_metr_darkhast_kargah_lable.place_forget()
+        gheimat_har_metr_darkhast_kargah_entry.place_forget()
+        # فیلد های مشترک
+        name_moshtari_darkhast_kargah_lable.place_forget()
+        name_moshtari_darkhast_kargah_entry.place_forget()
+        shomareh_moshtari_darkhast_kargah_lable.place_forget()
+        shomareh_moshtari_darkhast_kargah_entry.place_forget()
+
+        if change_type=="درخواست خرید کارگاه":
+
+            mablagh_pish_darkhast_kargah_lable.place(x=start_x + 320, y=start_y + 335, anchor="e")
+            mablagh_pish_darkhast_kargah_entry.place(x=start_x + 10, y=start_y + 325, width=150, height=25)
+            name_moshtari_darkhast_kargah_lable.place(x=start_x + 320, y=start_y + 385, anchor="e")
+            name_moshtari_darkhast_kargah_entry.place(x=start_x + 10, y=start_y + 375, width=150, height=25)
+            shomareh_moshtari_darkhast_kargah_lable.place(x=start_x + 320, y=start_y + 435, anchor="e")
+            shomareh_moshtari_darkhast_kargah_entry.place(x=start_x + 10, y=start_y + 425, width=150, height=25)
+
+        elif change_type=="درخواست اجاره کارگاه":
+           
+            mablagh_pish_darkhast_kargah_lable.place(x=start_x + 320, y=start_y + 335, anchor="e")
+            mablagh_pish_darkhast_kargah_entry.place(x=start_x + 10, y=start_y + 325, width=150, height=25)
+            gheimat_har_metr_darkhast_kargah_lable.place(x=start_x + 320, y=start_y + 385, anchor="e")
+            gheimat_har_metr_darkhast_kargah_entry.place(x=start_x + 10, y=start_y + 375, width=150, height=25)
+            shomareh_moshtari_darkhast_kargah_lable.place(x=start_x + 320, y=start_y + 435, anchor="e")
+            shomareh_moshtari_darkhast_kargah_entry.place(x=start_x + 10, y=start_y + 425, width=150, height=25)
+            name_moshtari_darkhast_kargah_lable.place(x=start_x + 320, y=start_y + 487, anchor="e")
+            name_moshtari_darkhast_kargah_entry.place(x=start_x + 10, y=start_y + 475, width=150, height=25)
+
+        if event is not None:#خیلی مهم 
+           return
+        
+        if change_type=="درخواست خرید کارگاه":
+            cursor.execute("""
+            CREATE TABLE IF NOT EXISTS sabt_darkhast_ejareh_kargah(
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            type_melk VARCHAR(50) NOT NULL,
+            metraj_melk VARCHAR(20),
+            sal_sakht VARCHAR(20),
+            address VARCHAR(225),
+            mablagh_pish VARCHAR(20),
+            gheimat_harmetr VARCHAR(20),
+            name_moshtari VARCHAR(30),
+            shomareh_moshtari INT,
+            vaziat_bargh VARCHAR(20),
+            garmayesh VARCHAR(20),
+            sarmayesh_fan VARCHAR(20),
+            sarmayesh_panke VARCHAR(20),
+            sarmayesh_kooler_abi VARCHAR(20),
+            sarmayesh_kooler_gazi VARCHAR(20),
+            vaziat_ab VARCHAR(100),
+            abzar VARCHAR(100),
+            toilet VARCHAR(20),
+            hamam VARCHAR(20),
+            otagh VARCHAR(20)
+            )
+            """)
+
+            sql_kharid = """
+            INSERT INTO sabt_darkhast_kharid_kargah
+            (type_melk,metraj_melk,sal_sakht,address,mablagh_pish,gheimat_harmetr,
+            name_moshtari,shomareh_moshtari,vaziat_bargh,garmayesh,sarmayesh_fan,
+            sarmayesh_panke,sarmayesh_kooler_abi,sarmayesh_kooler_gazi,vaziat_ab,
+            abzar,toilet,hamam,otagh)
+            VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+            """
+
+            values_darkhast_kharid_kargah = (
+            combo_darkhast_kargah.get(),
+            metraj_darkhast_kargah_entry.get(),
+            sal_sakht_darkhast_kargah_entry.get(),
+            loctaion_darkhast_kargah_entry.get(),
+            float(mablagh_pish_darkhast_kargah_entry.get()),
+            float(gheimat_har_metr_darkhast_kargah_entry.get()),
+            name_moshtari_darkhast_kargah_entry.get(),
+            shomareh_moshtari_darkhast_kargah_entry.get(),
+            vaziat_bargh_darkhast_kargah_combo.get(),
+            garmayesh_type_darkhast_kargah_combo.get(),
+            sarmayesh_fan_darkhast_kargah_var.get(),
+            sarmayesh_panke_darkhast_kargah_var.get(),
+            sarmayesh_kooler_abi_darkhast_kargah_var.get(),
+            sarmayesh_kooler_gazi_darkhast_kargah_var.get(),
+            vaziat_ab_darkhast_kargah_combo.get(),
+            abzaar_darkhast_kargah_combo.get(),
+            toilet_darkhast_kargah_combo.get(),
+            hamam_darkhast_kargah__combo.get(),
+            otagh_darkhast_kargah_combo.get()
+            )
+            
+            cursor.execute(sql_kharid,values_darkhast_kharid_kargah)
+
+            last_id = cursor.lastrowid
+            if last_id is None or last_id == 0:
+                messagebox.showerror("Error", "خطا: ثبت در جدول  انجام نشد")
+                return
+            
+        elif change_type=="درخواست اجاره کارگاه":
+            cursor.execute("""
+            CREATE TABLE IF NOT EXISTS sabt_darkhast_kharid_kargah(
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            type_melk VARCHAR(50) NOT NULL,
+            metraj_melk VARCHAR(20),
+            sal_sakht VARCHAR(20),
+            address VARCHAR(225),
+            mablagh_pish VARCHAR(20),
+            gheimat_harmetr VARCHAR(20),
+            name_moshtari VARCHAR(30),
+            shomareh_moshtari INT,
+            vaziat_bargh VARCHAR(20),
+            garmayesh VARCHAR(20),
+            sarmayesh_fan VARCHAR(40),
+            sarmayesh_panke VARCHAR(40),
+            sarmayesh_kooler_abi VARCHAR(40),
+            sarmayesh_kooler_gazi VARCHAR(40),
+            vaziat_ab VARCHAR(100),
+            abzar VARCHAR(100),
+            toilet VARCHAR(20),
+            hamam VARCHAR(20),
+            otagh VARCHAR(20)
+            )
+            """)
+
+            sql_ejareh = """
+            INSERT INTO sabt_darkhast_kharid_kargah
+            (type_melk,metraj_melk,sal_sakht,address,mablagh_pish,gheimat_harmetr,
+            name_moshtari,shomareh_moshtari,vaziat_bargh,garmayesh,sarmayesh_fan,
+            sarmayesh_panke,sarmayesh_kooler_abi,sarmayesh_kooler_gazi,vaziat_ab,
+            abzar,toilet,hamam,otagh)
+            VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+            """
+            values_darkhast_ejareh_kargah = (
+            combo_darkhast_kargah.get(),
+            metraj_darkhast_kargah_entry.get(),
+            sal_sakht_darkhast_kargah_entry.get(),
+            loctaion_darkhast_kargah_entry.get(),
+            float(mablagh_pish_darkhast_kargah_entry.get()),
+            float(gheimat_har_metr_darkhast_kargah_entry.get()),
+            name_moshtari_darkhast_kargah_entry.get(),
+            shomareh_moshtari_darkhast_kargah_entry.get(),
+            vaziat_bargh_darkhast_kargah_combo.get(),
+            garmayesh_type_darkhast_kargah_combo.get(),
+            sarmayesh_fan_darkhast_kargah_var.get(),
+            sarmayesh_panke_darkhast_kargah_var.get(),
+            sarmayesh_kooler_abi_darkhast_kargah_var.get(),
+            sarmayesh_kooler_gazi_darkhast_kargah_var.get(),
+            vaziat_ab_darkhast_kargah_combo.get(),
+            abzaar_darkhast_kargah_combo.get(),
+            toilet_darkhast_kargah_combo.get(),
+            hamam_darkhast_kargah__combo.get(),
+            otagh_darkhast_kargah_combo.get()
+            )
+            
+            cursor.execute(sql_ejareh,values_darkhast_ejareh_kargah)
+
+            last_id = cursor.lastrowid
+            if last_id is None or last_id == 0:
+                messagebox.showerror("Error", "خطا: ثبت در جدول  انجام نشد")
+                return
+
+        db.commit()
+        user_idcode = f"ID-{last_id}"
+        messagebox.showinfo("Success", f"ثبت با کد {user_idcode} انجام شد.")      
+    except Exception as e:
+        messagebox.showerror("Error", f"خطا در ثبت داده: {e}")
+        
+    finally:
+        if db and db.is_connected():
+            db.close()
+#--------------------پایان تابع ثبت درخواست----------------
 #endregion
 #---#----#----#----#----#----------  گرافیک   ----------#----#----#----#-----#-----------
 # ---------دکمه فایل با منوی کشویی ------------------
@@ -1704,7 +2664,7 @@ root.config(menu=menubar)
 # ---------------اضافه کردن فیلد قرارداد ---------------
 #region
 file_menu_gharardad= tk.Menu(menubar, tearoff=0, font=("Shabnam", 10))
-file_menu_gharardad.add_command(label="خرید", command=None)
+file_menu_gharardad.add_command(label="درخواست", command=None)
 file_menu_gharardad.add_command(label="فروش", command=None)
 file_menu_gharardad.add_command(label="رهن/اجاره", command=None)
 file_menu_gharardad.add_command(label="مشارکت", command=None)
@@ -1729,7 +2689,7 @@ def gharardadeha():
 # ----------------------اضافه کردن فیلد درخواست ها-------
 #region
 file_menu_darkhast= tk.Menu(menubar, tearoff=0, font=("Shabnam", 10))
-file_menu_darkhast.add_command(label="درخواست خرید و اجاره", command=kharid)
+file_menu_darkhast.add_command(label="درخواست درخواست و اجاره", command=darkhast)
 
 # اضافه کردن منوی گزارش ها به منوبار
 menubar.add_cascade(label="درخواست ها", menu=file_menu_darkhast)
@@ -1757,7 +2717,7 @@ box_jostojo_malk1.pack(padx=6, pady=15)
 file_type = tk.Label(box_jostojo_malk1,text="نوع فایل",bg="#052340", fg="#FFFFFF",font=("Shabnam", 13))
 file_type.pack(padx=15,pady=10, side="right")
 combo_file_type= ttk.Combobox(box_jostojo_malk1)
-combo_file_type["values"] = ("رهن/اجاره","خرید","فروش","مشارکت",)
+combo_file_type["values"] = ("رهن/اجاره","درخواست","فروش","مشارکت",)
 combo_file_type["state"]=["readonly"]
 combo_file_type.pack(padx=10, pady=10) 
 
@@ -1824,13 +2784,13 @@ frame_joziat_amlack.pack(side="right", fill="both",expand=True, padx=6, pady=15)
 photo_melk_lbl = tk.Label(frame_joziat_amlack, text="[تصویر ملک]", bg="#FFFFFF", width=20, height=10)
 photo_melk_lbl.pack(pady=10)
 
-malek = tk.Label(frame_joziat_amlack,text="مالک ",bg="#052340", fg="#F7F7FA",font=("Shabnam", 13))
+malek = tk.Label(frame_joziat_amlack,text="نام مالک",bg="#052340", fg="#F7F7FA",font=("Shabnam", 13))
 malek.pack(padx=6,pady=4)
 
 entry_malek = tk.Entry(frame_joziat_amlack,bg="#FFFFFF", fg="#000000",font=("Shabnam", 13))
 entry_malek.pack(padx=20,pady=4)
 
-malek_phone_number = tk.Label(frame_joziat_amlack,text="شماره تماس مالک ",bg="#052340", fg="#F7F7FA",font=("Shabnam", 13))
+malek_phone_number = tk.Label(frame_joziat_amlack,text="شماره مالک",bg="#052340", fg="#F7F7FA",font=("Shabnam", 13))
 malek_phone_number.pack(padx=6,pady=4)
 
 entry_malek_phone_number = tk.Entry(frame_joziat_amlack,bg="#FFFFFF", fg="#000000",font=("Shabnam", 13))
@@ -1937,39 +2897,39 @@ box_forosh.resizable(False, False)
 
 #======================================================================
 #endregion
-#----------------------------------نوع انتخاب ثبتی فایل برای پنجره های خرید-----------------
+#----------------------------------نوع انتخاب ثبتی فایل برای پنجره های درخواستی-----------------
 #region
-box_kharid=tk.Toplevel(root)
-box_kharid.title("انتخاب نوع ملک خرید")
-box_kharid.geometry("500x270")
-box_kharid.withdraw()
-box_kharid.configure(bg="#052340")
+box_darkhast=tk.Toplevel(root)
+box_darkhast.title("انتخاب نوع ملک درخواستی")
+box_darkhast.geometry("500x270")
+box_darkhast.withdraw()
+box_darkhast.configure(bg="#052340")
 
 # یک متغیر مشترک برای همه رادیوباتن‌ها
-kharid_radio_value = tk.IntVar(value=0)  # مقدار پیش‌فرض -1 یعنی هیچکدام انتخاب نشده
+darkhast_radio_value = tk.IntVar(value=0)  # مقدار پیش‌فرض -1 یعنی هیچکدام انتخاب نشده
 
-kharid_maskoni_radio = tk.Radiobutton(box_kharid, value=0, text="ثبت درخواست مسکونی", background="#052340",fg="#00BFFF", variable=kharid_radio_value, font=("Shabnam",11))
-kharid_maskoni_radio.place(x=295,y=50)
+darkhast_maskoni_radio = tk.Radiobutton(box_darkhast, value=0, text="ثبت درخواست مسکونی", background="#052340",fg="#00BFFF", variable=darkhast_radio_value, font=("Shabnam",11))
+darkhast_maskoni_radio.place(x=295,y=50)
 
-kharid_edari_radio = tk.Radiobutton(box_kharid, value=2, text="ثبت درخواست اداری/تجاری",
-bg="#052340",fg="#00BFFF", variable=kharid_radio_value, font=("Shabnam",11))
-kharid_edari_radio.place(x=295,y=90)
+darkhast_edari_radio = tk.Radiobutton(box_darkhast, value=2, text="ثبت درخواست اداری/تجاری",
+bg="#052340",fg="#00BFFF", variable=darkhast_radio_value, font=("Shabnam",11))
+darkhast_edari_radio.place(x=295,y=90)
 
-kharid_bagh_radio = tk.Radiobutton(box_kharid, value=4, text="ثبت درخواست باغ/زمین",bg="#052340",fg="#00BFFF", variable=kharid_radio_value, font=("Shabnam",11))
-kharid_bagh_radio.place(x=295,y=130)
+darkhast_bagh_radio = tk.Radiobutton(box_darkhast, value=4, text="ثبت درخواست باغ/زمین",bg="#052340",fg="#00BFFF", variable=darkhast_radio_value, font=("Shabnam",11))
+darkhast_bagh_radio.place(x=295,y=130)
 
-kharid_kargah_radio = tk.Radiobutton(box_kharid, value=6, text="ثبت درخواست کارگاه",bg="#052340",fg="#00BFFF", variable=kharid_radio_value, font=("Shabnam",11))
-kharid_kargah_radio.place(x=295,y=170)
+darkhast_kargah_radio = tk.Radiobutton(box_darkhast, value=6, text="ثبت درخواست کارگاه",bg="#052340",fg="#00BFFF", variable=darkhast_radio_value, font=("Shabnam",11))
+darkhast_kargah_radio.place(x=295,y=170)
 
 
-back_to_home_box_kharid=tk.Button(box_kharid,text="بازگشت",bg="#00BFFF",fg="#000000",width=12,height=2,command=back_kharid_exit)
-back_to_home_box_kharid.place(x=190,y=210)
+back_to_home_box_darkhast=tk.Button(box_darkhast,text="بازگشت",bg="#00BFFF",fg="#000000",width=12,height=2,command=back_darkhast_exit)
+back_to_home_box_darkhast.place(x=190,y=210)
 
-zakhire_radio_box_kharid=tk.Button(box_kharid,text="ادامه",bg="#00BFFF",fg="#000000",width=12,height=2,command=sabt_radio_kharid)
-zakhire_radio_box_kharid.place(x=50,y=210)
+zakhire_radio_box_darkhast=tk.Button(box_darkhast,text="ادامه",bg="#00BFFF",fg="#000000",width=12,height=2,command=sabt_radio_darkhast)
+zakhire_radio_box_darkhast.place(x=50,y=210)
 
-box_kharid.protocol("WM_DELETE_WINDOW", lambda: None)
-box_kharid.resizable(False, False)
+box_darkhast.protocol("WM_DELETE_WINDOW", lambda: None)
+box_darkhast.resizable(False, False)
 #endregion 
 #----------------------------------نوع انتخاب ثبتی فایل برای پنجره های مشارکت-----------------
 #region
@@ -2099,6 +3059,19 @@ gheimat_pish_ejare_maskoni_lable.place(x=start_x + 320, y=start_y + 340, anchor=
 gheimat_pish_ejare_maskoni_entry = tk.Entry(ejareh_rehn_page, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
 gheimat_pish_ejare_maskoni_entry.place(x=start_x + 190, y=start_y + 370, width=150, height=25)
 
+
+name_malek_ejareh_maskoni_lable = tk.Label(ejareh_rehn_page, text="نام مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+name_malek_ejareh_maskoni_lable.place(x=start_x + 320, y=start_y + 442,anchor="e")
+
+name_malek_ejareh_maskoni_entry = tk.Entry(ejareh_rehn_page, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
+name_malek_ejareh_maskoni_entry.place(x=start_x + 10, y=start_y + 430, width=150, height=25)
+
+shomareh_malek_ejareh_maskoni_lable = tk.Label(ejareh_rehn_page, text="شماره مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+shomareh_malek_ejareh_maskoni_lable.place(x=start_x + 320, y=start_y + 486,anchor="e")
+
+shomareh_malek_ejareh_maskoni_entry = tk.Entry(ejareh_rehn_page, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
+shomareh_malek_ejareh_maskoni_entry.place(x=start_x + 10, y=start_y + 475, width=150, height=25)
+
 back_to_home_ejareh_maskoni=tk.Button(ejareh_rehn_page,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_ejare_maskoni)
 back_to_home_ejareh_maskoni.place(x=270,y=520)
 
@@ -2120,7 +3093,7 @@ ejareh_rehn_page.resizable(False, False)
 #------------------ساخت امکانات اجاره مسکونی------------------------
 #region
 option_frame_ejare_maskoni=tk.Frame(ejareh_rehn_page,width=300,height=30,background="#052340")
-option_frame_ejare_maskoni.place(x=525,y=500)
+option_frame_ejare_maskoni.place(x=225,y=370)
 
 add_option_frame_ejare_maskoni=tk.Label(option_frame_ejare_maskoni,text='افزودن امکانات فایل',font=("Shabnam",12,"bold"),background="#052340",fg="#00BFFF")
 add_option_frame_ejare_maskoni.pack(side="right",padx=1)
@@ -2285,13 +3258,17 @@ mablagh_ejare_ejareh_edari_tejari_lable.place(x=start_x + 320, y=start_y + 385, 
 mablagh_ejare_ejareh_edari_tejari_entry=tk.Entry(ejareh_edari_tejari,bg="#FFFFFF", fg="#000000",font=("Shabnam", 10),)
 mablagh_ejare_ejareh_edari_tejari_entry.place(x=start_x + 10, y=start_y + 375, width=150, height=25)
 
-rahn_kamel_ejareh_edari_tejari_lable=tk.Label(ejareh_edari_tejari,text=" رهن کامل؟ ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-rahn_kamel_ejareh_edari_tejari_lable.place(x=start_x + 320, y=start_y + 435, anchor="e")
+name_malek_ejareh_edari_tejari_lable=tk.Label(ejareh_edari_tejari,text="نام مالک",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+name_malek_ejareh_edari_tejari_lable.place(x=start_x + 320, y=start_y + 438, anchor="e")
 
-rahn_kamel_ejareh_edari_tejari_var=tk.IntVar(value=0)
+name_malek_ejareh_edari_tejari_entry=tk.Entry(ejareh_edari_tejari,bg="#FFFFFF", fg="#000000",font=("Shabnam", 10),)
+name_malek_ejareh_edari_tejari_entry.place(x=start_x + 10, y=start_y + 425, width=150, height=25)
 
-rahn_kamel_checkbutton_ejareh_edari_tejari=tk.Checkbutton(ejareh_edari_tejari,variable=rahn_kamel_ejareh_edari_tejari_var,bg="#FFFFFF", fg="#000000",font=("Shabnam", 10),)
-rahn_kamel_checkbutton_ejareh_edari_tejari.place(x=start_x + 10, y=start_y + 425)
+shomareh_malek_ejareh_edari_tejari_lable=tk.Label(ejareh_edari_tejari,text="شماره مالک",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+shomareh_malek_ejareh_edari_tejari_lable.place(x=start_x + 320, y=start_y + 487, anchor="e")
+
+shomareh_malek_ejareh_edari_tejari_entry=tk.Entry(ejareh_edari_tejari,bg="#FFFFFF", fg="#000000",font=("Shabnam", 10),)
+shomareh_malek_ejareh_edari_tejari_entry.place(x=start_x + 10, y=start_y + 475, width=150, height=25)
 
 back_to_home_ejareh_edari_tejari=tk.Button(ejareh_edari_tejari,text="بازگشت",bg="#00BFFF",fg="#000000",width=10,height=2,command=back_home_ejareh_edari_tejari)
 back_to_home_ejareh_edari_tejari.place(x=280,y=520)
@@ -2311,7 +3288,7 @@ ejareh_edari_tejari.resizable(False, False)
 #----------------------ساخت امکانات اجاره اداری/تجاری---------------------
 #region
 option_frame_ejareh_edari_tejari=tk.Frame(ejareh_edari_tejari,width=300,height=30,background="#052340")
-option_frame_ejareh_edari_tejari.place(x=250,y=373)
+option_frame_ejareh_edari_tejari.place(x=225,y=370)
 
 option_label_ejareh_edari_tejari=tk.Label(option_frame_ejareh_edari_tejari,text='افزودن امکانات فایل',font=("Shabnam",12,"bold"),background="#052340",fg="#00BFFF")
 option_label_ejareh_edari_tejari.pack(side="right",padx=1)
@@ -2421,6 +3398,7 @@ bagh_type_combo=ttk.Combobox(ejareh_bagh_zamin,state="readonly")
 bagh_type_combo["values"]=("باغ","زمین کشاورزی")
 bagh_type_combo.set("باغ")
 bagh_type_combo.place(x=start_x + 10, y=start_y + 125, width=150, height=25)
+bagh_type_combo.bind("<<ComboboxSelected>>",change_bagh_zamin1)
 
 bagh_loctaion_lable=tk.Label(ejareh_bagh_zamin, text=" منطقه و آدرس ", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 bagh_loctaion_lable.place(x=start_x + 320, y=start_y + 185, anchor="e")
@@ -2434,7 +3412,7 @@ bagh_gheimat_ejareh_bagh_zamin_lable.place(x=start_x + 320, y=start_y + 235, anc
 bagh_gheimat_ejareh_bagh_zamin_entry=tk.Entry(ejareh_bagh_zamin, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
 bagh_gheimat_ejareh_bagh_zamin_entry.place(x=start_x + 10, y=start_y + 225, width=150, height=25)
 
-bagh_gheimat_har_metr_ejareh_bagh_zamin_lable=tk.Label(ejareh_bagh_zamin, text="قیمت هر متر", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+bagh_gheimat_har_metr_ejareh_bagh_zamin_lable=tk.Label(ejareh_bagh_zamin, text="اجاره ماهانه", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 bagh_gheimat_har_metr_ejareh_bagh_zamin_lable.place(x=start_x + 320, y=start_y + 285, anchor="e")
 
 bagh_gheimat_har_metr_ejareh_bagh_zamin_entry=tk.Entry(ejareh_bagh_zamin, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
@@ -2481,7 +3459,7 @@ ejareh_bagh_zamin.resizable(False, False)
 #---------------------امکانات اجاره باغ/زمین---------------------
 #region
 option_frame_ejareh_bagh_zamin=tk.Frame(ejareh_bagh_zamin,width=300,height=30,background="#052340")
-option_frame_ejareh_bagh_zamin.place(x=525,y=520)
+option_frame_ejareh_bagh_zamin.place(x=225,y=370)
 
 option_label_ejareh_bagh_zamin=tk.Label(option_frame_ejareh_bagh_zamin,text='افزودن امکانات فایل',font=("Shabnam",12,"bold"),background="#052340",fg="#00BFFF")
 option_label_ejareh_bagh_zamin.pack(side="right",padx=1)
@@ -2506,15 +3484,7 @@ bg_label = tk.Label(option_file_frame_ejareh_bagh_zamin, image=bg_photo)
 bg_label.image = bg_photo 
 bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-karbari_zamin_ejareh_bagh_zamin_lable=tk.Label(option_file_frame_ejareh_bagh_zamin,text="کاربری زمین",bg="#052340",fg="#ffffff",font=("Shabnam",9),width=9)
-karbari_zamin_ejareh_bagh_zamin_lable.place(x=463, y=40)
 
-karbari_zamin_combo=ttk.Combobox(option_file_frame_ejareh_bagh_zamin,state="readonly")
-karbari_zamin_combo["values"]=("باغ","زمین کشاورزی")
-karbari_zamin_combo.set("باغ")
-karbari_zamin_combo.place(x=273, y=40)
-
-karbari_zamin_combo.bind("<<ComboboxSelected>>",change_bagh_zamin1)
 
 metraj_tree=tk.Label(option_file_frame_ejareh_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="متراژ درخت کاری")
 metraj_tree.place(x=450, y=70)
@@ -2802,6 +3772,18 @@ time_ejare_ejareh_kargah_combo["values"]=("بلندمدت","کوتاه مدت","
 time_ejare_ejareh_kargah_combo.set("فصلی")
 time_ejare_ejareh_kargah_combo.place(x=start_x + 10, y=start_y + 275, width=150, height=25)
 
+name_malek_ejareh_kargah_lable=tk.Label(ejareh_karghah, text="نام مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+name_malek_ejareh_kargah_lable.place(x=start_x + 320, y=start_y + 345, anchor="e")
+
+name_malek_ejareh_kargah_entry=tk.Entry(ejareh_karghah, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
+name_malek_ejareh_kargah_entry.place(x=start_x + 10, y=start_y + 335, width=150, height=25)
+
+shomareh_malek_ejareh_kargah_lable=tk.Label(ejareh_karghah, text="شماره مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+shomareh_malek_ejareh_kargah_lable.place(x=start_x + 320, y=start_y + 395, anchor="e")
+
+shomareh_malek_ejareh_kargah_entry=tk.Entry(ejareh_karghah, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
+shomareh_malek_ejareh_kargah_entry.place(x=start_x + 10, y=start_y + 385, width=150, height=25)
+
 photo_lbl2_ejareh_kargah = tk.Label(ejareh_karghah, text="[تصویر ملک]", bg="#FFFFFF", width=50, height=15)
 photo_lbl2_ejareh_kargah.place(x=60, y=85)
 
@@ -2820,7 +3802,7 @@ ejareh_karghah.resizable(False, False)
 #---------------------پنجره امکانات اجاره کارگاه---------------------
 #region
 option_frame_ejareh_kargah=tk.Frame(ejareh_karghah,width=300,height=30,background="#052340")
-option_frame_ejareh_kargah.place(x=525,y=450)
+option_frame_ejareh_kargah.place(x=225,y=370)
 
 option_frame_ejareh_kargah_lable=tk.Label(option_frame_ejareh_kargah,text='افزودن امکانات فایل',font=("Shabnam",12,"bold"),background="#052340",fg="#00BFFF")
 option_frame_ejareh_kargah_lable.pack(side="right",padx=1)
@@ -3027,6 +4009,18 @@ gheimat_forosh_maskoni.place(x=start_x + 320, y=start_y + 340, anchor="e")
 gheimat_forosh_maskoni_entry=tk.Entry(forosh_rehn_page, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
 gheimat_forosh_maskoni_entry.place(x=start_x + 10, y=start_y + 328, width=150, height=25)
 
+name_malek_forosh_maskoni_lable = tk.Label(forosh_rehn_page, text="نام مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+name_malek_forosh_maskoni_lable.place(x=start_x + 320, y=start_y + 390,anchor="e")
+
+name_malek_forosh_maskoni_entry = tk.Entry(forosh_rehn_page, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
+name_malek_forosh_maskoni_entry.place(x=start_x + 10, y=start_y + 380, width=150, height=25)
+
+shomareh_malek_forosh_maskoni_lable = tk.Label(forosh_rehn_page, text="شماره مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+shomareh_malek_forosh_maskoni_lable.place(x=start_x + 320, y=start_y + 445,anchor="e")
+
+shomareh_malek_forosh_maskoni_entry = tk.Entry(forosh_rehn_page, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
+shomareh_malek_forosh_maskoni_entry.place(x=start_x + 10, y=start_y + 430, width=150, height=25)
+
 
 back_to_home_forosh_maskoni=tk.Button(forosh_rehn_page,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_forosh_maskoni)
 back_to_home_forosh_maskoni.place(x=270,y=520)
@@ -3046,7 +4040,7 @@ forosh_rehn_page.resizable(False, False)
 #------------------------امکانات فروش مسکونی--------------------
 #region
 option_frame_options_forosh_maskoni=tk.Frame(forosh_rehn_page,width=300,height=30,background="#052340")
-option_frame_options_forosh_maskoni.place(x=520,y=460)
+option_frame_options_forosh_maskoni.place(x=225,y=370)
 
 option_label_forosh_maskoni=tk.Label(option_frame_options_forosh_maskoni,text='افزودن امکانات فایل',font=("Shabnam",12,"bold"),background="#052340",fg="#00BFFF")
 option_label_forosh_maskoni.pack(side="right",padx=1)
@@ -3197,6 +4191,17 @@ mablagh_pish_forosh_edari_tejari_lable.place(x=start_x + 320, y=start_y + 335, a
 mablagh_pish_forosh_edari_tejari_entry=tk.Entry(forosh_edari_tejari,bg="#FFFFFF", fg="#000000",font=("Shabnam", 10),)
 mablagh_pish_forosh_edari_tejari_entry.place(x=start_x + 10, y=start_y + 325, width=150, height=25)
 
+name_malek_forosh_edari_tejari_lable=tk.Label(forosh_edari_tejari,text="نام مالک",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+name_malek_forosh_edari_tejari_lable.place(x=start_x + 320, y=start_y + 385, anchor="e")
+
+name_malek_forosh_edari_tejari_entry=tk.Entry(forosh_edari_tejari,bg="#FFFFFF", fg="#000000",font=("Shabnam", 10),)
+name_malek_forosh_edari_tejari_entry.place(x=start_x + 10, y=start_y + 375, width=150, height=25)
+
+shomareh_malek_forosh_edari_tejari_lable=tk.Label(forosh_edari_tejari,text="شماره مالک",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+shomareh_malek_forosh_edari_tejari_lable.place(x=start_x + 320, y=start_y + 435, anchor="e")
+
+shomareh_malek_forosh_edari_tejari_entry=tk.Entry(forosh_edari_tejari,bg="#FFFFFF", fg="#000000",font=("Shabnam", 10),)
+shomareh_malek_forosh_edari_tejari_entry.place(x=start_x + 10, y=start_y + 425, width=150, height=25)
 
 back_to_home_forosh_edari_tejari=tk.Button(forosh_edari_tejari,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_forosh_edari_tejari)
 back_to_home_forosh_edari_tejari.place(x=280,y=520)
@@ -3216,7 +4221,7 @@ forosh_edari_tejari.resizable(False, False)
 #---------------امکانات فروش اداری/تجاری-------------------
 #region
 option_frame_options_forosh_edari_tejari=tk.Frame(forosh_edari_tejari,width=300,height=30,background="#052340")
-option_frame_options_forosh_edari_tejari.place(x=250,y=373)
+option_frame_options_forosh_edari_tejari.place(x=225,y=370)
 
 option_label_forosh_edari_tejari=tk.Label(option_frame_options_forosh_edari_tejari,text='افزودن امکانات فایل',font=("Shabnam",12,"bold"),background="#052340",fg="#00BFFF")
 option_label_forosh_edari_tejari.pack(side="right",padx=1)
@@ -3327,6 +4332,8 @@ bagh_type_forosh_bagh_zamin_combo["values"]=("باغ","زمین کشاورزی")
 bagh_type_forosh_bagh_zamin_combo.set("باغ")
 bagh_type_forosh_bagh_zamin_combo["state"]=["readonly"]
 bagh_type_forosh_bagh_zamin_combo.place(x=start_x + 10, y=start_y + 125, width=150, height=25)
+bagh_type_forosh_bagh_zamin_combo.bind("<<ComboboxSelected>>",change_bagh_zamin_forosh_bagh)
+
 
 bagh_loctaion_forosh_bagh_zamin_lable=tk.Label(forosh_bagh_zamin,text="منطقه و ادرس ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
 bagh_loctaion_forosh_bagh_zamin_lable.place(x=start_x + 320, y=start_y + 185, anchor="e")
@@ -3370,7 +4377,7 @@ forosh_bagh_zamin.resizable(False, False)
 #-----------------------پنجره امکانات فروش باغ/زمین-------------------
 #region
 option_frame_options_forosh_bagh_zamin=tk.Frame(forosh_bagh_zamin,width=300,height=30,background="#052340")
-option_frame_options_forosh_bagh_zamin.place(x=525,y=450)
+option_frame_options_forosh_bagh_zamin.place(x=225,y=370)
 
 option_label_forosh_bagh_zamin=tk.Label(option_frame_options_forosh_bagh_zamin,text='افزودن امکانات فایل',font=("Shabnam",12,"bold"),background="#052340",fg="#00BFFF")
 option_label_forosh_bagh_zamin.pack(side="right",padx=1)
@@ -3395,16 +4402,6 @@ bg_label = tk.Label(option_file_frame_forosh_bagh_zamin, image=bg_photo)
 bg_label.image = bg_photo 
 bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-karbary_zamin_forosh_bagh_zamin=tk.Label(option_file_frame_forosh_bagh_zamin,text="کاربری زمین",bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10)
-karbary_zamin_forosh_bagh_zamin.place(x=463, y=40)
-
-karbary_zamin_forosh_bagh_zamin_combo=ttk.Combobox(option_file_frame_forosh_bagh_zamin,state="readonly")
-karbary_zamin_forosh_bagh_zamin_combo["values"]=("باغ","زمین کشاورزی")
-karbary_zamin_forosh_bagh_zamin_combo.set("باغ")
-karbary_zamin_forosh_bagh_zamin_combo["state"]=["readonly"]
-karbary_zamin_forosh_bagh_zamin_combo.place(x=273, y=40)
-
-karbary_zamin_forosh_bagh_zamin_combo.bind("<<ComboboxSelected>>",change_bagh_zamin_forosh_bagh)
 
 metraj_derakht_forosh_bagh_zamin_lable=tk.Label(option_file_frame_forosh_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="متراژ درخت کاری")
 metraj_derakht_forosh_bagh_zamin_lable.place(x=450, y=70)
@@ -3619,9 +4616,6 @@ javaz_chah_zamin_forosh_zamin_var=tk.IntVar(value=0)
 mojavez_chah_zamin_forosh_bagh_zamin=tk.Checkbutton(option_frame_option2_forosh_bagh_zamin,variable=javaz_chah_zamin_forosh_zamin_var,text="اجازه حفر چاه",background="#052340",fg="#00BFFF",font=("Shabnam",9))
 mojavez_chah_zamin_forosh_bagh_zamin.place(x=300, y=280)
 
-
-
-
 zakhire_options_forosh_bagh_zamin=tk.Button(option_file_frame_forosh_bagh_zamin,text="تایید",background="#00BFFF",fg="#000000",width=10,height=1,command=save_option_forosh_bagh_zamin)
 zakhire_options_forosh_bagh_zamin.place(x=95,y=580)
 
@@ -3698,6 +4692,18 @@ time_ejare_forosh_kargah_combo["values"]=("بلندمدت","کوتاه مدت","
 time_ejare_forosh_kargah_combo.set("فصلی")
 time_ejare_forosh_kargah_combo.place(x=start_x + 10, y=start_y + 275, width=150, height=25)
 
+name_malek_forosh_kargah_lable=tk.Label(forosh_karghah, text="نام مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+name_malek_forosh_kargah_lable.place(x=start_x + 320, y=start_y + 345, anchor="e")
+
+name_malek_forosh_kargah_entry=tk.Entry(forosh_karghah, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
+name_malek_forosh_kargah_entry.place(x=start_x + 10, y=start_y + 335, width=150, height=25)
+
+shomareh_malek_forosh_kargah_lable=tk.Label(forosh_karghah, text="شماره مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+shomareh_malek_forosh_kargah_lable.place(x=start_x + 320, y=start_y + 395, anchor="e")
+
+shomareh_malek_forosh_kargah_entry=tk.Entry(forosh_karghah, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
+shomareh_malek_forosh_kargah_entry.place(x=start_x + 10, y=start_y + 385, width=150, height=25)
+
 photo_lbl2_forosh_kargah = tk.Label(forosh_karghah, text="[تصویر ملک]", bg="#ffffff", width=50, height=15)
 photo_lbl2_forosh_kargah.place(x=60, y=85)
 
@@ -3716,7 +4722,7 @@ forosh_karghah.resizable(False, False)
 #---------------------پنجره امکانات فروش کارگاه---------------------
 #region
 option_frame_forosh_kargah=tk.Frame(forosh_karghah,width=300,height=30,background="#052340")
-option_frame_forosh_kargah.place(x=550,y=450)
+option_frame_forosh_kargah.place(x=225,y=370)
 
 option_frame_lable_forosh_kargah=tk.Label(option_frame_forosh_kargah,text='افزودن امکانات فایل',font=("Shabnam",12,"bold"),background="#052340",fg="#00BFFF")
 option_frame_lable_forosh_kargah.pack(side="right",padx=1)
@@ -3837,891 +4843,960 @@ back_to_forosh_kargah.place(x=170,y=450)
 option_file_frame_forosh_kargah.protocol("WM_DELETE_WINDOW", lambda: None)
 option_file_frame_forosh_kargah.resizable(False, False)
 #endregion
-#--------------------پنجره های ثبتی بخش خرید-----------------------
-#----------------------پنجره خرید مسکونی--------------------------
+#--------------------پنجره های ثبتی بخش درخواست-----------------------
+#----------------------پنجره درخواست مسکونی--------------------------
 #region
-kharid_maskoni_page = tk.Toplevel(root)
-kharid_maskoni_page.title("خرید مسکونی")
-kharid_maskoni_page.geometry("800x600")
-kharid_maskoni_page.withdraw()
+darkhast_maskoni_page = tk.Toplevel(root)
+darkhast_maskoni_page.title("درخواست مسکونی")
+darkhast_maskoni_page.geometry("800x600")
+darkhast_maskoni_page.withdraw()
 
-bg_image = image_kharid_maskoni
-bg_image = image_kharid_maskoni.resize((800, 600))
+bg_image = image_darkhast_maskoni
+bg_image = image_darkhast_maskoni.resize((800, 600))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
 # لیبل پس‌زمینه
-bg_label = tk.Label(kharid_maskoni_page, image=bg_photo)
+bg_label = tk.Label(darkhast_maskoni_page, image=bg_photo)
 bg_label.image = bg_photo 
 bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
 
-#---------------------پنجره امکانات خرید مسکونی----------------------
-option_file_frame_kharid_maskoni=tk.Toplevel(kharid_maskoni_page)
-option_file_frame_kharid_maskoni.title(" امکانات خرید مسکونی")
-option_file_frame_kharid_maskoni.geometry("500x370")
-option_file_frame_kharid_maskoni.pack_propagate(False)
-option_file_frame_kharid_maskoni.withdraw()
+#---------------------پنجره امکانات درخواست مسکونی----------------------
+option_file_frame_darkhast_maskoni=tk.Toplevel(darkhast_maskoni_page)
+option_file_frame_darkhast_maskoni.title(" امکانات درخواست مسکونی")
+option_file_frame_darkhast_maskoni.geometry("500x370")
+option_file_frame_darkhast_maskoni.pack_propagate(False)
+option_file_frame_darkhast_maskoni.withdraw()
 
-#------------------کادر خرید مسکونی-----------------------------#
-frame_kharid_maskoni= tk.Frame(kharid_maskoni_page,bd=0,highlightthickness=0)
-frame_kharid_maskoni.pack(side="left", fill="y", padx=6, pady=15)
+#------------------کادر درخواست مسکونی-----------------------------#
+frame_darkhast_maskoni= tk.Frame(darkhast_maskoni_page,bd=0,highlightthickness=0)
+frame_darkhast_maskoni.pack(side="left", fill="y", padx=6, pady=15)
 
-title_lbl = tk.Label(kharid_maskoni_page,text="خرید مسکونی",bg="#052340",fg="#00BFFF",font=("Shabnam", 15))
+title_lbl = tk.Label(darkhast_maskoni_page,text="درخواست مسکونی",bg="#052340",fg="#00BFFF",font=("Shabnam", 15))
 title_lbl.place(x=60, y=25)   
 
 # تعیین نقطه شروع (جایی که فریم قبلی قرار داشت)
 start_x = 450
 start_y = 40
 
-melk_type_kharid_maskoni=tk.Label(kharid_maskoni_page,text="نوع ملک",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-melk_type_kharid_maskoni.place(x=start_x + 320, y=start_y + 35, anchor="e")
+melk_type_darkhast_maskoni=tk.Label(darkhast_maskoni_page,text="نوع ملک",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+melk_type_darkhast_maskoni.place(x=start_x + 320, y=start_y + 35, anchor="e")
 
-melk_type_kharid_maskoni_entry=tk.Entry(kharid_maskoni_page,text="خرید مسکونی",bg="#C2C2C2", fg="#180202",font=("Shabnam", 10),justify="center")
-melk_type_kharid_maskoni_entry.insert(0,"خرید مسکونی")
-melk_type_kharid_maskoni_entry.config(state="disable")
-melk_type_kharid_maskoni_entry.place(x=start_x + 10, y=start_y + 25, width=150, height=25)
 
-sal_sakht_kharid_maskoni=tk.Label(kharid_maskoni_page,text="سال ساخت",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-sal_sakht_kharid_maskoni.place(x=start_x + 320, y=start_y + 85, anchor="e")
+melk_type_darkhast_maskoni_entry=ttk.Combobox(darkhast_maskoni_page,state="readonly")
+melk_type_darkhast_maskoni_entry["values"] = ("درخواست خرید مسکونی","درخواست اجاره مسکونی")
+melk_type_darkhast_maskoni_entry.set("درخواست خرید مسکونی")
+melk_type_darkhast_maskoni_entry.bind("<<ComboboxSelected>>",sabt_darkhast_maskoni)
+melk_type_darkhast_maskoni_entry.place(x=start_x + 10, y=start_y + 25, width=150, height=25)
 
-sal_sakht_kharid_maskoni_entry=tk.Entry(kharid_maskoni_page,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
-sal_sakht_kharid_maskoni_entry.place(x=start_x + 10, y=start_y + 75, width=150, height=25)
+sal_sakht_darkhast_maskoni=tk.Label(darkhast_maskoni_page,text="سال ساخت",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+sal_sakht_darkhast_maskoni.place(x=start_x + 320, y=start_y + 85, anchor="e")
 
-addrres_kharid_maskoni=tk.Label(kharid_maskoni_page,text="آدرس",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-addrres_kharid_maskoni.place(x=start_x + 320, y=start_y + 135, anchor="e")
+sal_sakht_darkhast_maskoni_entry=tk.Entry(darkhast_maskoni_page,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
+sal_sakht_darkhast_maskoni_entry.place(x=start_x + 10, y=start_y + 75, width=150, height=25)
 
-addrres_kharid_maskoni_entry=tk.Entry(kharid_maskoni_page,bg="#ffffff", fg="#000000",font=("Shabnam", 10),)
-addrres_kharid_maskoni_entry.place(x=start_x + 10, y=start_y + 125, width=150, height=25)
+addrres_darkhast_maskoni=tk.Label(darkhast_maskoni_page,text="آدرس",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+addrres_darkhast_maskoni.place(x=start_x + 320, y=start_y + 135, anchor="e")
 
-tabaghe_kharid_maskoni=tk.Label(kharid_maskoni_page,text="طبقه",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-tabaghe_kharid_maskoni.place(x=start_x + 320, y=start_y + 185, anchor="e")
+addrres_darkhast_maskoni_entry=tk.Entry(darkhast_maskoni_page,bg="#ffffff", fg="#000000",font=("Shabnam", 10),)
+addrres_darkhast_maskoni_entry.place(x=start_x + 10, y=start_y + 125, width=150, height=25)
 
-tabaghe_kharid_maskoni_entry=tk.Entry(kharid_maskoni_page,bg="#ffffff", fg="#000000",font=("Shabnam", 10),)
-tabaghe_kharid_maskoni_entry.place(x=start_x + 10, y=start_y + 175, width=150, height=25)
+tabaghe_darkhast_maskoni=tk.Label(darkhast_maskoni_page,text="طبقه",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+tabaghe_darkhast_maskoni.place(x=start_x + 320, y=start_y + 185, anchor="e")
 
-vahed_kharid_maskoni=tk.Label(kharid_maskoni_page,text="واحد",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-vahed_kharid_maskoni.place(x=start_x + 320, y=start_y + 235, anchor="e")
+tabaghe_darkhast_maskoni_entry=tk.Entry(darkhast_maskoni_page,bg="#ffffff", fg="#000000",font=("Shabnam", 10),)
+tabaghe_darkhast_maskoni_entry.place(x=start_x + 10, y=start_y + 175, width=150, height=25)
 
-vahed_kharid_maskoni_entry=tk.Entry(kharid_maskoni_page,bg="#ffffff", fg="#000000",font=("Shabnam", 10),)
-vahed_kharid_maskoni_entry.place(x=start_x + 10, y=start_y + 225, width=150, height=25)
+vahed_darkhast_maskoni=tk.Label(darkhast_maskoni_page,text="واحد",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+vahed_darkhast_maskoni.place(x=start_x + 320, y=start_y + 235, anchor="e")
 
-otagh_kharid_maskoni=tk.Label(kharid_maskoni_page,text="اتاق",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-otagh_kharid_maskoni.place(x=start_x + 320, y=start_y + 285, anchor="e")
+vahed_darkhast_maskoni_entry=tk.Entry(darkhast_maskoni_page,bg="#ffffff", fg="#000000",font=("Shabnam", 10),)
+vahed_darkhast_maskoni_entry.place(x=start_x + 10, y=start_y + 225, width=150, height=25)
 
-otagh_kharid_maskoni_entry=tk.Entry(kharid_maskoni_page,bg="#ffffff", fg="#000000",font=("Shabnam", 10),)
-otagh_kharid_maskoni_entry.place(x=start_x + 10, y=start_y + 275, width=150, height=25)
+otagh_darkhast_maskoni=tk.Label(darkhast_maskoni_page,text="اتاق",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+otagh_darkhast_maskoni.place(x=start_x + 320, y=start_y + 285, anchor="e")
 
-gheimat_kharid_maskoni=tk.Label(kharid_maskoni_page,text="قیمت",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-gheimat_kharid_maskoni.place(x=start_x + 320, y=start_y + 340, anchor="e")
+otagh_darkhast_maskoni_entry=tk.Entry(darkhast_maskoni_page,bg="#ffffff", fg="#000000",font=("Shabnam", 10),)
+otagh_darkhast_maskoni_entry.place(x=start_x + 10, y=start_y + 275, width=150, height=25)
 
-gheimat_kharid_maskoni_entry=tk.Entry(kharid_maskoni_page,bg="#ffffff", fg="#000000",font=("Shabnam", 10),)
-gheimat_kharid_maskoni_entry.place(x=start_x + 10, y=start_y + 330, width=150, height=25)
+gheimat_darkhast_maskoni_lable=tk.Label(darkhast_maskoni_page,text="قیمت",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+gheimat_darkhast_maskoni_lable.place(x=start_x + 320, y=start_y + 340, anchor="e")
 
-back_to_home_kharid_maskoni=tk.Button(kharid_maskoni_page,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_kharid_maskoni)
-back_to_home_kharid_maskoni.place(x=270,y=520)
+gheimat_darkhast_maskoni_entry=tk.Entry(darkhast_maskoni_page,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
+gheimat_darkhast_maskoni_entry.place(x=start_x + 10, y=start_y + 330, width=150, height=25)
 
-zakhire_kharid_maskoni=tk.Button(kharid_maskoni_page,text="ذخیره",bg="#00BFFF",fg="black",width=10,height=2,command=None)
-zakhire_kharid_maskoni.place(x=120,y=520)
+mablagh_ejare_darkhast_maskoni_lable = tk.Label(darkhast_maskoni_page, text="مبلغ اجاره", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+mablagh_ejare_darkhast_maskoni_lable.place_forget()
 
-photo_lbl2_kharid_maskoni = tk.Label(kharid_maskoni_page, text="[تصویر ملک]", bg="#ffffff", width=50, height=15)
-photo_lbl2_kharid_maskoni.place(x=60, y=85)
+mablagh_ejare_darkhast_maskoni_entry = tk.Entry(darkhast_maskoni_page, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
+mablagh_ejare_darkhast_maskoni_entry.place_forget()
 
-add_img_btn_kharid_maskoni = tk.Button(kharid_maskoni_page, text="افزودن تصویر", bg="#00BFFF", fg="black",command=open_file,height=2,width=13)
-add_img_btn_kharid_maskoni.place(x=60, y=370)
+gheimat_pish_darkhast_maskoni_lable = tk.Label(darkhast_maskoni_page, text="مبلغ پیش", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+gheimat_pish_darkhast_maskoni_lable.place_forget()
 
-kharid_maskoni_page.protocol("WM_DELETE_WINDOW", lambda: None)
-kharid_maskoni_page.resizable(False, False)
+gheimat_pish_darkhast_maskoni_entry = tk.Entry(darkhast_maskoni_page, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
+gheimat_pish_darkhast_maskoni_entry.place_forget()
+
+name_moshtari_darkhast_maskoni_lable = tk.Label(darkhast_maskoni_page, text="نام مشتری", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+name_moshtari_darkhast_maskoni_lable.place(x=start_x + 320, y=start_y + 390,anchor="e")
+
+name_moshtari_darkhast_maskoni_entry = tk.Entry(darkhast_maskoni_page, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
+name_moshtari_darkhast_maskoni_entry.place(x=start_x + 10, y=start_y + 380, width=150, height=25)
+
+shomareh_moshtari_darkhast_maskoni_lable = tk.Label(darkhast_maskoni_page, text="شماره مشتری", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+shomareh_moshtari_darkhast_maskoni_lable.place(x=start_x + 320, y=start_y + 445,anchor="e")
+
+shomareh_moshtari_darkhast_maskoni_entry = tk.Entry(darkhast_maskoni_page, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
+shomareh_moshtari_darkhast_maskoni_entry.place(x=start_x + 10, y=start_y + 430, width=150, height=25)
+
+back_to_home_darkhast_maskoni=tk.Button(darkhast_maskoni_page,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_darkhast_maskoni)
+back_to_home_darkhast_maskoni.place(x=270,y=520)
+
+zakhire_darkhast_maskoni=tk.Button(darkhast_maskoni_page,text="ذخیره",bg="#00BFFF",fg="black",width=10,height=2,command=sabt_darkhast_maskoni)
+zakhire_darkhast_maskoni.place(x=120,y=520)
+
+photo_lbl2_darkhast_maskoni = tk.Label(darkhast_maskoni_page, text="[تصویر ملک]", bg="#ffffff", width=50, height=15)
+photo_lbl2_darkhast_maskoni.place(x=60, y=85)
+
+add_img_btn_darkhast_maskoni = tk.Button(darkhast_maskoni_page, text="افزودن تصویر", bg="#00BFFF", fg="black",command=open_file,height=2,width=13)
+add_img_btn_darkhast_maskoni.place(x=60, y=370)
+
+darkhast_maskoni_page.protocol("WM_DELETE_WINDOW", lambda: None)
+darkhast_maskoni_page.resizable(False, False)
 #endregion
-#------------------------امکانات خرید مسکونی--------------------
+#------------------------امکانات درخواست مسکونی--------------------
 #region
-option_frame_options_kharid_maskoni=tk.Frame(kharid_maskoni_page,width=300,height=30,background="#052340")
-option_frame_options_kharid_maskoni.place(x=520,y=460)
+option_frame_options_darkhast_maskoni=tk.Frame(darkhast_maskoni_page,width=300,height=30,background="#052340")
+option_frame_options_darkhast_maskoni.place(x=225,y=370)
 
-option_label_kharid_maskoni=tk.Label(option_frame_options_kharid_maskoni,text='افزودن امکانات فایل',font=("Shabnam",12,"bold"),background="#052340",fg="#00BFFF")
-option_label_kharid_maskoni.pack(side="right",padx=1)
+option_label_darkhast_maskoni=tk.Label(option_frame_options_darkhast_maskoni,text='افزودن امکانات فایل',font=("Shabnam",12,"bold"),background="#052340",fg="#00BFFF")
+option_label_darkhast_maskoni.pack(side="right",padx=1)
 
-plus_button_kharid_maskoni=tk.Button(option_frame_options_kharid_maskoni,image=plus,command=open_option9,border=0)
-plus_button_kharid_maskoni.pack()
+plus_button_darkhast_maskoni=tk.Button(option_frame_options_darkhast_maskoni,image=plus,command=open_option9,border=0)
+plus_button_darkhast_maskoni.pack()
 
-bg_image = image_kharid_maskoni
-bg_image = image_kharid_maskoni.resize((800, 380))
+bg_image = image_darkhast_maskoni
+bg_image = image_darkhast_maskoni.resize((800, 380))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
-bg_label = tk.Label(option_file_frame_kharid_maskoni, image=bg_photo)
+bg_label = tk.Label(option_file_frame_darkhast_maskoni, image=bg_photo)
 bg_label.image = bg_photo 
 bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-parking_kharid_maskoni_var=tk.IntVar(value=0)
-anbari_kharid_maskoni_var=tk.IntVar(value=0)
-asansor_kharid_maskoni_var=tk.IntVar(value=0)
+parking_darkhast_maskoni_var=tk.IntVar(value=0)
+anbari_darkhast_maskoni_var=tk.IntVar(value=0)
+asansor_darkhast_maskoni_var=tk.IntVar(value=0)
 
-parking_ch_btn_kharid_maskoni=tk.Checkbutton(option_file_frame_kharid_maskoni,image=parking_pic,background="#052340")
-parking_ch_btn_kharid_maskoni.place(x=140, y=50)
+parking_ch_btn_darkhast_maskoni=tk.Checkbutton(option_file_frame_darkhast_maskoni,variable=parking_darkhast_maskoni_var,image=parking_pic,background="#052340")
+parking_ch_btn_darkhast_maskoni.place(x=140, y=50)
 
-asansor_ch_btn_kharid_maskoni=tk.Checkbutton(option_file_frame_kharid_maskoni,image=elvator_pic,background="#052340")
-asansor_ch_btn_kharid_maskoni.place(x=240, y=50)
+asansor_ch_btn_darkhast_maskoni=tk.Checkbutton(option_file_frame_darkhast_maskoni,variable=asansor_darkhast_maskoni_var,image=elvator_pic,background="#052340")
+asansor_ch_btn_darkhast_maskoni.place(x=240, y=50)
 
-anbari_checkbuton_kharid_maskoni=tk.Checkbutton(option_file_frame_kharid_maskoni,image=warehouse_pic,background="#052340")
-anbari_checkbuton_kharid_maskoni.place(x=340, y=50)
+anbari_checkbuton_darkhast_maskoni=tk.Checkbutton(option_file_frame_darkhast_maskoni,variable=anbari_darkhast_maskoni_var,image=warehouse_pic,background="#052340")
+anbari_checkbuton_darkhast_maskoni.place(x=340, y=50)
 
-sarmaesh_kharid_maskoni=tk.Label(option_file_frame_kharid_maskoni,text="سرمایش",background="#052340",fg="#ffffff",font=("Shabnam",11))
-sarmaesh_kharid_maskoni.place(x=320, y=110)
+sarmaesh_darkhast_maskoni=tk.Label(option_file_frame_darkhast_maskoni,text="سرمایش",background="#052340",fg="#ffffff",font=("Shabnam",11))
+sarmaesh_darkhast_maskoni.place(x=320, y=110)
 
-sarmaesh_combo_kharid_maskoni=ttk.Combobox(option_file_frame_kharid_maskoni)
-sarmaesh_combo_kharid_maskoni["values"] = ("ندارد","پنکه سقفی","کولر ابی","کولر گازی ","ابی/گازی")
-sarmaesh_combo_kharid_maskoni["state"]=["readonly"]
-sarmaesh_combo_kharid_maskoni.place(x=120, y=110)
+sarmaesh_combo_darkhast_maskoni=ttk.Combobox(option_file_frame_darkhast_maskoni)
+sarmaesh_combo_darkhast_maskoni["values"] = ("ندارد","پنکه سقفی","کولر ابی","کولر گازی ","ابی/گازی")
+sarmaesh_combo_darkhast_maskoni["state"]=["readonly"]
+sarmaesh_combo_darkhast_maskoni.place(x=120, y=110)
 
-garmaesh_kharid_maskoni=tk.Label(option_file_frame_kharid_maskoni,text="گرمایش",background="#052340",fg="#ffffff",font=("Shabnam",11))
-garmaesh_kharid_maskoni.place(x=320, y=150)
+garmaesh_darkhast_maskoni=tk.Label(option_file_frame_darkhast_maskoni,text="گرمایش",background="#052340",fg="#ffffff",font=("Shabnam",11))
+garmaesh_darkhast_maskoni.place(x=320, y=150)
 
-garmaesh_combo_kharid_maskoni=ttk.Combobox(option_file_frame_kharid_maskoni)
-garmaesh_combo_kharid_maskoni["values"] = ("ندارد","بخاری"," شوفاژ","گرمایش از کف ")
-garmaesh_combo_kharid_maskoni["state"]=["readonly"]
-garmaesh_combo_kharid_maskoni.place(x=120, y=150)
+garmaesh_combo_darkhast_maskoni=ttk.Combobox(option_file_frame_darkhast_maskoni)
+garmaesh_combo_darkhast_maskoni["values"] = ("ندارد","بخاری"," شوفاژ","گرمایش از کف ")
+garmaesh_combo_darkhast_maskoni["state"]=["readonly"]
+garmaesh_combo_darkhast_maskoni.place(x=120, y=150)
 
-kaf_kharid_maskoni=tk.Label(option_file_frame_kharid_maskoni,text="کف",background="#052340",fg="#ffffff",font=("Shabnam",11))
-kaf_kharid_maskoni.place(x=320, y=190)
+kaf_darkhast_maskoni=tk.Label(option_file_frame_darkhast_maskoni,text="کف",background="#052340",fg="#ffffff",font=("Shabnam",11))
+kaf_darkhast_maskoni.place(x=320, y=190)
 
-kaf_combo_kharid_maskoni=ttk.Combobox(option_file_frame_kharid_maskoni)
-kaf_combo_kharid_maskoni["state"]=["readonly"]
-kaf_combo_kharid_maskoni["values"] = ("سرامیک","موزاییک","پارکت")
-kaf_combo_kharid_maskoni.place(x=120, y=190)
+kaf_combo_darkhast_maskoni=ttk.Combobox(option_file_frame_darkhast_maskoni)
+kaf_combo_darkhast_maskoni["state"]=["readonly"]
+kaf_combo_darkhast_maskoni["values"] = ("سرامیک","موزاییک","پارکت")
+kaf_combo_darkhast_maskoni.place(x=120, y=190)
 
-toilet_kharid_maskoni=tk.Label(option_file_frame_kharid_maskoni,text="سرویس بهداشتی",background="#052340",fg="#ffffff",font=("Shabnam",11))
-toilet_kharid_maskoni.place(x=320, y=230)
+toilet_darkhast_maskoni=tk.Label(option_file_frame_darkhast_maskoni,text="سرویس بهداشتی",background="#052340",fg="#ffffff",font=("Shabnam",11))
+toilet_darkhast_maskoni.place(x=320, y=230)
 
-toilet_combo_kharid_maskoni=ttk.Combobox(option_file_frame_kharid_maskoni)
-toilet_combo_kharid_maskoni["state"]=["readonly"]
-toilet_combo_kharid_maskoni["values"] = ("ایرانی","فرنگی","هردو")
-toilet_combo_kharid_maskoni.place(x=120, y=230)
+toilet_combo_darkhast_maskoni=ttk.Combobox(option_file_frame_darkhast_maskoni)
+toilet_combo_darkhast_maskoni["state"]=["readonly"]
+toilet_combo_darkhast_maskoni["values"] = ("ایرانی","فرنگی","هردو")
+toilet_combo_darkhast_maskoni.place(x=120, y=230)
 
-zakhire_options_kharid_maskoni=tk.Button(option_file_frame_kharid_maskoni,text="تایید",command=save_option_kharid_maskoni,background="#00BFFF",fg="#000000",width=10,height=1)
-zakhire_options_kharid_maskoni.place(x=95, y=320)
+zakhire_options_darkhast_maskoni=tk.Button(option_file_frame_darkhast_maskoni,text="تایید",command=save_option_darkhast_maskoni,background="#00BFFF",fg="#000000",width=10,height=1)
+zakhire_options_darkhast_maskoni.place(x=95, y=320)
 
-back_to_home_kharid_maskoni=tk.Button(option_file_frame_kharid_maskoni,text="بازگشت",command=back_to_kharid_maskoni,background="#00BFFF",fg="#000000",width=10,height=1)
-back_to_home_kharid_maskoni.place(x=215, y=320)
+back_to_home_darkhast_maskoni=tk.Button(option_file_frame_darkhast_maskoni,text="بازگشت",command=back_to_darkhast_maskoni,background="#00BFFF",fg="#000000",width=10,height=1)
+back_to_home_darkhast_maskoni.place(x=215, y=320)
 
-option_file_frame_kharid_maskoni.protocol("WM_DELETE_WINDOW", lambda: None)
-option_file_frame_kharid_maskoni.resizable(False, False)
+option_file_frame_darkhast_maskoni.protocol("WM_DELETE_WINDOW", lambda: None)
+option_file_frame_darkhast_maskoni.resizable(False, False)
 #endregion
-#-----------------پنجره خرید اداری/تجاری-------------------
+#-----------------پنجره درخواست اداری/تجاری-------------------
 #region
-kharid_edari_tejari = tk.Toplevel(root)
-kharid_edari_tejari.title(" خرید اداری / تجاری")
-kharid_edari_tejari.geometry("800x600")
-kharid_edari_tejari.withdraw()
+darkhast_edari_tejari = tk.Toplevel(root)
+darkhast_edari_tejari.title(" درخواست اداری / تجاری")
+darkhast_edari_tejari.geometry("800x600")
+darkhast_edari_tejari.withdraw()
 
-bg_image = image_kharid_edari_tejari
-bg_image = image_kharid_edari_tejari.resize((800, 600))
+bg_image = image_darkhast_edari_tejari
+bg_image = image_darkhast_edari_tejari.resize((800, 600))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
 # لیبل پس‌زمینه
-bg_label = tk.Label(kharid_edari_tejari, image=bg_photo)
+bg_label = tk.Label(darkhast_edari_tejari, image=bg_photo)
 bg_label.image = bg_photo  # خیلی مهم: جلوگیری از پاک شدن عکس
 bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-#---------------پنجره امکانات خرید اداری/تجاری----------------
+#---------------پنجره امکانات درخواست اداری/تجاری----------------
 
-option_file_frame_kharid_edari_tejari=tk.Toplevel(kharid_edari_tejari,background="#052340" )
-option_file_frame_kharid_edari_tejari.title(" امکانات خرید اداری/تجاری")
-option_file_frame_kharid_edari_tejari.geometry("500x370")
-option_file_frame_kharid_edari_tejari.pack_propagate(False)
-option_file_frame_kharid_edari_tejari.withdraw()
+option_file_frame_darkhast_edari_tejari=tk.Toplevel(darkhast_edari_tejari,background="#052340" )
+option_file_frame_darkhast_edari_tejari.title(" امکانات درخواست اداری/تجاری")
+option_file_frame_darkhast_edari_tejari.geometry("500x370")
+option_file_frame_darkhast_edari_tejari.pack_propagate(False)
+option_file_frame_darkhast_edari_tejari.withdraw()
 
-#----------------------کادر خرید اداری و تجاری------------------#
-frame_kharid_edari_tejari= tk.Frame(kharid_edari_tejari,bd=0,highlightthickness=0)
-frame_kharid_edari_tejari.pack(side="left", fill="y", padx=6, pady=15)
+#----------------------کادر درخواست اداری و تجاری------------------#
+frame_darkhast_edari_tejari= tk.Frame(darkhast_edari_tejari,bd=0,highlightthickness=0)
+frame_darkhast_edari_tejari.pack(side="left", fill="y", padx=6, pady=15)
 
-title_lbl = tk.Label(kharid_edari_tejari,text="خرید اداری و تجاری",bg="#052340",fg="#00BFFF",font=("Shabnam", 15))
+title_lbl = tk.Label(darkhast_edari_tejari,text="درخواست اداری و تجاری",bg="#052340",fg="#00BFFF",font=("Shabnam", 15))
 title_lbl.place(x=60, y=25)
 
 start_x = 450
 start_y = 40
 
-melk_type_kharid_edari_tejari_lable=tk.Label(kharid_edari_tejari,text="نوع ملک",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-melk_type_kharid_edari_tejari_lable.place(x=start_x + 320, y=start_y + 35, anchor="e")
-
-melk_type_kharid_edari_tejari_entry=tk.Entry(kharid_edari_tejari,bg="#ffffff", fg="#000000",font=("Shabnam", 10),justify="center")
-melk_type_kharid_edari_tejari_entry.place(x=start_x + 10, y=start_y + 25, width=150, height=25)
-melk_type_kharid_edari_tejari_entry.insert(0,"اجاره اداری و تجاری")
-melk_type_kharid_edari_tejari_entry.config(state="disable")
-
-metraj_melk_kharid_edari_tejari_lable=tk.Label(kharid_edari_tejari,text="متراژ ملک ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-metraj_melk_kharid_edari_tejari_lable.place(x=start_x + 320, y=start_y + 85, anchor="e")
-
-metraj_melk_kharid_edari_tejari_entry=tk.Entry(kharid_edari_tejari,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
-metraj_melk_kharid_edari_tejari_entry.place(x=start_x + 10, y=start_y + 75, width=150, height=25)
-
-sal_sakht_kharid_edari_tejari_lable=tk.Label(kharid_edari_tejari,text="سال ساخت",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-sal_sakht_kharid_edari_tejari_lable.place(x=start_x + 320, y=start_y + 135, anchor="e")
-
-sal_sakht_kharid_edari_tejari_entry=tk.Entry(kharid_edari_tejari,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
-sal_sakht_kharid_edari_tejari_entry.place(x=start_x + 10, y=start_y + 125, width=150, height=25)
-
-addrres_kharid_edari_tejari_lable=tk.Label(kharid_edari_tejari,text="آدرس",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-addrres_kharid_edari_tejari_lable.place(x=start_x + 320, y=start_y + 185, anchor="e")
-
-addrres_kharid_edari_tejari_entry=tk.Entry(kharid_edari_tejari,bg="#ffffff", fg="#000000",font=("Shabnam", 10),)
-addrres_kharid_edari_tejari_entry.place(x=start_x + 10, y=start_y + 175, width=150, height=25)
-
-tabaghe_kharid_edari_tejari_lable=tk.Label(kharid_edari_tejari,text="طبقه",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-tabaghe_kharid_edari_tejari_lable.place(x=start_x + 320, y=start_y + 235, anchor="e")
-
-tabaghe_kharid_edari_tejari_entry=tk.Entry(kharid_edari_tejari,bg="#ffffff", fg="#000000",font=("Shabnam", 10),)
-tabaghe_kharid_edari_tejari_entry.place(x=start_x + 10, y=start_y + 225, width=150, height=25)
-
-vahed_kharid_edari_tejari_lable=tk.Label(kharid_edari_tejari,text="واحد",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-vahed_kharid_edari_tejari_lable.place(x=start_x + 320, y=start_y + 285, anchor="e")
-
-vahed_kharid_edari_tejari_entry=tk.Entry(kharid_edari_tejari,bg="#ffffff", fg="#000000",font=("Shabnam", 10),)
-vahed_kharid_edari_tejari_entry.place(x=start_x + 10, y=start_y + 275, width=150, height=25)
+melk_type_darkhast_edari_tejari_lable=tk.Label(darkhast_edari_tejari,text="نوع ملک",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+melk_type_darkhast_edari_tejari_lable.place(x=start_x + 320, y=start_y + 35, anchor="e")
 
 
-mablagh_pish_kharid_edari_tejari_lable=tk.Label(kharid_edari_tejari,text="مبلغ ودیعه",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-mablagh_pish_kharid_edari_tejari_lable.place(x=start_x + 320, y=start_y + 335, anchor="e")
+combo_darkhast_edari_tejari_entry=ttk.Combobox(darkhast_edari_tejari,state="readonly")
+combo_darkhast_edari_tejari_entry["values"] = ("درخواست اجاره اداری/تجاری","درخواست خرید اداری/تجاری")
+combo_darkhast_edari_tejari_entry.set("درخواست خرید اداری/تجاری")
+combo_darkhast_edari_tejari_entry.bind("<<ComboboxSelected>>",sabt_darkhast_edari_tejari)
+combo_darkhast_edari_tejari_entry.place(x=start_x + 10, y=start_y + 25, width=170, height=25)
 
-mablagh_pish_kharid_edari_tejari_entry=tk.Entry(kharid_edari_tejari,bg="#ffffff", fg="#000000",font=("Shabnam", 10),)
-mablagh_pish_kharid_edari_tejari_entry.place(x=start_x + 10, y=start_y + 325, width=150, height=25)
+metraj_melk_darkhast_edari_tejari_lable=tk.Label(darkhast_edari_tejari,text="متراژ ملک ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+metraj_melk_darkhast_edari_tejari_lable.place(x=start_x + 320, y=start_y + 85, anchor="e")
 
-mablagh_ejare_kharid_edari_tejari_lable=tk.Label(kharid_edari_tejari,text=" مبلغ اجاره",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-mablagh_ejare_kharid_edari_tejari_lable.place(x=start_x + 320, y=start_y + 385, anchor="e")
+metraj_melk_darkhast_edari_tejari_entry=tk.Entry(darkhast_edari_tejari,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
+metraj_melk_darkhast_edari_tejari_entry.place(x=start_x + 10, y=start_y + 75, width=150, height=25)
 
-mablagh_ejare_kharid_edari_tejari_entry=tk.Entry(kharid_edari_tejari,bg="#ffffff", fg="#000000",font=("Shabnam", 10),)
-mablagh_ejare_kharid_edari_tejari_entry.place(x=start_x + 10, y=start_y + 375, width=150, height=25)
+sal_sakht_darkhast_edari_tejari_lable=tk.Label(darkhast_edari_tejari,text="سال ساخت",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+sal_sakht_darkhast_edari_tejari_lable.place(x=start_x + 320, y=start_y + 135, anchor="e")
 
-rahn_kamel_kharid_edari_tejari_lable=tk.Label(kharid_edari_tejari,text=" رهن کامل؟ ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-rahn_kamel_kharid_edari_tejari_lable.place(x=start_x + 320, y=start_y + 435, anchor="e")
+sal_sakht_darkhast_edari_tejari_entry=tk.Entry(darkhast_edari_tejari,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
+sal_sakht_darkhast_edari_tejari_entry.place(x=start_x + 10, y=start_y + 125, width=150, height=25)
 
-rahn_kamel_check_btn_kharid_edari_tejari=tk.Checkbutton(kharid_edari_tejari,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
-rahn_kamel_check_btn_kharid_edari_tejari.place(x=start_x + 10, y=start_y + 425)
+addrres_darkhast_edari_tejari_lable=tk.Label(darkhast_edari_tejari,text="آدرس",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+addrres_darkhast_edari_tejari_lable.place(x=start_x + 320, y=start_y + 185, anchor="e")
 
-back_to_home_kharid_edari_tejari=tk.Button(kharid_edari_tejari,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_kharid_edari_tejari)
-back_to_home_kharid_edari_tejari.place(x=280,y=520)
+addrres_darkhast_edari_tejari_entry=tk.Entry(darkhast_edari_tejari,bg="#ffffff", fg="#000000",font=("Shabnam", 10),)
+addrres_darkhast_edari_tejari_entry.place(x=start_x + 10, y=start_y + 175, width=150, height=25)
 
-zakhire_kharid_edari_tejari=tk.Button(kharid_edari_tejari,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=None)
-zakhire_kharid_edari_tejari.place(x=130,y=520)
+tabaghe_darkhast_edari_tejari_lable=tk.Label(darkhast_edari_tejari,text="طبقه",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+tabaghe_darkhast_edari_tejari_lable.place(x=start_x + 320, y=start_y + 235, anchor="e")
 
-photo_lbl2_kharid_edari_tejari = tk.Label(kharid_edari_tejari, text="[تصویر ملک]", bg="#ffffff", width=50, height=15)
-photo_lbl2_kharid_edari_tejari.place(x=60, y=85)
+tabaghe_darkhast_edari_tejari_entry=tk.Entry(darkhast_edari_tejari,bg="#ffffff", fg="#000000",font=("Shabnam", 10),)
+tabaghe_darkhast_edari_tejari_entry.place(x=start_x + 10, y=start_y + 225, width=150, height=25)
 
-add_img_btn_kharid_edari_tejari = tk.Button(kharid_edari_tejari, text="افزودن تصویر", bg="#00BFFF", fg="#000000",command=open_file,height=2,width=13)
-add_img_btn_kharid_edari_tejari.place(x=60, y=370)
+vahed_darkhast_edari_tejari_lable=tk.Label(darkhast_edari_tejari,text="واحد",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+vahed_darkhast_edari_tejari_lable.place(x=start_x + 320, y=start_y + 285, anchor="e")
 
-kharid_edari_tejari.protocol("WM_DELETE_WINDOW", lambda: None)
-kharid_edari_tejari.resizable(False, False)
+vahed_darkhast_edari_tejari_entry=tk.Entry(darkhast_edari_tejari,bg="#ffffff", fg="#000000",font=("Shabnam", 10),)
+vahed_darkhast_edari_tejari_entry.place(x=start_x + 10, y=start_y + 275, width=150, height=25)
+
+mablagh_kharid_darkhast_edari_tejari_lable=tk.Label(darkhast_edari_tejari,text= "مبلغ خرید",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+mablagh_kharid_darkhast_edari_tejari_lable.place(x=start_x + 320, y=start_y + 335, anchor="e")
+
+mablagh_kharid_darkhast_edari_tejari_entry=tk.Entry(darkhast_edari_tejari,bg="#ffffff", fg="#000000",font=("Shabnam", 10),)
+mablagh_kharid_darkhast_edari_tejari_entry.place(x=start_x + 10, y=start_y + 325, width=150, height=25)
+
+mablagh_vadie_darkhast_edari_tejari_lable=tk.Label(darkhast_edari_tejari,text="مبلغ ودیعه",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+mablagh_vadie_darkhast_edari_tejari_lable.place(x=start_x + 320, y=start_y + 335, anchor="e")
+
+mablagh_vadie_darkhast_edari_tejari_entry=tk.Entry(darkhast_edari_tejari,bg="#FFFFFF", fg="#000000",font=("Shabnam", 10),)
+mablagh_vadie_darkhast_edari_tejari_entry.place(x=start_x + 10, y=start_y + 325, width=150, height=25)
+
+mablagh_ejareh_darkhast_edari_tejari_lable=tk.Label(darkhast_edari_tejari,text="مبلغ اجاره",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+mablagh_ejareh_darkhast_edari_tejari_lable.place(x=start_x + 320, y=start_y + 385, anchor="e")
+
+mablagh_ejareh_darkhast_edari_tejari_entry=tk.Entry(darkhast_edari_tejari,bg="#FFFFFF", fg="#000000",font=("Shabnam", 10),)
+mablagh_ejareh_darkhast_edari_tejari_entry.place(x=start_x + 10, y=start_y + 375, width=150, height=25)
+
+name_moshtari_darkhast_edari_tejari_lable=tk.Label(darkhast_edari_tejari,text="نام مشتری",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+name_moshtari_darkhast_edari_tejari_lable.place(x=start_x + 320, y=start_y + 385, anchor="e")
+
+name_moshtari_darkhast_edari_tejari_entry=tk.Entry(darkhast_edari_tejari,bg="#FFFFFF", fg="#000000",font=("Shabnam", 10),)
+name_moshtari_darkhast_edari_tejari_entry.place(x=start_x + 10, y=start_y + 375, width=150, height=25)
+
+shomareh_moshtari_darkhast_edari_tejari_lable=tk.Label(darkhast_edari_tejari,text="شماره مشتری",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+shomareh_moshtari_darkhast_edari_tejari_lable.place(x=start_x + 320, y=start_y + 435, anchor="e")
+
+shomareh_moshtari_darkhast_edari_tejari_entry=tk.Entry(darkhast_edari_tejari,bg="#FFFFFF", fg="#000000",font=("Shabnam", 10),)
+shomareh_moshtari_darkhast_edari_tejari_entry.place(x=start_x + 10, y=start_y + 425, width=150, height=25)
+
+back_to_home_darkhast_edari_tejari=tk.Button(darkhast_edari_tejari,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_darkhast_edari_tejari)
+back_to_home_darkhast_edari_tejari.place(x=280,y=520)
+
+zakhire_darkhast_edari_tejari=tk.Button(darkhast_edari_tejari,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=sabt_darkhast_edari_tejari)
+zakhire_darkhast_edari_tejari.place(x=130,y=520)
+
+photo_lbl2_darkhast_edari_tejari = tk.Label(darkhast_edari_tejari, text="[تصویر ملک]", bg="#ffffff", width=50, height=15)
+photo_lbl2_darkhast_edari_tejari.place(x=60, y=85)
+
+add_img_btn_darkhast_edari_tejari = tk.Button(darkhast_edari_tejari, text="افزودن تصویر", bg="#00BFFF", fg="#000000",command=open_file,height=2,width=13)
+add_img_btn_darkhast_edari_tejari.place(x=60, y=370)
+
+darkhast_edari_tejari.protocol("WM_DELETE_WINDOW", lambda: None)
+darkhast_edari_tejari.resizable(False, False)
 #endregion
-#---------------امکانات خرید اداری/تجاری-------------------
+#---------------امکانات درخواست اداری/تجاری-------------------
 #region
-option_frame_options_kharid_edari_tejari=tk.Frame(kharid_edari_tejari,width=300,height=30,background="#052340")
-option_frame_options_kharid_edari_tejari.place(x=250,y=373)
+option_frame_options_darkhast_edari_tejari=tk.Frame(darkhast_edari_tejari,width=300,height=30,background="#052340")
+option_frame_options_darkhast_edari_tejari.place(x=225,y=370)
 
-option_label_kharid_edari_tejari=tk.Label(option_frame_options_kharid_edari_tejari,text='افزودن امکانات فایل',font=("Shabnam",12,"bold"),background="#052340",fg="#00BFFF")
-option_label_kharid_edari_tejari.pack(side="right",padx=1)
+option_label_darkhast_edari_tejari=tk.Label(option_frame_options_darkhast_edari_tejari,text='افزودن امکانات فایل',font=("Shabnam",12,"bold"),background="#052340",fg="#00BFFF")
+option_label_darkhast_edari_tejari.pack(side="right",padx=1)
 
-plus_button_kharid_edari_tejari=tk.Button(option_frame_options_kharid_edari_tejari,image=plus,command=open_option10,border=0)
-plus_button_kharid_edari_tejari.pack()
+plus_button_darkhast_edari_tejari=tk.Button(option_frame_options_darkhast_edari_tejari,image=plus,command=open_option10,border=0)
+plus_button_darkhast_edari_tejari.pack()
 
-bg_image = image_kharid_edari_tejari
-bg_image = image_kharid_edari_tejari.resize((800, 380))
+bg_image = image_darkhast_edari_tejari
+bg_image = image_darkhast_edari_tejari.resize((800, 380))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
-bg_label = tk.Label(option_file_frame_kharid_edari_tejari, image=bg_photo)
+bg_label = tk.Label(option_file_frame_darkhast_edari_tejari, image=bg_photo)
 bg_label.image = bg_photo 
 bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-parking_check_btn_kharid_edari_tejari=tk.Checkbutton(option_file_frame_kharid_edari_tejari,image=parking_pic,background="#052340")
-parking_check_btn_kharid_edari_tejari.place(x=140, y=50)
+parking_darkhast_edari_tejari_var=tk.IntVar(value=0)
+anbari_darkhast_edari_tejari_var=tk.IntVar(value=0)
+asansor_darkhast_edari_tejari_var=tk.IntVar(value=0)
 
-asansor_check_btn_kharid_edari_tejari=tk.Checkbutton(option_file_frame_kharid_edari_tejari,image=elvator_pic,background="#052340")
-asansor_check_btn_kharid_edari_tejari.place(x=240, y=50)
+parking_check_btn_darkhast_edari_tejari=tk.Checkbutton(option_file_frame_darkhast_edari_tejari,variable=parking_darkhast_edari_tejari_var,image=parking_pic,background="#052340")
+parking_check_btn_darkhast_edari_tejari.place(x=140, y=50)
 
-anbari_check_btn_kharid_edari_tejari=tk.Checkbutton(option_file_frame_kharid_edari_tejari,image=warehouse_pic,background="#052340")
-anbari_check_btn_kharid_edari_tejari.place(x=340, y=50)
+asansor_check_btn_darkhast_edari_tejari=tk.Checkbutton(option_file_frame_darkhast_edari_tejari,variable=asansor_darkhast_edari_tejari_var,image=elvator_pic,background="#052340")
+asansor_check_btn_darkhast_edari_tejari.place(x=240, y=50)
 
-aab_va_gaz_emkanat_kharid_edari_tejari=tk.Label(option_file_frame_kharid_edari_tejari,text="وضعیت آب و گاز",background="#052340",fg="#ffffff",font=("Shabnam",11),width=17)
-aab_va_gaz_emkanat_kharid_edari_tejari.place(x=320, y=110)
+anbari_check_btn_darkhast_edari_tejari=tk.Checkbutton(option_file_frame_darkhast_edari_tejari,variable=anbari_darkhast_edari_tejari_var,image=warehouse_pic,background="#052340")
+anbari_check_btn_darkhast_edari_tejari.place(x=340, y=50)
 
-aab_va_gaz_combo_emkanat_kharid_edari_tejari=ttk.Combobox(option_file_frame_kharid_edari_tejari)
-aab_va_gaz_combo_emkanat_kharid_edari_tejari["values"] = ("فقط گاز دارد","فقط آب دارد","آب و گاز دارد")
-aab_va_gaz_combo_emkanat_kharid_edari_tejari["state"]=["readonly"]
-aab_va_gaz_combo_emkanat_kharid_edari_tejari.place(x=120, y=110)
+aab_va_gaz_emkanat_darkhast_edari_tejari=tk.Label(option_file_frame_darkhast_edari_tejari,text="وضعیت آب و گاز",background="#052340",fg="#ffffff",font=("Shabnam",11),width=17)
+aab_va_gaz_emkanat_darkhast_edari_tejari.place(x=320, y=110)
 
-sarmayesh_emkanat_kharid_edari_tejari=tk.Label(option_file_frame_kharid_edari_tejari,text="سیستم سرمایش",background="#052340",fg="#ffffff",font=("Shabnam",11),width=17)
-sarmayesh_emkanat_kharid_edari_tejari.place(x=320, y=150)
+aab_va_gaz_combo_emkanat_darkhast_edari_tejari=ttk.Combobox(option_file_frame_darkhast_edari_tejari)
+aab_va_gaz_combo_emkanat_darkhast_edari_tejari["values"] = ("فقط گاز دارد","فقط آب دارد","آب و گاز دارد")
+aab_va_gaz_combo_emkanat_darkhast_edari_tejari["state"]=["readonly"]
+aab_va_gaz_combo_emkanat_darkhast_edari_tejari.place(x=120, y=110)
 
-sarmayesh_combo_emkanat_kharid_edari_tejari=ttk.Combobox(option_file_frame_kharid_edari_tejari)
-sarmayesh_combo_emkanat_kharid_edari_tejari["values"] = (" کولر گازی"," کولرآبی","پنکه سقفی","ندارد")
-sarmayesh_combo_emkanat_kharid_edari_tejari["state"]=["readonly"]
-sarmayesh_combo_emkanat_kharid_edari_tejari.place(x=120, y=150)
+sarmayesh_emkanat_darkhast_edari_tejari=tk.Label(option_file_frame_darkhast_edari_tejari,text="سیستم سرمایش",background="#052340",fg="#ffffff",font=("Shabnam",11),width=17)
+sarmayesh_emkanat_darkhast_edari_tejari.place(x=320, y=150)
 
-garmayesh_emkanat_kharid_edari_tejari=tk.Label(option_file_frame_kharid_edari_tejari,text="سیستم گرمایش",background="#052340",fg="#ffffff",font=("Shabnam",11),width=17)
-garmayesh_emkanat_kharid_edari_tejari.place(x=320, y=190)
+sarmayesh_combo_emkanat_darkhast_edari_tejari=ttk.Combobox(option_file_frame_darkhast_edari_tejari)
+sarmayesh_combo_emkanat_darkhast_edari_tejari["values"] = (" کولر گازی"," کولرآبی","پنکه سقفی","ندارد")
+sarmayesh_combo_emkanat_darkhast_edari_tejari["state"]=["readonly"]
+sarmayesh_combo_emkanat_darkhast_edari_tejari.place(x=120, y=150)
 
-garmayesh_combo_emkanat_kharid_edari_tejari=ttk.Combobox(option_file_frame_kharid_edari_tejari)
-garmayesh_combo_emkanat_kharid_edari_tejari["values"] = (" شوفاژ"," بخاری","ندارد")
-garmayesh_combo_emkanat_kharid_edari_tejari["state"]=["readonly"]
-garmayesh_combo_emkanat_kharid_edari_tejari.place(x=120, y=190)
+garmayesh_emkanat_darkhast_edari_tejari=tk.Label(option_file_frame_darkhast_edari_tejari,text="سیستم گرمایش",background="#052340",fg="#ffffff",font=("Shabnam",11),width=17)
+garmayesh_emkanat_darkhast_edari_tejari.place(x=320, y=190)
 
-zakhire_options_kharid_edari_tejari=tk.Button(option_file_frame_kharid_edari_tejari,text="ذخیره",command=None,background="#00BFFF",fg="#000000",width=10,height=1)
-zakhire_options_kharid_edari_tejari.place(x=95,y=320)
+garmayesh_combo_emkanat_darkhast_edari_tejari=ttk.Combobox(option_file_frame_darkhast_edari_tejari)
+garmayesh_combo_emkanat_darkhast_edari_tejari["values"] = (" شوفاژ"," بخاری","ندارد")
+garmayesh_combo_emkanat_darkhast_edari_tejari["state"]=["readonly"]
+garmayesh_combo_emkanat_darkhast_edari_tejari.place(x=120, y=190)
 
-back_to_home_kharid_edari_tejari=tk.Button(option_file_frame_kharid_edari_tejari,text="بازگشت",command=back_to_kharid_edari_tejari,background="#00BFFF",fg="#000000",width=10,height=1)
-back_to_home_kharid_edari_tejari.place(x=215,y=320)
+zakhire_options_darkhast_edari_tejari=tk.Button(option_file_frame_darkhast_edari_tejari,text="تایید",command=save_option_darkhast_edari_tejari,background="#00BFFF",fg="#000000",width=10,height=1)
+zakhire_options_darkhast_edari_tejari.place(x=95,y=320)
 
-option_file_frame_kharid_edari_tejari.protocol("WM_DELETE_WINDOW", lambda: None)
-option_file_frame_kharid_edari_tejari.resizable(False, False)
+back_to_home_darkhast_edari_tejari=tk.Button(option_file_frame_darkhast_edari_tejari,text="بازگشت",command=back_to_darkhast_edari_tejari,background="#00BFFF",fg="#000000",width=10,height=1)
+back_to_home_darkhast_edari_tejari.place(x=215,y=320)
+
+option_file_frame_darkhast_edari_tejari.protocol("WM_DELETE_WINDOW", lambda: None)
+option_file_frame_darkhast_edari_tejari.resizable(False, False)
 #endregion
-#--------------------پنجره خرید باغ/زمین-----------------------
+#--------------------پنجره درخواست باغ/زمین-----------------------
 #region
-kharid_bagh_zamin = tk.Toplevel(root)
-kharid_bagh_zamin.title("خرید باغ و زمین")
-kharid_bagh_zamin.geometry("800x600")
-kharid_bagh_zamin.withdraw()
+darkhast_bagh_zamin = tk.Toplevel(root)
+darkhast_bagh_zamin.title("درخواست باغ و زمین")
+darkhast_bagh_zamin.geometry("800x600")
+darkhast_bagh_zamin.withdraw()
 
-bg_image = image_kharid_bagh_zamin
-bg_image = image_kharid_bagh_zamin.resize((800, 600))
+bg_image = image_darkhast_bagh_zamin
+bg_image = image_darkhast_bagh_zamin.resize((800, 600))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
-bg_label = tk.Label(kharid_bagh_zamin, image=bg_photo)
+bg_label = tk.Label(darkhast_bagh_zamin, image=bg_photo)
 bg_label.image = bg_photo  
 bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-#---------------------کادر خرید باغ و زمین---------------------#
-frame_kharid_bagh_zamin= tk.Frame(kharid_bagh_zamin,bd=0,highlightthickness=0)
-frame_kharid_bagh_zamin.pack(side="left", fill="y", padx=6, pady=15)
+#---------------------کادر درخواست باغ و زمین---------------------#
+frame_darkhast_bagh_zamin= tk.Frame(darkhast_bagh_zamin,bd=0,highlightthickness=0)
+frame_darkhast_bagh_zamin.pack(side="left", fill="y", padx=6, pady=15)
 
-title_lbl = tk.Label(kharid_bagh_zamin,text="خرید باغ و زمین",bg="#052340",fg="#00BFFF",font=("Shabnam", 15))
+title_lbl = tk.Label(darkhast_bagh_zamin,text="درخواست باغ و زمین",bg="#052340",fg="#00BFFF",font=("Shabnam", 15))
 title_lbl.place(x=60, y=25)
 
 start_x = 450
 start_y = 40
 
 
-melk_type_kharid_bagh_zamin_lable=tk.Label(kharid_bagh_zamin,text="نوع ملک",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
-melk_type_kharid_bagh_zamin_lable.place(x=start_x + 320, y=start_y + 35, anchor="e")
+melk_type_darkhast_bagh_zamin_lable=tk.Label(darkhast_bagh_zamin,text="نوع ملک",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
+melk_type_darkhast_bagh_zamin_lable.place(x=start_x + 320, y=start_y + 35, anchor="e")
 
-melk_type_kharid_bagh_zamin_entry=tk.Entry(kharid_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10),justify="center")
-melk_type_kharid_bagh_zamin_entry.place(x=start_x + 10, y=start_y + 25, width=150, height=25)
-melk_type_kharid_bagh_zamin_entry.insert(0,"خرید باغ و زمین")
-melk_type_kharid_bagh_zamin_entry.config(state="disable")
+melk_type_darkhast_bagh_zamin_entry=ttk.Combobox(darkhast_bagh_zamin,font=("Shabnam", 10),justify="center",state="readonly")
+melk_type_darkhast_bagh_zamin_entry["values"]=("درخواست خرید باغ زمین","درخواست اجاره باغ زمین")
+melk_type_darkhast_bagh_zamin_entry.set("درخواست خرید باغ زمین")
+melk_type_darkhast_bagh_zamin_entry.bind("<<ComboboxSelected>>",sabt_darkhast_bagh_zamin)
+melk_type_darkhast_bagh_zamin_entry.place(x=start_x + 10, y=start_y + 25, width=150, height=25)
 
-metraj_zamin_kharid_bagh_zamin_lable=tk.Label(kharid_bagh_zamin,text="متراژ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
-metraj_zamin_kharid_bagh_zamin_lable.place(x=start_x + 320, y=start_y + 85, anchor="e")
 
-metraj_zamin_kharid_bagh_zamin_entry=tk.Entry(kharid_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10),textvariable="متر مربع")
-metraj_zamin_kharid_bagh_zamin_entry.place(x=start_x + 10, y=start_y + 75, width=150, height=25)
+metraj_zamin_darkhast_bagh_zamin_lable=tk.Label(darkhast_bagh_zamin,text="متراژ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
+metraj_zamin_darkhast_bagh_zamin_lable.place(x=start_x + 320, y=start_y + 85, anchor="e")
 
-bagh_type_kharid_bagh_zamin_lable=tk.Label(kharid_bagh_zamin,text="کاربری زمین",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
-bagh_type_kharid_bagh_zamin_lable.place(x=start_x + 320, y=start_y + 135, anchor="e")
+metraj_zamin_darkhast_bagh_zamin_entry=tk.Entry(darkhast_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10),textvariable="متر مربع")
+metraj_zamin_darkhast_bagh_zamin_entry.place(x=start_x + 10, y=start_y + 75, width=150, height=25)
 
-bagh_type_kharid_bagh_zamin_combo=ttk.Combobox(kharid_bagh_zamin,state="readonly")
-bagh_type_kharid_bagh_zamin_combo["values"]=("باغ","زمین کشاورزی")
-bagh_type_kharid_bagh_zamin_combo.set("باغ")
-bagh_type_kharid_bagh_zamin_combo.place(x=start_x + 10, y=start_y + 125, width=150, height=25)
+bagh_type_darkhast_bagh_zamin_lable=tk.Label(darkhast_bagh_zamin,text="کاربری زمین",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
+bagh_type_darkhast_bagh_zamin_lable.place(x=start_x + 320, y=start_y + 135, anchor="e")
 
-bagh_loctaion_kharid_bagh_zamin_lable=tk.Label(kharid_bagh_zamin,text="منطقه و آدرس ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
-bagh_loctaion_kharid_bagh_zamin_lable.place(x=start_x + 320, y=start_y + 185, anchor="e")
+bagh_type_darkhast_bagh_zamin_combo=ttk.Combobox(darkhast_bagh_zamin,state="readonly")
+bagh_type_darkhast_bagh_zamin_combo["values"]=("باغ","زمین کشاورزی")
+bagh_type_darkhast_bagh_zamin_combo.set("باغ")
+bagh_type_darkhast_bagh_zamin_combo.place(x=start_x + 10, y=start_y + 125, width=150, height=25)
+bagh_type_darkhast_bagh_zamin_combo.bind("<<ComboboxSelected>>",change_bagh_zamin_darkhast_bagh)
 
-bagh_loctaion_kharid_bagh_zamin_entry=tk.Entry(kharid_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
-bagh_loctaion_kharid_bagh_zamin_entry.place(x=start_x + 10, y=start_y + 175, width=150, height=25)
+bagh_loctaion_darkhast_bagh_zamin_lable=tk.Label(darkhast_bagh_zamin,text="منطقه و آدرس ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
+bagh_loctaion_darkhast_bagh_zamin_lable.place(x=start_x + 320, y=start_y + 185, anchor="e")
 
-gheimat_bagh_kharid_bagh_zamin_lable=tk.Label(kharid_bagh_zamin,text='قیمت کل',bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
-gheimat_bagh_kharid_bagh_zamin_lable.place(x=start_x + 320, y=start_y + 235, anchor="e")
+bagh_loctaion_darkhast_bagh_zamin_entry=tk.Entry(darkhast_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
+bagh_loctaion_darkhast_bagh_zamin_entry.place(x=start_x + 10, y=start_y + 175, width=150, height=25)
 
-gheimat_bagh_kharid_bagh_zamin_entry=tk.Entry(kharid_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
-gheimat_bagh_kharid_bagh_zamin_entry.place(x=start_x + 10, y=start_y + 225, width=150, height=25)
+#gheimat_darkhast_bagh_zamin_lable=tk.Label(darkhast_bagh_zamin,text='قیمت کل',bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
+#gheimat_darkhast_bagh_zamin_lable.place(x=start_x + 320, y=start_y + 235, anchor="e")
 
-gheimat_har_matr_bagh_zamin_kharid_bagh_zamin_lable=tk.Label(kharid_bagh_zamin,text='قیمت هر متر',bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
-gheimat_har_matr_bagh_zamin_kharid_bagh_zamin_lable.place(x=start_x + 320, y=start_y + 285, anchor="e")
+#gheimat_darkhast_bagh_zamin_entry=tk.Entry(darkhast_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
+#gheimat_darkhast_bagh_zamin_entry.place(x=start_x + 10, y=start_y + 225, width=150, height=25)
 
-gheimat_har_metr_bagh_zamin_kharid_bagh_zamin_entry=tk.Entry(kharid_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
-gheimat_har_metr_bagh_zamin_kharid_bagh_zamin_entry.place(x=start_x + 10, y=start_y + 275, width=150, height=25)
+gheimat_ejareh_bagh_darkhast_zamin_lable=tk.Label(darkhast_bagh_zamin, text="ودیعه", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+gheimat_ejareh_bagh_darkhast_zamin_lable.place_forget()
 
-photo_kharid_bagh_zamin_lable= tk.Label(kharid_bagh_zamin, text="[تصویر ملک]", bg="#ffffff", width=50, height=15)
-photo_kharid_bagh_zamin_lable.place(x=60, y=85)
+gheimat_ejareh_bagh_darkhast_zamin_entry=tk.Entry(darkhast_bagh_zamin, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
+gheimat_ejareh_bagh_darkhast_zamin_entry.place_forget()
 
-add_img_btn_kharid_bagh_zamin = tk.Button(kharid_bagh_zamin, text="افزودن تصویر", bg="#00BFFF", fg="#000000",command=open_file,height=2,width=13)
-add_img_btn_kharid_bagh_zamin.place(x=60, y=370)
+gheimat_har_matr_bagh_zamin_darkhast_lable=tk.Label(darkhast_bagh_zamin,text='قیمت هر متر',bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
+gheimat_har_matr_bagh_zamin_darkhast_lable.place(x=start_x + 320, y=start_y + 235, anchor="e")
 
-back_to_home_kharid_bagh_zamin=tk.Button(kharid_bagh_zamin,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_kharid_bagh)
-back_to_home_kharid_bagh_zamin.place(x=290,y=520)
+gheimat_har_metr_bagh_zamin_darkhast_entry=tk.Entry(darkhast_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
+gheimat_har_metr_bagh_zamin_darkhast_entry.place(x=start_x + 10, y=start_y + 225, width=150, height=25)
 
-zakhire_kharid_bagh_zamin=tk.Button(kharid_bagh_zamin,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=None)
-zakhire_kharid_bagh_zamin.place(x=140,y=520)
+mablagh_ejareh_mahaneh_darkhast_lable=tk.Label(darkhast_bagh_zamin,text='اجاره ماهانه',bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
+mablagh_ejareh_mahaneh_darkhast_lable.place_forget()
 
-kharid_bagh_zamin.protocol("WM_DELETE_WINDOW", lambda: None)
-kharid_bagh_zamin.resizable(False, False)
+mablagh_ejareh_mahaneh_darkhast_entry=tk.Entry(darkhast_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
+mablagh_ejareh_mahaneh_darkhast_entry.place_forget()
+
+time_ejareh_bagh_darkhast_zamin_lable=tk.Label(darkhast_bagh_zamin,text="مدت اجاره",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+time_ejareh_bagh_darkhast_zamin_lable.place_forget()
+
+bagh_time_darkhast_combo=ttk.Combobox(darkhast_bagh_zamin,state="readonly")
+bagh_time_darkhast_combo["values"]=("بلندمدت","کوتاه مدت","فصلی","سالانه")
+bagh_time_darkhast_combo.set("فصلی")
+bagh_time_darkhast_combo.place_forget()
+
+
+name_moshtari_darkhast_bagh_lable=tk.Label(darkhast_bagh_zamin,text="نام مشتری",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+name_moshtari_darkhast_bagh_lable.place(x=start_x + 320, y=start_y + 285, anchor="e")
+
+name_moshtari_darkhast_bagh_entry=tk.Entry(darkhast_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
+name_moshtari_darkhast_bagh_entry.place(x=start_x + 10, y=start_y + 275, width=150, height=25)
+
+shomareh_moshtari_darkhast_bagh_lable=tk.Label(darkhast_bagh_zamin,text="شماره مشتری",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+shomareh_moshtari_darkhast_bagh_lable.place(x=start_x + 320, y=start_y + 340, anchor="e")
+
+shomareh_moshtari_darkhast_bagh_entry=tk.Entry(darkhast_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
+shomareh_moshtari_darkhast_bagh_entry.place(x=start_x + 10, y=start_y + 330, width=150, height=25)
+
+
+
+photo_darkhast_bagh_zamin_lable= tk.Label(darkhast_bagh_zamin, text="[تصویر ملک]", bg="#ffffff", width=50, height=15)
+photo_darkhast_bagh_zamin_lable.place(x=60, y=85)
+
+add_img_btn_darkhast_bagh_zamin = tk.Button(darkhast_bagh_zamin, text="افزودن تصویر", bg="#00BFFF", fg="#000000",command=open_file,height=2,width=13)
+add_img_btn_darkhast_bagh_zamin.place(x=60, y=370)
+
+back_to_home_darkhast_bagh_zamin=tk.Button(darkhast_bagh_zamin,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_darkhast_bagh)
+back_to_home_darkhast_bagh_zamin.place(x=290,y=520)
+
+zakhire_darkhast_bagh_zamin=tk.Button(darkhast_bagh_zamin,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=sabt_darkhast_bagh_zamin)
+zakhire_darkhast_bagh_zamin.place(x=140,y=520)
+
+darkhast_bagh_zamin.protocol("WM_DELETE_WINDOW", lambda: None)
+darkhast_bagh_zamin.resizable(False, False)
 #endregion
-#-----------------------پنجره امکانات خرید باغ/زمین-------------------
+#-----------------------پنجره امکانات درخواست باغ/زمین-------------------
 #region
-option_frame_options_kharid_bagh_zamin=tk.Frame(kharid_bagh_zamin,width=300,height=30,background="#052340")
-option_frame_options_kharid_bagh_zamin.place(x=525,y=450)
+option_frame_options_darkhast_bagh_zamin=tk.Frame(darkhast_bagh_zamin,width=300,height=30,background="#052340")
+option_frame_options_darkhast_bagh_zamin.place(x=225,y=370)
 
-option_label_kharid_bagh_zamin=tk.Label(option_frame_options_kharid_bagh_zamin,text='افزودن امکانات فایل',font=("Shabnam",12,"bold"),background="#052340",fg="#00BFFF")
-option_label_kharid_bagh_zamin.pack(side="right",padx=1)
+option_label_darkhast_bagh_zamin=tk.Label(option_frame_options_darkhast_bagh_zamin,text='افزودن امکانات فایل',font=("Shabnam",12,"bold"),background="#052340",fg="#00BFFF")
+option_label_darkhast_bagh_zamin.pack(side="right",padx=1)
 
-plus_button_kharid_bagh_zamin=tk.Button(option_frame_options_kharid_bagh_zamin,image=plus,command=open_option11,border=0)
-plus_button_kharid_bagh_zamin.pack()
+plus_button_darkhast_bagh_zamin=tk.Button(option_frame_options_darkhast_bagh_zamin,image=plus,command=open_option11,border=0)
+plus_button_darkhast_bagh_zamin.pack()
 
-option_file_frame_kharid_bagh_zamin=tk.Toplevel(kharid_bagh_zamin)
-option_file_frame_kharid_bagh_zamin.title(" امکانات خرید باغ/زمین")
-option_file_frame_kharid_bagh_zamin.geometry("690x630")
-option_file_frame_kharid_bagh_zamin.pack_propagate(False)
-option_file_frame_kharid_bagh_zamin.withdraw()
+option_file_frame_darkhast_bagh_zamin=tk.Toplevel(darkhast_bagh_zamin)
+option_file_frame_darkhast_bagh_zamin.title(" امکانات درخواست باغ/زمین")
+option_file_frame_darkhast_bagh_zamin.geometry("690x630")
+option_file_frame_darkhast_bagh_zamin.pack_propagate(False)
+option_file_frame_darkhast_bagh_zamin.withdraw()
 
-option_frame_kharid_bagh_zamin=tk.Frame(option_file_frame_kharid_bagh_zamin)
-option_frame_kharid_bagh_zamin.place(x=50,y=50)
+option_frame_darkhast_bagh_zamin=tk.Frame(option_file_frame_darkhast_bagh_zamin)
+option_frame_darkhast_bagh_zamin.place(x=50,y=50)
 
-bg_image = image_kharid_bagh_zamin
-bg_image = image_kharid_bagh_zamin.resize((800, 650))
+bg_image = image_darkhast_bagh_zamin
+bg_image = image_darkhast_bagh_zamin.resize((800, 650))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
-bg_label = tk.Label(option_file_frame_kharid_bagh_zamin, image=bg_photo)
+bg_label = tk.Label(option_file_frame_darkhast_bagh_zamin, image=bg_photo)
 bg_label.image = bg_photo 
 bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-karbary_zamin_kharid_bagh_zamin=tk.Label(option_file_frame_kharid_bagh_zamin,text="کاربری زمین",bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10)
-karbary_zamin_kharid_bagh_zamin.place(x=463, y=40)
 
-karbary_zamin_kharid_bagh_zamin_combo=ttk.Combobox(option_file_frame_kharid_bagh_zamin,state="readonly")
-karbary_zamin_kharid_bagh_zamin_combo["values"]=("باغ","زمین کشاورزی")
-karbary_zamin_kharid_bagh_zamin_combo.set("باغ")
-karbary_zamin_kharid_bagh_zamin_combo.place(x=273, y=40)
 
-karbary_zamin_kharid_bagh_zamin_combo.bind("<<ComboboxSelected>>",change_bagh_zamin_kharid_bagh)
+metraj_derakht_darkhast_bagh_zamin_lable=tk.Label(option_file_frame_darkhast_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="متراژ درخت کاری")
+metraj_derakht_darkhast_bagh_zamin_lable.place(x=450, y=70)
 
-metraj_derakht_kharid_bagh_zamin_lable=tk.Label(option_file_frame_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="متراژ درخت کاری")
-metraj_derakht_kharid_bagh_zamin_lable.place(x=450, y=70)
+metraj_derakht_darkhast_bagh_zamin_entry=tk.Entry(option_file_frame_darkhast_bagh_zamin,width=10,bg="#746f6f",fg="#000000")
+metraj_derakht_darkhast_bagh_zamin_entry.place(x=305, y=70)
 
-metraj_derakht_kharid_bagh_zamin_entry=tk.Entry(option_file_frame_kharid_bagh_zamin,width=10,bg="#746f6f",fg="#000000")
-metraj_derakht_kharid_bagh_zamin_entry.place(x=305, y=70)
+tedad_derakht_darkhast_bagh_zamin_lable=tk.Label(option_file_frame_darkhast_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="تعداد درخت")
+tedad_derakht_darkhast_bagh_zamin_lable.place(x=460, y=100)
 
-tedad_derakht_kharid_bagh_zamin_lable=tk.Label(option_file_frame_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="تعداد درخت")
-tedad_derakht_kharid_bagh_zamin_lable.place(x=460, y=100)
+tedad_derakht_darkhast_bagh_zamin_entry=tk.Entry(option_file_frame_darkhast_bagh_zamin,width=10,bg="#746f6f",fg="#000000")
+tedad_derakht_darkhast_bagh_zamin_entry.place(x=305, y=100)
 
-tedad_derakht_kharid_bagh_zamin_entry=tk.Entry(option_file_frame_kharid_bagh_zamin,width=10,bg="#746f6f",fg="#000000")
-tedad_derakht_kharid_bagh_zamin_entry.place(x=305, y=100)
+abyari_darkhast_bagh_zamin_lable=tk.Label(option_file_frame_darkhast_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="نوع آبیاری")
+abyari_darkhast_bagh_zamin_lable.place(x=460, y=130)
 
-abyari_kharid_bagh_zamin_lable=tk.Label(option_file_frame_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="نوع آبیاری")
-abyari_kharid_bagh_zamin_lable.place(x=460, y=130)
+abyari_darkhast_bagh_zamin_combo=ttk.Combobox(option_file_frame_darkhast_bagh_zamin)
+abyari_darkhast_bagh_zamin_combo["values"]=("سطحی","بارانی","قطره ای","تحت فشار")
+abyari_darkhast_bagh_zamin_combo["state"]=["readonly"]
+abyari_darkhast_bagh_zamin_combo.set("سطحی")
+abyari_darkhast_bagh_zamin_combo.place(x=273, y=130)
 
-abyari_kharid_bagh_zamin_combo=ttk.Combobox(option_file_frame_kharid_bagh_zamin)
-abyari_kharid_bagh_zamin_combo["values"]=("سطحی","بارانی","قطره ای","تحت فشار")
-abyari_kharid_bagh_zamin_combo["state"]=["readonly"]
-abyari_kharid_bagh_zamin_combo.set("سطحی")
-abyari_kharid_bagh_zamin_combo.place(x=273, y=130)
+type_tree_darkhast_bagh_zamin_lable=tk.Label(option_file_frame_darkhast_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="نوع درخت")
+type_tree_darkhast_bagh_zamin_lable.place(x=460, y=160)
 
-type_tree_kharid_bagh_zamin_lable=tk.Label(option_file_frame_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="نوع درخت")
-type_tree_kharid_bagh_zamin_lable.place(x=460, y=160)
-
-type_tree_kharid_bagh_zamin_combo=ttk.Combobox(option_file_frame_kharid_bagh_zamin)
-type_tree_kharid_bagh_zamin_combo["values"]=(" ","پسته","بادام","گردو","شلیل","هلو","سیب","انگور"
+type_tree_darkhast_bagh_zamin_combo=ttk.Combobox(option_file_frame_darkhast_bagh_zamin)
+type_tree_darkhast_bagh_zamin_combo["values"]=(" ","پسته","بادام","گردو","شلیل","هلو","سیب","انگور"
                            ,"انجیر","زردالو","گیلاس","آلبالو")
-type_tree_kharid_bagh_zamin_combo.set("گردو")
-type_tree_kharid_bagh_zamin_combo["state"]=["readonly"]
-type_tree_kharid_bagh_zamin_combo.place(x=273, y=160)
+type_tree_darkhast_bagh_zamin_combo.set("گردو")
+type_tree_darkhast_bagh_zamin_combo["state"]=["readonly"]
+type_tree_darkhast_bagh_zamin_combo.place(x=273, y=160)
 
-type_tree_kharid_btn=tk.Button(option_file_frame_kharid_bagh_zamin,text="افزودن درخت",command=add_tree3,bg="#00BFFF",font=("Shabnam",9),width=10)
-type_tree_kharid_btn.place(x=460, y=190)
+type_tree_darkhast_btn=tk.Button(option_file_frame_darkhast_bagh_zamin,text="افزودن درخت",command=add_tree3,bg="#00BFFF",font=("Shabnam",9),width=10)
+type_tree_darkhast_btn.place(x=460, y=190)
 
-label_natige_kharid_bagh_zamin=tk.Label(option_file_frame_kharid_bagh_zamin,text="")
-label_natige_kharid_bagh_zamin.place(x=305, y=190)
+label_natige_darkhast_bagh_zamin=tk.Label(option_file_frame_darkhast_bagh_zamin,text="")
+label_natige_darkhast_bagh_zamin.place(x=305, y=190)
 
-chah_kharid_bagh_zamin=tk.Checkbutton(option_file_frame_kharid_bagh_zamin,text="چاه",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-chah_kharid_bagh_zamin.place(x=480, y=220)
+chah_darkhast_bagh_zamin_var=tk.IntVar(value=0)
+chah_darkhast_bagh_zamin=tk.Checkbutton(option_file_frame_darkhast_bagh_zamin,variable=chah_darkhast_bagh_zamin_var,text="چاه",background="#052340",fg="#00BFFF",font=("Shabnam",9))
+chah_darkhast_bagh_zamin.place(x=480, y=220)
 
-estakhr_kharid_bagh_zamin=tk.Checkbutton(option_file_frame_kharid_bagh_zamin,text="استخر",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-estakhr_kharid_bagh_zamin.place(x=380, y=220)
+estakhr_darkhast_bagh_zamin_var=tk.IntVar(value=0)
+estakhr_darkhast_bagh_zamin=tk.Checkbutton(option_file_frame_darkhast_bagh_zamin,variable=estakhr_darkhast_bagh_zamin_var,text="استخر",background="#052340",fg="#00BFFF",font=("Shabnam",9))
+estakhr_darkhast_bagh_zamin.place(x=380, y=220)
 
-loleh_keshi_ab_kharid_bagh_zamin=tk.Checkbutton(option_file_frame_kharid_bagh_zamin,text="آب لوله کشی",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-loleh_keshi_ab_kharid_bagh_zamin.place(x=280, y=220)
+divar_darkhast_bagh_zamin_var=tk.IntVar(value=0)
+divar_darkhast_bagh_zamin=tk.Checkbutton(option_file_frame_darkhast_bagh_zamin,variable=divar_darkhast_bagh_zamin_var,text="دیوار کشی",background="#052340",fg="#00BFFF",font=("Shabnam",9))
+divar_darkhast_bagh_zamin.place(x=280, y=220)
 
-bargh_keshi_kharid_bagh_zamin=tk.Checkbutton(option_file_frame_kharid_bagh_zamin,text="برق کشی",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-bargh_keshi_kharid_bagh_zamin.place(x=180, y=220)
+bargh_keshi_darkhast_bagh_zamin_var=tk.IntVar(value=0)
+bargh_keshi_darkhast_bagh_zamin=tk.Checkbutton(option_file_frame_darkhast_bagh_zamin,variable=bargh_keshi_darkhast_bagh_zamin_var,text="برق کشی",background="#052340",fg="#00BFFF",font=("Shabnam",9))
+bargh_keshi_darkhast_bagh_zamin.place(x=180, y=220)
 
-gas_keshi_kharid_bagh_zamin=tk.Checkbutton(option_file_frame_kharid_bagh_zamin,text="گاز کشی",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-gas_keshi_kharid_bagh_zamin.place(x=80, y=220)
 
-var0_kharid_bagh_zamin=tk.IntVar(value=0)#چک باتن پیش فرض تیک نخورده باشه
 
-otagh_check_btn_kharid_bagh_zamin=tk.Checkbutton(option_file_frame_kharid_bagh_zamin,variable=var0_kharid_bagh_zamin,image=warehouse_pic,background="#052340",text="ساختمان",command=home_true_false3)
-otagh_check_btn_kharid_bagh_zamin.place(x=470, y=250)
+var0_darkhast_bagh_zamin=tk.IntVar(value=0)#چک باتن پیش فرض تیک نخورده باشه
 
-metraj_vila_kharid_bagh_zamin=tk.Label(option_file_frame_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="متراژ سازه")
-metraj_vila_kharid_bagh_zamin.place(x=450, y=300)
 
-metraj_vila_kharid_bagh_zamin_entry=tk.Entry(option_file_frame_kharid_bagh_zamin,width=10,bg="#00BFFF",fg="#ffffff",state="disabled")
-metraj_vila_kharid_bagh_zamin_entry.place(x=305, y=300)
+otagh_check_btn_darkhast_bagh_zamin=tk.Checkbutton(option_file_frame_darkhast_bagh_zamin,variable=var0_darkhast_bagh_zamin,image=warehouse_pic,background="#052340",text="ساختمان",command=home_true_false3)
+otagh_check_btn_darkhast_bagh_zamin.place(x=470, y=250)
 
-sal_sakht_vila_kharid_bagh_zamin_lable=tk.Label(option_file_frame_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="سال ساخت")
-sal_sakht_vila_kharid_bagh_zamin_lable.place(x=450, y=330)
+metraj_vila_darkhast_bagh_zamin=tk.Label(option_file_frame_darkhast_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="متراژ سازه")
+metraj_vila_darkhast_bagh_zamin.place(x=450, y=300)
 
-sal_sakht_vila_kharid_bagh_zamin_entry=tk.Entry(option_file_frame_kharid_bagh_zamin,width=10,bg="#00BFFF",fg="#ffffff",state="disabled")
-sal_sakht_vila_kharid_bagh_zamin_entry.place(x=305, y=330)
+metraj_vila_darkhast_bagh_zamin_entry=tk.Entry(option_file_frame_darkhast_bagh_zamin,width=10,bg="#00BFFF",fg="#ffffff",state="disabled")
+metraj_vila_darkhast_bagh_zamin_entry.place(x=305, y=300)
 
-type_vila_kharid_bagh_zamin=tk.Label(option_file_frame_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="نوع سازه")
-type_vila_kharid_bagh_zamin.place(x=450, y=360)
+sal_sakht_vila_darkhast_bagh_zamin_lable=tk.Label(option_file_frame_darkhast_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="سال ساخت")
+sal_sakht_vila_darkhast_bagh_zamin_lable.place(x=450, y=330)
 
-type_vila_kharid_bagh_zamin_combo=ttk.Combobox(option_file_frame_kharid_bagh_zamin,state="disabled")
-type_vila_kharid_bagh_zamin_combo["values"]=("آجری","بلوکی","کانکس","چوبی")
-type_vila_kharid_bagh_zamin_combo.set("آجری")
-type_vila_kharid_bagh_zamin_combo.place(x=273, y=360)
+sal_sakht_vila_darkhast_bagh_zamin_entry=tk.Entry(option_file_frame_darkhast_bagh_zamin,width=10,bg="#00BFFF",fg="#ffffff",state="disabled")
+sal_sakht_vila_darkhast_bagh_zamin_entry.place(x=305, y=330)
 
-toilet_kharid_bagh_zamin_lable=tk.Label(option_file_frame_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="سرویس بهداشتی")
-toilet_kharid_bagh_zamin_lable.place(x=450, y=390)
+type_vila_darkhast_bagh_zamin=tk.Label(option_file_frame_darkhast_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="نوع سازه")
+type_vila_darkhast_bagh_zamin.place(x=450, y=360)
 
-toilet_kharid_bagh_zamin_combo=ttk.Combobox(option_file_frame_kharid_bagh_zamin,state="disabled")
-toilet_kharid_bagh_zamin_combo["values"]=(" ","ندارد","فرنگی","ایرانی","هردو")
-toilet_kharid_bagh_zamin_combo.set("")
-toilet_kharid_bagh_zamin_combo.place(x=273, y=390)
+type_vila_darkhast_bagh_zamin_combo=ttk.Combobox(option_file_frame_darkhast_bagh_zamin,state="disabled")
+type_vila_darkhast_bagh_zamin_combo["values"]=("آجری","بلوکی","کانکس","چوبی")
+type_vila_darkhast_bagh_zamin_combo.set("آجری")
+type_vila_darkhast_bagh_zamin_combo.place(x=273, y=360)
 
-hamam_kharid_bagh_zamin=tk.Label(option_file_frame_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="حمام")
-hamam_kharid_bagh_zamin.place(x=450, y=420)
+toilet_darkhast_bagh_zamin_lable=tk.Label(option_file_frame_darkhast_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="سرویس بهداشتی")
+toilet_darkhast_bagh_zamin_lable.place(x=450, y=390)
 
-hamam_kharid_bagh_zamin_combo=ttk.Combobox(option_file_frame_kharid_bagh_zamin,state="disabled")
-hamam_kharid_bagh_zamin_combo["values"]=(" ","ندارد","دارد")
-hamam_kharid_bagh_zamin_combo.set(" ")
-hamam_kharid_bagh_zamin_combo.place(x=273, y=420)
+toilet_darkhast_bagh_zamin_combo=ttk.Combobox(option_file_frame_darkhast_bagh_zamin,state="disabled")
+toilet_darkhast_bagh_zamin_combo["values"]=(" ","ندارد","فرنگی","ایرانی","هردو")
+toilet_darkhast_bagh_zamin_combo.set("")
+toilet_darkhast_bagh_zamin_combo.place(x=273, y=390)
 
-sanad_kharid_bagh_zamin_lable=tk.Label(option_file_frame_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="سند")
-sanad_kharid_bagh_zamin_lable.place(x=450, y=450)
+hamam_darkhast_bagh_zamin=tk.Label(option_file_frame_darkhast_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="حمام")
+hamam_darkhast_bagh_zamin.place(x=450, y=420)
 
-sanad_kharid_bagh_zamin_combo=ttk.Combobox(option_file_frame_kharid_bagh_zamin,state="disabled")
-sanad_kharid_bagh_zamin_combo["values"]=(" ","ندارد","تک برگ","قولنامه ای","مشاع")
-sanad_kharid_bagh_zamin_combo.set(" ")
-sanad_kharid_bagh_zamin_combo.place(x=273, y=450)
+hamam_darkhast_bagh_zamin_combo=ttk.Combobox(option_file_frame_darkhast_bagh_zamin,state="disabled")
+hamam_darkhast_bagh_zamin_combo["values"]=(" ","ندارد","دارد")
+hamam_darkhast_bagh_zamin_combo.set(" ")
+hamam_darkhast_bagh_zamin_combo.place(x=273, y=420)
 
-option_kharid_bagh_zamin=tk.Label(option_file_frame_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="امکانات تفریحی")
-option_kharid_bagh_zamin.place(x=450, y=480)
+sanad_darkhast_bagh_zamin_lable=tk.Label(option_file_frame_darkhast_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="سند")
+sanad_darkhast_bagh_zamin_lable.place(x=450, y=450)
 
-option_kharid_bagh_zamin_combo=ttk.Combobox(option_file_frame_kharid_bagh_zamin,state="disabled")
-option_kharid_bagh_zamin_combo["values"]=(" ","استخر","جکوزی","باربیکیو")
-option_kharid_bagh_zamin_combo.set(" ")
-option_kharid_bagh_zamin_combo.place(x=273, y=480)
+sanad_darkhast_bagh_zamin_combo=ttk.Combobox(option_file_frame_darkhast_bagh_zamin,state="disabled")
+sanad_darkhast_bagh_zamin_combo["values"]=(" ","ندارد","تک برگ","قولنامه ای","مشاع")
+sanad_darkhast_bagh_zamin_combo.set(" ")
+sanad_darkhast_bagh_zamin_combo.place(x=273, y=450)
 
-add_option_button_kharid_bagh_zamin=tk.Button(option_file_frame_kharid_bagh_zamin,text="افزودن امکانات",command=add_option3,bg="#00BFFF",font=("Shabnam",9),width=10)
-add_option_button_kharid_bagh_zamin.place(x=180, y=480)
+option_darkhast_bagh_zamin=tk.Label(option_file_frame_darkhast_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="امکانات تفریحی")
+option_darkhast_bagh_zamin.place(x=450, y=480)
 
-lable_natige_add_kharid_bagh_zamin=tk.Label(option_file_frame_kharid_bagh_zamin,text="")
-lable_natige_add_kharid_bagh_zamin.place(x=100, y=480)
+option_darkhast_bagh_zamin_combo=ttk.Combobox(option_file_frame_darkhast_bagh_zamin,state="disabled")
+option_darkhast_bagh_zamin_combo["values"]=(" ","استخر","جکوزی","باربیکیو")
+option_darkhast_bagh_zamin_combo.set(" ")
+option_darkhast_bagh_zamin_combo.place(x=273, y=480)
 
-mojavez_sakht_check_btn_kharid_bagh_zamin=tk.Checkbutton(option_file_frame_kharid_bagh_zamin,text="مجوز ساختن",background="#052340",fg="#00BFFF",font=("Shabnam",9),state="disabled")
-mojavez_sakht_check_btn_kharid_bagh_zamin.place(x=450, y=510)
+add_option_button_darkhast_bagh_zamin=tk.Button(option_file_frame_darkhast_bagh_zamin,text="افزودن امکانات",command=add_option3,bg="#00BFFF",font=("Shabnam",9),width=10)
+add_option_button_darkhast_bagh_zamin.place(x=180, y=480)
 
-mohavate_sazi_check_btn_kharid_bagh_zamin=tk.Checkbutton(option_file_frame_kharid_bagh_zamin,text="محوطه سازی",background="#052340",fg="#00BFFF",font=("Shabnam",9),state="disabled")
-mohavate_sazi_check_btn_kharid_bagh_zamin.place(x=320, y=510)
+lable_natige_add_darkhast_bagh_zamin=tk.Label(option_file_frame_darkhast_bagh_zamin,text="")
+lable_natige_add_darkhast_bagh_zamin.place(x=100, y=480)
 
-divar_kharid_bagh_zamin=tk.Checkbutton(option_file_frame_kharid_bagh_zamin,text="دیوار کشی",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-divar_kharid_bagh_zamin.place(x=180, y=220)
+mojavez_sakht_darkhast_bagh_zamin_var=tk.IntVar(value=0)
+mojavez_sakht_check_btn_darkhast_bagh_zamin=tk.Checkbutton(option_file_frame_darkhast_bagh_zamin,variable=mojavez_sakht_darkhast_bagh_zamin_var,text="مجوز ساختن",background="#052340",fg="#00BFFF",font=("Shabnam",9),state="disabled")
+mojavez_sakht_check_btn_darkhast_bagh_zamin.place(x=450, y=510)
+
+mohavate_sazi_darkhast_bagh_zamin_var=tk.IntVar(value=0)
+mohavate_sazi_check_btn_darkhast_bagh_zamin=tk.Checkbutton(option_file_frame_darkhast_bagh_zamin,variable=mohavate_sazi_darkhast_bagh_zamin_var,text="محوطه سازی",background="#052340",fg="#00BFFF",font=("Shabnam",9),state="disabled")
+mohavate_sazi_check_btn_darkhast_bagh_zamin.place(x=320, y=510)
+
+
 #endregion
-#-------------------------تعویض کاربری به زمین در قسمت خرید باغ/زمین-------------
+#-------------------------تعویض کاربری به زمین در قسمت درخواست باغ/زمین-------------
 #region
-option_frame_option2_kharid_bagh_zamin=tk.Frame(option_file_frame_kharid_bagh_zamin)
-option_frame_option2_kharid_bagh_zamin.place_forget()
+option_frame_option2_darkhast_bagh_zamin=tk.Frame(option_file_frame_darkhast_bagh_zamin)
+option_frame_option2_darkhast_bagh_zamin.place_forget()
 
-bg_image = image_kharid_bagh_zamin
-bg_image = image_kharid_bagh_zamin.resize((800, 650))
+bg_image = image_darkhast_bagh_zamin
+bg_image = image_darkhast_bagh_zamin.resize((800, 650))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
-bg_label = tk.Label(option_frame_option2_kharid_bagh_zamin, image=bg_photo)
+bg_label = tk.Label(option_frame_option2_darkhast_bagh_zamin, image=bg_photo)
 bg_label.image = bg_photo 
 bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-metraj_zamin2_kharid_bagh_zamin_lable=tk.Label(option_frame_option2_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="متراژ زمین")
-metraj_zamin2_kharid_bagh_zamin_lable.place(x=448, y=10)
+metraj_zamin2_darkhast_bagh_zamin_lable=tk.Label(option_frame_option2_darkhast_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="متراژ زمین")
+metraj_zamin2_darkhast_bagh_zamin_lable.place(x=448, y=10)
 
-metraj_zamin2_kharid_bagh_zamin_entry=tk.Entry(option_frame_option2_kharid_bagh_zamin,width=10,bg="#746f6f",fg="#000000")
-metraj_zamin2_kharid_bagh_zamin_entry.place(x=312, y=13)
+metraj_zamin2_darkhast_bagh_zamin_entry=tk.Entry(option_frame_option2_darkhast_bagh_zamin,width=10,bg="#746f6f",fg="#000000")
+metraj_zamin2_darkhast_bagh_zamin_entry.place(x=312, y=13)
 
-karbari_kharid_bagh_zamin_lable=tk.Label(option_frame_option2_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="نوع کاربری")
-karbari_kharid_bagh_zamin_lable.place(x=458, y=45)
+karbari_darkhast_bagh_zamin_lable=tk.Label(option_frame_option2_darkhast_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="نوع کاربری")
+karbari_darkhast_bagh_zamin_lable.place(x=458, y=45)
 
-karbari_kharid_bagh_zamin_combo=ttk.Combobox(option_frame_option2_kharid_bagh_zamin)
-karbari_kharid_bagh_zamin_combo["values"]=(" ","زراعی","باغی","گلخانه ای","دامداری ","مرغداری",
+karbari_darkhast_bagh_zamin_combo=ttk.Combobox(option_frame_option2_darkhast_bagh_zamin)
+karbari_darkhast_bagh_zamin_combo["values"]=(" ","زراعی","باغی","گلخانه ای","دامداری ","مرغداری",
                                "دامداری و مرغداری","آیش")           
-karbari_kharid_bagh_zamin_combo["state"]=["readonly"]                  
-karbari_kharid_bagh_zamin_combo.set(" ")
-karbari_kharid_bagh_zamin_combo.place(x=273, y=45)
+karbari_darkhast_bagh_zamin_combo["state"]=["readonly"]                  
+karbari_darkhast_bagh_zamin_combo.set(" ")
+karbari_darkhast_bagh_zamin_combo.place(x=273, y=45)
 
-khak_kharid_bagh_zamin=tk.Label(option_frame_option2_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="نوع خاک")
-khak_kharid_bagh_zamin.place(x=458, y=80)
+khak_darkhast_bagh_zamin=tk.Label(option_frame_option2_darkhast_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="نوع خاک")
+khak_darkhast_bagh_zamin.place(x=458, y=80)
 
-khak_kharid_bagh_zamin_combo=ttk.Combobox(option_frame_option2_kharid_bagh_zamin)
-khak_kharid_bagh_zamin_combo["values"]=(" ","رسی","شنی","لومی","رسی_شنی","شنی_لومی",
+khak_darkhast_bagh_zamin_combo=ttk.Combobox(option_frame_option2_darkhast_bagh_zamin)
+khak_darkhast_bagh_zamin_combo["values"]=(" ","رسی","شنی","لومی","رسی_شنی","شنی_لومی",
                                "رسی_لومی")        
-khak_kharid_bagh_zamin_combo["state"]=["readonly"]                     
-khak_kharid_bagh_zamin_combo.set(" ")
-khak_kharid_bagh_zamin_combo.place(x=273, y=80)
+khak_darkhast_bagh_zamin_combo["state"]=["readonly"]                     
+khak_darkhast_bagh_zamin_combo.set(" ")
+khak_darkhast_bagh_zamin_combo.place(x=273, y=80)
 
-ab_kharid_bagh_zamin=tk.Label(option_frame_option2_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="منبع آب")
-ab_kharid_bagh_zamin.place(x=458, y=115)
+ab_darkhast_bagh_zamin=tk.Label(option_frame_option2_darkhast_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="منبع آب")
+ab_darkhast_bagh_zamin.place(x=458, y=115)
 
-ab_kharid_bagh_zamin_combo=ttk.Combobox(option_frame_option2_kharid_bagh_zamin)
-ab_kharid_bagh_zamin_combo["values"]=(" ","چاه","قنات","رودخانه","کانال آبیاری","چشمه",
+ab_darkhast_bagh_zamin_combo=ttk.Combobox(option_frame_option2_darkhast_bagh_zamin)
+ab_darkhast_bagh_zamin_combo["values"]=(" ","چاه","قنات","رودخانه","کانال آبیاری","چشمه",
                                "آب لوله کشی کشاورزی","تانکر","استخر")  
-ab_kharid_bagh_zamin_combo["state"]=["readonly"]
-ab_kharid_bagh_zamin_combo.set(" ")
-ab_kharid_bagh_zamin_combo.place(x=273, y=115)
+ab_darkhast_bagh_zamin_combo["state"]=["readonly"]
+ab_darkhast_bagh_zamin_combo.set(" ")
+ab_darkhast_bagh_zamin_combo.place(x=273, y=115)
 
-zamin_shekl_kharid_bagh_zamin_kharid_lable=tk.Label(option_frame_option2_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="توپوگرافی")
-zamin_shekl_kharid_bagh_zamin_kharid_lable.place(x=458, y=150)
+security_zamin_darkhast_bagh_zamin_var=tk.IntVar(value=0)
+security_zamin_darkhast_bagh_zamin=tk.Checkbutton(option_frame_option2_darkhast_bagh_zamin,variable=security_zamin_darkhast_bagh_zamin_var,text="اتاق نگهبان",background="#052340",fg="#00BFFF",font=("Shabnam",9))
+security_zamin_darkhast_bagh_zamin.place(x=450, y=230)
 
-zamin_shekl_kharid_bagh_zamin_combo=ttk.Combobox(option_frame_option2_kharid_bagh_zamin)
-zamin_shekl_kharid_bagh_zamin_combo["values"]=(" "," صاف و یکدست"," شیب دار"," باتلاقی","سنگی ")     
-zamin_shekl_kharid_bagh_zamin_combo["state"]=["readonly"]                        
-zamin_shekl_kharid_bagh_zamin_combo.set(" ")
-zamin_shekl_kharid_bagh_zamin_combo.place(x=273, y=150)
+bargh_kesi_zamin_darkhast_bagh_zamin_var=tk.IntVar(value=0)
+bargh_kesi_zamin_darkhast_bagh_zamin=tk.Checkbutton(option_frame_option2_darkhast_bagh_zamin,variable=bargh_kesi_zamin_darkhast_bagh_zamin_var,text="برق تک فاز",background="#052340",fg="#00BFFF",font=("Shabnam",9))
+bargh_kesi_zamin_darkhast_bagh_zamin.place(x=350, y=230)
 
-add_topo2_button_kharid_bagh_zamin=tk.Button(option_frame_option2_kharid_bagh_zamin,text=" مورد دلخواه",command=add_topo3,bg="#00BFFF",font=("Shabnam",9),width=10)
-add_topo2_button_kharid_bagh_zamin.place(x=170, y=147)
 
-label_natige_topo_add_kharid_bagh_zamin=tk.Label(option_frame_option2_kharid_bagh_zamin,text="")
-label_natige_topo_add_kharid_bagh_zamin.place(x=60, y=150)
+bargh_zamin_darkhast_bagh_zamin2_var=tk.IntVar(value=0)
+bargh_keshi_zamin_darkhast_bagh_zamin2=tk.Checkbutton(option_frame_option2_darkhast_bagh_zamin,variable=bargh_zamin_darkhast_bagh_zamin2_var,text="برق سه فاز",background="#052340",fg="#00BFFF",font=("Shabnam",9))
+bargh_keshi_zamin_darkhast_bagh_zamin2.place(x=250, y=230)
 
-kesht_kharid_bagh_zamin=tk.Label(option_frame_option2_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="سطح زیر کشت")
-kesht_kharid_bagh_zamin.place(x=458, y=185)
+anbar_zamin_darkhast_bagh_zamin_var=tk.IntVar(value=0)
+anbar_zamin_darkhast_bagh_zamin=tk.Checkbutton(option_frame_option2_darkhast_bagh_zamin,variable=anbar_zamin_darkhast_bagh_zamin_var,text="انبار/سوله",background="#052340",fg="#00BFFF",font=("Shabnam",9))
+anbar_zamin_darkhast_bagh_zamin.place(x=150, y=230)
 
-kesht_kharid_bagh_zamin_combo=ttk.Combobox(option_frame_option2_kharid_bagh_zamin)
-kesht_kharid_bagh_zamin_combo["values"]=("بدون کشت"," زیر کشت")                             
-kesht_kharid_bagh_zamin_combo.set("بدون کشت ")
-kesht_kharid_bagh_zamin_combo["state"]=["readonly"]
-kesht_kharid_bagh_zamin_combo.place(x=273, y=185)
-kesht_kharid_bagh_zamin_combo.bind("<<ComboboxSelected>>",choos_kesht3)
+fans_zamin_darkhast_bagh_zamin_var=tk.IntVar(value=0)
+fans_zamin_darkhast_bagh_zamin=tk.Checkbutton(option_frame_option2_darkhast_bagh_zamin,variable=fans_zamin_darkhast_bagh_zamin_var,text="فنس/دیوار",background="#052340",fg="#00BFFF",font=("Shabnam",9))
+fans_zamin_darkhast_bagh_zamin.place(x=60, y=230)
 
-kesht_kharid_bagh_zamin_label=tk.Label(option_frame_option2_kharid_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=11,text="محصول زیرکشت")
-kesht_kharid_bagh_zamin_label.place(x=168, y=185)
+mojavez_chah_zamin_darkhast_bagh_zamin_var=tk.IntVar(value=0)
+mojavez_chah_zamin_darkhast_bagh_zamin=tk.Checkbutton(option_frame_option2_darkhast_bagh_zamin,variable=mojavez_chah_zamin_darkhast_bagh_zamin_var,text="اجازه حفر چاه",background="#052340",fg="#00BFFF",font=("Shabnam",9))
+mojavez_chah_zamin_darkhast_bagh_zamin.place(x=300, y=280)
 
-kesht_kharid_bagh_zamin_entry=tk.Entry(option_frame_option2_kharid_bagh_zamin,width=10,bg="#746f6f",fg="#000000",state="disabled")
-kesht_kharid_bagh_zamin_entry.place(x=60, y=185)
 
-security_zamin_kharid_bagh_zamin=tk.Checkbutton(option_frame_option2_kharid_bagh_zamin,text="اتاق نگهبان",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-security_zamin_kharid_bagh_zamin.place(x=450, y=230)
 
-bargh_kesi_zamin_kharid_bagh_zamin=tk.Checkbutton(option_frame_option2_kharid_bagh_zamin,text="برق تک فاز",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-bargh_kesi_zamin_kharid_bagh_zamin.place(x=350, y=230)
+zakhire_options_darkhast_bagh_zamin=tk.Button(option_file_frame_darkhast_bagh_zamin,command=save_option_darkhast_bagh_zamin,text="تایید",background="#00BFFF",fg="#000000",width=10,height=1)
+zakhire_options_darkhast_bagh_zamin.place(x=95,y=580)
 
-bargh_keshi_zamin_kharid_bagh_zamin2=tk.Checkbutton(option_frame_option2_kharid_bagh_zamin,text="برق سه فاز",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-bargh_keshi_zamin_kharid_bagh_zamin2.place(x=250, y=230)
+back_to_darkhast_bagh_zamin=tk.Button(option_file_frame_darkhast_bagh_zamin,text="بازگشت",command=back_to_darkhast_bagh_zamin,background="#00BFFF",fg="#000000",width=10,height=1)
+back_to_darkhast_bagh_zamin.place(x=215,y=580)
 
-anbar_zamin_kharid_bagh_zamin=tk.Checkbutton(option_frame_option2_kharid_bagh_zamin,text="انبار/سوله",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-anbar_zamin_kharid_bagh_zamin.place(x=150, y=230)
-
-fans_zamin_kharid_bagh_zamin=tk.Checkbutton(option_frame_option2_kharid_bagh_zamin,text="فنس/دیوار",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-fans_zamin_kharid_bagh_zamin.place(x=60, y=230)
-
-mojavez_golkhane_zamin_kharid_bagh_zamin=tk.Checkbutton(option_frame_option2_kharid_bagh_zamin,text="اجازه ساخت گلخانه",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-mojavez_golkhane_zamin_kharid_bagh_zamin.place(x=400, y=280)
-
-mojavez_chah_zamin_kharid_bagh_zamin=tk.Checkbutton(option_frame_option2_kharid_bagh_zamin,text="اجازه حفر چاه",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-mojavez_chah_zamin_kharid_bagh_zamin.place(x=300, y=280)
-
-bardasht_zamin_kharid_bagh_zamin=tk.Checkbutton(option_frame_option2_kharid_bagh_zamin,text="حق برداشت ",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-bardasht_zamin_kharid_bagh_zamin.place(x=200, y=280)
-
-dam_zamin_kharid_bagh_zamin=tk.Checkbutton(option_frame_option2_kharid_bagh_zamin,text="اجازه ورود دام",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-dam_zamin_kharid_bagh_zamin.place(x=95, y=280)
-
-zakhire_options_kharid_bagh_zamin=tk.Button(option_file_frame_kharid_bagh_zamin,command=None,text="ذخیره",background="#00BFFF",fg="#000000",width=10,height=1)
-zakhire_options_kharid_bagh_zamin.place(x=95,y=580)
-
-back_to_kharid_bagh_zamin=tk.Button(option_file_frame_kharid_bagh_zamin,text="بازگشت",command=back_to_kharid_bagh_zamin,background="#00BFFF",fg="#000000",width=10,height=1)
-back_to_kharid_bagh_zamin.place(x=215,y=580)
-
-option_file_frame_kharid_bagh_zamin.protocol("WM_DELETE_WINDOW", lambda: None)
-option_file_frame_kharid_bagh_zamin.resizable(False, False)
+option_file_frame_darkhast_bagh_zamin.protocol("WM_DELETE_WINDOW", lambda: None)
+option_file_frame_darkhast_bagh_zamin.resizable(False, False)
 #endregion
-#-------------------پنجره خرید کارگاه------------------------
+#-------------------پنجره درخواست کارگاه------------------------
 #region
-kharid_kargah= tk.Toplevel(root)
-kharid_kargah.title("خرید کارگاه")
-kharid_kargah.geometry("800x600")
-kharid_kargah.withdraw()
+darkhast_kargah= tk.Toplevel(root)
+darkhast_kargah.title("درخواست کارگاه")
+darkhast_kargah.geometry("800x600")
+darkhast_kargah.withdraw()
 
-bg_image = image_kharid_kargah
-bg_image = image_kharid_kargah.resize((800, 600))
+bg_image = image_darkhast_kargah
+bg_image = image_darkhast_kargah.resize((800, 600))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
-bg_label = tk.Label(kharid_kargah, image=bg_photo)
+bg_label = tk.Label(darkhast_kargah, image=bg_photo)
 bg_label.image = bg_photo  
 bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-#----------------------کادر خرید کارگاه-----------------------#
-frame_kharid_kargah=tk.Frame(kharid_kargah,bd=0,highlightthickness=0)
-frame_kharid_kargah.pack(side="left", fill="y", padx=6, pady=15)
+#----------------------کادر درخواست کارگاه-----------------------#
+frame_darkhast_kargah=tk.Frame(darkhast_kargah,bd=0,highlightthickness=0)
+frame_darkhast_kargah.pack(side="left", fill="y", padx=6, pady=15)
 
-title_lbl = tk.Label(kharid_kargah,text="خرید کارگاه",bg="#052340",fg="#00BFFF",font=("Shabnam", 15))
+title_lbl = tk.Label(darkhast_kargah,text="درخواست کارگاه",bg="#052340",fg="#00BFFF",font=("Shabnam", 15))
 title_lbl.place(x=60, y=25)
 
 start_x = 450
 start_y = 40
 
-karbari_zamin_kharid_kargah=tk.Label(kharid_kargah,text="کاربری زمین",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
-karbari_zamin_kharid_kargah.place(x=start_x + 320, y=start_y + 35, anchor="e")
+karbari_zamin_darkhast_kargah=tk.Label(darkhast_kargah,text="کاربری زمین",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
+karbari_zamin_darkhast_kargah.place(x=start_x + 320, y=start_y + 35, anchor="e")
 
-kharid_kargah_lable=tk.Label(kharid_kargah,text=" کارگاه ",bg="#ffffff",fg="#000000",width=20)
-kharid_kargah_lable.place(x=start_x + 10, y=start_y + 25, width=150, height=25)
+combo_darkhast_kargah=ttk.Combobox(darkhast_kargah)
+combo_darkhast_kargah["values"] = ("درخواست اجاره کارگاه","درخواست خرید کارگاه")
+combo_darkhast_kargah["state"]=["readonly"]
+combo_darkhast_kargah.set("درخواست اجاره کارگاه")
+combo_darkhast_kargah.place(x=start_x + 10, y=start_y + 25)
 
-kharid_kargah_lable=tk.Label(kharid_kargah,text="متراژ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
-kharid_kargah_lable.place(x=start_x + 320, y=start_y + 85, anchor="e")
 
-metraj_kharid_kargah_entry=tk.Entry(kharid_kargah,bg="#ffffff",fg="#000000",font=("Shabnam", 10),textvariable="متر مربع")
-metraj_kharid_kargah_entry.place(x=start_x + 10, y=start_y + 75, width=150, height=25)
+darkhast_kargah_lable=tk.Label(darkhast_kargah,text="متراژ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
+darkhast_kargah_lable.place(x=start_x + 320, y=start_y + 85, anchor="e")
 
-loctaion_kharid_kargah_lable=tk.Label(kharid_kargah,text="منطقه و آدرس ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
-loctaion_kharid_kargah_lable.place(x=start_x + 320, y=start_y + 135, anchor="e")
+metraj_darkhast_kargah_entry=tk.Entry(darkhast_kargah,bg="#ffffff",fg="#000000",font=("Shabnam", 10),textvariable="متر مربع")
+metraj_darkhast_kargah_entry.place(x=start_x + 10, y=start_y + 75, width=150, height=25)
 
-loctaion_kharid_kargah_entry=tk.Entry(kharid_kargah,bg="#ffffff",fg="#000000",font=("Shabnam", 10))
-loctaion_kharid_kargah_entry.place(x=start_x + 10, y=start_y + 125, width=150, height=25)
+loctaion_darkhast_kargah_lable=tk.Label(darkhast_kargah,text="منطقه و آدرس ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
+loctaion_darkhast_kargah_lable.place(x=start_x + 320, y=start_y + 135, anchor="e")
 
-mablagh_pish_kharid_kargah_lable=tk.Label(kharid_kargah,text='ودیعه',bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
-mablagh_pish_kharid_kargah_lable.place(x=start_x + 320, y=start_y + 185, anchor="e")
+loctaion_darkhast_kargah_entry=tk.Entry(darkhast_kargah,bg="#ffffff",fg="#000000",font=("Shabnam", 10))
+loctaion_darkhast_kargah_entry.place(x=start_x + 10, y=start_y + 125, width=150, height=25)
 
-mablagh_pish_kharid_kargah_entry=tk.Entry(kharid_kargah,bg="#ffffff",fg="#000000",font=("Shabnam", 10))
-mablagh_pish_kharid_kargah_entry.place(x=start_x + 10, y=start_y + 175, width=150, height=25)
+mablagh_pish_darkhast_kargah_lable=tk.Label(darkhast_kargah,text='ودیعه',bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
+mablagh_pish_darkhast_kargah_lable.place(x=start_x + 320, y=start_y + 185, anchor="e")
 
-gheimat_har_metr_kharid_kargah_lable=tk.Label(kharid_kargah,text='قیمت هر متر',bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
-gheimat_har_metr_kharid_kargah_lable.place(x=start_x + 320, y=start_y + 235, anchor="e")
+mablagh_pish_darkhast_kargah_entry=tk.Entry(darkhast_kargah,bg="#ffffff",fg="#000000",font=("Shabnam", 10))
+mablagh_pish_darkhast_kargah_entry.place(x=start_x + 10, y=start_y + 175, width=150, height=25)
 
-gheimat_har_metr_kharid_kargah_entry=tk.Entry(kharid_kargah,bg="#ffffff",fg="#000000",font=("Shabnam", 10))
-gheimat_har_metr_kharid_kargah_entry.place(x=start_x + 10, y=start_y + 225, width=150, height=25)
+gheimat_har_metr_darkhast_kargah_lable=tk.Label(darkhast_kargah,text='قیمت هر متر',bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
+gheimat_har_metr_darkhast_kargah_lable.place(x=start_x + 320, y=start_y + 235, anchor="e")
 
-photo_lbl2_kharid_kargah = tk.Label(kharid_kargah, text="[تصویر ملک]", bg="#ffffff", width=50, height=15)
-photo_lbl2_kharid_kargah.place(x=60, y=85)
+gheimat_har_metr_darkhast_kargah_entry=tk.Entry(darkhast_kargah,bg="#ffffff",fg="#000000",font=("Shabnam", 10))
+gheimat_har_metr_darkhast_kargah_entry.place(x=start_x + 10, y=start_y + 225, width=150, height=25)
 
-add_img_btn_kharid_kargah = tk.Button(kharid_kargah, text="افزودن تصویر", bg="#00BFFF", fg="black",command=open_file,height=2,width=13)
-add_img_btn_kharid_kargah.place(x=60, y=370)
+name_moshtari_darkhast_kargah_lable=tk.Label(darkhast_kargah, text="نام مشتری", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+name_moshtari_darkhast_kargah_lable.place(x=start_x + 320, y=start_y + 285, anchor="e")
 
-back_to_home_kharid_kargah=tk.Button(kharid_kargah,text="بازگشت",bg="#00BFFF",fg="#000000",width=10,height=2,command=back_home_kharid_kargah)
-back_to_home_kharid_kargah.place(x=290,y=520)
+name_moshtari_darkhast_kargah_entry=tk.Entry(darkhast_kargah, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
+name_moshtari_darkhast_kargah_entry.place(x=start_x + 10, y=start_y + 275, width=150, height=25)
 
-zakhire_kharid_kargah=tk.Button(kharid_kargah,text="ذخیره",bg="#00BFFF",fg="#000000",width=10,height=2,command=None)
-zakhire_kharid_kargah.place(x=140,y=520)
+shomareh_moshtari_darkhast_kargah_lable=tk.Label(darkhast_kargah, text="شماره مشتری", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+shomareh_moshtari_darkhast_kargah_lable.place(x=start_x + 320, y=start_y + 335, anchor="e")
 
-kharid_kargah.protocol("WM_DELETE_WINDOW", lambda: None)
-kharid_kargah.resizable(False, False)
+shomareh_moshtari_darkhast_kargah_entry=tk.Entry(darkhast_kargah, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
+shomareh_moshtari_darkhast_kargah_entry.place(x=start_x + 10, y=start_y + 325, width=150, height=25)
+
+photo_lbl2_darkhast_kargah = tk.Label(darkhast_kargah, text="[تصویر ملک]", bg="#ffffff", width=50, height=15)
+photo_lbl2_darkhast_kargah.place(x=60, y=85)
+
+add_img_btn_darkhast_kargah = tk.Button(darkhast_kargah, text="افزودن تصویر", bg="#00BFFF", fg="black",command=open_file,height=2,width=13)
+add_img_btn_darkhast_kargah.place(x=60, y=370)
+
+back_to_home_darkhast_kargah=tk.Button(darkhast_kargah,text="بازگشت",bg="#00BFFF",fg="#000000",width=10,height=2,command=back_home_darkhast_kargah)
+back_to_home_darkhast_kargah.place(x=290,y=520)
+
+zakhire_darkhast_kargah=tk.Button(darkhast_kargah,text="ذخیره",bg="#00BFFF",fg="#000000",width=10,height=2,command=sabt_darkhast_kargah)
+zakhire_darkhast_kargah.place(x=140,y=520)
+
+darkhast_kargah.protocol("WM_DELETE_WINDOW", lambda: None)
+darkhast_kargah.resizable(False, False)
 #endregion
-#---------------------پنجره امکانات خرید کارگاه---------------------
+#---------------------پنجره امکانات درخواست کارگاه---------------------
 #region
-option_frame_kharid_kargah=tk.Frame(kharid_kargah,width=300,height=30,background="#052340")
-option_frame_kharid_kargah.place(x=550,y=450)
+option_frame_darkhast_kargah=tk.Frame(darkhast_kargah,width=300,height=30,background="#052340")
+option_frame_darkhast_kargah.place(x=225,y=370)
 
-option_frame_kharid_kargah_lable=tk.Label(option_frame_kharid_kargah,text='افزودن امکانات فایل',font=("Shabnam",12,"bold"),background="#052340",fg="#00BFFF")
-option_frame_kharid_kargah_lable.pack(side="right",padx=1)
+option_frame_darkhast_kargah_lable=tk.Label(option_frame_darkhast_kargah,text='افزودن امکانات فایل',font=("Shabnam",12,"bold"),background="#052340",fg="#00BFFF")
+option_frame_darkhast_kargah_lable.pack(side="right",padx=1)
 
-plus_button_kharid_kargah=tk.Button(option_frame_kharid_kargah,image=plus,command=open_option12,border=0)
-plus_button_kharid_kargah.pack()
+plus_button_darkhast_kargah=tk.Button(option_frame_darkhast_kargah,image=plus,command=open_option12,border=0)
+plus_button_darkhast_kargah.pack()
 
-option_file_frame_kharid_kargah=tk.Toplevel(kharid_kargah)
-option_file_frame_kharid_kargah.title(" امکانات خرید کارگاه")
-option_file_frame_kharid_kargah.geometry("500x500")
-option_file_frame_kharid_kargah.pack_propagate(False)
-option_file_frame_kharid_kargah.withdraw()
+option_file_frame_darkhast_kargah=tk.Toplevel(darkhast_kargah)
+option_file_frame_darkhast_kargah.title(" امکانات درخواست کارگاه")
+option_file_frame_darkhast_kargah.geometry("500x500")
+option_file_frame_darkhast_kargah.pack_propagate(False)
+option_file_frame_darkhast_kargah.withdraw()
 
-option_frame_asli_kharid_kargah=tk.Frame(option_file_frame_kharid_kargah)
-option_frame_asli_kharid_kargah.place(x=50,y=50)
+option_frame_asli_darkhast_kargah=tk.Frame(option_file_frame_darkhast_kargah)
+option_frame_asli_darkhast_kargah.place(x=50,y=50)
 
-bg_image = image_kharid_kargah
-bg_image = image_kharid_kargah.resize((800, 650))
+bg_image = image_darkhast_kargah
+bg_image = image_darkhast_kargah.resize((800, 650))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
-bg_label = tk.Label(option_file_frame_kharid_kargah, image=bg_photo)
+bg_label = tk.Label(option_file_frame_darkhast_kargah, image=bg_photo)
 bg_label.image = bg_photo 
 bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
 
-sal_sakht_kharid_kargah_lable=tk.Label(option_file_frame_kharid_kargah,bg="#052340",fg="#ffffff",font=("Shabnam", 9),width=13,text="سال ساخت")
-sal_sakht_kharid_kargah_lable.place(x=302, y=50)
+sal_sakht_darkhast_kargah_lable=tk.Label(option_file_frame_darkhast_kargah,bg="#052340",fg="#ffffff",font=("Shabnam", 9),width=13,text="سال ساخت")
+sal_sakht_darkhast_kargah_lable.place(x=302, y=50)
 
-sal_sakht_kharid_kargah_entry=tk.Entry(option_file_frame_kharid_kargah,width=10,bg="#ffffff",fg="#000000")
-sal_sakht_kharid_kargah_entry.place(x=108, y=50)
+sal_sakht_darkhast_kargah_entry=tk.Entry(option_file_frame_darkhast_kargah,width=10,bg="#ffffff",fg="#000000")
+sal_sakht_darkhast_kargah_entry.place(x=108, y=50)
 
-vaziat_bagh_kharid_kargah=tk.Label(option_file_frame_kharid_kargah,bg="#052340",fg="#ffffff",font=("Shabnam", 9),width=15,text="وضعیت برق")
-vaziat_bagh_kharid_kargah.place(x=295, y=80)
+vaziat_bagh_darkhast_kargah=tk.Label(option_file_frame_darkhast_kargah,bg="#052340",fg="#ffffff",font=("Shabnam", 9),width=15,text="وضعیت برق")
+vaziat_bagh_darkhast_kargah.place(x=295, y=80)
 
-vaziat_bargh_kharid_kargah_combo=ttk.Combobox(option_file_frame_kharid_kargah)
-vaziat_bargh_kharid_kargah_combo["values"]=("","برق شهری","سه فاز","تک فاز")
-vaziat_bargh_kharid_kargah_combo.set("")
-vaziat_bargh_kharid_kargah_combo["state"]=["readonly"]
-vaziat_bargh_kharid_kargah_combo.place(x=70, y=80)
+vaziat_bargh_darkhast_kargah_combo=ttk.Combobox(option_file_frame_darkhast_kargah)
+vaziat_bargh_darkhast_kargah_combo["values"]=("","برق شهری","سه فاز","تک فاز")
+vaziat_bargh_darkhast_kargah_combo.set("")
+vaziat_bargh_darkhast_kargah_combo["state"]=["readonly"]
+vaziat_bargh_darkhast_kargah_combo.place(x=70, y=80)
 
-garmayesh_kharid_kargah=tk.Label(option_file_frame_kharid_kargah,bg="#052340",fg="#ffffff",font=("Shabnam", 9),width=15,text="سیستم گرمایش")
-garmayesh_kharid_kargah.place(x=295, y=110)
+garmayesh_darkhast_kargah=tk.Label(option_file_frame_darkhast_kargah,bg="#052340",fg="#ffffff",font=("Shabnam", 9),width=15,text="سیستم گرمایش")
+garmayesh_darkhast_kargah.place(x=295, y=110)
 
-garmayesh_type_kharid_kargah_combo=ttk.Combobox(option_file_frame_kharid_kargah)
-garmayesh_type_kharid_kargah_combo["values"]=("","بخاری ","شوفاژ ","فن کوئل(گرما) ")
-garmayesh_type_kharid_kargah_combo.set("")
-garmayesh_type_kharid_kargah_combo["state"]=["readonly"]
-garmayesh_type_kharid_kargah_combo.place(x=70, y=110)
+garmayesh_type_darkhast_kargah_combo=ttk.Combobox(option_file_frame_darkhast_kargah)
+garmayesh_type_darkhast_kargah_combo["values"]=("","بخاری ","شوفاژ ","فن کوئل(گرما) ")
+garmayesh_type_darkhast_kargah_combo.set("")
+garmayesh_type_darkhast_kargah_combo["state"]=["readonly"]
+garmayesh_type_darkhast_kargah_combo.place(x=70, y=110)
 
-sarmayesh_kharid_kargah=tk.Label(option_file_frame_kharid_kargah,bg="#052340",fg="#ffffff",font=("Shabnam", 9),width=15,text="سیستم سرمایش ")
-sarmayesh_kharid_kargah.place(x=295, y=140)
 
-sarmayesh_fan_kharid_kargah=tk.Checkbutton(option_file_frame_kharid_kargah,text="تهویه(فن)",background="#052340",fg="#00BFFF",font=("Shabnam", 9))
-sarmayesh_fan_kharid_kargah.place(x=295, y=170)
+sarmayesh_darkhast_kargah=tk.Label(option_file_frame_darkhast_kargah,bg="#052340",fg="#ffffff",font=("Shabnam", 9),width=15,text="سیستم سرمایش ")
+sarmayesh_darkhast_kargah.place(x=295, y=140)
 
-sarmayesh_panke_kharid_kargah=tk.Checkbutton(option_file_frame_kharid_kargah,text="پنکه سقفی",background="#052340",fg="#00BFFF",font=("Shabnam", 9))
-sarmayesh_panke_kharid_kargah.place(x=80, y=170)
+sarmayesh_kooler_gazi_darkhast_kargah_var=tk.IntVar(value=0)
+sarmayesh_fan_darkhast_kargah_var=tk.IntVar(value=0)
+sarmayesh_panke_darkhast_kargah_var=tk.IntVar(value=0)
+sarmayesh_kooler_abi_darkhast_kargah_var=tk.IntVar(value=0)
 
-sarmayesh_kooler_abi_kharid_kargah=tk.Checkbutton(option_file_frame_kharid_kargah,text="کولر آبی",background="#052340",fg="#00BFFF",font=("Shabnam", 9))
-sarmayesh_kooler_abi_kharid_kargah.place(x=299, y=200)
+sarmayesh_fan_darkhast_kargah=tk.Checkbutton(option_file_frame_darkhast_kargah,text="تهویه(فن)",variable=sarmayesh_fan_darkhast_kargah_var,background="#052340",fg="#00BFFF",font=("Shabnam", 9))
+sarmayesh_fan_darkhast_kargah.place(x=295, y=170)
 
-sarmayesh_kooler_gazi_kharid_kargah=tk.Checkbutton(option_file_frame_kharid_kargah,text="کولر گازی",background="#052340",fg="#00BFFF",font=("Shabnam", 9))
-sarmayesh_kooler_gazi_kharid_kargah.place(x=84, y=200)
+sarmayesh_panke_darkhast_kargah=tk.Checkbutton(option_file_frame_darkhast_kargah,text="پنکه سقفی",variable=sarmayesh_panke_darkhast_kargah_var,background="#052340",fg="#00BFFF",font=("Shabnam", 9))
+sarmayesh_panke_darkhast_kargah.place(x=80, y=170)
 
-vaziat_ab_kharid_kargah=tk.Label(option_file_frame_kharid_kargah,bg="#052340",fg="#ffffff",width=13,text=" وضعیت آب",font=("Shabnam", 9))
-vaziat_ab_kharid_kargah.place(x=303, y=230)
+sarmayesh_kooler_abi_darkhast_kargah=tk.Checkbutton(option_file_frame_darkhast_kargah,text="کولر آبی",variable=sarmayesh_kooler_abi_darkhast_kargah_var,background="#052340",fg="#00BFFF",font=("Shabnam", 9))
+sarmayesh_kooler_abi_darkhast_kargah.place(x=299, y=200)
 
-vaziat_ab_kharid_kargah_combo=ttk.Combobox(option_file_frame_kharid_kargah,width=35)
-vaziat_ab_kharid_kargah_combo["values"]=(""," آب مستقیم لوله کشی (بدون فشار) " ," آب مستقیم لوله کشی (همراه موتور فشار) ","دارای منبع(همراه موتور فشار)","دارای منبع(بدون فشار)")
-vaziat_ab_kharid_kargah_combo.set("")
-vaziat_ab_kharid_kargah_combo["state"]=["readonly"]
-vaziat_ab_kharid_kargah_combo.place(x=30, y=230)
+sarmayesh_kooler_gazi_darkhast_kargah=tk.Checkbutton(option_file_frame_darkhast_kargah,text="کولر گازی",variable=sarmayesh_kooler_gazi_darkhast_kargah_var,background="#052340",fg="#00BFFF",font=("Shabnam", 9))
+sarmayesh_kooler_gazi_darkhast_kargah.place(x=84, y=200)
 
-abzar_kharid_kargah=tk.Label(option_file_frame_kharid_kargah,bg="#052340",fg="#ffffff",font=("Shabnam", 9),width=15,text=" ابزار صنعتی ")
-abzar_kharid_kargah.place(x=298, y=260)
+vaziat_ab_darkhast_kargah=tk.Label(option_file_frame_darkhast_kargah,bg="#052340",fg="#ffffff",width=13,text=" وضعیت آب",font=("Shabnam", 9))
+vaziat_ab_darkhast_kargah.place(x=303, y=230)
 
-abzaar_kharid_kargah_combo=ttk.Combobox(option_file_frame_kharid_kargah,width=23)
-abzaar_kharid_kargah_combo["values"]=("","(کارگاه خالی) بدون دستگاه ","دارای دستگاه های تولیدی")
-abzaar_kharid_kargah_combo.set("")
-abzaar_kharid_kargah_combo["state"]=["readonly"]
-abzaar_kharid_kargah_combo.place(x=58, y=260)
+vaziat_ab_darkhast_kargah_combo=ttk.Combobox(option_file_frame_darkhast_kargah,width=35)
+vaziat_ab_darkhast_kargah_combo["values"]=(""," آب مستقیم لوله کشی (بدون فشار) " ," آب مستقیم لوله کشی (همراه موتور فشار) ","دارای منبع(همراه موتور فشار)","دارای منبع(بدون فشار)")
+vaziat_ab_darkhast_kargah_combo.set("")
+vaziat_ab_darkhast_kargah_combo["state"]=["readonly"]
+vaziat_ab_darkhast_kargah_combo.place(x=30, y=230)
 
-toilet_kharid_kargah=tk.Label(option_file_frame_kharid_kargah,bg="#052340",fg="#ffffff",font=("Shabnam", 9),width=15,text="سرویس بهداشتی")
-toilet_kharid_kargah.place(x=298, y=290)
+abzar_darkhast_kargah=tk.Label(option_file_frame_darkhast_kargah,bg="#052340",fg="#ffffff",font=("Shabnam", 9),width=15,text=" ابزار صنعتی ")
+abzar_darkhast_kargah.place(x=298, y=260)
 
-toilet_kharid_kargah_combo=ttk.Combobox(option_file_frame_kharid_kargah)
-toilet_kharid_kargah_combo["values"]=("","دارد","ندارد")
-toilet_kharid_kargah_combo.set("")
-toilet_kharid_kargah_combo["state"]=["readonly"]
-toilet_kharid_kargah_combo.place(x=70, y=290)
+abzaar_darkhast_kargah_combo=ttk.Combobox(option_file_frame_darkhast_kargah,width=23)
+abzaar_darkhast_kargah_combo["values"]=("","(کارگاه خالی) بدون دستگاه ","دارای دستگاه های تولیدی")
+abzaar_darkhast_kargah_combo.set("")
+abzaar_darkhast_kargah_combo["state"]=["readonly"]
+abzaar_darkhast_kargah_combo.place(x=58, y=260)
 
-hamam_kharid_kargah=tk.Label(option_file_frame_kharid_kargah,bg="#052340",fg="#ffffff",font=("Shabnam", 9),width=13,text="حمام")
-hamam_kharid_kargah.place(x=303, y=320)
+toilet_darkhast_kargah=tk.Label(option_file_frame_darkhast_kargah,bg="#052340",fg="#ffffff",font=("Shabnam", 9),width=15,text="سرویس بهداشتی")
+toilet_darkhast_kargah.place(x=298, y=290)
 
-hamam_kharid_kargah__combo=ttk.Combobox(option_file_frame_kharid_kargah)
-hamam_kharid_kargah__combo["values"]=("","ندارد","دارد")
-hamam_kharid_kargah__combo.set("")
-hamam_kharid_kargah__combo["state"]=["readonly"]
-hamam_kharid_kargah__combo.place(x=70, y=320)
+toilet_darkhast_kargah_combo=ttk.Combobox(option_file_frame_darkhast_kargah)
+toilet_darkhast_kargah_combo["values"]=("","دارد","ندارد")
+toilet_darkhast_kargah_combo.set("")
+toilet_darkhast_kargah_combo["state"]=["readonly"]
+toilet_darkhast_kargah_combo.place(x=70, y=290)
 
-otagh_kharid_kargah=tk.Label(option_file_frame_kharid_kargah,bg="#052340",fg="#ffffff",font=("Shabnam", 9),width=17,text="اتاق رخت کن و استراحت")
-otagh_kharid_kargah.place(x=294, y=350)
+hamam_darkhast_kargah=tk.Label(option_file_frame_darkhast_kargah,bg="#052340",fg="#ffffff",font=("Shabnam", 9),width=13,text="حمام")
+hamam_darkhast_kargah.place(x=303, y=320)
 
-otagh_kharid_kargah_combo=ttk.Combobox(option_file_frame_kharid_kargah)
-otagh_kharid_kargah_combo["values"]=("","ندارد","دارد")
-otagh_kharid_kargah_combo.set("")
-otagh_kharid_kargah_combo["state"]=["readonly"]
-otagh_kharid_kargah_combo.place(x=70, y=350)
+hamam_darkhast_kargah__combo=ttk.Combobox(option_file_frame_darkhast_kargah)
+hamam_darkhast_kargah__combo["values"]=("","ندارد","دارد")
+hamam_darkhast_kargah__combo.set("")
+hamam_darkhast_kargah__combo["state"]=["readonly"]
+hamam_darkhast_kargah__combo.place(x=70, y=320)
 
-zakhire_options_kharid_kargah=tk.Button(option_file_frame_kharid_kargah,text="ذخیره",background="#00BFFF",fg="#000000",width=10,height=1)
-zakhire_options_kharid_kargah.place(x=50,y=450)
+otagh_darkhast_kargah=tk.Label(option_file_frame_darkhast_kargah,bg="#052340",fg="#ffffff",font=("Shabnam", 9),width=17,text="اتاق رخت کن و استراحت")
+otagh_darkhast_kargah.place(x=294, y=350)
 
-back_to_kharid_kargah=tk.Button(option_file_frame_kharid_kargah,text="بازگشت",command=back_to_kharid_kargah,background="#00BFFF",fg="#000000",width=10,height=1)
-back_to_kharid_kargah.place(x=170,y=450)
+otagh_darkhast_kargah_combo=ttk.Combobox(option_file_frame_darkhast_kargah)
+otagh_darkhast_kargah_combo["values"]=("","ندارد","دارد")
+otagh_darkhast_kargah_combo.set("")
+otagh_darkhast_kargah_combo["state"]=["readonly"]
+otagh_darkhast_kargah_combo.place(x=70, y=350)
 
-option_file_frame_kharid_kargah.protocol("WM_DELETE_WINDOW", lambda: None)
-option_file_frame_kharid_kargah.resizable(False, False)
+zakhire_options_darkhast_kargah=tk.Button(option_file_frame_darkhast_kargah,command=save_option_darkhast_kargah,text="تایید",background="#00BFFF",fg="#000000",width=10,height=1)
+zakhire_options_darkhast_kargah.place(x=50,y=450)
+
+back_to_darkhast_kargah=tk.Button(option_file_frame_darkhast_kargah,text="بازگشت",command=back_to_darkhast_kargah,background="#00BFFF",fg="#000000",width=10,height=1)
+back_to_darkhast_kargah.place(x=170,y=450)
+
+option_file_frame_darkhast_kargah.protocol("WM_DELETE_WINDOW", lambda: None)
+option_file_frame_darkhast_kargah.resizable(False, False)
 #endregion
 #############################################################################
 # ----------------------اجرای برنامه-------------------
