@@ -383,7 +383,7 @@ def back_home_ejareh_karghah():
     root.deiconify()
     metraj_kargah_entry.delete(0,tk.END)
     loctaion_ejareh_kargah_entry.delete(0,tk.END)
-    gheimat_har_metr_ejareh_kargah_entry.delete(0,tk.END)
+    mablagh_ejareh_ejareh_kargah_entry.delete(0,tk.END)
     mablagh_pish_ejareh_kargah_entry.delete(0,tk.END) 
     name_malek_ejareh_kargah_entry.delete(0,tk.END) 
     shomareh_malek_ejareh_kargah_entry.delete(0,tk.END) 
@@ -406,7 +406,7 @@ def back_home_forosh_karghah():
     forosh_karghah.withdraw()
     root.deiconify()
     loctaion_forosh_kargah_entry.delete(0,tk.END)
-    mablagh_pish_forosh_kargah_entry.delete(0,tk.END)
+    gheimat_tamam_forosh_kargah_entry.delete(0,tk.END)
     gheimat_har_metr_forosh_kargah_entry.delete(0,tk.END)
     metraj_forosh_kargah_entry.delete(0,tk.END)
     name_malek_forosh_kargah_entry.delete(0,tk.END)
@@ -1305,7 +1305,7 @@ def sabt_forosh_karghah():
             address VARCHAR(225),
             gheimat_vadie DECIMAL(15,2),
             gheimat_metrazh DECIMAL(15,2),
-            time_ejare VARCHAR(20),
+            gheimat_tamam VARCHAR(20),
             sal_sakht VARCHAR(20),
             vaziat_bargh VARCHAR(20),
             garmayesh VARCHAR(20),
@@ -1325,17 +1325,16 @@ def sabt_forosh_karghah():
         cursor.execute(sql_create)
         sql_insert = """
         INSERT INTO sabt_forosh_karghah
-        (karbari_zamin,metraj,address,gheimat_vadie,gheimat_metrazh,time_ejare,sal_sakht,
+        (karbari_zamin,metraj,address,gheimat_metrazh,gheimat_tamam,sal_sakht,
         vaziat_bargh,garmayesh,fan,panke,kooler_abi,kooler_gazi,vaziat_ab,abzar,toilet,hamam,otagh,name_malk,shomareh_malk)
-        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
         """
         values = (
             karbari_forosh_kargah_entry.get(),
             metraj_forosh_kargah_entry.get(),
             loctaion_forosh_kargah_entry.get(),
-            float(mablagh_pish_forosh_kargah_entry.get()),
             float(gheimat_har_metr_forosh_kargah_entry.get()),
-            time_ejare_forosh_kargah_combo.get(),
+            gheimat_tamam_forosh_kargah_entry.get(),
             sal_sakht_forosh_kargah_entry.get(),
             vaziat_bargh_forosh_kargah_combo.get(),
             garmayesh_type_forosh_kargah_combo.get(),
@@ -1701,7 +1700,7 @@ def sabt_ejareh_karghah():
             metraj VARCHAR(20),
             loctaion_and_address VARCHAR(225),
             gheimat_vadie DECIMAL(15,2),
-            gheimat_metrazh DECIMAL(15,2),
+            mablagh_ejareh DECIMAL(15,2),
             time_ejare VARCHAR(20),
             sal_sakht VARCHAR(20),
             vaziat_bargh VARCHAR(30),
@@ -1724,7 +1723,7 @@ def sabt_ejareh_karghah():
         sql_insert = """
         INSERT INTO sabt_ejareh_karghah
         (karbari_zamin,metraj,loctaion_and_address,
-        gheimat_vadie,gheimat_metrazh,time_ejare,sal_sakht,vaziat_bargh,
+        gheimat_vadie,mablagh_ejareh,time_ejare,sal_sakht,vaziat_bargh,
         garmayesh,fan,panke,kooler_abi,kooler_gazi,vaziat_ab,abzar,toilet,hamam,otagh,name_malk,shomareh_malk)
         VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
         """
@@ -1733,7 +1732,7 @@ def sabt_ejareh_karghah():
             metraj_kargah_entry.get(),
             loctaion_ejareh_kargah_entry.get(),
             float(mablagh_pish_ejareh_kargah_entry.get()),
-            float(gheimat_har_metr_ejareh_kargah_entry.get()),
+            float(mablagh_ejareh_ejareh_kargah_entry.get()),
             time_ejare_ejareh_kargah_combo.get(),
             sal_sakht_ejareh_kargah_entry.get(),
             vaziat_bargh_ejareh_kargah_combo.get(),
@@ -3754,11 +3753,11 @@ mablagh_pish_ejareh_kargah_lable.place(x=start_x + 320, y=start_y + 185, anchor=
 mablagh_pish_ejareh_kargah_entry=tk.Entry(ejareh_karghah, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
 mablagh_pish_ejareh_kargah_entry.place(x=start_x + 10, y=start_y + 175, width=150, height=25)
 
-gheimat_har_metr_ejareh_kargah_lable=tk.Label(ejareh_karghah, text="قیمت هر متر", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-gheimat_har_metr_ejareh_kargah_lable.place(x=start_x + 320, y=start_y + 235, anchor="e")
+mablagh_ejareh_ejareh_kargah_lable=tk.Label(ejareh_karghah, text="مبلغ اجاره", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+mablagh_ejareh_ejareh_kargah_lable.place(x=start_x + 320, y=start_y + 235, anchor="e")
 
-gheimat_har_metr_ejareh_kargah_entry=tk.Entry(ejareh_karghah, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
-gheimat_har_metr_ejareh_kargah_entry.place(x=start_x + 10, y=start_y + 225, width=150, height=25)
+mablagh_ejareh_ejareh_kargah_entry=tk.Entry(ejareh_karghah, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
+mablagh_ejareh_ejareh_kargah_entry.place(x=start_x + 10, y=start_y + 225, width=150, height=25)
 
 
 time_ejate_ejareh_kargah_lable=tk.Label(ejareh_karghah, text="مدت اجاره", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
@@ -4669,37 +4668,29 @@ loctaion_forosh_kargah.place(x=start_x + 320, y=start_y + 135, anchor="e")
 loctaion_forosh_kargah_entry=tk.Entry(forosh_karghah,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
 loctaion_forosh_kargah_entry.place(x=start_x + 10, y=start_y + 125, width=150, height=25)
 
-mablagh_pish_forosh_kargah=tk.Label(forosh_karghah,text='ودیعه',bg="#052340",fg="#ffffff",font=("Shabnam", 12),width=9)
-mablagh_pish_forosh_kargah.place(x=start_x + 320, y=start_y + 185, anchor="e")
-
-mablagh_pish_forosh_kargah_entry=tk.Entry(forosh_karghah,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
-mablagh_pish_forosh_kargah_entry.place(x=start_x + 10, y=start_y + 175, width=150, height=25)
-
 gheimat_har_metr_forosh_kargah=tk.Label(forosh_karghah,text='قیمت هر متر',bg="#052340",fg="#ffffff",font=("Shabnam", 12),width=9)
-gheimat_har_metr_forosh_kargah.place(x=start_x + 320, y=start_y + 235, anchor="e")
+gheimat_har_metr_forosh_kargah.place(x=start_x + 320, y=start_y + 185, anchor="e")
 
 gheimat_har_metr_forosh_kargah_entry=tk.Entry(forosh_karghah,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
-gheimat_har_metr_forosh_kargah_entry.place(x=start_x + 10, y=start_y + 225, width=150, height=25)
+gheimat_har_metr_forosh_kargah_entry.place(x=start_x + 10, y=start_y + 185, width=150, height=25)
 
-time_ejare_forosh_kargah=tk.Label(forosh_karghah,text="مدت اجاره",bg="#052340",fg="#ffffff",font=("Shabnam", 12),width=9)
-time_ejare_forosh_kargah.place(x=start_x + 320, y=start_y + 285, anchor="e")
+gheimat_tamam_forosh_kargah_kargah=tk.Label(forosh_karghah,text="قیمت تمام شده",bg="#052340",fg="#ffffff",font=("Shabnam", 12),width=16)
+gheimat_tamam_forosh_kargah_kargah.place(x=start_x + 320, y=start_y + 235, anchor="e")
 
-time_ejare_forosh_kargah_combo=ttk.Combobox(forosh_karghah,state="readonly")
-time_ejare_forosh_kargah_combo["values"]=("بلندمدت","کوتاه مدت","فصلی","سالانه")
-time_ejare_forosh_kargah_combo.set("فصلی")
-time_ejare_forosh_kargah_combo.place(x=start_x + 10, y=start_y + 275, width=150, height=25)
+gheimat_tamam_forosh_kargah_entry=tk.Entry(forosh_karghah,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
+gheimat_tamam_forosh_kargah_entry.place(x=start_x + 10, y=start_y + 235, width=150, height=25)
 
 name_malek_forosh_kargah_lable=tk.Label(forosh_karghah, text="نام مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-name_malek_forosh_kargah_lable.place(x=start_x + 320, y=start_y + 345, anchor="e")
+name_malek_forosh_kargah_lable.place(x=start_x + 320, y=start_y + 285, anchor="e")
 
 name_malek_forosh_kargah_entry=tk.Entry(forosh_karghah, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
-name_malek_forosh_kargah_entry.place(x=start_x + 10, y=start_y + 335, width=150, height=25)
+name_malek_forosh_kargah_entry.place(x=start_x + 10, y=start_y + 285, width=150, height=25)
 
 shomareh_malek_forosh_kargah_lable=tk.Label(forosh_karghah, text="شماره مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-shomareh_malek_forosh_kargah_lable.place(x=start_x + 320, y=start_y + 395, anchor="e")
+shomareh_malek_forosh_kargah_lable.place(x=start_x + 320, y=start_y + 345, anchor="e")
 
 shomareh_malek_forosh_kargah_entry=tk.Entry(forosh_karghah, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
-shomareh_malek_forosh_kargah_entry.place(x=start_x + 10, y=start_y + 385, width=150, height=25)
+shomareh_malek_forosh_kargah_entry.place(x=start_x + 10, y=start_y + 345, width=150, height=25)
 
 photo_lbl2_forosh_kargah = tk.Label(forosh_karghah, text="[تصویر ملک]", bg="#ffffff", width=50, height=15)
 photo_lbl2_forosh_kargah.place(x=60, y=85)
