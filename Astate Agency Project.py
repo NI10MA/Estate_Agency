@@ -534,7 +534,11 @@ def back_home_gozaresh_edari_tejari():
     root.deiconify()
     gozaresh_edari_tejari.withdraw()
     gozaresh_file_combo_edari_tejari.set("")
-
+#----------------------برگشت از صفحه گزارش کارگاه------------------
+def back_home_gozaresh_kargah():
+    root.deiconify()
+    gozaresh_kargah.withdraw()
+    gozaresh_file_combo_kargah.set("")
 #endregion
 #region #توابع تایید اپشن ها 
 #==============================
@@ -742,7 +746,12 @@ def gozaresh_edari_tejari():
     root.withdraw()
     gozaresh_edari_tejari.deiconify()
     box_gozaresh.grab_release()   
-
+#-------------بستن باکس و باز کردن صفحه گزارش کارگاه------------
+def gozaresh_kargah():
+    box_gozaresh.withdraw()
+    root.withdraw()
+    gozaresh_kargah.deiconify()
+    box_gozaresh.grab_release()   
 #-------------رادیو باتن باکس-------------------
 #تابع رادیو باتن باز و بسته کردن صفحات فروش
 def sabt_radio_frosh():
@@ -837,6 +846,12 @@ def sabt_radio_gozaresh():
         box_gozaresh.withdraw()
         root.withdraw()
         gozaresh_edari_tejari.deiconify()
+        box_gozaresh.grab_release()
+
+    elif selected==4:
+        box_gozaresh.withdraw()
+        root.withdraw()
+        gozaresh_kargah.deiconify()
         box_gozaresh.grab_release()
 
 #تابع رادیو باتن باز و بسته کردن صفحات مشارکت
@@ -5879,6 +5894,10 @@ option_file_frame_darkhast_kargah.protocol("WM_DELETE_WINDOW", lambda: None)
 option_file_frame_darkhast_kargah.resizable(False, False)
 #endregion
 #=============================== پنجره گزارشات ===============================
+#--------------------------پنجره گزارش های مسکونی------------------------------
+#region
+
+#endregion
 #------------------------------پنجره گزارش اداری/تجاری------------------------------
 #region
 gozaresh_edari_tejari = tk.Toplevel(root)
@@ -5914,6 +5933,48 @@ back_home_gozaresh_edari_tejari.place(x=215, y=320)
 
 gozaresh_edari_tejari.protocol("WM_DELETE_WINDOW", lambda: None)
 gozaresh_edari_tejari.resizable(False, False)
+#endregion
+#---------------------------------پنجره گزارش های باغ/زمین-------------------------
+#region
+
+#endregion
+#---------------------------------پنجره گزارش های کارگاه---------------------------
+#region
+gozaresh_kargah = tk.Toplevel(root)
+gozaresh_kargah.title("گزارش  کارگاه")
+gozaresh_kargah.geometry("600x380")
+gozaresh_kargah.withdraw()
+
+bg_image = image_gozaresh_edari_tejari
+bg_image = image_gozaresh_edari_tejari.resize((600, 380))
+bg_photo = ImageTk.PhotoImage(bg_image)
+
+# لیبل پس‌زمینه
+bg_label = tk.Label(gozaresh_kargah, image=bg_photo)
+bg_label.image = bg_photo  # خیلی مهم: جلوگیری از پاک شدن عکس
+bg_label.place(x=0, y=0, relwidth=1, relheight=1)
+
+type_gozaresh_kargah=tk.Label(gozaresh_kargah,text=" نوع گزارش ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
+type_gozaresh_kargah.place(x=470, y=76)
+
+type_gozaresh_kargah_entry=tk.Entry(gozaresh_kargah,bg="#ffffff",fg="#000000",font=("Shabnam", 10))
+type_gozaresh_kargah_entry.place(x=170, y=230, width=250, height=30)
+
+gozaresh_file_combo_kargah=ttk.Combobox(gozaresh_kargah)
+gozaresh_file_combo_kargah["values"] = ("گزارش فایل اجاره","گزارش فایل فروش","گزارش فایل درخواستی")
+gozaresh_file_combo_kargah["state"]=["readonly"]
+gozaresh_file_combo_kargah.place(x=220, y=80)
+
+save_gozaresh_edari_kargah = tk.Button(gozaresh_kargah, text="تایید", command=None, bg="#00BFFF", fg="#000000", width=10, height=1)
+save_gozaresh_edari_kargah.place(x=95, y=320)
+
+back_home_gozaresh_kargah = tk.Button(gozaresh_kargah, text="بازگشت", command=back_home_gozaresh_kargah, bg="#00BFFF", fg="#000000", width=10, height=1)
+back_home_gozaresh_kargah.place(x=215, y=320)
+
+gozaresh_kargah.protocol("WM_DELETE_WINDOW", lambda: None)
+gozaresh_kargah.resizable(False, False)
+
+#endregion
 #############################################################################
 # ----------------------اجرای برنامه-------------------
 #region
