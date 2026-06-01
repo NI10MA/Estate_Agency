@@ -12,7 +12,7 @@ def get_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="EmadAE7*",
+        password="Mmmm9905",
         #database="state_agency"
     )
 #endregion
@@ -529,11 +529,22 @@ def back_home_darkhast_maskoni():
     asansor_ch_btn_darkhast_maskoni.deselect()
     anbari_checkbuton_darkhast_maskoni.deselect()
     delete_root()
+#----------------------برگشت از گزارش مسکونی--------
+def back_home_gozaresh_maskoni():
+    root.deiconify()
+    gozaresh_maskoni.withdraw()
+    gozaresh_file_combo_maskoni.set("")
+    
 #-----------------------برگشت از صفحه گزارش اداری و تجاری------------------------
 def back_home_gozaresh_edari_tejari():
     root.deiconify()
     gozaresh_edari_tejari.withdraw()
     gozaresh_file_combo_edari_tejari.set("")
+#--------------------------برگشت از گزارش باغ و زمین----------------------------
+def back_home_gozaresh_bagh_zamin():
+    root.deiconify()
+    gozaresh_bagh_zamin.withdraw()
+    gozaresh_file_combo_bagh_zamin.set("")
 #----------------------برگشت از صفحه گزارش کارگاه------------------
 def back_home_gozaresh_kargah():
     root.deiconify()
@@ -740,6 +751,18 @@ def darkhast_kargah():
     root.withdraw()
     darkhast_kargah.deiconify()
     box_darkhast.grab_release()
+#-------------------باز و بسته کردن صفحه گزارش مسکونی----------
+def gozaresh_maskoni():
+    box_gozaresh.withdraw()
+    root.withdraw()
+    gozaresh_maskoni.deiconify()
+    box_gozaresh.grab_release()  
+#---------------------باز و بسته کردن صفحه گزارش باغ و زمین-------
+def gozaresh_bagh_zamin():
+    box_gozaresh.withdraw()
+    root.withdraw()
+    gozaresh_bagh_zamin.deiconify()
+    box_gozaresh.grab_release()  
 #-----بستن باکس و باز کردن صفحه گزارش اداری/تجاری-----------
 def gozaresh_edari_tejari():
     box_gozaresh.withdraw()
@@ -841,14 +864,26 @@ def sabt_radio_darkhast():
 #تابع رادیو باتن باز و بسته گزارش ها
 def sabt_radio_gozaresh():
     selected = gozaresh_radio_value.get()
-        
-    if selected==2:
+
+    if selected==0:
+        box_gozaresh.withdraw()
+        root.withdraw()
+        gozaresh_maskoni.deiconify()
+        box_gozaresh.grab_release() 
+
+    elif selected==2:
         box_gozaresh.withdraw()
         root.withdraw()
         gozaresh_edari_tejari.deiconify()
         box_gozaresh.grab_release()
 
     elif selected==4:
+        box_gozaresh.withdraw()
+        root.withdraw()
+        gozaresh_bagh_zamin.deiconify()
+        box_gozaresh.grab_release()
+
+    elif selected==6:
         box_gozaresh.withdraw()
         root.withdraw()
         gozaresh_kargah.deiconify()
@@ -3019,6 +3054,7 @@ zakhire_radio_box_gozaresh.place(x=50,y=210)
 
 box_gozaresh.protocol("WM_DELETE_WINDOW", lambda: None)
 box_gozaresh.resizable(False, False)
+#endregion
 #----------------------------------نوع انتخاب ثبتی فایل برای پنجره های مشارکت-----------------
 #region
 box_mosharekat=tk.Toplevel(root)
@@ -5896,7 +5932,39 @@ option_file_frame_darkhast_kargah.resizable(False, False)
 #=============================== پنجره گزارشات ===============================
 #--------------------------پنجره گزارش های مسکونی------------------------------
 #region
+gozaresh_maskoni = tk.Toplevel(root)
+gozaresh_maskoni.title("گزارش مسکونی")
+gozaresh_maskoni.geometry("600x380")
+gozaresh_maskoni.withdraw()
 
+bg_image = image_gozaresh_edari_tejari
+bg_image = image_gozaresh_edari_tejari.resize((600, 380))
+bg_photo = ImageTk.PhotoImage(bg_image)
+
+# لیبل پس‌زمینه
+bg_label = tk.Label(gozaresh_maskoni, image=bg_photo)
+bg_label.image = bg_photo
+bg_label.place(x=0, y=0, relwidth=1, relheight=1)
+
+noe_gozaresh_maskoni=tk.Label(gozaresh_maskoni,text=" نوع گزارش ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
+noe_gozaresh_maskoni.place(x=470, y=76)
+
+noe_gozaresh_maskoni_entry=tk.Entry(gozaresh_maskoni,bg="#ffffff",fg="#000000",font=("Shabnam", 10))
+noe_gozaresh_maskoni_entry.place(x=170, y=230, width=250, height=30)
+
+gozaresh_file_combo_maskoni=ttk.Combobox(gozaresh_maskoni)
+gozaresh_file_combo_maskoni["values"] = ("گزارش فایل اجاره","گزارش فایل فروش","گزارش فایل درخواست اجاره","گزارش فایل درخواست خرید")
+gozaresh_file_combo_maskoni["state"]=["readonly"]
+gozaresh_file_combo_maskoni.place(x=220, y=80)
+
+save_gozaresh_maskoni = tk.Button(gozaresh_maskoni, text="تایید", command=None, bg="#00BFFF", fg="#000000", width=10, height=1)
+save_gozaresh_maskoni.place(x=95, y=320)
+
+back_home_gozaresh_maskoni = tk.Button(gozaresh_maskoni, text="بازگشت", command=back_home_gozaresh_maskoni, bg="#00BFFF", fg="#000000", width=10, height=1)
+back_home_gozaresh_maskoni.place(x=215, y=320)
+
+gozaresh_maskoni.protocol("WM_DELETE_WINDOW", lambda: None)
+gozaresh_maskoni.resizable(False, False)
 #endregion
 #------------------------------پنجره گزارش اداری/تجاری------------------------------
 #region
@@ -5921,7 +5989,7 @@ noe_gozaresh_edari_tejari_entry=tk.Entry(gozaresh_edari_tejari,bg="#ffffff",fg="
 noe_gozaresh_edari_tejari_entry.place(x=170, y=230, width=250, height=30)
 
 gozaresh_file_combo_edari_tejari=ttk.Combobox(gozaresh_edari_tejari)
-gozaresh_file_combo_edari_tejari["values"] = ("گزارش فایل اجاره","گزارش فایل فروش","گزارش فایل درخواستی")
+gozaresh_file_combo_edari_tejari["values"] = ("گزارش فایل اجاره","گزارش فایل فروش","گزارش فایل درخواست اجاره","گزارش فایل درخواست خرید")
 gozaresh_file_combo_edari_tejari["state"]=["readonly"]
 gozaresh_file_combo_edari_tejari.place(x=220, y=80)
 
@@ -5936,7 +6004,39 @@ gozaresh_edari_tejari.resizable(False, False)
 #endregion
 #---------------------------------پنجره گزارش های باغ/زمین-------------------------
 #region
+gozaresh_bagh_zamin = tk.Toplevel(root)
+gozaresh_bagh_zamin.title("گزارش باغ/زمین")
+gozaresh_bagh_zamin.geometry("600x380")
+gozaresh_bagh_zamin.withdraw()
 
+bg_image = image_gozaresh_edari_tejari
+bg_image = image_gozaresh_edari_tejari.resize((600, 380))
+bg_photo = ImageTk.PhotoImage(bg_image)
+
+# لیبل پس‌زمینه
+bg_label = tk.Label(gozaresh_bagh_zamin, image=bg_photo)
+bg_label.image = bg_photo  # خیلی مهم: جلوگیری از پاک شدن عکس
+bg_label.place(x=0, y=0, relwidth=1, relheight=1)
+
+noe_gozaresh_bagh_zamin=tk.Label(gozaresh_bagh_zamin,text=" نوع گزارش ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
+noe_gozaresh_bagh_zamin.place(x=470, y=76)
+
+noe_gozaresh_bagh_zamin_entry=tk.Entry(gozaresh_bagh_zamin,bg="#ffffff",fg="#000000",font=("Shabnam", 10))
+noe_gozaresh_bagh_zamin_entry.place(x=170, y=230, width=250, height=30)
+
+gozaresh_file_combo_bagh_zamin=ttk.Combobox(gozaresh_bagh_zamin)
+gozaresh_file_combo_bagh_zamin["values"] = ("گزارش فایل اجاره","گزارش فایل فروش","گزارش فایل درخواست اجاره","گزارش فایل درخواست خرید")
+gozaresh_file_combo_bagh_zamin["state"]=["readonly"]
+gozaresh_file_combo_bagh_zamin.place(x=220, y=80)
+
+save_gozaresh_bagh_zamin = tk.Button(gozaresh_bagh_zamin, text="تایید", command=None, bg="#00BFFF", fg="#000000", width=10, height=1)
+save_gozaresh_bagh_zamin.place(x=95, y=320)
+
+back_home_gozaresh_bagh_zamin = tk.Button(gozaresh_bagh_zamin, text="بازگشت", command=back_home_gozaresh_bagh_zamin, bg="#00BFFF", fg="#000000", width=10, height=1)
+back_home_gozaresh_bagh_zamin.place(x=215, y=320)
+
+gozaresh_bagh_zamin.protocol("WM_DELETE_WINDOW", lambda: None)
+gozaresh_bagh_zamin.resizable(False, False)
 #endregion
 #---------------------------------پنجره گزارش های کارگاه---------------------------
 #region
@@ -5961,7 +6061,7 @@ type_gozaresh_kargah_entry=tk.Entry(gozaresh_kargah,bg="#ffffff",fg="#000000",fo
 type_gozaresh_kargah_entry.place(x=170, y=230, width=250, height=30)
 
 gozaresh_file_combo_kargah=ttk.Combobox(gozaresh_kargah)
-gozaresh_file_combo_kargah["values"] = ("گزارش فایل اجاره","گزارش فایل فروش","گزارش فایل درخواستی")
+gozaresh_file_combo_kargah["values"] = ("گزارش فایل اجاره","گزارش فایل فروش","گزارش فایل درخواست اجاره","گزارش فایل درخواست خرید")
 gozaresh_file_combo_kargah["state"]=["readonly"]
 gozaresh_file_combo_kargah.place(x=220, y=80)
 
