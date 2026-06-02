@@ -7,12 +7,15 @@ from PIL import Image, ImageTk
 from tkinter import filedialog,messagebox,font,scrolledtext
 import subprocess
 import os
+from openpyxl import Workbook
+import pandas as pd
+import datetime
 
 def get_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="EmadAE7*",
+        password="Mmmm9905",
         #database="state_agency"
     )
 #endregion
@@ -40,6 +43,52 @@ def open_file():
     file_path = filedialog.askopenfilename()
     if file_path:
         os.startfile(file_path)
+#endregion
+#---------------------------تابع خروجی گزارش اکسل-----------
+#region
+def excel_gozaresh_maskoni():
+    value=gozaresh_file_combo_maskoni.get()
+    try:
+        db = get_connection()
+        cursor = db.cursor()
+        cursor.execute("USE state_agency")
+        if value=="گزارش فایل اجاره":
+            sql="""SELECT * FROM sabt_ejareh_maskoni"""
+            cursor.execute(sql)
+            data = cursor.fetchmany()
+            column_names = [description[0] for description in cursor.description]
+            if not data:
+                error_label.config(text="اطلاعیه" "اطلاعاتی برای خروجی گرفتن وجود ندارد.")#برای نمایش ارور ها یه مشکلی هست باید رفعشون کنیم
+                return
+            workbook = Workbook()
+            sheet = workbook.active
+            sheet.title = "جدول اجاره مسکونی"
+        
+            for col_num, header_title in enumerate(column_names, 1):
+                cell = sheet.cell(row=1, column=col_num)
+                cell.value = header_title
+        
+            for row_num, row_data in enumerate(data, 2):
+                for col_num, cell_data in enumerate(row_data, 1):
+                    sheet.cell(row=row_num, column=col_num, value=cell_data)
+
+            file_name = f"جدول اجاره مسکونی_{datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.xlsx"
+            workbook.save(file_name)
+            error_label.config(f"اطلاعات '{file_name}' ذخیره شد.")
+        cursor.close()
+        db.close()
+    except Exception as e:
+        error_label.config(text= f"خطا '{str(e)}'.")
+
+    
+def excel_gozaresh_edari_tejari():
+    pass
+def excel_gozaresh_bagh_zamin():#ویژه
+    pass
+def excel_gozaresh_kargah():
+    pass
+def gharardadeha():
+    pass
 #endregion
 #---------تابع پاک کردن فرم اصلی----------------
 #region
@@ -546,6 +595,7 @@ def back_home_darkhast_maskoni():
 def back_home_gozaresh_maskoni():
     root.deiconify()
     gozaresh_maskoni.withdraw()
+    error_label.config(text="")
     gozaresh_file_combo_maskoni.set("")
 #-----------------------برگشت از صفحه گزارش اداری و تجاری------------------------
 def back_home_gozaresh_edari_tejari():
@@ -2784,11 +2834,8 @@ file_menu_gozaresh.add_command(label="قراردادها", command=None)
 # اضافه کردن منوی گزارش ها به منوبار
 menubar.add_cascade(label="گزارش ها", menu=file_menu_gozaresh)
 #endregion
-#--------------------------تابع های خروجی اکسل و قرار دادها------------
-def excel():
-    pass
-def gharardadeha():
-    pass
+
+
 # ----------------------اضافه کردن فیلد درخواست ها-------
 #region
 file_menu_darkhast= tk.Menu(menubar, tearoff=0, font=("Shabnam", 10))
@@ -5959,15 +6006,15 @@ bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 noe_gozaresh_maskoni=tk.Label(gozaresh_maskoni,text=" نوع گزارش ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
 noe_gozaresh_maskoni.place(x=470, y=76)
 
-noe_gozaresh_maskoni_entry=tk.Entry(gozaresh_maskoni,bg="#ffffff",fg="#000000",font=("Shabnam", 10))
-noe_gozaresh_maskoni_entry.place(x=170, y=230, width=250, height=30)
+error_label=tk.Label(gozaresh_maskoni,text='',font=("Shabnam",10),fg="#E91414",bg="#FFFFFF")
+error_label.place(x=110,y=230,width=450,height=30)
 
 gozaresh_file_combo_maskoni=ttk.Combobox(gozaresh_maskoni)
 gozaresh_file_combo_maskoni["values"] = ("گزارش فایل اجاره","گزارش فایل فروش","گزارش فایل درخواست اجاره","گزارش فایل درخواست خرید")
 gozaresh_file_combo_maskoni["state"]=["readonly"]
 gozaresh_file_combo_maskoni.place(x=220, y=80)
 
-save_gozaresh_maskoni = tk.Button(gozaresh_maskoni, text="تایید", command=None, bg="#00BFFF", fg="#000000", width=10, height=1)
+save_gozaresh_maskoni = tk.Button(gozaresh_maskoni, text="تایید", command=excel_gozaresh_maskoni, bg="#00BFFF", fg="#000000", width=10, height=1)
 save_gozaresh_maskoni.place(x=95, y=320)
 
 back_home_gozaresh_maskoni = tk.Button(gozaresh_maskoni, text="بازگشت", command=back_home_gozaresh_maskoni, bg="#00BFFF", fg="#000000", width=10, height=1)
