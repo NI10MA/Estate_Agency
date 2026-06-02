@@ -12,7 +12,7 @@ def get_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="Mmmm9905",
+        password="EmadAE7*",
         #database="state_agency"
     )
 #endregion
@@ -78,7 +78,10 @@ image_darkhast_edari_tejari=Image.open("Images/darkhast_edari_tejari.jpg")
 image_darkhast_bagh_zamin=Image.open("Images/darkhast_bagh_zamin.jpg")
 image_darkhast_kargah=Image.open("Images/darkhast_kargah.jpg")
 #---------------------- تصاویر صفحه های گزارش ---------------------------------
+image_gozaresh_maskoni=Image.open("Images/gozaresh_maskoni.jpg")
 image_gozaresh_edari_tejari=Image.open("Images/gozaresh_edari_tejari.jpg")
+image_gozaresh_bagh_zamin=Image.open("Images/gozaresh_bagh_zamin.jpg")
+image_gozaresh_kargah=Image.open("Images/gozaresh_kargah.jpg")
 
 # root.attributes("-fullscreen", True) <<<-----  App فول اسکرین شدن
 root.configure(bg="#052340")
@@ -5944,8 +5947,8 @@ gozaresh_maskoni.title("گزارش مسکونی")
 gozaresh_maskoni.geometry("600x380")
 gozaresh_maskoni.withdraw()
 
-bg_image = image_gozaresh_edari_tejari
-bg_image = image_gozaresh_edari_tejari.resize((600, 380))
+bg_image = image_gozaresh_maskoni
+bg_image = image_gozaresh_maskoni.resize((600, 380))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
 # لیبل پس‌زمینه
@@ -6016,8 +6019,8 @@ gozaresh_bagh_zamin.title("گزارش باغ/زمین")
 gozaresh_bagh_zamin.geometry("600x380")
 gozaresh_bagh_zamin.withdraw()
 
-bg_image = image_gozaresh_edari_tejari
-bg_image = image_gozaresh_edari_tejari.resize((600, 380))
+bg_image = image_gozaresh_bagh_zamin
+bg_image = image_gozaresh_bagh_zamin.resize((600, 380))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
 # لیبل پس‌زمینه
@@ -6052,8 +6055,8 @@ gozaresh_kargah.title("گزارش  کارگاه")
 gozaresh_kargah.geometry("600x380")
 gozaresh_kargah.withdraw()
 
-bg_image = image_gozaresh_edari_tejari
-bg_image = image_gozaresh_edari_tejari.resize((600, 380))
+bg_image = image_gozaresh_kargah
+bg_image = image_gozaresh_kargah.resize((600, 380))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
 # لیبل پس‌زمینه
