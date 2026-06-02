@@ -270,11 +270,16 @@ def back_home_darkhast_edari_tejari():
     vahed_darkhast_edari_tejari_entry.delete(0,tk.END)
     gheimat_kol_darkhast_edari_tejari_entry.delete(0,tk.END)
     metraj_melk_darkhast_edari_tejari_entry.delete(0,tk.END)
+    shomareh_moshtari_darkhast_edari_tejari_entry.delete(0,tk.END)
+    name_moshtari_darkhast_edari_tejari_entry.delete(0,tk.END)
 
     #پنجره امکانات
     aab_va_gaz_combo_emkanat_darkhast_edari_tejari.set("")
     sarmayesh_combo_emkanat_darkhast_edari_tejari.set("")
     garmayesh_combo_emkanat_darkhast_edari_tejari.set("")
+    parking_check_btn_darkhast_edari_tejari.deselect()
+    asansor_check_btn_darkhast_edari_tejari.deselect()
+    anbari_check_btn_darkhast_edari_tejari.deselect()
     delete_root()
 #----------------------------برگشت از صفحه اجاره باغ / زمین------------------
 def back_home_ejareh_bagh():
@@ -328,7 +333,6 @@ def back_home_ejareh_bagh():
     anbar_zamin_ejareh_bagh_zamin.deselect()
     fans_zamin_ejareh_bagh_zamin.deselect()
     mojavaz_chah_zamin_ejareh_bagh_zamin.deselect()
-
 #-----------------------------برگشت از صفحه فروش باغ / زمین------------------
 def back_home_forosh_bagh():
     forosh_bagh_zamin.withdraw()
@@ -447,6 +451,9 @@ def back_home_darkhast_bagh():
     tedad_derakht_darkhast_bagh_zamin_entry.delete(0,tk.END)
     metraj_vila_darkhast_bagh_zamin_entry.delete(0,tk.END)
     sal_sakht_vila_darkhast_bagh_zamin_entry.delete(0,tk.END)
+    shomareh_moshtari_darkhast_bagh_entry.delete(0,tk.END)
+    name_moshtari_darkhast_bagh_entry.delete(0,tk.END)
+    gheimat_kol_bagh_zamin_darkhast_entry.delete(0,tk.END)
     # امکانات فروش باغ و زمین
     metraj_derakht_darkhast_bagh_zamin_entry.delete(0,tk.END)
     tedad_derakht_darkhast_bagh_zamin_entry.delete(0,tk.END)
@@ -464,7 +471,6 @@ def back_home_darkhast_bagh():
     chah_darkhast_bagh_zamin.deselect()
     estakhr_darkhast_bagh_zamin.deselect()
     bargh_keshi_darkhast_bagh_zamin.deselect()
- 
     #تغییر کاربری
     metraj_zamin2_darkhast_bagh_zamin_entry.delete(0,tk.END)
     karbari_darkhast_bagh_zamin_combo.set("")
@@ -494,8 +500,10 @@ def back_home_darkhast_kargah():
     root.deiconify()
     metraj_darkhast_kargah_entry.delete(0,tk.END)
     loctaion_darkhast_kargah_entry.delete(0,tk.END)
-    gheimat_har_metr_darkhast_kargah_entry.delete(0,tk.END)
+    gheimat_kol_darkhast_kargah_entry.delete(0,tk.END)
     mablagh_pish_darkhast_kargah_entry.delete(0,tk.END)
+    shomareh_moshtari_darkhast_kargah_entry.delete(0,tk.END)
+    name_moshtari_darkhast_kargah_entry.delete(0,tk.END)
     #پنجره امکانات
     sal_sakht_darkhast_kargah_entry.delete(0,tk.END)
     vaziat_bargh_darkhast_kargah_combo.set("")
@@ -520,6 +528,8 @@ def back_home_darkhast_maskoni():
     vahed_darkhast_maskoni_entry.delete(0,tk.END)
     otagh_darkhast_maskoni_entry.delete(0,tk.END)
     gheimat_kol_darkhast_maskoni_entry.delete(0,tk.END)
+    name_moshtari_darkhast_maskoni_entry.delete(0,tk.END)
+    shomareh_moshtari_darkhast_maskoni_entry.delete(0,tk.END)
     #پنجره امکانات
     sarmaesh_combo_darkhast_maskoni.set("")
     garmaesh_combo_darkhast_maskoni.set("")
@@ -534,7 +544,6 @@ def back_home_gozaresh_maskoni():
     root.deiconify()
     gozaresh_maskoni.withdraw()
     gozaresh_file_combo_maskoni.set("")
-    
 #-----------------------برگشت از صفحه گزارش اداری و تجاری------------------------
 def back_home_gozaresh_edari_tejari():
     root.deiconify()
@@ -644,9 +653,6 @@ def back_to_darkhast_maskoni():
 def back_to_darkhast_edari_tejari():
     option_file_frame_darkhast_edari_tejari.withdraw()
     option_file_frame_darkhast_edari_tejari.grab_release()
-    parking_check_btn_darkhast_edari_tejari.deselect()
-    asansor_check_btn_darkhast_edari_tejari.deselect()
-    anbari_check_btn_darkhast_edari_tejari.deselect()
 #--------------------برگشت درخواست باغ و زمین------------------------------------------------
 def  back_to_darkhast_bagh_zamin():
      option_file_frame_darkhast_bagh_zamin.withdraw()
@@ -2566,8 +2572,8 @@ def sabt_darkhast_kargah(event=None):
         #فیلد های اجاره
         mablagh_pish_darkhast_kargah_lable.place_forget()
         mablagh_pish_darkhast_kargah_entry.place_forget()
-        gheimat_har_metr_darkhast_kargah_lable.place_forget()
-        gheimat_har_metr_darkhast_kargah_entry.place_forget()
+        gheimat_kol_darkhast_kargah_lable.place_forget()
+        gheimat_kol_darkhast_kargah_entry.place_forget()
         ejareh_mahaneh_darkhast_kargah_lable.place_forget()
         ejareh_mahaneh_darkhast_kargah_entry.place_forget()
         # فیلد های مشترک
@@ -2577,8 +2583,8 @@ def sabt_darkhast_kargah(event=None):
         shomareh_moshtari_darkhast_kargah_entry.place_forget()
 
         if change_type=="درخواست خرید کارگاه":
-            gheimat_har_metr_darkhast_kargah_lable.place(x=start_x + 320, y=start_y +274,anchor="e")
-            gheimat_har_metr_darkhast_kargah_entry.place(x=start_x + 10, y=start_y + 218,width=150, height=25)
+            gheimat_kol_darkhast_kargah_lable.place(x=start_x + 320, y=start_y +274,anchor="e")
+            gheimat_kol_darkhast_kargah_entry.place(x=start_x + 10, y=start_y + 218,width=150, height=25)
             name_moshtari_darkhast_kargah_lable.place(x=start_x + 320, y=start_y + 180, anchor="e")
             name_moshtari_darkhast_kargah_entry.place(x=start_x + 10, y=start_y + 170, width=150, height=25)
             shomareh_moshtari_darkhast_kargah_lable.place(x=start_x + 320, y=start_y + 230, anchor="e")
@@ -2608,7 +2614,7 @@ def sabt_darkhast_kargah(event=None):
             sal_sakht VARCHAR(20),
             address VARCHAR(225),
             mablagh_pish VARCHAR(20),
-            gheimat_harmetr VARCHAR(20),
+            gheimat_kol VARCHAR(20),
             name_moshtari VARCHAR(30),
             shomareh_moshtari INT,
             vaziat_bargh VARCHAR(20),
@@ -2627,7 +2633,7 @@ def sabt_darkhast_kargah(event=None):
 
             sql_kharid = """
             INSERT INTO sabt_darkhast_kharid_kargah
-            (type_melk,metraj_melk,sal_sakht,address,mablagh_pish,gheimat_harmetr,
+            (type_melk,metraj_melk,sal_sakht,address,mablagh_pish,gheimat_kol,
             name_moshtari,shomareh_moshtari,vaziat_bargh,garmayesh,sarmayesh_fan,
             sarmayesh_panke,sarmayesh_kooler_abi,sarmayesh_kooler_gazi,vaziat_ab,
             abzar,toilet,hamam,otagh)
@@ -2640,7 +2646,7 @@ def sabt_darkhast_kargah(event=None):
             sal_sakht_darkhast_kargah_entry.get(),
             loctaion_darkhast_kargah_entry.get(),
             mablagh_pish_darkhast_kargah_entry.get(),
-            gheimat_har_metr_darkhast_kargah_entry.get(),
+            gheimat_kol_darkhast_kargah_entry.get(),
             name_moshtari_darkhast_kargah_entry.get(),
             shomareh_moshtari_darkhast_kargah_entry.get(),
             vaziat_bargh_darkhast_kargah_combo.get(),
@@ -2672,7 +2678,7 @@ def sabt_darkhast_kargah(event=None):
             sal_sakht VARCHAR(20),
             address VARCHAR(225),
             mablagh_pish VARCHAR(20),
-            gheimat_harmetr VARCHAR(20),
+            gheimat_kol VARCHAR(20),
             name_moshtari VARCHAR(30),
             shomareh_moshtari INT,
             ejareh_mahaneh VARCHAR(20),
@@ -2692,7 +2698,7 @@ def sabt_darkhast_kargah(event=None):
 
             sql_ejareh = """
             INSERT INTO sabt_darkhast_kharid_kargah
-            (type_melk,metraj_melk,sal_sakht,address,mablagh_pish,gheimat_harmetr,
+            (type_melk,metraj_melk,sal_sakht,address,mablagh_pish,gheimat_kol,
             name_moshtari,shomareh_moshtari,ejareh_mahaneh,vaziat_bargh,garmayesh,sarmayesh_fan,
             sarmayesh_panke,sarmayesh_kooler_abi,sarmayesh_kooler_gazi,vaziat_ab,
             abzar,toilet,hamam,otagh)
@@ -2704,7 +2710,7 @@ def sabt_darkhast_kargah(event=None):
             sal_sakht_darkhast_kargah_entry.get(),
             loctaion_darkhast_kargah_entry.get(),
             float(mablagh_pish_darkhast_kargah_entry.get()),
-            float(gheimat_har_metr_darkhast_kargah_entry.get()),
+            float(gheimat_kol_darkhast_kargah_entry.get()),
             name_moshtari_darkhast_kargah_entry.get(),
             shomareh_moshtari_darkhast_kargah_entry.get(),
             ejareh_mahaneh_darkhast_kargah_entry.get(),
@@ -3024,6 +3030,7 @@ box_darkhast.protocol("WM_DELETE_WINDOW", lambda: None)
 box_darkhast.resizable(False, False)
 #endregion 
 #---------------------------------نوع انتخاب ثبتی فایل برای  پنجره خروجی گزارش------------
+#region
 box_gozaresh=tk.Toplevel(root)
 box_gozaresh.title("انتخاب نوع ملکی گزارش")
 box_gozaresh.geometry("500x270")
@@ -4812,8 +4819,8 @@ shomareh_malek_forosh_kargah_lable.place(x=start_x + 320, y=start_y + 230, ancho
 shomareh_malek_forosh_kargah_entry=tk.Entry(forosh_karghah, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
 shomareh_malek_forosh_kargah_entry.place(x=start_x + 10, y=start_y + 220, width=150, height=25)
 
-gheimat_kol_forosh_kargah_kargah_lable=tk.Label(forosh_karghah,text="قیمت کل ",bg="#052340",fg="#ffffff",font=("Shabnam", 12),width=9)
-gheimat_kol_forosh_kargah_kargah_lable.place(x=start_x + 320, y=start_y + 280, anchor="e")
+gheimat_kol_forosh_kargah_lable=tk.Label(forosh_karghah,text="قیمت کل ",bg="#052340",fg="#ffffff",font=("Shabnam", 12),width=9)
+gheimat_kol_forosh_kargah_lable.place(x=start_x + 320, y=start_y + 280, anchor="e")
 
 gheimat_kol_forosh_kargah_entry=tk.Entry(forosh_karghah,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
 gheimat_kol_forosh_kargah_entry.place(x=start_x + 10, y=start_y + 265, width=150, height=25)
@@ -5762,11 +5769,11 @@ mablagh_pish_darkhast_kargah_lable.place_forget()
 mablagh_pish_darkhast_kargah_entry=tk.Entry(darkhast_kargah,bg="#ffffff",fg="#000000",font=("Shabnam", 10))
 mablagh_pish_darkhast_kargah_entry.place_forget()
 
-gheimat_har_metr_darkhast_kargah_lable=tk.Label(darkhast_kargah,text='قیمت کل',bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
-gheimat_har_metr_darkhast_kargah_lable.place(x=start_x + 320, y=start_y +274,anchor="e")
+gheimat_kol_darkhast_kargah_lable=tk.Label(darkhast_kargah,text='قیمت کل',bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
+gheimat_kol_darkhast_kargah_lable.place(x=start_x + 320, y=start_y +274,anchor="e")
 
-gheimat_har_metr_darkhast_kargah_entry=tk.Entry(darkhast_kargah,bg="#ffffff",fg="#000000",font=("Shabnam", 10))
-gheimat_har_metr_darkhast_kargah_entry.place(x=start_x + 10, y=start_y + 218,width=150, height=25)
+gheimat_kol_darkhast_kargah_entry=tk.Entry(darkhast_kargah,bg="#ffffff",fg="#000000",font=("Shabnam", 10))
+gheimat_kol_darkhast_kargah_entry.place(x=start_x + 10, y=start_y + 218,width=150, height=25)
 
 name_moshtari_darkhast_kargah_lable=tk.Label(darkhast_kargah, text="نام مشتری", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 name_moshtari_darkhast_kargah_lable.place(x=start_x + 320, y=start_y + 180, anchor="e")
