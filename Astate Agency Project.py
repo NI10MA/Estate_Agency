@@ -8,8 +8,8 @@ from tkinter import filedialog,messagebox,font,scrolledtext
 import subprocess
 import os
 from openpyxl import Workbook
-import pandas as pd
 import datetime
+from tkinter import filedialog
 
 def get_connection():
     return mysql.connector.connect(
@@ -46,47 +46,168 @@ def open_file():
 #endregion
 #---------------------------تابع خروجی گزارش اکسل-----------
 #region
-def excel_gozaresh_maskoni():
-    value=gozaresh_file_combo_maskoni.get()
+def export_excel(sql, sheet_title, file_prefix):
+#ثبت وایجاد اکسل بدون مشکله برای بعضی موارد لیبل کار نمیکند
     try:
         db = get_connection()
         cursor = db.cursor()
         cursor.execute("USE state_agency")
-        if value=="گزارش فایل اجاره":
-            sql="""SELECT * FROM sabt_ejareh_maskoni"""
-            cursor.execute(sql)
-            data = cursor.fetchmany()
-            column_names = [description[0] for description in cursor.description]
-            if not data:
-                error_label.config(text="اطلاعیه" "اطلاعاتی برای خروجی گرفتن وجود ندارد.")#برای نمایش ارور ها یه مشکلی هست باید رفعشون کنیم
-                return
-            workbook = Workbook()
-            sheet = workbook.active
-            sheet.title = "جدول اجاره مسکونی"
-        
-            for col_num, header_title in enumerate(column_names, 1):
-                cell = sheet.cell(row=1, column=col_num)
-                cell.value = header_title
-        
-            for row_num, row_data in enumerate(data, 2):
-                for col_num, cell_data in enumerate(row_data, 1):
-                    sheet.cell(row=row_num, column=col_num, value=cell_data)
+        cursor.execute(sql)
+        data = cursor.fetchall()
+        if not data:
+            error_label.config(text="اطلاعاتی برای خروجی وجود ندارد.")
+            return
 
-            file_name = f"جدول اجاره مسکونی_{datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.xlsx"
-            workbook.save(file_name)
-            error_label.config(f"اطلاعات '{file_name}' ذخیره شد.")
+        column_names = [desc[0] for desc in cursor.description]
+        workbook = Workbook()
+        sheet = workbook.active
+        sheet.title = sheet_title
+        # header
+        for col_num, title in enumerate(column_names, 1):
+            sheet.cell(row=1, column=col_num, value=title)
+        # data
+        for row_num, row in enumerate(data, 2):
+            for col_num, value in enumerate(row, 1):
+                sheet.cell(row=row_num, column=col_num, value=value)
+
+        # سیو شدن 
+        file_name = f"{file_prefix}_{datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.xlsx"
+        file_path = filedialog.asksaveasfilename(
+            title="ذخیره فایل اکسل",
+            initialfile=file_name,
+            defaultextension=".xlsx",
+            filetypes=[("Excel Files", "*.xlsx")])
+        if file_path:
+            workbook.save(file_path)
+            error_label.config(text="فایل با موفقیت ذخیره شد.")
         cursor.close()
         db.close()
-    except Exception as e:
-        error_label.config(text= f"خطا '{str(e)}'.")
 
-    
+    except Exception as e:
+        error_label.config(text=f"خطا: {str(e)}")
+def excel_gozaresh_maskoni():
+    value = gozaresh_file_combo_maskoni.get()
+    if value == "گزارش فایل اجاره":
+        export_excel(
+            "SELECT * FROM sabt_ejareh_maskoni",
+            "جدول اجاره مسکونی",
+            "گزارش اجاره مسکونی")
+        
+    elif value == "گزارش فایل فروش":
+        export_excel(
+            "SELECT * FROM sabt_forosh_maskoni",
+            "جدول فروش مسکونی",
+            "گزارش فروش مسکونی")
+        
+    elif value == "گزارش فایل درخواست اجاره":
+        export_excel(
+            "SELECT * FROM sabt_darkhast_ejareh_maskoni",
+            "جدول درخواست اجاره مسکونی",
+            "گزارش درخواست اجاره مسکونی")
+    elif value == "گزارش فایل درخواست خرید": 
+        export_excel(
+            "SELECT * FROM sabt_darkhast_kharid_maskoni",
+            "جدول درخواست خرید مسکونی",
+            "گزارش درخواست خرید مسکونی")
+        
 def excel_gozaresh_edari_tejari():
-    pass
-def excel_gozaresh_bagh_zamin():#ویژه
-    pass
+    value = gozaresh_file_combo_edari_tejari.get()
+    if  value == "گزارش فایل اجاره":
+        export_excel(
+            "SELECT * FROM sabt_ejareh_edari_tejari",
+            "جدول اجاره اداری_تجاری",
+            "گزارش اجاره اداری_تجاری")
+        
+    elif value == "گزارش فایل فروش":
+        export_excel(
+            "SELECT * FROM sabt_forosh_edari_tejari",
+            "جدول فروش اداری_تجاری",
+            "گزارش فروش اداری_تجاری")
+        
+    elif value == "گزارش فایل درخواست اجاره":
+        export_excel(
+            "SELECT * FROM sabt_darkhast_ejareh_edari_tejari",
+            "جدول درخواست اجاره اداری_تجاری",
+            "گزارش درخواست اجاره اداری_تجاری")
+    elif value == "گزارش فایل درخواست خرید":
+        export_excel(
+            "SELECT * FROM sabt_darkhast_kharid_edari_tejari",
+            "جدول درخواست خرید اداری_تجاری",
+            "گزارش درخواست خرید اداری_تجاری")
+#-----------------------------------------
+#----------------------------------------
+def excel_gozaresh_bagh_zamin():
+    value = gozaresh_file_combo_bagh_zamin.get()
+    if value == "گزارش فایل اجاره باغ":
+        export_excel(
+            "SELECT * FROM ejareh_bagh",
+            "جدول اجاره باغ",
+            "گزارش اجاره باغ")
+        
+    elif value == "گزارش فایل فروش باغ":
+        export_excel(
+            "SELECT * FROM forosh_bagh",
+            "جدول فروش باغ",
+            "گزارش فروش باغ")
+        
+    elif value == "گزارش فایل درخواست اجاره باغ":
+        export_excel(
+            "SELECT * FROM darkhast_ejareh_bagh",
+            "جدول درخواست اجاره باغ",
+            "گزارش درخواست باغ ")
+    elif value == "گزارش فایل درخواست خرید باغ":
+        export_excel(
+            "SELECT * FROM darkhast_kharid_bagh",
+            "جدول درخواست خرید باغ",
+            "گزارش درخواست خرید باغ")
+    elif value == "گزارش فایل اجاره زمین":
+        export_excel(
+            "SELECT * FROM ejareh_zamin",
+            "جدول اجاره زمین",
+            "گزارش اجاره زمین")
+        
+    elif value == "گزارش فایل فروش زمین":
+        export_excel(
+            "SELECT * FROM forosh_zamin",
+            "جدول فروش زمین",
+            "گزارش فروش زمین")
+        
+    elif value == "گزارش فایل درخواست اجاره زمین":
+        export_excel(
+            "SELECT * FROM darkhast_ejareh_zamin",
+            "جدول درخواست اجاره زمین",
+            "گزارش درخواست زمین")
+    elif value == "گزارش فایل درخواست خرید زمین":
+        export_excel(
+            "SELECT * FROM darkhast_kharid_zamin",
+            "جدول درخواست خرید زمین",
+            "گزارش درخواست خرید زمین")
+#---------------------------------------------
+#------------------------------------------
 def excel_gozaresh_kargah():
-    pass
+    value = gozaresh_file_combo_kargah.get()
+    if value == "گزارش فایل اجاره":
+        export_excel(
+            "SELECT * FROM sabt_ejareh_kargah",
+            "جدول اجاره کارگاه",
+            "گزارش اجاره کارگاه")
+        
+    elif value == "گزارش فایل فروش":
+        export_excel(
+            "SELECT * FROM sabt_forosh_kargah",
+            "جدول فروش کارگاه",
+            "گزارش فروش کارگاه")
+        
+    elif value == "گزارش فایل درخواست اجاره":
+        export_excel(
+            "SELECT * FROM sabt_darkhast_ejareh_kargah",
+            "جدول درخواست اجاره کارگاه",
+            "گزارش درخواست اجاره کارگاه")
+    elif value == "گزارش فایل درخواست خرید": 
+        export_excel(
+            "SELECT * FROM sabt_darkhast_kharid_kargah",
+            "جدول درخواست خرید کارگاه",
+            "گزارش درخواست خرید کارگاه")
 def gharardadeha():
     pass
 #endregion
@@ -601,16 +722,19 @@ def back_home_gozaresh_maskoni():
 def back_home_gozaresh_edari_tejari():
     root.deiconify()
     gozaresh_edari_tejari.withdraw()
+    error_label.config(text="")
     gozaresh_file_combo_edari_tejari.set("")
 #--------------------------برگشت از گزارش باغ و زمین----------------------------
 def back_home_gozaresh_bagh_zamin():
     root.deiconify()
     gozaresh_bagh_zamin.withdraw()
+    error_label.config(text="")
     gozaresh_file_combo_bagh_zamin.set("")
 #----------------------برگشت از صفحه گزارش کارگاه------------------
 def back_home_gozaresh_kargah():
     root.deiconify()
     gozaresh_kargah.withdraw()
+    error_label.config(text="")
     gozaresh_file_combo_kargah.set("")
 #endregion
 #region #توابع تایید اپشن ها 
@@ -1434,7 +1558,7 @@ def sabt_forosh_bagh_zamin_main():
         if db and db.is_connected():
             db.close()
 #---------------------------- forosh_karghah Database ------------------------
-def sabt_forosh_karghah():
+def sabt_forosh_kargah():
     db = None
     try:
         db = get_connection()
@@ -1444,7 +1568,7 @@ def sabt_forosh_karghah():
         cursor.execute("USE state_agency")
 
         sql_create = """
-        CREATE TABLE IF NOT EXISTS sabt_forosh_karghah (
+        CREATE TABLE IF NOT EXISTS sabt_forosh_kargah (
             id INT AUTO_INCREMENT PRIMARY KEY,
             karbari_zamin VARCHAR(50) NOT NULL,
             metraj VARCHAR(20),
@@ -1468,7 +1592,7 @@ def sabt_forosh_karghah():
         """
         cursor.execute(sql_create)
         sql_insert = """
-        INSERT INTO sabt_forosh_karghah
+        INSERT INTO sabt_forosh_kargah
         (karbari_zamin,metraj,address,sal_sakht,
         vaziat_bargh,garmayesh,fan,panke,kooler_abi,kooler_gazi,vaziat_ab,abzar,toilet,hamam,otagh,name_malk,shomareh_malk,gheimat_kol)
         VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
@@ -1827,7 +1951,7 @@ def sabt_ejareh_bagh_zamin():
         if db and db.is_connected():
             db.close()
 #-----------------ejareh_kargah Database----------------------------------------
-def sabt_ejareh_karghah():
+def sabt_ejareh_kargah():
     db = None
     try:
         db = get_connection()
@@ -1837,7 +1961,7 @@ def sabt_ejareh_karghah():
         cursor.execute("USE state_agency")
 
         sql_create = """
-        CREATE TABLE IF NOT EXISTS sabt_ejareh_karghah (
+        CREATE TABLE IF NOT EXISTS sabt_ejareh_kargah (
             id INT AUTO_INCREMENT PRIMARY KEY,
             karbari_zamin VARCHAR(50) NOT NULL,
             metraj VARCHAR(20),
@@ -1864,7 +1988,7 @@ def sabt_ejareh_karghah():
         """
         cursor.execute(sql_create)
         sql_insert = """
-        INSERT INTO sabt_ejareh_karghah
+        INSERT INTO sabt_ejareh_kargah
         (karbari_zamin,metraj,loctaion_and_address,
         gheimat_vadie,mablagh_ejareh,time_ejare,sal_sakht,vaziat_bargh,
         garmayesh,fan,panke,kooler_abi,kooler_gazi,vaziat_ab,abzar,toilet,hamam,otagh,name_malk,shomareh_malk)
@@ -2315,6 +2439,7 @@ def sabt_darkhast_bagh_zamin(event=None):
                 karbari VARCHAR(20),
                 address VARCHAR(255),
                 mablagh_metri DECIMAL(15,2),
+                gheimat_kol VARCHAR(30),
                 name_malek VARCHAR(50),
                 shomareh_malek VARCHAR(30),
                 metraj_derakht VARCHAR(10),
@@ -2410,17 +2535,17 @@ def sabt_darkhast_bagh_zamin(event=None):
                 chah VARCHAR(20),
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP  
                 )
-              """)
+                """)
 
                 sql_zamin = """
-               INSERT INTO darkhast_kharid_zamin(
+                INSERT INTO darkhast_kharid_zamin(
                     type_melk,metraj,karbari,address,mablagh_metri,name_moshtari,shomareh_moshtari,
                     metraj_zamin, karbari_zamin,type_khak,
                     manba_ab, negahbani, bargh_takfaz, bargh_sefaz,
                     anbar, fans, chah
-                )
-                VALUES( %s, %s, %s, %s, %s, %s, %s,%s,%s, %s,%s,%s,%s,%s,%s,%s,%s)
-               """
+                 )
+                 VALUES( %s, %s, %s, %s, %s, %s, %s,%s,%s, %s,%s,%s,%s,%s,%s,%s,%s)
+                 """
                 values_kharid_zamin=(
                    change_type,
                    metraj_zamin_darkhast_bagh_zamin_entry.get(),
@@ -2439,16 +2564,16 @@ def sabt_darkhast_bagh_zamin(event=None):
                    anbar_zamin_darkhast_bagh_zamin_var.get(),
                    fans_zamin_darkhast_bagh_zamin_var.get(),
                    mojavez_chah_zamin_darkhast_bagh_zamin_var.get())
-            
-                cursor.execute(sql_zamin, values_kharid_zamin)
+                   
+                cursor.execute(sql_zamin,values_kharid_zamin)
                 last_id = cursor.lastrowid
                 if last_id is None or last_id == 0:
-                   messagebox.showerror("Error", "خطا: ثبت در جدول  انجام نشد")
-                return
+                        messagebox.showerror("Error", "خطا: ثبت در جدول  انجام نشد")
+                        return
             
         
         elif change_type=="درخواست اجاره باغ زمین":
-           if karbari=="باغ":
+            if karbari=="باغ":
                 cursor.execute("""
                 CREATE TABLE IF NOT EXISTS darkhast_ejareh_bagh(
                 id INT AUTO_INCREMENT PRIMARY KEY,
@@ -2533,7 +2658,7 @@ def sabt_darkhast_bagh_zamin(event=None):
                 if last_id is None or last_id == 0:
                        messagebox.showerror("Error", "خطا: ثبت در جدول")
                        return
-           elif karbari=="زمین کشاورزی":
+            elif karbari=="زمین کشاورزی":
                 cursor.execute("""
                 CREATE TABLE IF NOT EXISTS darkhast_ejareh_zamin(
                 id INT AUTO_INCREMENT PRIMARY KEY,
@@ -2561,14 +2686,14 @@ def sabt_darkhast_bagh_zamin(event=None):
               """)
 
                 sql_zamin = """
-               INSERT INTO darkhast_ejareh_zamin(
+                INSERT INTO darkhast_ejareh_zamin(
                     type_melk,metraj,karbari,address,mablagh_pish,mablagh_ejareh,zaman_ejareh,name_moshtari,shomareh_moshtari,
                     metraj_zamin, karbari_zamin,type_khak,
-                    manba_ab, negahbani, bargh_takfaz, bargh_sefaz,
-                    anbar, fans, chah
-                )
-                VALUES( %s, %s, %s, %s, %s, %s, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
-               """
+                    manba_ab,negahbani,bargh_takfaz,bargh_sefaz,
+                    anbar,fans,chah
+                 )
+                VALUES( %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+                """
                 values_ejareh_zamin=(
                    change_type,
                    metraj_zamin_darkhast_bagh_zamin_entry.get(),
@@ -2590,12 +2715,12 @@ def sabt_darkhast_bagh_zamin(event=None):
                    fans_zamin_darkhast_bagh_zamin_var.get(),
                    mojavez_chah_zamin_darkhast_bagh_zamin_var.get())
             
-                cursor.execute(sql_zamin, values_ejareh_zamin)
+                cursor.execute(sql_zamin,values_ejareh_zamin)
                 last_id = cursor.lastrowid
                 if last_id is None or last_id == 0:
-                   messagebox.showerror("Error", "خطا: ثبت در جدول  انجام نشد")
-                return    
-                    
+                       messagebox.showerror("Error", "خطا: ثبت در جدول  انجام نشد")
+                       return    
+                        
         db.commit()
         user_idcode = f"ID-{last_id}"
         messagebox.showinfo("Success", f"ثبت با کد {user_idcode} انجام شد.")      
@@ -2660,7 +2785,7 @@ def sabt_darkhast_kargah(event=None):
         
         if change_type=="درخواست خرید کارگاه":
             cursor.execute("""
-            CREATE TABLE IF NOT EXISTS sabt_darkhast_ejareh_kargah(
+            CREATE TABLE IF NOT EXISTS sabt_darkhast_kharid_kargah(
             id INT AUTO_INCREMENT PRIMARY KEY,
             type_melk VARCHAR(50) NOT NULL,
             metraj_melk VARCHAR(20),
@@ -2724,7 +2849,7 @@ def sabt_darkhast_kargah(event=None):
             
         elif change_type=="درخواست اجاره کارگاه":
             cursor.execute("""
-            CREATE TABLE IF NOT EXISTS sabt_darkhast_kharid_kargah(
+            CREATE TABLE IF NOT EXISTS sabt_darkhast_ejareh_kargah(
             id INT AUTO_INCREMENT PRIMARY KEY,
             type_melk VARCHAR(50) NOT NULL,
             metraj_melk VARCHAR(20),
@@ -2750,7 +2875,7 @@ def sabt_darkhast_kargah(event=None):
             """)
 
             sql_ejareh = """
-            INSERT INTO sabt_darkhast_kharid_kargah
+            INSERT INTO sabt_darkhast_ejareh_kargah
             (type_melk,metraj_melk,sal_sakht,address,mablagh_pish,gheimat_kol,
             name_moshtari,shomareh_moshtari,ejareh_mahaneh,vaziat_bargh,garmayesh,sarmayesh_fan,
             sarmayesh_panke,sarmayesh_kooler_abi,sarmayesh_kooler_gazi,vaziat_ab,
@@ -2762,8 +2887,8 @@ def sabt_darkhast_kargah(event=None):
             metraj_darkhast_kargah_entry.get(),
             sal_sakht_darkhast_kargah_entry.get(),
             loctaion_darkhast_kargah_entry.get(),
-            float(mablagh_pish_darkhast_kargah_entry.get()),
-            float(gheimat_kol_darkhast_kargah_entry.get()),
+            mablagh_pish_darkhast_kargah_entry.get(),
+            gheimat_kol_darkhast_kargah_entry.get(),
             name_moshtari_darkhast_kargah_entry.get(),
             shomareh_moshtari_darkhast_kargah_entry.get(),
             ejareh_mahaneh_darkhast_kargah_entry.get(),
@@ -3974,7 +4099,7 @@ add_img_btn_ejareh_kargah.place(x=60, y=370)
 back_to_home_ejareh_kargah=tk.Button(ejareh_karghah,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_ejareh_karghah)
 back_to_home_ejareh_kargah.place(x=290,y=520)
 
-zakhire_ejareh_kargah=tk.Button(ejareh_karghah,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=sabt_ejareh_karghah)
+zakhire_ejareh_kargah=tk.Button(ejareh_karghah,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=sabt_ejareh_kargah)
 zakhire_ejareh_kargah.place(x=140,y=520)
 
 ejareh_karghah.protocol("WM_DELETE_WINDOW", lambda: None)
@@ -4884,7 +5009,7 @@ add_img_btn_forosh_kargah.place(x=60, y=370)
 back_to_home_forosh_kargah=tk.Button(forosh_karghah,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_forosh_karghah)
 back_to_home_forosh_kargah.place(x=290,y=520)
 
-zakhire_forosh_kargah=tk.Button(forosh_karghah,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=sabt_forosh_karghah)
+zakhire_forosh_kargah=tk.Button(forosh_karghah,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=sabt_forosh_kargah)
 zakhire_forosh_kargah.place(x=140,y=520)
 
 forosh_karghah.protocol("WM_DELETE_WINDOW", lambda: None)
@@ -6017,8 +6142,8 @@ gozaresh_file_combo_maskoni.place(x=220, y=80)
 save_gozaresh_maskoni = tk.Button(gozaresh_maskoni, text="تایید", command=excel_gozaresh_maskoni, bg="#00BFFF", fg="#000000", width=10, height=1)
 save_gozaresh_maskoni.place(x=95, y=320)
 
-back_home_gozaresh_maskoni = tk.Button(gozaresh_maskoni, text="بازگشت", command=back_home_gozaresh_maskoni, bg="#00BFFF", fg="#000000", width=10, height=1)
-back_home_gozaresh_maskoni.place(x=215, y=320)
+back_to_home_gozaresh_maskoni = tk.Button(gozaresh_maskoni, text="بازگشت", command=back_home_gozaresh_maskoni, bg="#00BFFF", fg="#000000", width=10, height=1)
+back_to_home_gozaresh_maskoni.place(x=215, y=320)
 
 gozaresh_maskoni.protocol("WM_DELETE_WINDOW", lambda: None)
 gozaresh_maskoni.resizable(False, False)
@@ -6042,19 +6167,19 @@ bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 noe_gozaresh_edari_tejari=tk.Label(gozaresh_edari_tejari,text=" نوع گزارش ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
 noe_gozaresh_edari_tejari.place(x=470, y=76)
 
-noe_gozaresh_edari_tejari_entry=tk.Entry(gozaresh_edari_tejari,bg="#ffffff",fg="#000000",font=("Shabnam", 10))
-noe_gozaresh_edari_tejari_entry.place(x=170, y=230, width=250, height=30)
+error_label=tk.Label(gozaresh_edari_tejari,text='',font=("Shabnam",10),fg="#E91414",bg="#FFFFFF")
+error_label.place(x=110,y=230,width=450,height=30)
 
 gozaresh_file_combo_edari_tejari=ttk.Combobox(gozaresh_edari_tejari)
 gozaresh_file_combo_edari_tejari["values"] = ("گزارش فایل اجاره","گزارش فایل فروش","گزارش فایل درخواست اجاره","گزارش فایل درخواست خرید")
 gozaresh_file_combo_edari_tejari["state"]=["readonly"]
 gozaresh_file_combo_edari_tejari.place(x=220, y=80)
 
-save_gozaresh_edari_tejari = tk.Button(gozaresh_edari_tejari, text="تایید", command=None, bg="#00BFFF", fg="#000000", width=10, height=1)
+save_gozaresh_edari_tejari = tk.Button(gozaresh_edari_tejari,text="تایید", command=excel_gozaresh_edari_tejari, bg="#00BFFF", fg="#000000", width=10, height=1)
 save_gozaresh_edari_tejari.place(x=95, y=320)
 
-back_home_gozaresh_edari_tejari = tk.Button(gozaresh_edari_tejari, text="بازگشت", command=back_home_gozaresh_edari_tejari, bg="#00BFFF", fg="#000000", width=10, height=1)
-back_home_gozaresh_edari_tejari.place(x=215, y=320)
+back_to_home_gozaresh_edari_tejari = tk.Button(gozaresh_edari_tejari, text="بازگشت", command=back_home_gozaresh_edari_tejari, bg="#00BFFF", fg="#000000", width=10, height=1)
+back_to_home_gozaresh_edari_tejari.place(x=215, y=320)
 
 gozaresh_edari_tejari.protocol("WM_DELETE_WINDOW", lambda: None)
 gozaresh_edari_tejari.resizable(False, False)
@@ -6078,19 +6203,21 @@ bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 noe_gozaresh_bagh_zamin=tk.Label(gozaresh_bagh_zamin,text=" نوع گزارش ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
 noe_gozaresh_bagh_zamin.place(x=470, y=76)
 
-noe_gozaresh_bagh_zamin_entry=tk.Entry(gozaresh_bagh_zamin,bg="#ffffff",fg="#000000",font=("Shabnam", 10))
-noe_gozaresh_bagh_zamin_entry.place(x=170, y=230, width=250, height=30)
+error_label=tk.Label(gozaresh_bagh_zamin,text='',font=("Shabnam",10),fg="#E91414",bg="#FFFFFF")
+error_label.place(x=110,y=230,width=450,height=30)
 
 gozaresh_file_combo_bagh_zamin=ttk.Combobox(gozaresh_bagh_zamin)
-gozaresh_file_combo_bagh_zamin["values"] = ("گزارش فایل اجاره","گزارش فایل فروش","گزارش فایل درخواست اجاره","گزارش فایل درخواست خرید")
+gozaresh_file_combo_bagh_zamin["values"] = ("گزارش فایل اجاره باغ","گزارش فایل فروش باغ","گزارش فایل درخواست اجاره باغ","گزارش فایل درخواست خرید باغ",
+                                            "گزارش فایل اجاره زمین","گزارش فایل فروش زمین","گزارش فایل درخواست اجاره زمین","گزارش فایل درخواست خرید زمین")
 gozaresh_file_combo_bagh_zamin["state"]=["readonly"]
-gozaresh_file_combo_bagh_zamin.place(x=220, y=80)
+gozaresh_file_combo_bagh_zamin.config(width=40)
+gozaresh_file_combo_bagh_zamin.place(x=190 ,y=80)
 
-save_gozaresh_bagh_zamin = tk.Button(gozaresh_bagh_zamin, text="تایید", command=None, bg="#00BFFF", fg="#000000", width=10, height=1)
+save_gozaresh_bagh_zamin = tk.Button(gozaresh_bagh_zamin, text="تایید", command=excel_gozaresh_bagh_zamin, bg="#00BFFF", fg="#000000", width=10, height=1)
 save_gozaresh_bagh_zamin.place(x=95, y=320)
 
-back_home_gozaresh_bagh_zamin = tk.Button(gozaresh_bagh_zamin, text="بازگشت", command=back_home_gozaresh_bagh_zamin, bg="#00BFFF", fg="#000000", width=10, height=1)
-back_home_gozaresh_bagh_zamin.place(x=215, y=320)
+back_to_home_gozaresh_bagh_zamin = tk.Button(gozaresh_bagh_zamin, text="بازگشت", command=back_home_gozaresh_bagh_zamin, bg="#00BFFF", fg="#000000", width=10, height=1)
+back_to_home_gozaresh_bagh_zamin.place(x=215, y=320)
 
 gozaresh_bagh_zamin.protocol("WM_DELETE_WINDOW", lambda: None)
 gozaresh_bagh_zamin.resizable(False, False)
@@ -6114,19 +6241,19 @@ bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 type_gozaresh_kargah=tk.Label(gozaresh_kargah,text=" نوع گزارش ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
 type_gozaresh_kargah.place(x=470, y=76)
 
-type_gozaresh_kargah_entry=tk.Entry(gozaresh_kargah,bg="#ffffff",fg="#000000",font=("Shabnam", 10))
-type_gozaresh_kargah_entry.place(x=170, y=230, width=250, height=30)
+error_label=tk.Label(gozaresh_kargah,text='',font=("Shabnam",10),fg="#E91414",bg="#FFFFFF")
+error_label.place(x=110,y=230,width=450,height=30)
 
 gozaresh_file_combo_kargah=ttk.Combobox(gozaresh_kargah)
 gozaresh_file_combo_kargah["values"] = ("گزارش فایل اجاره","گزارش فایل فروش","گزارش فایل درخواست اجاره","گزارش فایل درخواست خرید")
 gozaresh_file_combo_kargah["state"]=["readonly"]
 gozaresh_file_combo_kargah.place(x=220, y=80)
 
-save_gozaresh_edari_kargah = tk.Button(gozaresh_kargah, text="تایید", command=None, bg="#00BFFF", fg="#000000", width=10, height=1)
+save_gozaresh_edari_kargah = tk.Button(gozaresh_kargah, text="تایید", command=excel_gozaresh_kargah, bg="#00BFFF", fg="#000000", width=10, height=1)
 save_gozaresh_edari_kargah.place(x=95, y=320)
 
-back_home_gozaresh_kargah = tk.Button(gozaresh_kargah, text="بازگشت", command=back_home_gozaresh_kargah, bg="#00BFFF", fg="#000000", width=10, height=1)
-back_home_gozaresh_kargah.place(x=215, y=320)
+back_to_home_gozaresh_kargah = tk.Button(gozaresh_kargah, text="بازگشت", command=back_home_gozaresh_kargah, bg="#00BFFF", fg="#000000", width=10, height=1)
+back_to_home_gozaresh_kargah.place(x=215, y=320)
 
 gozaresh_kargah.protocol("WM_DELETE_WINDOW", lambda: None)
 gozaresh_kargah.resizable(False, False)
