@@ -15,7 +15,7 @@ def get_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="SobhanA2026",
+        password="EmadAE7*",
         #database="state_agency"
     )
 #endregion
@@ -349,9 +349,13 @@ def open_option12():
 #-----------توابع برگشت صفحات ثبتی به فرم اصلی----------
 #region
 #-----برگشت از صفحه اجاره مسکونی-------------------------
-def back_home_ejare_maskoni():
+def back_home_ejareh_maskoni():
+    clear_entry_ejareh_maskoni()
     root.deiconify()
     ejareh_rehn_page.withdraw()
+    delete_root()
+#--------------------------------پاک شدن Entry صفحه اجاره مسکونی--------------------------
+def clear_entry_ejareh_maskoni():
     #خالی کردن  باکس های اجاره مسکونی
     sal_sakht_ejareh_maskoni_entry.delete(0,tk.END)
     addrres_ejareh_maskoni_entry.delete(0,tk.END)
@@ -370,15 +374,14 @@ def back_home_ejare_maskoni():
     parking_checkbutton_btn_ejareh_maskoni.deselect()
     asansor_checkbutton_btn_ejareh_maskoni.deselect()
     anbari_checkbutton_btn_ejareh_maskoni.deselect()
-    delete_root()
 #-----برگشت از صفحه فروش مسکونی-------------------------
 def back_home_forosh_maskoni():
-    clear_forosh_maskoni_form()
+    clear_entry_forosh_maskoni()
     root.deiconify()
     forosh_rehn_page.withdraw()
     delete_root()
-#--------------------------------پاک شدن Entry برای صفحه فروش مسکونی--------------------------
-def clear_forosh_maskoni_form():
+#--------------------------------پاک شدن Entry صفحه فروش مسکونی--------------------------
+def clear_entry_forosh_maskoni():
     sal_sakht_forosh_maskoni_entry.delete(0, tk.END)
     addrres_forosh_maskoni_entry.delete(0, tk.END)
     tabaghe_forosh_maskoni_entry.delete(0, tk.END)
@@ -397,8 +400,12 @@ def clear_forosh_maskoni_form():
     anbari_checkbuton_forosh_maskoni.deselect()
 #------------------------برگشت از صفحه اجاره اداری/تجاری---------------------
 def back_home_ejareh_edari_tejari():
+    clear_entry_ejareh_edari_tejari()
     root.deiconify()
     ejareh_edari_tejari.withdraw()
+    delete_root()
+#--------------------------------پاک شدن Entry صفحه اجاره اداری/تجاری--------------------------
+def clear_entry_ejareh_edari_tejari():
     sal_sakht_ejareh_edari_tejari_entry.delete(0,tk.END)
     metraj_melk_ejareh_edari_tejari_entry.delete(0,tk.END)
     addrres_ejareh_edari_tejari_entry.delete(0,tk.END)
@@ -415,15 +422,14 @@ def back_home_ejareh_edari_tejari():
     parking_ch_btn_ejareh_edari_tejari.deselect()
     anbari_ch_btn_ejareh_edari_tejari.deselect()
     asansor_ch_btn_ejareh_edari_tejari.deselect()
-    delete_root()
 #---------------------------برگشت از صفحه فروش اداری/تجاری--------------------
 def back_home_forosh_edari_tejari():
-    clear_forosh_edari_tejari_form()
+    clear_entry_forosh_edari_tejari()
     root.deiconify()
     forosh_edari_tejari.withdraw()
     delete_root()
-#--------------------------پاک شدن Entry برای صفحه فروش اداری و تجاری------------------------
-def clear_forosh_edari_tejari_form():
+#--------------------------پاک شدن Entry صفحه فروش اداری و تجاری------------------------
+def clear_entry_forosh_edari_tejari():
     sal_sakht_forosh_edari_tejari_entry.delete(0,tk.END)
     addrres_forosh_edari_tejari_entry.delete(0,tk.END)
     tabaghe_forosh_edari_tejari_entry.delete(0,tk.END)
@@ -439,31 +445,14 @@ def clear_forosh_edari_tejari_form():
     asansor_check_btn_forosh_edari_tejari.deselect()
     parking_check_btn_forosh_edari_tejari.deselect()
     anbari_check_btn_forosh_edari_tejari.deselect()
-#---------------------------برگشت از صفحه درخواست اداری/تجاری--------------------
-def back_home_darkhast_edari_tejari():
-    root.deiconify()
-    darkhast_edari_tejari.withdraw()
-    sal_sakht_darkhast_edari_tejari_entry.delete(0,tk.END)
-    addrres_darkhast_edari_tejari_entry.delete(0,tk.END)
-    tabaghe_darkhast_edari_tejari_entry.delete(0,tk.END)
-    vahed_darkhast_edari_tejari_entry.delete(0,tk.END)
-    gheimat_kol_darkhast_edari_tejari_entry.delete(0,tk.END)
-    metraj_melk_darkhast_edari_tejari_entry.delete(0,tk.END)
-    shomareh_moshtari_darkhast_edari_tejari_entry.delete(0,tk.END)
-    name_moshtari_darkhast_edari_tejari_entry.delete(0,tk.END)
-
-    #پنجره امکانات
-    aab_va_gaz_combo_emkanat_darkhast_edari_tejari.set("")
-    sarmayesh_combo_emkanat_darkhast_edari_tejari.set("")
-    garmayesh_combo_emkanat_darkhast_edari_tejari.set("")
-    parking_check_btn_darkhast_edari_tejari.deselect()
-    asansor_check_btn_darkhast_edari_tejari.deselect()
-    anbari_check_btn_darkhast_edari_tejari.deselect()
-    delete_root()
 #----------------------------برگشت از صفحه اجاره باغ / زمین------------------
-def back_home_ejareh_bagh():
+def back_home_ejareh_bagh_zamin():
+    clear_entry_ejareh_bagh_zamin()
     ejareh_bagh_zamin.withdraw()
     root.deiconify()
+    delete_root()
+#--------------------------پاک شدن Entry صفحه اجاره باغ و زمین------------------------
+def clear_entry_ejareh_bagh_zamin():
     metraj_zamin_ejareh_bagh_zamin_entry.delete(0,tk.END)
     bagh_loctaion_entry.delete(0,tk.END)
     bagh_gheimat_ejareh_bagh_zamin_entry.delete(0,tk.END)
@@ -513,13 +502,13 @@ def back_home_ejareh_bagh():
     fans_zamin_ejareh_bagh_zamin.deselect()
     mojavaz_chah_zamin_ejareh_bagh_zamin.deselect()
 #-----------------------------برگشت از صفحه فروش باغ / زمین------------------
-def back_home_forosh_bagh():
-    clear_forosh_bagh_form()
+def back_home_forosh_bagh_zamin():
+    clear_entry_forosh_bagh_zamin()
     forosh_bagh_zamin.withdraw()
     root.deiconify()    
     delete_root()
-#------------------------- پاک شدن Entry  برای صفحه فروش باغ و زمین----------------------------
-def clear_forosh_bagh_form():
+#------------------------- پاک شدن Entry صفحه فروش باغ و زمین----------------------------
+def clear_entry_forosh_bagh_zamin():
     metraj_zamin_forosh_bagh_zamin_entry.delete(0,tk.END)
     bagh_loctaion_forosh_bagh_zamin_entry.delete(0,tk.END)
     gheimat_har_metr_babagh_zamin_forosh_entry.delete(0,tk.END)
@@ -573,8 +562,12 @@ def clear_forosh_bagh_form():
     mojavez_chah_zamin_forosh_bagh_zamin.deselect()
 #----------------------- برگشت از صفحه اجاره کارگاه--------------------
 def back_home_ejareh_karghah():
+    clear_entry_ejareh_karghah()
     ejareh_karghah.withdraw()
     root.deiconify()
+    delete_root()
+#------------------------- پاک شدن Entry صفحه اجاره کارگاه ----------------------------
+def clear_entry_ejareh_karghah():
     metraj_kargah_entry.delete(0,tk.END)
     loctaion_ejareh_kargah_entry.delete(0,tk.END)
     mablagh_ejareh_ejareh_kargah_entry.delete(0,tk.END)
@@ -594,15 +587,14 @@ def back_home_ejareh_karghah():
     sarmayesh_panke_ejareh_kargah.deselect()
     sarmayesh_kooler_abi_ejareh_kargah.deselect()
     sarmayesh_kooler_gazi_ejareh_kargah.deselect()
-    delete_root()
 #----------------------- برگشت از صفحه فروش کارگاه--------------------
 def back_home_forosh_karghah():
-    clear_forosh_kargah_form()
+    clear_entry_forosh_kargah()
     forosh_karghah.withdraw()
     root.deiconify()
     delete_root()
-#-------------------------- پاک شدن Entry  برای صفحه فروش کارگاه-----------------------
-def clear_forosh_kargah_form():
+#-------------------------- پاک شدن Entry صفحه فروش کارگاه-----------------------
+def clear_entry_forosh_kargah():
     loctaion_forosh_kargah_entry.delete(0,tk.END)
     gheimat_kol_forosh_kargah_entry.delete(0,tk.END)
     metraj_forosh_kargah_entry.delete(0,tk.END)
@@ -625,6 +617,48 @@ def clear_forosh_kargah_form():
 def back_to_ejareh_karghah():
     option_file_frame_ejareh_kargah.withdraw()
     ejareh_karghah.deiconify()
+#----------------------------برگشت از صفحه درخواست مسکونی-------------------
+def back_home_darkhast_maskoni():
+    root.deiconify()
+    darkhast_maskoni_page.withdraw()
+    sal_sakht_darkhast_maskoni_entry.delete(0,tk.END)
+    addrres_darkhast_maskoni_entry.delete(0,tk.END)
+    tabaghe_darkhast_maskoni_entry.delete(0,tk.END)
+    vahed_darkhast_maskoni_entry.delete(0,tk.END)
+    otagh_darkhast_maskoni_entry.delete(0,tk.END)
+    gheimat_kol_darkhast_maskoni_entry.delete(0,tk.END)
+    name_moshtari_darkhast_maskoni_entry.delete(0,tk.END)
+    shomareh_moshtari_darkhast_maskoni_entry.delete(0,tk.END)
+    #پنجره امکانات
+    sarmaesh_combo_darkhast_maskoni.set("")
+    garmaesh_combo_darkhast_maskoni.set("")
+    kaf_combo_darkhast_maskoni.set("")
+    toilet_combo_darkhast_maskoni.set("")
+    parking_ch_btn_darkhast_maskoni.deselect()
+    asansor_ch_btn_darkhast_maskoni.deselect()
+    anbari_checkbuton_darkhast_maskoni.deselect()
+    delete_root()
+    #---------------------------برگشت از صفحه درخواست اداری/تجاری--------------------
+def back_home_darkhast_edari_tejari():
+    root.deiconify()
+    darkhast_edari_tejari.withdraw()
+    sal_sakht_darkhast_edari_tejari_entry.delete(0,tk.END)
+    addrres_darkhast_edari_tejari_entry.delete(0,tk.END)
+    tabaghe_darkhast_edari_tejari_entry.delete(0,tk.END)
+    vahed_darkhast_edari_tejari_entry.delete(0,tk.END)
+    gheimat_kol_darkhast_edari_tejari_entry.delete(0,tk.END)
+    metraj_melk_darkhast_edari_tejari_entry.delete(0,tk.END)
+    shomareh_moshtari_darkhast_edari_tejari_entry.delete(0,tk.END)
+    name_moshtari_darkhast_edari_tejari_entry.delete(0,tk.END)
+
+    #پنجره امکانات
+    aab_va_gaz_combo_emkanat_darkhast_edari_tejari.set("")
+    sarmayesh_combo_emkanat_darkhast_edari_tejari.set("")
+    garmayesh_combo_emkanat_darkhast_edari_tejari.set("")
+    parking_check_btn_darkhast_edari_tejari.deselect()
+    asansor_check_btn_darkhast_edari_tejari.deselect()
+    anbari_check_btn_darkhast_edari_tejari.deselect()
+    delete_root()
 #-----------------------------برگشت از صفحه درخواست باغ / زمین------------------
 def back_home_darkhast_bagh():
     darkhast_bagh_zamin.withdraw()
@@ -702,27 +736,6 @@ def back_home_darkhast_kargah():
     sarmayesh_kooler_abi_darkhast_kargah.deselect()
     sarmayesh_kooler_gazi_darkhast_kargah.deselect()
     sarmayesh_fan_darkhast_kargah.deselect()
-    delete_root()
-#----------------------------برگشت از صفحه درخواست مسکونی-------------------
-def back_home_darkhast_maskoni():
-    root.deiconify()
-    darkhast_maskoni_page.withdraw()
-    sal_sakht_darkhast_maskoni_entry.delete(0,tk.END)
-    addrres_darkhast_maskoni_entry.delete(0,tk.END)
-    tabaghe_darkhast_maskoni_entry.delete(0,tk.END)
-    vahed_darkhast_maskoni_entry.delete(0,tk.END)
-    otagh_darkhast_maskoni_entry.delete(0,tk.END)
-    gheimat_kol_darkhast_maskoni_entry.delete(0,tk.END)
-    name_moshtari_darkhast_maskoni_entry.delete(0,tk.END)
-    shomareh_moshtari_darkhast_maskoni_entry.delete(0,tk.END)
-    #پنجره امکانات
-    sarmaesh_combo_darkhast_maskoni.set("")
-    garmaesh_combo_darkhast_maskoni.set("")
-    kaf_combo_darkhast_maskoni.set("")
-    toilet_combo_darkhast_maskoni.set("")
-    parking_ch_btn_darkhast_maskoni.deselect()
-    asansor_ch_btn_darkhast_maskoni.deselect()
-    anbari_checkbuton_darkhast_maskoni.deselect()
     delete_root()
 #----------------------برگشت از گزارش مسکونی--------
 def back_home_gozaresh_maskoni():
@@ -1255,7 +1268,7 @@ def add_tree2():
 #region *توابع ثبتی دیتابیس*
 #--------------------------------------تابع ثبت فروش---------------------------
 def sabt_forosh_maskoni():
-    clear_forosh_maskoni_form()
+    clear_entry_forosh_maskoni()
     db = None
     try:
         db = get_connection()
@@ -1328,7 +1341,7 @@ def sabt_forosh_maskoni():
             db.close()
 #------------------- forosh_edari_tejari database -----------------------------------
 def sabt_forosh_edari_tejari():
-    clear_forosh_edari_tejari_form()
+    clear_entry_forosh_edari_tejari()
     db = None
     try:
         db = get_connection()
@@ -1400,7 +1413,7 @@ selected_option2=[]
 selected_trees2=[]
 #endregion
 def sabt_forosh_bagh_zamin_main():
-    clear_forosh_bagh_form()
+    clear_entry_forosh_bagh_zamin()
     db = None
     
     try:
@@ -1573,7 +1586,7 @@ def sabt_forosh_bagh_zamin_main():
             db.close()
 #---------------------------- forosh_karghah Database ------------------------
 def sabt_forosh_kargah():
-    clear_forosh_kargah_form()
+    clear_entry_forosh_kargah()
     db = None
     try:
         db = get_connection()
@@ -1647,6 +1660,7 @@ def sabt_forosh_kargah():
 #----------------------------تابع ثبت اجاره----------------------------------
 #----------------------- ejareh_maskoni Database -------------------------------
 def sabt_ejareh_maskoni():
+    clear_entry_ejareh_maskoni()
     db = None
     try:
         db = get_connection()
@@ -1721,6 +1735,7 @@ def sabt_ejareh_maskoni():
             db.close()
 #---------------------ejareh_edari/tejari Database------------------------------
 def sabt_ejareh_edari_tejari():
+    clear_entry_ejareh_edari_tejari()
     db = None
     try:
         db = get_connection()
@@ -1793,6 +1808,7 @@ def sabt_ejareh_edari_tejari():
 selected_option=[]
 selected_trees=[]
 def sabt_ejareh_bagh_zamin():
+    clear_entry_ejareh_bagh_zamin()
     db = None
     try:
         db = get_connection()
@@ -1967,6 +1983,7 @@ def sabt_ejareh_bagh_zamin():
             db.close()
 #-----------------ejareh_kargah Database----------------------------------------
 def sabt_ejareh_kargah():
+    clear_entry_ejareh_karghah()
     db = None
     try:
         db = get_connection()
@@ -3396,7 +3413,7 @@ shomareh_malek_ejareh_maskoni_lable.place(x=start_x + 320, y=start_y + 486,ancho
 shomareh_malek_ejareh_maskoni_entry = tk.Entry(ejareh_rehn_page, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
 shomareh_malek_ejareh_maskoni_entry.place(x=start_x + 10, y=start_y + 475, width=150, height=25)
 
-back_to_home_ejareh_maskoni=tk.Button(ejareh_rehn_page,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_ejare_maskoni)
+back_to_home_ejareh_maskoni=tk.Button(ejareh_rehn_page,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_ejareh_maskoni)
 back_to_home_ejareh_maskoni.place(x=270,y=520)
 
 save_button_ejareh_maskooni=tk.Button(ejareh_rehn_page,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=sabt_ejareh_maskoni)
@@ -3770,7 +3787,7 @@ photo_lbl2_ejareh_bagh_zamin.place(x=60, y=85)
 add_img_btn_ejareh_bagh_zamin = tk.Button(ejareh_bagh_zamin, text="افزودن تصویر", bg="#00BFFF", fg="black",command=open_file,height=2,width=13)
 add_img_btn_ejareh_bagh_zamin.place(x=60, y=370)
 
-back_to_home_ejareh_bagh_zamin=tk.Button(ejareh_bagh_zamin,text="بازگشت",bg="#00BFFF",fg="#000000",width=10,height=2,command=back_home_ejareh_bagh)
+back_to_home_ejareh_bagh_zamin=tk.Button(ejareh_bagh_zamin,text="بازگشت",bg="#00BFFF",fg="#000000",width=10,height=2,command=back_home_ejareh_bagh_zamin)
 back_to_home_ejareh_bagh_zamin.place(x=290,y=520)
 
 zakhire_ejareh_bagh_zamin=tk.Button(ejareh_bagh_zamin,text="ذخیره",bg="#00BFFF",fg="#000000",width=10,height=2,command=sabt_ejareh_bagh_zamin)
@@ -4693,7 +4710,7 @@ photo_forosh_bagh_zamin_lable.place(x=60, y=85)
 add_img_btn_forosh_bagh_zamin = tk.Button(forosh_bagh_zamin, text="افزودن تصویر", bg="#00BFFF", fg="black",command=open_file,height=2,width=13)
 add_img_btn_forosh_bagh_zamin.place(x=60, y=370)
 
-back_to_home_forosh_bagh_zamin=tk.Button(forosh_bagh_zamin,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_forosh_bagh)
+back_to_home_forosh_bagh_zamin=tk.Button(forosh_bagh_zamin,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_forosh_bagh_zamin)
 back_to_home_forosh_bagh_zamin.place(x=290,y=520)
 
 zakhire_forosh_bagh_zamin=tk.Button(forosh_bagh_zamin,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=sabt_forosh_bagh_zamin_main)
