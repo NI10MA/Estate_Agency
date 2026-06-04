@@ -3049,6 +3049,9 @@ for textt in columns:
     tree.heading(textt,text=textt)
     tree.column(textt, width=100)
 tree.pack(fill="both", expand=True)
+
+lable_list_amlack_centre = tk.Label(frame_list_amlack_centre,text="تمامی حقوق قانونی این نرم افزار متعلق به گروه نیواد است",bg="#052340", fg="white",font=("Shabnam", 10))
+lable_list_amlack_centre.pack(padx=10)
 #===================================================
 #endregion
 # --------------------باکس سمت راست - نمایش جزئیات فایل های موجود املاک---------------
