@@ -6137,6 +6137,8 @@ error_label.place(x=110,y=230,width=450,height=30)
 gozaresh_file_combo_maskoni=ttk.Combobox(gozaresh_maskoni)
 gozaresh_file_combo_maskoni["values"] = ("گزارش فایل اجاره","گزارش فایل فروش","گزارش فایل درخواست اجاره","گزارش فایل درخواست خرید")
 gozaresh_file_combo_maskoni["state"]=["readonly"]
+gozaresh_file_combo_maskoni.config(width=40)
+gozaresh_file_combo_maskoni.configure(justify="center")
 gozaresh_file_combo_maskoni.place(x=220, y=80)
 
 save_gozaresh_maskoni = tk.Button(gozaresh_maskoni, text="تایید", command=excel_gozaresh_maskoni, bg="#00BFFF", fg="#000000", width=10, height=1)
@@ -6173,7 +6175,9 @@ error_label.place(x=110,y=230,width=450,height=30)
 gozaresh_file_combo_edari_tejari=ttk.Combobox(gozaresh_edari_tejari)
 gozaresh_file_combo_edari_tejari["values"] = ("گزارش فایل اجاره","گزارش فایل فروش","گزارش فایل درخواست اجاره","گزارش فایل درخواست خرید")
 gozaresh_file_combo_edari_tejari["state"]=["readonly"]
-gozaresh_file_combo_edari_tejari.place(x=220, y=80)
+gozaresh_file_combo_edari_tejari.config(width=40)
+gozaresh_file_combo_edari_tejari.configure(justify="center")
+gozaresh_file_combo_edari_tejari.place(x=190, y=80)
 
 save_gozaresh_edari_tejari = tk.Button(gozaresh_edari_tejari,text="تایید", command=excel_gozaresh_edari_tejari, bg="#00BFFF", fg="#000000", width=10, height=1)
 save_gozaresh_edari_tejari.place(x=95, y=320)
@@ -6204,14 +6208,15 @@ noe_gozaresh_bagh_zamin=tk.Label(gozaresh_bagh_zamin,text=" نوع گزارش ",
 noe_gozaresh_bagh_zamin.place(x=470, y=76)
 
 error_label=tk.Label(gozaresh_bagh_zamin,text='',font=("Shabnam",10),fg="#E91414",bg="#FFFFFF")
-error_label.place(x=110,y=230,width=450,height=30)
+error_label.place(x=50,y=230,width=450,height=30)
 
 gozaresh_file_combo_bagh_zamin=ttk.Combobox(gozaresh_bagh_zamin)
 gozaresh_file_combo_bagh_zamin["values"] = ("گزارش فایل اجاره باغ","گزارش فایل فروش باغ","گزارش فایل درخواست اجاره باغ","گزارش فایل درخواست خرید باغ",
                                             "گزارش فایل اجاره زمین","گزارش فایل فروش زمین","گزارش فایل درخواست اجاره زمین","گزارش فایل درخواست خرید زمین")
 gozaresh_file_combo_bagh_zamin["state"]=["readonly"]
-gozaresh_file_combo_bagh_zamin.config(width=40)
-gozaresh_file_combo_bagh_zamin.place(x=190 ,y=80)
+gozaresh_file_combo_bagh_zamin.config(width=60)
+gozaresh_file_combo_bagh_zamin.configure(justify="center")
+gozaresh_file_combo_bagh_zamin.place(x=60 ,y=80)
 
 save_gozaresh_bagh_zamin = tk.Button(gozaresh_bagh_zamin, text="تایید", command=excel_gozaresh_bagh_zamin, bg="#00BFFF", fg="#000000", width=10, height=1)
 save_gozaresh_bagh_zamin.place(x=95, y=320)
@@ -6247,7 +6252,9 @@ error_label.place(x=110,y=230,width=450,height=30)
 gozaresh_file_combo_kargah=ttk.Combobox(gozaresh_kargah)
 gozaresh_file_combo_kargah["values"] = ("گزارش فایل اجاره","گزارش فایل فروش","گزارش فایل درخواست اجاره","گزارش فایل درخواست خرید")
 gozaresh_file_combo_kargah["state"]=["readonly"]
-gozaresh_file_combo_kargah.place(x=220, y=80)
+gozaresh_file_combo_kargah.config(width=40)
+gozaresh_file_combo_kargah.configure(justify="center")
+gozaresh_file_combo_kargah.place(x=190, y=80)
 
 save_gozaresh_edari_kargah = tk.Button(gozaresh_kargah, text="تایید", command=excel_gozaresh_kargah, bg="#00BFFF", fg="#000000", width=10, height=1)
 save_gozaresh_edari_kargah.place(x=95, y=320)
