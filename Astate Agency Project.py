@@ -15,7 +15,7 @@ def get_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="Mmmm9905",
+        password="SobhanA2026",
         #database="state_agency"
     )
 #endregion
@@ -373,16 +373,20 @@ def back_home_ejare_maskoni():
     delete_root()
 #-----برگشت از صفحه فروش مسکونی-------------------------
 def back_home_forosh_maskoni():
+    clear_forosh_maskoni_form()
     root.deiconify()
     forosh_rehn_page.withdraw()
-    sal_sakht_forosh_maskoni_entry.delete(0,tk.END)
-    addrres_forosh_maskoni_entry.delete(0,tk.END)
-    tabaghe_forosh_maskoni_entry.delete(0,tk.END)
-    vahed_forosh_maskoni_entry.delete(0,tk.END)
-    otagh_forosh_maskoni_entry.delete(0,tk.END)
-    gheimat_kol_forosh_maskoni_entry.delete(0,tk.END)
-    name_malek_forosh_maskoni_entry.delete(0,tk.END)
-    shomareh_malek_forosh_maskoni_entry.delete(0,tk.END)
+    delete_root()
+#--------------------------------پاک شدن Entry برای صفحه فروش مسکونی--------------------------
+def clear_forosh_maskoni_form():
+    sal_sakht_forosh_maskoni_entry.delete(0, tk.END)
+    addrres_forosh_maskoni_entry.delete(0, tk.END)
+    tabaghe_forosh_maskoni_entry.delete(0, tk.END)
+    vahed_forosh_maskoni_entry.delete(0, tk.END)
+    otagh_forosh_maskoni_entry.delete(0, tk.END)
+    gheimat_kol_forosh_maskoni_entry.delete(0, tk.END)
+    name_malek_forosh_maskoni_entry.delete(0, tk.END)
+    shomareh_malek_forosh_maskoni_entry.delete(0, tk.END)
     #پنجره امکانات
     sarmaesh_combo_forosh_maskoni.set("")
     garmaesh_combo_forosh_maskoni.set("")
@@ -391,7 +395,6 @@ def back_home_forosh_maskoni():
     parking_ch_btn_forosh_maskoni.deselect()
     asansor_ch_btn_forosh_maskoni.deselect()
     anbari_checkbuton_forosh_maskoni.deselect()
-    delete_root()
 #------------------------برگشت از صفحه اجاره اداری/تجاری---------------------
 def back_home_ejareh_edari_tejari():
     root.deiconify()
@@ -415,8 +418,12 @@ def back_home_ejareh_edari_tejari():
     delete_root()
 #---------------------------برگشت از صفحه فروش اداری/تجاری--------------------
 def back_home_forosh_edari_tejari():
+    clear_forosh_edari_tejari_form()
     root.deiconify()
     forosh_edari_tejari.withdraw()
+    delete_root()
+#--------------------------پاک شدن Entry برای صفحه فروش اداری و تجاری------------------------
+def clear_forosh_edari_tejari_form():
     sal_sakht_forosh_edari_tejari_entry.delete(0,tk.END)
     addrres_forosh_edari_tejari_entry.delete(0,tk.END)
     tabaghe_forosh_edari_tejari_entry.delete(0,tk.END)
@@ -432,7 +439,6 @@ def back_home_forosh_edari_tejari():
     asansor_check_btn_forosh_edari_tejari.deselect()
     parking_check_btn_forosh_edari_tejari.deselect()
     anbari_check_btn_forosh_edari_tejari.deselect()
-    delete_root()
 #---------------------------برگشت از صفحه درخواست اداری/تجاری--------------------
 def back_home_darkhast_edari_tejari():
     root.deiconify()
@@ -508,8 +514,12 @@ def back_home_ejareh_bagh():
     mojavaz_chah_zamin_ejareh_bagh_zamin.deselect()
 #-----------------------------برگشت از صفحه فروش باغ / زمین------------------
 def back_home_forosh_bagh():
+    clear_forosh_bagh_form()
     forosh_bagh_zamin.withdraw()
     root.deiconify()    
+    delete_root()
+#------------------------- پاک شدن Entry  برای صفحه فروش باغ و زمین----------------------------
+def clear_forosh_bagh_form():
     metraj_zamin_forosh_bagh_zamin_entry.delete(0,tk.END)
     bagh_loctaion_forosh_bagh_zamin_entry.delete(0,tk.END)
     gheimat_har_metr_babagh_zamin_forosh_entry.delete(0,tk.END)
@@ -561,7 +571,6 @@ def back_home_forosh_bagh():
     divar_forosh_bagh_zamin.deselect()
     fans_zamin_forosh_bagh_zamin.deselect()
     mojavez_chah_zamin_forosh_bagh_zamin.deselect()
-    delete_root()
 #----------------------- برگشت از صفحه اجاره کارگاه--------------------
 def back_home_ejareh_karghah():
     ejareh_karghah.withdraw()
@@ -588,8 +597,12 @@ def back_home_ejareh_karghah():
     delete_root()
 #----------------------- برگشت از صفحه فروش کارگاه--------------------
 def back_home_forosh_karghah():
+    clear_forosh_kargah_form()
     forosh_karghah.withdraw()
     root.deiconify()
+    delete_root()
+#-------------------------- پاک شدن Entry  برای صفحه فروش کارگاه-----------------------
+def clear_forosh_kargah_form():
     loctaion_forosh_kargah_entry.delete(0,tk.END)
     gheimat_kol_forosh_kargah_entry.delete(0,tk.END)
     metraj_forosh_kargah_entry.delete(0,tk.END)
@@ -608,7 +621,6 @@ def back_home_forosh_karghah():
     sarmayesh_panke_forosh_kargah.deselect()
     sarmayesh_kooler_abi_forosh_kargah.deselect()
     sarmayesh_kooler_gazi_forosh_kargah.deselect()
-    delete_root()
 #----------------------------برگشت از صفحه اجاره کارگاه------------------
 def back_to_ejareh_karghah():
     option_file_frame_ejareh_kargah.withdraw()
@@ -1243,6 +1255,7 @@ def add_tree2():
 #region *توابع ثبتی دیتابیس*
 #--------------------------------------تابع ثبت فروش---------------------------
 def sabt_forosh_maskoni():
+    clear_forosh_maskoni_form()
     db = None
     try:
         db = get_connection()
@@ -1315,6 +1328,7 @@ def sabt_forosh_maskoni():
             db.close()
 #------------------- forosh_edari_tejari database -----------------------------------
 def sabt_forosh_edari_tejari():
+    clear_forosh_edari_tejari_form()
     db = None
     try:
         db = get_connection()
@@ -1386,7 +1400,7 @@ selected_option2=[]
 selected_trees2=[]
 #endregion
 def sabt_forosh_bagh_zamin_main():
-
+    clear_forosh_bagh_form()
     db = None
     
     try:
@@ -1559,6 +1573,7 @@ def sabt_forosh_bagh_zamin_main():
             db.close()
 #---------------------------- forosh_karghah Database ------------------------
 def sabt_forosh_kargah():
+    clear_forosh_kargah_form()
     db = None
     try:
         db = get_connection()
