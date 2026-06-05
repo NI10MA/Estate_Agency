@@ -15,7 +15,7 @@ def get_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="EmadAE7*",
+        password="SobhanA2026",
         #database="state_agency"
     )
 #endregion
@@ -1268,7 +1268,6 @@ def add_tree2():
 #region *توابع ثبتی دیتابیس*
 #--------------------------------------تابع ثبت فروش---------------------------
 def sabt_forosh_maskoni():
-    clear_entry_forosh_maskoni()
     db = None
     try:
         db = get_connection()
@@ -1338,10 +1337,10 @@ def sabt_forosh_maskoni():
         messagebox.showerror("Error", f"خطا: {e}")
     finally:
         if db and db.is_connected():
+            clear_entry_forosh_maskoni()
             db.close()
 #------------------- forosh_edari_tejari database -----------------------------------
 def sabt_forosh_edari_tejari():
-    clear_entry_forosh_edari_tejari()
     db = None
     try:
         db = get_connection()
@@ -1405,6 +1404,7 @@ def sabt_forosh_edari_tejari():
         messagebox.showerror("Error", f"خطا: {e}")
     finally:
         if db and db.is_connected():
+            clear_entry_forosh_edari_tejari()
             db.close()
 #---------------------------forosh_bagh/zamin Database-------------------------
 #region
@@ -1413,7 +1413,6 @@ selected_option2=[]
 selected_trees2=[]
 #endregion
 def sabt_forosh_bagh_zamin_main():
-    clear_entry_forosh_bagh_zamin()
     db = None
     
     try:
@@ -1583,10 +1582,10 @@ def sabt_forosh_bagh_zamin_main():
         
     finally:
         if db and db.is_connected():
+            clear_entry_forosh_bagh_zamin()
             db.close()
 #---------------------------- forosh_karghah Database ------------------------
 def sabt_forosh_kargah():
-    clear_entry_forosh_kargah()
     db = None
     try:
         db = get_connection()
@@ -1655,6 +1654,7 @@ def sabt_forosh_kargah():
         messagebox.showerror("Error", f"خطا: {e}")
     finally:
         if db and db.is_connected():
+            clear_entry_forosh_kargah()
             db.close()
 #------------------------------------پایان ثبت فروش-----------------------------
 #----------------------------تابع ثبت اجاره----------------------------------
