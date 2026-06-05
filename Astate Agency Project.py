@@ -15,7 +15,7 @@ def get_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="SobhanA2026",
+        password="EmadAE7*",
         #database="state_agency"
     )
 #endregion
@@ -619,8 +619,12 @@ def back_to_ejareh_karghah():
     ejareh_karghah.deiconify()
 #----------------------------برگشت از صفحه درخواست مسکونی-------------------
 def back_home_darkhast_maskoni():
-    root.deiconify()
+    clear_entry_darkhast_maskoni()
     darkhast_maskoni_page.withdraw()
+    root.deiconify()
+    delete_root()
+#-------------------------- پاک شدن Entry صفحه درخواست مسکونی-----------------------
+def clear_entry_darkhast_maskoni():
     sal_sakht_darkhast_maskoni_entry.delete(0,tk.END)
     addrres_darkhast_maskoni_entry.delete(0,tk.END)
     tabaghe_darkhast_maskoni_entry.delete(0,tk.END)
@@ -629,6 +633,8 @@ def back_home_darkhast_maskoni():
     gheimat_kol_darkhast_maskoni_entry.delete(0,tk.END)
     name_moshtari_darkhast_maskoni_entry.delete(0,tk.END)
     shomareh_moshtari_darkhast_maskoni_entry.delete(0,tk.END)
+    mablagh_ejare_darkhast_maskoni_entry.delete(0,tk.END)
+    gheimat_pish_darkhast_maskoni_entry.delete(0,tk.END)
     #پنجره امکانات
     sarmaesh_combo_darkhast_maskoni.set("")
     garmaesh_combo_darkhast_maskoni.set("")
@@ -637,11 +643,14 @@ def back_home_darkhast_maskoni():
     parking_ch_btn_darkhast_maskoni.deselect()
     asansor_ch_btn_darkhast_maskoni.deselect()
     anbari_checkbuton_darkhast_maskoni.deselect()
-    delete_root()
     #---------------------------برگشت از صفحه درخواست اداری/تجاری--------------------
 def back_home_darkhast_edari_tejari():
-    root.deiconify()
+    clear_entry_darkhast_edari_tejari()
     darkhast_edari_tejari.withdraw()
+    root.deiconify()
+    delete_root()
+#-------------------------- پاک شدن Entry صفحه درخواست اداری/تجاری-----------------------
+def clear_entry_darkhast_edari_tejari():
     sal_sakht_darkhast_edari_tejari_entry.delete(0,tk.END)
     addrres_darkhast_edari_tejari_entry.delete(0,tk.END)
     tabaghe_darkhast_edari_tejari_entry.delete(0,tk.END)
@@ -650,7 +659,8 @@ def back_home_darkhast_edari_tejari():
     metraj_melk_darkhast_edari_tejari_entry.delete(0,tk.END)
     shomareh_moshtari_darkhast_edari_tejari_entry.delete(0,tk.END)
     name_moshtari_darkhast_edari_tejari_entry.delete(0,tk.END)
-
+    mablagh_vadie_darkhast_edari_tejari_entry.delete(0,tk.END)
+    mablagh_ejareh_darkhast_edari_tejari_entry.delete(0,tk.END)
     #پنجره امکانات
     aab_va_gaz_combo_emkanat_darkhast_edari_tejari.set("")
     sarmayesh_combo_emkanat_darkhast_edari_tejari.set("")
@@ -658,11 +668,14 @@ def back_home_darkhast_edari_tejari():
     parking_check_btn_darkhast_edari_tejari.deselect()
     asansor_check_btn_darkhast_edari_tejari.deselect()
     anbari_check_btn_darkhast_edari_tejari.deselect()
-    delete_root()
 #-----------------------------برگشت از صفحه درخواست باغ / زمین------------------
 def back_home_darkhast_bagh():
+    clear_entry_darkhast_bagh_zamin()
     darkhast_bagh_zamin.withdraw()
-    root.deiconify()    
+    root.deiconify()  
+    delete_root()
+#-------------------------- پاک شدن Entry صفحه درخواست باغ/زمین-----------------------
+def clear_entry_darkhast_bagh_zamin():  
     metraj_zamin_darkhast_bagh_zamin_entry.delete(0,tk.END)
     bagh_loctaion_darkhast_bagh_zamin_entry.delete(0,tk.END)
     gheimat_har_metr_bagh_zamin_darkhast_entry.delete(0,tk.END)
@@ -673,6 +686,8 @@ def back_home_darkhast_bagh():
     shomareh_moshtari_darkhast_bagh_entry.delete(0,tk.END)
     name_moshtari_darkhast_bagh_entry.delete(0,tk.END)
     gheimat_kol_bagh_zamin_darkhast_entry.delete(0,tk.END)
+    gheimat_ejareh_bagh_darkhast_zamin_entry.delete(0,tk.END)
+    mablagh_ejareh_mahaneh_darkhast_entry.delete(0,tk.END)
     # امکانات فروش باغ و زمین
     metraj_derakht_darkhast_bagh_zamin_entry.delete(0,tk.END)
     tedad_derakht_darkhast_bagh_zamin_entry.delete(0,tk.END)
@@ -712,17 +727,21 @@ def back_home_darkhast_bagh():
     fans_zamin_darkhast_bagh_zamin.deselect()
     mojavez_chah_zamin_darkhast_bagh_zamin.deselect()
     divar_darkhast_bagh_zamin.deselect()
-    delete_root()
 #-----------------------------برگشت از صفحه درخواست کارگاه--------------------
 def back_home_darkhast_kargah():
+    clear_entry_darkhast_kargah()
     darkhast_kargah.withdraw()   
     root.deiconify()
+    delete_root()
+#-------------------------- پاک شدن Entry صفحه درخواست کارگاه-----------------------
+def clear_entry_darkhast_kargah():
     metraj_darkhast_kargah_entry.delete(0,tk.END)
     loctaion_darkhast_kargah_entry.delete(0,tk.END)
     gheimat_kol_darkhast_kargah_entry.delete(0,tk.END)
-    mablagh_pish_darkhast_kargah_entry.delete(0,tk.END)
     shomareh_moshtari_darkhast_kargah_entry.delete(0,tk.END)
     name_moshtari_darkhast_kargah_entry.delete(0,tk.END)
+    mablagh_pish_darkhast_kargah_entry.delete(0,tk.END)
+    ejareh_mahaneh_darkhast_kargah_entry.delete(0,tk.END)
     #پنجره امکانات
     sal_sakht_darkhast_kargah_entry.delete(0,tk.END)
     vaziat_bargh_darkhast_kargah_combo.set("")
@@ -736,7 +755,6 @@ def back_home_darkhast_kargah():
     sarmayesh_kooler_abi_darkhast_kargah.deselect()
     sarmayesh_kooler_gazi_darkhast_kargah.deselect()
     sarmayesh_fan_darkhast_kargah.deselect()
-    delete_root()
 #----------------------برگشت از گزارش مسکونی--------
 def back_home_gozaresh_maskoni():
     root.deiconify()
@@ -1660,7 +1678,6 @@ def sabt_forosh_kargah():
 #----------------------------تابع ثبت اجاره----------------------------------
 #----------------------- ejareh_maskoni Database -------------------------------
 def sabt_ejareh_maskoni():
-    clear_entry_ejareh_maskoni()
     db = None
     try:
         db = get_connection()
@@ -1732,10 +1749,10 @@ def sabt_ejareh_maskoni():
         messagebox.showerror("Error", f"خطا: {e}")
     finally:
         if db and db.is_connected():
+            clear_entry_ejareh_maskoni()
             db.close()
 #---------------------ejareh_edari/tejari Database------------------------------
 def sabt_ejareh_edari_tejari():
-    clear_entry_ejareh_edari_tejari()
     db = None
     try:
         db = get_connection()
@@ -1803,12 +1820,12 @@ def sabt_ejareh_edari_tejari():
         messagebox.showerror("Error", f"خطا: {e}")
     finally:
         if db and db.is_connected():
+            clear_entry_ejareh_edari_tejari()
             db.close()
 #-----------------ejareh_bagh/zamin Database------------------------------------
 selected_option=[]
 selected_trees=[]
 def sabt_ejareh_bagh_zamin():
-    clear_entry_ejareh_bagh_zamin()
     db = None
     try:
         db = get_connection()
@@ -1980,10 +1997,10 @@ def sabt_ejareh_bagh_zamin():
         messagebox.showerror("Error", f"خطا: {e}")
     finally:
         if db and db.is_connected():
+            clear_entry_ejareh_bagh_zamin()
             db.close()
 #-----------------ejareh_kargah Database----------------------------------------
 def sabt_ejareh_kargah():
-    clear_entry_ejareh_karghah()
     db = None
     try:
         db = get_connection()
@@ -2058,6 +2075,7 @@ def sabt_ejareh_kargah():
         messagebox.showerror("Error", f"خطا: {e}")
     finally:
         if db and db.is_connected():
+            clear_entry_ejareh_karghah()
             db.close()
 #------------------------پایان تابع اجاره-----------------------------------
 #endregion
@@ -2235,6 +2253,7 @@ def sabt_darkhast_maskoni(event=None):
         
     finally:
         if db and db.is_connected():
+            clear_entry_darkhast_maskoni()
             db.close()
 
 #---------------darkhast_edari/tejari Database--------------------
@@ -2404,6 +2423,7 @@ def sabt_darkhast_edari_tejari(event=None):
         
     finally:
         if db and db.is_connected():
+            clear_entry_darkhast_edari_tejari()
             db.close()
 
 #--------------darkhast_bagh/zamin Database-----------------------
@@ -2761,6 +2781,7 @@ def sabt_darkhast_bagh_zamin(event=None):
         
     finally:
         if db and db.is_connected():
+            clear_entry_darkhast_bagh_zamin()
             db.close()
                 
 #------------darkhast_kargah Database--------------------------
@@ -2821,12 +2842,11 @@ def sabt_darkhast_kargah(event=None):
             id INT AUTO_INCREMENT PRIMARY KEY,
             type_melk VARCHAR(50) NOT NULL,
             metraj_melk VARCHAR(20),
-            sal_sakht VARCHAR(20),
             address VARCHAR(225),
-            mablagh_pish VARCHAR(20),
-            gheimat_kol VARCHAR(20),
             name_moshtari VARCHAR(30),
-            shomareh_moshtari INT,
+            shomareh_moshtari INT, 
+            gheimat_kol VARCHAR(20),              
+            sal_sakht VARCHAR(20),
             vaziat_bargh VARCHAR(20),
             garmayesh VARCHAR(20),
             sarmayesh_fan VARCHAR(20),
@@ -2843,22 +2863,21 @@ def sabt_darkhast_kargah(event=None):
 
             sql_kharid = """
             INSERT INTO sabt_darkhast_kharid_kargah
-            (type_melk,metraj_melk,sal_sakht,address,mablagh_pish,gheimat_kol,
-            name_moshtari,shomareh_moshtari,vaziat_bargh,garmayesh,sarmayesh_fan,
+            (type_melk,metraj_melk,address,name_moshtari,shomareh_moshtari,gheimat_kol,sal_sakht,
+            vaziat_bargh,garmayesh,sarmayesh_fan,
             sarmayesh_panke,sarmayesh_kooler_abi,sarmayesh_kooler_gazi,vaziat_ab,
             abzar,toilet,hamam,otagh)
-            VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+            VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
             """
 
             values_darkhast_kharid_kargah = (
             combo_darkhast_kargah.get(),
             metraj_darkhast_kargah_entry.get(),
-            sal_sakht_darkhast_kargah_entry.get(),
             loctaion_darkhast_kargah_entry.get(),
-            mablagh_pish_darkhast_kargah_entry.get(),
-            gheimat_kol_darkhast_kargah_entry.get(),
             name_moshtari_darkhast_kargah_entry.get(),
             shomareh_moshtari_darkhast_kargah_entry.get(),
+            gheimat_kol_darkhast_kargah_entry.get(),
+            sal_sakht_darkhast_kargah_entry.get(),
             vaziat_bargh_darkhast_kargah_combo.get(),
             garmayesh_type_darkhast_kargah_combo.get(),
             sarmayesh_fan_darkhast_kargah_var.get(),
@@ -2885,13 +2904,12 @@ def sabt_darkhast_kargah(event=None):
             id INT AUTO_INCREMENT PRIMARY KEY,
             type_melk VARCHAR(50) NOT NULL,
             metraj_melk VARCHAR(20),
-            sal_sakht VARCHAR(20),
             address VARCHAR(225),
             mablagh_pish VARCHAR(20),
-            gheimat_kol VARCHAR(20),
             name_moshtari VARCHAR(30),
             shomareh_moshtari INT,
             ejareh_mahaneh VARCHAR(20),
+            sal_sakht VARCHAR(20),
             vaziat_bargh VARCHAR(20),
             garmayesh VARCHAR(20),
             sarmayesh_fan VARCHAR(40),
@@ -2908,22 +2926,21 @@ def sabt_darkhast_kargah(event=None):
 
             sql_ejareh = """
             INSERT INTO sabt_darkhast_ejareh_kargah
-            (type_melk,metraj_melk,sal_sakht,address,mablagh_pish,gheimat_kol,
-            name_moshtari,shomareh_moshtari,ejareh_mahaneh,vaziat_bargh,garmayesh,sarmayesh_fan,
+            (type_melk,metraj_melk,address,mablagh_pish,name_moshtari,shomareh_moshtari,
+            ejareh_mahaneh,sal_sakht,vaziat_bargh,garmayesh,sarmayesh_fan,
             sarmayesh_panke,sarmayesh_kooler_abi,sarmayesh_kooler_gazi,vaziat_ab,
             abzar,toilet,hamam,otagh)
-            VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+            VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
             """
             values_darkhast_ejareh_kargah = (
             combo_darkhast_kargah.get(),
             metraj_darkhast_kargah_entry.get(),
-            sal_sakht_darkhast_kargah_entry.get(),
             loctaion_darkhast_kargah_entry.get(),
             mablagh_pish_darkhast_kargah_entry.get(),
-            gheimat_kol_darkhast_kargah_entry.get(),
             name_moshtari_darkhast_kargah_entry.get(),
             shomareh_moshtari_darkhast_kargah_entry.get(),
             ejareh_mahaneh_darkhast_kargah_entry.get(),
+            sal_sakht_darkhast_kargah_entry.get(),
             vaziat_bargh_darkhast_kargah_combo.get(),
             garmayesh_type_darkhast_kargah_combo.get(),
             sarmayesh_fan_darkhast_kargah_var.get(),
@@ -2952,6 +2969,7 @@ def sabt_darkhast_kargah(event=None):
         
     finally:
         if db and db.is_connected():
+            clear_entry_darkhast_kargah()
             db.close()
 #--------------------پایان تابع ثبت درخواست----------------
 #endregion
