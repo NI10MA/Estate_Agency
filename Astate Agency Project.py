@@ -15,7 +15,7 @@ def get_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="EmadAE7*",
+        password="Mmmm9905",
         #database="state_agency"
     )
 #endregion
@@ -46,168 +46,221 @@ def open_file():
 #endregion
 #---------------------------تابع خروجی گزارش اکسل-----------
 #region
-def export_excel(sql, sheet_title, file_prefix):
-#ثبت وایجاد اکسل بدون مشکله برای بعضی موارد لیبل کار نمیکند
+def show_message(label, text):
+    label.config(text=text)
+    label.update_idletasks()
+
+
+def export_excel(sql, sheet_title, file_prefix, label):
     try:
         db = get_connection()
         cursor = db.cursor()
         cursor.execute("USE state_agency")
         cursor.execute(sql)
-        data = cursor.fetchall()
-        if not data:
-            error_label.config(text="اطلاعاتی برای خروجی وجود ندارد.")
-            return
 
+        data = cursor.fetchall()
+
+        if not data:
+            show_message(label, "اطلاعاتی برای خروجی وجود ندارد.")
+            return
         column_names = [desc[0] for desc in cursor.description]
         workbook = Workbook()
-        sheet = workbook.active
+        sheet = workbook.active  # توجه: active نه activess
         sheet.title = sheet_title
-        # header
+
         for col_num, title in enumerate(column_names, 1):
             sheet.cell(row=1, column=col_num, value=title)
-        # data
+
         for row_num, row in enumerate(data, 2):
             for col_num, value in enumerate(row, 1):
                 sheet.cell(row=row_num, column=col_num, value=value)
 
-        # سیو شدن 
         file_name = f"{file_prefix}_{datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.xlsx"
+
         file_path = filedialog.asksaveasfilename(
             title="ذخیره فایل اکسل",
             initialfile=file_name,
             defaultextension=".xlsx",
-            filetypes=[("Excel Files", "*.xlsx")])
+            filetypes=[("Excel Files", "*.xlsx")]
+        )
+
         if file_path:
             workbook.save(file_path)
-            error_label.config(text="فایل با موفقیت ذخیره شد.")
+            show_message(label, "فایل با موفقیت ذخیره شد.")
+
         cursor.close()
         db.close()
 
     except Exception as e:
-        error_label.config(text=f"خطا: {str(e)}")
+        show_message(label, f"خطا: {str(e)}")
 def excel_gozaresh_maskoni():
     value = gozaresh_file_combo_maskoni.get()
+
     if value == "گزارش فایل اجاره":
         export_excel(
             "SELECT * FROM sabt_ejareh_maskoni",
             "جدول اجاره مسکونی",
-            "گزارش اجاره مسکونی")
-        
+            "گزارش اجاره مسکونی",
+            error_label_maskoni
+        )
+
     elif value == "گزارش فایل فروش":
         export_excel(
             "SELECT * FROM sabt_forosh_maskoni",
             "جدول فروش مسکونی",
-            "گزارش فروش مسکونی")
-        
+            "گزارش فروش مسکونی",
+            error_label_maskoni
+        )
+
     elif value == "گزارش فایل درخواست اجاره":
         export_excel(
             "SELECT * FROM sabt_darkhast_ejareh_maskoni",
             "جدول درخواست اجاره مسکونی",
-            "گزارش درخواست اجاره مسکونی")
-    elif value == "گزارش فایل درخواست خرید": 
+            "گزارش درخواست اجاره مسکونی",
+            error_label_maskoni
+        )
+
+    elif value == "گزارش فایل درخواست خرید":
         export_excel(
             "SELECT * FROM sabt_darkhast_kharid_maskoni",
             "جدول درخواست خرید مسکونی",
-            "گزارش درخواست خرید مسکونی")
-        
+            "گزارش درخواست خرید مسکونی",
+            error_label_maskoni
+        )
 def excel_gozaresh_edari_tejari():
     value = gozaresh_file_combo_edari_tejari.get()
-    if  value == "گزارش فایل اجاره":
+
+    if value == "گزارش فایل اجاره":
         export_excel(
             "SELECT * FROM sabt_ejareh_edari_tejari",
             "جدول اجاره اداری_تجاری",
-            "گزارش اجاره اداری_تجاری")
-        
+            "گزارش اجاره اداری_تجاری",
+            error_label_edari_tejari
+        )
+
     elif value == "گزارش فایل فروش":
         export_excel(
             "SELECT * FROM sabt_forosh_edari_tejari",
             "جدول فروش اداری_تجاری",
-            "گزارش فروش اداری_تجاری")
-        
+            "گزارش فروش اداری_تجاری",
+            error_label_edari_tejari
+        )
+
     elif value == "گزارش فایل درخواست اجاره":
         export_excel(
             "SELECT * FROM sabt_darkhast_ejareh_edari_tejari",
             "جدول درخواست اجاره اداری_تجاری",
-            "گزارش درخواست اجاره اداری_تجاری")
+            "گزارش درخواست اجاره اداری_تجاری",
+            error_label_edari_tejari
+        )
+
     elif value == "گزارش فایل درخواست خرید":
         export_excel(
             "SELECT * FROM sabt_darkhast_kharid_edari_tejari",
             "جدول درخواست خرید اداری_تجاری",
-            "گزارش درخواست خرید اداری_تجاری")
-#-----------------------------------------
-#----------------------------------------
+            "گزارش درخواست خرید اداری_تجاری",
+            error_label_edari_tejari
+        )
 def excel_gozaresh_bagh_zamin():
     value = gozaresh_file_combo_bagh_zamin.get()
+
     if value == "گزارش فایل اجاره باغ":
         export_excel(
             "SELECT * FROM ejareh_bagh",
             "جدول اجاره باغ",
-            "گزارش اجاره باغ")
-        
+            "گزارش اجاره باغ",
+            error_label_bagh_zamin
+        )
+
     elif value == "گزارش فایل فروش باغ":
         export_excel(
             "SELECT * FROM forosh_bagh",
             "جدول فروش باغ",
-            "گزارش فروش باغ")
-        
+            "گزارش فروش باغ",
+            error_label_bagh_zamin
+        )
+
     elif value == "گزارش فایل درخواست اجاره باغ":
         export_excel(
             "SELECT * FROM darkhast_ejareh_bagh",
             "جدول درخواست اجاره باغ",
-            "گزارش درخواست باغ ")
+            "گزارش درخواست باغ",
+            error_label_bagh_zamin
+        )
+
     elif value == "گزارش فایل درخواست خرید باغ":
         export_excel(
             "SELECT * FROM darkhast_kharid_bagh",
             "جدول درخواست خرید باغ",
-            "گزارش درخواست خرید باغ")
+            "گزارش درخواست خرید باغ",
+            error_label_bagh_zamin
+        )
+
     elif value == "گزارش فایل اجاره زمین":
         export_excel(
             "SELECT * FROM ejareh_zamin",
             "جدول اجاره زمین",
-            "گزارش اجاره زمین")
-        
+            "گزارش اجاره زمین",
+            error_label_bagh_zamin
+        )
+
     elif value == "گزارش فایل فروش زمین":
         export_excel(
             "SELECT * FROM forosh_zamin",
             "جدول فروش زمین",
-            "گزارش فروش زمین")
-        
+            "گزارش فروش زمین",
+            error_label_bagh_zamin
+        )
+
     elif value == "گزارش فایل درخواست اجاره زمین":
         export_excel(
             "SELECT * FROM darkhast_ejareh_zamin",
             "جدول درخواست اجاره زمین",
-            "گزارش درخواست زمین")
+            "گزارش درخواست زمین",
+            error_label_bagh_zamin
+        )
+
     elif value == "گزارش فایل درخواست خرید زمین":
         export_excel(
             "SELECT * FROM darkhast_kharid_zamin",
             "جدول درخواست خرید زمین",
-            "گزارش درخواست خرید زمین")
-#---------------------------------------------
-#------------------------------------------
+            "گزارش درخواست خرید زمین",
+            error_label_bagh_zamin
+        )
 def excel_gozaresh_kargah():
     value = gozaresh_file_combo_kargah.get()
+
     if value == "گزارش فایل اجاره":
         export_excel(
             "SELECT * FROM sabt_ejareh_kargah",
             "جدول اجاره کارگاه",
-            "گزارش اجاره کارگاه")
-        
+            "گزارش اجاره کارگاه",
+            error_label_kargah
+        )
+
     elif value == "گزارش فایل فروش":
         export_excel(
             "SELECT * FROM sabt_forosh_kargah",
             "جدول فروش کارگاه",
-            "گزارش فروش کارگاه")
-        
+            "گزارش فروش کارگاه",
+            error_label_kargah
+        )
+
     elif value == "گزارش فایل درخواست اجاره":
         export_excel(
             "SELECT * FROM sabt_darkhast_ejareh_kargah",
             "جدول درخواست اجاره کارگاه",
-            "گزارش درخواست اجاره کارگاه")
-    elif value == "گزارش فایل درخواست خرید": 
+            "گزارش درخواست اجاره کارگاه",
+            error_label_kargah
+        )
+
+    elif value == "گزارش فایل درخواست خرید":
         export_excel(
             "SELECT * FROM sabt_darkhast_kharid_kargah",
             "جدول درخواست خرید کارگاه",
-            "گزارش درخواست خرید کارگاه")
+            "گزارش درخواست خرید کارگاه",
+            error_label_kargah
+        )
 def gharardadeha():
     pass
 #endregion
@@ -759,25 +812,25 @@ def clear_entry_darkhast_kargah():
 def back_home_gozaresh_maskoni():
     root.deiconify()
     gozaresh_maskoni.withdraw()
-    error_label.config(text="")
+    error_label_maskoni.config(text="")
     gozaresh_file_combo_maskoni.set("")
 #-----------------------برگشت از صفحه گزارش اداری و تجاری------------------------
 def back_home_gozaresh_edari_tejari():
     root.deiconify()
     gozaresh_edari_tejari.withdraw()
-    error_label.config(text="")
+    error_label_edari_tejari.config(text="")
     gozaresh_file_combo_edari_tejari.set("")
 #--------------------------برگشت از گزارش باغ و زمین----------------------------
 def back_home_gozaresh_bagh_zamin():
     root.deiconify()
     gozaresh_bagh_zamin.withdraw()
-    error_label.config(text="")
+    error_label_bagh_zamin.config(text="")
     gozaresh_file_combo_bagh_zamin.set("")
 #----------------------برگشت از صفحه گزارش کارگاه------------------
 def back_home_gozaresh_kargah():
     root.deiconify()
     gozaresh_kargah.withdraw()
-    error_label.config(text="")
+    error_label_kargah.config(text="")
     gozaresh_file_combo_kargah.set("")
 #endregion
 #region #توابع تایید اپشن ها 
@@ -6184,8 +6237,8 @@ bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 noe_gozaresh_maskoni=tk.Label(gozaresh_maskoni,text=" نوع گزارش ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
 noe_gozaresh_maskoni.place(x=470, y=76)
 
-error_label=tk.Label(gozaresh_maskoni,text='',font=("Shabnam",10),fg="#E91414",bg="#FFFFFF")
-error_label.place(x=110,y=230,width=450,height=30)
+error_label_maskoni=tk.Label(gozaresh_maskoni,text='',font=("Shabnam",10),fg="#E91414",bg="#FFFFFF")
+error_label_maskoni.place(x=110,y=230,width=450,height=30)
 
 gozaresh_file_combo_maskoni=ttk.Combobox(gozaresh_maskoni)
 gozaresh_file_combo_maskoni["values"] = ("گزارش فایل اجاره","گزارش فایل فروش","گزارش فایل درخواست اجاره","گزارش فایل درخواست خرید")
@@ -6222,8 +6275,8 @@ bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 noe_gozaresh_edari_tejari=tk.Label(gozaresh_edari_tejari,text=" نوع گزارش ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
 noe_gozaresh_edari_tejari.place(x=470, y=76)
 
-error_label=tk.Label(gozaresh_edari_tejari,text='',font=("Shabnam",10),fg="#E91414",bg="#FFFFFF")
-error_label.place(x=110,y=230,width=450,height=30)
+error_label_edari_tejari=tk.Label(gozaresh_edari_tejari,text='',font=("Shabnam",10),fg="#E91414",bg="#FFFFFF")
+error_label_edari_tejari.place(x=110,y=230,width=450,height=30)
 
 gozaresh_file_combo_edari_tejari=ttk.Combobox(gozaresh_edari_tejari)
 gozaresh_file_combo_edari_tejari["values"] = ("گزارش فایل اجاره","گزارش فایل فروش","گزارش فایل درخواست اجاره","گزارش فایل درخواست خرید")
@@ -6260,8 +6313,8 @@ bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 noe_gozaresh_bagh_zamin=tk.Label(gozaresh_bagh_zamin,text=" نوع گزارش ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
 noe_gozaresh_bagh_zamin.place(x=470, y=76)
 
-error_label=tk.Label(gozaresh_bagh_zamin,text='',font=("Shabnam",10),fg="#E91414",bg="#FFFFFF")
-error_label.place(x=50,y=230,width=450,height=30)
+error_label_bagh_zamin=tk.Label(gozaresh_bagh_zamin,text='',font=("Shabnam",10),fg="#E91414",bg="#FFFFFF")
+error_label_bagh_zamin.place(x=50,y=230,width=450,height=30)
 
 gozaresh_file_combo_bagh_zamin=ttk.Combobox(gozaresh_bagh_zamin)
 gozaresh_file_combo_bagh_zamin["values"] = ("گزارش فایل اجاره باغ","گزارش فایل فروش باغ","گزارش فایل درخواست اجاره باغ","گزارش فایل درخواست خرید باغ",
@@ -6299,8 +6352,8 @@ bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 type_gozaresh_kargah=tk.Label(gozaresh_kargah,text=" نوع گزارش ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
 type_gozaresh_kargah.place(x=470, y=76)
 
-error_label=tk.Label(gozaresh_kargah,text='',font=("Shabnam",10),fg="#E91414",bg="#FFFFFF")
-error_label.place(x=110,y=230,width=450,height=30)
+error_label_kargah=tk.Label(gozaresh_kargah,text='',font=("Shabnam",10),fg="#E91414",bg="#FFFFFF")
+error_label_kargah.place(x=110,y=230,width=450,height=30)
 
 gozaresh_file_combo_kargah=ttk.Combobox(gozaresh_kargah)
 gozaresh_file_combo_kargah["values"] = ("گزارش فایل اجاره","گزارش فایل فروش","گزارش فایل درخواست اجاره","گزارش فایل درخواست خرید")
