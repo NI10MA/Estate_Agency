@@ -15,7 +15,7 @@ def get_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="Mmmm9905",
+        password="EmadAE7*",
         #database="state_agency"
     )
 #endregion
@@ -1138,7 +1138,6 @@ def sabt_radio_darkhast():
         root.withdraw()
         darkhast_kargah.deiconify()
         box_darkhast.grab_release()
-
 
 #تابع رادیو باتن باز و بسته گزارش ها
 def sabt_radio_gozaresh():
@@ -3062,8 +3061,6 @@ file_menu_gozaresh.add_command(label="قراردادها", command=None)
 # اضافه کردن منوی گزارش ها به منوبار
 menubar.add_cascade(label="گزارش ها", menu=file_menu_gozaresh)
 #endregion
-
-
 # ----------------------اضافه کردن فیلد درخواست ها-------
 #region
 file_menu_darkhast= tk.Menu(menubar, tearoff=0, font=("Shabnam", 10))
@@ -6234,18 +6231,24 @@ bg_label = tk.Label(gozaresh_maskoni, image=bg_photo)
 bg_label.image = bg_photo
 bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
+frame_gozaresh_maskoni= tk.Frame(gozaresh_maskoni,bd=0,highlightthickness=0)
+frame_gozaresh_maskoni.pack(side="left", fill="y", padx=6, pady=15)
+
+title_lbl_gozaresh_maskoni = tk.Label(gozaresh_maskoni,text="گزارش مسکونی",bg="#052340",fg="#00BFFF",font=("Shabnam", 15))
+title_lbl_gozaresh_maskoni.place(x=40, y=25)
+
 noe_gozaresh_maskoni=tk.Label(gozaresh_maskoni,text=" نوع گزارش ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
 noe_gozaresh_maskoni.place(x=470, y=76)
 
 error_label_maskoni=tk.Label(gozaresh_maskoni,text='',font=("Shabnam",10),fg="#E91414",bg="#FFFFFF")
-error_label_maskoni.place(x=110,y=230,width=450,height=30)
+error_label_maskoni.place(x=190,y=230,width=260,height=25)
 
 gozaresh_file_combo_maskoni=ttk.Combobox(gozaresh_maskoni)
 gozaresh_file_combo_maskoni["values"] = ("گزارش فایل اجاره","گزارش فایل فروش","گزارش فایل درخواست اجاره","گزارش فایل درخواست خرید")
 gozaresh_file_combo_maskoni["state"]=["readonly"]
 gozaresh_file_combo_maskoni.config(width=40)
 gozaresh_file_combo_maskoni.configure(justify="center")
-gozaresh_file_combo_maskoni.place(x=220, y=80)
+gozaresh_file_combo_maskoni.place(x=190, y=80)
 
 save_gozaresh_maskoni = tk.Button(gozaresh_maskoni, text="تایید", command=excel_gozaresh_maskoni, bg="#00BFFF", fg="#000000", width=10, height=1)
 save_gozaresh_maskoni.place(x=95, y=320)
@@ -6272,11 +6275,17 @@ bg_label = tk.Label(gozaresh_edari_tejari, image=bg_photo)
 bg_label.image = bg_photo  # خیلی مهم: جلوگیری از پاک شدن عکس
 bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
+frame_gozaresh_edari_tejari= tk.Frame(gozaresh_edari_tejari,bd=0,highlightthickness=0)
+frame_gozaresh_edari_tejari.pack(side="left", fill="y", padx=6, pady=15)
+
+title_lbl_gozaresh_edari_tejari = tk.Label(gozaresh_edari_tejari,text="گزارش اداری/تجاری",bg="#052340",fg="#00BFFF",font=("Shabnam", 15))
+title_lbl_gozaresh_edari_tejari.place(x=40, y=25)
+
 noe_gozaresh_edari_tejari=tk.Label(gozaresh_edari_tejari,text=" نوع گزارش ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
 noe_gozaresh_edari_tejari.place(x=470, y=76)
 
 error_label_edari_tejari=tk.Label(gozaresh_edari_tejari,text='',font=("Shabnam",10),fg="#E91414",bg="#FFFFFF")
-error_label_edari_tejari.place(x=110,y=230,width=450,height=30)
+error_label_edari_tejari.place(x=190,y=230,width=260,height=25)
 
 gozaresh_file_combo_edari_tejari=ttk.Combobox(gozaresh_edari_tejari)
 gozaresh_file_combo_edari_tejari["values"] = ("گزارش فایل اجاره","گزارش فایل فروش","گزارش فایل درخواست اجاره","گزارش فایل درخواست خرید")
@@ -6310,11 +6319,17 @@ bg_label = tk.Label(gozaresh_bagh_zamin, image=bg_photo)
 bg_label.image = bg_photo  # خیلی مهم: جلوگیری از پاک شدن عکس
 bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
+frame_gozaresh_bagh_zamin= tk.Frame(gozaresh_bagh_zamin,bd=0,highlightthickness=0)
+frame_gozaresh_bagh_zamin.pack(side="left", fill="y", padx=6, pady=15)
+
+title_lbl_gozaresh_bagh_zamin = tk.Label(gozaresh_bagh_zamin,text="گزارش باغ/زمین",bg="#052340",fg="#00BFFF",font=("Shabnam", 15))
+title_lbl_gozaresh_bagh_zamin.place(x=40, y=25)
+
 noe_gozaresh_bagh_zamin=tk.Label(gozaresh_bagh_zamin,text=" نوع گزارش ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
 noe_gozaresh_bagh_zamin.place(x=470, y=76)
 
 error_label_bagh_zamin=tk.Label(gozaresh_bagh_zamin,text='',font=("Shabnam",10),fg="#E91414",bg="#FFFFFF")
-error_label_bagh_zamin.place(x=50,y=230,width=450,height=30)
+error_label_bagh_zamin.place(x=60,y=230,width=390,height=25)
 
 gozaresh_file_combo_bagh_zamin=ttk.Combobox(gozaresh_bagh_zamin)
 gozaresh_file_combo_bagh_zamin["values"] = ("گزارش فایل اجاره باغ","گزارش فایل فروش باغ","گزارش فایل درخواست اجاره باغ","گزارش فایل درخواست خرید باغ",
@@ -6349,11 +6364,17 @@ bg_label = tk.Label(gozaresh_kargah, image=bg_photo)
 bg_label.image = bg_photo  # خیلی مهم: جلوگیری از پاک شدن عکس
 bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
+frame_gozaresh_kargah= tk.Frame(gozaresh_kargah,bd=0,highlightthickness=0)
+frame_gozaresh_kargah.pack(side="left", fill="y", padx=6, pady=15)
+
+title_lbl_gozaresh_kargah = tk.Label(gozaresh_kargah,text="گزارش کارگاه",bg="#052340",fg="#00BFFF",font=("Shabnam", 15))
+title_lbl_gozaresh_kargah.place(x=40, y=25)
+
 type_gozaresh_kargah=tk.Label(gozaresh_kargah,text=" نوع گزارش ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
 type_gozaresh_kargah.place(x=470, y=76)
 
 error_label_kargah=tk.Label(gozaresh_kargah,text='',font=("Shabnam",10),fg="#E91414",bg="#FFFFFF")
-error_label_kargah.place(x=110,y=230,width=450,height=30)
+error_label_kargah.place(x=190,y=230,width=260,height=25)
 
 gozaresh_file_combo_kargah=ttk.Combobox(gozaresh_kargah)
 gozaresh_file_combo_kargah["values"] = ("گزارش فایل اجاره","گزارش فایل فروش","گزارش فایل درخواست اجاره","گزارش فایل درخواست خرید")
