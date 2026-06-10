@@ -339,14 +339,14 @@ def creat_word_gharardad():
 
         # ساخت فایل ورد
 
-        if contract_type == "خریدو فروش":
+        if contract_type =="خرید و فروش ":
             template_path = "docx files/قرارداد خام خرید و فروش.docx"
 
         elif contract_type == "اجاره":
             template_path = "docx files/قرارداد خام اجاره.docx"
 
         elif contract_type == "مشارکت":
-            template_path = "docx files/قرارداد  خام مشارکت.docx"
+            template_path = "docx files/قرارداد خام مشارکت.docx"
 
         else:
             messagebox.showerror(
@@ -1000,7 +1000,11 @@ def back_main_ghararadad():
     gharardad_window.withdraw()
     type_gharardad_combo.set("")
     type_melk_gharardad_combo.set("")
+    name_shakhs_aval_gharardad_entry.delete(0,tk.END)
+    name_shakhs_dovom_gharardad_entry.delete(0,tk.END)
+    tozih_gharardad_entry.delete(0,tk.END)
     code_label.config(text="")
+    
     
 
 #endregion
@@ -1070,7 +1074,7 @@ def back_to_ejareh_bagh_zamin():
     option_file_frame_ejareh_bagh_zamin.withdraw()
     option_file_frame_ejareh_bagh_zamin.grab_release()
 #--------------------برگشت اجاره کارگاه------------------------------------------------
-def  back_to_ejareh_karghah():
+def back_to_ejareh_karghah():
      option_file_frame_ejareh_kargah.withdraw()
      option_file_frame_ejareh_kargah.grab_release()
 #-------برگشت فروش مسکونی------------------    
@@ -6624,7 +6628,7 @@ type_melk_gharardad_combo.place(x=25,y=80)
 type_gharardad=tk.Label(main_frame,text="نوع قرارداد",bg="#052340",fg="#FFFFFF",font=("Shabnam",8))
 type_gharardad.place(x=350,y=165)
 type_gharardad_combo=ttk.Combobox(main_frame)
-type_gharardad_combo["values"]=("خریدو فروش ","اجاره","مشارکت")
+type_gharardad_combo["values"]=("خرید و فروش ","اجاره","مشارکت")
 type_gharardad_combo["state"]=["readonly"]
 type_gharardad_combo.config(width=40)
 type_gharardad_combo.configure(justify="center")
