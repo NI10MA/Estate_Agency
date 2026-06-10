@@ -1000,7 +1000,8 @@ def back_main_ghararadad():
     gharardad_window.withdraw()
     type_gharardad_combo.set("")
     type_melk_gharardad_combo.set("")
-    #ادامه پاک شدن فیلد ها 
+    code_label.config(text="")
+    
 
 #endregion
 #region #توابع تایید اپشن ها 
