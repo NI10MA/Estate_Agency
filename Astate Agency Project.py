@@ -10,7 +10,7 @@ import os
 from openpyxl import Workbook
 import datetime
 from tkinter import filedialog
-import customtkinter as ctk
+from docxtpl import DocxTemplate
 
 
 def get_connection():
@@ -265,6 +265,161 @@ def excel_gozaresh_kargah():
         )
 def gharardadeha():
     pass
+#endregion
+#------------------------------تابع خروجی فایل ورد قرارداد-----------------
+#region
+def creat_word_gharardad():
+    try:
+        property_type = type_melk_gharardad_combo.get()
+        contract_type = type_gharardad_combo.get()
+        party_one = name_shakhs_aval_gharardad_entry.get()
+        party_two = name_shakhs_dovom_gharardad_entry.get()
+        description = tozih_gharardad_entry.get("1.0", "end-1c")
+        # اعتبارسنجی
+        if property_type == "":
+            messagebox.showwarning("خطا", "نوع ملک را انتخاب کنید")
+            return
+        if contract_type == "":
+            messagebox.showwarning("خطا", "نوع قرارداد را انتخاب کنید")
+            return
+        if party_one == "":
+            messagebox.showwarning("خطا", "نام طرف اول را وارد کنید")
+            return
+        if party_two == "":
+            messagebox.showwarning("خطا", "نام طرف دوم را وارد کنید")
+            return
+        # اتصال دیتابیس
+        db = get_connection()
+        cursor = db.cursor()
+        cursor.execute("CREATE DATABASE IF NOT EXISTS state_agency")
+        cursor.execute("USE state_agency")
+        cursor.execute("""
+        CREATE TABLE IF NOT EXISTS gharardad(
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            tracking_code VARCHAR(30),
+            property_type VARCHAR(40),
+            contract_type VARCHAR(40),
+            party_one VARCHAR(40),
+            party_two VARCHAR(40),
+            description VARCHAR(225)
+        )
+        """)
+        # ثبت اولیه قرارداد
+        cursor.execute("""
+        INSERT INTO gharardad
+        (property_type,contract_type,party_one,party_two,description
+        )
+        VALUES (%s,%s,%s,%s,%s)
+        """,
+        (
+            property_type,
+            contract_type,
+            party_one,
+            party_two,
+            description
+        ))
+
+        db.commit()
+
+        # تولید کد رهگیری
+
+        last_id = cursor.lastrowid
+        tracking_code = f"GH-{last_id:06d}"
+        cursor.execute("""
+        UPDATE gharardad
+        SET tracking_code=%s
+        WHERE id=%s
+        """,
+        (
+            tracking_code,
+            last_id
+        ))
+
+        db.commit()
+
+        # ساخت فایل ورد
+
+        if contract_type == "خریدو فروش":
+            template_path = "docx files/قرارداد خام خرید و فروش.docx"
+
+        elif contract_type == "اجاره":
+            template_path = "docx files/قرارداد خام اجاره.docx"
+
+        elif contract_type == "مشارکت":
+            template_path = "docx files/قرارداد  خام مشارکت.docx"
+
+        else:
+            messagebox.showerror(
+                "خطا",
+                "نوع قرارداد نامعتبر است"
+            )
+            db.close()
+            return
+
+        # ساخت فایل ورد
+
+        doc = DocxTemplate(template_path)
+
+        doc.render({
+            "tracking_code": tracking_code,
+            "property_type": property_type,
+            "contract_type": contract_type,
+            "party_one": party_one,
+            "party_two": party_two,
+            "description": description
+        })
+
+        # انتخاب محل ذخیره
+
+        file_name = f"{tracking_code}_{datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.docx"
+
+        file_path = filedialog.asksaveasfilename(
+            title="ذخیره فایل قرارداد",
+            initialfile=file_name,
+            defaultextension=".docx",
+            filetypes=[("Word Files", "*.docx")]
+        )
+
+        if not file_path:
+            db.close()
+            return
+
+        # ذخیره فایل
+
+        doc.save(file_path)
+
+        # نمایش کد رهگیری
+
+        for widget in code_frame.winfo_children():
+            widget.destroy()
+
+        code_label = tk.Label(
+            code_frame,
+            text=tracking_code,
+            fg="#00BFFF",
+            bg="#052340",
+            font=("Consolas", 11, "bold")
+        )
+
+        code_label.place(
+            relx=0.5,
+            rely=0.5,
+            anchor="center"
+        )
+
+        db.close()
+
+        messagebox.showinfo(
+            "موفق",
+            f"قرارداد با موفقیت ایجاد شد\n\nکد رهگیری: {tracking_code}"
+        )
+
+    except Exception as e:
+
+        messagebox.showerror(
+            "خطا",
+            str(e)
+        )
 #endregion
 #---------تابع پاک کردن فرم اصلی----------------
 #region
@@ -6444,7 +6599,7 @@ melk_image=tk.Label(main_frame,bg="#052340",fg="#00BFFF",image=image_melk)
 melk_image.place(x=440,y=60)
 
 type_gharardad_image=tk.Label(main_frame,bg="#052340",fg="#00BFFF",image=image_type_gharardad)
-type_ghraradad_image.place(x=440,y=160)
+type_gharardad_image.place(x=440,y=160)
 
 shakhs_aval_image=tk.Label(main_frame,bg="#052340",fg="#00BFFF",image=image_person)
 shakhs_aval_image.place(x=440,y=230)
@@ -6494,7 +6649,7 @@ tozih_gharardad_entry.place(x=25,y=425,width=260,height=45)
 khat_vasat=tk.Frame(main_frame, bg="#3A6EA5",height=1)
 khat_vasat.place(x=25,y=490,width=480)
 
-word_btn=tk.Button(main_frame,bg="#0096D6",text="دریافت فایل ورد قرارداد",fg="#ffffff",image=image_word,compound="left")
+word_btn=tk.Button(main_frame,bg="#0096D6",text="دریافت فایل ورد قرارداد",fg="#ffffff",image=image_word,compound="left",command=creat_word_gharardad)
 word_btn.place(x=140,y=497,width=200)
 label_titr_vasat1 = tk.Label(main_frame,text="با کلیک بر دکمه بالا، فایل قرارداد مورد نظر در قالب",fg="white",bg="#052340",font=("Shabnam", 8))
 label_titr_vasat1.place(x=230, y=547)
@@ -6516,6 +6671,8 @@ code_frame=tk.Frame(seconde_frame,highlightbackground="#00BFFF",highlightthickne
 code_frame.configure(bg="#052340")
 code_frame.place(x=160,y=24)
 
+code_label= tk.Label(code_frame,text=" ",fg="#ffffff",bg="#052340",font=("Shabnam", 8))
+code_label.place(x=160,y=24)
 
 
 label_titr_akhar= tk.Label(seconde_frame,text="این کد برای پیگیری قرارداد در بخش گزارش استفاده میشود",fg="#ffffff",bg="#052340",font=("Shabnam", 7))
