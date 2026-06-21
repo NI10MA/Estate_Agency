@@ -1528,7 +1528,7 @@ def sabt_forosh_maskoni():
         # دستور ساده و انگلیسی خالص
         sql_create = """
         CREATE TABLE IF NOT EXISTS sabt_forosh_maskoni (
-            id INT AUTO_INCREMENT PRIMARY KEY,
+            id INT AUTO_INCREMENT PRIMARY KEY ,
             type_melk VARCHAR(50) NOT NULL,
             sal_sakht VARCHAR(20),
             address VARCHAR(225),
@@ -3204,6 +3204,50 @@ def sabt_darkhast_kargah(event=None):
             db.close()
 #--------------------پایان تابع ثبت درخواست----------------
 #endregion
+#------------------------توابع سرچ--------------------
+#regoin
+def search():
+    file=combo_file_type.get()
+    melk=melk_type_combo.get()
+    db = get_connection()
+    cursor = db.cursor()
+    cursor.execute("CREATE DATABASE IF NOT EXISTS state_agency")
+    cursor.execute("USE state_agency")
+    try:
+        if file=="فروش":
+            if melk=="مسکونی":
+                cursor.execute(
+                    """
+                    SELECT address, gheimat_kol, type_melk, name_malk
+                    FROM sabt_forosh_maskoni
+                    WHERE address LIKE %s
+                    """,
+                    (f"%{address_entry.get().strip()}%",)
+                )
+                
+                results = cursor.fetchall()
+                if results:
+                    # پاک کردن نتایج قبلی
+                    for item in tree.get_children():
+                        tree.delete(item)
+
+                    # نمایش نتایج جدید
+                    for row in results:
+                        tree.insert("", "end", values=(
+                            row[0],  # آدرس
+                            row[1],  # قیمت
+                            row[2],  # نوع ملک
+                            row[3],  # نام مالک
+    ))
+            else:
+               messagebox.showerror("یافت نشد", "هیچ اطلاعاتی با این مشخصات پیدا نشد")
+    except Exception as e:
+       messagebox.showerror("Error", f"خطا: {e}")
+        
+    
+
+
+#endregion
 #---#----#----#----#----#----------  گرافیک   ----------#----#----#----#-----#-----------
 # ---------دکمه فایل با منوی کشویی ------------------
 #region 
@@ -3309,7 +3353,7 @@ address_entry = tk.Entry(box_jostojo_malk3,bg="#FFFFFF", fg="#000000",font=("Sha
 address_entry.pack(padx=20,pady=10)
 
 # ---------------------دکمه جستجوی ملک-----------------
-search_btn = tk.Button(frame_jostojo_melk_left, text="    جستجو    " , bg="#00BFFF", fg="#000000", font=("Shabnam", 13), command=open_file)
+search_btn = tk.Button(frame_jostojo_melk_left, text="    جستجو    " , bg="#00BFFF", fg="#000000", font=("Shabnam", 13), command=search)
 search_btn.pack(pady=10)
 #=====================================================
 #endregion
@@ -3318,7 +3362,7 @@ search_btn.pack(pady=10)
 frame_list_amlack_centre = tk.LabelFrame(contant_frame, text="لیست املاک", bg="#052340",fg="#00BFFF", font=("Shabnam", 13))
 frame_list_amlack_centre.pack(side="left", fill="both", expand=True, padx=4, pady=15)
 
-columns = ["آدرس", "قیمت ", "نوع ملک ", "متراژ"]
+columns = ["آدرس", "قیمت ", "نوع ملک ", "نام مالک"]
 tree = ttk.Treeview(frame_list_amlack_centre, columns=columns, show="headings")
 for textt in columns:
     tree.heading(textt,text=textt)
