@@ -1541,8 +1541,8 @@ def sabt_forosh_maskoni():
             garmayesh VARCHAR(20),
             kaf VARCHAR(20),
             toilet VARCHAR(20),
-            name_malk VARCHAR(20),
-            shomareh_malk INT,
+            name_malek VARCHAR(20),
+            shomareh_malek INT,
             gheimat_kol DECIMAL(15,2)
 
         )
@@ -1552,7 +1552,7 @@ def sabt_forosh_maskoni():
         sql_insert = """
         INSERT INTO sabt_forosh_maskoni 
         (type_melk,sal_sakht,address,tabaghe,vahed,otagh,parking,asansor,
-        anbari,sarmayesh,garmayesh,kaf,toilet,name_malk,shomareh_malk,gheimat_kol)
+        anbari,sarmayesh,garmayesh,kaf,toilet,name_malek,shomareh_malek,gheimat_kol)
         VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
         """
         values = (
@@ -1611,8 +1611,8 @@ def sabt_forosh_edari_tejari():
             aab_va_gaz VARCHAR(20),
             system_sarmayesh VARCHAR(20),
             system_garmayesh VARCHAR(20),
-            name_malk VARCHAR(20),
-            shomareh_malk INT,
+            name_malek VARCHAR(20),
+            shomareh_malek INT,
             gheimat_kol DECIMAL(15,2)
 
         )
@@ -1622,7 +1622,7 @@ def sabt_forosh_edari_tejari():
         sql_insert = """
         INSERT INTO sabt_forosh_edari_tejari
         (type_melk,metraj_melk,sal_sakht,address,tabaghe,vahed,parking,
-        asansor,anbari,aab_va_gaz,system_sarmayesh,system_garmayesh,name_malk,shomareh_malk,gheimat_kol)
+        asansor,anbari,aab_va_gaz,system_sarmayesh,system_garmayesh,name_malek,shomareh_malek,gheimat_kol)
         VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
         """
         values = (
@@ -1860,8 +1860,8 @@ def sabt_forosh_kargah():
             toilet VARCHAR(20),
             hamam VARCHAR(20),
             otagh VARCHAR(20),
-            name_malk VARCHAR(20),
-            shomareh_malk INT,
+            name_malek VARCHAR(20),
+            shomareh_malek INT,
             gheimat_kol DECIMAL(15,2)
         )
         """
@@ -1869,7 +1869,7 @@ def sabt_forosh_kargah():
         sql_insert = """
         INSERT INTO sabt_forosh_kargah
         (karbari_zamin,metraj,address,sal_sakht,
-        vaziat_bargh,garmayesh,fan,panke,kooler_abi,kooler_gazi,vaziat_ab,abzar,toilet,hamam,otagh,name_malk,shomareh_malk,gheimat_kol)
+        vaziat_bargh,garmayesh,fan,panke,kooler_abi,kooler_gazi,vaziat_ab,abzar,toilet,hamam,otagh,name_malek,shomareh_malek,gheimat_kol)
         VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
         """
         values = (
@@ -1934,8 +1934,8 @@ def sabt_ejareh_maskoni():
             toilet VARCHAR(20),
             ejareh VARCHAR(20),
             pish VARCHAR(20),
-            name_malk VARCHAR(20),
-            shomareh_malk INT
+            name_malek VARCHAR(20),
+            shomareh_malek INT
         )
         """
 
@@ -1944,7 +1944,7 @@ def sabt_ejareh_maskoni():
         sql_insert = """
         INSERT INTO sabt_ejareh_maskoni 
         (type_melk,sal_sakht,address,tabaghe,vahed,otagh,parking,
-        asansor,anbari,sarmayesh,garmayesh,kaf,toilet,ejareh,pish,name_malk,shomareh_malk)
+        asansor,anbari,sarmayesh,garmayesh,kaf,toilet,ejareh,pish,name_malwk,shomareh_malek)
         VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
         """
 
@@ -2007,8 +2007,8 @@ def sabt_ejareh_edari_tejari():
             system_garmayesh VARCHAR(20),
             gheimat_vadie DECIMAL(15,2),
             gheimat_ejareh DECIMAL(15,2),
-            name_malk VARCHAR(20),
-            shomareh_malk INT
+            name_malek VARCHAR(20),
+            shomareh_malek INT
         )
         """
         cursor.execute(sql_create)
@@ -2017,7 +2017,7 @@ def sabt_ejareh_edari_tejari():
         INSERT INTO sabt_ejareh_edari_tejari
         (type_melk,metraj_melk,sal_sakht,address,tabaghe,vahed,parking,asansor,
         anbari,aab_va_gaz,system_sarmayesh,system_garmayesh,
-        gheimat_vadie,gheimat_ejareh,name_malk,shomareh_malk)
+        gheimat_vadie,gheimat_ejareh,name_malek,shomareh_malek)
         VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
         """
         values = (
@@ -2260,8 +2260,8 @@ def sabt_ejareh_kargah():
             toilet VARCHAR(20),
             hamam VARCHAR(20),
             otagh VARCHAR(20),
-            name_malk VARCHAR(20),
-            shomareh_malk INT
+            name_malek VARCHAR(20),
+            shomareh_malek INT
 
         )
         """
@@ -2270,7 +2270,7 @@ def sabt_ejareh_kargah():
         INSERT INTO sabt_ejareh_kargah
         (karbari_zamin,metraj,loctaion_and_address,
         gheimat_vadie,mablagh_ejareh,time_ejare,sal_sakht,vaziat_bargh,
-        garmayesh,fan,panke,kooler_abi,kooler_gazi,vaziat_ab,abzar,toilet,hamam,otagh,name_malk,shomareh_malk)
+        garmayesh,fan,panke,kooler_abi,kooler_gazi,vaziat_ab,abzar,toilet,hamam,otagh,name_malek,shomareh_malek)
         VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
         """
         values = (
@@ -3272,42 +3272,74 @@ def open_file_forosh_edari_tejari():
 #------------------------توابع سرچ--------------------
 #regoin
 def search():
-    file=combo_file_type.get()
-    melk=melk_type_combo.get()
+    file = combo_file_type.get()
+    melk = melk_type_combo.get()
+
     db = get_connection()
     cursor = db.cursor()
-    cursor.execute("CREATE DATABASE IF NOT EXISTS state_agency")
+    cursor.execute("CREATE DATABASE IF NOT EXISTS state_agency") 
     cursor.execute("USE state_agency")
+
     try:
-        if file=="فروش":
-            if melk=="مسکونی":
-                cursor.execute(
-                    """
-                    SELECT address, gheimat_kol, type_melk, name_malk
+        if file == "فروش":
+
+            if melk == "مسکونی":
+                cursor.execute("""
+                    SELECT address, gheimat_kol, type_melk, name_malek
                     FROM sabt_forosh_maskoni
                     WHERE address LIKE %s
-                    """,
-                    (f"%{address_entry.get().strip()}%",)
-                )
-                
-                results = cursor.fetchall()
-                if results:
-                    # پاک کردن نتایج قبلی
-                    for item in tree.get_children():
-                        tree.delete(item)
+                """, (f"%{address_entry.get().strip()}%",))
 
-                    # نمایش نتایج جدید
-                    for row in results:
-                        tree.insert("", "end", values=(
-                            row[0],  # آدرس
-                            row[1],  # قیمت
-                            row[2],  # نوع ملک
-                            row[3],  # نام مالک
-    ))
-            else:
-               messagebox.showerror("یافت نشد", "هیچ اطلاعاتی با این مشخصات پیدا نشد")
+            elif melk == "مغازه_تجاری":
+                cursor.execute("""
+                    SELECT address, gheimat_kol, type_melk, name_malek
+                    FROM sabt_forosh_edari_tejari
+                    WHERE address LIKE %s
+                """, (f"%{address_entry.get().strip()}%",))
+
+            elif melk == "زمین":
+                cursor.execute("""
+                    SELECT address, gheimat_kol, type_melk, name_malek
+                    FROM forosh_zamin
+                    WHERE address LIKE %s
+                """, (f"%{address_entry.get().strip()}%",))
+
+            elif melk == "باغ":
+                cursor.execute("""
+                    SELECT address, gheimat_kol, type_melk, name_malek
+                    FROM forosh_bagh
+                    WHERE address LIKE %s
+                """, (f"%{address_entry.get().strip()}%",))
+
+            elif melk == "کارگاه":
+                cursor.execute("""
+                    SELECT address, gheimat_kol, type_melk, name_malek
+                    FROM sabt_forosh_kargah
+                    WHERE address LIKE %s
+                """, (f"%{address_entry.get().strip()}%",))
+
+        else:
+            messagebox.showerror("خطا", "نوع ملک نامعتبر است")
+            return
+
+        results = cursor.fetchall()
+
+        # پاک کردن نتایج قبلی
+        for item in tree.get_children():
+            tree.delete(item)
+
+        if results:
+            for row in results:
+                tree.insert("", "end", values=row)
+        else:
+           messagebox.showinfo("یافت نشد", "هیچ موردی پیدا نشد")
+
     except Exception as e:
-       messagebox.showerror("Error", f"خطا: {e}")
+        messagebox.showerror("Error", f"خطا: {e}")
+
+    finally:
+        cursor.close()
+        db.close()
 #endregion
 #---#----#----#----#----#----------  گرافیک   ----------#----#----#----#-----#-----------
 # ---------دکمه فایل با منوی کشویی ------------------
@@ -3372,7 +3404,7 @@ box_jostojo_malk1.pack(padx=6, pady=15)
 file_type = tk.Label(box_jostojo_malk1,text="نوع فایل",bg="#052340", fg="#FFFFFF",font=("Shabnam", 13))
 file_type.pack(padx=15,pady=10, side="right")
 combo_file_type= ttk.Combobox(box_jostojo_malk1)
-combo_file_type["values"] = ("رهن/اجاره","درخواست","فروش","مشارکت",)
+combo_file_type["values"] = ("رهن/اجاره","درخواستی","فروش","مشارکت",)
 combo_file_type["state"]=["readonly"]
 combo_file_type.pack(padx=10, pady=10) 
 
@@ -3382,7 +3414,7 @@ box_jostojo_malk2.pack(padx=6, pady=15)
 melk_type_lable = tk.Label(box_jostojo_malk2,text="نوع ملک",bg="#052340", fg="#FFFFFF",font=("Shabnam", 13))
 melk_type_lable.pack(padx=15,pady=10, side="right")
 melk_type_combo= ttk.Combobox(box_jostojo_malk2)
-melk_type_combo["values"] = ("مسکونی","مغازه/ تجاری"," باغ / زمین","کارگاه")
+melk_type_combo["values"] = ("مسکونی","مغازه_تجاری","زمین","کارگاه","باغ")
 melk_type_combo["state"]=["readonly"]
 melk_type_combo.pack(padx=10, pady=10) 
 
