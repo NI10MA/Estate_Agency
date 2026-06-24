@@ -11,6 +11,8 @@ from openpyxl import Workbook
 import datetime
 from tkinter import filedialog
 from docxtpl import DocxTemplate
+from tkinter import filedialog
+import shutil
 
 
 def get_connection():
@@ -1004,12 +1006,10 @@ def back_main_ghararadad():
     name_shakhs_dovom_gharardad_entry.delete(0,tk.END)
     tozih_gharardad_entry.delete(0,tk.END)
     code_label.config(text="")
-    
-    
-
 #endregion
 #region #توابع تایید اپشن ها 
 #==============================
+#region
 def save_option_forosh_maskoni():
     option_file_frame_forosh_maskoni.withdraw()
     option_file_frame_forosh_maskoni.grab_release()
@@ -1130,7 +1130,6 @@ def back_mosharekat_exit():
     box_mosharekat.withdraw()
     box_mosharekat.grab_release()
 #endregion
-
 #============================================
 #--------باز و بسته کردن بین باکس ها----------------
 #-----بستن باکس و باز کردن صفحه اجاره مسکونی-----------
@@ -3204,6 +3203,72 @@ def sabt_darkhast_kargah(event=None):
             db.close()
 #--------------------پایان تابع ثبت درخواست----------------
 #endregion
+#----------------------------سیو تصاویر--------------------------
+#===================سیو تصاویر در پنجره فروش اداری و تجاری================
+#region
+def open_file_forosh_edari_tejari():
+
+    global selected_images_forosh_edari_tejari
+    global photo_refs_forosh_edari_tejari
+
+    file_paths = filedialog.askopenfilenames(
+        title="انتخاب تصاویر ملک",
+        filetypes=[
+            ("Image Files", "*.png *.jpg *.jpeg *.bmp *.webp")
+        ]
+    )
+
+    # حداکثر 4 تصویر
+    file_paths = list(file_paths[:4])
+
+    # ساخت پوشه روی دسکتاپ
+    desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
+    save_folder = os.path.join(desktop_path, "Forosh_Edari_Tejari")
+
+    os.makedirs(save_folder, exist_ok=True)
+
+    new_paths = []
+
+    # کپی تصاویر به پوشه پروژه
+    for path in file_paths:
+
+        filename = os.path.basename(path)
+
+        destination = os.path.join(save_folder, filename)
+
+        shutil.copy2(path, destination)
+
+        new_paths.append(destination)
+
+    # ذخیره مسیرهای جدید
+    selected_images_forosh_edari_tejari = new_paths
+
+    # پاک کردن تصاویر قبلی
+    for widget in image_frame_forosh_edari_tejari.winfo_children():
+        widget.destroy()
+
+    photo_refs_forosh_edari_tejari.clear()
+
+    # نمایش تصاویر
+    for i, path in enumerate(selected_images_forosh_edari_tejari):
+
+        try:
+
+            img = Image.open(path)
+
+            img.thumbnail((150, 110))
+
+            photo = ImageTk.PhotoImage(img)
+
+            photo_refs_forosh_edari_tejari.append(photo)
+
+            lbl = tk.Label(image_frame_forosh_edari_tejari,image=photo,bg="white",bd=1,relief="solid")
+
+            lbl.grid(row=i // 2,column=i % 2,padx=5,pady=5)
+
+        except Exception as e:
+            print("خطا در بارگذاری تصویر:", e)
+#endregion
 #------------------------توابع سرچ--------------------
 #regoin
 def search():
@@ -3243,10 +3308,6 @@ def search():
                messagebox.showerror("یافت نشد", "هیچ اطلاعاتی با این مشخصات پیدا نشد")
     except Exception as e:
        messagebox.showerror("Error", f"خطا: {e}")
-        
-    
-
-
 #endregion
 #---#----#----#----#----#----------  گرافیک   ----------#----#----#----#-----#-----------
 # ---------دکمه فایل با منوی کشویی ------------------
@@ -4835,10 +4896,14 @@ back_to_home_forosh_edari_tejari.place(x=280,y=520)
 zakhire_forosh_edari_tejari=tk.Button(forosh_edari_tejari,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=sabt_forosh_edari_tejari)
 zakhire_forosh_edari_tejari.place(x=130,y=520)
 
-photo_lbl2_forosh_edari_tejari = tk.Label(forosh_edari_tejari, text="[تصویر ملک]", bg="#ffffff", width=50, height=15)
-photo_lbl2_forosh_edari_tejari.place(x=60, y=85)
+selected_images_forosh_edari_tejari = []
+photo_refs_forosh_edari_tejari = []
 
-add_img_btn_forosh_edari_tejari = tk.Button(forosh_edari_tejari, text="افزودن تصویر", bg="#00BFFF", fg="black",command=open_file,height=2,width=13)
+image_frame_forosh_edari_tejari = tk.Frame(forosh_edari_tejari,bg="white",width=350,height=250)
+image_frame_forosh_edari_tejari.place(x=60, y=85)
+image_frame_forosh_edari_tejari.pack_propagate(False)
+
+add_img_btn_forosh_edari_tejari = tk.Button(forosh_edari_tejari, text="افزودن تصویر", bg="#00BFFF", fg="black",command=open_file_forosh_edari_tejari,height=2,width=13)
 add_img_btn_forosh_edari_tejari.place(x=60, y=370)
 
 forosh_edari_tejari.protocol("WM_DELETE_WINDOW", lambda: None)
