@@ -3317,6 +3317,44 @@ def search():
                     FROM sabt_forosh_kargah
                     WHERE address LIKE %s
                 """, (f"%{address_entry.get().strip()}%",))
+        elif file=="رهن_اجاره":
+            if melk=="مسکونی":
+                    cursor.execute("""
+                    SELECT address, gheimat_kol, type_melk, name_malek
+                    FROM sabt_ejareh_maskoni
+                    WHERE address LIKE %s
+                """, (f"%{address_entry.get().strip()}%",))
+            elif melk == "مغازه_تجاری":
+                    cursor.execute("""
+                    SELECT address, gheimat_kol, type_melk, name_malek
+                    FROM sabt_ejareh_edari_tejari
+                    WHERE address LIKE %s
+                """, (f"%{address_entry.get().strip()}%",))
+            elif melk == "زمین":
+                    cursor.execute("""
+                    SELECT address, gheimat_kol, type_melk, name_malek
+                    FROM ejareh_zamin
+                    WHERE address LIKE %s
+                """, (f"%{address_entry.get().strip()}%",))
+            elif melk == "باغ":
+                    cursor.execute("""
+                    SELECT address, gheimat_kol, type_melk, name_malek
+                    FROM ejareh_bagh
+                    WHERE address LIKE %s
+                """, (f"%{address_entry.get().strip()}%",))
+            elif melk == "کارگاه":
+                    cursor.execute("""
+                    SELECT address, gheimat_kol, type_melk, name_malek
+                    FROM sabt_forosh_kargah
+                    WHERE address LIKE %s
+                """, (f"%{address_entry.get().strip()}%",))
+        elif file=="درخواستی":
+            pass
+
+
+
+
+
 
         else:
             messagebox.showerror("خطا", "نوع ملک نامعتبر است")
@@ -3404,7 +3442,7 @@ box_jostojo_malk1.pack(padx=6, pady=15)
 file_type = tk.Label(box_jostojo_malk1,text="نوع فایل",bg="#052340", fg="#FFFFFF",font=("Shabnam", 13))
 file_type.pack(padx=15,pady=10, side="right")
 combo_file_type= ttk.Combobox(box_jostojo_malk1)
-combo_file_type["values"] = ("رهن/اجاره","درخواستی","فروش","مشارکت",)
+combo_file_type["values"] = ("رهن_اجاره","درخواستی","فروش","مشارکت",)
 combo_file_type["state"]=["readonly"]
 combo_file_type.pack(padx=10, pady=10) 
 
