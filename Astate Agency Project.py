@@ -482,7 +482,7 @@ header=tk.Frame(main_frame,bg="#052340",height=60)
 header.pack(fill='x')
 title_font=font.Font(family="Shabnam",size=22,weight="bold")
 title_label=tk.Label(header,text="آژانس املاک",fg="#00BFFF",bg="#052340",font=title_font)
-title_label.pack(pady=25)
+title_label.pack(pady=20)
 #endregion
 #-----------قسمت منوبار پروژه------------------------
 #---------------------فریم منو----------------------
@@ -518,9 +518,6 @@ def open_option1():
     option_file_frame_ejareh_maskoni.deiconify()
     option_file_frame_ejareh_maskoni.grab_set()
 
-def open_option2():
-    option_file_frame_forosh_maskoni.deiconify()
-    option_file_frame_forosh_maskoni.grab_set()
 
 def open_option3():
     option_file_frame_ejareh_edari_tajari.deiconify()
@@ -576,7 +573,7 @@ def back_home_ejareh_maskoni():
 def clear_entry_ejareh_maskoni():
     #خالی کردن  باکس های اجاره مسکونی
     sal_sakht_ejareh_maskoni_entry.delete(0,tk.END)
-    addrres_ejareh_maskoni_entry.delete(0,tk.END)
+    addrres_ejareh_maskoni_entry.delete("1.0",tk.END)
     tabaghe_ejareh_maskoni_entry.delete(0,tk.END)
     vahed_ejareh_maskoni_entry.delete(0,tk.END)
     otagh_ejareh_maskoni_entry.delete(0,tk.END)
@@ -596,12 +593,12 @@ def clear_entry_ejareh_maskoni():
 def back_home_forosh_maskoni():
     clear_entry_forosh_maskoni()
     root.deiconify()
-    forosh_rehn_page.withdraw()
+    forosh_maskoni_window.withdraw()
     delete_root()
 #--------------------------------پاک شدن Entry صفحه فروش مسکونی--------------------------
 def clear_entry_forosh_maskoni():
     sal_sakht_forosh_maskoni_entry.delete(0, tk.END)
-    addrres_forosh_maskoni_entry.delete(0, tk.END)
+    addrres_forosh_maskoni_entry.delete("1.0", tk.END)
     tabaghe_forosh_maskoni_entry.delete(0, tk.END)
     vahed_forosh_maskoni_entry.delete(0, tk.END)
     otagh_forosh_maskoni_entry.delete(0, tk.END)
@@ -1010,9 +1007,7 @@ def back_main_ghararadad():
 #region #توابع تایید اپشن ها 
 #==============================
 #region
-def save_option_forosh_maskoni():
-    option_file_frame_forosh_maskoni.withdraw()
-    option_file_frame_forosh_maskoni.grab_release()
+
 
 def save_option_forosh_edari_tejari():
     option_file_frame_forosh_edari_tejari.withdraw()
@@ -1157,10 +1152,10 @@ def ejareh_karghah():
     ejareh_karghah.deiconify() 
     box_rehn_ejareh.grab_release()
 #-----بستن باکس و باز کردن صفحه فروش مسکونی-----------
-def forosh_rehn_page():
+def forosh_maskoni_window():
     box_forosh.withdraw()
     root.withdraw()
-    forosh_rehn_page.deiconify() 
+    forosh_maskoni_window.deiconify() 
     box_forosh.grab_release()
 #-----بستن باکس و باز کردن صفحه فروش اداری/تجاری-----------
 def forosh_edari_tejari():
@@ -1240,7 +1235,7 @@ def sabt_radio_frosh():
     if selected2==0:
             box_forosh.withdraw()
             root.withdraw()
-            forosh_rehn_page.deiconify() 
+            forosh_maskoni_window.deiconify() 
             box_forosh.grab_release()
 
     elif selected2==2:
@@ -1544,6 +1539,7 @@ def sabt_forosh_maskoni():
             name_malek VARCHAR(20),
             shomareh_malek INT,
             gheimat_kol DECIMAL(15,2)
+            metraj VARCHAR(20)
 
         )
         """
@@ -1552,8 +1548,8 @@ def sabt_forosh_maskoni():
         sql_insert = """
         INSERT INTO sabt_forosh_maskoni 
         (type_melk,sal_sakht,address,tabaghe,vahed,otagh,parking,asansor,
-        anbari,sarmayesh,garmayesh,kaf,toilet,name_malek,shomareh_malek,gheimat_kol)
-        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+        anbari,sarmayesh,garmayesh,kaf,toilet,name_malek,shomareh_malek,gheimat_kol,metraj)
+        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
         """
         values = (
             melk_type_forosh_maskoni_entry.get(),
@@ -1571,7 +1567,8 @@ def sabt_forosh_maskoni():
             toilet_combo_forosh_maskoni.get(),
             name_malek_forosh_maskoni_entry.get(),
             shomareh_malek_forosh_maskoni_entry.get(),
-            float(gheimat_kol_forosh_maskoni_entry.get())
+            float(gheimat_kol_forosh_maskoni_entry.get()),
+            metraj_forosh_maskoni_entry().get()
 
         )
 
@@ -1935,7 +1932,8 @@ def sabt_ejareh_maskoni():
             ejareh VARCHAR(20),
             pish VARCHAR(20),
             name_malek VARCHAR(20),
-            shomareh_malek INT
+            shomareh_malek INT,
+            metraj VARCHAR(20)
         )
         """
 
@@ -1944,8 +1942,8 @@ def sabt_ejareh_maskoni():
         sql_insert = """
         INSERT INTO sabt_ejareh_maskoni 
         (type_melk,sal_sakht,address,tabaghe,vahed,otagh,parking,
-        asansor,anbari,sarmayesh,garmayesh,kaf,toilet,ejareh,pish,name_malwk,shomareh_malek)
-        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+        asansor,anbari,sarmayesh,garmayesh,kaf,toilet,ejareh,pish,name_malwk,shomareh_malek,metraj)
+        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
         """
 
         values = (
@@ -1965,7 +1963,8 @@ def sabt_ejareh_maskoni():
             float(gheimat_ejare_ejare_maskoni_entry.get()),
             float(gheimat_pish_ejare_maskoni_entry.get()),
             name_malek_ejareh_maskoni_entry.get(),
-            shomareh_malek_ejareh_maskoni_entry.get()
+            shomareh_malek_ejareh_maskoni_entry.get(),
+            metraj_ejareh_maskoni_entry.get()
 
         )
 
@@ -2379,15 +2378,16 @@ def sabt_darkhast_maskoni(event=None):
             toilet VARCHAR(20),
             gheimat_kol VARCHAR(20),
             name_moshtari VARCHAR(20),
-            shomareh_moshtari INT
+            shomareh_moshtari INT,
+            metraj VARCHAR(20)
             )
             """)
 
             sql_kharid = """
             INSERT INTO sabt_darkhast_kharid_maskoni 
             (type_melk,sal_sakht,address,tabaghe,vahed,otagh,parking,asansor,
-            anbari,sarmayesh,garmayesh,kaf,toilet,gheimat_kol,name_moshtari,shomareh_moshtari)
-            VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+            anbari,sarmayesh,garmayesh,kaf,toilet,gheimat_kol,name_moshtari,shomareh_moshtari,metraj)
+            VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
             """
 
             values_darkhast_kharid_maskoni = (
@@ -2406,7 +2406,8 @@ def sabt_darkhast_maskoni(event=None):
             toilet_combo_darkhast_maskoni.get(),
             gheimat_kol_darkhast_maskoni_entry.get(),
             name_moshtari_darkhast_maskoni_entry.get(),
-            shomareh_moshtari_darkhast_maskoni_entry.get()     
+            shomareh_moshtari_darkhast_maskoni_entry.get(),
+            metraj_darkhast_maskoni_entry.get()     
             )
 
             cursor.execute(sql_kharid, values_darkhast_kharid_maskoni)
@@ -2437,15 +2438,16 @@ def sabt_darkhast_maskoni(event=None):
             ejareh VARCHAR(20),
             pish VARCHAR(20),
             name_moshtari VARCHAR(20),
-            shomareh_moshtari INT
+            shomareh_moshtari INT,
+            metraj VARCHAR(20)
             )
              """)
 
             sql_ejareh = """
             INSERT INTO sabt_darkhast_ejareh_maskoni 
             (type_melk,sal_sakht,address,tabaghe,vahed,otagh,parking,
-            asansor,anbari,sarmayesh,garmayesh,kaf,toilet,ejareh,pish,name_moshtari,shomareh_moshtari)
-            VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+            asansor,anbari,sarmayesh,garmayesh,kaf,toilet,ejareh,pish,name_moshtari,shomareh_moshtari,metraj)
+            VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
             """
 
             values_darkhast_ejareh_maskoni= (
@@ -2465,7 +2467,8 @@ def sabt_darkhast_maskoni(event=None):
             mablagh_ejare_darkhast_maskoni_entry.get(),
             gheimat_pish_darkhast_maskoni_entry.get(),
             name_moshtari_darkhast_maskoni_entry.get(),
-            shomareh_moshtari_darkhast_maskoni_entry.get()
+            shomareh_moshtari_darkhast_maskoni_entry.get(),
+            metraj_darkhast_maskoni_entry.get()
             )
 
             cursor.execute(sql_ejareh, values_darkhast_ejareh_maskoni)
@@ -3285,76 +3288,143 @@ def search():
 
             if melk == "مسکونی":
                 cursor.execute("""
-                    SELECT address, gheimat_kol, type_melk, name_malek
+                    SELECT id,"sabt_forosh_maskoni",address, gheimat_kol, type_melk, name_malek ,'فروش' AS noe_file
                     FROM sabt_forosh_maskoni
                     WHERE address LIKE %s
                 """, (f"%{address_entry.get().strip()}%",))
 
-            elif melk == "مغازه_تجاری":
+            elif melk == "اداری_تجاری":
                 cursor.execute("""
-                    SELECT address, gheimat_kol, type_melk, name_malek
+                    SELECT id,"sabt_forosh_edari_tejari",address, gheimat_kol, type_melk, name_malek,'فروش' AS noe_file
                     FROM sabt_forosh_edari_tejari
                     WHERE address LIKE %s
                 """, (f"%{address_entry.get().strip()}%",))
 
             elif melk == "زمین":
                 cursor.execute("""
-                    SELECT address, gheimat_kol, type_melk, name_malek
+                    SELECT id,"forosh_zamin",address, gheimat_kol, type_melk, name_malek,'فروش' AS noe_file
                     FROM forosh_zamin
                     WHERE address LIKE %s
                 """, (f"%{address_entry.get().strip()}%",))
 
             elif melk == "باغ":
                 cursor.execute("""
-                    SELECT address, gheimat_kol, type_melk, name_malek
+                    SELECT id,"forosh_bagh",address, gheimat_kol, type_melk, name_malek,'فروش' AS noe_file
                     FROM forosh_bagh
                     WHERE address LIKE %s
                 """, (f"%{address_entry.get().strip()}%",))
 
             elif melk == "کارگاه":
                 cursor.execute("""
-                    SELECT address, gheimat_kol, type_melk, name_malek
+                    SELECT id,"sabt_forosh_kargah",address, gheimat_kol, type_melk, name_malek,'فروش' AS noe_file
                     FROM sabt_forosh_kargah
                     WHERE address LIKE %s
                 """, (f"%{address_entry.get().strip()}%",))
         elif file=="رهن_اجاره":
             if melk=="مسکونی":
                     cursor.execute("""
-                    SELECT address, gheimat_kol, type_melk, name_malek
+                    SELECT id,"sabt_ejareh_maskoni",address, gheimat_kol, type_melk, name_malek
+                    ,'اجاره' AS noe_file
                     FROM sabt_ejareh_maskoni
                     WHERE address LIKE %s
                 """, (f"%{address_entry.get().strip()}%",))
-            elif melk == "مغازه_تجاری":
+            elif melk == "اداری_تجاری":
                     cursor.execute("""
-                    SELECT address, gheimat_kol, type_melk, name_malek
+                    SELECT id,"sabt_ejareh_edari_tejari",address, gheimat_kol, type_melk, name_malek ,'اجاره' AS noe_file
                     FROM sabt_ejareh_edari_tejari
                     WHERE address LIKE %s
                 """, (f"%{address_entry.get().strip()}%",))
             elif melk == "زمین":
                     cursor.execute("""
-                    SELECT address, gheimat_kol, type_melk, name_malek
+                    SELECT id,"ejareh_zamin",address, gheimat_kol, type_melk, name_malek ,'اجاره' AS noe_file
                     FROM ejareh_zamin
                     WHERE address LIKE %s
                 """, (f"%{address_entry.get().strip()}%",))
             elif melk == "باغ":
                     cursor.execute("""
-                    SELECT address, gheimat_kol, type_melk, name_malek
+                    SELECT id,"ejareh_bagh",address, gheimat_kol, type_melk, name_malek ,'اجاره' AS noe_file
                     FROM ejareh_bagh
                     WHERE address LIKE %s
                 """, (f"%{address_entry.get().strip()}%",))
             elif melk == "کارگاه":
                     cursor.execute("""
-                    SELECT address, gheimat_kol, type_melk, name_malek
+                    SELECT id,"sabt_forosh_kargah",address, gheimat_kol, type_melk, name_malek ,'اجاره' AS noe_file
                     FROM sabt_forosh_kargah
                     WHERE address LIKE %s
                 """, (f"%{address_entry.get().strip()}%",))
-        elif file=="درخواستی":
-            pass
+        elif file=="درخواست ها":
+            if melk=="maskoni":
+                cursor.execute("""
+                SELECT id,"darkhast_kharid_maskoni",address, gheimat_kol, type_melk, name_malk, 'درخواست خرید'AS noe_file
+                FROM darkhast_kharid_maskoni
+                WHERE address LIKE %s
 
+                UNION ALL
 
-
-
-
+                SELECT id,"darkhast_ejareh_maskoni",address, gheimat_kol, type_melk, name_malk,'درخواست اجاره' AS noe_file
+                FROM darkhast_ejareh_maskoni
+                WHERE address LIKE %s
+                """,
+                (
+                    f"%{address_entry.get().strip()}%",
+                    f"%{address_entry.get().strip()}%"
+                ))
+            elif melk=="اداری_تجاری":
+                cursor.execute("""
+                SELECT id,"darkhast_kharid_edari_tejari",address, gheimat_kol, type_melk, name_malk,'درخواست خرید' AS noe_file
+                FROM darkhast_kharid_edari_tejari
+                WHERE address LIKE %s
+                UNION ALL
+                SELECT id,"darkhast_ejareh_edari_tejari",address, gheimat_kol, type_melk, name_malk, 'درخواست اجاره' AS noe_file
+                FROM darkhast_ejareh_edari_tejari
+                WHERE address LIKE %s
+                """,
+                (
+                    f"%{address_entry.get().strip()}%",
+                    f"%{address_entry.get().strip()}%"
+                ))
+            elif melk=="باغ":
+                cursor.execute("""
+                SELECT id,"darkhast_kharid_bagh",address, gheimat_kol, type_melk, name_malk, 'درخواست خرید' AS noe_file
+                FROM darkhast_kharid_bagh
+                WHERE address LIKE %s
+                UNION ALL
+                SELECT id,"darkhast_ejareh_bagh",address, gheimat_kol, type_melk, name_malk, 'درخواست اجاره' AS noe_file
+                FROM darkhast_ejareh_bagh
+                WHERE address LIKE %s
+                """,
+                (
+                    f"%{address_entry.get().strip()}%",
+                    f"%{address_entry.get().strip()}%"
+                ))
+            elif melk=="زمین":
+                cursor.execute("""
+                SELECT id,"darkhast_kharid_zamin",address, gheimat_kol, type_melk, name_malk, 'درخواست خرید' AS noe_file
+                FROM darkhast_kharid_zamin
+                WHERE address LIKE %s
+                UNION ALL
+                SELECT id,"darkhast_ejareh_zamin",address, gheimat_kol, type_melk, name_malk, 'درخواست اجاره' AS noe_file
+                FROM darkhast_ejareh_zamin
+                WHERE address LIKE %s
+                """,
+                (
+                    f"%{address_entry.get().strip()}%",
+                    f"%{address_entry.get().strip()}%"
+                ))
+            elif melk=="کارگاه":
+                cursor.execute("""
+                SELECT id,"darkhast_kharid_kargah",address, gheimat_kol, type_melk, name_malk, 'درخواست خرید' AS noe_file
+                FROM darkhast_kharid_kargah
+                WHERE address LIKE %s
+                UNION ALL
+                SELECT id,"darkhast_ejareh_kargah",address, gheimat_kol, type_melk, name_malk,'درخواست اجاره' AS noe_file
+                FROM darkhast_ejareh_kargah
+                WHERE address LIKE %s
+                """,
+                (
+                    f"%{address_entry.get().strip()}%",
+                    f"%{address_entry.get().strip()}%"
+                ))
 
         else:
             messagebox.showerror("خطا", "نوع ملک نامعتبر است")
@@ -3367,17 +3437,87 @@ def search():
             tree.delete(item)
 
         if results:
+        # پاک کردن نتایج قبلی
+            for item in tree.get_children():
+                tree.delete(item)
             for row in results:
-                tree.insert("", "end", values=row)
-        else:
-           messagebox.showinfo("یافت نشد", "هیچ موردی پیدا نشد")
+                tree.insert("",tk.END,values=row)
 
+        else:
+            messagebox.showinfo("یافت نشد", "هیچ موردی پیدا نشد")
     except Exception as e:
         messagebox.showerror("Error", f"خطا: {e}")
 
     finally:
         cursor.close()
         db.close()
+#endregion
+#---------------تابع وارد کردن جزییات به باکس سوم----------
+#region
+def show_details(event):
+
+    item = tree.focus()
+
+    if item == "":
+        return
+
+    values = tree.item(item)["values"]
+
+    file_id = int(values[0])
+    table = values[1]
+
+    db = get_connection()
+
+    cursor = db.cursor()
+    cursor.execute("USE state_agency")
+
+    cursor.execute(f"SELECT * FROM {table} WHERE id=%s",(file_id,))
+
+    data = cursor.fetchone()
+
+    if data is None:
+        return
+    entry_malek.delete(0,tk.END)
+    entry_malek.insert(0, data[14])
+
+    entry_malek_phone_number.delete(0,tk.END)
+    entry_malek_phone_number.insert(0, data[15])
+
+    gheimat_melk_right_entry.delete(0,tk.END)
+    gheimat_melk_right_entry.insert(0, data[16])
+
+    metraj_lable_right_entry.delete(0,tk.END)
+    metraj_lable_right_entry.insert(0, data[16])
+
+    options=[]
+
+    if data[7]:
+        options.append("پارکینگ")
+
+    if data[8]:
+        options.append("آسانسور")
+
+    if data[9]:
+        options.append("انباری")
+
+    if data[10]:
+        options.append("سرمایش : "+str(data[10]))
+
+    if data[11]:
+        options.append("گرمایش : "+str(data[11]))
+
+    if data[12]:
+        options.append("کف : "+str(data[12]))
+
+    if data[13]:
+        options.append("سرویس : "+str(data[13]))
+
+    options_text.delete("1.0",tk.END)
+
+    options_text.insert("1.0","\n".join(options))
+
+    cursor.close()
+    db.close()
 #endregion
 #---#----#----#----#----#----------  گرافیک   ----------#----#----#----#-----#-----------
 # ---------دکمه فایل با منوی کشویی ------------------
@@ -3442,7 +3582,7 @@ box_jostojo_malk1.pack(padx=6, pady=15)
 file_type = tk.Label(box_jostojo_malk1,text="نوع فایل",bg="#052340", fg="#FFFFFF",font=("Shabnam", 13))
 file_type.pack(padx=15,pady=10, side="right")
 combo_file_type= ttk.Combobox(box_jostojo_malk1)
-combo_file_type["values"] = ("رهن_اجاره","درخواستی","فروش","مشارکت",)
+combo_file_type["values"] = ("رهن_اجاره","فروش","درخواست ها",)
 combo_file_type["state"]=["readonly"]
 combo_file_type.pack(padx=10, pady=10) 
 
@@ -3452,7 +3592,7 @@ box_jostojo_malk2.pack(padx=6, pady=15)
 melk_type_lable = tk.Label(box_jostojo_malk2,text="نوع ملک",bg="#052340", fg="#FFFFFF",font=("Shabnam", 13))
 melk_type_lable.pack(padx=15,pady=10, side="right")
 melk_type_combo= ttk.Combobox(box_jostojo_malk2)
-melk_type_combo["values"] = ("مسکونی","مغازه_تجاری","زمین","کارگاه","باغ")
+melk_type_combo["values"] = ("مسکونی","اداری_تجاری","زمین","کارگاه","باغ")
 melk_type_combo["state"]=["readonly"]
 melk_type_combo.pack(padx=10, pady=10) 
 
@@ -3493,12 +3633,24 @@ search_btn.pack(pady=10)
 frame_list_amlack_centre = tk.LabelFrame(contant_frame, text="لیست املاک", bg="#052340",fg="#00BFFF", font=("Shabnam", 13))
 frame_list_amlack_centre.pack(side="left", fill="both", expand=True, padx=4, pady=15)
 
-columns = ["آدرس", "قیمت ", "نوع ملک ", "نام مالک"]
-tree = ttk.Treeview(frame_list_amlack_centre, columns=columns, show="headings")
-for textt in columns:
-    tree.heading(textt,text=textt)
-    tree.column(textt, width=100)
+columns = (
+    "id","table_name","آدرس","قیمت","نوع ملک","نام مالک","نوع فایل")
+tree = ttk.Treeview(frame_list_amlack_centre,columns=columns,show="headings")
+
+for col in columns:
+    tree.heading(col, text=col)
+    tree.column(col, width=120)
+
+# مخفی کردن ستون‌های id و table_name
+tree.column("id", width=0, stretch=False)
+tree.heading("id", text="")
+
+tree.column("table_name", width=0, stretch=False)
+tree.heading("table_name", text="")
+
 tree.pack(fill="both", expand=True)
+
+tree.bind("<Double-1>", show_details)
 
 lable_list_amlack_centre = tk.Label(frame_list_amlack_centre,text="تمامی حقوق قانونی این نرم افزار متعلق به گروه نیواد است",bg="#052340", fg="white",font=("Shabnam", 10))
 lable_list_amlack_centre.pack(padx=10)
@@ -3536,11 +3688,11 @@ gheimat_melk_right_lable.pack(padx=6,pady=4)
 gheimat_melk_right_entry= tk.Entry(frame_joziat_amlack,bg="#FFFFFF", fg="#000000",font=("Shabnam", 13))
 gheimat_melk_right_entry.pack(padx=20,pady=4)
 
-tozihat_right_lable = tk.Label(frame_joziat_amlack,text="توضیحات ",bg="#052340", fg="#F7F7FA",font=("Shabnam", 13))
-tozihat_right_lable.pack(padx=6,pady=4)
+options_text = tk.Label(frame_joziat_amlack,text="توضیحات ",bg="#052340", fg="#F7F7FA",font=("Shabnam", 13))
+options_text.pack(padx=6,pady=4)
 
-tozihat_right_entry = tk.Entry(frame_joziat_amlack,bg="#FFFFFF", fg="#000000",font=("Shabnam", 13))
-tozihat_right_entry.pack(padx=20,pady=4)
+options_text_entry = tk.Text(frame_joziat_amlack,bg="#FFFFFF", fg="#000000",font=("Shabnam", 13))
+options_text_entry .pack(padx=20,pady=4)
 #=======================================================
 #endregion
 #-------------------------باکس های نوع ثبتی فایل ها----------------------
@@ -3830,6 +3982,13 @@ shomareh_malek_ejareh_maskoni_lable.place(x=start_x + 320, y=start_y + 486,ancho
 
 shomareh_malek_ejareh_maskoni_entry = tk.Entry(ejareh_rehn_page, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
 shomareh_malek_ejareh_maskoni_entry.place(x=start_x + 10, y=start_y + 475, width=150, height=25)
+
+
+metraj_ejareh_maskoni_lable = tk.Label(ejareh_rehn_page, text="متراژ", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+metraj_ejareh_maskoni_lable.place(x=start_x -50, y=start_y + 380,anchor="e")
+
+metraj_ejareh_maskoni_entry = tk.Entry(ejareh_rehn_page, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
+metraj_ejareh_maskoni_entry.place(x=start_x -260, y=start_y + 375, width=150, height=25)
 
 back_to_home_ejareh_maskoni=tk.Button(ejareh_rehn_page,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_ejareh_maskoni)
 back_to_home_ejareh_maskoni.place(x=270,y=520)
@@ -4686,188 +4845,194 @@ option_file_frame_ejareh_kargah.resizable(False, False)
 #---------------------------پنجره های ثبتی بخش فروش--------------------
 #-------------------پنجره فروش مسکونی----------------------
 #region
-forosh_rehn_page = tk.Toplevel(root)
-forosh_rehn_page.title("فروش مسکونی")
-forosh_rehn_page.geometry("800x600")
-forosh_rehn_page.withdraw()
-
-# بارگذاری تصویر
-bg_image = image_forosh_maskoni
-bg_image = image_forosh_maskoni.resize((800, 600))
-bg_photo = ImageTk.PhotoImage(bg_image)
-
-# لیبل پس‌زمینه
-bg_label = tk.Label(forosh_rehn_page, image=bg_photo)
-bg_label.image = bg_photo 
-bg_label.place(x=0, y=0, relwidth=1, relheight=1)
-
-
-option_file_frame_forosh_maskoni=tk.Toplevel(forosh_rehn_page)
-option_file_frame_forosh_maskoni.title(" امکانات فروش مسکونی")
-option_file_frame_forosh_maskoni.geometry("500x370")
-option_file_frame_forosh_maskoni.pack_propagate(False)
-option_file_frame_forosh_maskoni.withdraw()
+forosh_maskoni_window = tk.Toplevel(root)
+forosh_maskoni_window.title("فروش مسکونی")
+forosh_maskoni_window.configure(bg="#052340")
+forosh_maskoni_window.geometry("1500x800")
+forosh_maskoni_window.withdraw()
 
 #------------------کادر فروش مسکونی-----------------------------#
-frame_forosh_maskoni= tk.Frame(forosh_rehn_page,bd=0,highlightthickness=0)
-frame_forosh_maskoni.pack(side="left", fill="y", padx=6, pady=15)
-
-title_lbl = tk.Label(forosh_rehn_page,text="فروش مسکونی",bg="#000000",fg="#00BFFF",font=("Shabnam", 15))
-title_lbl.place(x=60, y=25)   
-
-# تعیین نقطه شروع (جایی که فریم قبلی قرار داشت)
-start_x = 450
-start_y = 40
-
-melk_type_forosh_maskoni_lable = tk.Label(forosh_rehn_page, text="نوع ملک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-melk_type_forosh_maskoni_lable.place(x=start_x + 320, y=start_y + 35, anchor="e")
+frame_up_right_forosh_maskoni= tk.Frame(forosh_maskoni_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=730,height=300)
+frame_up_right_forosh_maskoni.configure(bg="#052340")
+frame_up_right_forosh_maskoni.place(x=720,y=90)
 
 
-melk_type_forosh_maskoni_entry=tk.Entry(forosh_rehn_page, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10), justify="center")
+frame_up_left_forosh_maskoni= tk.Frame(forosh_maskoni_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=640,height=300)
+frame_up_left_forosh_maskoni.configure(bg="#052340")
+frame_up_left_forosh_maskoni.place(x=40,y=90)
+
+frame_midde_right_forosh_maskoni= tk.Frame(forosh_maskoni_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=730,height=150)
+frame_midde_right_forosh_maskoni.configure(bg="#052340")
+frame_midde_right_forosh_maskoni.place(x=720,y=410)
+
+frame_midde_left_forosh_maskoni= tk.Frame(forosh_maskoni_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=640,height=150)
+frame_midde_left_forosh_maskoni.configure(bg="#052340")
+frame_midde_left_forosh_maskoni.place(x=40,y=410)
+
+frame_down_forosh_maskoni= tk.Frame(forosh_maskoni_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=1410,height=150)
+frame_down_forosh_maskoni.configure(bg="#052340")
+frame_down_forosh_maskoni.place(x=40,y=580)
+
+title_label_up1 = tk.Label(forosh_maskoni_window,text="فروش مسکونی",bg="#052340",fg="#00BFFF",font=("Shabnam", 16))
+title_label_up1.place(x=650, y=17)
+
+title_label_up2 = tk.Label(forosh_maskoni_window,text="ثبت اطلاعات فروش مسکونی",bg="#052340",fg="#ffffff",font=("Shabnam", 11))
+title_label_up2.place(x=635, y=45)
+
+label_up_right_forosh_maskoni=tk.Label(forosh_maskoni_window,text="اطلاعات ملک",bg="#052340",fg="#00BFFF",font=("Shabnam", 11))
+label_up_right_forosh_maskoni.place(x=800,y=73)
+
+label_up_left_forosh_maskoni=tk.Label(forosh_maskoni_window,text="تصویر ملک",bg="#052340",fg="#00BFFF",font=("Shabnam", 11))
+label_up_left_forosh_maskoni.place(x=100,y=73)
+
+label_midde_right_forosh_maskoni=tk.Label(forosh_maskoni_window,text="اطلاعات معامله",bg="#052340",fg="#00BFFF",font=("Shabnam", 11))
+label_midde_right_forosh_maskoni.place(x=800,y=395)
+
+label_midde_left_forosh_maskoni=tk.Label(forosh_maskoni_window,text="اطلاعات مالک",bg="#052340",fg="#00BFFF",font=("Shabnam", 11))
+label_midde_left_forosh_maskoni.place(x=100,y=395)
+
+label_down_forosh_maskoni=tk.Label(forosh_maskoni_window,text="امکانات",bg="#052340",fg="#00BFFF",font=("Shabnam", 11))
+label_down_forosh_maskoni.place(x=100,y=565)
+#-------------------------------------فریم بالا سمت راست------------------------------
+melk_type_forosh_maskoni_lable = tk.Label(frame_up_right_forosh_maskoni, text="نوع ملک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+melk_type_forosh_maskoni_lable.place(x=700,y=40, anchor="e")
+
+melk_type_forosh_maskoni_entry=tk.Entry(frame_up_right_forosh_maskoni, bg="#06294B", fg="#ffffff", font=("Shabnam", 10), justify="center")
 melk_type_forosh_maskoni_entry.insert(0,"فروش مسکونی")
-melk_type_forosh_maskoni_entry.config(state="disable")
-melk_type_forosh_maskoni_entry.place(x=start_x + 10, y=start_y + 25, width=150, height=25)
+melk_type_forosh_maskoni_entry.config(state="readonly",readonlybackground="#06294B",fg="#ffffff")
+melk_type_forosh_maskoni_entry.place(x=30, y=30, width=350, height=25)
 
-sal_sakht_forosh_maskoni=tk.Label(forosh_rehn_page, text="سال ساخت", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-sal_sakht_forosh_maskoni.place(x=start_x + 320, y=start_y + 85, anchor="e")
+sal_sakht_forosh_maskoni=tk.Label(frame_up_right_forosh_maskoni, text="سال ساخت", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+sal_sakht_forosh_maskoni.place(x=700, y=80, anchor="e")
 
-sal_sakht_forosh_maskoni_entry=tk.Entry(forosh_rehn_page, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
-sal_sakht_forosh_maskoni_entry.place(x=start_x + 10, y=start_y + 75, width=150, height=25)
+sal_sakht_forosh_maskoni_entry=tk.Entry(frame_up_right_forosh_maskoni, bg="#052340", fg="#ffffff", font=("Shabnam", 10))
+sal_sakht_forosh_maskoni_entry.place(x=30, y=70, width=350, height=25)
 
-addrres_forosh_maskoni=tk.Label(forosh_rehn_page, text="آدرس", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-addrres_forosh_maskoni.place(x=start_x + 320, y=start_y + 135, anchor="e")
+metraj_forosh_maskoni=tk.Label(frame_up_right_forosh_maskoni, text=" متراز ", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+metraj_forosh_maskoni.place(x=700, y=120, anchor="e")
+
+metraj_forosh_maskoni_entry=tk.Entry(frame_up_right_forosh_maskoni, bg="#052340", fg="#ffffff", font=("Shabnam", 10))
+metraj_forosh_maskoni_entry.place(x=30, y=110, width=350, height=25)
+
+tabaghe_forosh_maskoni= tk.Label(frame_up_right_forosh_maskoni, text="طبقه", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+tabaghe_forosh_maskoni.place(x=700, y=160, anchor="e")
+
+tabaghe_forosh_maskoni_entry=tk.Entry(frame_up_right_forosh_maskoni, bg="#052340", fg="#ffffff", font=("Shabnam", 10))
+tabaghe_forosh_maskoni_entry.place(x=30, y=150, width=350, height=25)
+
+vahed_forosh_maskoni=tk.Label(frame_up_right_forosh_maskoni, text="واحد", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+vahed_forosh_maskoni.place(x=700, y=200, anchor="e")
+
+vahed_forosh_maskoni_entry=tk.Entry(frame_up_right_forosh_maskoni, bg="#052340", fg="#ffffff", font=("Shabnam", 10))
+vahed_forosh_maskoni_entry.place(x=30, y=190, width=350, height=25)
+
+otagh_forosh_maskoni= tk.Label(frame_up_right_forosh_maskoni, text="اتاق", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+otagh_forosh_maskoni.place(x=700, y=240, anchor="e")
+
+otagh_forosh_maskoni_entry=tk.Entry(frame_up_right_forosh_maskoni, bg="#052340", fg="#ffffff", font=("Shabnam", 10))
+otagh_forosh_maskoni_entry.place(x=30, y=230, width=350, height=25)
+
+#----------------------------فریم بالا سمت چپ----------------------------------
+
+photo_lbl2_forosh_maskoni = tk.Label(frame_up_left_forosh_maskoni, text="[تصویر ملک]", bg="#ffffff", width=79, height=15)
+photo_lbl2_forosh_maskoni.place(x=40 ,y=10)
+
+add_img_btn_forosh_maskoni = tk.Button(frame_up_left_forosh_maskoni, text="افزودن تصویر", bg="#00BFFF", fg="#ffffff",command=open_file,height=2,width=13)
+add_img_btn_forosh_maskoni.place(x=240, y=250)
+
+#----------------------------------فریم وسط سمت راست--------------------------
 
 
-addrres_forosh_maskoni_entry=tk.Entry(forosh_rehn_page, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
-addrres_forosh_maskoni_entry.place(x=start_x + 10, y=start_y + 125, width=150, height=25)
+gheimat_kol_forosh_maskoni=tk.Label(frame_midde_right_forosh_maskoni, text=" قیمت کل ", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+gheimat_kol_forosh_maskoni.place(x=700, y=30, anchor="e")
 
+gheimat_kol_forosh_maskoni_entry=tk.Entry(frame_midde_right_forosh_maskoni, bg="#052340", fg="#ffffff", font=("Shabnam", 10))
+gheimat_kol_forosh_maskoni_entry.place(x=30, y=20, width=350, height=25)
 
-tabaghe_forosh_maskoni= tk.Label(forosh_rehn_page, text="طبقه", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-tabaghe_forosh_maskoni.place(x=start_x + 320, y=start_y + 185, anchor="e")
+addrres_forosh_maskoni=tk.Label(frame_midde_right_forosh_maskoni, text="آدرس", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+addrres_forosh_maskoni.place(x=700, y=80, anchor="e")
 
-tabaghe_forosh_maskoni_entry=tk.Entry(forosh_rehn_page, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
-tabaghe_forosh_maskoni_entry.place(x=start_x + 10, y=start_y + 175, width=150, height=25)
+addrres_forosh_maskoni_entry=tk.Text(frame_midde_right_forosh_maskoni, bg="#052340", fg="#ffffff", font=("Shabnam", 10))
+addrres_forosh_maskoni_entry.place(x=30, y=70, width=350, height=50)
 
+#-------------------------------------فریم وسط سمت چپ---------------------------
 
-vahed_forosh_maskoni=tk.Label(forosh_rehn_page, text="واحد", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-vahed_forosh_maskoni.place(x=start_x + 320, y=start_y + 235, anchor="e")
+name_malek_forosh_maskoni_lable = tk.Label(frame_midde_left_forosh_maskoni, text="نام مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+name_malek_forosh_maskoni_lable.place(x=600, y=30,anchor="e")
 
-vahed_forosh_maskoni_entry=tk.Entry(forosh_rehn_page, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
-vahed_forosh_maskoni_entry.place(x=start_x + 10, y=start_y + 225, width=150, height=25)
+name_malek_forosh_maskoni_entry = tk.Entry(frame_midde_left_forosh_maskoni, bg="#052340", fg="#ffffff", font=("Shabnam", 10))
+name_malek_forosh_maskoni_entry.place(x=30, y=20, width=350, height=25)
 
+shomareh_malek_forosh_maskoni_lable = tk.Label(frame_midde_left_forosh_maskoni, text="شماره مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+shomareh_malek_forosh_maskoni_lable.place(x=600, y=80,anchor="e")
 
-otagh_forosh_maskoni= tk.Label(forosh_rehn_page, text="اتاق", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-otagh_forosh_maskoni.place(x=start_x + 320, y=start_y + 285, anchor="e")
+shomareh_malek_forosh_maskoni_entry = tk.Entry(frame_midde_left_forosh_maskoni, bg="#052340", fg="#ffffff", font=("Shabnam", 10))
+shomareh_malek_forosh_maskoni_entry.place(x=30, y=70, width=350, height=25)
 
-otagh_forosh_maskoni_entry=tk.Entry(forosh_rehn_page, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
-otagh_forosh_maskoni_entry.place(x=start_x + 10, y=start_y + 275, width=150, height=25)
-
-name_malek_forosh_maskoni_lable = tk.Label(forosh_rehn_page, text="نام مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-name_malek_forosh_maskoni_lable.place(x=start_x + 320, y=start_y + 340,anchor="e")
-
-name_malek_forosh_maskoni_entry = tk.Entry(forosh_rehn_page, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
-name_malek_forosh_maskoni_entry.place(x=start_x + 10, y=start_y + 330, width=150, height=25)
-
-shomareh_malek_forosh_maskoni_lable = tk.Label(forosh_rehn_page, text="شماره مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-shomareh_malek_forosh_maskoni_lable.place(x=start_x + 320, y=start_y + 390,anchor="e")
-
-shomareh_malek_forosh_maskoni_entry = tk.Entry(forosh_rehn_page, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
-shomareh_malek_forosh_maskoni_entry.place(x=start_x + 10, y=start_y + 380, width=150, height=25)
-
-gheimat_kol_forosh_maskoni=tk.Label(forosh_rehn_page, text=" قیمت کل ", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-gheimat_kol_forosh_maskoni.place(x=start_x + 320, y=start_y + 445, anchor="e")
-
-gheimat_kol_forosh_maskoni_entry=tk.Entry(forosh_rehn_page, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
-gheimat_kol_forosh_maskoni_entry.place(x=start_x + 10, y=start_y + 430, width=150, height=25)
-
-back_to_home_forosh_maskoni=tk.Button(forosh_rehn_page,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_forosh_maskoni)
-back_to_home_forosh_maskoni.place(x=270,y=520)
-
-zakhire_forosh_maskoni=tk.Button(forosh_rehn_page,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=sabt_forosh_maskoni)
-zakhire_forosh_maskoni.place(x=120,y=520)
-
-photo_lbl2_forosh_maskoni = tk.Label(forosh_rehn_page, text="[تصویر ملک]", bg="#ffffff", width=50, height=15)
-photo_lbl2_forosh_maskoni.place(x=60, y=85)
-
-add_img_btn_forosh_maskoni = tk.Button(forosh_rehn_page, text="افزودن تصویر", bg="#00BFFF", fg="black",command=open_file,height=2,width=13)
-add_img_btn_forosh_maskoni.place(x=60, y=370)
-
-forosh_rehn_page.protocol("WM_DELETE_WINDOW", lambda: None)
-forosh_rehn_page.resizable(False, False)
-#endregion
-#------------------------امکانات فروش مسکونی--------------------
-#region
-option_frame_options_forosh_maskoni=tk.Frame(forosh_rehn_page,width=300,height=30,background="#052340")
-option_frame_options_forosh_maskoni.place(x=225,y=370)
-
-option_label_forosh_maskoni=tk.Label(option_frame_options_forosh_maskoni,text='افزودن امکانات فایل',font=("Shabnam",12,"bold"),background="#052340",fg="#00BFFF")
-option_label_forosh_maskoni.pack(side="right",padx=1)
-
-plus_button_forosh_maskoni=tk.Button(option_frame_options_forosh_maskoni,image=plus,command=open_option2,border=0)
-plus_button_forosh_maskoni.pack()
-
-bg_image = image_forosh_maskoni
-bg_image = image_forosh_maskoni.resize((800, 380))
-bg_photo = ImageTk.PhotoImage(bg_image)
-
-bg_label = tk.Label(option_file_frame_forosh_maskoni, image=bg_photo)
-bg_label.image = bg_photo  
-bg_label.place(x=0, y=0, relwidth=1, relheight=1)
+#-----------------------------------------فریم پایین--------------------------------
 
 parking_forosh_maskoni_var=tk.IntVar(value=0)
 anbari_forosh_maskoni_var=tk.IntVar(value=0)
 asansor_forosh_maskoni_var=tk.IntVar(value=0)
 
-parking_ch_btn_forosh_maskoni=tk.Checkbutton(option_file_frame_forosh_maskoni,variable=parking_forosh_maskoni_var,image=parking_pic, bg="#052340")
-parking_ch_btn_forosh_maskoni.place(x=140, y=50)
+parking_ch_btn_forosh_maskoni=tk.Checkbutton(frame_down_forosh_maskoni,variable=parking_forosh_maskoni_var,image=parking_pic, bg="#052340")
+parking_ch_btn_forosh_maskoni.place(x=1200, y=50)
+parking_ch_btn_forosh_maskoni_label=tk.Label(frame_down_forosh_maskoni,text="پارکینگ", bg="#052340", fg="#ffffff", font=("Shabnam", 9), width=7)
+parking_ch_btn_forosh_maskoni_label.place(x=1205,y=90)
 
-asansor_ch_btn_forosh_maskoni=tk.Checkbutton(option_file_frame_forosh_maskoni,variable=asansor_forosh_maskoni_var,image=elvator_pic,background="#052340")
-asansor_ch_btn_forosh_maskoni.place(x=240, y=50)
+asansor_ch_btn_forosh_maskoni=tk.Checkbutton(frame_down_forosh_maskoni,variable=asansor_forosh_maskoni_var,image=elvator_pic,background="#052340")
+asansor_ch_btn_forosh_maskoni.place(x=1100, y=50)
+asansor_ch_btn_forosh_maskoni_label=tk.Label(frame_down_forosh_maskoni,text="اسانسور", bg="#052340", fg="#ffffff", font=("Shabnam", 9), width=7)
+asansor_ch_btn_forosh_maskoni_label.place(x=1105,y=90)
 
-anbari_checkbuton_forosh_maskoni=tk.Checkbutton(option_file_frame_forosh_maskoni,variable=anbari_forosh_maskoni_var,image=warehouse_pic,background="#052340")
-anbari_checkbuton_forosh_maskoni.place(x=340, y=50)
+anbari_checkbuton_forosh_maskoni=tk.Checkbutton(frame_down_forosh_maskoni,variable=anbari_forosh_maskoni_var,image=warehouse_pic,background="#052340")
+anbari_checkbuton_forosh_maskoni.place(x=1000, y=50)
+anbari_checkbuton_forosh_maskoni_label=tk.Label(frame_down_forosh_maskoni,text="انباری", bg="#052340", fg="#ffffff", font=("Shabnam", 9), width=7)
+anbari_checkbuton_forosh_maskoni_label.place(x=1005,y=90)
 
-sarmaesh_forosh_maskoni=tk.Label(option_file_frame_forosh_maskoni, text="سرمایش", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
-sarmaesh_forosh_maskoni.place(x=320, y=110)
+sarmaesh_forosh_maskoni=tk.Label(frame_down_forosh_maskoni, text="سرمایش", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
+sarmaesh_forosh_maskoni.place(x=840, y=50)
 
-sarmaesh_combo_forosh_maskoni=ttk.Combobox(option_file_frame_forosh_maskoni)
+
+sarmaesh_combo_forosh_maskoni=ttk.Combobox(frame_down_forosh_maskoni)
 sarmaesh_combo_forosh_maskoni["state"]=["readonly"]
+sarmaesh_combo_forosh_maskoni.configure(justify="center")
 sarmaesh_combo_forosh_maskoni["values"] = ("ندارد","پنکه سقفی","کولر ابی","کولر گازی ","ابی/گازی")
-sarmaesh_combo_forosh_maskoni.place(x=120, y=110)
+sarmaesh_combo_forosh_maskoni.place(x=640, y=50)
 
-garmaesh_forosh_maskoni=tk.Label(option_file_frame_forosh_maskoni, text="گرمایش", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
-garmaesh_forosh_maskoni.place(x=320, y=150)
+garmaesh_forosh_maskoni=tk.Label(frame_down_forosh_maskoni, text="گرمایش", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
+garmaesh_forosh_maskoni.place(x=840, y=80)
 
 
-garmaesh_combo_forosh_maskoni=ttk.Combobox(option_file_frame_forosh_maskoni)
+garmaesh_combo_forosh_maskoni=ttk.Combobox(frame_down_forosh_maskoni)
 garmaesh_combo_forosh_maskoni["values"] = ("ندارد","بخاری"," شوفاژ","گرمایش از کف ")
 garmaesh_combo_forosh_maskoni["state"]=["readonly"]
-garmaesh_combo_forosh_maskoni.place(x=120, y=150)
+garmaesh_combo_forosh_maskoni.place(x=640, y=80)
 
-kaf_forosh_maskoni= tk.Label(option_file_frame_forosh_maskoni, text="کف", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
-kaf_forosh_maskoni.place(x=320, y=190)
+kaf_forosh_maskoni= tk.Label(frame_down_forosh_maskoni, text="کف", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
+kaf_forosh_maskoni.place(x=500, y=50)
 
-kaf_combo_forosh_maskoni=ttk.Combobox(option_file_frame_forosh_maskoni)
+kaf_combo_forosh_maskoni=ttk.Combobox(frame_down_forosh_maskoni)
 kaf_combo_forosh_maskoni["state"]=["readonly"]
 kaf_combo_forosh_maskoni["values"] = ("سرامیک","موزاییک","پارکت")
-kaf_combo_forosh_maskoni.place(x=120, y=190)
+kaf_combo_forosh_maskoni.place(x=300, y=50)
 
-toilet_forosh_maskoni=tk.Label(option_file_frame_forosh_maskoni,text="سرویس بهداشتی",background="#052340",fg="#ffffff",font=("Shabnam",11))
-toilet_forosh_maskoni.place(x=320, y=230)
+toilet_forosh_maskoni=tk.Label(frame_down_forosh_maskoni,text="سرویس بهداشتی",background="#052340",fg="#ffffff",font=("Shabnam",11))
+toilet_forosh_maskoni.place(x=480, y=80)
 
-toilet_combo_forosh_maskoni=ttk.Combobox(option_file_frame_forosh_maskoni)
+toilet_combo_forosh_maskoni=ttk.Combobox(frame_down_forosh_maskoni)
 toilet_combo_forosh_maskoni["state"]=["readonly"]
 toilet_combo_forosh_maskoni["values"] = ("ایرانی","فرنگی","هردو")
-toilet_combo_forosh_maskoni.place(x=120, y=230)
+toilet_combo_forosh_maskoni.place(x=300, y=80)
 
-zakhire_options_forosh_maskoni=tk.Button(option_file_frame_forosh_maskoni,text="تایید",command=save_option_forosh_maskoni,background="#00BFFF",fg="#000000",width=10,height=1)
-zakhire_options_forosh_maskoni.place(x=95, y=320)
+back_to_home_forosh_maskoni=tk.Button(forosh_maskoni_window,text="بازگشت",bg="#052340", fg="#ffffff",width=10,height=1,command=back_home_forosh_maskoni)
+back_to_home_forosh_maskoni.place(x=700,y=750)
 
-back_to_home_forosh_maskoni=tk.Button(option_file_frame_forosh_maskoni,text="بازگشت",command=back_to_forosh_maskoni,background="#00BFFF",fg="#000000",width=10,height=1)
-back_to_home_forosh_maskoni.place(x=215, y=320)
+zakhire_forosh_maskoni=tk.Button(forosh_maskoni_window,text="ذخیره",bg="#00BFFF", fg="#ffffff",width=10,height=1,command=sabt_forosh_maskoni)
+zakhire_forosh_maskoni.place(x=550,y=750)
 
-option_file_frame_forosh_maskoni.protocol("WM_DELETE_WINDOW", lambda: None)
-option_file_frame_forosh_maskoni.resizable(False, False)
+forosh_maskoni_window.protocol("WM_DELETE_WINDOW", lambda: None)
+forosh_maskoni_window.resizable(False, False)
 #endregion
 #-----------------پنجره فروش اداری/تجاری-------------------
 #region
@@ -5707,6 +5872,13 @@ gheimat_kol_darkhast_maskoni_lable.place(x=start_x + 320, y=start_y + 445, ancho
 
 gheimat_kol_darkhast_maskoni_entry=tk.Entry(darkhast_maskoni_page,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
 gheimat_kol_darkhast_maskoni_entry.place(x=start_x + 10, y=start_y + 430, width=150, height=25)
+
+metraj_darkhast_maskoni_lable=tk.Label(darkhast_maskoni_page,text="متراژ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+metraj_darkhast_maskoni_lable.place(x=start_x + 40, y=start_y + 445, anchor="e")
+
+metraj_darkhast_maskoni_entry=tk.Entry(darkhast_maskoni_page,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
+metraj_darkhast_maskoni_entry.place(x=start_x -150, y=start_y + 430, width=150, height=25)
+
 
 back_to_home_darkhast_maskoni=tk.Button(darkhast_maskoni_page,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_darkhast_maskoni)
 back_to_home_darkhast_maskoni.place(x=270,y=520)
