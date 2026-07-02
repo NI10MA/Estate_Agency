@@ -514,11 +514,6 @@ def mosharecat():
 #endregion
 #---------------------------توابع باز و بستن کردن امکانات فایل ها---------------------------
 #region
-def open_option1():
-    option_file_frame_ejareh_maskoni.deiconify()
-    option_file_frame_ejareh_maskoni.grab_set()
-
-
 def open_option3():
     option_file_frame_ejareh_edari_tajari.deiconify()
     option_file_frame_ejareh_edari_tajari.grab_set()
@@ -1053,9 +1048,7 @@ def save_option_darkhast_kargah():
 #--------برگشت از امکانات فایل ها به صفحه اصلی ثبتی-------
 #region
 #-------برگشت اجاره مسکونی------------------
-def back_to_ejareh_maskoni():
-    option_file_frame_ejareh_maskoni.withdraw()
-    option_file_frame_ejareh_maskoni.grab_release()
+
 #--------برگشت اجاره اداری/تجاری----------------- 
 def back_to_ejareh_edari_tejari():
     option_file_frame_ejareh_edari_tajari.withdraw()
@@ -3984,86 +3977,81 @@ addrres_ejareh_maskoni_lable.place(x=700, y=110, anchor="e")
 addrres_ejareh_maskoni_entry = tk.Text(frame_midde_right_ejareh_maskoni, bg="#052340", fg="#ffffff", font=("Shabnam", 10))
 addrres_ejareh_maskoni_entry.place(x=30, y=90, width=350, height=50)
 #------------------------------------فریم چپ وسط-----------------------
-name_malek_ejareh_maskoni_lable = tk.Label(, text="نام مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-#name_malek_ejareh_maskoni_lable.place(x=start_x + 320, y=start_y + 442,anchor="e")
+name_malek_ejareh_maskoni_lable = tk.Label(frame_midde_left_ejareh_maskoni,text="نام مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+name_malek_ejareh_maskoni_lable.place(x=600, y=30,anchor="e")
 
-#name_malek_ejareh_maskoni_entry = tk.Entry(ejareh_maskoni_window, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
-#name_malek_ejareh_maskoni_entry.place(x=start_x + 10, y=start_y + 430, width=150, height=25)
+name_malek_ejareh_maskoni_entry = tk.Entry(frame_midde_left_ejareh_maskoni, bg="#052340", fg="#ffffff", font=("Shabnam", 10))
+name_malek_ejareh_maskoni_entry.place(x=30, y=20, width=350, height=25)
 
-#shomareh_malek_ejareh_maskoni_lable = tk.Label(ejareh_maskoni_window, text="شماره مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-#shomareh_malek_ejareh_maskoni_lable.place(x=start_x + 320, y=start_y + 486,anchor="e")
+shomareh_malek_ejareh_maskoni_lable = tk.Label(frame_midde_left_ejareh_maskoni, text="شماره مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+shomareh_malek_ejareh_maskoni_lable.place(x=600, y=80,anchor="e")
 
-#shomareh_malek_ejareh_maskoni_entry = tk.Entry(ejareh_maskoni_window, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
-#shomareh_malek_ejareh_maskoni_entry.place(x=start_x + 10, y=start_y + 475, width=150, height=25)
+shomareh_malek_ejareh_maskoni_entry = tk.Entry(frame_midde_left_ejareh_maskoni, bg="#052340", fg="#ffffff", font=("Shabnam", 10))
+shomareh_malek_ejareh_maskoni_entry.place(x=30, y=70, width=350, height=25)
 #---------------------------------فریم پایین--------------------------------
+parking_ejareh_maskoni_var=tk.IntVar(value=0)
+anbari_ejareh_maskoni_var=tk.IntVar(value=0)
+asansor_ejareh_maskoni_var=tk.IntVar(value=0)
 
 
+parking_checkbutton_btn_ejareh_maskoni = tk.Checkbutton(frame_down_ejareh_maskoni, image=parking_pic,variable=parking_ejareh_maskoni_var,bg="#052340")
+parking_checkbutton_btn_ejareh_maskoni.place(x=1200, y=50)
+parking_ch_btn_ejareh_maskoni_label=tk.Label(frame_down_ejareh_maskoni,text="پارکینگ", bg="#052340", fg="#ffffff", font=("Shabnam", 9), width=7)
+parking_ch_btn_ejareh_maskoni_label.place(x=1205,y=90)
 
-#back_to_home_ejareh_maskoni=tk.Button(ejareh_maskoni_window,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_ejareh_maskoni)
-#back_to_home_ejareh_maskoni.place(x=270,y=520)
-
-#save_button_ejareh_maskooni=tk.Button(ejareh_maskoni_window,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=sabt_ejareh_maskoni)
-#save_button_ejareh_maskooni.place(x=120,y=520)
-
+asansor_checkbutton_btn_ejareh_maskoni = tk.Checkbutton(frame_down_ejareh_maskoni, image=elvator_pic,variable=asansor_ejareh_maskoni_var, bg="#052340")
+asansor_checkbutton_btn_ejareh_maskoni.place(x=1100, y=50)
+asansor_ch_btn_ejareh_maskoni_label=tk.Label(frame_down_ejareh_maskoni,text="اسانسور", bg="#052340", fg="#ffffff", font=("Shabnam", 9), width=7)
+asansor_ch_btn_ejareh_maskoni_label.place(x=1105,y=90)
 
 
+anbari_checkbutton_btn_ejareh_maskoni = tk.Checkbutton(frame_down_ejareh_maskoni, image=warehouse_pic,variable=anbari_ejareh_maskoni_var,bg="#052340")
+anbari_checkbutton_btn_ejareh_maskoni.place(x=1000, y=50)
+anbari_checkbuton_ejareh_maskoni_label=tk.Label(frame_down_ejareh_maskoni,text="انباری", bg="#052340", fg="#ffffff", font=("Shabnam", 9), width=7)
+anbari_checkbuton_ejareh_maskoni_label.place(x=1005,y=90)
+
+sarmaesh_ejareh_maskoni = tk.Label(frame_down_ejareh_maskoni, text="سرمایش", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
+sarmaesh_ejareh_maskoni.place(x=840, y=50)
+sarmaesh_ejareh_maskoni_combo = ttk.Combobox(frame_down_ejareh_maskoni)
+sarmaesh_ejareh_maskoni_combo["values"] = ("ندارد", "پنکه سقفی", "کولر ابی", "کولر گازی ", "ابی/گازی")
+sarmaesh_ejareh_maskoni_combo["state"] = "readonly"
+sarmaesh_ejareh_maskoni_combo.configure(justify="center")
+sarmaesh_ejareh_maskoni_combo.place(x=640, y=50)
+
+garmaesh_ejareh_maskoni = tk.Label(frame_down_ejareh_maskoni, text="گرمایش", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
+garmaesh_ejareh_maskoni.place(x=840, y=80)
+garmaesh_ejareh_maskoni_combo = ttk.Combobox(frame_down_ejareh_maskoni)
+garmaesh_ejareh_maskoni_combo["values"] = ("ندارد", "بخاری", " شوفاژ", "گرمایش از کف ")
+garmaesh_ejareh_maskoni_combo["state"] = "readonly"
+garmaesh_ejareh_maskoni_combo.configure(justify="center")
+garmaesh_ejareh_maskoni_combo.place(x=640, y=80)
+
+kaf_ejareh_maskoni = tk.Label(frame_down_ejareh_maskoni, text="کف", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
+kaf_ejareh_maskoni.place(x=500, y=50)
+kaf_ejareh_maskoni_combo = ttk.Combobox(frame_down_ejareh_maskoni)
+kaf_ejareh_maskoni_combo["values"] = ("سرامیک", "موزاییک", "پارکت")
+kaf_ejareh_maskoni_combo["state"] = "readonly"
+kaf_ejareh_maskoni_combo.configure(justify="center")
+kaf_ejareh_maskoni_combo.place(x=300, y=50)
+
+
+toilet_ejareh_maskoni = tk.Label(frame_down_ejareh_maskoni, text="سرویس بهداشتی", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
+toilet_ejareh_maskoni.place(x=480, y=80)
+toilet_ejareh_maskoni_combo = ttk.Combobox(frame_down_ejareh_maskoni)
+toilet_ejareh_maskoni_combo["values"] = ("ایرانی", "فرنگی", "هردو")
+toilet_ejareh_maskoni_combo["state"] = "readonly"
+toilet_ejareh_maskoni_combo.configure(justify="center")
+toilet_ejareh_maskoni_combo.place(x=300, y=80)
+
+
+back_to_home_ejareh_maskoni=tk.Button(ejareh_maskoni_window,text="بازگشت",bg="#052340", fg="#ffffff",width=10,height=1,command=back_home_ejareh_maskoni)
+back_to_home_ejareh_maskoni.place(x=700,y=750)
+
+save_button_ejareh_maskooni=tk.Button(ejareh_maskoni_window,text="ذخیره",bg="#00BFFF", fg="#ffffff",width=10,height=1,command=sabt_ejareh_maskoni)
+save_button_ejareh_maskooni.place(x=550,y=750)
 
 ejareh_maskoni_window.protocol("WM_DELETE_WINDOW", lambda: None)
 ejareh_maskoni_window.resizable(False, False)
-
-#endregion
-
-#region
-#option_frame_ejare_maskoni=tk.Frame(ejareh_maskoni_window,width=300,height=30,background="#052340")
-#option_frame_ejare_maskoni.place(x=225,y=370)
-
-#add_option_frame_ejare_maskoni=tk.Label(option_frame_ejare_maskoni,text='افزودن امکانات فایل',font=("Shabnam",12,"bold"),background="#052340",fg="#00BFFF")
-#add_option_frame_ejare_maskoni.pack(side="right",padx=1)
-
-
-
-#parking_ejareh_maskoni_var=tk.IntVar(value=0)
-#anbari_ejareh_maskoni_var=tk.IntVar(value=0)
-#asansor_ejareh_maskoni_var=tk.IntVar(value=0)
-
-#parking_checkbutton_btn_ejareh_maskoni = tk.Checkbutton(option_file_frame_ejareh_maskoni, image=parking_pic,variable=parking_ejareh_maskoni_var,bg="#052340")
-#parking_checkbutton_btn_ejareh_maskoni.place(x=140, y=50)
-
-#asansor_checkbutton_btn_ejareh_maskoni = tk.Checkbutton(option_file_frame_ejareh_maskoni, image=elvator_pic,variable=asansor_ejareh_maskoni_var, bg="#052340")
-#asansor_checkbutton_btn_ejareh_maskoni.place(x=240, y=50)
-
-#anbari_checkbutton_btn_ejareh_maskoni = tk.Checkbutton(option_file_frame_ejareh_maskoni, image=warehouse_pic,variable=anbari_ejareh_maskoni_var,bg="#052340")
-#anbari_checkbutton_btn_ejareh_maskoni.place(x=340, y=50)
-
-#sarmaesh_ejareh_maskoni = tk.Label(option_file_frame_ejareh_maskoni, text="سرمایش", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
-#sarmaesh_ejareh_maskoni.place(x=320, y=110)
-#sarmaesh_ejareh_maskoni_combo = ttk.Combobox(option_file_frame_ejareh_maskoni, width=15)
-#sarmaesh_ejareh_maskoni_combo["values"] = ("ندارد", "پنکه سقفی", "کولر ابی", "کولر گازی ", "ابی/گازی")
-#sarmaesh_ejareh_maskoni_combo["state"] = "readonly"
-#sarmaesh_ejareh_maskoni_combo.place(x=120, y=110)
-
-#garmaesh_ejareh_maskoni = tk.Label(option_file_frame_ejareh_maskoni, text="گرمایش", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
-#garmaesh_ejareh_maskoni.place(x=320, y=150)
-#garmaesh_ejareh_maskoni_combo = ttk.Combobox(option_file_frame_ejareh_maskoni, width=15)
-#garmaesh_ejareh_maskoni_combo["values"] = ("ندارد", "بخاری", " شوفاژ", "گرمایش از کف ")
-#garmaesh_ejareh_maskoni_combo["state"] = "readonly"
-#garmaesh_ejareh_maskoni_combo.place(x=120, y=150)
-
-#kaf_ejareh_maskoni = tk.Label(option_file_frame_ejareh_maskoni, text="کف", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
-#kaf_ejareh_maskoni.place(x=320, y=190)
-#kaf_ejareh_maskoni_combo = ttk.Combobox(option_file_frame_ejareh_maskoni, width=15)
-#kaf_ejareh_maskoni_combo["values"] = ("سرامیک", "موزاییک", "پارکت")
-#kaf_ejareh_maskoni_combo["state"] = "readonly"
-#kaf_ejareh_maskoni_combo.place(x=120, y=190)
-
-
-#toilet_ejareh_maskoni = tk.Label(option_file_frame_ejareh_maskoni, text="سرویس بهداشتی", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
-#toilet_ejareh_maskoni.place(x=320, y=230)
-#toilet_ejareh_maskoni_combo = ttk.Combobox(option_file_frame_ejareh_maskoni, width=15)
-#toilet_ejareh_maskoni_combo["values"] = ("ایرانی", "فرنگی", "هردو")
-#toilet_ejareh_maskoni_combo["state"] = "readonly"
-#toilet_ejareh_maskoni_combo.place(x=120, y=230)
-
 #endregion
 #------------------------پنجره اجاره اداری/تجاری--------------------
 #region
