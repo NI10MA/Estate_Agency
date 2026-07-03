@@ -518,9 +518,7 @@ def open_option3():
     option_file_frame_ejareh_edari_tajari.deiconify()
     option_file_frame_ejareh_edari_tajari.grab_set()
 
-def open_option4():
-    option_file_frame_forosh_edari_tejari.deiconify()
-    option_file_frame_forosh_edari_tejari.grab_set()
+
 
 def open_option5():
     option_file_frame_ejareh_bagh_zamin.deiconify()
@@ -610,7 +608,7 @@ def back_home_ejareh_edari_tejari():
 def clear_entry_ejareh_edari_tejari():
     sal_sakht_ejareh_edari_tejari_entry.delete(0,tk.END)
     metraj_melk_ejareh_edari_tejari_entry.delete(0,tk.END)
-    addrres_ejareh_edari_tejari_entry.delete(0,tk.END)
+    addrres_ejareh_edari_tejari_entry.delete("1.0",tk.END)
     tabaghe_ejareh_edari_tejari_entry.delete(0,tk.END)
     vahed_ejareh_edari_tejari_entry.delete(0,tk.END)
     mablagh_ejare_ejareh_edari_tejari_entry.delete(0,tk.END)
@@ -628,25 +626,25 @@ def clear_entry_ejareh_edari_tejari():
 def back_home_forosh_edari_tejari():
     clear_entry_forosh_edari_tejari()
     root.deiconify()
-    forosh_edari_tejari.withdraw()
+    forosh_edari_tejari_window.withdraw()
     delete_root()
 #--------------------------پاک شدن Entry صفحه فروش اداری و تجاری------------------------
 def clear_entry_forosh_edari_tejari():
     sal_sakht_forosh_edari_tejari_entry.delete(0,tk.END)
-    addrres_forosh_edari_tejari_entry.delete(0,tk.END)
+    addrres_forosh_edari_tejari_entry.delete("1.0",tk.END)
     tabaghe_forosh_edari_tejari_entry.delete(0,tk.END)
     vahed_forosh_edari_tejari_entry.delete(0,tk.END)
     gheimat_kol_forosh_edari_tejari_entry.delete(0,tk.END)
-    metraj_melk_forosh_edari_tejari_entry.delete(0,tk.END)
+    metraj_forosh_edari_tejari_entry.delete(0,tk.END)
     name_malek_forosh_edari_tejari_entry.delete(0,tk.END)
     shomareh_malek_forosh_edari_tejari_entry.delete(0,tk.END)
     #پنجره امکانات
-    aab_va_gaz_combo_emkanat_forosh_edari_tejari.set("")
-    sarmayesh_combo_emkanat_forosh_edari_tejari.set("")
-    garmayesh_combo_emkanat_forosh_edari_tejari.set("")
-    asansor_check_btn_forosh_edari_tejari.deselect()
-    parking_check_btn_forosh_edari_tejari.deselect()
-    anbari_check_btn_forosh_edari_tejari.deselect()
+    aab_va_gaz_combo_forosh_edari_tejari.set("")
+    sarmaesh_combo_forosh_edari_tejari.set("")
+    garmaesh_combo_forosh_edari_tejari.set("")
+    asansor_ch_btn_forosh_edari_tejari.deselect()
+    parking_ch_btn_forosh_edari_tejari.deselect()
+    anbari_checkbuton_forosh_edari_tejari.deselect()
 #----------------------------برگشت از صفحه اجاره باغ / زمین------------------
 def back_home_ejareh_bagh_zamin():
     clear_entry_ejareh_bagh_zamin()
@@ -765,30 +763,30 @@ def clear_entry_forosh_bagh_zamin():
 #----------------------- برگشت از صفحه اجاره کارگاه--------------------
 def back_home_ejareh_karghah():
     clear_entry_ejareh_karghah()
-    ejareh_karghah.withdraw()
+    ejareh_karghah_window.withdraw()
     root.deiconify()
     delete_root()
 #------------------------- پاک شدن Entry صفحه اجاره کارگاه ----------------------------
 def clear_entry_ejareh_karghah():
-    metraj_kargah_entry.delete(0,tk.END)
-    loctaion_ejareh_kargah_entry.delete(0,tk.END)
-    mablagh_ejareh_ejareh_kargah_entry.delete(0,tk.END)
-    mablagh_pish_ejareh_kargah_entry.delete(0,tk.END) 
-    name_malek_ejareh_kargah_entry.delete(0,tk.END) 
-    shomareh_malek_ejareh_kargah_entry.delete(0,tk.END) 
+    metraj_ejareh_karghah_entry.delete(0,tk.END)
+    addrres_ejareh_karghah_entry.delete("1.0",tk.END)
+    vadie_ejare_karghah_entry.delete(0,tk.END)
+    gheimat_ejare_ejare_karghah_entry.delete(0,tk.END) 
+    name_malek_ejareh_karghah_entry.delete(0,tk.END) 
+    shomareh_malek_ejareh_karghah_entry.delete(0,tk.END) 
+    sal_sakht_ejareh_karghah_entry.delete(0,tk.END)
     #پنجره امکانات
-    sal_sakht_ejareh_kargah_entry.delete(0,tk.END)
-    vaziat_bargh_ejareh_kargah_combo.set("")
-    garmayesh_type_ejareh_kargah_combo.set("")
-    vaziat_ab_ejareh_kargah_combo.set("")
-    abzaar_ejareh_kargah_combo.set("")
-    toilet_ejareh_kargah_combo.set("")
-    hamam_ejareh_kargah__combo.set("")
-    otagh_ejareh_kargah_combo.set("")
-    sarmayesh_fan_ejareh_kargah.deselect()
-    sarmayesh_panke_ejareh_kargah.deselect()
-    sarmayesh_kooler_abi_ejareh_kargah.deselect()
-    sarmayesh_kooler_gazi_ejareh_kargah.deselect()
+    vaziat_bargh_ejareh_karghah_combo.set("")
+    garmaesh_ejareh_karghah_combo.set("")
+    vaziat_ab_ejareh_karghah_combo.set("")
+    abzaar_ejareh_karghah_combo.set("")
+    toilet_ejareh_karghah_combo.set("")
+    hamam_ejareh_karghah__combo.set("")
+    otagh_ejareh_karghah_combo.set("")
+    sarmayesh_fan_ejareh_karghah.deselect()
+    sarmayesh_panke_ejareh_karghah.deselect()
+    sarmayesh_kooler_abi_ejareh_karghah.deselect()
+    sarmayesh_kooler_gazi_ejareh_karghah.deselect()
 #----------------------- برگشت از صفحه فروش کارگاه--------------------
 def back_home_forosh_karghah():
     clear_entry_forosh_kargah()
@@ -815,10 +813,6 @@ def clear_entry_forosh_kargah():
     sarmayesh_panke_forosh_kargah.deselect()
     sarmayesh_kooler_abi_forosh_kargah.deselect()
     sarmayesh_kooler_gazi_forosh_kargah.deselect()
-#----------------------------برگشت از صفحه اجاره کارگاه------------------
-def back_to_ejareh_karghah():
-    option_file_frame_ejareh_kargah.withdraw()
-    ejareh_karghah.deiconify()
 #----------------------------برگشت از صفحه درخواست مسکونی-------------------
 def back_home_darkhast_maskoni():
     clear_entry_darkhast_maskoni()
@@ -828,7 +822,7 @@ def back_home_darkhast_maskoni():
 #-------------------------- پاک شدن Entry صفحه درخواست مسکونی-----------------------
 def clear_entry_darkhast_maskoni():
     sal_sakht_darkhast_maskoni_entry.delete(0,tk.END)
-    addrres_darkhast_maskoni_entry.delete(0,tk.END)
+    addrres_darkhast_maskoni_entry.delete("1.0",tk.END)
     tabaghe_darkhast_maskoni_entry.delete(0,tk.END)
     vahed_darkhast_maskoni_entry.delete(0,tk.END)
     otagh_darkhast_maskoni_entry.delete(0,tk.END)
@@ -854,7 +848,7 @@ def back_home_darkhast_edari_tejari():
 #-------------------------- پاک شدن Entry صفحه درخواست اداری/تجاری-----------------------
 def clear_entry_darkhast_edari_tejari():
     sal_sakht_darkhast_edari_tejari_entry.delete(0,tk.END)
-    addrres_darkhast_edari_tejari_entry.delete(0,tk.END)
+    addrres_darkhast_edari_tejari_entry.delete("1.0",tk.END)
     tabaghe_darkhast_edari_tejari_entry.delete(0,tk.END)
     vahed_darkhast_edari_tejari_entry.delete(0,tk.END)
     gheimat_kol_darkhast_edari_tejari_entry.delete(0,tk.END)
@@ -995,11 +989,6 @@ def back_main_ghararadad():
 #==============================
 #region
 
-
-def save_option_forosh_edari_tejari():
-    option_file_frame_forosh_edari_tejari.withdraw()
-    option_file_frame_forosh_edari_tejari.grab_release()
-
 def save_option_forosh_kargah():
     option_file_frame_forosh_kargah.withdraw()
     option_file_frame_forosh_kargah.grab_release()
@@ -1039,18 +1028,11 @@ def back_to_ejareh_edari_tejari():
 def back_to_ejareh_bagh_zamin():
     option_file_frame_ejareh_bagh_zamin.withdraw()
     option_file_frame_ejareh_bagh_zamin.grab_release()
-#--------------------برگشت اجاره کارگاه------------------------------------------------
-def back_to_ejareh_karghah():
-     option_file_frame_ejareh_kargah.withdraw()
-     option_file_frame_ejareh_kargah.grab_release()
 #-------برگشت فروش مسکونی------------------    
 def back_to_forosh_maskoni():
     option_file_frame_forosh_maskoni.withdraw()
     option_file_frame_forosh_maskoni.grab_release()
-#--------برگشت فروش اداری/تجاری----------------- 
-def back_to_forosh_edari_tejari():
-    option_file_frame_forosh_edari_tejari.withdraw()
-    option_file_frame_forosh_edari_tejari.grab_release()
+
 #--------------------برگشت فروش کارگاه------------------------------------------------
 def  back_to_forosh_karghah():
      option_file_frame_forosh_kargah.withdraw()
@@ -1112,7 +1094,7 @@ def ejareh_bagh_zamin():
 def ejareh_karghah():
     box_rehn_ejareh.withdraw()
     root.withdraw()
-    ejareh_karghah.deiconify() 
+    ejareh_karghah_window.deiconify() 
     box_rehn_ejareh.grab_release()
 #-----بستن باکس و باز کردن صفحه فروش مسکونی-----------
 def forosh_maskoni_window():
@@ -1124,7 +1106,7 @@ def forosh_maskoni_window():
 def forosh_edari_tejari():
     box_forosh.withdraw()
     root.withdraw()
-    forosh_edari_tejari.deiconify()
+    forosh_edari_tejari_window.deiconify()
     box_forosh.grab_release()
 #-----بستن باکس و باز کردن صفحه فروش باغ/زمین---------
 def forosh_bagh_zamin():
@@ -1204,7 +1186,7 @@ def sabt_radio_frosh():
     elif selected2==2:
             box_forosh.withdraw()
             root.withdraw()
-            forosh_edari_tejari.deiconify()
+            forosh_edari_tejari_window.deiconify()
             box_forosh.grab_release()
         
     elif selected2==4:
@@ -1244,7 +1226,7 @@ def sabt_radio_rehn():
     elif selected==6:
             box_rehn_ejareh.withdraw()
             root.withdraw()
-            ejareh_karghah.deiconify()
+            ejareh_karghah_window.deiconify()
             box_rehn_ejareh.grab_release()
 
 #تابع رادیو باتن باز و بسته کردن صفحات درخواست
@@ -1517,7 +1499,7 @@ def sabt_forosh_maskoni():
         values = (
             melk_type_forosh_maskoni_entry.get(),
             sal_sakht_forosh_maskoni_entry.get(),
-            addrres_forosh_maskoni_entry.get(),
+            addrres_forosh_maskoni_entry.get("1.0",tk.END),
             tabaghe_forosh_maskoni_entry.get(),
             vahed_forosh_maskoni_entry.get(),
             otagh_forosh_maskoni_entry.get(),
@@ -1587,17 +1569,17 @@ def sabt_forosh_edari_tejari():
         """
         values = (
             melk_type_forosh_edari_tejari_entry.get(),
-            metraj_melk_forosh_edari_tejari_entry.get(),
+            metraj_forosh_edari_tejari_entry.get(),
             sal_sakht_forosh_edari_tejari_entry.get(),
-            addrres_forosh_edari_tejari_entry.get(),
+            addrres_forosh_edari_tejari_entry.get("1.0",tk.END),
             tabaghe_forosh_edari_tejari_entry.get(),
             vahed_forosh_edari_tejari_entry.get(),
             parking_forosh_edari_tejari_var.get(),
             asansor_forosh_edari_tejari_var.get(),
             anbari_forosh_edari_tejari_var.get(),
-            aab_va_gaz_combo_emkanat_forosh_edari_tejari.get(),
-            sarmayesh_combo_emkanat_forosh_edari_tejari.get(),
-            garmayesh_combo_emkanat_forosh_edari_tejari.get(),
+            aab_va_gaz_combo_forosh_edari_tejari.get(),
+            sarmaesh_combo_forosh_edari_tejari.get(),
+            garmaesh_combo_forosh_edari_tejari.get(),
             name_malek_forosh_edari_tejari_entry.get(),
             shomareh_malek_forosh_edari_tejari_entry.get(),
             float(gheimat_kol_forosh_edari_tejari_entry.get()))
@@ -1912,7 +1894,7 @@ def sabt_ejareh_maskoni():
         values = (
             melk_type_ejareh_maskoni_entry.get(),
             sal_sakht_ejareh_maskoni_entry.get(),
-            addrres_ejareh_maskoni_entry.get(),
+            addrres_ejareh_maskoni_entry.get("1.0",tk.END),
             tabaghe_ejareh_maskoni_entry.get(),
             vahed_ejareh_maskoni_entry.get(),
             otagh_ejareh_maskoni_entry.get(),
@@ -2236,26 +2218,26 @@ def sabt_ejareh_kargah():
         VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
         """
         values = (
-            karbari_ejareh_kargah_entry.get(),
-            metraj_kargah_entry.get(),
-            loctaion_ejareh_kargah_entry.get(),
-            float(mablagh_pish_ejareh_kargah_entry.get()),
-            float(mablagh_ejareh_ejareh_kargah_entry.get()),
+            karbari_zamin_ejareh_karghah_entry.get(),
+            metraj_ejareh_karghah_entry.get(),
+            addrres_ejareh_karghah_entry.get("1.0",tk.END),
+            float(vadie_ejare_karghah_entry.get()),
+            float((gheimat_ejare_ejare_karghah_entry).get()),
             time_ejare_ejareh_kargah_combo.get(),
-            sal_sakht_ejareh_kargah_entry.get(),
-            vaziat_bargh_ejareh_kargah_combo.get(),
-            garmayesh_type_ejareh_kargah_combo.get(),
+            sal_sakht_ejareh_karghah_entry.get(),
+            vaziat_bargh_ejareh_karghah_combo.get(),
+            garmaesh_ejareh_karghah_combo.get(),
             sarmayesh_fan_ejareh_kargah_var.get(),
             sarmayesh_panke_ejareh_kargah_var.get(),
             sarmayesh_kooler_abi_ejareh_kargah_var.get(),
             sarmayesh_kooler_gazi_ejareh_kargah_var.get(),
-            vaziat_ab_ejareh_kargah_combo.get(),
-            abzaar_ejareh_kargah_combo.get(),
-            toilet_ejareh_kargah_combo.get(),
-            hamam_ejareh_kargah__combo.get(),
-            otagh_ejareh_kargah_combo.get(),
-            name_malek_ejareh_kargah_entry.get(),
-            shomareh_malek_ejareh_kargah_entry.get()
+            vaziat_ab_ejareh_karghah_combo.get(),
+            abzaar_ejareh_karghah_combo.get(),
+            toilet_ejareh_karghah_combo.get(),
+            hamam_ejareh_karghah__combo.get(),
+            otagh_ejareh_karghah_combo.get(),
+            name_malek_ejareh_karghah_entry.get(),
+            shomareh_malek_ejareh_karghah_entry.get()
         )
         cursor.execute(sql_insert, values)
         last_id = cursor.lastrowid
@@ -2404,7 +2386,7 @@ def sabt_darkhast_maskoni(event=None):
             values_darkhast_ejareh_maskoni= (
             melk_type_darkhast_maskoni_entry.get(),
             sal_sakht_darkhast_maskoni_entry.get(),
-            addrres_darkhast_maskoni_entry.get(),
+            addrres_darkhast_maskoni_entry.get("1.0",tk.END),
             tabaghe_darkhast_maskoni_entry.get(),
             vahed_darkhast_maskoni_entry.get(),
             otagh_darkhast_maskoni_entry.get(),
@@ -4549,225 +4531,218 @@ option_file_frame_ejareh_bagh_zamin.resizable(False, False)
 #endregion
 #-------------------پنجره اجاره کارگاه------------------------
 #region
-ejareh_karghah = tk.Toplevel(root)
-ejareh_karghah.title(" اجاره کارگاه")
-ejareh_karghah.geometry("800x600")
-ejareh_karghah.withdraw()
+ejareh_karghah_window = tk.Toplevel(root)
+ejareh_karghah_window.title(" اجاره کارگاه")
+ejareh_karghah_window.geometry("1500x800")
+ejareh_karghah_window.configure(bg="#052340")
+ejareh_karghah_window.withdraw()
 
-bg_image = image_ejareh_karghah
-bg_image = image_ejareh_karghah.resize((800, 600))
-bg_photo = ImageTk.PhotoImage(bg_image)
+frame_up_right_ejareh_karghah = tk.Frame(ejareh_karghah_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=730,height=300)
+frame_up_right_ejareh_karghah.configure(bg="#052340")
+frame_up_right_ejareh_karghah.place(x=720,y=90)
 
-bg_label = tk.Label(ejareh_karghah, image=bg_photo)
-bg_label.image = bg_photo  
-bg_label.place(x=0, y=0, relwidth=1, relheight=1)
+frame_up_left_ejareh_karghah= tk.Frame(ejareh_karghah_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=640,height=300)
+frame_up_left_ejareh_karghah.configure(bg="#052340")
+frame_up_left_ejareh_karghah.place(x=40,y=90)
 
-#----------------------کادر اجاره کارگاه-----------------------#
-ejareh_kargah_frame= tk.Frame(ejareh_karghah,bd=0,highlightthickness=0)
-ejareh_kargah_frame.pack(side="left", fill="y", padx=6, pady=15)
+frame_midde_right_ejareh_karghah= tk.Frame(ejareh_karghah_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=730,height=150)
+frame_midde_right_ejareh_karghah.configure(bg="#052340")
+frame_midde_right_ejareh_karghah.place(x=720,y=410)
 
-title_lbl = tk.Label(ejareh_karghah,text="اجاره کارگاه",bg="#000000",fg="#00BFFF",font=("Shabnam", 15))
-title_lbl.place(x=60, y=25)
+frame_midde_left_ejareh_karghah= tk.Frame(ejareh_karghah_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=640,height=150)
+frame_midde_left_ejareh_karghah.configure(bg="#052340")
+frame_midde_left_ejareh_karghah.place(x=40,y=410)
 
-start_x = 450
-start_y = 40
+frame_down_ejareh_karghah= tk.Frame(ejareh_karghah_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=1410,height=150)
+frame_down_ejareh_karghah.configure(bg="#052340")
+frame_down_ejareh_karghah.place(x=40,y=580)
 
-karbari_zamin_ejareh_kargah=tk.Label(ejareh_karghah, text="کاربری زمین", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-karbari_zamin_ejareh_kargah.place(x=start_x + 320, y=start_y + 35, anchor="e")
+title_label_up1_ejareh_karghah= tk.Label(ejareh_karghah_window,text="رهن و اجاره کارگاه",bg="#052340",fg="#00BFFF",font=("Shabnam", 16))
+title_label_up1_ejareh_karghah.place(x=650, y=17)   
 
-karbari_ejareh_kargah_entry=tk.Entry(ejareh_karghah, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10), justify="center")
-karbari_ejareh_kargah_entry.insert(0,"کارگاه")
-karbari_ejareh_kargah_entry.config(state="disable")
-karbari_ejareh_kargah_entry.place(x=start_x + 10, y=start_y + 25, width=150, height=25)
+title_label_up2_ejareh_karghah = tk.Label(ejareh_karghah_window,text="ثبت اطلاعات اجاره کارگاه",bg="#052340",fg="#ffffff",font=("Shabnam", 11))
+title_label_up2_ejareh_karghah.place(x=650, y=45)
 
-ejareh_kargah_lable=tk.Label(ejareh_karghah,text=" کارگاه ",bg="#ffffff",fg="#000000",width=20)
-ejareh_kargah_lable.place(x=start_x + 10, y=start_y + 25, width=150, height=25)
+label_up_right_ejareh_karghah=tk.Label(ejareh_karghah_window,text="اطلاعات ملک",bg="#052340",fg="#00BFFF",font=("Shabnam", 11))
+label_up_right_ejareh_karghah.place(x=800,y=73)
 
-metraj_kargah_lable=tk.Label(ejareh_karghah, text=" متراژ ", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-metraj_kargah_lable.place(x=start_x + 320, y=start_y + 85, anchor="e")
+label_up_left_ejareh_karghah=tk.Label(ejareh_karghah_window,text="تصویر ملک",bg="#052340",fg="#00BFFF",font=("Shabnam", 11))
+label_up_left_ejareh_karghah.place(x=100,y=73)
 
-metraj_kargah_entry=tk.Entry(ejareh_karghah, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
-metraj_kargah_entry.place(x=start_x + 10, y=start_y + 75, width=150, height=25)
+label_midde_right_ejareh_karghah=tk.Label(ejareh_karghah_window,text="اطلاعات معامله",bg="#052340",fg="#00BFFF",font=("Shabnam", 11))
+label_midde_right_ejareh_karghah.place(x=800,y=395)
 
-loctaion_ejareh_kargah_lable=tk.Label(ejareh_karghah, text="منطقه و آدرس", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-loctaion_ejareh_kargah_lable.place(x=start_x + 320, y=start_y + 135, anchor="e")
+label_midde_left_ejareh_karghah=tk.Label(ejareh_karghah_window,text="اطلاعات مالک",bg="#052340",fg="#00BFFF",font=("Shabnam", 11))
+label_midde_left_ejareh_karghah.place(x=100,y=395)
 
-loctaion_ejareh_kargah_entry=tk.Entry(ejareh_karghah, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
-loctaion_ejareh_kargah_entry.place(x=start_x + 10, y=start_y + 125, width=150, height=25)
-
-mablagh_pish_ejareh_kargah_lable=tk.Label(ejareh_karghah, text="ودیعه", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-mablagh_pish_ejareh_kargah_lable.place(x=start_x + 320, y=start_y + 185, anchor="e")
+label_down_ejareh_karghah=tk.Label(ejareh_karghah_window,text="امکانات",bg="#052340",fg="#00BFFF",font=("Shabnam", 11))
+label_down_ejareh_karghah.place(x=100,y=565)
 
 
-mablagh_pish_ejareh_kargah_entry=tk.Entry(ejareh_karghah, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
-mablagh_pish_ejareh_kargah_entry.place(x=start_x + 10, y=start_y + 175, width=150, height=25)
+#-------------------------------فریم بالا سمت راست----------------------------
 
-mablagh_ejareh_ejareh_kargah_lable=tk.Label(ejareh_karghah, text="مبلغ اجاره", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-mablagh_ejareh_ejareh_kargah_lable.place(x=start_x + 320, y=start_y + 235, anchor="e")
+sal_sakht_ejareh_karghah_lable = tk.Label(frame_up_right_ejareh_karghah, text="سال ساخت", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+sal_sakht_ejareh_karghah_lable.place(x=520, y=80, anchor="e")
 
-mablagh_ejareh_ejareh_kargah_entry=tk.Entry(ejareh_karghah, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
-mablagh_ejareh_ejareh_kargah_entry.place(x=start_x + 10, y=start_y + 225, width=150, height=25)
+sal_sakht_ejareh_karghah_entry = tk.Entry(frame_up_right_ejareh_karghah, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
+sal_sakht_ejareh_karghah_entry.place(x=30, y=70, width=354, height=25)
 
+karbari_zamin_ejareh_karghah_lable = tk.Label(frame_up_right_ejareh_karghah, text="کاربری زمین", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+karbari_zamin_ejareh_karghah_lable.place(x=520, y=30, anchor="e")
 
-time_ejate_ejareh_kargah_lable=tk.Label(ejareh_karghah, text="مدت اجاره", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-time_ejate_ejareh_kargah_lable.place(x=start_x + 320, y=start_y + 285, anchor="e")
+karbari_zamin_ejareh_karghah_entry = tk.Entry(frame_up_right_ejareh_karghah, bg="#ffffff", fg="#000000", font=("Shabnam", 10), justify="center")
+karbari_zamin_ejareh_karghah_entry.insert(0, "اجاره کارگاه")
+karbari_zamin_ejareh_karghah_entry.config(state="readonly",readonlybackground="#ffffff",fg="#000000")
+karbari_zamin_ejareh_karghah_entry.place(x=30, y=20, width=350, height=25)
 
-time_ejare_ejareh_kargah_combo=ttk.Combobox(ejareh_karghah,state="readonly")
+metraj_ejareh_karghah_lable = tk.Label(frame_up_right_ejareh_karghah, text="متراژ", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+metraj_ejareh_karghah_lable.place(x=520, y=120,anchor="e")
+
+metraj_ejareh_karghah_entry = tk.Entry(frame_up_right_ejareh_karghah, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
+metraj_ejareh_karghah_entry.place(x=30, y=110, width=350, height=25)
+
+time_ejate_ejareh_kargah_lable=tk.Label(frame_up_right_ejareh_karghah, text="مدت اجاره", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+time_ejate_ejareh_kargah_lable.place(x=520, y=160, anchor="e")
+
+time_ejare_ejareh_kargah_combo=ttk.Combobox(frame_up_right_ejareh_karghah,state="readonly")
 time_ejare_ejareh_kargah_combo["values"]=("بلندمدت","کوتاه مدت","فصلی","سالانه")
 time_ejare_ejareh_kargah_combo.set("فصلی")
-time_ejare_ejareh_kargah_combo.place(x=start_x + 10, y=start_y + 275, width=150, height=25)
-
-name_malek_ejareh_kargah_lable=tk.Label(ejareh_karghah, text="نام مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-name_malek_ejareh_kargah_lable.place(x=start_x + 320, y=start_y + 345, anchor="e")
-
-name_malek_ejareh_kargah_entry=tk.Entry(ejareh_karghah, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
-name_malek_ejareh_kargah_entry.place(x=start_x + 10, y=start_y + 335, width=150, height=25)
-
-shomareh_malek_ejareh_kargah_lable=tk.Label(ejareh_karghah, text="شماره مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-shomareh_malek_ejareh_kargah_lable.place(x=start_x + 320, y=start_y + 395, anchor="e")
-
-shomareh_malek_ejareh_kargah_entry=tk.Entry(ejareh_karghah, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
-shomareh_malek_ejareh_kargah_entry.place(x=start_x + 10, y=start_y + 385, width=150, height=25)
-
-photo_lbl2_ejareh_kargah = tk.Label(ejareh_karghah, text="[تصویر ملک]", bg="#FFFFFF", width=50, height=15)
-photo_lbl2_ejareh_kargah.place(x=60, y=85)
-
-add_img_btn_ejareh_kargah = tk.Button(ejareh_karghah, text="افزودن تصویر", bg="#00BFFF", fg="black",command=open_file,height=2,width=13)
-add_img_btn_ejareh_kargah.place(x=60, y=370)
-
-back_to_home_ejareh_kargah=tk.Button(ejareh_karghah,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_ejareh_karghah)
-back_to_home_ejareh_kargah.place(x=290,y=520)
-
-zakhire_ejareh_kargah=tk.Button(ejareh_karghah,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=sabt_ejareh_kargah)
-zakhire_ejareh_kargah.place(x=140,y=520)
-
-ejareh_karghah.protocol("WM_DELETE_WINDOW", lambda: None)
-ejareh_karghah.resizable(False, False)
-#endregion
-#---------------------پنجره امکانات اجاره کارگاه---------------------
-#region
-option_frame_ejareh_kargah=tk.Frame(ejareh_karghah,width=300,height=30,background="#052340")
-option_frame_ejareh_kargah.place(x=225,y=370)
-
-option_frame_ejareh_kargah_lable=tk.Label(option_frame_ejareh_kargah,text='افزودن امکانات فایل',font=("Shabnam",12,"bold"),background="#052340",fg="#00BFFF")
-option_frame_ejareh_kargah_lable.pack(side="right",padx=1)
-
-plus_button_ejareh_kargah=tk.Button(option_frame_ejareh_kargah,image=plus,command=open_option7,border=0)
-plus_button_ejareh_kargah.pack()
-
-option_file_frame_ejareh_kargah=tk.Toplevel(ejareh_karghah)
-option_file_frame_ejareh_kargah.title(" امکانات اجاره کارگاه")
-option_file_frame_ejareh_kargah.geometry("500x500")
-option_file_frame_ejareh_kargah.pack_propagate(False)
-option_file_frame_ejareh_kargah.withdraw()
-
-bg_image = image_ejareh_karghah
-bg_image = image_ejareh_karghah.resize((800, 650))
-bg_photo = ImageTk.PhotoImage(bg_image)
-
-bg_label = tk.Label(option_file_frame_ejareh_kargah, image=bg_photo)
-bg_label.image = bg_photo 
-bg_label.place(x=0, y=0, relwidth=1, relheight=1)
+time_ejare_ejareh_kargah_combo.place(x=30, y=152, width=350, height=25)
 
 
-sal_sakht_ejareh_kargah_lable=tk.Label(option_file_frame_ejareh_kargah,bg="#052340",fg="#ffffff",font=("Shabnam", 9),width=13,text="سال ساخت")
-sal_sakht_ejareh_kargah_lable.place(x=302, y=50)
+#--------------------فریم چپ بالا---------------------------
+photo_lbl2_ejareh_karghah = tk.Label(frame_up_left_ejareh_karghah, text="[تصویر ملک]", bg="#FFFFFF", width=79, height=15,relief="solid")
+photo_lbl2_ejareh_karghah.place(x=40, y=10)
 
-sal_sakht_ejareh_kargah_entry=tk.Entry(option_file_frame_ejareh_kargah,width=10,bg="#ffffff",fg="#000000")
-sal_sakht_ejareh_kargah_entry.place(x=108, y=50)
+add_img_btn_ejareh_karghah = tk.Button(frame_up_left_ejareh_karghah, text="افزودن تصویر", bg="#00BFFF", fg="#ffffff",command=open_file, height=2,width=13)
+add_img_btn_ejareh_karghah.place(x=240, y=250)
 
-vaziat_bagh_ejareh_kargah=tk.Label(option_file_frame_ejareh_kargah,bg="#052340",fg="#ffffff",font=("Shabnam", 9),width=15,text="وضعیت برق")
-vaziat_bagh_ejareh_kargah.place(x=295, y=80)
+#--------------------------فریم راست وسط---------------------
+vadie_ejare_karghah_lable = tk.Label(frame_midde_right_ejareh_karghah, text="مبلغ پیش", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+vadie_ejare_karghah_lable.place(x=580, y=20, anchor="e")
 
-vaziat_bargh_ejareh_kargah_combo=ttk.Combobox(option_file_frame_ejareh_kargah)
-vaziat_bargh_ejareh_kargah_combo["values"]=("","برق شهری","سه فاز","تک فاز")
-vaziat_bargh_ejareh_kargah_combo.set("")
-vaziat_bargh_ejareh_kargah_combo["state"]=["readonly"]
-vaziat_bargh_ejareh_kargah_combo.place(x=70, y=80)
+vadie_ejare_karghah_entry = tk.Entry(frame_midde_right_ejareh_karghah, bg="#ffffff", fg="#ffffff", font=("Shabnam", 10))
+vadie_ejare_karghah_entry.place(x=30, y=13, width=350, height=25)
 
-garmayesh_ejareh_kargah=tk.Label(option_file_frame_ejareh_kargah,bg="#052340",fg="#ffffff",font=("Shabnam", 9),width=15,text="سیستم گرمایش")
-garmayesh_ejareh_kargah.place(x=295, y=110)
+gheimat_ejare_ejare_karghah_lable = tk.Label(frame_midde_right_ejareh_karghah, text="مبلغ اجاره", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+gheimat_ejare_ejare_karghah_lable.place(x=580, y=65, anchor="e")
 
-garmayesh_type_ejareh_kargah_combo=ttk.Combobox(option_file_frame_ejareh_kargah)
-garmayesh_type_ejareh_kargah_combo["values"]=("","بخاری ","شوفاژ ","فن کوئل(گرما) ")
-garmayesh_type_ejareh_kargah_combo.set("")
-garmayesh_type_ejareh_kargah_combo["state"]=["readonly"]
-garmayesh_type_ejareh_kargah_combo.place(x=70, y=110)
+gheimat_ejare_ejare_karghah_entry = tk.Entry(frame_midde_right_ejareh_karghah, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
+gheimat_ejare_ejare_karghah_entry.place(x=30, y=55, width=350, height=25)
 
-sarmayesh_ejareh_kargah=tk.Label(option_file_frame_ejareh_kargah,bg="#052340",fg="#ffffff",font=("Shabnam", 9),width=15,text="سیستم سرمایش ")
-sarmayesh_ejareh_kargah.place(x=295, y=140)
+addrres_ejareh_karghah_lable = tk.Label(frame_midde_right_ejareh_karghah, text="منطقه و آدرس", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=12)
+addrres_ejareh_karghah_lable.place(x=580, y=110, anchor="e")
+addrres_ejareh_karghah_entry = tk.Text(frame_midde_right_ejareh_karghah, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
+addrres_ejareh_karghah_entry.place(x=30, y=90, width=350, height=50)
 
-sarmayesh_kooler_abi_ejareh_kargah_var=tk.IntVar(value=0)
-sarmayesh_panke_ejareh_kargah_var=tk.IntVar(value=0)
+#------------------------------------فریم چپ وسط-----------------------
+name_malek_ejareh_karghah_lable = tk.Label(frame_midde_left_ejareh_karghah,text="نام مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+name_malek_ejareh_karghah_lable.place(x=600, y=30,anchor="e")
+
+name_malek_ejareh_karghah_entry = tk.Entry(frame_midde_left_ejareh_karghah, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
+name_malek_ejareh_karghah_entry.place(x=30, y=20, width=350, height=25)
+
+shomareh_malek_ejareh_karghah_lable = tk.Label(frame_midde_left_ejareh_karghah, text="شماره مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+shomareh_malek_ejareh_karghah_lable.place(x=600, y=80,anchor="e")
+
+shomareh_malek_ejareh_karghah_entry = tk.Entry(frame_midde_left_ejareh_karghah, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
+shomareh_malek_ejareh_karghah_entry.place(x=30, y=70, width=350, height=25)
+
+#---------------------------------فریم پایین--------------------------------
+sarmaesh_ejareh_karghah = tk.Label(frame_down_ejareh_karghah, text="سیستم سرمایش", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
+sarmaesh_ejareh_karghah.place(x=1150, y=50)
+sarmaesh_ejareh_karghah_combo = ttk.Combobox(frame_down_ejareh_karghah)
+sarmaesh_ejareh_karghah_combo["values"] = ("ندارد", "پنکه سقفی", "کولر ابی", "کولر گازی ", "ابی/گازی")
+sarmaesh_ejareh_karghah_combo["state"] = "readonly"
+sarmaesh_ejareh_karghah_combo.configure(justify="center")
+sarmaesh_ejareh_karghah_combo.place(x=980, y=50)
+
+garmaesh_ejareh_karghah = tk.Label(frame_down_ejareh_karghah, text="سیستم گرمایش", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
+garmaesh_ejareh_karghah.place(x=1155, y=80)
+garmaesh_ejareh_karghah_combo = ttk.Combobox(frame_down_ejareh_karghah)
+garmaesh_ejareh_karghah_combo["values"] = ("ندارد", "بخاری", " شوفاژ", "گرمایش از کف ")
+garmaesh_ejareh_karghah_combo["state"] = "readonly"
+garmaesh_ejareh_karghah_combo.configure(justify="center")
+garmaesh_ejareh_karghah_combo.place(x=980, y=80)
+
+toilet_ejareh_karghah = tk.Label(frame_down_ejareh_karghah, text="سرویس بهداشتی", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
+toilet_ejareh_karghah.place(x=850, y=80)
+toilet_ejareh_karghah_combo = ttk.Combobox(frame_down_ejareh_karghah)
+toilet_ejareh_karghah_combo["values"] = ("ایرانی", "فرنگی", "هردو")
+toilet_ejareh_karghah_combo["state"] = "readonly"
+toilet_ejareh_karghah_combo.configure(justify="center")
+toilet_ejareh_karghah_combo.place(x=680, y=80)
+
+vaziat_bagh_ejareh_karghah=tk.Label(frame_down_ejareh_karghah,bg="#052340",fg="#ffffff",font=("Shabnam", 9),width=15,text="وضعیت برق")
+vaziat_bagh_ejareh_karghah.place(x=850, y=50)
+
+vaziat_bargh_ejareh_karghah_combo=ttk.Combobox(frame_down_ejareh_karghah)
+vaziat_bargh_ejareh_karghah_combo["values"]=("","برق شهری","سه فاز","تک فاز")
+vaziat_bargh_ejareh_karghah_combo.set("")
+vaziat_bargh_ejareh_karghah_combo["state"]=["readonly"]
+vaziat_bargh_ejareh_karghah_combo.place(x=680, y=50)
+
 sarmayesh_fan_ejareh_kargah_var=tk.IntVar(value=0)
+sarmayesh_panke_ejareh_kargah_var=tk.IntVar(value=0)
+sarmayesh_kooler_abi_ejareh_kargah_var=tk.IntVar(value=0)
 sarmayesh_kooler_gazi_ejareh_kargah_var=tk.IntVar(value=0)
 
-sarmayesh_fan_ejareh_kargah=tk.Checkbutton(option_file_frame_ejareh_kargah,text="تهویه(فن)",variable=sarmayesh_fan_ejareh_kargah_var,background="#052340",fg="#00BFFF",font=("Shabnam", 9))
-sarmayesh_fan_ejareh_kargah.place(x=295, y=170)
+sarmayesh_fan_ejareh_karghah=tk.Checkbutton(frame_down_ejareh_karghah,text="تهویه(فن)",variable=sarmayesh_fan_ejareh_kargah_var,background="#052340",fg="#00BFFF",font=("Shabnam", 9))
+sarmayesh_fan_ejareh_karghah.place(x=570, y=50)
 
-sarmayesh_panke_ejareh_kargah=tk.Checkbutton(option_file_frame_ejareh_kargah,text="پنکه سقفی",variable=sarmayesh_panke_ejareh_kargah_var,background="#052340",fg="#00BFFF",font=("Shabnam", 9))
-sarmayesh_panke_ejareh_kargah.place(x=80, y=170)
+sarmayesh_panke_ejareh_karghah=tk.Checkbutton(frame_down_ejareh_karghah,text="پنکه سقفی",variable=sarmayesh_panke_ejareh_kargah_var,background="#052340",fg="#00BFFF",font=("Shabnam", 9))
+sarmayesh_panke_ejareh_karghah.place(x=480, y=80)
 
-sarmayesh_kooler_abi_ejareh_kargah=tk.Checkbutton(option_file_frame_ejareh_kargah,text="کولر آبی",variable=sarmayesh_kooler_abi_ejareh_kargah_var,background="#052340",fg="#00BFFF",font=("Shabnam", 9))
-sarmayesh_kooler_abi_ejareh_kargah.place(x=299, y=200)
+sarmayesh_kooler_abi_ejareh_karghah=tk.Checkbutton(frame_down_ejareh_karghah,text="کولر آبی",variable=sarmayesh_kooler_abi_ejareh_kargah_var,background="#052340",fg="#00BFFF",font=("Shabnam", 9))
+sarmayesh_kooler_abi_ejareh_karghah.place(x=570, y=80)
 
-sarmayesh_kooler_gazi_ejareh_kargah=tk.Checkbutton(option_file_frame_ejareh_kargah,text="کولر گازی",variable=sarmayesh_kooler_gazi_ejareh_kargah_var,background="#052340",fg="#00BFFF",font=("Shabnam", 9))
-sarmayesh_kooler_gazi_ejareh_kargah.place(x=84, y=200)
+sarmayesh_kooler_gazi_ejareh_karghah=tk.Checkbutton(frame_down_ejareh_karghah,text="کولر گازی",variable=sarmayesh_kooler_gazi_ejareh_kargah_var,background="#052340",fg="#00BFFF",font=("Shabnam", 9))
+sarmayesh_kooler_gazi_ejareh_karghah.place(x=480, y=50)
 
-vaziat_ab_ejareh_kargah=tk.Label(option_file_frame_ejareh_kargah,bg="#052340",fg="#ffffff",width=13,text=" وضعیت آب",font=("Shabnam", 9))
-vaziat_ab_ejareh_kargah.place(x=303, y=230)
+vaziat_ab_ejareh_karghah=tk.Label(frame_down_ejareh_karghah,bg="#052340",fg="#ffffff",width=13,text=" وضعیت آب",font=("Shabnam", 9))
+vaziat_ab_ejareh_karghah.place(x=370, y=50)
 
-vaziat_ab_ejareh_kargah_combo=ttk.Combobox(option_file_frame_ejareh_kargah,width=35)
-vaziat_ab_ejareh_kargah_combo["values"]=(""," آب  لوله کشی (بدون فشار) " ," آب لوله کشی (همراه موتور فشار) ","دارای منبع(همراه موتور فشار)","دارای منبع(بدون فشار)")
-vaziat_ab_ejareh_kargah_combo.set("")
-vaziat_ab_ejareh_kargah_combo["state"]=["readonly"]
-vaziat_ab_ejareh_kargah_combo.place(x=30, y=230)
+vaziat_ab_ejareh_karghah_combo=ttk.Combobox(frame_down_ejareh_karghah,width=18)
+vaziat_ab_ejareh_karghah_combo["values"]=(""," آب  لوله کشی (بدون فشار) " ," آب لوله کشی (همراه موتور فشار) ","دارای منبع(همراه موتور فشار)","دارای منبع(بدون فشار)")
+vaziat_ab_ejareh_karghah_combo.set("")
+vaziat_ab_ejareh_karghah_combo["state"]=["readonly"]
+vaziat_ab_ejareh_karghah_combo.place(x=230, y=50)
 
-abzar_ejareh_kargah=tk.Label(option_file_frame_ejareh_kargah,bg="#052340",fg="#ffffff",font=("Shabnam", 9),width=15,text=" ابزار صنعتی ")
-abzar_ejareh_kargah.place(x=298, y=260)
+abzar_ejareh_karghah=tk.Label(frame_down_ejareh_karghah,bg="#052340",fg="#ffffff",font=("Shabnam", 9),width=15,text=" ابزار صنعتی ")
+abzar_ejareh_karghah.place(x=366, y=80)
 
-abzaar_ejareh_kargah_combo=ttk.Combobox(option_file_frame_ejareh_kargah,width=23)
-abzaar_ejareh_kargah_combo["values"]=("","(کارگاه خالی) بدون دستگاه ","دارای دستگاه")
-abzaar_ejareh_kargah_combo.set("")
-abzaar_ejareh_kargah_combo["state"]=["readonly"]
-abzaar_ejareh_kargah_combo.place(x=58, y=260)
+abzaar_ejareh_karghah_combo=ttk.Combobox(frame_down_ejareh_karghah,width=23)
+abzaar_ejareh_karghah_combo["values"]=("","(کارگاه خالی) بدون دستگاه ","دارای دستگاه")
+abzaar_ejareh_karghah_combo.set("")
+abzaar_ejareh_karghah_combo["state"]=["readonly"]
+abzaar_ejareh_karghah_combo.place(x=200, y=80)
 
-toilet_ejareh_kargah=tk.Label(option_file_frame_ejareh_kargah,bg="#052340",fg="#ffffff",font=("Shabnam", 9),width=15,text="سرویس بهداشتی")
-toilet_ejareh_kargah.place(x=298, y=290)
+hamam_ejareh_karghah=tk.Label(frame_down_ejareh_karghah,bg="#052340",fg="#ffffff",font=("Shabnam", 9),width=13,text="حمام")
+hamam_ejareh_karghah.place(x=150, y=80)
 
-toilet_ejareh_kargah_combo=ttk.Combobox(option_file_frame_ejareh_kargah)
-toilet_ejareh_kargah_combo["values"]=("","دارد","ندارد")
-toilet_ejareh_kargah_combo.set("")
-toilet_ejareh_kargah_combo["state"]=["readonly"]
-toilet_ejareh_kargah_combo.place(x=70, y=290)
+hamam_ejareh_karghah__combo=ttk.Combobox(frame_down_ejareh_karghah)
+hamam_ejareh_karghah__combo["values"]=("","ندارد","دارد")
+hamam_ejareh_karghah__combo.set("")
+hamam_ejareh_karghah__combo["state"]=["readonly"]
+hamam_ejareh_karghah__combo.place(x=5, y=80)
 
-hamam_ejareh_kargah=tk.Label(option_file_frame_ejareh_kargah,bg="#052340",fg="#ffffff",font=("Shabnam", 9),width=13,text="حمام")
-hamam_ejareh_kargah.place(x=303, y=320)
+otagh_ejareh_karghah=tk.Label(frame_down_ejareh_karghah,bg="#052340",fg="#ffffff",font=("Shabnam", 9),width=17,text="اتاق رخت کن و استراحت")
+otagh_ejareh_karghah.place(x=120, y=50)
 
-hamam_ejareh_kargah__combo=ttk.Combobox(option_file_frame_ejareh_kargah)
-hamam_ejareh_kargah__combo["values"]=("","ندارد","دارد")
-hamam_ejareh_kargah__combo.set("")
-hamam_ejareh_kargah__combo["state"]=["readonly"]
-hamam_ejareh_kargah__combo.place(x=70, y=320)
+otagh_ejareh_karghah_combo=ttk.Combobox(frame_down_ejareh_karghah,width=15)
+otagh_ejareh_karghah_combo["values"]=("","ندارد","دارد")
+otagh_ejareh_karghah_combo.set("")
+otagh_ejareh_karghah_combo["state"]=["readonly"]
+otagh_ejareh_karghah_combo.place(x=5, y=50)
 
-otagh_ejareh_kargah=tk.Label(option_file_frame_ejareh_kargah,bg="#052340",fg="#ffffff",font=("Shabnam", 9),width=17,text="اتاق رخت کن و استراحت")
-otagh_ejareh_kargah.place(x=294, y=350)
+back_to_home_ejareh_karghah=tk.Button(ejareh_karghah_window,text="بازگشت",bg="#052340", fg="#ffffff",width=10,height=1,command=back_home_ejareh_karghah)
+back_to_home_ejareh_karghah.place(x=700,y=750)
 
-otagh_ejareh_kargah_combo=ttk.Combobox(option_file_frame_ejareh_kargah)
-otagh_ejareh_kargah_combo["values"]=("","ندارد","دارد")
-otagh_ejareh_kargah_combo.set("")
-otagh_ejareh_kargah_combo["state"]=["readonly"]
-otagh_ejareh_kargah_combo.place(x=70, y=350)
+save_button_ejareh_mkarghah=tk.Button(ejareh_karghah_window,text="ذخیره",bg="#00BFFF", fg="#ffffff",width=10,height=1,command=sabt_ejareh_kargah)
+save_button_ejareh_mkarghah.place(x=550,y=750)
 
-zakhire_options_ejareh_kargah=tk.Button(option_file_frame_ejareh_kargah,text="تایید",command=save_option_ejareh_kargah,background="#00BFFF",fg="#000000",width=10,height=1)
-zakhire_options_ejareh_kargah.place(x=50,y=450)
-
-back_to_ejareh_kargah=tk.Button(option_file_frame_ejareh_kargah,text="بازگشت",command=back_to_ejareh_karghah,background="#00BFFF",fg="#000000",width=10,height=1)
-back_to_ejareh_kargah.place(x=170,y=450)
-
-option_file_frame_ejareh_kargah.protocol("WM_DELETE_WINDOW", lambda: None)
-option_file_frame_ejareh_kargah.resizable(False, False)
-
+ejareh_karghah_window.protocol("WM_DELETE_WINDOW", lambda: None)
+ejareh_karghah_window.resizable(False, False)#---------------------پنجره امکانات اجاره کارگاه---------------------
 #endregion
 #---------------------------پنجره های ثبتی بخش فروش--------------------
 #-------------------پنجره فروش مسکونی----------------------
@@ -4957,178 +4932,186 @@ forosh_maskoni_window.resizable(False, False)
 #endregion
 #-----------------پنجره فروش اداری/تجاری-------------------
 #region
-forosh_edari_tejari = tk.Toplevel(root)
-forosh_edari_tejari.title(" فروش اداری / تجاری")
-forosh_edari_tejari.geometry("800x600")
-forosh_edari_tejari.withdraw()
-
-bg_image = image_forosh_edari_tejari
-bg_image = image_forosh_edari_tejari.resize((800, 600))
-bg_photo = ImageTk.PhotoImage(bg_image)
-
-# لیبل پس‌زمینه
-bg_label = tk.Label(forosh_edari_tejari, image=bg_photo)
-bg_label.image = bg_photo  # خیلی مهم: جلوگیری از پاک شدن عکس
-bg_label.place(x=0, y=0, relwidth=1, relheight=1)
-
-#---------------پنجره امکانات فروش اداری/تجاری----------------
-
-option_file_frame_forosh_edari_tejari=tk.Toplevel(forosh_edari_tejari)
-option_file_frame_forosh_edari_tejari.title(" امکانات فروش اداری/تجاری")
-option_file_frame_forosh_edari_tejari.geometry("500x370")
-option_file_frame_forosh_edari_tejari.pack_propagate(False)
-option_file_frame_forosh_edari_tejari.withdraw()
+forosh_edari_tejari_window = tk.Toplevel(root)
+forosh_edari_tejari_window.title("فروش اداری و تجاری")
+forosh_edari_tejari_window.configure(bg="#052340")
+forosh_edari_tejari_window.geometry("1500x800")
+forosh_edari_tejari_window.withdraw()
 
 #----------------------کادر فروش اداری و تجاری------------------#
-frame_forosh_edari_tejari= tk.Frame(forosh_edari_tejari,bd=0,highlightthickness=0)
-frame_forosh_edari_tejari.pack(side="left", fill="y", padx=6, pady=15)
 
-title_lbl = tk.Label(forosh_edari_tejari,text="فروش اداری و تجاری",bg="#052340",fg="#00BFFF",font=("Shabnam", 15))
-title_lbl.place(x=60, y=25)
+frame_up_right_forosh_edari_tejari= tk.Frame(forosh_edari_tejari_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=730,height=300)
+frame_up_right_forosh_edari_tejari.configure(bg="#052340")
+frame_up_right_forosh_edari_tejari.place(x=720,y=90)
 
-start_x = 450
-start_y = 40
+frame_up_left_forosh_edari_tejari= tk.Frame(forosh_edari_tejari_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=640,height=300)
+frame_up_left_forosh_edari_tejari.configure(bg="#052340")
+frame_up_left_forosh_edari_tejari.place(x=40,y=90)
 
+frame_midde_right_forosh_edari_tejari= tk.Frame(forosh_edari_tejari_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=730,height=150)
+frame_midde_right_forosh_edari_tejari.configure(bg="#052340")
+frame_midde_right_forosh_edari_tejari.place(x=720,y=410)
 
-melk_type_forosh_edari_tejari_lable=tk.Label(forosh_edari_tejari,text="نوع ملک",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-melk_type_forosh_edari_tejari_lable.place(x=start_x + 320, y=start_y + 35, anchor="e")
+frame_midde_left_forosh_edari_tejari= tk.Frame(forosh_edari_tejari_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=640,height=150)
+frame_midde_left_forosh_edari_tejari.configure(bg="#052340")
+frame_midde_left_forosh_edari_tejari.place(x=40,y=410)
 
-melk_type_forosh_edari_tejari_entry=tk.Entry(forosh_edari_tejari,bg="#FFFFFF", fg="#000000",font=("Shabnam", 10),justify="center")
-melk_type_forosh_edari_tejari_entry.place(x=start_x + 10, y=start_y + 25, width=150, height=25)
+frame_down_forosh_edari_tejari= tk.Frame(forosh_edari_tejari_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=1410,height=150)
+frame_down_forosh_edari_tejari.configure(bg="#052340")
+frame_down_forosh_edari_tejari.place(x=40,y=580)
+
+title_label_up1 = tk.Label(forosh_edari_tejari_window,text="فروش اداری و تجاری",bg="#052340",fg="#00BFFF",font=("Shabnam", 16))
+title_label_up1.place(x=650, y=17)
+
+title_label_up2 = tk.Label(forosh_edari_tejari_window,text="ثبت اطلاعات فروش اداری و تجاری",bg="#052340",fg="#ffffff",font=("Shabnam", 11))
+title_label_up2.place(x=635, y=45)
+
+label_up_right_forosh_edari_tejari=tk.Label(forosh_edari_tejari_window,text="اطلاعات ملک",bg="#052340",fg="#00BFFF",font=("Shabnam", 11))
+label_up_right_forosh_edari_tejari.place(x=800,y=73)
+
+label_up_left_forosh_edari_tejari=tk.Label(forosh_edari_tejari_window,text="تصویر ملک",bg="#052340",fg="#00BFFF",font=("Shabnam", 11))
+label_up_left_forosh_edari_tejari.place(x=100,y=73)
+
+label_midde_right_forosh_edari_tejari=tk.Label(forosh_edari_tejari_window,text="اطلاعات معامله",bg="#052340",fg="#00BFFF",font=("Shabnam", 11))
+label_midde_right_forosh_edari_tejari.place(x=800,y=395)
+
+label_midde_left_forosh_edari_tejari=tk.Label(forosh_edari_tejari_window,text="اطلاعات مالک",bg="#052340",fg="#00BFFF",font=("Shabnam", 11))
+label_midde_left_forosh_edari_tejari.place(x=100,y=395)
+
+label_down_forosh_edari_tejari=tk.Label(forosh_edari_tejari_window,text="امکانات",bg="#052340",fg="#00BFFF",font=("Shabnam", 11))
+label_down_forosh_edari_tejari.place(x=100,y=565)
+
+#-------------------------------------فریم بالا سمت راست------------------------------
+
+melk_type_forosh_edari_tejari_lable = tk.Label(frame_up_right_forosh_edari_tejari, text="نوع ملک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+melk_type_forosh_edari_tejari_lable.place(x=700,y=40, anchor="e")
+
+melk_type_forosh_edari_tejari_entry=tk.Entry(frame_up_right_forosh_edari_tejari, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10), justify="center")
 melk_type_forosh_edari_tejari_entry.insert(0,"فروش اداری و تجاری")
-melk_type_forosh_edari_tejari_entry.config(state="disable")
+melk_type_forosh_edari_tejari_entry.config(state="readonly",readonlybackground="#FFFFFF",fg="#000000")
+melk_type_forosh_edari_tejari_entry.place(x=30, y=30, width=350, height=25)
 
-metraj_melk_forosh_edari_tejari_lable=tk.Label(forosh_edari_tejari,text="متراژ ملک ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-metraj_melk_forosh_edari_tejari_lable.place(x=start_x + 320, y=start_y + 85, anchor="e")
+sal_sakht_forosh_edari_tejari=tk.Label(frame_up_right_forosh_edari_tejari, text="سال ساخت", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+sal_sakht_forosh_edari_tejari.place(x=700, y=80, anchor="e")
 
-metraj_melk_forosh_edari_tejari_entry=tk.Entry(forosh_edari_tejari,bg="#FFFFFF", fg="#000000",font=("Shabnam", 10))
-metraj_melk_forosh_edari_tejari_entry.place(x=start_x + 10, y=start_y + 75, width=150, height=25)
+sal_sakht_forosh_edari_tejari_entry=tk.Entry(frame_up_right_forosh_edari_tejari, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
+sal_sakht_forosh_edari_tejari_entry.place(x=30, y=70, width=350, height=25)
 
-sal_sakht_forosh_edari_tejari_lable=tk.Label(forosh_edari_tejari,text="سال ساخت",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-sal_sakht_forosh_edari_tejari_lable.place(x=start_x + 320, y=start_y + 135, anchor="e")
+metraj_forosh_edari_tejari=tk.Label(frame_up_right_forosh_edari_tejari, text=" متراژ ", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+metraj_forosh_edari_tejari.place(x=700, y=120, anchor="e")
 
-sal_sakht_forosh_edari_tejari_entry=tk.Entry(forosh_edari_tejari,bg="#FFFFFF", fg="#000000",font=("Shabnam", 10))
-sal_sakht_forosh_edari_tejari_entry.place(x=start_x + 10, y=start_y + 125, width=150, height=25)
+metraj_forosh_edari_tejari_entry=tk.Entry(frame_up_right_forosh_edari_tejari, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
+metraj_forosh_edari_tejari_entry.place(x=30, y=110, width=350, height=25)
 
-addrres_forosh_edari_tejari_lable=tk.Label(forosh_edari_tejari,text="آدرس",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-addrres_forosh_edari_tejari_lable.place(x=start_x + 320, y=start_y + 185, anchor="e")
+tabaghe_forosh_edari_tejari= tk.Label(frame_up_right_forosh_edari_tejari, text="طبقه", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+tabaghe_forosh_edari_tejari.place(x=700, y=160, anchor="e")
 
-addrres_forosh_edari_tejari_entry=tk.Entry(forosh_edari_tejari,bg="#FFFFFF", fg="#000000",font=("Shabnam", 10),)
-addrres_forosh_edari_tejari_entry.place(x=start_x + 10, y=start_y + 175, width=150, height=25)
+tabaghe_forosh_edari_tejari_entry=tk.Entry(frame_up_right_forosh_edari_tejari, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
+tabaghe_forosh_edari_tejari_entry.place(x=30, y=150, width=350, height=25)
 
-tabaghe_forosh_edari_tejari_lable=tk.Label(forosh_edari_tejari,text="طبقه",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-tabaghe_forosh_edari_tejari_lable.place(x=start_x + 320, y=start_y + 235, anchor="e")
+vahed_forosh_edari_tejari=tk.Label(frame_up_right_forosh_edari_tejari, text="واحد", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+vahed_forosh_edari_tejari.place(x=700, y=200, anchor="e")
 
-tabaghe_forosh_edari_tejari_entry=tk.Entry(forosh_edari_tejari,bg="#FFFFFF", fg="#000000",font=("Shabnam", 10),)
-tabaghe_forosh_edari_tejari_entry.place(x=start_x + 10, y=start_y + 225, width=150, height=25)
+vahed_forosh_edari_tejari_entry=tk.Entry(frame_up_right_forosh_edari_tejari, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
+vahed_forosh_edari_tejari_entry.place(x=30, y=190, width=350, height=25)
 
-vahed_forosh_edari_tejari_lable=tk.Label(forosh_edari_tejari,text="واحد",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-vahed_forosh_edari_tejari_lable.place(x=start_x + 320, y=start_y + 285, anchor="e")
+otagh_forosh_edari_tejari= tk.Label(frame_up_right_forosh_edari_tejari, text="اتاق", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+otagh_forosh_edari_tejari.place(x=700, y=240, anchor="e")
 
-vahed_forosh_edari_tejari_entry=tk.Entry(forosh_edari_tejari,bg="#FFFFFF", fg="#000000",font=("Shabnam", 10),)
-vahed_forosh_edari_tejari_entry.place(x=start_x + 10, y=start_y + 275, width=150, height=25)
+otagh_forosh_edari_tejari_entry=tk.Entry(frame_up_right_forosh_edari_tejari, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
+otagh_forosh_edari_tejari_entry.place(x=30, y=230, width=350, height=25)
 
-name_malek_forosh_edari_tejari_lable=tk.Label(forosh_edari_tejari,text="نام مالک",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-name_malek_forosh_edari_tejari_lable.place(x=start_x + 320, y=start_y + 335, anchor="e")
+#----------------------------فریم بالا سمت چپ----------------------------------
 
-name_malek_forosh_edari_tejari_entry=tk.Entry(forosh_edari_tejari,bg="#FFFFFF", fg="#000000",font=("Shabnam", 10),)
-name_malek_forosh_edari_tejari_entry.place(x=start_x + 10, y=start_y + 325, width=150, height=25)
+photo_lbl2_forosh_edari_tejari = tk.Label(frame_up_left_forosh_edari_tejari, text="[تصویر ملک]", bg="#ffffff", width=79, height=15)
+photo_lbl2_forosh_edari_tejari.place(x=40 ,y=10)
 
-shomareh_malek_forosh_edari_tejari_lable=tk.Label(forosh_edari_tejari,text="شماره مالک",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-shomareh_malek_forosh_edari_tejari_lable.place(x=start_x + 320, y=start_y + 385, anchor="e")
+add_img_btn_forosh_edari_tejari = tk.Button(frame_up_left_forosh_edari_tejari, text="افزودن تصویر", bg="#00BFFF", fg="#ffffff",command=open_file,height=2,width=13)
+add_img_btn_forosh_edari_tejari.place(x=240, y=250)
 
-shomareh_malek_forosh_edari_tejari_entry=tk.Entry(forosh_edari_tejari,bg="#FFFFFF", fg="#000000",font=("Shabnam", 10),)
-shomareh_malek_forosh_edari_tejari_entry.place(x=start_x + 10, y=start_y + 375, width=150, height=25)
+#----------------------------------فریم وسط سمت راست--------------------------
 
-gheimat_kol_forosh_edari_tejari_lable=tk.Label(forosh_edari_tejari,text="قیمت کل",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-gheimat_kol_forosh_edari_tejari_lable.place(x=start_x + 320, y=start_y + 435, anchor="e")
+gheimat_kol_forosh_edari_tejari=tk.Label(frame_midde_right_forosh_edari_tejari, text=" قیمت کل ", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+gheimat_kol_forosh_edari_tejari.place(x=700, y=30, anchor="e")
 
-gheimat_kol_forosh_edari_tejari_entry=tk.Entry(forosh_edari_tejari,bg="#FFFFFF", fg="#000000",font=("Shabnam", 10),)
-gheimat_kol_forosh_edari_tejari_entry.place(x=start_x + 10, y=start_y + 425, width=150, height=25)
+gheimat_kol_forosh_edari_tejari_entry=tk.Entry(frame_midde_right_forosh_edari_tejari, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
+gheimat_kol_forosh_edari_tejari_entry.place(x=30, y=20, width=350, height=25)
 
-back_to_home_forosh_edari_tejari=tk.Button(forosh_edari_tejari,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_forosh_edari_tejari)
-back_to_home_forosh_edari_tejari.place(x=280,y=520)
+addrres_forosh_edari_tejari=tk.Label(frame_midde_right_forosh_edari_tejari, text="آدرس", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+addrres_forosh_edari_tejari.place(x=700, y=80, anchor="e")
 
-zakhire_forosh_edari_tejari=tk.Button(forosh_edari_tejari,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=sabt_forosh_edari_tejari)
-zakhire_forosh_edari_tejari.place(x=130,y=520)
+addrres_forosh_edari_tejari_entry=tk.Text(frame_midde_right_forosh_edari_tejari, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
+addrres_forosh_edari_tejari_entry.place(x=30, y=70, width=350, height=50)
 
-selected_images_forosh_edari_tejari = []
-photo_refs_forosh_edari_tejari = []
+#-------------------------------------فریم وسط سمت چپ---------------------------
 
-image_frame_forosh_edari_tejari = tk.Frame(forosh_edari_tejari,bg="white",width=350,height=250)
-image_frame_forosh_edari_tejari.place(x=60, y=85)
-image_frame_forosh_edari_tejari.pack_propagate(False)
+name_malek_forosh_edari_tejari_lable = tk.Label(frame_midde_left_forosh_edari_tejari, text="نام مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+name_malek_forosh_edari_tejari_lable.place(x=600, y=30,anchor="e")
 
-add_img_btn_forosh_edari_tejari = tk.Button(forosh_edari_tejari, text="افزودن تصویر", bg="#00BFFF", fg="black",command=open_file_forosh_edari_tejari,height=2,width=13)
-add_img_btn_forosh_edari_tejari.place(x=60, y=370)
+name_malek_forosh_edari_tejari_entry = tk.Entry(frame_midde_left_forosh_edari_tejari, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
+name_malek_forosh_edari_tejari_entry.place(x=30, y=20, width=350, height=25)
 
-forosh_edari_tejari.protocol("WM_DELETE_WINDOW", lambda: None)
-forosh_edari_tejari.resizable(False, False)
-#endregion
-#---------------امکانات فروش اداری/تجاری-------------------
-#region
-option_frame_options_forosh_edari_tejari=tk.Frame(forosh_edari_tejari,width=300,height=30,background="#052340")
-option_frame_options_forosh_edari_tejari.place(x=225,y=370)
+shomareh_malek_forosh_edari_tejari_lable = tk.Label(frame_midde_left_forosh_edari_tejari, text="شماره مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+shomareh_malek_forosh_edari_tejari_lable.place(x=600, y=80,anchor="e")
 
-option_label_forosh_edari_tejari=tk.Label(option_frame_options_forosh_edari_tejari,text='افزودن امکانات فایل',font=("Shabnam",12,"bold"),background="#052340",fg="#00BFFF")
-option_label_forosh_edari_tejari.pack(side="right",padx=1)
+shomareh_malek_forosh_edari_tejari_entry = tk.Entry(frame_midde_left_forosh_edari_tejari, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
+shomareh_malek_forosh_edari_tejari_entry.place(x=30, y=70, width=350, height=25)
 
-plus_button_forosh_eedari_tejari=tk.Button(option_frame_options_forosh_edari_tejari,image=plus,command=open_option4,border=0)
-plus_button_forosh_eedari_tejari.pack()
-
-bg_image = image_forosh_edari_tejari
-bg_image = image_forosh_edari_tejari.resize((800, 380))
-bg_photo = ImageTk.PhotoImage(bg_image)
-
-bg_label = tk.Label(option_file_frame_forosh_edari_tejari, image=bg_photo)
-bg_label.image = bg_photo 
-bg_label.place(x=0, y=0, relwidth=1, relheight=1)
+#-----------------------------------------فریم پایین--------------------------------
 
 parking_forosh_edari_tejari_var=tk.IntVar(value=0)
 anbari_forosh_edari_tejari_var=tk.IntVar(value=0)
 asansor_forosh_edari_tejari_var=tk.IntVar(value=0)
 
-parking_check_btn_forosh_edari_tejari=tk.Checkbutton(option_file_frame_forosh_edari_tejari,variable=parking_forosh_edari_tejari_var,image=parking_pic,background="#052340")
-parking_check_btn_forosh_edari_tejari.place(x=140, y=50)
+parking_ch_btn_forosh_edari_tejari=tk.Checkbutton(frame_down_forosh_edari_tejari,variable=parking_forosh_edari_tejari_var,image=parking_pic, bg="#052340")
+parking_ch_btn_forosh_edari_tejari.place(x=1200, y=50)
+parking_ch_btn_forosh_edari_tejari_label=tk.Label(frame_down_forosh_edari_tejari,text="پارکینگ", bg="#052340", fg="#ffffff", font=("Shabnam", 9), width=7)
+parking_ch_btn_forosh_edari_tejari_label.place(x=1205,y=90)
 
-asansor_check_btn_forosh_edari_tejari=tk.Checkbutton(option_file_frame_forosh_edari_tejari,variable=asansor_forosh_edari_tejari_var,image=elvator_pic,background="#052340")
-asansor_check_btn_forosh_edari_tejari.place(x=240, y=50)
+asansor_ch_btn_forosh_edari_tejari=tk.Checkbutton(frame_down_forosh_edari_tejari,variable=asansor_forosh_edari_tejari_var,image=elvator_pic,background="#052340")
+asansor_ch_btn_forosh_edari_tejari.place(x=1100, y=50)
+asansor_ch_btn_forosh_edari_tejari_label=tk.Label(frame_down_forosh_edari_tejari,text="آسانسور", bg="#052340", fg="#ffffff", font=("Shabnam", 9), width=7)
+asansor_ch_btn_forosh_edari_tejari_label.place(x=1105,y=90)
 
-anbari_check_btn_forosh_edari_tejari=tk.Checkbutton(option_file_frame_forosh_edari_tejari,variable=anbari_forosh_edari_tejari_var,image=warehouse_pic,background="#052340")
-anbari_check_btn_forosh_edari_tejari.place(x=340, y=50)
+anbari_checkbuton_forosh_edari_tejari=tk.Checkbutton(frame_down_forosh_edari_tejari,variable=anbari_forosh_edari_tejari_var,image=warehouse_pic,background="#052340")
+anbari_checkbuton_forosh_edari_tejari.place(x=1000, y=50)
+anbari_checkbuton_forosh_edari_tejari_label=tk.Label(frame_down_forosh_edari_tejari,text="انباری", bg="#052340", fg="#ffffff", font=("Shabnam", 9), width=7)
+anbari_checkbuton_forosh_edari_tejari_label.place(x=1005,y=90)
 
-aab_va_gaz_emkanat_forosh_edari_tejari=tk.Label(option_file_frame_forosh_edari_tejari,text="وضعیت آب و گاز",background="#052340",fg="#ffffff",font=("Shabnam",11),width=17)
-aab_va_gaz_emkanat_forosh_edari_tejari.place(x=320, y=110)
+aab_va_gaz_forosh_edari_tejari=tk.Label(frame_down_forosh_edari_tejari, text="وضعیت آب و گاز", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
+aab_va_gaz_forosh_edari_tejari.place(x=840, y=20)
 
-aab_va_gaz_combo_emkanat_forosh_edari_tejari=ttk.Combobox(option_file_frame_forosh_edari_tejari)
-aab_va_gaz_combo_emkanat_forosh_edari_tejari["values"] = ("فقط گاز دارد","فقط آب دارد","آب و گاز دارد")
-aab_va_gaz_combo_emkanat_forosh_edari_tejari["state"]=["readonly"]
-aab_va_gaz_combo_emkanat_forosh_edari_tejari.place(x=120, y=110)
+aab_va_gaz_combo_forosh_edari_tejari=ttk.Combobox(frame_down_forosh_edari_tejari)
+aab_va_gaz_combo_forosh_edari_tejari["state"]=["readonly"]
+aab_va_gaz_combo_forosh_edari_tejari.configure(justify="center")
+aab_va_gaz_combo_forosh_edari_tejari["values"] = ("آب و گاز دارد","فقط گاز دارد","فقط آب دارد ")
+aab_va_gaz_combo_forosh_edari_tejari.place(x=640, y=20)
 
-sarmayesh_emkanat_forosh_edari_tejari=tk.Label(option_file_frame_forosh_edari_tejari,text="سیستم سرمایش",background="#052340",fg="#ffffff",font=("Shabnam",11),width=17)
-sarmayesh_emkanat_forosh_edari_tejari.place(x=320, y=150)
+sarmaesh_forosh_edari_tejari=tk.Label(frame_down_forosh_edari_tejari, text="وضعیت سرمایش", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
+sarmaesh_forosh_edari_tejari.place(x=840, y=80)
 
-sarmayesh_combo_emkanat_forosh_edari_tejari=ttk.Combobox(option_file_frame_forosh_edari_tejari)
-sarmayesh_combo_emkanat_forosh_edari_tejari["values"] = (" کولر گازی"," کولرآبی","پنکه سقفی","ندارد")
-sarmayesh_combo_emkanat_forosh_edari_tejari["state"]=["readonly"]
-sarmayesh_combo_emkanat_forosh_edari_tejari.place(x=120, y=150)
+sarmaesh_combo_forosh_edari_tejari=ttk.Combobox(frame_down_forosh_edari_tejari)
+sarmaesh_combo_forosh_edari_tejari["state"]=["readonly"]
+sarmaesh_combo_forosh_edari_tejari.configure(justify="center")
+sarmaesh_combo_forosh_edari_tejari["values"] = ("پنکه سقفی","کولر آبی","کولر گازی ","ندارد")
+sarmaesh_combo_forosh_edari_tejari.place(x=640, y=80)
 
-garmayesh_emkanat_forosh_edari_tejari=tk.Label(option_file_frame_forosh_edari_tejari,text="سیستم گرمایش",background="#052340",fg="#ffffff",font=("Shabnam",11),width=17)
-garmayesh_emkanat_forosh_edari_tejari.place(x=320, y=190)
+garmaesh_forosh_edari_tejari=tk.Label(frame_down_forosh_edari_tejari, text="وضعیت گرمایش", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
+garmaesh_forosh_edari_tejari.place(x=510, y=50)
 
-garmayesh_combo_emkanat_forosh_edari_tejari=ttk.Combobox(option_file_frame_forosh_edari_tejari)
-garmayesh_combo_emkanat_forosh_edari_tejari["values"] = (" شوفاژ"," بخاری","ندارد")
-garmayesh_combo_emkanat_forosh_edari_tejari["state"]=["readonly"]
-garmayesh_combo_emkanat_forosh_edari_tejari.place(x=120, y=190)
+garmaesh_combo_forosh_edari_tejari=ttk.Combobox(frame_down_forosh_edari_tejari)
+garmaesh_combo_forosh_edari_tejari["values"] = ("بخاری","شوفاژ","ندارد")
+garmaesh_combo_forosh_edari_tejari["state"]=["readonly"]
+garmaesh_combo_forosh_edari_tejari.place(x=340, y=50)
 
-zakhire_options_forosh_edari_tejari=tk.Button(option_file_frame_forosh_edari_tejari,text="تایید",command=save_option_forosh_edari_tejari,background="#00BFFF",fg="#000000",width=10,height=1)
-zakhire_options_forosh_edari_tejari.place(x=95,y=320)
+back_to_home_forosh_edari_tejari=tk.Button(forosh_edari_tejari_window,text="بازگشت",bg="#052340", fg="#ffffff",width=10,height=1,command=back_home_forosh_edari_tejari)
+back_to_home_forosh_edari_tejari.place(x=700,y=750)
 
-back_to_home_forosh_edari_tejari=tk.Button(option_file_frame_forosh_edari_tejari,text="بازگشت",command=back_to_forosh_edari_tejari,background="#00BFFF",fg="#000000",width=10,height=1)
-back_to_home_forosh_edari_tejari.place(x=215,y=320)
+zakhire_forosh_edari_tejari=tk.Button(forosh_edari_tejari_window,text="ذخیره",bg="#00BFFF", fg="#ffffff",width=10,height=1,command=sabt_forosh_edari_tejari)
+zakhire_forosh_edari_tejari.place(x=550,y=750)
 
-option_file_frame_forosh_edari_tejari.protocol("WM_DELETE_WINDOW", lambda: None)
-option_file_frame_forosh_edari_tejari.resizable(False, False)
+forosh_edari_tejari_window.protocol("WM_DELETE_WINDOW", lambda: None)
+forosh_edari_tejari_window.resizable(False, False)
 #endregion
 #--------------------پنجره فروش باغ/زمین-----------------------
 #region
