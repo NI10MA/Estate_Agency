@@ -5297,35 +5297,35 @@ forosh_bagh_zamin_window.resizable(False, False)
 #region
 forosh_karghah_window = tk.Toplevel(root)
 forosh_karghah_window.title(" فروش کارگاه")
-forosh_karghah_window.geometry("1500x800")
+forosh_karghah_window.geometry("1200x700")
 forosh_karghah_window.configure(bg="#052340")
 forosh_karghah_window.withdraw()
 
-frame_up_right_forosh_karghah = tk.Frame(forosh_karghah_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=730,height=300)
+frame_up_right_forosh_karghah = tk.Frame(forosh_karghah_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=510,height=300)
 frame_up_right_forosh_karghah.configure(bg="#052340")
-frame_up_right_forosh_karghah.place(x=720,y=90)
+frame_up_right_forosh_karghah.place(x=670,y=90)
 
 frame_up_left_forosh_karghah= tk.Frame(forosh_karghah_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=640,height=300)
 frame_up_left_forosh_karghah.configure(bg="#052340")
-frame_up_left_forosh_karghah.place(x=40,y=90)
+frame_up_left_forosh_karghah.place(x=10,y=90)
 
-frame_midde_right_forosh_karghah= tk.Frame(forosh_karghah_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=730,height=150)
+frame_midde_right_forosh_karghah= tk.Frame(forosh_karghah_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=510,height=150)
 frame_midde_right_forosh_karghah.configure(bg="#052340")
-frame_midde_right_forosh_karghah.place(x=720,y=410)
+frame_midde_right_forosh_karghah.place(x=670,y=410)
 
 frame_midde_left_forosh_karghah= tk.Frame(forosh_karghah_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=640,height=150)
 frame_midde_left_forosh_karghah.configure(bg="#052340")
-frame_midde_left_forosh_karghah.place(x=40,y=410)
+frame_midde_left_forosh_karghah.place(x=10,y=410)
 
-frame_down_forosh_karghah= tk.Frame(forosh_karghah_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=1410,height=150)
+frame_down_forosh_karghah= tk.Frame(forosh_karghah_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=1170,height=85)
 frame_down_forosh_karghah.configure(bg="#052340")
-frame_down_forosh_karghah.place(x=40,y=580)
+frame_down_forosh_karghah.place(x=10,y=580)
 
 title_label_up1_forosh_karghah= tk.Label(forosh_karghah_window,text="فروش کارگاه",bg="#052340",fg="#00BFFF",font=("Shabnam", 16))
-title_label_up1_forosh_karghah.place(x=650, y=17)   
+title_label_up1_forosh_karghah.place(x=570, y=17)  
 
 title_label_up2_forosh_karghah = tk.Label(forosh_karghah_window,text="ثبت اطلاعات فروش کارگاه",bg="#052340",fg="#ffffff",font=("Shabnam", 11))
-title_label_up2_forosh_karghah.place(x=650, y=45)
+title_label_up2_forosh_karghah.place(x=555, y=45)
 
 label_up_right_forosh_karghah=tk.Label(forosh_karghah_window,text="اطلاعات ملک",bg="#052340",fg="#00BFFF",font=("Shabnam", 11))
 label_up_right_forosh_karghah.place(x=800,y=73)
@@ -5344,24 +5344,24 @@ label_down_forosh_karghah.place(x=100,y=565)
 
 #-------------------------------فریم بالا سمت راست----------------------------
 sal_sakht_forosh_kargah_lable = tk.Label(frame_up_right_forosh_karghah, text="سال ساخت", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-sal_sakht_forosh_kargah_lable.place(x=520, y=80, anchor="e")
+sal_sakht_forosh_kargah_lable.place(x=465, y=80, anchor="e")
 
 sal_sakht_forosh_kargah_entry = tk.Entry(frame_up_right_forosh_karghah, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
-sal_sakht_forosh_kargah_entry.place(x=30, y=70, width=354, height=25)
+sal_sakht_forosh_kargah_entry.place(x=18, y=70, width=350, height=25)
 
 karbari_forosh_kargah = tk.Label(frame_up_right_forosh_karghah, text="کاربری زمین", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-karbari_forosh_kargah.place(x=520, y=30, anchor="e")
+karbari_forosh_kargah.place(x=465, y=40, anchor="e")
 
 karbari_forosh_kargah_entry = tk.Entry(frame_up_right_forosh_karghah, bg="#ffffff", fg="#ffffff", font=("Shabnam", 10), justify="center")
 karbari_forosh_kargah_entry.insert(0, "فروش کارگاه")
 karbari_forosh_kargah_entry.config(state="readonly",readonlybackground="#ffffff",fg="#000000")
-karbari_forosh_kargah_entry.place(x=30, y=20, width=350, height=25)
+karbari_forosh_kargah_entry.place(x=18, y=30, width=350, height=25)
 
 metraj_forosh_kargah = tk.Label(frame_up_right_forosh_karghah, text="متراژ", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-metraj_forosh_kargah.place(x=520, y=120,anchor="e")
+metraj_forosh_kargah.place(x=465, y=120,anchor="e")
 
 metraj_forosh_kargah_entry = tk.Entry(frame_up_right_forosh_karghah, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
-metraj_forosh_kargah_entry.place(x=30, y=110, width=350, height=25)
+metraj_forosh_kargah_entry.place(x=18, y=110, width=350, height=25)
 
 #--------------------فریم چپ بالا---------------------------
 photo_lbl2_forosh_kargah = tk.Label(frame_up_left_forosh_karghah, text="[تصویر ملک]", bg="#FFFFFF", width=79, height=15,relief="solid")
@@ -5371,17 +5371,17 @@ add_img_btn_forosh_kargah = tk.Button(frame_up_left_forosh_karghah, text="افز
 add_img_btn_forosh_kargah.place(x=240, y=250)
 
 #--------------------------فریم راست وسط---------------------
-loctaion_forosh_kargah = tk.Label(frame_midde_right_forosh_karghah, text="منطقه و آدرس", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=12)
-loctaion_forosh_kargah.place(x=580, y=65, anchor="e")
+loctaion_forosh_kargah = tk.Label(frame_midde_right_forosh_karghah, text="آدرس", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=12)
+loctaion_forosh_kargah.place(x=465, y=80, anchor="e")
 
 loctaion_forosh_kargah_entry = tk.Text(frame_midde_right_forosh_karghah, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
-loctaion_forosh_kargah_entry.place(x=30, y=55, width=350, height=80)
+loctaion_forosh_kargah_entry.place(x=18, y=70, width=350, height=50)
 
 gheimat_kol_forosh_kargah_lable=tk.Label(frame_midde_right_forosh_karghah,text="قیمت کل ",bg="#052340",fg="#ffffff",font=("Shabnam", 12),width=9)
-gheimat_kol_forosh_kargah_lable.place(x=580, y=20, anchor="e")
+gheimat_kol_forosh_kargah_lable.place(x=465, y=30, anchor="e")
 
 gheimat_kol_forosh_kargah_entry=tk.Entry(frame_midde_right_forosh_karghah,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
-gheimat_kol_forosh_kargah_entry.place(x=30, y=13, width=350, height=25)
+gheimat_kol_forosh_kargah_entry.place(x=18, y=20, width=350, height=25)
 
 #------------------------------------فریم چپ وسط-----------------------
 name_malek_forosh_kargah_lable = tk.Label(frame_midde_left_forosh_karghah,text="نام مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
@@ -5398,84 +5398,83 @@ shomareh_malek_forosh_kargah_entry.place(x=30, y=70, width=350, height=25)
 
 #---------------------------------فریم پایین--------------------------------
 sarmayesh_forosh_kargah = tk.Label(frame_down_forosh_karghah, text="سیستم سرمایش", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
-sarmayesh_forosh_kargah.place(x=1150, y=50)
+sarmayesh_forosh_kargah.place(x=485, y=15)
 sarmayesh_forosh_kargah_combo = ttk.Combobox(frame_down_forosh_karghah)
 sarmayesh_forosh_kargah_combo["values"] = ("ندارد", "پنکه سقفی", "کولر ابی", "کولر گازی ", "ابی/گازی")
 sarmayesh_forosh_kargah_combo["state"] = "readonly"
 sarmayesh_forosh_kargah_combo.configure(justify="center")
-sarmayesh_forosh_kargah_combo.place(x=980, y=50)
+sarmayesh_forosh_kargah_combo.place(x=325, y=15)
 
 garmayesh_type_forosh_kargah = tk.Label(frame_down_forosh_karghah, text="سیستم گرمایش", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
-garmayesh_type_forosh_kargah.place(x=1155, y=80)
+garmayesh_type_forosh_kargah.place(x=485, y=45)
 garmayesh_type_forosh_kargah_combo = ttk.Combobox(frame_down_forosh_karghah)
 garmayesh_type_forosh_kargah_combo["values"] = ("ندارد", "بخاری", " شوفاژ", "گرمایش از کف ")
 garmayesh_type_forosh_kargah_combo["state"] = "readonly"
 garmayesh_type_forosh_kargah_combo.configure(justify="center")
-garmayesh_type_forosh_kargah_combo.place(x=980, y=80)
+garmayesh_type_forosh_kargah_combo.place(x=325, y=45)
 
 toilet_forosh_kargah = tk.Label(frame_down_forosh_karghah, text="سرویس بهداشتی", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
-toilet_forosh_kargah.place(x=850, y=80)
+toilet_forosh_kargah.place(x=190, y=45)
 toilet_forosh_kargah_combo = ttk.Combobox(frame_down_forosh_karghah)
 toilet_forosh_kargah_combo["values"] = ("ایرانی", "فرنگی", "هردو")
 toilet_forosh_kargah_combo["state"] = "readonly"
 toilet_forosh_kargah_combo.configure(justify="center")
-toilet_forosh_kargah_combo.place(x=680, y=80)
+toilet_forosh_kargah_combo.place(x=20, y=45)
 
 vaziat_bagh_forosh_kargah=tk.Label(frame_down_forosh_karghah,bg="#052340",fg="#ffffff",font=("Shabnam", 9),width=15,text="وضعیت برق")
-vaziat_bagh_forosh_kargah.place(x=850, y=50)
+vaziat_bagh_forosh_kargah.place(x=190, y=15)
 
 vaziat_bargh_forosh_kargah_combo=ttk.Combobox(frame_down_forosh_karghah)
 vaziat_bargh_forosh_kargah_combo["values"]=("","برق شهری","سه فاز","تک فاز")
 vaziat_bargh_forosh_kargah_combo.set("")
 vaziat_bargh_forosh_kargah_combo["state"]=["readonly"]
-vaziat_bargh_forosh_kargah_combo.place(x=680, y=50)
+vaziat_bargh_forosh_kargah_combo.place(x=20, y=15)
 
 
 vaziat_ab_forosh_kargah=tk.Label(frame_down_forosh_karghah,bg="#052340",fg="#ffffff",width=13,text=" وضعیت آب",font=("Shabnam", 9))
-vaziat_ab_forosh_kargah.place(x=370, y=50)
+vaziat_ab_forosh_kargah.place(x=1064, y=13)
 
-vaziat_ab_forosh_kargah_combo=ttk.Combobox(frame_down_forosh_karghah,width=18)
-vaziat_ab_forosh_kargah_combo["values"]=(""," آب  لوله کشی (بدون فشار) " ," آب لوله کشی (همراه موتور فشار) ","دارای منبع(همراه موتور فشار)","دارای منبع(بدون فشار)")
+vaziat_ab_forosh_kargah_combo=ttk.Combobox(frame_down_forosh_karghah,width=23)
+vaziat_ab_forosh_kargah_combo["values"]=(""," آب  لوله کشی (بدون فشار) " ," آب لوله کشی (با موتور فشار) ","دارای منبع(با موتور فشار)","دارای منبع(بدون فشار)")
 vaziat_ab_forosh_kargah_combo.set("")
 vaziat_ab_forosh_kargah_combo["state"]=["readonly"]
-vaziat_ab_forosh_kargah_combo.place(x=230, y=50)
+vaziat_ab_forosh_kargah_combo.place(x=910, y=13)
 
 abzar_forosh_kargah=tk.Label(frame_down_forosh_karghah,bg="#052340",fg="#ffffff",font=("Shabnam", 9),width=15,text=" ابزار صنعتی ")
-abzar_forosh_kargah.place(x=366, y=80)
+abzar_forosh_kargah.place(x=790, y=45)
 
-abzar_forosh_kargah_combo=ttk.Combobox(frame_down_forosh_karghah,width=23)
+abzar_forosh_kargah_combo=ttk.Combobox(frame_down_forosh_karghah,width=15)
 abzar_forosh_kargah_combo["values"]=("","(کارگاه خالی) بدون دستگاه ","دارای دستگاه")
 abzar_forosh_kargah_combo.set("")
 abzar_forosh_kargah_combo["state"]=["readonly"]
-abzar_forosh_kargah_combo.place(x=200, y=80)
+abzar_forosh_kargah_combo.place(x=620, y=45)
 
 hamam_forosh_kargah=tk.Label(frame_down_forosh_karghah,bg="#052340",fg="#ffffff",font=("Shabnam", 9),width=13,text="حمام")
-hamam_forosh_kargah.place(x=150, y=80)
+hamam_forosh_kargah.place(x=1064, y=43)
 
-hamam_forosh_kargah_combo=ttk.Combobox(frame_down_forosh_karghah)
+hamam_forosh_kargah_combo=ttk.Combobox(frame_down_forosh_karghah,width=23)
 hamam_forosh_kargah_combo["values"]=("","ندارد","دارد")
 hamam_forosh_kargah_combo.set("")
 hamam_forosh_kargah_combo["state"]=["readonly"]
-hamam_forosh_kargah_combo.place(x=5, y=80)
+hamam_forosh_kargah_combo.place(x=910, y=45)
 
 otagh_forosh_kargah=tk.Label(frame_down_forosh_karghah,bg="#052340",fg="#ffffff",font=("Shabnam", 9),width=17,text="اتاق رخت کن و استراحت")
-otagh_forosh_kargah.place(x=120, y=50)
+otagh_forosh_kargah.place(x=750, y=15)
 
 otagh_forosh_kargah_combo=ttk.Combobox(frame_down_forosh_karghah,width=15)
 otagh_forosh_kargah_combo["values"]=("","ندارد","دارد")
 otagh_forosh_kargah_combo.set("")
 otagh_forosh_kargah_combo["state"]=["readonly"]
-otagh_forosh_kargah_combo.place(x=5, y=50)
+otagh_forosh_kargah_combo.place(x=620, y=15)
 
 back_to_home_forosh_kargah=tk.Button(forosh_karghah_window,text="بازگشت",bg="#052340", fg="#ffffff",width=10,height=1,command=back_home_forosh_karghah)
-back_to_home_forosh_kargah.place(x=700,y=750)
+back_to_home_forosh_kargah.place(x=300,y=30)
 
 zakhire_forosh_kargah=tk.Button(forosh_karghah_window,text="ذخیره",bg="#00BFFF", fg="#ffffff",width=10,height=1,command=sabt_forosh_kargah)
-zakhire_forosh_kargah.place(x=550,y=750)
+zakhire_forosh_kargah.place(x=200,y=30)
 
 forosh_karghah_window.protocol("WM_DELETE_WINDOW", lambda: None)
-forosh_karghah_window.resizable(False, False)
-#endregion
+forosh_karghah_window.resizable(False, False)#endregion
 #--------------------پنجره های ثبتی بخش درخواست-----------------------
 #----------------------پنجره درخواست مسکونی--------------------------
 #region
