@@ -694,7 +694,7 @@ def clear_entry_forosh_bagh_zamin():
     tedad_derakht_forosh_bagh_zamin_entry.delete(0,tk.END)
     abyari_forosh_bagh_zamin_combo.set("")
     type_tree_forosh_bagh_zamin_combo.set("")
-    label_natige_forosh_bagh_zamin.config(text="")
+    label_natige_forosh_bagh_zamin.delete("1.0",tk.END)
     metraj_vila_forosh_bagh_zamin_entry.delete(0,tk.END)
     sal_sakht_vila_forosh_bagh_zamin_entry.delete(0,tk.END)
     type_vila_forosh_bagh_zamin_combo.set("")
@@ -1252,12 +1252,12 @@ def change_bagh_zamin1(event):
         frame_down_ejareh_zamin.place(x=40,y=580)
 def change_bagh_zamin_forosh_bagh(event):
     co=bagh_type_forosh_bagh_zamin_combo.get()
+    frame_down_forosh_zamin.place_forget()
     if co=="باغ":
-        frame_down_forosh_zamin.place_forget()
-        frame_down_forosh_bagh.place(x=40,y=580)
+        frame_down_forosh_bagh.place(x=10,y=555)
     else:
         frame_down_forosh_bagh.place_forget()
-        frame_down_forosh_zamin.place(x=40,y=580)
+        frame_down_forosh_zamin.place(x=10,y=555)
 
 def change_bagh_zamin_darkhast_bagh(event):
     co=bagh_type_darkhast_bagh_zamin_combo.get()
@@ -1289,7 +1289,9 @@ def add_tree2():
     t3=type_tree_forosh_bagh_zamin_combo.get()
     if t3 and t3 not in selected_trees2:
         selected_trees2.append(t3)
-        label_natige_forosh_bagh_zamin.config(text=','.join(selected_trees2))
+        label_natige_forosh_bagh_zamin.config(state="normal")
+        label_natige_forosh_bagh_zamin.insert(tk.END,t3+",")
+        #label_natige_forosh_bagh_zamin.config(state="disabled")
 selected_option2=[]
 def add_option2():
     op2=option_forosh_bagh_zamin_combo.get()
@@ -4999,7 +5001,7 @@ frame_down_forosh_bagh= tk.Frame(forosh_bagh_zamin_window,bd=0,highlightthicknes
 frame_down_forosh_bagh.configure(bg="#052340")
 frame_down_forosh_bagh.place(x=10,y=555)
 
-frame_down_forosh_zamin=tk.Frame(forosh_bagh_zamin_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=1160,height=140)
+frame_down_forosh_zamin=tk.Frame(forosh_bagh_zamin_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=1180,height=130)
 frame_down_forosh_zamin.configure(bg="#052340")
 frame_down_forosh_zamin.place_forget()
 
@@ -5474,7 +5476,8 @@ zakhire_forosh_kargah=tk.Button(forosh_karghah_window,text="ذخیره",bg="#00B
 zakhire_forosh_kargah.place(x=200,y=30)
 
 forosh_karghah_window.protocol("WM_DELETE_WINDOW", lambda: None)
-forosh_karghah_window.resizable(False, False)#endregion
+forosh_karghah_window.resizable(False, False)
+#endregion
 #--------------------پنجره های ثبتی بخش درخواست-----------------------
 #----------------------پنجره درخواست مسکونی--------------------------
 #region
