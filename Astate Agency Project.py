@@ -893,13 +893,13 @@ def clear_entry_darkhast_bagh_zamin():
 #-----------------------------برگشت از صفحه درخواست کارگاه--------------------
 def back_home_darkhast_kargah():
     clear_entry_darkhast_kargah()
-    darkhast_kargah.withdraw()   
+    darkhast_karghah_window.withdraw()   
     root.deiconify()
     delete_root()
 #-------------------------- پاک شدن Entry صفحه درخواست کارگاه-----------------------
 def clear_entry_darkhast_kargah():
     metraj_darkhast_kargah_entry.delete(0,tk.END)
-    loctaion_darkhast_kargah_entry.delete(0,tk.END)
+    loctaion_darkhast_kargah_entry.delete("1.0",tk.END)
     gheimat_kol_darkhast_kargah_entry.delete(0,tk.END)
     shomareh_moshtari_darkhast_kargah_entry.delete(0,tk.END)
     name_moshtari_darkhast_kargah_entry.delete(0,tk.END)
@@ -910,14 +910,10 @@ def clear_entry_darkhast_kargah():
     vaziat_bargh_darkhast_kargah_combo.set("")
     garmayesh_type_darkhast_kargah_combo.set("")
     vaziat_ab_darkhast_kargah_combo.set("")
-    abzaar_darkhast_kargah_combo.set("")
+    abzar_darkhast_kargah_combo.set("")
     toilet_darkhast_kargah_combo.set("")
-    hamam_darkhast_kargah__combo.set("")
+    hamam_darkhast_kargah_combo.set("")
     otagh_darkhast_kargah_combo.set("")
-    sarmayesh_panke_darkhast_kargah.deselect()
-    sarmayesh_kooler_abi_darkhast_kargah.deselect()
-    sarmayesh_kooler_gazi_darkhast_kargah.deselect()
-    sarmayesh_fan_darkhast_kargah.deselect()
 #----------------------برگشت از گزارش مسکونی--------
 def back_home_gozaresh_maskoni():
     root.deiconify()
@@ -2240,7 +2236,7 @@ def sabt_darkhast_maskoni(event=None):
             values_darkhast_kharid_maskoni = (
             melk_type_darkhast_maskoni_entry.get(),
             sal_sakht_darkhast_maskoni_entry.get(),
-            addrres_darkhast_maskoni_entry.get(),
+            addrres_darkhast_maskoni_entry.get("1.0",tk.END),
             tabaghe_darkhast_maskoni_entry.get(),
             vahed_darkhast_maskoni_entry.get(),
             otagh_darkhast_maskoni_entry.get(),
@@ -2872,18 +2868,20 @@ def sabt_darkhast_kargah(event=None):
         ejareh_mahaneh_darkhast_kargah_lable.place_forget()
         ejareh_mahaneh_darkhast_kargah_entry.place_forget()
 
-        if change_type=="درخواست خرید کارگاه":
-            gheimat_kol_darkhast_kargah_lable.place(x=700, y=20, anchor="e")
-            gheimat_kol_darkhast_kargah_entry.place(x=30, y=13, width=350, height=25)
 
+        if change_type=="درخواست خرید کارگاه":
+            gheimat_kol_darkhast_kargah_lable.place(x=465, y=30, anchor="e")
+            gheimat_kol_darkhast_kargah_entry.place(x=18, y=20, width=350, height=25)
+            loctaion_darkhast_kargah.place(x=465, y=80, anchor="e")
+            loctaion_darkhast_kargah_entry.place(x=18, y=70, width=350, height=50)
 
         elif change_type=="درخواست اجاره کارگاه":
-            gheimat_kol_darkhast_kargah_lable.place_forget()
-            mablagh_pish_darkhast_kargah_lable.place(x=700, y=20, anchor="e")
-            mablagh_pish_darkhast_kargah_entry.place(x=30, y=13, width=350, height=25)
-            ejareh_mahaneh_darkhast_kargah_lable.place(x=700, y=65, anchor="e")
-            ejareh_mahaneh_darkhast_kargah_entry.place(x=30, y=55, width=350, height=25)
-
+            mablagh_pish_darkhast_kargah_lable.place(x=465, y=30, anchor="e")
+            mablagh_pish_darkhast_kargah_entry.place(x=18, y=20, width=350, height=25)
+            ejareh_mahaneh_darkhast_kargah_lable.place(x=465, y=75, anchor="e")
+            ejareh_mahaneh_darkhast_kargah_entry.place(x=18, y=65, width=350, height=25)
+            loctaion_darkhast_kargah.place(x=465, y=120, anchor="e")
+            loctaion_darkhast_kargah_entry.place(x=18, y=110, width=350, height=25)
 
         if event is not None:#خیلی مهم 
            return
@@ -2901,10 +2899,7 @@ def sabt_darkhast_kargah(event=None):
             sal_sakht VARCHAR(20),
             vaziat_bargh VARCHAR(20),
             garmayesh VARCHAR(20),
-            sarmayesh_fan VARCHAR(20),
-            sarmayesh_panke VARCHAR(20),
-            sarmayesh_kooler_abi VARCHAR(20),
-            sarmayesh_kooler_gazi VARCHAR(20),
+            sarmayesh VARCHAR(30),
             vaziat_ab VARCHAR(100),
             abzar VARCHAR(100),
             toilet VARCHAR(20),
@@ -2916,26 +2911,21 @@ def sabt_darkhast_kargah(event=None):
             sql_kharid = """
             INSERT INTO sabt_darkhast_kharid_kargah
             (type_melk,metraj_melk,address,name_moshtari,shomareh_moshtari,gheimat_kol,sal_sakht,
-            vaziat_bargh,garmayesh,sarmayesh_fan,
-            sarmayesh_panke,sarmayesh_kooler_abi,sarmayesh_kooler_gazi,vaziat_ab,
-            abzar,toilet,hamam,otagh)
-            VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+            vaziat_bargh,garmayesh,sarmayesh,vaziat_ab,abzar,toilet,hamam,otagh)
+            VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
             """
 
             values_darkhast_kharid_kargah = (
             combo_darkhast_kargah.get(),
             metraj_darkhast_kargah_entry.get(),
-            loctaion_darkhast_kargah_entry.get(),
+            loctaion_darkhast_kargah_entry.get("1.0",tk.END),
             name_moshtari_darkhast_kargah_entry.get(),
             shomareh_moshtari_darkhast_kargah_entry.get(),
             gheimat_kol_darkhast_kargah_entry.get(),
             sal_sakht_darkhast_kargah_entry.get(),
             vaziat_bargh_darkhast_kargah_combo.get(),
             garmayesh_type_darkhast_kargah_combo.get(),
-            sarmayesh_fan_darkhast_kargah_var.get(),
-            sarmayesh_panke_darkhast_kargah_var.get(),
-            sarmayesh_kooler_abi_darkhast_kargah_var.get(),
-            sarmayesh_kooler_gazi_darkhast_kargah_var.get(),
+            sarmayesh_darkhast_kargah_combo.get(),
             vaziat_ab_darkhast_kargah_combo.get(),
             abzar_darkhast_kargah_combo.get(),
             toilet_darkhast_kargah_combo.get(),
@@ -2964,10 +2954,7 @@ def sabt_darkhast_kargah(event=None):
             sal_sakht VARCHAR(20),
             vaziat_bargh VARCHAR(20),
             garmayesh VARCHAR(20),
-            sarmayesh_fan VARCHAR(40),
-            sarmayesh_panke VARCHAR(40),
-            sarmayesh_kooler_abi VARCHAR(40),
-            sarmayesh_kooler_gazi VARCHAR(40),
+            sarmayesh VARCHAR(30),
             vaziat_ab VARCHAR(100),
             abzar VARCHAR(100),
             toilet VARCHAR(20),
@@ -2979,10 +2966,9 @@ def sabt_darkhast_kargah(event=None):
             sql_ejareh = """
             INSERT INTO sabt_darkhast_ejareh_kargah
             (type_melk,metraj_melk,address,mablagh_pish,name_moshtari,shomareh_moshtari,
-            ejareh_mahaneh,sal_sakht,vaziat_bargh,garmayesh,sarmayesh_fan,
-            sarmayesh_panke,sarmayesh_kooler_abi,sarmayesh_kooler_gazi,vaziat_ab,
+            ejareh_mahaneh,sal_sakht,vaziat_bargh,garmayesh,sarmayesh,vaziat_ab,
             abzar,toilet,hamam,otagh)
-            VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+            VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
             """
             values_darkhast_ejareh_kargah = (
             combo_darkhast_kargah.get(),
@@ -2995,10 +2981,6 @@ def sabt_darkhast_kargah(event=None):
             sal_sakht_darkhast_kargah_entry.get(),
             vaziat_bargh_darkhast_kargah_combo.get(),
             garmayesh_type_darkhast_kargah_combo.get(),
-            sarmayesh_fan_darkhast_kargah_var.get(),
-            sarmayesh_panke_darkhast_kargah_var.get(),
-            sarmayesh_kooler_abi_darkhast_kargah_var.get(),
-            sarmayesh_kooler_gazi_darkhast_kargah_var.get(),
             vaziat_ab_darkhast_kargah_combo.get(),
             abzar_darkhast_kargah_combo.get(),
             toilet_darkhast_kargah_combo.get(),
@@ -6233,39 +6215,38 @@ option_file_frame_darkhast_bagh_zamin.protocol("WM_DELETE_WINDOW", lambda: None)
 option_file_frame_darkhast_bagh_zamin.resizable(False, False)
 #endregion
 #-------------------پنجره درخواست کارگاه------------------------
-
 #region
 darkhast_karghah_window= tk.Toplevel(root)
 darkhast_karghah_window.title("درخواست کارگاه")
-darkhast_karghah_window.geometry("1500x800")
+darkhast_karghah_window.geometry("1200x700")
 darkhast_karghah_window.configure(bg="#052340")
 darkhast_karghah_window.withdraw()
 
-frame_up_right_darkhast_karghah = tk.Frame(darkhast_karghah_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=730,height=300)
+frame_up_right_darkhast_karghah = tk.Frame(darkhast_karghah_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=510,height=300)
 frame_up_right_darkhast_karghah.configure(bg="#052340")
-frame_up_right_darkhast_karghah.place(x=720,y=90)
+frame_up_right_darkhast_karghah.place(x=670,y=90)
 
 frame_up_left_darkhast_karghah= tk.Frame(darkhast_karghah_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=640,height=300)
 frame_up_left_darkhast_karghah.configure(bg="#052340")
-frame_up_left_darkhast_karghah.place(x=40,y=90)
+frame_up_left_darkhast_karghah.place(x=10,y=90)
 
-frame_midde_right_darkhast_karghah= tk.Frame(darkhast_karghah_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=730,height=150)
+frame_midde_right_darkhast_karghah= tk.Frame(darkhast_karghah_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=510,height=150)
 frame_midde_right_darkhast_karghah.configure(bg="#052340")
-frame_midde_right_darkhast_karghah.place(x=720,y=410)
+frame_midde_right_darkhast_karghah.place(x=670,y=410)
 
 frame_midde_left_darkhast_karghah= tk.Frame(darkhast_karghah_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=640,height=150)
 frame_midde_left_darkhast_karghah.configure(bg="#052340")
-frame_midde_left_darkhast_karghah.place(x=40,y=410)
+frame_midde_left_darkhast_karghah.place(x=10,y=410)
 
-frame_down_darkhast_karghah= tk.Frame(darkhast_karghah_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=1410,height=150)
+frame_down_darkhast_karghah= tk.Frame(darkhast_karghah_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=1170,height=85)
 frame_down_darkhast_karghah.configure(bg="#052340")
-frame_down_darkhast_karghah.place(x=40,y=580)
+frame_down_darkhast_karghah.place(x=10,y=580)
 
-title_label_up1_darkhast_karghah= tk.Label(darkhast_karghah_window,text="فروش کارگاه",bg="#052340",fg="#00BFFF",font=("Shabnam", 16))
-title_label_up1_darkhast_karghah.place(x=650, y=17)   
+title_label_up1_darkhast_karghah= tk.Label(darkhast_karghah_window,text="درخواست کارگاه",bg="#052340",fg="#00BFFF",font=("Shabnam", 16))
+title_label_up1_darkhast_karghah.place(x=570, y=17)   
 
-title_label_up2_darkhast_karghah = tk.Label(darkhast_karghah_window,text="ثبت اطلاعات فروش کارگاه",bg="#052340",fg="#ffffff",font=("Shabnam", 11))
-title_label_up2_darkhast_karghah.place(x=650, y=45)
+title_label_up2_darkhast_karghah = tk.Label(darkhast_karghah_window,text="ثبت اطلاعات درخواست کارگاه",bg="#052340",fg="#ffffff",font=("Shabnam", 11))
+title_label_up2_darkhast_karghah.place(x=555, y=45)
 
 label_up_right_darkhast_karghah=tk.Label(darkhast_karghah_window,text="اطلاعات ملک",bg="#052340",fg="#00BFFF",font=("Shabnam", 11))
 label_up_right_darkhast_karghah.place(x=800,y=73)
@@ -6284,31 +6265,28 @@ label_down_darkhast_karghah.place(x=100,y=565)
 
 frame_darkhast_kargah=tk.Frame((darkhast_karghah_window),bd=0,highlightthickness=0)
 frame_darkhast_kargah.pack(side="left", fill="y", padx=6, pady=15)
-
-title_lbl = tk.Label((darkhast_karghah_window),text="درخواست کارگاه",bg="#052340",fg="#00BFFF",font=("Shabnam", 15))
-title_lbl.place(x=60, y=25)
 #-------------------------------فریم بالا سمت راست----------------------------
 sal_sakht_darkhast_kargah_lable = tk.Label(frame_up_right_darkhast_karghah, text="سال ساخت", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-sal_sakht_darkhast_kargah_lable.place(x=520, y=80, anchor="e")
+sal_sakht_darkhast_kargah_lable.place(x=465, y=80, anchor="e")
 
 sal_sakht_darkhast_kargah_entry = tk.Entry(frame_up_right_darkhast_karghah, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
-sal_sakht_darkhast_kargah_entry.place(x=30, y=70, width=354, height=25)
+sal_sakht_darkhast_kargah_entry.place(x=18, y=70, width=350, height=25)
 
 karbari_darkhast_kargah = tk.Label(frame_up_right_darkhast_karghah, text="کاربری زمین", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-karbari_darkhast_kargah.place(x=520, y=30, anchor="e")
+karbari_darkhast_kargah.place(x=465, y=40, anchor="e")
 
 combo_darkhast_kargah=ttk.Combobox(frame_up_right_darkhast_karghah)
 combo_darkhast_kargah["values"] = ("درخواست اجاره کارگاه","درخواست خرید کارگاه")
 combo_darkhast_kargah["state"]=["readonly"]
 combo_darkhast_kargah.set("درخواست خرید کارگاه")
 combo_darkhast_kargah.bind("<<ComboboxSelected>>",sabt_darkhast_kargah)
-combo_darkhast_kargah.place(x=30, y=20, width=350, height=25)
+combo_darkhast_kargah.place(x=18, y=30, width=350, height=25)
 
 metraj_darkhast_kargah = tk.Label(frame_up_right_darkhast_karghah, text="متراژ", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-metraj_darkhast_kargah.place(x=520, y=120,anchor="e")
+metraj_darkhast_kargah.place(x=465, y=120,anchor="e")
 
 metraj_darkhast_kargah_entry = tk.Entry(frame_up_right_darkhast_karghah, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
-metraj_darkhast_kargah_entry.place(x=30, y=110, width=350, height=25)
+metraj_darkhast_kargah_entry.place(x=18, y=110, width=350, height=25)
 
 #--------------------فریم چپ بالا---------------------------
 photo_lbl2_darkhast_kargah = tk.Label(frame_up_left_darkhast_karghah, text="[تصویر ملک]", bg="#FFFFFF", width=79, height=15,relief="solid")
@@ -6318,11 +6296,11 @@ add_img_btn_darkhast_kargah = tk.Button(frame_up_left_darkhast_karghah, text="ا
 add_img_btn_darkhast_kargah.place(x=240, y=250)
 
 #--------------------------فریم راست وسط---------------------
-loctaion_darkhast_kargah = tk.Label(frame_midde_right_darkhast_karghah, text="منطقه و آدرس", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=12)
-loctaion_darkhast_kargah.place(x=580, y=110, anchor="e")
+loctaion_darkhast_kargah = tk.Label(frame_midde_right_darkhast_karghah, text="آدرس", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=12)
+loctaion_darkhast_kargah.place(x=465, y=80, anchor="e")
 
 loctaion_darkhast_kargah_entry = tk.Text(frame_midde_right_darkhast_karghah, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
-loctaion_darkhast_kargah_entry.place(x=30, y=90, width=350, height=50)
+loctaion_darkhast_kargah_entry.place(x=18, y=70, width=350, height=50)
 
 ejareh_mahaneh_darkhast_kargah_lable=tk.Label(frame_midde_right_darkhast_karghah,text="اجاره ماهانه",bg="#052340",fg="#ffffff",font=("Shabnam", 12),width=9)
 ejareh_mahaneh_darkhast_kargah_lable.place_forget()
@@ -6331,10 +6309,10 @@ ejareh_mahaneh_darkhast_kargah_entry=tk.Entry(frame_midde_right_darkhast_karghah
 ejareh_mahaneh_darkhast_kargah_entry.place_forget()
 
 gheimat_kol_darkhast_kargah_lable=tk.Label(frame_midde_right_darkhast_karghah,text="قیمت کل",bg="#052340",fg="#ffffff",font=("Shabnam", 12),width=9)
-gheimat_kol_darkhast_kargah_lable.place(x=580, y=20, anchor="e")
+gheimat_kol_darkhast_kargah_lable.place(x=465, y=30, anchor="e")
 
 gheimat_kol_darkhast_kargah_entry=tk.Entry(frame_midde_right_darkhast_karghah,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
-gheimat_kol_darkhast_kargah_entry.place(x=30, y=13, width=350, height=25)
+gheimat_kol_darkhast_kargah_entry.place(x=18, y=20, width=350, height=25)
 
 mablagh_pish_darkhast_kargah_lable = tk.Label(frame_midde_right_darkhast_karghah, text="مبلغ پیش", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 mablagh_pish_darkhast_kargah_lable.place_forget()
@@ -6356,82 +6334,83 @@ shomareh_moshtari_darkhast_kargah_entry.place(x=30, y=70, width=350, height=25)
 
 #---------------------------------فریم پایین--------------------------------
 sarmayesh_darkhast_kargah = tk.Label(frame_down_darkhast_karghah, text="سیستم سرمایش", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
-sarmayesh_darkhast_kargah.place(x=1150, y=50)
+sarmayesh_darkhast_kargah.place(x=485, y=15)
 sarmayesh_darkhast_kargah_combo = ttk.Combobox(frame_down_darkhast_karghah)
 sarmayesh_darkhast_kargah_combo["values"] = ("ندارد", "پنکه سقفی", "کولر ابی", "کولر گازی ", "ابی/گازی")
 sarmayesh_darkhast_kargah_combo["state"] = "readonly"
 sarmayesh_darkhast_kargah_combo.configure(justify="center")
-sarmayesh_darkhast_kargah_combo.place(x=980, y=50)
+sarmayesh_darkhast_kargah_combo.place(x=325, y=15)
 
 garmayesh_type_darkhast_kargah = tk.Label(frame_down_darkhast_karghah, text="سیستم گرمایش", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
-garmayesh_type_darkhast_kargah.place(x=1155, y=80)
+garmayesh_type_darkhast_kargah.place(x=485, y=45)
 garmayesh_type_darkhast_kargah_combo = ttk.Combobox(frame_down_darkhast_karghah)
 garmayesh_type_darkhast_kargah_combo["values"] = ("ندارد", "بخاری", " شوفاژ", "گرمایش از کف ")
 garmayesh_type_darkhast_kargah_combo["state"] = "readonly"
 garmayesh_type_darkhast_kargah_combo.configure(justify="center")
-garmayesh_type_darkhast_kargah_combo.place(x=980, y=80)
+garmayesh_type_darkhast_kargah_combo.place(x=325, y=45)
 
 toilet_darkhast_kargah = tk.Label(frame_down_darkhast_karghah, text="سرویس بهداشتی", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
-toilet_darkhast_kargah.place(x=850, y=80)
+toilet_darkhast_kargah.place(x=190, y=45)
 toilet_darkhast_kargah_combo = ttk.Combobox(frame_down_darkhast_karghah)
 toilet_darkhast_kargah_combo["values"] = ("ایرانی", "فرنگی", "هردو")
 toilet_darkhast_kargah_combo["state"] = "readonly"
 toilet_darkhast_kargah_combo.configure(justify="center")
-toilet_darkhast_kargah_combo.place(x=680, y=80)
+toilet_darkhast_kargah_combo.place(x=20, y=45)
 
 vaziat_bagh_darkhast_kargah=tk.Label(frame_down_darkhast_karghah,bg="#052340",fg="#ffffff",font=("Shabnam", 11),width=15,text="وضعیت برق")
-vaziat_bagh_darkhast_kargah.place(x=850, y=50)
+vaziat_bagh_darkhast_kargah.place(x=190, y=15)
 
 vaziat_bargh_darkhast_kargah_combo=ttk.Combobox(frame_down_darkhast_karghah)
 vaziat_bargh_darkhast_kargah_combo["values"]=("","برق شهری","سه فاز","تک فاز")
 vaziat_bargh_darkhast_kargah_combo.set("")
 vaziat_bargh_darkhast_kargah_combo["state"]=["readonly"]
-vaziat_bargh_darkhast_kargah_combo.place(x=680, y=50)
+vaziat_bargh_darkhast_kargah_combo.place(x=20, y=15)
 
-vaziat_ab_darkhast_kargah=tk.Label(frame_down_darkhast_karghah,bg="#052340",fg="#ffffff",width=13,text=" وضعیت آب",font=("Shabnam", 11))
-vaziat_ab_darkhast_kargah.place(x=370, y=50)
+vaziat_ab_darkhast_kargah=tk.Label(frame_down_darkhast_karghah,bg="#052340",fg="#ffffff",width=13,text=" وضعیت آب",font=("Shabnam", 9))
+vaziat_ab_darkhast_kargah.place(x=1064, y=13)
 
-vaziat_ab_darkhast_kargah_combo=ttk.Combobox(frame_down_darkhast_karghah,width=18)
+vaziat_ab_darkhast_kargah_combo=ttk.Combobox(frame_down_darkhast_karghah,width=24)
 vaziat_ab_darkhast_kargah_combo["values"]=(""," آب  لوله کشی (بدون فشار) " ," آب لوله کشی (همراه موتور فشار) ","دارای منبع(همراه موتور فشار)","دارای منبع(بدون فشار)")
 vaziat_ab_darkhast_kargah_combo.set("")
 vaziat_ab_darkhast_kargah_combo["state"]=["readonly"]
-vaziat_ab_darkhast_kargah_combo.place(x=230, y=50)
+vaziat_ab_darkhast_kargah_combo.place(x=910, y=13)
 
 abzar_darkhast_kargah=tk.Label(frame_down_darkhast_karghah,bg="#052340",fg="#ffffff",font=("Shabnam", 11),width=15,text=" ابزار صنعتی ")
-abzar_darkhast_kargah.place(x=366, y=80)
+abzar_darkhast_kargah.place(x=745, y=45)
 
-abzar_darkhast_kargah_combo=ttk.Combobox(frame_down_darkhast_karghah,width=23)
+abzar_darkhast_kargah_combo=ttk.Combobox(frame_down_darkhast_karghah,width=18)
 abzar_darkhast_kargah_combo["values"]=("","(کارگاه خالی) بدون دستگاه ","دارای دستگاه")
 abzar_darkhast_kargah_combo.set("")
 abzar_darkhast_kargah_combo["state"]=["readonly"]
-abzar_darkhast_kargah_combo.place(x=200, y=80)
+abzar_darkhast_kargah_combo.place(x=620, y=45)
 
-hamam_darkhast_kargah=tk.Label(frame_down_darkhast_karghah,bg="#052340",fg="#ffffff",font=("Shabnam",11),width=13,text="حمام")
-hamam_darkhast_kargah.place(x=150, y=80)
+hamam_darkhast_kargah=tk.Label(frame_down_darkhast_karghah,bg="#052340",fg="#ffffff",font=("Shabnam", 11),width=13,text="حمام")
+hamam_darkhast_kargah.place(x=1050, y=45)
 
-hamam_darkhast_kargah_combo=ttk.Combobox(frame_down_darkhast_karghah)
+hamam_darkhast_kargah_combo=ttk.Combobox(frame_down_darkhast_karghah,width=24)
 hamam_darkhast_kargah_combo["values"]=("","ندارد","دارد")
 hamam_darkhast_kargah_combo.set("")
 hamam_darkhast_kargah_combo["state"]=["readonly"]
-hamam_darkhast_kargah_combo.place(x=5, y=80)
+hamam_darkhast_kargah_combo.place(x=910, y=45)
 
-otagh_darkhast_kargah=tk.Label(frame_down_darkhast_karghah,bg="#052340",fg="#ffffff",font=("Shabnam", 11),width=17,text="اتاق رخت کن و استراحت")
-otagh_darkhast_kargah.place(x=120, y=50)
+otagh_darkhast_kargah=tk.Label(frame_down_darkhast_karghah,bg="#052340",fg="#ffffff",font=("Shabnam", 11),width=17,text="اتاق رختکن")
+otagh_darkhast_kargah.place(x=740, y=15)
 
-otagh_darkhast_kargah_combo=ttk.Combobox(frame_down_darkhast_karghah,width=15)
+otagh_darkhast_kargah_combo=ttk.Combobox(frame_down_darkhast_karghah,width=18)
 otagh_darkhast_kargah_combo["values"]=("","ندارد","دارد")
 otagh_darkhast_kargah_combo.set("")
 otagh_darkhast_kargah_combo["state"]=["readonly"]
-otagh_darkhast_kargah_combo.place(x=5, y=50)
+otagh_darkhast_kargah_combo.place(x=620, y=15)
+back_to_home_darkhast_kargah=tk.Button(darkhast_karghah_window,text="بازگشت",bg="#052340", fg="#ffffff",width=10,height=1,command=back_home_darkhast_kargah)
+back_to_home_darkhast_kargah.place(x=300,y=30)
 
-back_to_home_darkhast_kargah=tk.Button(darkhast_karghah_window,text="بازگشت",bg="#052340", fg="#ffffff",width=10,height=1,command=back_home_forosh_karghah)
-back_to_home_darkhast_kargah.place(x=700,y=750)
-
-zakhire_darkhast_kargah=tk.Button(darkhast_karghah_window,text="ذخیره",bg="#00BFFF", fg="#ffffff",width=10,height=1,command=sabt_forosh_kargah)
-zakhire_darkhast_kargah.place(x=550,y=750)
+zakhire_darkhast_kargah=tk.Button(darkhast_karghah_window,text="ذخیره",bg="#00BFFF", fg="#ffffff",width=10,height=1,command=sabt_darkhast_kargah)
+zakhire_darkhast_kargah.place(x=200,y=30
+                              )
 
 darkhast_karghah_window.protocol("WM_DELETE_WINDOW", lambda: None)
 darkhast_karghah_window.resizable(False, False)
+
 #endregion
 #=============================== پنجره گزارشات ===============================
 #--------------------------پنجره گزارش های مسکونی------------------------------
