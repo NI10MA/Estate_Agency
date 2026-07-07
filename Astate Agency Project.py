@@ -19,7 +19,7 @@ def get_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="Nima10.N10",#   entry  در ادرس ها   تبدیل بهtext شود      entry==>text
+        password="Mmmm9905",#   entry  در ادرس ها   تبدیل بهtext شود      entry==>text
         #database="state_agency"
     )
 #endregion
@@ -509,11 +509,6 @@ def mosharecat():
     box_mosharekat.deiconify()
     box_mosharekat.grab_set()
 #endregion
-
-def open_option11():
-    option_file_frame_darkhast_bagh_zamin.deiconify()
-    option_file_frame_darkhast_bagh_zamin.grab_set()
-
 #endregion
 #=======================================================
 #-----------توابع برگشت صفحات ثبتی به فرم اصلی----------
@@ -653,6 +648,7 @@ def clear_entry_ejareh_bagh_zamin():
     chah_bagh.deselect()
     estakhr_bagh.deselect()
     bargh_bagh.deselect()
+    gaz_bagh.deselect()
     divar_ejareh_bagh_zamin.deselect()
     #تغییر کاربری
     karbari_ejareh_ejareh_bagh_zamin_combo.set("")
@@ -833,14 +829,27 @@ def clear_entry_darkhast_edari_tejari():
     anbari_check_btn_darkhast_edari_tejari.deselect()
 #-----------------------------برگشت از صفحه درخواست باغ / زمین------------------
 def back_home_darkhast_bagh():
+    melk_type_darkhast_bagh_zamin_entry.set("درخواست خرید باغ و زمین")
+    karbari_darkhast_bagh_zamin_combo.set("باغ")
+    gheimat_har_matr_bagh_zamin_darkhast_lable.place(x=490, y=65, anchor="e")
+    gheimat_har_metr_bagh_zamin_darkhast_entry.place(x=28, y=55, width=350, height=25)
+    gheimat_kol_bagh_zamin_darkhast_lable.place(x=490, y=20, anchor="e")
+    gheimat_kol_bagh_zamin_darkhast_entry.place(x=28, y=13, width=350, height=25)
+    time_ejareh_bagh_darkhast_zamin_lable.place_forget()
+    mablagh_ejareh_mahaneh_darkhast_lable.place_forget()
+    mablagh_ejareh_mahaneh_darkhast_entry.place_forget()
+    gheimat_ejareh_bagh_darkhast_zamin_lable.place_forget()#ودیعه
+    gheimat_ejareh_bagh_darkhast_zamin_entry.place_forget()#
+    frame_down_darkhast_bagh.place(x=10,y=555)
+    frame_down_darkhast_zamin.place_forget()
     clear_entry_darkhast_bagh_zamin()
-    darkhast_bagh_zamin.withdraw()
+    darkhast_bagh_zamin_window.withdraw()
     root.deiconify()  
     delete_root()
 #-------------------------- پاک شدن Entry صفحه درخواست باغ/زمین-----------------------
 def clear_entry_darkhast_bagh_zamin():  
     metraj_zamin_darkhast_bagh_zamin_entry.delete(0,tk.END)
-    bagh_loctaion_darkhast_bagh_zamin_entry.delete(0,tk.END)
+    bagh_loctaion_darkhast_bagh_zamin_entry.delete("1.0",tk.END)
     gheimat_har_metr_bagh_zamin_darkhast_entry.delete(0,tk.END)
     metraj_derakht_darkhast_bagh_zamin_entry.delete(0,tk.END)
     tedad_derakht_darkhast_bagh_zamin_entry.delete(0,tk.END)
@@ -857,7 +866,7 @@ def clear_entry_darkhast_bagh_zamin():
     abyari_darkhast_bagh_zamin_combo.set("")
     type_tree_darkhast_bagh_zamin_combo.set("")
     lable_natige_add_darkhast_bagh_zamin.config(text="")
-    label_natige_darkhast_bagh_zamin.config(text="")
+    label_natige_darkhast_bagh_zamin.delete("1.0",tk.END)
     metraj_vila_darkhast_bagh_zamin_entry.delete(0,tk.END)
     sal_sakht_vila_darkhast_bagh_zamin_entry.delete(0,tk.END)
     type_vila_darkhast_bagh_zamin_combo.set("")
@@ -868,8 +877,8 @@ def clear_entry_darkhast_bagh_zamin():
     chah_darkhast_bagh_zamin.deselect()
     estakhr_darkhast_bagh_zamin.deselect()
     bargh_keshi_darkhast_bagh_zamin.deselect()
+    gaz_keshi_darkhast_bagh_zamin.deselect()
     #تغییر کاربری
-    metraj_zamin2_darkhast_bagh_zamin_entry.delete(0,tk.END)
     karbari_darkhast_bagh_zamin_combo.set("")
     khak_darkhast_bagh_zamin_combo.set("")
     ab_darkhast_bagh_zamin_combo.set("")
@@ -954,19 +963,6 @@ def back_main_ghararadad():
 #=========================================================
 #--------برگشت از امکانات فایل ها به صفحه اصلی ثبتی-------
 #region
-#-------برگشت فروش مسکونی------------------    
-def back_to_forosh_maskoni():
-    option_file_frame_forosh_maskoni.withdraw()
-    option_file_frame_forosh_maskoni.grab_release()
-#--------برگشت درخواست اداری/تجاری----------------- 
-def back_to_darkhast_edari_tejari():
-    option_file_frame_darkhast_edari_tejari.withdraw()
-    option_file_frame_darkhast_edari_tejari.grab_release()
-#--------------------برگشت درخواست باغ و زمین------------------------------------------------
-def  back_to_darkhast_bagh_zamin():
-     option_file_frame_darkhast_bagh_zamin.withdraw()
-     option_file_frame_darkhast_bagh_zamin.grab_release()
-#-------------------برگشت درخواست کارگاه---------------------------
 def  back_to_darkhast_kargah():
      option_file_frame_darkhast_kargah.withdraw()
      option_file_frame_darkhast_kargah.grab_release()
@@ -1057,7 +1053,7 @@ def darkhast_edari_tejari():
 def darkhast_bagh_zamin():
     box_darkhast.withdraw()
     root.withdraw()
-    darkhast_bagh_zamin.deiconify()
+    darkhast_bagh_zamin_window.deiconify()
     box_darkhast.grab_release()   
 #------بستن باکس و باز کردن صفحه درخواست کارگاه-----------
 def darkhast_kargah():
@@ -1169,7 +1165,7 @@ def sabt_radio_darkhast():
     elif selected==4:
         box_darkhast.withdraw()
         root.withdraw()
-        darkhast_bagh_zamin.deiconify()
+        darkhast_bagh_zamin_window.deiconify()
         box_darkhast.grab_release()
 
     elif selected==6:
@@ -1252,11 +1248,11 @@ def change_bagh_zamin_forosh_bagh(event):
 def change_bagh_zamin_darkhast_bagh(event):
     co=bagh_type_darkhast_bagh_zamin_combo.get()
     if co=="باغ":
-        option_frame_option2_darkhast_bagh_zamin.place_forget()
-        option_frame_darkhast_bagh_zamin.place(x=1,y=60,relwidth=1,relheight=1)
+        frame_down_darkhast_zamin.place_forget()
+        frame_down_darkhast_bagh.place(x=10,y=555)
     else:
-        option_frame_darkhast_bagh_zamin.place_forget()
-        option_frame_option2_darkhast_bagh_zamin.place(x=1,y=60,relwidth=1,relheight=1)
+        frame_down_darkhast_bagh.place_forget()
+        frame_down_darkhast_zamin.place(x=10,y=555)
 #endregion
 #=============================================================  
 #region    
@@ -1295,7 +1291,9 @@ def add_tree3():
     t4=type_tree_darkhast_bagh_zamin_combo.get()
     if t4 and t4 not in selected_trees3:
         selected_trees3.append(t4)
-        label_natige_darkhast_bagh_zamin.config(text=','.join(selected_trees3))
+        label_natige_darkhast_bagh_zamin.config(state="normal")
+        label_natige_darkhast_bagh_zamin.insert(tk.END,t4+",")
+        #label_natige_forosh_bagh_zamin.config(state="disabled")
 selected_option3=[]
 def add_option3():
     op3=option_darkhast_bagh_zamin_combo.get()
@@ -1961,6 +1959,7 @@ def sabt_ejareh_bagh_zamin():
                 javaz_sakht VARCHAR(10),
                 sanad VARCHAR(20),
                 mohavate VARCHAR(10),
+                gaz VARCHAR(10)
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         """)
@@ -1971,17 +1970,17 @@ def sabt_ejareh_bagh_zamin():
                     metraj_derakht,tedad_derakht, type_derakht,
                     system_ab, chah, estakhr, divar,sazeh, metraj_sazeh,
                     sal_sakht, type_sazeh, emkanat, WC, hamam,
-                    javaz_sakht, sanad, mohavate,bargh
+                    javaz_sakht, sanad, mohavate,bargh,gaz
                 )
                 VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s,%s,
-                %s,%s,%s,%s,%s,%s,%s,%s)
+                %s,%s,%s,%s,%s,%s,%s,%s,%s)
             """
             
             values_bagh = (
                 melk_type_ejareh_bagh_zamin_entry.get(),
                 metraj_zamin_ejareh_bagh_zamin_entry.get(),
                 karbari,
-                bagh_loctaion_entry.get(),
+                bagh_loctaion_entry.get("1.0",tk.END),
                 bagh_gheimat_ejareh_bagh_zamin_entry.get(),
                 gheimat_value,
                 bagh_time_combo.get(),
@@ -2004,7 +2003,8 @@ def sabt_ejareh_bagh_zamin():
                 mojavez_sakht_ejareh_bagh_var.get(),
                 sanad_bagh_combo.get(),
                 mohavate_ejareh_bagh_var.get(),
-                bargh_bagh_var.get()
+                bargh_bagh_var.get(),
+                gaz_bagh.get()
             )
             cursor.execute(sql_bagh, values_bagh)
             last_id = cursor.lastrowid
@@ -2513,10 +2513,6 @@ def sabt_darkhast_bagh_zamin(event=None):
         gheimat_kol_bagh_zamin_darkhast_entry.place_forget()
         time_ejareh_bagh_darkhast_zamin_lable.place_forget()
         bagh_time_darkhast_combo.place_forget()
-        gheimat_ejareh_bagh_darkhast_zamin_lable.place_forget()
-        gheimat_ejareh_bagh_darkhast_zamin_entry.place_forget()
-        mablagh_ejareh_mahaneh_darkhast_lable.place_forget()
-        mablagh_ejareh_mahaneh_darkhast_entry.place_forget()
         mablagh_ejareh_mahaneh_darkhast_lable.place_forget()
         mablagh_ejareh_mahaneh_darkhast_entry.place_forget()
         gheimat_ejareh_bagh_darkhast_zamin_lable.place_forget()#ودیعه
@@ -2528,17 +2524,17 @@ def sabt_darkhast_bagh_zamin(event=None):
         time_ejareh_bagh_darkhast_zamin_lable.place_forget()
         bagh_time_darkhast_combo.place_forget()   
         if change_type=="درخواست خرید باغ زمین":
-            gheimat_har_matr_bagh_zamin_darkhast_lable.place(x=start_x + 320, y=start_y + 235, anchor="e")
-            gheimat_har_metr_bagh_zamin_darkhast_entry.place(x=start_x + 10, y=start_y + 225, width=150, height=25)
-            gheimat_kol_bagh_zamin_darkhast_lable.place(x=start_x + 325, y=start_y + 390, anchor="e")
-            gheimat_kol_bagh_zamin_darkhast_entry.place(x=start_x + 10, y=start_y + 380, width=150, height=25)
+            gheimat_har_matr_bagh_zamin_darkhast_lable.place(x=490, y=65, anchor="e")
+            gheimat_har_metr_bagh_zamin_darkhast_entry.place(x=28, y=55, width=350, height=25)
+            gheimat_kol_bagh_zamin_darkhast_lable.place(x=490, y=20, anchor="e")
+            gheimat_kol_bagh_zamin_darkhast_entry.place(x=28, y=13, width=350, height=25)
         elif change_type=="درخواست اجاره باغ زمین":
-           mablagh_ejareh_mahaneh_darkhast_lable.place(x=start_x + 225, y=start_y + 420, width=100, height=25)
-           mablagh_ejareh_mahaneh_darkhast_entry.place(x=start_x + 10, y=start_y + 419, width=150, height=25)
-           gheimat_ejareh_bagh_darkhast_zamin_lable.place(x=start_x + 320, y=start_y + 235, anchor="e")#ودیعه
-           gheimat_ejareh_bagh_darkhast_zamin_entry.place(x=start_x + 10, y=start_y + 225, width=150, height=25)#ودیعه
-           time_ejareh_bagh_darkhast_zamin_lable.place(x=start_x + 320, y=start_y +390, anchor="e")
-           bagh_time_darkhast_combo.place(x=start_x + 10, y=start_y + 375, width=150, height=25)
+           mablagh_ejareh_mahaneh_darkhast_lable.place(x=490, y=65,anchor="e")
+           mablagh_ejareh_mahaneh_darkhast_entry.place(x=28, y=55, width=350, height=25)
+           gheimat_ejareh_bagh_darkhast_zamin_lable.place(x=490, y=20, anchor="e")#ودیعه
+           gheimat_ejareh_bagh_darkhast_zamin_entry.place(x=28, y=13, width=350, height=25)#ودیعه
+           time_ejareh_bagh_darkhast_zamin_lable.place(x=490, y=160, anchor="e")
+           bagh_time_darkhast_combo.place(x=28, y=150, width=350, height=25)
         if event is not None:#خیلی مهم 
            return
         
@@ -2587,16 +2583,16 @@ def sabt_darkhast_bagh_zamin(event=None):
                     metraj_derakht, tedad_derakht, type_derakht,
                     system_ab, chah, estakhr, divar,sazeh, metraj_sazeh,
                     sal_sakht, type_sazeh, emkanat, WC, hamam,
-                    javaz_sakht, sanad, mohavate,bargh
+                    javaz_sakht, sanad, mohavate,bargh,gaz
                 )
                 VALUES( %s, %s, %s, %s, %s, %s, %s, %s, %s,%s, %s, %s, %s, %s, %s, %s, %s,%s
-                ,%s,%s,%s,%s,%s,%s,%s,%s)
+                ,%s,%s,%s,%s,%s,%s,%s,%s,%s)
                  """
                 values_kharid=(
                 melk_type_darkhast_bagh_zamin_entry.get(),
                 metraj_zamin_darkhast_bagh_zamin_entry.get(),
                 karbari,
-                bagh_loctaion_darkhast_bagh_zamin_entry.get(),
+                bagh_loctaion_darkhast_bagh_zamin_entry.get("1.0",tk.END),
                 gheimat_value,
                 name_moshtari_darkhast_bagh_entry.get(),
                 shomareh_moshtari_darkhast_bagh_entry.get(),
@@ -2618,7 +2614,8 @@ def sabt_darkhast_bagh_zamin(event=None):
                 option_darkhast_bagh_zamin_combo.get(),
                 mojavez_sakht_darkhast_bagh_zamin_var.get(),
                 mohavate_sazi_darkhast_bagh_zamin_var.get(),
-                bargh_keshi_darkhast_bagh_zamin_var.get()
+                bargh_keshi_darkhast_bagh_zamin_var.get(),
+                gaz_keshi_darkhast_bagh_zamin_var.get()
                 )
                 cursor.execute(sql_bagh, values_kharid)
 
@@ -2637,7 +2634,6 @@ def sabt_darkhast_bagh_zamin(event=None):
                 mablagh_metri DECIMAL(15,2),
                 name_moshtari VARCHAR(50),
                 shomareh_moshtari VARCHAR(30),
-                metraj_zamin VARCHAR(30),
                 karbari_zamin VARCHAR(50),
                 type_khak VARCHAR(20),
                 manba_ab VARCHAR(20),
@@ -2654,21 +2650,21 @@ def sabt_darkhast_bagh_zamin(event=None):
                 sql_zamin = """
                 INSERT INTO darkhast_kharid_zamin(
                     type_melk,metraj,karbari,address,mablagh_metri,name_moshtari,shomareh_moshtari,
-                    metraj_zamin, karbari_zamin,type_khak,
+                    karbari_zamin,type_khak,
                     manba_ab, negahbani, bargh_takfaz, bargh_sefaz,
                     anbar, fans, chah
                  )
-                 VALUES( %s, %s, %s, %s, %s, %s, %s,%s,%s, %s,%s,%s,%s,%s,%s,%s,%s)
+                 VALUES( %s, %s, %s, %s, %s, %s, %s,%s,%s, %s,%s,%s,%s,%s,%s,%s)
                  """
                 values_kharid_zamin=(
                    change_type,
                    metraj_zamin_darkhast_bagh_zamin_entry.get(),
                    karbari,
-                   bagh_loctaion_darkhast_bagh_zamin_entry.get(),
+                   bagh_loctaion_darkhast_bagh_zamin_entry.get("1.0",tk.END),
                    gheimat_value,
                    name_moshtari_darkhast_bagh_entry.get(),
                    shomareh_moshtari_darkhast_bagh_entry.get(),
-                   metraj_zamin2_darkhast_bagh_zamin_entry.get(),
+
                    karbari_darkhast_bagh_zamin_combo.get(),
                    khak_darkhast_bagh_zamin_combo.get(),
                    ab_darkhast_bagh_zamin_combo.get(),
@@ -2732,16 +2728,16 @@ def sabt_darkhast_bagh_zamin(event=None):
                     metraj_derakht, tedad_derakht, type_derakht,
                     system_ab, chah, estakhr, divar,sazeh, metraj_sazeh,
                     sal_sakht, type_sazeh, emkanat, WC, hamam,
-                    javaz_sakht, sanad, mohavate,bargh
+                    javaz_sakht, sanad, mohavate,bargh,gaz
                 )
                 VALUES( %s, %s, %s, %s, %s, %s, %s, %s, %s,%s,%s, %s, %s, %s, %s, %s,%s
-                ,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+                ,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
                  """
                 values_ejareh=(
                 melk_type_darkhast_bagh_zamin_entry.get(),
                 metraj_zamin_darkhast_bagh_zamin_entry.get(),
                 karbari,
-                bagh_loctaion_darkhast_bagh_zamin_entry.get(),
+                bagh_loctaion_darkhast_bagh_zamin_entry.get("1.0",tk.END),
                 name_moshtari_darkhast_bagh_entry.get(),
                 shomareh_moshtari_darkhast_bagh_entry.get(),
                 bagh_time_darkhast_combo.get(),
@@ -2764,7 +2760,8 @@ def sabt_darkhast_bagh_zamin(event=None):
                 option_darkhast_bagh_zamin_combo.get(),
                 mojavez_sakht_darkhast_bagh_zamin_var.get(),
                 mohavate_sazi_darkhast_bagh_zamin_var.get(),
-                bargh_keshi_darkhast_bagh_zamin_var.get()
+                bargh_keshi_darkhast_bagh_zamin_var.get(),
+                gaz_keshi_darkhast_bagh_zamin_var.get()
                 )
                 cursor.execute(sql_bagh, values_ejareh)
 
@@ -2785,7 +2782,6 @@ def sabt_darkhast_bagh_zamin(event=None):
                 zaman_ejareh VARCHAR(40),
                 name_moshtari VARCHAR(50),
                 shomareh_moshtari VARCHAR(30),
-                metraj_zamin VARCHAR(30),
                 karbari_zamin VARCHAR(50),
                 type_khak VARCHAR(20),
                 manba_ab VARCHAR(20),
@@ -2802,23 +2798,22 @@ def sabt_darkhast_bagh_zamin(event=None):
                 sql_zamin = """
                 INSERT INTO darkhast_ejareh_zamin(
                     type_melk,metraj,karbari,address,mablagh_pish,mablagh_ejareh,zaman_ejareh,name_moshtari,shomareh_moshtari,
-                    metraj_zamin, karbari_zamin,type_khak,
+                    karbari_zamin,type_khak,
                     manba_ab,negahbani,bargh_takfaz,bargh_sefaz,
                     anbar,fans,chah
                  )
-                VALUES( %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+                VALUES( %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
                 """
                 values_ejareh_zamin=(
                    change_type,
                    metraj_zamin_darkhast_bagh_zamin_entry.get(),
                    karbari,
-                   bagh_loctaion_darkhast_bagh_zamin_entry.get(),
+                   bagh_loctaion_darkhast_bagh_zamin_entry.get("1.0",tk.END),
                    gheimat_ejareh_bagh_darkhast_zamin_entry.get(),
                    mablagh_ejareh_mahaneh_darkhast_entry.get(),
                    bagh_time_darkhast_combo.get(),
                    name_moshtari_darkhast_bagh_entry.get(),
                    shomareh_moshtari_darkhast_bagh_entry.get(),
-                   metraj_zamin2_darkhast_bagh_zamin_entry.get(),
                    karbari_darkhast_bagh_zamin_combo.get(),
                    khak_darkhast_bagh_zamin_combo.get(),
                    ab_darkhast_bagh_zamin_combo.get(),
@@ -4226,6 +4221,10 @@ estakhr_bagh.place(x=600, y=20)
 bargh_bagh_var=tk.IntVar(value=0)
 bargh_bagh=tk.Checkbutton(frame_down_ejareh_bagh,variable=bargh_bagh_var,text="برق کشی",font=("Shabnam",9),background="#052340",fg="#00BFFF")
 bargh_bagh.place(x=685, y=80)
+
+gaz_bagh_var=tk.IntVar(value=0)
+gaz_bagh=tk.Checkbutton(frame_down_ejareh_bagh,variable=gaz_bagh_var,text="گاز کشی",font=("Shabnam",9),background="#052340",fg="#00BFFF")
+gaz_bagh.place(x=685,y=50)
 
 divar_ejareh_bagh_var=tk.IntVar(value=0)
 divar_ejareh_bagh_zamin=tk.Checkbutton(frame_down_ejareh_bagh,variable=divar_ejareh_bagh_var,text="دیوار کشی",background="#052340",fg="#00BFFF",font=("Shabnam",9))
@@ -5856,363 +5855,342 @@ darkhast_edari_tejari_window.resizable(False, False)
 #endregion
 #--------------------پنجره درخواست باغ/زمین-----------------------
 #region
-darkhast_bagh_zamin = tk.Toplevel(root)
-darkhast_bagh_zamin.title("درخواست باغ و زمین")
-darkhast_bagh_zamin.geometry("800x600")
-darkhast_bagh_zamin.withdraw()
-
-bg_image = image_darkhast_bagh_zamin
-bg_image = image_darkhast_bagh_zamin.resize((800, 600))
-bg_photo = ImageTk.PhotoImage(bg_image)
-
-bg_label = tk.Label(darkhast_bagh_zamin, image=bg_photo)
-bg_label.image = bg_photo  
-bg_label.place(x=0, y=0, relwidth=1, relheight=1)
-
+darkhast_bagh_zamin_window = tk.Toplevel(root)
+darkhast_bagh_zamin_window.title("درخواست باغ و زمین")
+darkhast_bagh_zamin_window.geometry("1200x700")
+darkhast_bagh_zamin_window.configure(bg="#052340")
+darkhast_bagh_zamin_window.withdraw()
 #---------------------کادر درخواست باغ و زمین---------------------#
-frame_darkhast_bagh_zamin= tk.Frame(darkhast_bagh_zamin,bd=0,highlightthickness=0)
-frame_darkhast_bagh_zamin.pack(side="left", fill="y", padx=6, pady=15)
-
-title_lbl = tk.Label(darkhast_bagh_zamin,text="درخواست باغ و زمین",bg="#052340",fg="#00BFFF",font=("Shabnam", 15))
-title_lbl.place(x=60, y=25)
-
-start_x = 450
-start_y = 40
+frame_up_right_darkhast_bagh_zamin= tk.Frame(darkhast_bagh_zamin_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=520,height=300)
+frame_up_right_darkhast_bagh_zamin.configure(bg="#052340")
+frame_up_right_darkhast_bagh_zamin.place(x=670,y=75)
 
 
-melk_type_darkhast_bagh_zamin_lable=tk.Label(darkhast_bagh_zamin,text="نوع ملک",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
-melk_type_darkhast_bagh_zamin_lable.place(x=start_x + 320, y=start_y + 35, anchor="e")
+frame_up_left_darkhast_bagh_zamin= tk.Frame(darkhast_bagh_zamin_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=640,height=300)
+frame_up_left_darkhast_bagh_zamin.configure(bg="#052340")
+frame_up_left_darkhast_bagh_zamin.place(x=10,y=75)
 
-melk_type_darkhast_bagh_zamin_entry=ttk.Combobox(darkhast_bagh_zamin,font=("Shabnam", 10),justify="center",state="readonly")
+frame_midde_right_darkhast_bagh_zamin= tk.Frame(darkhast_bagh_zamin_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=520,height=150)
+frame_midde_right_darkhast_bagh_zamin.configure(bg="#052340")
+frame_midde_right_darkhast_bagh_zamin.place(x=670,y=390)
+
+frame_midde_left_darkhast_bagh_zamin= tk.Frame(darkhast_bagh_zamin_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=640,height=150)
+frame_midde_left_darkhast_bagh_zamin.configure(bg="#052340")
+frame_midde_left_darkhast_bagh_zamin.place(x=10,y=390)
+
+frame_down_darkhast_bagh= tk.Frame(darkhast_bagh_zamin_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=1180,height=130)
+frame_down_darkhast_bagh.configure(bg="#052340")
+frame_down_darkhast_bagh.place(x=10,y=555)
+
+frame_down_darkhast_zamin=tk.Frame(darkhast_bagh_zamin_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=1180,height=130)
+frame_down_darkhast_zamin.configure(bg="#052340")
+frame_down_darkhast_zamin.place_forget()
+
+title_label_darkhast_bagh_zamin_up1 = tk.Label(darkhast_bagh_zamin_window,text="درخواست  باغ و زمین",bg="#052340",fg="#00BFFF",font=("Shabnam", 16))
+title_label_darkhast_bagh_zamin_up1.place(x=600, y=10)
+
+title_label_darkhast_bagh_zamin_up2 = tk.Label(darkhast_bagh_zamin_window,text="ثبت اطلاعات درخواست باغ و زمین",bg="#052340",fg="#ffffff",font=("Shabnam", 11))
+title_label_darkhast_bagh_zamin_up2.place(x=585, y=40)
+
+label_up_right_darkhast_bagh_zamin=tk.Label(darkhast_bagh_zamin_window,text="اطلاعات ملک",bg="#052340",fg="#00BFFF",font=("Shabnam", 11))
+label_up_right_darkhast_bagh_zamin.place(x=760,y=60)
+
+label_up_left_darkhast_bagh_zamin=tk.Label(darkhast_bagh_zamin_window,text="تصویر ملک",bg="#052340",fg="#00BFFF",font=("Shabnam", 11))
+label_up_left_darkhast_bagh_zamin.place(x=100,y=60)
+
+label_midde_right_darkhast_bagh_zamin=tk.Label(darkhast_bagh_zamin_window,text="اطلاعات معامله",bg="#052340",fg="#00BFFF",font=("Shabnam", 11))
+label_midde_right_darkhast_bagh_zamin.place(x=800,y=375)
+
+label_midde_left_darkhast_bagh_zamin=tk.Label(darkhast_bagh_zamin_window,text="اطلاعات مالک",bg="#052340",fg="#00BFFF",font=("Shabnam", 11))
+label_midde_left_darkhast_bagh_zamin.place(x=100,y=375)
+
+label_down_darkhast_bagh_zamin=tk.Label(darkhast_bagh_zamin_window,text="امکانات",bg="#052340",fg="#00BFFF",font=("Shabnam", 11))
+label_down_darkhast_bagh_zamin.place(x=100,y=545)
+#-------------------------------فریم بالا راست-----------------------------
+melk_type_darkhast_bagh_zamin_lable=tk.Label(frame_up_right_darkhast_bagh_zamin,text="نوع ملک",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
+melk_type_darkhast_bagh_zamin_lable.place(x=490,y=40, anchor="e")
+
+melk_type_darkhast_bagh_zamin_entry=ttk.Combobox(frame_up_right_darkhast_bagh_zamin,font=("Shabnam", 10),justify="center",state="readonly")
 melk_type_darkhast_bagh_zamin_entry["values"]=("درخواست خرید باغ زمین","درخواست اجاره باغ زمین")
 melk_type_darkhast_bagh_zamin_entry.set("درخواست خرید باغ زمین")
+melk_type_darkhast_bagh_zamin_entry.configure(justify="center")
 melk_type_darkhast_bagh_zamin_entry.bind("<<ComboboxSelected>>",sabt_darkhast_bagh_zamin)
-melk_type_darkhast_bagh_zamin_entry.place(x=start_x + 10, y=start_y + 25, width=150, height=25)
+melk_type_darkhast_bagh_zamin_entry.place(x=28, y=30, width=350, height=25)
 
+metraj_zamin_darkhast_bagh_zamin_lable=tk.Label(frame_up_right_darkhast_bagh_zamin,text="متراژ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
+metraj_zamin_darkhast_bagh_zamin_lable.place(x=490, y=80, anchor="e")
 
-metraj_zamin_darkhast_bagh_zamin_lable=tk.Label(darkhast_bagh_zamin,text="متراژ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
-metraj_zamin_darkhast_bagh_zamin_lable.place(x=start_x + 320, y=start_y + 85, anchor="e")
+metraj_zamin_darkhast_bagh_zamin_entry=tk.Entry(frame_up_right_darkhast_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10),textvariable="متر مربع")
+metraj_zamin_darkhast_bagh_zamin_entry.place(x=28, y=70, width=350, height=25)
 
-metraj_zamin_darkhast_bagh_zamin_entry=tk.Entry(darkhast_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10),textvariable="متر مربع")
-metraj_zamin_darkhast_bagh_zamin_entry.place(x=start_x + 10, y=start_y + 75, width=150, height=25)
+bagh_type_darkhast_bagh_zamin_lable=tk.Label(frame_up_right_darkhast_bagh_zamin,text="کاربری زمین",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
+bagh_type_darkhast_bagh_zamin_lable.place(x=490, y=120, anchor="e")
 
-bagh_type_darkhast_bagh_zamin_lable=tk.Label(darkhast_bagh_zamin,text="کاربری زمین",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
-bagh_type_darkhast_bagh_zamin_lable.place(x=start_x + 320, y=start_y + 135, anchor="e")
-
-bagh_type_darkhast_bagh_zamin_combo=ttk.Combobox(darkhast_bagh_zamin,state="readonly")
+bagh_type_darkhast_bagh_zamin_combo=ttk.Combobox(frame_up_right_darkhast_bagh_zamin,state="readonly")
 bagh_type_darkhast_bagh_zamin_combo["values"]=("باغ","زمین کشاورزی")
 bagh_type_darkhast_bagh_zamin_combo.set("باغ")
-bagh_type_darkhast_bagh_zamin_combo.place(x=start_x + 10, y=start_y + 125, width=150, height=25)
+bagh_type_darkhast_bagh_zamin_combo.configure(justify="center")
+bagh_type_darkhast_bagh_zamin_combo.place(x=28, y=110, width=350, height=25)
 bagh_type_darkhast_bagh_zamin_combo.bind("<<ComboboxSelected>>",change_bagh_zamin_darkhast_bagh)
 
-bagh_loctaion_darkhast_bagh_zamin_lable=tk.Label(darkhast_bagh_zamin,text="منطقه و آدرس ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
-bagh_loctaion_darkhast_bagh_zamin_lable.place(x=start_x + 320, y=start_y + 185, anchor="e")
-
-bagh_loctaion_darkhast_bagh_zamin_entry=tk.Entry(darkhast_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
-bagh_loctaion_darkhast_bagh_zamin_entry.place(x=start_x + 10, y=start_y + 175, width=150, height=25)
-
-#gheimat_darkhast_bagh_zamin_lable=tk.Label(darkhast_bagh_zamin,text='قیمت کل',bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
-#gheimat_darkhast_bagh_zamin_lable.place(x=start_x + 320, y=start_y + 235, anchor="e")
-
-#gheimat_darkhast_bagh_zamin_entry=tk.Entry(darkhast_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
-#gheimat_darkhast_bagh_zamin_entry.place(x=start_x + 10, y=start_y + 225, width=150, height=25)
-
-gheimat_ejareh_bagh_darkhast_zamin_lable=tk.Label(darkhast_bagh_zamin, text="ودیعه", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-gheimat_ejareh_bagh_darkhast_zamin_lable.place_forget()
-
-gheimat_ejareh_bagh_darkhast_zamin_entry=tk.Entry(darkhast_bagh_zamin, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
-gheimat_ejareh_bagh_darkhast_zamin_entry.place_forget()
-
-gheimat_har_matr_bagh_zamin_darkhast_lable=tk.Label(darkhast_bagh_zamin,text='قیمت هر متر',bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
-gheimat_har_matr_bagh_zamin_darkhast_lable.place(x=start_x + 320, y=start_y + 235, anchor="e")
-
-gheimat_har_metr_bagh_zamin_darkhast_entry=tk.Entry(darkhast_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
-gheimat_har_metr_bagh_zamin_darkhast_entry.place(x=start_x + 10, y=start_y + 225, width=150, height=25)
-
-mablagh_ejareh_mahaneh_darkhast_lable=tk.Label(darkhast_bagh_zamin,text='اجاره ماهانه',bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
-mablagh_ejareh_mahaneh_darkhast_lable.place_forget()
-
-mablagh_ejareh_mahaneh_darkhast_entry=tk.Entry(darkhast_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
-mablagh_ejareh_mahaneh_darkhast_entry.place_forget()
-
-time_ejareh_bagh_darkhast_zamin_lable=tk.Label(darkhast_bagh_zamin,text="مدت اجاره",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+time_ejareh_bagh_darkhast_zamin_lable=tk.Label(frame_up_right_darkhast_bagh_zamin,text="مدت اجاره",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
 time_ejareh_bagh_darkhast_zamin_lable.place_forget()
 
-bagh_time_darkhast_combo=ttk.Combobox(darkhast_bagh_zamin,state="readonly")
+bagh_time_darkhast_combo=ttk.Combobox(frame_up_right_darkhast_bagh_zamin,state="readonly")
 bagh_time_darkhast_combo["values"]=("بلندمدت","کوتاه مدت","فصلی","سالانه")
+bagh_time_darkhast_combo.configure(justify="center")
 bagh_time_darkhast_combo.set("فصلی")
 bagh_time_darkhast_combo.place_forget()
+#-------------------------------------------فریم بالا سمت چپ----------------------
+photo_darkhast_bagh_zamin_lable= tk.Label(frame_up_left_darkhast_bagh_zamin, text="[تصویر ملک]", bg="#ffffff", width=79, height=15)
+photo_darkhast_bagh_zamin_lable.place(x=40, y=10)
 
+add_img_btn_darkhast_bagh_zamin = tk.Button(frame_up_left_darkhast_bagh_zamin, text="افزودن تصویر", bg="#00BFFF", fg="#000000",command=open_file,height=2,width=13)
+add_img_btn_darkhast_bagh_zamin.place(x=240, y=250)
+#---------------------------------------فریم وسط سمت راست--------------------------
+gheimat_kol_bagh_zamin_darkhast_lable=tk.Label(frame_midde_right_darkhast_bagh_zamin,text='قیمت کل',bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
+gheimat_kol_bagh_zamin_darkhast_lable.place(x=490, y=20, anchor="e")
 
-name_moshtari_darkhast_bagh_lable=tk.Label(darkhast_bagh_zamin,text="نام مشتری",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-name_moshtari_darkhast_bagh_lable.place(x=start_x + 320, y=start_y + 285, anchor="e")
+gheimat_kol_bagh_zamin_darkhast_entry=tk.Entry(frame_midde_right_darkhast_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
+gheimat_kol_bagh_zamin_darkhast_entry.place(x=28, y=13, width=350, height=25)
 
-name_moshtari_darkhast_bagh_entry=tk.Entry(darkhast_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
-name_moshtari_darkhast_bagh_entry.place(x=start_x + 10, y=start_y + 275, width=150, height=25)
+gheimat_har_matr_bagh_zamin_darkhast_lable=tk.Label(frame_midde_right_darkhast_bagh_zamin,text='قیمت هر متر',bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
+gheimat_har_matr_bagh_zamin_darkhast_lable.place(x=490, y=65, anchor="e")
 
-shomareh_moshtari_darkhast_bagh_lable=tk.Label(darkhast_bagh_zamin,text="شماره مشتری",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-shomareh_moshtari_darkhast_bagh_lable.place(x=start_x + 320, y=start_y + 340, anchor="e")
+gheimat_har_metr_bagh_zamin_darkhast_entry=tk.Entry(frame_midde_right_darkhast_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
+gheimat_har_metr_bagh_zamin_darkhast_entry.place(x=28, y=55, width=350, height=25)
 
-shomareh_moshtari_darkhast_bagh_entry=tk.Entry(darkhast_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
-shomareh_moshtari_darkhast_bagh_entry.place(x=start_x + 10, y=start_y + 330, width=150, height=25)
+gheimat_ejareh_bagh_darkhast_zamin_lable=tk.Label(frame_midde_right_darkhast_bagh_zamin, text="ودیعه", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+gheimat_ejareh_bagh_darkhast_zamin_lable.place_forget()
 
-gheimat_kol_bagh_zamin_darkhast_lable=tk.Label(darkhast_bagh_zamin,text='قیمت کل',bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
-gheimat_kol_bagh_zamin_darkhast_lable.place(x=start_x + 325, y=start_y + 390, anchor="e")
+gheimat_ejareh_bagh_darkhast_zamin_entry=tk.Entry(frame_midde_right_darkhast_bagh_zamin, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
+gheimat_ejareh_bagh_darkhast_zamin_entry.place_forget()
 
-gheimat_kol_bagh_zamin_darkhast_entry=tk.Entry(darkhast_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
-gheimat_kol_bagh_zamin_darkhast_entry.place(x=start_x + 10, y=start_y + 380, width=150, height=25)
+mablagh_ejareh_mahaneh_darkhast_lable=tk.Label(frame_midde_right_darkhast_bagh_zamin,text='اجاره ماهانه',bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
+mablagh_ejareh_mahaneh_darkhast_lable.place_forget()
 
-photo_darkhast_bagh_zamin_lable= tk.Label(darkhast_bagh_zamin, text="[تصویر ملک]", bg="#ffffff", width=50, height=15)
-photo_darkhast_bagh_zamin_lable.place(x=60, y=85)
+mablagh_ejareh_mahaneh_darkhast_entry=tk.Entry(frame_midde_right_darkhast_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
+mablagh_ejareh_mahaneh_darkhast_entry.place_forget()
 
-add_img_btn_darkhast_bagh_zamin = tk.Button(darkhast_bagh_zamin, text="افزودن تصویر", bg="#00BFFF", fg="#000000",command=open_file,height=2,width=13)
-add_img_btn_darkhast_bagh_zamin.place(x=60, y=370)
+bagh_loctaion_darkhast_bagh_zamin_lable=tk.Label(frame_midde_right_darkhast_bagh_zamin,text="منطقه و آدرس ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
+bagh_loctaion_darkhast_bagh_zamin_lable.place(x=490, y=110, anchor="e")
 
-back_to_home_darkhast_bagh_zamin=tk.Button(darkhast_bagh_zamin,text="بازگشت",bg="#00BFFF", fg="#000000",width=10,height=2,command=back_home_darkhast_bagh)
-back_to_home_darkhast_bagh_zamin.place(x=290,y=520)
+bagh_loctaion_darkhast_bagh_zamin_entry=tk.Text(frame_midde_right_darkhast_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
+bagh_loctaion_darkhast_bagh_zamin_entry.place(x=28, y=95, width=350, height=40)
+#----------------------------فریم وسط سمت چپ-------------------------------
+name_moshtari_darkhast_bagh_lable=tk.Label(frame_midde_left_darkhast_bagh_zamin,text="نام مشتری",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+name_moshtari_darkhast_bagh_lable.place(x=600, y=30, anchor="e")
 
-zakhire_darkhast_bagh_zamin=tk.Button(darkhast_bagh_zamin,text="ذخیره",bg="#00BFFF", fg="#000000",width=10,height=2,command=sabt_darkhast_bagh_zamin)
-zakhire_darkhast_bagh_zamin.place(x=140,y=520)
+name_moshtari_darkhast_bagh_entry=tk.Entry(frame_midde_left_darkhast_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
+name_moshtari_darkhast_bagh_entry.place(x=30, y=20, width=350, height=25)
 
-darkhast_bagh_zamin.protocol("WM_DELETE_WINDOW", lambda: None)
-darkhast_bagh_zamin.resizable(False, False)
-#endregion
-#-----------------------پنجره امکانات درخواست باغ/زمین-------------------
-#region
-option_frame_options_darkhast_bagh_zamin=tk.Frame(darkhast_bagh_zamin,width=300,height=30,background="#052340")
-option_frame_options_darkhast_bagh_zamin.place(x=225,y=370)
+shomareh_moshtari_darkhast_bagh_lable=tk.Label(frame_midde_left_darkhast_bagh_zamin,text="شماره مشتری",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+shomareh_moshtari_darkhast_bagh_lable.place(x=600, y=80, anchor="e")
 
-option_label_darkhast_bagh_zamin=tk.Label(option_frame_options_darkhast_bagh_zamin,text='افزودن امکانات فایل',font=("Shabnam",12,"bold"),background="#052340",fg="#00BFFF")
-option_label_darkhast_bagh_zamin.pack(side="right",padx=1)
+shomareh_moshtari_darkhast_bagh_entry=tk.Entry(frame_midde_left_darkhast_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
+shomareh_moshtari_darkhast_bagh_entry.place(x=30, y=70, width=350, height=25)
+#--------------------------فریم پایین-----------------------------
+abyari_darkhast_bagh_zamin_lable=tk.Label(frame_down_darkhast_bagh,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="نوع آبیاری")
+abyari_darkhast_bagh_zamin_lable.place(x=1080, y=20)
 
-plus_button_darkhast_bagh_zamin=tk.Button(option_frame_options_darkhast_bagh_zamin,image=plus,command=open_option11,border=0)
-plus_button_darkhast_bagh_zamin.pack()
-
-option_file_frame_darkhast_bagh_zamin=tk.Toplevel(darkhast_bagh_zamin)
-option_file_frame_darkhast_bagh_zamin.title(" امکانات درخواست باغ/زمین")
-option_file_frame_darkhast_bagh_zamin.geometry("690x630")
-option_file_frame_darkhast_bagh_zamin.pack_propagate(False)
-option_file_frame_darkhast_bagh_zamin.withdraw()
-
-option_frame_darkhast_bagh_zamin=tk.Frame(option_file_frame_darkhast_bagh_zamin)
-option_frame_darkhast_bagh_zamin.place(x=50,y=50)
-
-bg_image = image_darkhast_bagh_zamin
-bg_image = image_darkhast_bagh_zamin.resize((800, 650))
-bg_photo = ImageTk.PhotoImage(bg_image)
-
-bg_label = tk.Label(option_file_frame_darkhast_bagh_zamin, image=bg_photo)
-bg_label.image = bg_photo 
-bg_label.place(x=0, y=0, relwidth=1, relheight=1)
-
-
-
-metraj_derakht_darkhast_bagh_zamin_lable=tk.Label(option_file_frame_darkhast_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="متراژ درخت کاری")
-metraj_derakht_darkhast_bagh_zamin_lable.place(x=450, y=70)
-
-metraj_derakht_darkhast_bagh_zamin_entry=tk.Entry(option_file_frame_darkhast_bagh_zamin,width=10,bg="#746f6f",fg="#000000")
-metraj_derakht_darkhast_bagh_zamin_entry.place(x=305, y=70)
-
-tedad_derakht_darkhast_bagh_zamin_lable=tk.Label(option_file_frame_darkhast_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="تعداد درخت")
-tedad_derakht_darkhast_bagh_zamin_lable.place(x=460, y=100)
-
-tedad_derakht_darkhast_bagh_zamin_entry=tk.Entry(option_file_frame_darkhast_bagh_zamin,width=10,bg="#746f6f",fg="#000000")
-tedad_derakht_darkhast_bagh_zamin_entry.place(x=305, y=100)
-
-abyari_darkhast_bagh_zamin_lable=tk.Label(option_file_frame_darkhast_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="نوع آبیاری")
-abyari_darkhast_bagh_zamin_lable.place(x=460, y=130)
-
-abyari_darkhast_bagh_zamin_combo=ttk.Combobox(option_file_frame_darkhast_bagh_zamin)
+abyari_darkhast_bagh_zamin_combo=ttk.Combobox(frame_down_darkhast_bagh,width=12)
 abyari_darkhast_bagh_zamin_combo["values"]=("سطحی","بارانی","قطره ای","تحت فشار")
 abyari_darkhast_bagh_zamin_combo["state"]=["readonly"]
+abyari_darkhast_bagh_zamin_combo.configure(justify="center")
 abyari_darkhast_bagh_zamin_combo.set("سطحی")
-abyari_darkhast_bagh_zamin_combo.place(x=273, y=130)
+abyari_darkhast_bagh_zamin_combo.place(x=970, y=20)
 
-type_tree_darkhast_bagh_zamin_lable=tk.Label(option_file_frame_darkhast_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="نوع درخت")
-type_tree_darkhast_bagh_zamin_lable.place(x=460, y=160)
+metraj_derakht_darkhast_bagh_zamin_lable=tk.Label(frame_down_darkhast_bagh,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="متراژ درخت کاری")
+metraj_derakht_darkhast_bagh_zamin_lable.place(x=1080, y=60)
 
-type_tree_darkhast_bagh_zamin_combo=ttk.Combobox(option_file_frame_darkhast_bagh_zamin)
-type_tree_darkhast_bagh_zamin_combo["values"]=(" ","پسته","بادام","گردو","شلیل","هلو","سیب","انگور"
-                           ,"انجیر","زردالو","گیلاس","آلبالو")
+metraj_derakht_darkhast_bagh_zamin_entry=tk.Entry(frame_down_darkhast_bagh,width=10,bg="#ffffff",fg="#000000")
+metraj_derakht_darkhast_bagh_zamin_entry.place(x=1000, y=60)
+
+tedad_derakht_darkhast_bagh_zamin_lable=tk.Label(frame_down_darkhast_bagh,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="تعداد درخت")
+tedad_derakht_darkhast_bagh_zamin_lable.place(x=1080, y=100)
+
+tedad_derakht_darkhast_bagh_zamin_entry=tk.Entry(frame_down_darkhast_bagh,width=10,bg="#ffffff",fg="#000000")
+tedad_derakht_darkhast_bagh_zamin_entry.place(x=1000, y=100)
+
+type_tree_darkhast_bagh_zamin_lable=tk.Label(frame_down_darkhast_bagh,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="نوع درخت")
+type_tree_darkhast_bagh_zamin_lable.place(x=870, y=20)
+
+type_tree_darkhast_bagh_zamin_combo=ttk.Combobox(frame_down_darkhast_bagh,width=12)
+type_tree_darkhast_bagh_zamin_combo["values"]=(" ","پسته","بادام","گردو","شلیل","هلو","سیب","انگور","انجیر","زردالو","گیلاس","آلبالو")
 type_tree_darkhast_bagh_zamin_combo.set("گردو")
+type_tree_darkhast_bagh_zamin_combo.configure(justify="center")
 type_tree_darkhast_bagh_zamin_combo["state"]=["readonly"]
-type_tree_darkhast_bagh_zamin_combo.place(x=273, y=160)
+type_tree_darkhast_bagh_zamin_combo.place(x=770, y=20)
 
-type_tree_darkhast_btn=tk.Button(option_file_frame_darkhast_bagh_zamin,text="افزودن درخت",command=add_tree3,bg="#00BFFF",font=("Shabnam",9),width=10)
-type_tree_darkhast_btn.place(x=460, y=190)
+type_tree_darkhast_btn=tk.Button(frame_down_darkhast_bagh,text="افزودن درخت",command=add_tree3,bg="#00BFFF",font=("Shabnam",9),width=10)
+type_tree_darkhast_btn.place(x=870, y=60)
 
-label_natige_darkhast_bagh_zamin=tk.Label(option_file_frame_darkhast_bagh_zamin,text="")
-label_natige_darkhast_bagh_zamin.place(x=305, y=190)
+label_natige_darkhast_bagh_zamin=tk.Text(frame_down_darkhast_bagh,wrap="word",width=11,height=4,font=("Shabnam",9))
+label_natige_darkhast_bagh_zamin.place(x=770, y=50)
 
 chah_darkhast_bagh_zamin_var=tk.IntVar(value=0)
-chah_darkhast_bagh_zamin=tk.Checkbutton(option_file_frame_darkhast_bagh_zamin,variable=chah_darkhast_bagh_zamin_var,text="چاه",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-chah_darkhast_bagh_zamin.place(x=480, y=220)
+chah_darkhast_bagh_zamin=tk.Checkbutton(frame_down_darkhast_bagh,variable=chah_darkhast_bagh_zamin_var,text="چاه",background="#052340",fg="#00BFFF",font=("Shabnam",9))
+chah_darkhast_bagh_zamin.place(x=685, y=20)
 
 estakhr_darkhast_bagh_zamin_var=tk.IntVar(value=0)
-estakhr_darkhast_bagh_zamin=tk.Checkbutton(option_file_frame_darkhast_bagh_zamin,variable=estakhr_darkhast_bagh_zamin_var,text="استخر",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-estakhr_darkhast_bagh_zamin.place(x=380, y=220)
+estakhr_darkhast_bagh_zamin=tk.Checkbutton(frame_down_darkhast_bagh,variable=estakhr_darkhast_bagh_zamin_var,text="استخر",background="#052340",fg="#00BFFF",font=("Shabnam",9))
+estakhr_darkhast_bagh_zamin.place(x=600, y=20)
 
 divar_darkhast_bagh_zamin_var=tk.IntVar(value=0)
-divar_darkhast_bagh_zamin=tk.Checkbutton(option_file_frame_darkhast_bagh_zamin,variable=divar_darkhast_bagh_zamin_var,text="دیوار کشی",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-divar_darkhast_bagh_zamin.place(x=280, y=220)
+divar_darkhast_bagh_zamin=tk.Checkbutton(frame_down_darkhast_bagh,variable=divar_darkhast_bagh_zamin_var,text="دیوار کشی",background="#052340",fg="#00BFFF",font=("Shabnam",9))
+divar_darkhast_bagh_zamin.place(x=685, y=80)
 
 bargh_keshi_darkhast_bagh_zamin_var=tk.IntVar(value=0)
-bargh_keshi_darkhast_bagh_zamin=tk.Checkbutton(option_file_frame_darkhast_bagh_zamin,variable=bargh_keshi_darkhast_bagh_zamin_var,text="برق کشی",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-bargh_keshi_darkhast_bagh_zamin.place(x=180, y=220)
+bargh_keshi_darkhast_bagh_zamin=tk.Checkbutton(frame_down_darkhast_bagh,variable=bargh_keshi_darkhast_bagh_zamin_var,text="برق کشی",background="#052340",fg="#00BFFF",font=("Shabnam",9))
+bargh_keshi_darkhast_bagh_zamin.place(x=600, y=50)
 
-
+gaz_keshi_darkhast_bagh_zamin_var=tk.IntVar(value=0)
+gaz_keshi_darkhast_bagh_zamin=tk.Checkbutton(frame_down_darkhast_bagh,variable=bargh_keshi_darkhast_bagh_zamin_var,text="گاز کشی",background="#052340",fg="#00BFFF",font=("Shabnam",9))
+gaz_keshi_darkhast_bagh_zamin.place(x=685, y=50)
 
 var0_darkhast_bagh_zamin=tk.IntVar(value=0)#چک باتن پیش فرض تیک نخورده باشه
 
+otagh_check_btn_darkhast_bagh_zamin=tk.Checkbutton(frame_down_darkhast_bagh,variable=var0_darkhast_bagh_zamin,image=warehouse_pic,background="#052340",text="ساختمان",command=home_true_false3)
+otagh_check_btn_darkhast_bagh_zamin.place(x=600, y=70)
 
-otagh_check_btn_darkhast_bagh_zamin=tk.Checkbutton(option_file_frame_darkhast_bagh_zamin,variable=var0_darkhast_bagh_zamin,image=warehouse_pic,background="#052340",text="ساختمان",command=home_true_false3)
-otagh_check_btn_darkhast_bagh_zamin.place(x=470, y=250)
+otagh_check_btn_darkhast_bagh_zamin_label=tk.Label(frame_down_darkhast_bagh,text="ویلا", bg="#052340", fg="#ffffff", font=("Shabnam", 7), width=7)
+otagh_check_btn_darkhast_bagh_zamin_label.place(x=620,y=110)
 
-metraj_vila_darkhast_bagh_zamin=tk.Label(option_file_frame_darkhast_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="متراژ سازه")
-metraj_vila_darkhast_bagh_zamin.place(x=450, y=300)
 
-metraj_vila_darkhast_bagh_zamin_entry=tk.Entry(option_file_frame_darkhast_bagh_zamin,width=10,bg="#00BFFF",fg="#ffffff",state="disabled")
-metraj_vila_darkhast_bagh_zamin_entry.place(x=305, y=300)
+type_vila_darkhast_bagh_zamin=tk.Label(frame_down_darkhast_bagh,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="نوع سازه")
+type_vila_darkhast_bagh_zamin.place(x=490, y=20)
 
-sal_sakht_vila_darkhast_bagh_zamin_lable=tk.Label(option_file_frame_darkhast_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="سال ساخت")
-sal_sakht_vila_darkhast_bagh_zamin_lable.place(x=450, y=330)
-
-sal_sakht_vila_darkhast_bagh_zamin_entry=tk.Entry(option_file_frame_darkhast_bagh_zamin,width=10,bg="#00BFFF",fg="#ffffff",state="disabled")
-sal_sakht_vila_darkhast_bagh_zamin_entry.place(x=305, y=330)
-
-type_vila_darkhast_bagh_zamin=tk.Label(option_file_frame_darkhast_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="نوع سازه")
-type_vila_darkhast_bagh_zamin.place(x=450, y=360)
-
-type_vila_darkhast_bagh_zamin_combo=ttk.Combobox(option_file_frame_darkhast_bagh_zamin,state="disabled")
+type_vila_darkhast_bagh_zamin_combo=ttk.Combobox(frame_down_darkhast_bagh,width=12)
 type_vila_darkhast_bagh_zamin_combo["values"]=("آجری","بلوکی","کانکس","چوبی")
+type_vila_darkhast_bagh_zamin_combo.config(state="disabled")
+type_vila_darkhast_bagh_zamin_combo.configure(justify="center")
 type_vila_darkhast_bagh_zamin_combo.set("آجری")
-type_vila_darkhast_bagh_zamin_combo.place(x=273, y=360)
+type_vila_darkhast_bagh_zamin_combo.place(x=380, y=20)
 
-toilet_darkhast_bagh_zamin_lable=tk.Label(option_file_frame_darkhast_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="سرویس بهداشتی")
-toilet_darkhast_bagh_zamin_lable.place(x=450, y=390)
+toilet_darkhast_bagh_zamin_lable=tk.Label(frame_down_darkhast_bagh,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="سرویس بهداشتی")
+toilet_darkhast_bagh_zamin_lable.place(x=490, y=60)
 
-toilet_darkhast_bagh_zamin_combo=ttk.Combobox(option_file_frame_darkhast_bagh_zamin,state="disabled")
-toilet_darkhast_bagh_zamin_combo["values"]=(" ","ندارد","فرنگی","ایرانی","هردو")
-toilet_darkhast_bagh_zamin_combo.set("")
-toilet_darkhast_bagh_zamin_combo.place(x=273, y=390)
+toilet_darkhast_bagh_zamin_combo=ttk.Combobox(frame_down_darkhast_bagh,state="disabled",width=12)
+toilet_darkhast_bagh_zamin_combo["values"]=("ندارد","فرنگی","ایرانی","هردو")
+toilet_darkhast_bagh_zamin_combo.set("ندارد")
+toilet_darkhast_bagh_zamin_combo.configure(justify="center")
+toilet_darkhast_bagh_zamin_combo.place(x=380, y=60)
 
-hamam_darkhast_bagh_zamin=tk.Label(option_file_frame_darkhast_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="حمام")
-hamam_darkhast_bagh_zamin.place(x=450, y=420)
+hamam_darkhast_bagh_zamin=tk.Label(frame_down_darkhast_bagh,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="حمام")
+hamam_darkhast_bagh_zamin.place(x=490, y=95)
 
-hamam_darkhast_bagh_zamin_combo=ttk.Combobox(option_file_frame_darkhast_bagh_zamin,state="disabled")
-hamam_darkhast_bagh_zamin_combo["values"]=(" ","ندارد","دارد")
-hamam_darkhast_bagh_zamin_combo.set(" ")
-hamam_darkhast_bagh_zamin_combo.place(x=273, y=420)
+hamam_darkhast_bagh_zamin_combo=ttk.Combobox(frame_down_darkhast_bagh,state="disabled",width=12)
+hamam_darkhast_bagh_zamin_combo["values"]=("ندارد","دارد")
+hamam_darkhast_bagh_zamin_combo.set("ندارد")
+hamam_darkhast_bagh_zamin_combo.configure(justify="center")
+hamam_darkhast_bagh_zamin_combo.place(x=380, y=100)
 
-sanad_darkhast_bagh_zamin_lable=tk.Label(option_file_frame_darkhast_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="سند")
-sanad_darkhast_bagh_zamin_lable.place(x=450, y=450)
+sanad_darkhast_bagh_zamin_lable=tk.Label(frame_down_darkhast_bagh,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="سند")
+sanad_darkhast_bagh_zamin_lable.place(x=300, y=60)
 
-sanad_darkhast_bagh_zamin_combo=ttk.Combobox(option_file_frame_darkhast_bagh_zamin,state="disabled")
-sanad_darkhast_bagh_zamin_combo["values"]=(" ","ندارد","تک برگ","قولنامه ای","مشاع")
-sanad_darkhast_bagh_zamin_combo.set(" ")
-sanad_darkhast_bagh_zamin_combo.place(x=273, y=450)
+sanad_darkhast_bagh_zamin_combo=ttk.Combobox(frame_down_darkhast_bagh,state="disabled",width=12)
+sanad_darkhast_bagh_zamin_combo["values"]=("ندارد","تک برگ","قولنامه ای","مشاع")
+sanad_darkhast_bagh_zamin_combo.set("ندارد")
+sanad_darkhast_bagh_zamin_combo.configure(justify="center")
+sanad_darkhast_bagh_zamin_combo.place(x=180,y=60)
 
-option_darkhast_bagh_zamin=tk.Label(option_file_frame_darkhast_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="امکانات تفریحی")
-option_darkhast_bagh_zamin.place(x=450, y=480)
+option_darkhast_bagh_zamin=tk.Label(frame_down_darkhast_bagh,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="امکانات تفریحی")
+option_darkhast_bagh_zamin.place(x=310, y=20)
 
-option_darkhast_bagh_zamin_combo=ttk.Combobox(option_file_frame_darkhast_bagh_zamin,state="disabled")
-option_darkhast_bagh_zamin_combo["values"]=(" ","استخر","جکوزی","باربیکیو")
-option_darkhast_bagh_zamin_combo.set(" ")
-option_darkhast_bagh_zamin_combo.place(x=273, y=480)
+option_darkhast_bagh_zamin_combo=ttk.Combobox(frame_down_darkhast_bagh,state="disabled",width=12)
+option_darkhast_bagh_zamin_combo["values"]=("استخر","جکوزی","باربیکیو")
+option_darkhast_bagh_zamin_combo.set("استخر")
+option_darkhast_bagh_zamin_combo.configure(justify="center")
+option_darkhast_bagh_zamin_combo.place(x=180, y=20)
 
-add_option_button_darkhast_bagh_zamin=tk.Button(option_file_frame_darkhast_bagh_zamin,text="افزودن امکانات",command=add_option3,bg="#00BFFF",font=("Shabnam",9),width=10)
-add_option_button_darkhast_bagh_zamin.place(x=180, y=480)
+add_option_button_darkhast_bagh_zamin=tk.Button(frame_down_darkhast_bagh,text="افزودن امکانات",command=add_option3,bg="#00BFFF",font=("Shabnam",9),width=10)
+add_option_button_darkhast_bagh_zamin.place(x=85, y=20)
 
-lable_natige_add_darkhast_bagh_zamin=tk.Label(option_file_frame_darkhast_bagh_zamin,text="")
-lable_natige_add_darkhast_bagh_zamin.place(x=100, y=480)
+lable_natige_add_darkhast_bagh_zamin=tk.Label(frame_down_darkhast_bagh,text="",width=10,bg="#ffffff",fg="#000000")
+lable_natige_add_darkhast_bagh_zamin.place(x=5, y=20)
+
+metraj_vila_darkhast_bagh_zamin=tk.Label(frame_down_darkhast_bagh,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="متراژ سازه")
+metraj_vila_darkhast_bagh_zamin.place(x=290, y=100)
+
+metraj_vila_darkhast_bagh_zamin_entry=tk.Entry(frame_down_darkhast_bagh,width=10,bg="#ffffff",fg="#000000",state="disabled")
+metraj_vila_darkhast_bagh_zamin_entry.place(x=230, y=100)
+
+sal_sakht_vila_darkhast_bagh_zamin_lable=tk.Label(frame_down_darkhast_bagh,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="سال ساخت")
+sal_sakht_vila_darkhast_bagh_zamin_lable.place(x=80, y=60)
+
+sal_sakht_vila_darkhast_bagh_zamin_entry=tk.Entry(frame_down_darkhast_bagh,width=10,bg="#ffffff",fg="#000000",state="disabled")
+sal_sakht_vila_darkhast_bagh_zamin_entry.place(x=10, y=60)
 
 mojavez_sakht_darkhast_bagh_zamin_var=tk.IntVar(value=0)
-mojavez_sakht_check_btn_darkhast_bagh_zamin=tk.Checkbutton(option_file_frame_darkhast_bagh_zamin,variable=mojavez_sakht_darkhast_bagh_zamin_var,text="مجوز ساختن",background="#052340",fg="#00BFFF",font=("Shabnam",9),state="disabled")
-mojavez_sakht_check_btn_darkhast_bagh_zamin.place(x=450, y=510)
+mojavez_sakht_check_btn_darkhast_bagh_zamin=tk.Checkbutton(frame_down_darkhast_bagh,variable=mojavez_sakht_darkhast_bagh_zamin_var,text="مجوز ساختن",background="#052340",fg="#00BFFF",font=("Shabnam",9),state="disabled")
+mojavez_sakht_check_btn_darkhast_bagh_zamin.place(x=10, y=95)
 
 mohavate_sazi_darkhast_bagh_zamin_var=tk.IntVar(value=0)
-mohavate_sazi_check_btn_darkhast_bagh_zamin=tk.Checkbutton(option_file_frame_darkhast_bagh_zamin,variable=mohavate_sazi_darkhast_bagh_zamin_var,text="محوطه سازی",background="#052340",fg="#00BFFF",font=("Shabnam",9),state="disabled")
-mohavate_sazi_check_btn_darkhast_bagh_zamin.place(x=320, y=510)
-
-
-#endregion
+mohavate_sazi_check_btn_darkhast_bagh_zamin=tk.Checkbutton(frame_down_darkhast_bagh,variable=mohavate_sazi_darkhast_bagh_zamin_var,text="محوطه سازی",background="#052340",fg="#00BFFF",font=("Shabnam",9),state="disabled")
+mohavate_sazi_check_btn_darkhast_bagh_zamin.place(x=120, y=95)
 #-------------------------تعویض کاربری به زمین در قسمت درخواست باغ/زمین-------------
-#region
-option_frame_option2_darkhast_bagh_zamin=tk.Frame(option_file_frame_darkhast_bagh_zamin)
-option_frame_option2_darkhast_bagh_zamin.place_forget()
+karbari_darkhast_bagh_zamin_lable=tk.Label(frame_down_darkhast_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="نوع کاربری")
+karbari_darkhast_bagh_zamin_lable.place(x=1000,y=20)
 
-bg_image = image_darkhast_bagh_zamin
-bg_image = image_darkhast_bagh_zamin.resize((800, 650))
-bg_photo = ImageTk.PhotoImage(bg_image)
-
-bg_label = tk.Label(option_frame_option2_darkhast_bagh_zamin, image=bg_photo)
-bg_label.image = bg_photo 
-bg_label.place(x=0, y=0, relwidth=1, relheight=1)
-
-metraj_zamin2_darkhast_bagh_zamin_lable=tk.Label(option_frame_option2_darkhast_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=13,text="متراژ زمین")
-metraj_zamin2_darkhast_bagh_zamin_lable.place(x=448, y=10)
-
-metraj_zamin2_darkhast_bagh_zamin_entry=tk.Entry(option_frame_option2_darkhast_bagh_zamin,width=10,bg="#746f6f",fg="#000000")
-metraj_zamin2_darkhast_bagh_zamin_entry.place(x=312, y=13)
-
-karbari_darkhast_bagh_zamin_lable=tk.Label(option_frame_option2_darkhast_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="نوع کاربری")
-karbari_darkhast_bagh_zamin_lable.place(x=458, y=45)
-
-karbari_darkhast_bagh_zamin_combo=ttk.Combobox(option_frame_option2_darkhast_bagh_zamin)
-karbari_darkhast_bagh_zamin_combo["values"]=(" ","زراعی","باغی","گلخانه ای","دامداری ","مرغداری",
-                               "دامداری و مرغداری","آیش")           
+karbari_darkhast_bagh_zamin_combo=ttk.Combobox(frame_down_darkhast_zamin)
+karbari_darkhast_bagh_zamin_combo["values"]=(" ","زراعی","باغی","گلخانه ای","دامداری ","مرغداری","دامداری و مرغداری","آیش")           
 karbari_darkhast_bagh_zamin_combo["state"]=["readonly"]                  
 karbari_darkhast_bagh_zamin_combo.set(" ")
-karbari_darkhast_bagh_zamin_combo.place(x=273, y=45)
+karbari_darkhast_bagh_zamin_combo.configure(justify="center")
+karbari_darkhast_bagh_zamin_combo.place(x=800, y=20)
 
-khak_darkhast_bagh_zamin=tk.Label(option_frame_option2_darkhast_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="نوع خاک")
-khak_darkhast_bagh_zamin.place(x=458, y=80)
+khak_darkhast_bagh_zamin=tk.Label(frame_down_darkhast_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="نوع خاک")
+khak_darkhast_bagh_zamin.place(x=1000, y=60)
 
-khak_darkhast_bagh_zamin_combo=ttk.Combobox(option_frame_option2_darkhast_bagh_zamin)
-khak_darkhast_bagh_zamin_combo["values"]=(" ","رسی","شنی","لومی","رسی_شنی","شنی_لومی",
-                               "رسی_لومی")        
+khak_darkhast_bagh_zamin_combo=ttk.Combobox(frame_down_darkhast_zamin)
+khak_darkhast_bagh_zamin_combo["values"]=(" ","رسی","شنی","لومی","رسی_شنی","شنی_لومی","رسی_لومی")        
 khak_darkhast_bagh_zamin_combo["state"]=["readonly"]                     
 khak_darkhast_bagh_zamin_combo.set(" ")
-khak_darkhast_bagh_zamin_combo.place(x=273, y=80)
+khak_darkhast_bagh_zamin_combo.configure(justify="center")
+khak_darkhast_bagh_zamin_combo.place(x=800, y=60)
 
-ab_darkhast_bagh_zamin=tk.Label(option_frame_option2_darkhast_bagh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="منبع آب")
-ab_darkhast_bagh_zamin.place(x=458, y=115)
+ab_darkhast_bagh_zamin=tk.Label(frame_down_darkhast_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="منبع آب")
+ab_darkhast_bagh_zamin.place(x=1000, y=100)
 
-ab_darkhast_bagh_zamin_combo=ttk.Combobox(option_frame_option2_darkhast_bagh_zamin)
-ab_darkhast_bagh_zamin_combo["values"]=(" ","چاه","قنات","رودخانه","کانال آبیاری","چشمه",
-                               "آب لوله کشی کشاورزی","تانکر","استخر")  
+ab_darkhast_bagh_zamin_combo=ttk.Combobox(frame_down_darkhast_zamin)
+ab_darkhast_bagh_zamin_combo["values"]=(" ","چاه","قنات","رودخانه","کانال آبیاری","چشمه","آب لوله کشی کشاورزی","تانکر","استخر")  
 ab_darkhast_bagh_zamin_combo["state"]=["readonly"]
 ab_darkhast_bagh_zamin_combo.set(" ")
-ab_darkhast_bagh_zamin_combo.place(x=273, y=115)
+ab_darkhast_bagh_zamin_combo.configure(justify="center")
+ab_darkhast_bagh_zamin_combo.place(x=800, y=100)
 
 security_zamin_darkhast_bagh_zamin_var=tk.IntVar(value=0)
-security_zamin_darkhast_bagh_zamin=tk.Checkbutton(option_frame_option2_darkhast_bagh_zamin,variable=security_zamin_darkhast_bagh_zamin_var,text="اتاق نگهبان",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-security_zamin_darkhast_bagh_zamin.place(x=450, y=230)
+security_zamin_darkhast_bagh_zamin=tk.Checkbutton(frame_down_darkhast_zamin,variable=security_zamin_darkhast_bagh_zamin_var,text="اتاق نگهبان",background="#052340",fg="#00BFFF",font=("Shabnam",9))
+security_zamin_darkhast_bagh_zamin.place(x=300, y=20)
 
 bargh_kesi_zamin_darkhast_bagh_zamin_var=tk.IntVar(value=0)
-bargh_kesi_zamin_darkhast_bagh_zamin=tk.Checkbutton(option_frame_option2_darkhast_bagh_zamin,variable=bargh_kesi_zamin_darkhast_bagh_zamin_var,text="برق تک فاز",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-bargh_kesi_zamin_darkhast_bagh_zamin.place(x=350, y=230)
-
+bargh_kesi_zamin_darkhast_bagh_zamin=tk.Checkbutton(frame_down_darkhast_zamin,variable=bargh_kesi_zamin_darkhast_bagh_zamin_var,text="برق تک فاز",background="#052340",fg="#00BFFF",font=("Shabnam",9))
+bargh_kesi_zamin_darkhast_bagh_zamin.place(x=500, y=20)
 
 bargh_zamin_darkhast_bagh_zamin2_var=tk.IntVar(value=0)
-bargh_keshi_zamin_darkhast_bagh_zamin2=tk.Checkbutton(option_frame_option2_darkhast_bagh_zamin,variable=bargh_zamin_darkhast_bagh_zamin2_var,text="برق سه فاز",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-bargh_keshi_zamin_darkhast_bagh_zamin2.place(x=250, y=230)
+bargh_keshi_zamin_darkhast_bagh_zamin2=tk.Checkbutton(frame_down_darkhast_zamin,variable=bargh_zamin_darkhast_bagh_zamin2_var,text="برق سه فاز",background="#052340",fg="#00BFFF",font=("Shabnam",9))
+bargh_keshi_zamin_darkhast_bagh_zamin2.place(x=400, y=20)
 
 anbar_zamin_darkhast_bagh_zamin_var=tk.IntVar(value=0)
-anbar_zamin_darkhast_bagh_zamin=tk.Checkbutton(option_frame_option2_darkhast_bagh_zamin,variable=anbar_zamin_darkhast_bagh_zamin_var,text="انبار/سوله",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-anbar_zamin_darkhast_bagh_zamin.place(x=150, y=230)
+anbar_zamin_darkhast_bagh_zamin=tk.Checkbutton(frame_down_darkhast_zamin,variable=anbar_zamin_darkhast_bagh_zamin_var,text="انبار/سوله",background="#052340",fg="#00BFFF",font=("Shabnam",9))
+anbar_zamin_darkhast_bagh_zamin.place(x=500, y=60)
 
 fans_zamin_darkhast_bagh_zamin_var=tk.IntVar(value=0)
-fans_zamin_darkhast_bagh_zamin=tk.Checkbutton(option_frame_option2_darkhast_bagh_zamin,variable=fans_zamin_darkhast_bagh_zamin_var,text="فنس/دیوار",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-fans_zamin_darkhast_bagh_zamin.place(x=60, y=230)
+fans_zamin_darkhast_bagh_zamin=tk.Checkbutton(frame_down_darkhast_zamin,variable=fans_zamin_darkhast_bagh_zamin_var,text="فنس/دیوار",background="#052340",fg="#00BFFF",font=("Shabnam",9))
+fans_zamin_darkhast_bagh_zamin.place(x=400, y=60)
 
 mojavez_chah_zamin_darkhast_bagh_zamin_var=tk.IntVar(value=0)
-mojavez_chah_zamin_darkhast_bagh_zamin=tk.Checkbutton(option_frame_option2_darkhast_bagh_zamin,variable=mojavez_chah_zamin_darkhast_bagh_zamin_var,text="اجازه حفر چاه",background="#052340",fg="#00BFFF",font=("Shabnam",9))
-mojavez_chah_zamin_darkhast_bagh_zamin.place(x=300, y=280)
+mojavez_chah_zamin_darkhast_bagh_zamin=tk.Checkbutton(frame_down_darkhast_zamin,variable=mojavez_chah_zamin_darkhast_bagh_zamin_var,text="اجازه حفر چاه",background="#052340",fg="#00BFFF",font=("Shabnam",9))
+mojavez_chah_zamin_darkhast_bagh_zamin.place(x=300, y=60)
 
+back_to_home_darkhast_bagh_zamin=tk.Button(darkhast_bagh_zamin_window,text="بازگشت",bg="#052340", fg="#ffffff",width=10,height=1,command=back_home_darkhast_bagh)
+back_to_home_darkhast_bagh_zamin.place(x=300,y=30)
 
-option_file_frame_darkhast_bagh_zamin.protocol("WM_DELETE_WINDOW", lambda: None)
-option_file_frame_darkhast_bagh_zamin.resizable(False, False)
+zakhire_darkhast_bagh_zamin=tk.Button(darkhast_bagh_zamin_window,text="ذخیره",bg="#00BFFF", fg="#ffffff",width=10,height=1,command=sabt_darkhast_bagh_zamin)
+zakhire_darkhast_bagh_zamin.place(x=200,y=30)
+
+darkhast_bagh_zamin_window.protocol("WM_DELETE_WINDOW", lambda: None)
+darkhast_bagh_zamin_window.resizable(False, False)
 #endregion
 #-------------------پنجره درخواست کارگاه------------------------
 #region
