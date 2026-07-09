@@ -1423,10 +1423,10 @@ def chck_sal_sakht(event=None):
     sal_sakht= sal_sakht_forosh_maskoni_entry.get().strip()
 
     if sal_sakht.isdigit() and len(sal_sakht) <=4:
-        sal_sakht_forosh_maskoni_entry.config(bg="white")
+        sal_sakht_forosh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_sal_sakht_forosh_maskoni.config(text="")
     else:
-        sal_sakht_forosh_maskoni_entry.config(bg="red")
+        sal_sakht_forosh_maskoni_entry.config(highlightthickness=2,highlightcolor="red")
         error_lable_sal_sakht_forosh_maskoni.config(text="سال ساخت باید چهار رقم باشد")
 
 
