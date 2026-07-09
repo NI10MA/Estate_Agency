@@ -808,6 +808,7 @@ def clear_entry_forosh_kargah():
 #----------------------------برگشت از صفحه درخواست مسکونی-------------------
 def back_home_darkhast_maskoni():
     clear_entry_darkhast_maskoni()
+    clear_errors_labels_darkhast_maskoni()
     darkhast_maskoni_window.withdraw()
     root.deiconify()
     delete_root()
@@ -815,6 +816,7 @@ def back_home_darkhast_maskoni():
 def clear_entry_darkhast_maskoni():
     sal_sakht_darkhast_maskoni_entry.delete(0,tk.END)
     addrres_darkhast_maskoni_entry.delete("1.0",tk.END)
+    metraj_darkhast_maskoni_entry.delete(0,tk.END)
     tabaghe_darkhast_maskoni_entry.delete(0,tk.END)
     vahed_darkhast_maskoni_entry.delete(0,tk.END)
     otagh_darkhast_maskoni_entry.delete(0,tk.END)
@@ -831,6 +833,19 @@ def clear_entry_darkhast_maskoni():
     parking_ch_btn_darkhast_maskoni.deselect()
     asansor_ch_btn_darkhast_maskoni.deselect()
     anbari_checkbuton_darkhast_maskoni.deselect()
+
+def clear_errors_labels_darkhast_maskoni():
+    error_lable_sal_sakht_darkhast_maskoni.config(text="")
+    error_lable_metraj_darkhast_maskoni.config(text="")
+    error_lable_tabaghe_darkhast_maskoni.config(text="")
+    error_lable_vahed_darkhast_maskoni.config(text="")
+    error_lable_otagh_darkhast_maskoni.config(text="")
+    error_lable_gheimat_kol_darkhast_maskoni.config(text="")
+    error_lable_addrres_darkhast_maskoni.config(text="")
+    error_lable_name_moshtari_darkhast_maskoni.config(text="")
+    error_lable_shomareh_moshtari_darkhast_maskoni.config(text="")
+    error_lable_mablagh_ejare_darkhast_maskoni.config(text="")
+    error_lable_gheimat_pish_darkhast_maskoni.config(text="")
     #---------------------------برگشت از صفحه درخواست اداری/تجاری--------------------
 def back_home_darkhast_edari_tejari():
     clear_entry_darkhast_edari_tejari()
@@ -2297,9 +2312,87 @@ def sabt_ejareh_kargah():
 #----------------------تابع ثبت درخواست--------------------------------
 #region
 #---------------darkhast_maskoni Database------------------------
-skip_save=False
 def sabt_darkhast_maskoni(event=None):
-    global skip_save
+
+    change_type= melk_type_darkhast_maskoni_entry.get()
+    #فیلد های خرید
+    gheimat_kol_darkhast_maskoni_lable.place_forget()
+    gheimat_kol_darkhast_maskoni_entry.place_forget()
+    #فیلد های اجاره
+    mablagh_ejare_darkhast_maskoni_lable.place_forget()
+    mablagh_ejare_darkhast_maskoni_entry.place_forget()
+    gheimat_pish_darkhast_maskoni_lable.place_forget()
+    gheimat_pish_darkhast_maskoni_entry.place_forget()
+
+        
+    if change_type=="درخواست خرید مسکونی":
+
+        gheimat_kol_darkhast_maskoni_lable.place(x=465, y=30, anchor="e")
+        gheimat_kol_darkhast_maskoni_entry.place(x=18, y=20, width=350, height=25)
+        addrres_darkhast_maskoni.place(x=465, y=80, anchor="e")
+        addrres_darkhast_maskoni_entry.place(x=18, y=70, width=350, height=50)
+
+    elif change_type=="درخواست اجاره مسکونی":
+
+        mablagh_ejare_darkhast_maskoni_lable.place(x=465, y=30, anchor="e")
+        mablagh_ejare_darkhast_maskoni_entry.place(x=18, y=20, width=350, height=25)
+        gheimat_pish_darkhast_maskoni_lable.place(x=465, y=75, anchor="e")
+        gheimat_pish_darkhast_maskoni_entry.place(x=18, y=65, width=350, height=25)
+        addrres_darkhast_maskoni.place(x=465, y=120, anchor="e")
+        addrres_darkhast_maskoni_entry.place(x=18, y=110, width=350, height=25)
+    if event is not None:#خیلی مهم 
+        return
+# اعتبارسنجی 
+    skip_save=False
+    sal_sakht= sal_sakht_darkhast_maskoni_entry.get().strip()
+    metraj= metraj_darkhast_maskoni_entry.get().strip()
+    tabaghe= tabaghe_darkhast_maskoni_entry.get().strip()
+    vahed= vahed_darkhast_maskoni_entry.get().strip()
+    otagh= otagh_darkhast_maskoni_entry.get().strip()
+    gheimat_kol= gheimat_kol_darkhast_maskoni_entry.get().strip()
+    addrres = addrres_darkhast_maskoni_entry.get("1.0", "end-1c").strip()
+    name_moshtari= name_moshtari_darkhast_maskoni_entry.get().strip()
+    shomareh_moshtari= shomareh_moshtari_darkhast_maskoni_entry.get().strip()
+    mablagh_ejare= mablagh_ejare_darkhast_maskoni_entry.get().strip()
+    gheimat_pish= gheimat_pish_darkhast_maskoni_entry.get().strip()
+    
+    if len(sal_sakht) != 4 or not sal_sakht.isdigit():
+        error_lable_sal_sakht_darkhast_maskoni.config(text="فیلد (سال ساخت) باید 4 رقمی باشد ")
+        return
+    elif not metraj.isdigit():
+        error_lable_metraj_darkhast_maskoni.config(text="فیلد (متراژ) فقط باید شامل اعداد باشد ")
+        return
+    elif not tabaghe.isdigit():
+        error_lable_tabaghe_darkhast_maskoni.config(text="فیلد (طبقه) فقط باید شامل اعداد باشد ")
+        return
+    elif not vahed.isdigit():
+        error_lable_vahed_darkhast_maskoni.config(text="فیلد (واحد) فقط باید شامل اعداد باشد ")
+        return
+    elif not otagh.isdigit():
+        error_lable_otagh_darkhast_maskoni.config(text="فیلد (اتاق) فقط باید شامل اعداد باشد ")
+        return
+    elif not gheimat_kol.isdigit():
+        error_lable_gheimat_kol_darkhast_maskoni.config(text="فیلد (قیمت کل) فقط باید شامل اعداد باشد ")
+        return
+    elif not re.fullmatch(r"[آ-ی0-9۰-۹\s]+", addrres):
+        error_lable_addrres_darkhast_maskoni.config(text="فیلد (آدرس) فقط باید شامل حروف فارسی و اعداد باشد ")
+        return
+    elif not name_moshtari or not re.match("^[\u0600-\u06FF\s]+$", name_moshtari):
+        error_lable_addrres_darkhast_maskoni.config(text="")
+        error_lable_name_moshtari_darkhast_maskoni.config(text="فیلد (نام مشتری) فقط باید شامل حروف فارسی باشد ")
+        return
+    elif len(shomareh_moshtari) != 11 or not shomareh_moshtari.isdigit():
+        error_lable_name_moshtari_darkhast_maskoni.config(text="")
+        error_lable_shomareh_moshtari_darkhast_maskoni.config(text="فیلد (شماره مشتری) باید 11 رقمی باشد ")
+        return
+    elif not  mablagh_ejare.isdigit():
+        error_lable_mablagh_ejare_darkhast_maskoni.config(text="فیلد (مبلغ اجاره) فقط باید شامل اعداد باشد ")
+        return
+
+    elif not  gheimat_pish.isdigit():
+        error_lable_gheimat_pish_darkhast_maskoni.config(text="فیلد (مبلغ پیش) فقط باید شامل اعداد باشد ")
+        return
+    
     db = None
     try:
         db = get_connection()
@@ -2308,34 +2401,7 @@ def sabt_darkhast_maskoni(event=None):
         cursor.execute("CREATE DATABASE IF NOT EXISTS state_agency")
         cursor.execute("USE state_agency")
 
-        change_type= melk_type_darkhast_maskoni_entry.get()
-        #فیلد های خرید
-        gheimat_kol_darkhast_maskoni_lable.place_forget()
-        gheimat_kol_darkhast_maskoni_entry.place_forget()
-        #فیلد های اجاره
-        mablagh_ejare_darkhast_maskoni_lable.place_forget()
-        mablagh_ejare_darkhast_maskoni_entry.place_forget()
-        gheimat_pish_darkhast_maskoni_lable.place_forget()
-        gheimat_pish_darkhast_maskoni_entry.place_forget()
-
         
-        if change_type=="درخواست خرید مسکونی":
-
-            gheimat_kol_darkhast_maskoni_lable.place(x=465, y=30, anchor="e")
-            gheimat_kol_darkhast_maskoni_entry.place(x=18, y=20, width=350, height=25)
-            addrres_darkhast_maskoni.place(x=465, y=80, anchor="e")
-            addrres_darkhast_maskoni_entry.place(x=18, y=70, width=350, height=50)
-
-        elif change_type=="درخواست اجاره مسکونی":
-
-           mablagh_ejare_darkhast_maskoni_lable.place(x=465, y=30, anchor="e")
-           mablagh_ejare_darkhast_maskoni_entry.place(x=18, y=20, width=350, height=25)
-           gheimat_pish_darkhast_maskoni_lable.place(x=465, y=75, anchor="e")
-           gheimat_pish_darkhast_maskoni_entry.place(x=18, y=65, width=350, height=25)
-           addrres_darkhast_maskoni.place(x=465, y=120, anchor="e")
-           addrres_darkhast_maskoni_entry.place(x=18, y=110, width=350, height=25)
-        if event is not None:#خیلی مهم 
-           return
         
         if change_type=="درخواست خرید مسکونی":
             cursor.execute( """
@@ -5849,6 +5915,39 @@ back_to_home_darkhast_maskoni.place(x=300,y=30)
 
 zakhire_darkhast_maskoni=tk.Button(darkhast_maskoni_window,text="ذخیره",bg="#00BFFF",fg="#ffffff",width=10,height=1,command=sabt_darkhast_maskoni)
 zakhire_darkhast_maskoni.place(x=200,y=30)
+
+error_lable_sal_sakht_darkhast_maskoni= tk.Label(darkhast_maskoni_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_sal_sakht_darkhast_maskoni.place(x=900 , y=20)
+
+error_lable_metraj_darkhast_maskoni= tk.Label(darkhast_maskoni_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_metraj_darkhast_maskoni.place(x=900 , y=20)
+
+error_lable_tabaghe_darkhast_maskoni= tk.Label(darkhast_maskoni_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_tabaghe_darkhast_maskoni.place(x=900 , y=20)
+
+error_lable_vahed_darkhast_maskoni= tk.Label(darkhast_maskoni_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_vahed_darkhast_maskoni.place(x=900 , y=20)
+
+error_lable_otagh_darkhast_maskoni= tk.Label(darkhast_maskoni_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_otagh_darkhast_maskoni.place(x=900 , y=20)
+
+error_lable_gheimat_kol_darkhast_maskoni= tk.Label(darkhast_maskoni_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_gheimat_kol_darkhast_maskoni.place(x=900 , y=20)
+
+error_lable_addrres_darkhast_maskoni= tk.Label(darkhast_maskoni_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_addrres_darkhast_maskoni.place(x=835 , y=20)
+
+error_lable_name_moshtari_darkhast_maskoni= tk.Label(darkhast_maskoni_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_name_moshtari_darkhast_maskoni.place(x=835 , y=20)
+
+error_lable_shomareh_moshtari_darkhast_maskoni= tk.Label(darkhast_maskoni_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_shomareh_moshtari_darkhast_maskoni.place(x=900 , y=20)
+
+error_lable_mablagh_ejare_darkhast_maskoni= tk.Label(darkhast_maskoni_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_mablagh_ejare_darkhast_maskoni.place(x=900 , y=20)
+
+error_lable_gheimat_pish_darkhast_maskoni= tk.Label(darkhast_maskoni_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_gheimat_pish_darkhast_maskoni.place(x=900 , y=20)
 
 darkhast_maskoni_window.protocol("WM_DELETE_WINDOW", lambda: None)
 darkhast_maskoni_window.resizable(False, False)
