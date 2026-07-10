@@ -556,6 +556,7 @@ def clear_errors_labels_ejareh_maskoni():
 #-----برگشت از صفحه فروش مسکونی-------------------------
 def back_home_forosh_maskoni():
     clear_entry_forosh_maskoni()
+    refresh_after_edit()
     clear_errors_labels_forosh_maskoni()
     root.deiconify()
     forosh_maskoni_window.withdraw()
@@ -3380,6 +3381,8 @@ def open_file_forosh_edari_tejari():
 #------------------------توابع سرچ--------------------
 #regoin
 def search():
+    for item in tree.get_children():
+        tree.delete(item)
     file = combo_file_type.get()
     melk = melk_type_combo.get()
 
@@ -3557,9 +3560,14 @@ def search():
         cursor.close()
         db.close()
 #endregion
-#---------------تابع وارد کردن جزییات به باکس سوم----------
+#-----------------------توابع ویرایش---------------------------
 #region
+#---------------تابع وارد کردن جزییات به باکس سوم----------
+selected_id = None
+selected_table = None
+
 def show_details(event):
+    global selected_id, selected_table
 
     item = tree.focus()
 
@@ -3568,62 +3576,196 @@ def show_details(event):
 
     values = tree.item(item)["values"]
 
-    file_id = int(values[0])
-    table = values[1]
+    selected_id = int(values[0])
+    selected_table = values[1]
 
     db = get_connection()
-
     cursor = db.cursor()
     cursor.execute("USE state_agency")
 
-    cursor.execute(f"SELECT * FROM {table} WHERE id=%s",(file_id,))
+    cursor.execute(f"SELECT * FROM {selected_table} WHERE id=%s", (selected_id,))
 
     data = cursor.fetchone()
 
     if data is None:
         return
-    entry_malek.delete(0,tk.END)
-    entry_malek.insert(0, data[14])
 
-    entry_malek_phone_number.delete(0,tk.END)
+    entry_malek_phone_number.delete(0, tk.END)
     entry_malek_phone_number.insert(0, data[15])
 
-    gheimat_melk_right_entry.delete(0,tk.END)
-    gheimat_melk_right_entry.insert(0, data[16])
-
-    metraj_lable_right_entry.delete(0,tk.END)
+    metraj_lable_right_entry.delete(0, tk.END)
     metraj_lable_right_entry.insert(0, data[16])
 
-    options=[]
+    options = []
 
-    if data[7]:
-        options.append("پارکینگ")
+    options.append(f"پارکینگ : {'دارد' if data[7] == '1' else 'ندارد'}")
+    options.append(f"آسانسور : {'دارد' if data[8] == '1' else 'ندارد'}")
+    options.append(f"انباری : {'دارد' if data[9] == '1' else 'ندارد'}")
 
-    if data[8]:
-        options.append("آسانسور")
+    options.append(f"سرمایش : {data[10] if data[10] else 'ندارد'}")
+    options.append(f"گرمایش : {data[11] if data[11] else 'ندارد'}")
+    options.append(f"کف : {data[12] if data[12] else 'ثبت نشده'}")
+    options.append(f"سرویس : {data[13] if data[13] else 'ثبت نشده'}")
 
-    if data[9]:
-        options.append("انباری")
-
-    if data[10]:
-        options.append("سرمایش : "+str(data[10]))
-
-    if data[11]:
-        options.append("گرمایش : "+str(data[11]))
-
-    if data[12]:
-        options.append("کف : "+str(data[12]))
-
-    if data[13]:
-        options.append("سرویس : "+str(data[13]))
-
-    options_text.delete("1.0",tk.END)
-
-    options_text.insert("1.0","\n".join(options))
+    options_text_entry.delete("1.0", tk.END)
+    options_text_entry.insert("1.0", "\n".join(options))
+    options_text_entry.tag_add("right", "1.0", "end")
+    
 
     cursor.close()
     db.close()
+
+#---------------------تابع باز کردن ادیت----------
+def open_edit():
+    zakhire_forosh_maskoni.place_forget()
+    edit_btn_forosh_maskoni.place(x=300,y=30)
+    delete_btn_forosh_maskoni.place(x=200,y=30)
+    
+    if selected_table == "sabt_forosh_maskoni":
+        root.withdraw()
+        forosh_maskoni_window.deiconify()
+        db = get_connection()
+        cursor = db.cursor()
+        cursor.execute("USE state_agency")
+
+        cursor.execute(
+            "SELECT * FROM sabt_forosh_maskoni WHERE id=%s",
+            (selected_id,)
+        )
+
+        data = cursor.fetchone()
+        print(data)
+
+        sal_sakht_forosh_maskoni_entry.delete(0, tk.END)
+        sal_sakht_forosh_maskoni_entry.insert(0, data[2])
+
+        addrres_forosh_maskoni_entry.delete("1.0", tk.END)
+        addrres_forosh_maskoni_entry.insert("1.0", data[3])
+
+        tabaghe_forosh_maskoni_entry.delete(0, tk.END)
+        tabaghe_forosh_maskoni_entry.insert(0, data[4])
+
+        vahed_forosh_maskoni_entry.delete(0, tk.END)
+        vahed_forosh_maskoni_entry.insert(0, data[5])
+
+        otagh_forosh_maskoni_entry.delete(0, tk.END)
+        otagh_forosh_maskoni_entry.insert(0, data[6])
+
+        parking_forosh_maskoni_var.set(data[7])
+        asansor_forosh_maskoni_var.set(data[8])
+        anbari_forosh_maskoni_var.set(data[9])
+
+        sarmaesh_combo_forosh_maskoni.set(data[10])
+        garmaesh_combo_forosh_maskoni.set(data[11])
+        kaf_combo_forosh_maskoni.set(data[12])
+        toilet_combo_forosh_maskoni.set(data[13])
+
+        name_malek_forosh_maskoni_entry.delete(0, tk.END)
+        name_malek_forosh_maskoni_entry.insert(0, data[14])
+
+        shomareh_malek_forosh_maskoni_entry.delete(0, tk.END)
+        shomareh_malek_forosh_maskoni_entry.insert(0, data[15])
+
+        gheimat_kol_forosh_maskoni_entry.delete(0, tk.END)
+        gheimat_kol_forosh_maskoni_entry.insert(0, data[16])
+
+        metraj_forosh_maskoni_entry.delete(0, tk.END)
+        metraj_forosh_maskoni_entry.insert(0, data[17])
+
+        
+        cursor.close()
+        db.close()
+#--------------------------------------توابع ویرایش صفحات---------------
+def update_forosh_maskoni():
+    db = get_connection()
+    cursor = db.cursor()
+    cursor.execute("USE state_agency")
+
+    sql = """
+    UPDATE sabt_forosh_maskoni SET type_melk=%s,sal_sakht=%s,address=%s,tabaghe=%s,vahed=%s,otagh=%s,parking=%s,
+        asansor=%s,anbari=%s,sarmayesh=%s,garmayesh=%s,kaf=%s,toilet=%s,name_malek=%s,shomareh_malek=%s,gheimat_kol=%s,metraj=%s
+    WHERE id=%s
+    """
+
+    values = (
+        melk_type_forosh_maskoni_entry.get(),
+        sal_sakht_forosh_maskoni_entry.get(),
+        addrres_forosh_maskoni_entry.get("1.0", tk.END),
+        tabaghe_forosh_maskoni_entry.get(),
+        vahed_forosh_maskoni_entry.get(),
+        otagh_forosh_maskoni_entry.get(),
+        parking_forosh_maskoni_var.get(),
+        asansor_forosh_maskoni_var.get(),
+        anbari_forosh_maskoni_var.get(),
+        sarmaesh_combo_forosh_maskoni.get(),
+        garmaesh_combo_forosh_maskoni.get(),
+        kaf_combo_forosh_maskoni.get(),
+        toilet_combo_forosh_maskoni.get(),
+        name_malek_forosh_maskoni_entry.get(),
+        shomareh_malek_forosh_maskoni_entry.get(),
+        float(gheimat_kol_forosh_maskoni_entry.get()),
+        metraj_forosh_maskoni_entry.get(),
+        selected_id
+    )
+
+    cursor.execute(sql, values)
+    db.commit()
+
+    cursor.close()
+    db.close()
+    refresh_after_edit()
+
+    messagebox.showinfo("موفق", "اطلاعات با موفقیت ویرایش شد.")
 #endregion
+#region
+#-------------------------توابع حذف--------------------------
+def delete_forosh_maskoni():
+    if not messagebox.askyesno("تأیید", "آیا از حذف این فایل مطمئن هستید؟"):
+        return
+
+    db = get_connection()
+    cursor = db.cursor()
+    cursor.execute("USE state_agency")
+
+    cursor.execute(
+        "DELETE FROM sabt_forosh_maskoni WHERE id=%s",
+        (selected_id,)
+    )
+    db.commit()
+
+    cursor.close()
+    db.close()
+
+    messagebox.showinfo("موفق", "فایل حذف شد.")
+
+    refresh_after_edit()
+    forosh_maskoni_window.withdraw()
+    root.deiconify()
+
+def refresh_after_edit():
+    clear_entry_forosh_maskoni()
+
+    for item in tree.get_children():
+        tree.delete(item)
+
+    combo_file_type.set("فروش")
+    melk_type_combo.set("مسکونی")
+
+    melk_mahdode_gheimat_entry.delete(0, tk.END)
+    mahdode_ta_entry.delete(0, tk.END)
+    metraj_entry.delete(0, tk.END)
+    address_entry.delete(0, tk.END)
+
+    entry_malek_phone_number.delete(0, tk.END)
+    metraj_lable_right_entry.delete(0, tk.END)
+
+    options_text_entry.config(state="normal")
+    options_text_entry.delete("1.0", tk.END)
+
+    forosh_maskoni_window.withdraw()
+    root.deiconify()
+#endregion
+
 #---#----#----#----#----#----------  گرافیک   ----------#----#----#----#-----#-----------
 # ---------دکمه فایل با منوی کشویی ------------------
 #region 
@@ -3766,14 +3908,6 @@ lable_list_amlack_centre.pack(padx=10)
 frame_joziat_amlack = tk.LabelFrame(contant_frame, text="جزئیات ملک", width=200, bg="#052340",fg="#00BFFF", font=("Shabnam", 13))
 frame_joziat_amlack.pack(side="right", fill="both",expand=True, padx=6, pady=15)
 
-photo_melk_lbl = tk.Label(frame_joziat_amlack, text="[تصویر ملک]", bg="#FFFFFF", width=20, height=10)
-photo_melk_lbl.pack(pady=10)
-
-malek = tk.Label(frame_joziat_amlack,text="نام مالک",bg="#052340", fg="#F7F7FA",font=("Shabnam", 13))
-malek.pack(padx=6,pady=4)
-
-entry_malek = tk.Entry(frame_joziat_amlack,bg="#FFFFFF", fg="#000000",font=("Shabnam", 13))
-entry_malek.pack(padx=20,pady=4)
 
 malek_phone_number = tk.Label(frame_joziat_amlack,text="شماره مالک",bg="#052340", fg="#F7F7FA",font=("Shabnam", 13))
 malek_phone_number.pack(padx=6,pady=4)
@@ -3787,17 +3921,15 @@ metraj_lable_right.pack(padx=6,pady=4)
 metraj_lable_right_entry = tk.Entry(frame_joziat_amlack,bg="#FFFFFF", fg="#000000",font=("Shabnam", 13))
 metraj_lable_right_entry.pack(padx=20,pady=4)
 
-gheimat_melk_right_lable = tk.Label(frame_joziat_amlack,text="قیمت ",bg="#052340", fg="#F7F7FA",font=("Shabnam", 13))
-gheimat_melk_right_lable.pack(padx=6,pady=4)
-
-gheimat_melk_right_entry= tk.Entry(frame_joziat_amlack,bg="#FFFFFF", fg="#000000",font=("Shabnam", 13))
-gheimat_melk_right_entry.pack(padx=20,pady=4)
-
-options_text = tk.Label(frame_joziat_amlack,text="توضیحات ",bg="#052340", fg="#F7F7FA",font=("Shabnam", 13))
+options_text = tk.Label(frame_joziat_amlack,text="امکانات فایل",bg="#052340", fg="#F7F7FA",font=("Shabnam", 13))
 options_text.pack(padx=6,pady=4)
 
-options_text_entry = tk.Text(frame_joziat_amlack,bg="#FFFFFF", fg="#000000",font=("Shabnam", 13))
+options_text_entry = tk.Text(frame_joziat_amlack,bg="#FFFFFF", fg="#000000",font=("Shabnam", 13),height=10)
 options_text_entry .pack(padx=20,pady=4)
+options_text_entry.tag_configure("right", justify="right")
+
+edit_btn=tk.Button(frame_joziat_amlack,text="ویرایش",command=open_edit,bg="#00BFFF", fg="#000000", font=("Shabnam", 13) )
+edit_btn.pack(padx=20,pady=4)
 #=======================================================
 #endregion
 #-------------------------باکس های نوع ثبتی فایل ها----------------------
@@ -5107,11 +5239,16 @@ toilet_combo_forosh_maskoni["values"] = ("ایرانی","فرنگی","هردو")
 toilet_combo_forosh_maskoni.place(x=150, y=45)
 
 back_to_home_forosh_maskoni=tk.Button(forosh_maskoni_window,text="بازگشت",bg="#052340", fg="#ffffff",width=10,height=1,command=back_home_forosh_maskoni)
-back_to_home_forosh_maskoni.place(x=300,y=30)
+back_to_home_forosh_maskoni.place(x=400,y=30)
 
 zakhire_forosh_maskoni=tk.Button(forosh_maskoni_window,text="ذخیره",bg="#00BFFF", fg="#ffffff",width=10,height=1,command=sabt_forosh_maskoni)
 zakhire_forosh_maskoni.place(x=200,y=30)
 
+delete_btn_forosh_maskoni=tk.Button(forosh_maskoni_window,text="حذف",command=delete_forosh_maskoni,bg="#8B0000",fg="#ffffff",height=1,width=10 )
+delete_btn_forosh_maskoni.place_forget()
+
+edit_btn_forosh_maskoni=tk.Button(forosh_maskoni_window,text="ثبت ویرایش",command=update_forosh_maskoni,bg="#00BFFF", fg="#ffffff",width=10,height=1,)
+edit_btn_forosh_maskoni.place_forget()
 #------------------------------------ارور لیبل های فروش مسکونی--------------------
 error_lable_sal_sakht_forosh_maskoni= tk.Label(forosh_maskoni_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
 error_lable_sal_sakht_forosh_maskoni.place(x=900 , y=20)
