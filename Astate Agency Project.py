@@ -6924,103 +6924,103 @@ gozaresh_kargah.resizable(False, False)
 #region
 gharardad_window = tk.Toplevel(root)
 gharardad_window.title("قراردادها")
-gharardad_window.geometry("600x770")
+gharardad_window.geometry("600x630")
 gharardad_window.configure(bg="#052340")
 gharardad_window.withdraw()
 
 
 titr_window=tk.Label(gharardad_window,text="قراردادها",fg="#00BFFF",bg="#052340",font=("Shabnam",15))
-titr_window.place(x=250,y=10)
+titr_window.place(x=250,y=5)
 
 titr_aval_page=tk.Label(gharardad_window,text="در این بخش میتوانید فایل قرارداد مورد نظر خود را ایجاد و دریافت کنید",fg="#FFFFFF",bg="#052340",font=("Shabnam",8))
-titr_aval_page.place(x=130,y=40)
+titr_aval_page.place(x=130,y=30)
 
 main_frame=tk.Frame(gharardad_window,highlightbackground="#00BFFF",
-highlightthickness=1,width=520,height=570)
+highlightthickness=1,width=520,height=473)
 main_frame.configure(bg="#052340")
-main_frame.place(x=40,y=62)
+main_frame.place(x=40,y=50)
 
 text_label1=tk.Label(main_frame,text="ایجاد قراردادها",font=("Shabnam",11),bg="#052340",fg="#00BFFF",bd=1)
-text_label1.place(x=240,y=20)
+text_label1.place(x=240,y=15)
 
 khat_up_1=tk.Frame(main_frame, bg="#3A6EA5",height=1)
-khat_up_1.place(x=40,y=30,width=130)
+khat_up_1.place(x=40,y=20,width=130)
 
 khat_up_2=tk.Frame(main_frame, bg="#3A6EA5",height=1)
-khat_up_2.place(x=340,y=30,width=130)
+khat_up_2.place(x=340,y=20,width=130)
 
 ghararadad_image=tk.Label(main_frame,bg="#052340",fg="#00BFFF",image=image_gharardad)
-ghararadad_image.place(x=180,y=6)
+ghararadad_image.place(x=180,y=3)
 
 melk_image=tk.Label(main_frame,bg="#052340",fg="#00BFFF",image=image_melk)
-melk_image.place(x=440,y=60)
+melk_image.place(x=440,y=20)
 
 type_gharardad_image=tk.Label(main_frame,bg="#052340",fg="#00BFFF",image=image_type_gharardad)
-type_gharardad_image.place(x=440,y=160)
+type_gharardad_image.place(x=440,y=100)
 
 shakhs_aval_image=tk.Label(main_frame,bg="#052340",fg="#00BFFF",image=image_person)
-shakhs_aval_image.place(x=440,y=230)
+shakhs_aval_image.place(x=440,y=170)
 
 shakhs_dovom_image=tk.Label(main_frame,bg="#052340",fg="#00BFFF",image=image_gharardad)
-shakhs_dovom_image.place(x=440,y=320)
+shakhs_dovom_image.place(x=440,y=240)
 
 tozihat_image=tk.Label(main_frame,bg="#052340",fg="#00BFFF",image=image_massage)
-tozihat_image.place(x=440,y=410)
+tozihat_image.place(x=440,y=320)
 
 type_melk_gharardad=tk.Label(main_frame,text="نوع ملک",bg="#052340",fg="#FFFFFF",font=("Shabnam",8))
-type_melk_gharardad.place(x=350,y=80)
+type_melk_gharardad.place(x=350,y=50)
 type_melk_gharardad_combo=ttk.Combobox(main_frame)
 type_melk_gharardad_combo["values"]=("مسکونی","اداری_تجاری","باغ","زمین","کارگاه")
 type_melk_gharardad_combo["state"]=["readonly"]
 type_melk_gharardad_combo.config(width=40)
 type_melk_gharardad_combo.configure(justify="center")
 type_melk_gharardad_combo.set("")
-type_melk_gharardad_combo.place(x=25,y=80)
+type_melk_gharardad_combo.place(x=25,y=50)
 
 type_gharardad=tk.Label(main_frame,text="نوع قرارداد",bg="#052340",fg="#FFFFFF",font=("Shabnam",8))
-type_gharardad.place(x=350,y=165)
+type_gharardad.place(x=350,y=115)
 type_gharardad_combo=ttk.Combobox(main_frame)
 type_gharardad_combo["values"]=("خرید و فروش ","اجاره","مشارکت")
 type_gharardad_combo["state"]=["readonly"]
 type_gharardad_combo.config(width=40)
 type_gharardad_combo.configure(justify="center")
 type_gharardad_combo.set("")
-type_gharardad_combo.place(x=25,y=165)
+type_gharardad_combo.place(x=25,y=105)
 
 
 name_shakhs_aval_gharardad=tk.Label(main_frame,text="نام طرف اول قرارداد",bg="#052340",fg="#FFFFFF",font=("Shabnam",8))
-name_shakhs_aval_gharardad.place(x=300,y=250)
+name_shakhs_aval_gharardad.place(x=305,y=180)
 name_shakhs_aval_gharardad_entry=tk.Entry(main_frame,bg="#ffffff",font=("Shabnam",10),fg='black')
-name_shakhs_aval_gharardad_entry.place(x=25,y=250,width=260)
+name_shakhs_aval_gharardad_entry.place(x=25,y=180,width=260)
 
 name_shakhs_dovom_gharardad=tk.Label(main_frame,text="نام طرف دوم قرارداد",bg="#052340",fg="#FFFFFF",font=("Shabnam",8))
-name_shakhs_dovom_gharardad.place(x=296,y=340)
+name_shakhs_dovom_gharardad.place(x=305,y=250)
 name_shakhs_dovom_gharardad_entry=tk.Entry(main_frame,bg="#ffffff",font=("Shabnam",10),fg='black')
-name_shakhs_dovom_gharardad_entry.place(x=25,y=340,width=260)
+name_shakhs_dovom_gharardad_entry.place(x=25,y=250,width=260)
 
 tozih_gharardad=tk.Label(main_frame,text="توضیحات(اختیاری)",bg="#052340",fg="#FFFFFF",font=("Shabnam",8))
-tozih_gharardad.place(x=310,y=430)
+tozih_gharardad.place(x=310,y=315)
 tozih_gharardad_entry=tk.Text(main_frame,bg="#ffffff",font=("Shabnam",10),fg='black')
-tozih_gharardad_entry.place(x=25,y=425,width=260,height=45)
+tozih_gharardad_entry.place(x=25,y=315,width=260,height=45)
 
 khat_vasat=tk.Frame(main_frame, bg="#3A6EA5",height=1)
-khat_vasat.place(x=25,y=490,width=480)
+khat_vasat.place(x=25,y=370,width=450)
 
 word_btn=tk.Button(main_frame,bg="#0096D6",text="دریافت فایل ورد قرارداد",fg="#ffffff",image=image_word,compound="left",command=creat_word_gharardad)
-word_btn.place(x=140,y=497,width=200)
+word_btn.place(x=140,y=385,width=200)
 label_titr_vasat1 = tk.Label(main_frame,text="با کلیک بر دکمه بالا، فایل قرارداد مورد نظر در قالب",fg="white",bg="#052340",font=("Shabnam", 8))
-label_titr_vasat1.place(x=230, y=547)
+label_titr_vasat1.place(x=230, y=440)
 
 label_titr_vasat2 = tk.Label(main_frame,text="Word",fg="#00B7EB",bg="#052340",font=("Shabnam", 8, "bold"))
-label_titr_vasat2.place(x=200, y=547)
+label_titr_vasat2.place(x=200, y=440)
 
 label_titr_vasat3= tk.Label(main_frame,text="در دسکتاپ ذخیره میشود",fg="white",bg="#052340",font=("Shabnam", 8))
-label_titr_vasat3.place(x=80, y=547)
+label_titr_vasat3.place(x=80, y=440)
 
 seconde_frame=tk.Frame(gharardad_window,highlightbackground="#00BFFF",
 highlightthickness=1,width=520,height=80)
 seconde_frame.configure(bg="#052340")
-seconde_frame.place(x=40,y=640)
+seconde_frame.place(x=40,y=530)
 
 label_titr_rahgiri= tk.Label(seconde_frame,text="اخرین کد رهگیری تولید شده",fg="#ffffff",bg="#052340",font=("Shabnam", 8))
 label_titr_rahgiri.place(x=195, y=2)
@@ -7037,7 +7037,7 @@ label_titr_akhar.place(x=167, y=60)
 
 
 back_to_main=tk.Button(gharardad_window,text="بازگشت",fg="#ffffff",bg="#052340",command=back_main_ghararadad)
-back_to_main.place(x=230,y=730,width=140)
+back_to_main.place(x=230,y=620,width=140)
 #endregion
 #############################################################################
 # ----------------------اجرای برنامه-------------------
