@@ -19,7 +19,7 @@ def get_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="EmadAE7*",#   entry  در ادرس ها   تبدیل بهtext شود      entry==>text
+        password="Nima10.N10",#   entry  در ادرس ها   تبدیل بهtext شود      entry==>text
         #database="state_agency"
     )
 #endregion
@@ -1416,24 +1416,104 @@ def home_true_false3(): #برای فعال یا غیر فعال کردن ویج�
 
 #endregion
 #=================================DataBase========================
-#region *توابع ثبتی دیتابیس*
-#--------------------------------------تابع ثبت فروش---------------------------
-#---------------------------forosh_maskoni------------------------------
+#--------------------------- اعتبارسنجی ورودی ها -------------------
 def chck_sal_sakht(event=None):
-    sal_sakht= sal_sakht_forosh_maskoni_entry.get().strip()
+    sal_sakht=sal_sakht_forosh_maskoni_entry.get().strip()
 
-    if sal_sakht.isdigit() and len(sal_sakht) <=4:
+    if sal_sakht.isdigit() and len(sal_sakht) ==4:
         sal_sakht_forosh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_sal_sakht_forosh_maskoni.config(text="")
+        metraj_forosh_maskoni_entry.config(state="normal")
+        tabaghe_forosh_maskoni_entry.config(state="normal")
+        vahed_forosh_maskoni_entry.config(state="normal")
+        otagh_forosh_maskoni_entry.config(state="normal")
     else:
         sal_sakht_forosh_maskoni_entry.config(highlightthickness=2,highlightcolor="red")
-        error_lable_sal_sakht_forosh_maskoni.config(text="سال ساخت باید چهار رقم باشد")
+        error_lable_sal_sakht_forosh_maskoni.config(text="فیلد(سال ساخت) باید شامل چهار عدد باشد")
+        metraj_forosh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        tabaghe_forosh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        vahed_forosh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        otagh_forosh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+def chck_metraj(event=None):
+    metraj=metraj_forosh_maskoni_entry.get().strip()
 
-
-def sabt_forosh_maskoni():
+    if metraj.isdigit():
+        metraj_forosh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_metraj_forosh_maskoni.config(text="")
+        sal_sakht_forosh_maskoni_entry.config(state="normal")
+        tabaghe_forosh_maskoni_entry.config(state="normal")
+        vahed_forosh_maskoni_entry.config(state="normal")
+        otagh_forosh_maskoni_entry.config(state="normal")
+    else:
+        metraj_forosh_maskoni_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_metraj_forosh_maskoni.config(text=" فیلد(متراژ) باید شامل اعداد باشد")
+        sal_sakht_forosh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        tabaghe_forosh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        vahed_forosh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        otagh_forosh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
     
+def chck_tabaghe(event=None):
+    tabaghe=tabaghe_forosh_maskoni_entry.get().strip()
+
+    if tabaghe.isdigit():
+        tabaghe_forosh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_tabaghe_forosh_maskoni.config(text="")
+        sal_sakht_forosh_maskoni_entry.config(state="normal")
+        metraj_forosh_maskoni_entry.config(state="normal")
+        vahed_forosh_maskoni_entry.config(state="normal")
+        otagh_forosh_maskoni_entry.config(state="normal")
+
+    else:
+        tabaghe_forosh_maskoni_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_tabaghe_forosh_maskoni.config(text=" فیلد(طبقه) باید شامل اعداد باشد")
+        sal_sakht_forosh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        metraj_forosh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        vahed_forosh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        otagh_forosh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+
+def chck_vahed(event=None):
+    vahed=vahed_forosh_maskoni_entry.get().strip()
+
+    if vahed.isdigit():
+        vahed_forosh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_vahed_forosh_maskoni.config(text="")
+        sal_sakht_forosh_maskoni_entry.config(state="normal")
+        metraj_forosh_maskoni_entry.config(state="normal")
+        tabaghe_forosh_maskoni_entry.config(state="normal")
+        otagh_forosh_maskoni_entry.config(state="normal")
+
+    else:
+        vahed_forosh_maskoni_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_vahed_forosh_maskoni.config(text=" فیلد(واحد) باید شامل اعداد باشد")
+        sal_sakht_forosh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        metraj_forosh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        tabaghe_forosh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        otagh_forosh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+
+def chck_otagh(event=None):
+    otagh=otagh_forosh_maskoni_entry.get().strip()
+
+    if otagh.isdigit():
+        otagh_forosh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_otagh_forosh_maskoni.config(text="")
+        sal_sakht_forosh_maskoni_entry.config(state="normal")
+        metraj_forosh_maskoni_entry.config(state="normal")
+        tabaghe_forosh_maskoni_entry.config(state="normal")
+        vahed_forosh_maskoni_entry.config(state="normal")
+
+    else:
+        otagh_forosh_maskoni_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_otagh_forosh_maskoni.config(text=" فیلد(اتاق) باید شامل اعداد باشد")
+        sal_sakht_forosh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        metraj_forosh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        tabaghe_forosh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        vahed_forosh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
 
 
+#region ============*توابع ثبتی دیتابیس*=============================
+#--------------------------------------تابع ثبت فروش---------------------------
+#---------------------------forosh_maskoni------------------------------
+def sabt_forosh_maskoni():
     db = None
     try:
         db = get_connection()
@@ -4856,24 +4936,28 @@ metraj_forosh_maskoni.place(x=465, y=120, anchor="e")
 
 metraj_forosh_maskoni_entry=tk.Entry(frame_up_right_forosh_maskoni, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 metraj_forosh_maskoni_entry.place(x=18, y=110, width=350, height=25)
+metraj_forosh_maskoni_entry.bind("<KeyRelease>",chck_metraj)
 
 tabaghe_forosh_maskoni= tk.Label(frame_up_right_forosh_maskoni, text="طبقه", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 tabaghe_forosh_maskoni.place(x=465, y=160, anchor="e")
 
 tabaghe_forosh_maskoni_entry=tk.Entry(frame_up_right_forosh_maskoni, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 tabaghe_forosh_maskoni_entry.place(x=18, y=150, width=350, height=25)
+tabaghe_forosh_maskoni_entry.bind("<KeyRelease>",chck_tabaghe)
 
 vahed_forosh_maskoni=tk.Label(frame_up_right_forosh_maskoni, text="واحد", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 vahed_forosh_maskoni.place(x=465, y=200, anchor="e")
 
 vahed_forosh_maskoni_entry=tk.Entry(frame_up_right_forosh_maskoni, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 vahed_forosh_maskoni_entry.place(x=18, y=190, width=350, height=25)
+vahed_forosh_maskoni_entry.bind("<KeyRelease>",chck_vahed)
 
 otagh_forosh_maskoni= tk.Label(frame_up_right_forosh_maskoni, text="اتاق", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 otagh_forosh_maskoni.place(x=465, y=240, anchor="e")
 
 otagh_forosh_maskoni_entry=tk.Entry(frame_up_right_forosh_maskoni, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 otagh_forosh_maskoni_entry.place(x=18, y=230, width=350, height=25)
+otagh_forosh_maskoni_entry.bind("<KeyRelease>",chck_otagh)
 
 #----------------------------فریم بالا سمت چپ----------------------------------
 photo_lbl2_forosh_maskoni = tk.Label(frame_up_left_forosh_maskoni, text="[تصویر ملک]", bg="#ffffff", width=79, height=15)
