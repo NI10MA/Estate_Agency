@@ -621,6 +621,7 @@ def clear_entry_ejareh_edari_tejari():
 #---------------------------برگشت از صفحه فروش اداری/تجاری--------------------
 def back_home_forosh_edari_tejari():
     clear_entry_forosh_edari_tejari()
+    refresh_after_edit()
     root.deiconify()
     forosh_edari_tejari_window.withdraw()
     delete_root()
@@ -1144,13 +1145,20 @@ def sabt_radio_frosh():
     if selected2==0:
             box_forosh.withdraw()
             root.withdraw()
-            forosh_maskoni_window.deiconify() 
+            forosh_maskoni_window.deiconify()
+             
             box_forosh.grab_release()
 
     elif selected2==2:
+            edit_btn_ejareh_maskoni.place_forget()
+            delete_btn_forosh_edari_tejari.place_forget()
+            zakhire_forosh_edari_tejari.place(x=300,y=30)
+            back_to_home_forosh_edari_tejari.place(x=400,y=30)
             box_forosh.withdraw()
             root.withdraw()
             forosh_edari_tejari_window.deiconify()
+            
+
             box_forosh.grab_release()
         
     elif selected2==4:
@@ -1716,7 +1724,7 @@ def sabt_forosh_edari_tejari():
             system_sarmayesh VARCHAR(20),
             system_garmayesh VARCHAR(20),
             name_malek VARCHAR(20),
-            shomareh_malek INT,
+            shomareh_malek VARCHAR(11),
             gheimat_kol DECIMAL(15,2)
 
         )
@@ -2161,7 +2169,7 @@ def sabt_ejareh_edari_tejari():
             gheimat_vadie DECIMAL(15,2),
             gheimat_ejareh DECIMAL(15,2),
             name_malek VARCHAR(20),
-            shomareh_malek INT
+            shomareh_malek VARCHAR(11)
         )
         """
         cursor.execute(sql_create)
@@ -2237,7 +2245,7 @@ def sabt_ejareh_bagh_zamin():
                 mablagh_ejareh DECIMAL(15,2),
                 zaman_ejareh VARCHAR(30),
                 name_malek VARCHAR(50),
-                shomareh_malek VARCHAR(50),
+                shomareh_malek VARCHAR(11),
                 metraj_derakht VARCHAR(10),
                 tedad_derakht VARCHAR(10),
                 type_derakht TEXT,
@@ -2321,7 +2329,7 @@ def sabt_ejareh_bagh_zamin():
                 mablagh_metri DECIMAL(15,2),
                 zaman_ejareh VARCHAR(30),
                 name_malek VARCHAR(50),
-                shomareh_malek VARCHAR(30),
+                shomareh_malek VARCHAR(11),
                 karbari_zamin VARCHAR(50),
                 type_khak VARCHAR(20),
                 manba_ab VARCHAR(20),
@@ -2411,7 +2419,7 @@ def sabt_ejareh_kargah():
             hamam VARCHAR(20),
             otagh VARCHAR(20),
             name_malek VARCHAR(20),
-            shomareh_malek INT
+            shomareh_malek VARCHAR(11)
 
         )
         """
@@ -2872,7 +2880,7 @@ def sabt_darkhast_bagh_zamin(event=None):
                 mablagh_metri DECIMAL(15,2),
                 gheimat_kol VARCHAR(30),
                 name_malek VARCHAR(50),
-                shomareh_malek VARCHAR(30),
+                shomareh_malek VARCHAR(11),
                 metraj_derakht VARCHAR(10),
                 tedad_derakht VARCHAR(10),
                 type_derakht TEXT,
@@ -3013,7 +3021,7 @@ def sabt_darkhast_bagh_zamin(event=None):
                 karbari VARCHAR(20),
                 address VARCHAR(255),
                 name_moshtari VARCHAR(50),
-                shomareh_moshtari VARCHAR(30),
+                shomareh_moshtari VARCHAR(11),
                 zaman_ejareh VARCHAR(40),
                 mablagh_pish VARCHAR(30),
                 mablagh_ejareh VARCHAR(30),
@@ -3102,7 +3110,7 @@ def sabt_darkhast_bagh_zamin(event=None):
                 mablagh_ejareh VARCHAR(30),
                 zaman_ejareh VARCHAR(40),
                 name_moshtari VARCHAR(50),
-                shomareh_moshtari VARCHAR(30),
+                shomareh_moshtari VARCHAR(11),
                 karbari_zamin VARCHAR(50),
                 type_khak VARCHAR(20),
                 manba_ab VARCHAR(20),
@@ -3630,7 +3638,7 @@ def show_details(event):
         options_text_entry.insert("1.0", "\n".join(options))
         options_text_entry.tag_add("right", "1.0", "end")
         
-
+#--------------------مسکونی --------------------
     elif selected_table == "sabt_ejareh_maskoni":
         entry_malek_phone_number.delete(0, tk.END)
         entry_malek_phone_number.insert(0, data[17])
@@ -3695,20 +3703,38 @@ def show_details(event):
         options_text_entry.delete("1.0", tk.END)
         options_text_entry.insert("1.0", "\n".join(options))
         options_text_entry.tag_add("right", "1.0", "end")
+#--------------------------اداری تجاری-----------------------------
+    elif selected_table == "sabt_forosh_edari_tejari":
+
+        entry_malek_phone_number.delete(0, tk.END)
+        entry_malek_phone_number.insert(0, data[14])
+
+        metraj_lable_right_entry.delete(0, tk.END)
+        metraj_lable_right_entry.insert(0, data[2])
+
+        options = []
+
+        options.append(f"پارکینگ : {'دارد' if data[7]=='1' else 'ندارد'}")
+        options.append(f"آسانسور : {'دارد' if data[8]=='1' else 'ندارد'}")
+        options.append(f"انباری : {'دارد' if data[9]=='1' else 'ندارد'}")
+        options.append(f"آب و گاز : {data[10] if data[10] else 'ثبت نشده'}")
+        options.append(f"سرمایش : {data[11] if data[11] else 'ثبت نشده'}")
+        options.append(f"گرمایش : {data[12] if data[12] else 'ثبت نشده'}")
+
+        options_text_entry.delete("1.0", tk.END)
+        options_text_entry.insert("1.0", "\n".join(options))
+        options_text_entry.tag_add("right", "1.0", "end")
 
     cursor.close()
     db.close()
 
 #---------------------تابع باز کردن ادیت----------
 def open_edit():
-    zakhire_forosh_maskoni.place_forget()
-    edit_btn_forosh_maskoni.place(x=300,y=30)
-    delete_btn_forosh_maskoni.place(x=200,y=30)
-    save_button_ejareh_maskooni.place_forget()
-    edit_btn_ejareh_maskoni.place(x=300,y=30)
-    delete_btn_ejareh_maskoni.place(x=200,y=30)
-    
+#--------------------------مسکونی------------------  
     if selected_table == "sabt_forosh_maskoni":
+        zakhire_forosh_maskoni.place_forget()
+        edit_btn_forosh_maskoni.place(x=300,y=30)
+        delete_btn_forosh_maskoni.place(x=200,y=30)
         root.withdraw()
         forosh_maskoni_window.deiconify()
         db = get_connection()
@@ -3764,6 +3790,9 @@ def open_edit():
         db.close()
 
     elif selected_table == "sabt_ejareh_maskoni":
+        save_button_ejareh_maskooni.place_forget()
+        edit_btn_ejareh_maskoni.place(x=300,y=30)
+        delete_btn_ejareh_maskoni.place(x=200,y=30)
         root.withdraw()
         ejareh_maskoni_window.deiconify()
         db = get_connection()
@@ -3822,13 +3851,14 @@ def open_edit():
         cursor.close()
         db.close()
     elif selected_table == "sabt_darkhast_kharid_maskoni":
+        edit_btn_darkhast_maskoni.place(x=300, y=30)
+        delete_btn_darkhast_maskoni.place(x=200, y=30)
+        zakhire_darkhast_maskoni.place_forget()
 
         root.withdraw()
         darkhast_maskoni_window.deiconify()
 
-        edit_btn_darkhast_maskoni.place(x=300, y=30)
-        delete_btn_darkhast_maskoni.place(x=100, y=30)
-        zakhire_darkhast_maskoni.place_forget()
+
 
         db = get_connection()
         cursor = db.cursor()
@@ -3883,13 +3913,15 @@ def open_edit():
         cursor.close()
         db.close()
     elif selected_table == "sabt_darkhast_ejareh_maskoni":
+        edit_btn_darkhast_maskoni.place(x=300, y=30)
+        delete_btn_darkhast_maskoni.place(x=200, y=30)
+        zakhire_darkhast_maskoni.place_forget()
+        
 
         root.withdraw()
         darkhast_maskoni_window.deiconify()
 
-        edit_btn_darkhast_maskoni.place(x=300, y=30)
-        delete_btn_darkhast_maskoni.place(x=200, y=30)
-        zakhire_darkhast_maskoni.place_forget()
+
 
         db = get_connection()
         cursor = db.cursor()
@@ -3946,7 +3978,62 @@ def open_edit():
 
         cursor.close()
         db.close()
+#-------------------------------اداری تجاری---------------------
+    elif selected_table == "sabt_forosh_edari_tejari":
+        edit_btn_forosh_edari_tejari.place(x=300,y=30)
+        delete_btn_forosh_edari_tejari.place(x=200,y=30)
+        zakhire_forosh_edari_tejari.place_forget()
+        root.withdraw()
+        forosh_edari_tejari_window.deiconify()
+
+        db=get_connection()
+        cursor=db.cursor()
+        cursor.execute("USE state_agency")
+
+        cursor.execute(
+            "SELECT * FROM sabt_forosh_edari_tejari WHERE id=%s",
+            (selected_id,)
+        )
+
+        data=cursor.fetchone()
+
+    
+        metraj_forosh_edari_tejari_entry.delete(0,tk.END)
+        metraj_forosh_edari_tejari_entry.insert(0,data[2])
+
+        sal_sakht_forosh_edari_tejari_entry.delete(0,tk.END)
+        sal_sakht_forosh_edari_tejari_entry.insert(0,data[3])
+
+        addrres_forosh_edari_tejari_entry.delete("1.0",tk.END)
+        addrres_forosh_edari_tejari_entry.insert("1.0",data[4])
+
+        tabaghe_forosh_edari_tejari_entry.delete(0,tk.END)
+        tabaghe_forosh_edari_tejari_entry.insert(0,data[5])
+
+        vahed_forosh_edari_tejari_entry.delete(0,tk.END)
+        vahed_forosh_edari_tejari_entry.insert(0,data[6])
+
+        parking_forosh_edari_tejari_var.set(data[7])
+        asansor_forosh_edari_tejari_var.set(data[8])
+        anbari_forosh_edari_tejari_var.set(data[9])
+
+        aab_va_gaz_combo_forosh_edari_tejari.set(data[10])
+        sarmaesh_combo_forosh_edari_tejari.set(data[11])
+        garmaesh_combo_forosh_edari_tejari.set(data[12])
+
+        name_malek_forosh_edari_tejari_entry.delete(0,tk.END)
+        name_malek_forosh_edari_tejari_entry.insert(0,data[13])
+
+        shomareh_malek_forosh_edari_tejari_entry.delete(0,tk.END)
+        shomareh_malek_forosh_edari_tejari_entry.insert(0,data[14])
+
+        gheimat_kol_forosh_edari_tejari_entry.delete(0,tk.END)
+        gheimat_kol_forosh_edari_tejari_entry.insert(0,data[15])
+
+        cursor.close()
+        db.close()
 #--------------------------------------توابع ویرایش صفحات---------------
+#------------مسکونی------------
 def update_forosh_maskoni():
     db = get_connection()
     cursor = db.cursor()
@@ -4105,6 +4192,61 @@ def update_darkhast_maskoni():
 
     refresh_after_edit()
     messagebox.showinfo("موفق", "اطلاعات با موفقیت ویرایش شد.")
+#----------------------اداری تجاری-----------------
+def update_forosh_edari_tejari():
+
+    db=get_connection()
+    cursor=db.cursor()
+    cursor.execute("USE state_agency")
+    sql = """
+    UPDATE sabt_forosh_edari_tejari
+    SET
+    type_melk=%s,
+    metraj_melk=%s,
+    sal_sakht=%s,
+    address=%s,
+    tabaghe=%s,
+    vahed=%s,
+    parking=%s,
+    asansor=%s,
+    anbari=%s,
+    aab_va_gaz=%s,
+    system_sarmayesh=%s,
+    system_garmayesh=%s,
+    name_malek=%s,
+    shomareh_malek=%s,
+    gheimat_kol=%s
+    WHERE id=%s
+    """
+
+    values=(
+        melk_type_forosh_edari_tejari_entry.get(),
+        metraj_forosh_edari_tejari_entry.get(),
+        sal_sakht_forosh_edari_tejari_entry.get(),
+        addrres_forosh_edari_tejari_entry.get("1.0",tk.END),
+        tabaghe_forosh_edari_tejari_entry.get(),
+        vahed_forosh_edari_tejari_entry.get(),
+        parking_forosh_edari_tejari_var.get(),
+        asansor_forosh_edari_tejari_var.get(),
+        anbari_forosh_edari_tejari_var.get(),
+        aab_va_gaz_combo_forosh_edari_tejari.get(),
+        sarmaesh_combo_forosh_edari_tejari.get(),
+        garmaesh_combo_forosh_edari_tejari.get(),
+        name_malek_forosh_edari_tejari_entry.get(),
+        shomareh_malek_forosh_edari_tejari_entry.get(),
+        float(gheimat_kol_forosh_edari_tejari_entry.get()),
+        selected_id
+    )
+
+    cursor.execute(sql,values)
+    db.commit()
+
+    cursor.close()
+    db.close()
+
+    refresh_after_edit()
+
+    messagebox.showinfo("موفق","اطلاعات با موفقیت ویرایش شد.")
 #endregion
 #-------------------------توابع حذف--------------------------
 #region
@@ -4153,34 +4295,6 @@ def delete_ejareh_maskoni():
     refresh_after_edit()
     ejareh_maskoni_window.withdraw()
     root.deiconify()
-
-def refresh_after_edit():
-    clear_entry_forosh_maskoni()
-    clear_entry_ejareh_maskoni()
-    clear_entry_darkhast_maskoni()
-
-    for item in tree.get_children():
-        tree.delete(item)
-
-    combo_file_type.set("فروش")
-    melk_type_combo.set("مسکونی")
-
-    melk_mahdode_gheimat_entry.delete(0, tk.END)
-    mahdode_ta_entry.delete(0, tk.END)
-    metraj_entry.delete(0, tk.END)
-    address_entry.delete(0, tk.END)
-
-    entry_malek_phone_number.delete(0, tk.END)
-    metraj_lable_right_entry.delete(0, tk.END)
-
-    options_text_entry.config(state="normal")
-    options_text_entry.delete("1.0", tk.END)
-
-    forosh_maskoni_window.withdraw()
-    ejareh_maskoni_window.withdraw()
-    darkhast_maskoni_window.withdraw()
-    root.deiconify()
-#endregion
 def delete_darkhast_maskoni():
 
     if not messagebox.askyesno("تأیید", "آیا از حذف این فایل مطمئن هستید؟"):
@@ -4210,6 +4324,80 @@ def delete_darkhast_maskoni():
     messagebox.showinfo("موفق", "فایل حذف شد.")
 
     refresh_after_edit()
+#-----------------------اداری تجاری--------------
+def delete_forosh_edari_tejari():
+
+    if not messagebox.askyesno("تأیید","آیا از حذف این فایل مطمئن هستید؟"):
+        return
+
+    db=get_connection()
+    cursor=db.cursor()
+    cursor.execute("USE state_agency")
+
+    cursor.execute(
+        "DELETE FROM sabt_forosh_edari_tejari WHERE id=%s",
+        (selected_id,)
+    )
+
+    db.commit()
+
+    cursor.close()
+    db.close()
+
+    messagebox.showinfo("موفق","فایل حذف شد.")
+
+    refresh_after_edit()
+
+def refresh_after_edit():
+    clear_entry_forosh_maskoni()#پاک کردن صفحات
+    clear_entry_ejareh_maskoni()
+    clear_entry_darkhast_maskoni()
+    clear_entry_forosh_edari_tejari()
+    clear_entry_darkhast_edari_tejari()
+    clear_entry_ejareh_edari_tejari()
+
+    edit_btn_forosh_edari_tejari.place_forget()#تنظیم دکمه ها
+    delete_btn_forosh_edari_tejari.place_forget()
+    zakhire_forosh_edari_tejari.place(x=200, y=30)
+    #------------------مسکونی---------
+    zakhire_forosh_maskoni.place(x=300,y=30)
+    edit_btn_forosh_maskoni.place_forget()
+    delete_btn_forosh_maskoni.place_forget()
+
+    save_button_ejareh_maskooni.place(x=300,y=300)
+    edit_btn_ejareh_maskoni.place_forget()
+    delete_btn_ejareh_maskoni.place_forget()
+
+    edit_btn_darkhast_maskoni.place_forget()
+    delete_btn_darkhast_maskoni.place_forget()
+    zakhire_darkhast_maskoni.place(x=300,y=30)
+
+    for item in tree.get_children():
+        tree.delete(item)
+
+    combo_file_type.set("فروش")#تنظیم صفحه اصلی
+    melk_type_combo.set("مسکونی")
+
+    melk_mahdode_gheimat_entry.delete(0, tk.END)
+    mahdode_ta_entry.delete(0, tk.END)
+    metraj_entry.delete(0, tk.END)
+    address_entry.delete(0, tk.END)
+
+    entry_malek_phone_number.delete(0, tk.END)
+    metraj_lable_right_entry.delete(0, tk.END)
+
+    options_text_entry.config(state="normal")
+    options_text_entry.delete("1.0", tk.END)
+
+    forosh_maskoni_window.withdraw()#بستن پنجره ها
+    ejareh_maskoni_window.withdraw()
+    darkhast_maskoni_window.withdraw()
+    forosh_edari_tejari_window.withdraw()
+    ejareh_edari_tejari_window.withdraw()
+    darkhast_edari_tejari_window.withdraw()
+    root.deiconify()
+#endregion
+
 #---#----#----#----#----#----------  گرافیک   ----------#----#----#----#-----#-----------
 # ---------دکمه فایل با منوی کشویی ------------------
 #region 
@@ -4741,7 +4929,7 @@ back_to_home_ejareh_maskoni=tk.Button(ejareh_maskoni_window,text="بازگشت",
 back_to_home_ejareh_maskoni.place(x=400,y=30)
 
 save_button_ejareh_maskooni=tk.Button(ejareh_maskoni_window,text="ذخیره",bg="#00BFFF", fg="#ffffff",width=10,height=1,command=sabt_ejareh_maskoni)
-save_button_ejareh_maskooni.place(x=200,y=30)
+save_button_ejareh_maskooni.place(x=300,y=30)
 
 delete_btn_ejareh_maskoni=tk.Button(ejareh_maskoni_window,text="حذف",command=delete_ejareh_maskoni,bg="#8B0000",fg="#ffffff",height=1,width=10 )
 delete_btn_ejareh_maskoni.place_forget()
@@ -5692,7 +5880,7 @@ back_to_home_forosh_maskoni=tk.Button(forosh_maskoni_window,text="بازگشت",
 back_to_home_forosh_maskoni.place(x=400,y=30)
 
 zakhire_forosh_maskoni=tk.Button(forosh_maskoni_window,text="ذخیره",bg="#00BFFF", fg="#ffffff",width=10,height=1,command=sabt_forosh_maskoni)
-zakhire_forosh_maskoni.place(x=200,y=30)
+zakhire_forosh_maskoni.place(x=300,y=30)
 
 delete_btn_forosh_maskoni=tk.Button(forosh_maskoni_window,text="حذف",command=delete_forosh_maskoni,bg="#8B0000",fg="#ffffff",height=1,width=10 )
 delete_btn_forosh_maskoni.place_forget()
@@ -5815,11 +6003,11 @@ vahed_forosh_edari_tejari.place(x=465, y=200, anchor="e")
 vahed_forosh_edari_tejari_entry=tk.Entry(frame_up_right_forosh_edari_tejari, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
 vahed_forosh_edari_tejari_entry.place(x=18, y=190, width=350, height=25)
 
-otagh_forosh_edari_tejari= tk.Label(frame_up_right_forosh_edari_tejari, text="اتاق", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-otagh_forosh_edari_tejari.place(x=465, y=240, anchor="e")
+#otagh_forosh_edari_tejari= tk.Label(frame_up_right_forosh_edari_tejari, text="اتاق", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+#otagh_forosh_edari_tejari.place(x=465, y=240, anchor="e")
 
-otagh_forosh_edari_tejari_entry=tk.Entry(frame_up_right_forosh_edari_tejari, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
-otagh_forosh_edari_tejari_entry.place(x=18, y=230, width=350, height=25)
+#otagh_forosh_edari_tejari_entry=tk.Entry(frame_up_right_forosh_edari_tejari, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
+#otagh_forosh_edari_tejari_entry.place(x=18, y=230, width=350, height=25)
 
 #----------------------------فریم بالا سمت چپ----------------------------------
 
@@ -5905,10 +6093,17 @@ garmaesh_combo_forosh_edari_tejari["state"]=["readonly"]
 garmaesh_combo_forosh_edari_tejari.place(x=150, y=15)
 
 back_to_home_forosh_edari_tejari=tk.Button(forosh_edari_tejari_window,text="بازگشت",bg="#052340", fg="#ffffff",width=10,height=1,command=back_home_forosh_edari_tejari)
-back_to_home_forosh_edari_tejari.place(x=300,y=30)
+back_to_home_forosh_edari_tejari.place(x=400,y=30)
 
 zakhire_forosh_edari_tejari=tk.Button(forosh_edari_tejari_window,text="ذخیره",bg="#00BFFF", fg="#ffffff",width=10,height=1,command=sabt_forosh_edari_tejari)
-zakhire_forosh_edari_tejari.place(x=200,y=30)
+zakhire_forosh_edari_tejari.place(x=300,y=30)
+
+
+delete_btn_forosh_edari_tejari=tk.Button(forosh_edari_tejari_window,text="حذف",command=delete_forosh_edari_tejari,bg="#8B0000",fg="#ffffff",height=1,width=10 )
+delete_btn_forosh_edari_tejari.place_forget()
+
+edit_btn_forosh_edari_tejari=tk.Button(forosh_edari_tejari_window,text="ثبت ویرایش",command=update_forosh_edari_tejari,bg="#00BFFF", fg="#ffffff",width=10,height=1,)
+edit_btn_forosh_edari_tejari.place_forget()
 
 forosh_edari_tejari_window.protocol("WM_DELETE_WINDOW", lambda: None)
 forosh_edari_tejari_window.resizable(False, False)
@@ -6626,7 +6821,7 @@ edit_btn_darkhast_maskoni.place_forget()
 
 
 zakhire_darkhast_maskoni=tk.Button(darkhast_maskoni_window,text="ذخیره",bg="#00BFFF",fg="#ffffff",width=10,height=1,command=sabt_darkhast_maskoni)
-zakhire_darkhast_maskoni.place(x=200,y=30)
+zakhire_darkhast_maskoni.place(x=300,y=30)
 
 error_lable_sal_sakht_darkhast_maskoni= tk.Label(darkhast_maskoni_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
 error_lable_sal_sakht_darkhast_maskoni.place(x=900 , y=20)
