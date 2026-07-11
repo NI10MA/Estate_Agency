@@ -19,7 +19,7 @@ def get_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="Nima10.N10",#   entry  در ادرس ها   تبدیل بهtext شود      entry==>text
+        password="Mmmm9905",#   entry  در ادرس ها   تبدیل بهtext شود      entry==>text
         #database="state_agency"
     )
 #endregion
@@ -516,6 +516,7 @@ def mosharecat():
 #-----برگشت از صفحه اجاره مسکونی-------------------------
 def back_home_ejareh_maskoni():
     clear_entry_ejareh_maskoni()
+    refresh_after_edit()
     clear_errors_labels_ejareh_maskoni()
     root.deiconify()
     ejareh_maskoni_window.withdraw()
@@ -3431,7 +3432,7 @@ def search():
         elif file=="رهن_اجاره":
             if melk=="مسکونی":
                     cursor.execute("""
-                    SELECT id,"sabt_ejareh_maskoni",address, gheimat_kol, type_melk, name_malek
+                    SELECT id,"sabt_ejareh_maskoni",address, pish, type_melk, name_malek
                     ,'اجاره' AS noe_file
                     FROM sabt_ejareh_maskoni
                     WHERE address LIKE %s
@@ -3590,11 +3591,20 @@ def show_details(event):
     if data is None:
         return
 
-    entry_malek_phone_number.delete(0, tk.END)
-    entry_malek_phone_number.insert(0, data[15])
+    if selected_table == "sabt_forosh_maskoni":
+        entry_malek_phone_number.delete(0, tk.END)
+        entry_malek_phone_number.insert(0, data[15])
 
-    metraj_lable_right_entry.delete(0, tk.END)
-    metraj_lable_right_entry.insert(0, data[16])
+        metraj_lable_right_entry.delete(0, tk.END)
+        metraj_lable_right_entry.insert(0, data[17])
+
+    elif selected_table == "sabt_ejareh_maskoni":
+        entry_malek_phone_number.delete(0, tk.END)
+        entry_malek_phone_number.insert(0, data[17])
+
+        metraj_lable_right_entry.delete(0, tk.END)
+        metraj_lable_right_entry.insert(0, data[18])
+
 
     options = []
 
@@ -3620,6 +3630,9 @@ def open_edit():
     zakhire_forosh_maskoni.place_forget()
     edit_btn_forosh_maskoni.place(x=300,y=30)
     delete_btn_forosh_maskoni.place(x=200,y=30)
+    save_button_ejareh_maskooni.place_forget()
+    edit_btn_ejareh_maskoni.place(x=300,y=30)
+    delete_btn_ejareh_maskoni.place(x=200,y=30)
     
     if selected_table == "sabt_forosh_maskoni":
         root.withdraw()
@@ -3675,6 +3688,65 @@ def open_edit():
         
         cursor.close()
         db.close()
+
+    elif selected_table == "sabt_ejareh_maskoni":
+        root.withdraw()
+        ejareh_maskoni_window.deiconify()
+        db = get_connection()
+        cursor = db.cursor()
+        cursor.execute("USE state_agency")
+
+        cursor.execute(
+            "SELECT * FROM sabt_ejareh_maskoni WHERE id=%s",
+            (selected_id,)
+        )
+
+        data = cursor.fetchone()
+        print(data)
+
+        sal_sakht_ejareh_maskoni_entry.delete(0, tk.END)
+        sal_sakht_ejareh_maskoni_entry.insert(0, data[2])
+
+        addrres_ejareh_maskoni_entry.delete("1.0", tk.END)
+        addrres_ejareh_maskoni_entry.insert("1.0", data[3])
+
+        tabaghe_ejareh_maskoni_entry.delete(0, tk.END)
+        tabaghe_ejareh_maskoni_entry.insert(0, data[4])
+
+        vahed_ejareh_maskoni_entry.delete(0, tk.END)
+        vahed_ejareh_maskoni_entry.insert(0, data[5])
+
+        otagh_ejareh_maskoni_entry.delete(0, tk.END)
+        otagh_ejareh_maskoni_entry.insert(0, data[6])
+
+        parking_ejareh_maskoni_var.set(data[7])
+        asansor_ejareh_maskoni_var.set(data[8])
+        anbari_ejareh_maskoni_var.set(data[9])
+
+        sarmaesh_ejareh_maskoni_combo.set(data[10])
+        garmaesh_ejareh_maskoni_combo.set(data[11])
+        kaf_ejareh_maskoni_combo.set(data[12])
+        toilet_ejareh_maskoni_combo.set(data[13])
+
+        gheimat_pish_ejare_maskoni_entry.delete(0, tk.END)
+        gheimat_pish_ejare_maskoni_entry.insert(0, data[14])
+
+        gheimat_ejare_ejare_maskoni_entry.delete(0, tk.END)
+        gheimat_ejare_ejare_maskoni_entry.insert(0, data[15])
+
+
+        name_malek_ejareh_maskoni_entry.delete(0, tk.END)
+        name_malek_ejareh_maskoni_entry.insert(0, data[16])
+
+        shomareh_malek_ejareh_maskoni_entry.delete(0, tk.END)
+        shomareh_malek_ejareh_maskoni_entry.insert(0, data[17])
+
+        metraj_ejareh_maskoni_entry.delete(0, tk.END)
+        metraj_ejareh_maskoni_entry.insert(0, data[18])
+
+
+        cursor.close()
+        db.close()
 #--------------------------------------توابع ویرایش صفحات---------------
 def update_forosh_maskoni():
     db = get_connection()
@@ -3716,9 +3788,50 @@ def update_forosh_maskoni():
     refresh_after_edit()
 
     messagebox.showinfo("موفق", "اطلاعات با موفقیت ویرایش شد.")
+def update_ejareh_maskoni():
+    db = get_connection()
+    cursor = db.cursor()
+    cursor.execute("USE state_agency")
+
+    sql = """
+    UPDATE sabt_ejareh_maskoni SET type_melk=%s,sal_sakht=%s,address=%s,tabaghe=%s,vahed=%s,otagh=%s,parking=%s,
+        asansor=%s,anbari=%s,sarmayesh=%s,garmayesh=%s,kaf=%s,toilet=%s,name_malek=%s,shomareh_malek=%s,pish=%s,ejareh=%s
+    WHERE id=%s
+    """
+
+    values = (
+        melk_type_ejareh_maskoni_entry.get(),
+        sal_sakht_ejareh_maskoni_entry.get(),
+        addrres_ejareh_maskoni_entry.get("1.0", tk.END),
+        tabaghe_ejareh_maskoni_entry.get(),
+        vahed_ejareh_maskoni_entry.get(),
+        otagh_ejareh_maskoni_entry.get(),
+        parking_ejareh_maskoni_var.get(),
+        asansor_ejareh_maskoni_var.get(),
+        anbari_ejareh_maskoni_var.get(),
+        sarmaesh_ejareh_maskoni_combo.get(),
+        garmaesh_ejareh_maskoni_combo.get(),
+        kaf_ejareh_maskoni_combo.get(),
+        toilet_ejareh_maskoni_combo.get(),
+        name_malek_ejareh_maskoni_entry.get(),
+        shomareh_malek_ejareh_maskoni_entry.get(),
+        float(gheimat_pish_ejare_maskoni_entry.get()),
+        gheimat_ejare_ejare_maskoni_entry.get(),
+        selected_id
+    )
+
+    cursor.execute(sql, values)
+    db.commit()
+
+    cursor.close()
+    db.close()
+    refresh_after_edit()
+
+    messagebox.showinfo("موفق", "اطلاعات با موفقیت ویرایش شد.")
+
 #endregion
-#region
 #-------------------------توابع حذف--------------------------
+#region
 def delete_forosh_maskoni():
     if not messagebox.askyesno("تأیید", "آیا از حذف این فایل مطمئن هستید؟"):
         return
@@ -3740,6 +3853,29 @@ def delete_forosh_maskoni():
 
     refresh_after_edit()
     forosh_maskoni_window.withdraw()
+    root.deiconify()
+
+def delete_ejareh_maskoni():
+    if not messagebox.askyesno("تأیید", "آیا از حذف این فایل مطمئن هستید؟"):
+        return
+
+    db = get_connection()
+    cursor = db.cursor()
+    cursor.execute("USE state_agency")
+
+    cursor.execute(
+        "DELETE FROM sabt_ejareh_maskoni WHERE id=%s",
+        (selected_id,)
+    )
+    db.commit()
+
+    cursor.close()
+    db.close()
+
+    messagebox.showinfo("موفق", "فایل حذف شد.")
+
+    refresh_after_edit()
+    ejareh_maskoni_window.withdraw()
     root.deiconify()
 
 def refresh_after_edit():
@@ -4294,10 +4430,16 @@ toilet_ejareh_maskoni_combo.place(x=150, y=45)
 
 
 back_to_home_ejareh_maskoni=tk.Button(ejareh_maskoni_window,text="بازگشت",bg="#052340", fg="#ffffff",width=10,height=1,command=back_home_ejareh_maskoni)
-back_to_home_ejareh_maskoni.place(x=300,y=30)
+back_to_home_ejareh_maskoni.place(x=400,y=30)
 
 save_button_ejareh_maskooni=tk.Button(ejareh_maskoni_window,text="ذخیره",bg="#00BFFF", fg="#ffffff",width=10,height=1,command=sabt_ejareh_maskoni)
 save_button_ejareh_maskooni.place(x=200,y=30)
+
+delete_btn_ejareh_maskoni=tk.Button(ejareh_maskoni_window,text="حذف",command=delete_ejareh_maskoni,bg="#8B0000",fg="#ffffff",height=1,width=10 )
+delete_btn_ejareh_maskoni.place_forget()
+
+edit_btn_ejareh_maskoni=tk.Button(ejareh_maskoni_window,text="ثبت ویرایش",command=update_ejareh_maskoni,bg="#00BFFF", fg="#ffffff",width=10,height=1,)
+edit_btn_ejareh_maskoni.place_forget()
 
 error_lable_sal_sakht_ejareh_maskoni= tk.Label(ejareh_maskoni_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
 error_lable_sal_sakht_ejareh_maskoni.place(x=900 , y=20)
