@@ -1005,9 +1005,6 @@ def back_main_ghararadad():
     tozih_gharardad_entry.delete(0,tk.END)
     code_label.config(text="")
 #endregion
-#region #توابع تایید اپشن ها 
-#==============================
-#endregion
 #=========================================================
 #--------برگشت از امکانات فایل ها به صفحه اصلی ثبتی-------
 #region
@@ -3457,7 +3454,7 @@ def search():
                 """, (f"%{address_entry.get().strip()}%",))
             elif melk == "اداری_تجاری":
                     cursor.execute("""
-                    SELECT id,"sabt_ejareh_edari_tejari",address, gheimat_kol, type_melk, name_malek ,'اجاره' AS noe_file
+                    SELECT id,"sabt_ejareh_edari_tejari",address, gheimat_ejareh, type_melk, name_malek ,'اجاره' AS noe_file
                     FROM sabt_ejareh_edari_tejari
                     WHERE address LIKE %s
                 """, (f"%{address_entry.get().strip()}%",))
@@ -3613,7 +3610,7 @@ def show_details(event):
     cursor.execute(f"SELECT * FROM {selected_table} WHERE id=%s", (selected_id,))
 
     data = cursor.fetchone()
-
+#--------------------مسکونی --------------------
     if data is None:
         return
 
@@ -3638,7 +3635,7 @@ def show_details(event):
         options_text_entry.insert("1.0", "\n".join(options))
         options_text_entry.tag_add("right", "1.0", "end")
         
-#--------------------مسکونی --------------------
+
     elif selected_table == "sabt_ejareh_maskoni":
         entry_malek_phone_number.delete(0, tk.END)
         entry_malek_phone_number.insert(0, data[17])
@@ -3724,7 +3721,28 @@ def show_details(event):
         options_text_entry.delete("1.0", tk.END)
         options_text_entry.insert("1.0", "\n".join(options))
         options_text_entry.tag_add("right", "1.0", "end")
+    elif selected_table == "sabt_ejareh_edari_tejari":
 
+        entry_malek_phone_number.delete(0, tk.END)
+        entry_malek_phone_number.insert(0, data[16])
+
+        metraj_lable_right_entry.delete(0, tk.END)
+        metraj_lable_right_entry.insert(0, data[2])
+
+        options = []
+
+        options.append(f"پارکینگ : {'دارد' if data[7]=='1' else 'ندارد'}")
+        options.append(f"آسانسور : {'دارد' if data[8]=='1' else 'ندارد'}")
+        options.append(f"انباری : {'دارد' if data[9]=='1' else 'ندارد'}")
+        options.append(f"آب و گاز : {data[10] if data[10] else 'ثبت نشده'}")
+        options.append(f"سرمایش : {data[11] if data[11] else 'ثبت نشده'}")
+        options.append(f"گرمایش : {data[12] if data[12] else 'ثبت نشده'}")
+        options.append(f"ودیعه : {data[13]}")
+        options.append(f"اجاره : {data[14]}")
+
+        options_text_entry.delete("1.0", tk.END)
+        options_text_entry.insert("1.0", "\n".join(options))
+        options_text_entry.tag_add("right", "1.0", "end")
     cursor.close()
     db.close()
 
@@ -4032,6 +4050,61 @@ def open_edit():
 
         cursor.close()
         db.close()
+    elif selected_table == "sabt_ejareh_edari_tejari":
+
+        root.withdraw()
+        ejareh_edari_tejari_window.deiconify()
+
+        edit_btn_ejareh_edari_tejari.place(x=300,y=30)
+        delete_btn_ejareh_edari_tejari.place(x=200,y=30)
+        zakhire_ejareh_edari_tejari.place_forget()
+        db=get_connection()
+        cursor=db.cursor()
+        cursor.execute("USE state_agency")
+
+        cursor.execute(
+            "SELECT * FROM sabt_ejareh_edari_tejari WHERE id=%s",
+            (selected_id,)
+        )
+        data=cursor.fetchone()
+
+        metraj_melk_ejareh_edari_tejari_entry.delete(0,tk.END)
+        metraj_melk_ejareh_edari_tejari_entry.insert(0,data[2])
+
+        sal_sakht_ejareh_edari_tejari_entry.delete(0,tk.END)
+        sal_sakht_ejareh_edari_tejari_entry.insert(0,data[3])
+
+        addrres_ejareh_edari_tejari_entry.delete("1.0",tk.END)
+        addrres_ejareh_edari_tejari_entry.insert("1.0",data[4])
+
+        tabaghe_ejareh_edari_tejari_entry.delete(0,tk.END)
+        tabaghe_ejareh_edari_tejari_entry.insert(0,data[5])
+
+        vahed_ejareh_edari_tejari_entry.delete(0,tk.END)
+        vahed_ejareh_edari_tejari_entry.insert(0,data[6])
+
+        parking_ejareh_edari_tejari_var.set(data[7])
+        asansor_ejareh_edari_tejari_var.set(data[8])
+        anbari_ejareh_edari_tejari_var.set(data[9])
+
+        ab_va_gaz_combo_emkanat_ejareh_edari_tejari.set(data[10])
+        sarmayesh_combo_emkanat_ejareh_edari_tejari.set(data[11])
+        garmayesh_combo_emkanat_ejareh_edari_tejari.set(data[12])
+
+        mablagh_pish_ejareh_edari_tejari_entry.delete(0,tk.END)
+        mablagh_pish_ejareh_edari_tejari_entry.insert(0,data[13])
+
+        mablagh_ejare_ejareh_edari_tejari_entry.delete(0,tk.END)
+        mablagh_ejare_ejareh_edari_tejari_entry.insert(0,data[14])
+
+        name_malek_ejareh_edari_tejari_entry.delete(0,tk.END)
+        name_malek_ejareh_edari_tejari_entry.insert(0,data[15])
+
+        shomareh_malek_ejareh_edari_tejari_entry.delete(0,tk.END)
+        shomareh_malek_ejareh_edari_tejari_entry.insert(0,data[16])
+
+        cursor.close()
+        db.close()
 #--------------------------------------توابع ویرایش صفحات---------------
 #------------مسکونی------------
 def update_forosh_maskoni():
@@ -4247,6 +4320,63 @@ def update_forosh_edari_tejari():
     refresh_after_edit()
 
     messagebox.showinfo("موفق","اطلاعات با موفقیت ویرایش شد.")
+def update_ejareh_edari_tejari():
+
+    db=get_connection()
+    cursor=db.cursor()
+    cursor.execute("USE state_agency")
+
+    sql="""
+    UPDATE sabt_ejareh_edari_tejari
+    SET
+    type_melk=%s,
+    metraj_melk=%s,
+    sal_sakht=%s,
+    address=%s,
+    tabaghe=%s,
+    vahed=%s,
+    parking=%s,
+    asansor=%s,
+    anbari=%s,
+    aab_va_gaz=%s,
+    system_sarmayesh=%s,
+    system_garmayesh=%s,
+    gheimat_vadie=%s,
+    gheimat_ejareh=%s,
+    name_malek=%s,
+    shomareh_malek=%s
+    WHERE id=%s
+    """
+
+    values=(
+        melk_type_ejareh_edari_tejari_entry.get(),
+        metraj_melk_ejareh_edari_tejari_entry.get(),
+        sal_sakht_ejareh_edari_tejari_entry.get(),
+        addrres_ejareh_edari_tejari_entry.get("1.0",tk.END),
+        tabaghe_ejareh_edari_tejari_entry.get(),
+        vahed_ejareh_edari_tejari_entry.get(),
+        parking_ejareh_edari_tejari_var.get(),
+        asansor_ejareh_edari_tejari_var.get(),
+        anbari_ejareh_edari_tejari_var.get(),
+        ab_va_gaz_combo_emkanat_ejareh_edari_tejari.get(),
+        sarmayesh_combo_emkanat_ejareh_edari_tejari.get(),
+        garmayesh_combo_emkanat_ejareh_edari_tejari.get(),
+        float(mablagh_pish_ejareh_edari_tejari_entry.get()),
+        float(mablagh_ejare_ejareh_edari_tejari_entry.get()),
+        name_malek_ejareh_edari_tejari_entry.get(),
+        shomareh_malek_ejareh_edari_tejari_entry.get(),
+        selected_id
+    )
+
+    cursor.execute(sql,values)
+    db.commit()
+
+    cursor.close()
+    db.close()
+
+    refresh_after_edit()
+
+    messagebox.showinfo("موفق","اطلاعات با موفقیت ویرایش شد.")
 #endregion
 #-------------------------توابع حذف--------------------------
 #region
@@ -4347,7 +4477,28 @@ def delete_forosh_edari_tejari():
     messagebox.showinfo("موفق","فایل حذف شد.")
 
     refresh_after_edit()
+def delete_ejareh_edari_tejari():
 
+    if not messagebox.askyesno("تأیید","آیا از حذف این فایل مطمئن هستید؟"):
+        return
+
+    db=get_connection()
+    cursor=db.cursor()
+    cursor.execute("USE state_agency")
+
+    cursor.execute(
+        "DELETE FROM sabt_ejareh_edari_tejari WHERE id=%s",
+        (selected_id,)
+    )
+
+    db.commit()
+
+    cursor.close()
+    db.close()
+
+    messagebox.showinfo("موفق","فایل حذف شد.")
+
+    refresh_after_edit()
 def refresh_after_edit():
     clear_entry_forosh_maskoni()#پاک کردن صفحات
     clear_entry_ejareh_maskoni()
@@ -4359,12 +4510,17 @@ def refresh_after_edit():
     edit_btn_forosh_edari_tejari.place_forget()#تنظیم دکمه ها
     delete_btn_forosh_edari_tejari.place_forget()
     zakhire_forosh_edari_tejari.place(x=200, y=30)
+
+    edit_btn_ejareh_edari_tejari.place_forget()
+    delete_btn_ejareh_edari_tejari.place_forget()
+    zakhire_ejareh_edari_tejari.place(x=300,y=20)
+
     #------------------مسکونی---------
     zakhire_forosh_maskoni.place(x=300,y=30)
     edit_btn_forosh_maskoni.place_forget()
     delete_btn_forosh_maskoni.place_forget()
 
-    save_button_ejareh_maskooni.place(x=300,y=300)
+    save_button_ejareh_maskooni.place(x=300,y=30)
     edit_btn_ejareh_maskoni.place_forget()
     delete_btn_ejareh_maskoni.place_forget()
 
@@ -5145,10 +5301,16 @@ garmayesh_combo_emkanat_ejareh_edari_tejari["state"]=["readonly"]
 garmayesh_combo_emkanat_ejareh_edari_tejari.place(x=150, y=15)
 
 back_to_home_ejareh_edari_tejari=tk.Button(ejareh_edari_tejari_window,text="بازگشت",bg="#052340",fg="#ffffff",width=10,height=1,command=back_home_ejareh_edari_tejari)
-back_to_home_ejareh_edari_tejari.place(x=300,y=30)
+back_to_home_ejareh_edari_tejari.place(x=400,y=30)
 
 zakhire_ejareh_edari_tejari=tk.Button(ejareh_edari_tejari_window,text="ذخیره",bg="#00BFFF",fg="#ffffff",width=10,height=1,command=sabt_ejareh_edari_tejari)
-zakhire_ejareh_edari_tejari.place(x=200,y=30)
+zakhire_ejareh_edari_tejari.place(x=300,y=30)
+
+delete_btn_ejareh_edari_tejari=tk.Button(ejareh_edari_tejari_window,text="حذف",command=delete_ejareh_edari_tejari,bg="#8B0000",fg="#ffffff",height=1,width=10 )
+delete_btn_ejareh_edari_tejari.place_forget()
+
+edit_btn_ejareh_edari_tejari=tk.Button(ejareh_edari_tejari_window,text="ثبت ویرایش",command=update_ejareh_edari_tejari,bg="#00BFFF", fg="#ffffff",width=10,height=1,)
+edit_btn_ejareh_edari_tejari.place_forget()
 
 ejareh_edari_tejari_window.protocol("WM_DELETE_WINDOW", lambda: None)
 ejareh_edari_tejari_window.resizable(False, False)
