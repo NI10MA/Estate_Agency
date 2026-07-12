@@ -1457,6 +1457,40 @@ def change_darkhast_maskoni_type(event=None):
 
         addrres_darkhast_maskoni.place(x=465, y=120, anchor="e")
         addrres_darkhast_maskoni_entry.place(x=18, y=110, width=350, height=25)
+
+def change_darkhast_edari_tejari_type(event=None):
+
+    change_type = combo_darkhast_edari_tejari_entry.get()
+
+    # فیلد خرید
+    gheimat_kol_darkhast_edari_tejari_lable.place_forget()
+    gheimat_kol_darkhast_edari_tejari_entry.place_forget()
+
+    # فیلد اجاره
+    mablagh_vadie_darkhast_edari_tejari_lable.place_forget()
+    mablagh_vadie_darkhast_edari_tejari_entry.place_forget()
+
+    mablagh_ejareh_darkhast_edari_tejari_lable.place_forget()
+    mablagh_ejareh_darkhast_edari_tejari_entry.place_forget()
+
+    if change_type == "درخواست خرید اداری و تجاری":
+
+        gheimat_kol_darkhast_edari_tejari_lable.place(x=465, y=30, anchor="e")
+        gheimat_kol_darkhast_edari_tejari_entry.place(x=18, y=20, width=350, height=25)
+
+        addrres_darkhast_edari_tejari_lable.place(x=465, y=80, anchor="e")
+        addrres_darkhast_edari_tejari_entry.place(x=18, y=70, width=350, height=50)
+
+    elif change_type == "درخواست اجاره اداری و تجاری":
+
+        mablagh_vadie_darkhast_edari_tejari_lable.place(x=465, y=30, anchor="e")
+        mablagh_vadie_darkhast_edari_tejari_entry.place(x=18, y=20, width=350, height=25)
+
+        mablagh_ejareh_darkhast_edari_tejari_lable.place(x=465, y=75, anchor="e")
+        mablagh_ejareh_darkhast_edari_tejari_entry.place(x=18, y=65, width=350, height=25)
+
+        addrres_darkhast_edari_tejari_lable.place(x=465, y=120, anchor="e")
+        addrres_darkhast_edari_tejari_entry.place(x=18, y=110, width=350, height=25)
 #endregion
 
 #=================================DataBase========================
@@ -2712,7 +2746,7 @@ def sabt_darkhast_edari_tejari(event=None):
             system_garmayesh VARCHAR(20),
             mablagh_kharid VARCHAR(20),
             name_moshtari VARCHAR(20),
-            shomareh_moshtari INT
+            shomareh_moshtari VARCHAR(11)
             )
             """)
 
@@ -2767,7 +2801,7 @@ def sabt_darkhast_edari_tejari(event=None):
             mablagh_vadie VARCHAR(20),
             mablagh_ejareh VARCHAR(20),
             name_moshtari VARCHAR(20),
-            shomareh_moshtari INT
+            shomareh_moshtari VARCHAR(11)
             )
             """)
 
@@ -3501,20 +3535,38 @@ def search():
                 if queries:
                     sql = "\nUNION ALL\n".join(queries)
                     cursor.execute(sql, tuple(params))
-            elif melk=="اداری_تجاری":
-                cursor.execute("""
-                SELECT id,"darkhast_kharid_edari_tejari",address, gheimat_kol, type_melk, name_malk,'درخواست خرید' AS noe_file
-                FROM darkhast_kharid_edari_tejari
-                WHERE address LIKE %s
-                UNION ALL
-                SELECT id,"darkhast_ejareh_edari_tejari",address, gheimat_kol, type_melk, name_malk, 'درخواست اجاره' AS noe_file
-                FROM darkhast_ejareh_edari_tejari
-                WHERE address LIKE %s
-                """,
-                (
-                    f"%{address_entry.get().strip()}%",
-                    f"%{address_entry.get().strip()}%"
-                ))
+            elif melk == "اداری_تجاری":
+
+                queries = []
+                params = []
+                cursor.execute("SHOW TABLES LIKE 'sabt_darkhast_kharid_edari_tejari'")
+                if cursor.fetchone():
+                    queries.append("""SELECT
+                        id,'sabt_darkhast_kharid_edari_tejari',address,mablagh_kharid,type_melk,name_moshtari,
+                        'درخواست خرید' AS noe_file
+                         FROM sabt_darkhast_kharid_edari_tejari
+                        WHERE address LIKE %s
+                        """)
+                    params.append(f"%{address_entry.get().strip()}%")
+
+                cursor.execute("SHOW TABLES LIKE 'sabt_darkhast_ejareh_edari_tejari'")
+                if cursor.fetchone():
+                    queries.append("""SELECT
+                        id,
+                        'sabt_darkhast_ejareh_edari_tejari',
+                        address,
+                        mablagh_vadie,
+                        type_melk,
+                        name_moshtari,
+                        'درخواست اجاره' AS noe_file
+                    FROM sabt_darkhast_ejareh_edari_tejari
+                    WHERE address LIKE %s
+                    """)
+                    params.append(f"%{address_entry.get().strip()}%")
+
+                if queries:
+                    sql = "\nUNION ALL\n".join(queries)
+                    cursor.execute(sql, tuple(params))
             elif melk=="باغ":
                 cursor.execute("""
                 SELECT id,"darkhast_kharid_bagh",address, gheimat_kol, type_melk, name_malk, 'درخواست خرید' AS noe_file
@@ -3743,6 +3795,56 @@ def show_details(event):
         options_text_entry.delete("1.0", tk.END)
         options_text_entry.insert("1.0", "\n".join(options))
         options_text_entry.tag_add("right", "1.0", "end")
+
+    elif selected_table == "sabt_darkhast_kharid_edari_tejari":
+        entry_malek_phone_number.delete(0, tk.END)
+        entry_malek_phone_number.insert(0, data[15])
+
+        metraj_lable_right_entry.delete(0, tk.END)
+        metraj_lable_right_entry.insert(0, data[2])
+
+        options = []
+
+        options.append(f"پارکینگ : {'دارد' if data[7]=='1' else 'ندارد'}")
+        options.append(f"آسانسور : {'دارد' if data[8]=='1' else 'ندارد'}")
+        options.append(f"انباری : {'دارد' if data[9]=='1' else 'ندارد'}")
+
+        options.append(f"آب و گاز : {data[10] if data[10] else 'ندارد'}")
+        options.append(f"سرمایش : {data[11] if data[11] else 'ندارد'}")
+        options.append(f"گرمایش : {data[12] if data[12] else 'ندارد'}")
+
+        options_text_entry.delete("1.0", tk.END)
+        options_text_entry.insert("1.0", "\n".join(options))
+        options_text_entry.tag_add("right", "1.0", "end")
+    
+    elif selected_table == "sabt_darkhast_ejareh_edari_tejari":
+        entry_malek_phone_number.delete(0, tk.END)
+        entry_malek_phone_number.insert(0, data[16])
+
+        metraj_lable_right_entry.delete(0, tk.END)
+        metraj_lable_right_entry.insert(0, data[2])
+
+        options = []
+
+        options.append(f"پارکینگ : {'دارد' if data[7]=='1' else 'ندارد'}")
+        options.append(f"آسانسور : {'دارد' if data[8]=='1' else 'ندارد'}")
+        options.append(f"انباری : {'دارد' if data[9]=='1' else 'ندارد'}")
+
+        options.append(f"آب و گاز : {data[10] if data[10] else 'ندارد'}")
+        options.append(f"سرمایش : {data[11] if data[11] else 'ندارد'}")
+        options.append(f"گرمایش : {data[12] if data[12] else 'ندارد'}")
+
+        options_text_entry.delete("1.0", tk.END)
+        options_text_entry.insert("1.0", "\n".join(options))
+        options_text_entry.tag_add("right", "1.0", "end")
+
+
+
+
+
+
+
+
     cursor.close()
     db.close()
 
@@ -3934,12 +4036,9 @@ def open_edit():
         edit_btn_darkhast_maskoni.place(x=300, y=30)
         delete_btn_darkhast_maskoni.place(x=200, y=30)
         zakhire_darkhast_maskoni.place_forget()
-        
 
         root.withdraw()
         darkhast_maskoni_window.deiconify()
-
-
 
         db = get_connection()
         cursor = db.cursor()
@@ -4102,6 +4201,123 @@ def open_edit():
 
         shomareh_malek_ejareh_edari_tejari_entry.delete(0,tk.END)
         shomareh_malek_ejareh_edari_tejari_entry.insert(0,data[16])
+
+        cursor.close()
+        db.close()
+    elif selected_table == "sabt_darkhast_kharid_edari_tejari":
+
+        root.withdraw()
+        darkhast_edari_tejari_window.deiconify()
+
+        edit_btn_darkhast_edari_tejari.place(x=300, y=30)
+        delete_btn_darkhast_edari_tejari.place(x=200, y=30)
+        zakhire_darkhast_edari_tejari.place_forget()
+
+        db = get_connection()
+        cursor = db.cursor()
+        cursor.execute("USE state_agency")
+
+        cursor.execute(
+            "SELECT * FROM sabt_darkhast_kharid_edari_tejari WHERE id=%s",
+            (selected_id,)
+        )
+
+        data = cursor.fetchone()
+
+        combo_darkhast_edari_tejari_entry.set(data[1])
+        change_darkhast_edari_tejari_type(event=None)
+
+        metraj_melk_darkhast_edari_tejari_entry.delete(0, tk.END)
+        metraj_melk_darkhast_edari_tejari_entry.insert(0, data[2])
+
+        sal_sakht_darkhast_edari_tejari_entry.delete(0, tk.END)
+        sal_sakht_darkhast_edari_tejari_entry.insert(0, data[3])
+
+        addrres_darkhast_edari_tejari_entry.delete("1.0", tk.END)
+        addrres_darkhast_edari_tejari_entry.insert("1.0", data[4])
+
+        tabaghe_darkhast_edari_tejari_entry.delete(0, tk.END)
+        tabaghe_darkhast_edari_tejari_entry.insert(0, data[5])
+
+        vahed_darkhast_edari_tejari_entry.delete(0, tk.END)
+        vahed_darkhast_edari_tejari_entry.insert(0, data[6])
+
+        parking_darkhast_edari_tejari_var.set(data[7])
+        asansor_darkhast_edari_tejari_var.set(data[8])
+        anbari_darkhast_edari_tejari_var.set(data[9])
+
+        aab_va_gaz_combo_emkanat_darkhast_edari_tejari.set(data[10])
+        sarmayesh_combo_emkanat_darkhast_edari_tejari.set(data[11])
+        garmayesh_combo_emkanat_darkhast_edari_tejari.set(data[12])
+
+        gheimat_kol_darkhast_edari_tejari_entry.delete(0, tk.END)
+        gheimat_kol_darkhast_edari_tejari_entry.insert(0, data[13])
+
+        name_moshtari_darkhast_edari_tejari_entry.delete(0, tk.END)
+        name_moshtari_darkhast_edari_tejari_entry.insert(0, data[14])
+
+        shomareh_moshtari_darkhast_edari_tejari_entry.delete(0, tk.END)
+        shomareh_moshtari_darkhast_edari_tejari_entry.insert(0, data[15])
+
+        cursor.close()
+        db.close()
+    elif selected_table == "sabt_darkhast_ejareh_edari_tejari":
+
+        root.withdraw()
+        darkhast_edari_tejari_window.deiconify()
+
+        edit_btn_darkhast_edari_tejari.place(x=300, y=30)
+        delete_btn_darkhast_edari_tejari.place(x=200, y=30)
+        zakhire_darkhast_edari_tejari.place_forget()
+
+        db = get_connection()
+        cursor = db.cursor()
+        cursor.execute("USE state_agency")
+
+        cursor.execute(
+            "SELECT * FROM sabt_darkhast_ejareh_edari_tejari WHERE id=%s",
+            (selected_id,)
+        )
+
+        data = cursor.fetchone()
+
+        combo_darkhast_edari_tejari_entry.set(data[1])
+        change_darkhast_edari_tejari_type(event=None)
+
+        metraj_melk_darkhast_edari_tejari_entry.delete(0, tk.END)
+        metraj_melk_darkhast_edari_tejari_entry.insert(0, data[2])
+
+        sal_sakht_darkhast_edari_tejari_entry.delete(0, tk.END)
+        sal_sakht_darkhast_edari_tejari_entry.insert(0, data[3])
+
+        addrres_darkhast_edari_tejari_entry.delete("1.0", tk.END)
+        addrres_darkhast_edari_tejari_entry.insert("1.0", data[4])
+
+        tabaghe_darkhast_edari_tejari_entry.delete(0, tk.END)
+        tabaghe_darkhast_edari_tejari_entry.insert(0, data[5])
+
+        vahed_darkhast_edari_tejari_entry.delete(0, tk.END)
+        vahed_darkhast_edari_tejari_entry.insert(0, data[6])
+
+        parking_darkhast_edari_tejari_var.set(data[7])
+        asansor_darkhast_edari_tejari_var.set(data[8])
+        anbari_darkhast_edari_tejari_var.set(data[9])
+
+        aab_va_gaz_combo_emkanat_darkhast_edari_tejari.set(data[10])
+        sarmayesh_combo_emkanat_darkhast_edari_tejari.set(data[11])
+        garmayesh_combo_emkanat_darkhast_edari_tejari.set(data[12])
+
+        mablagh_vadie_darkhast_edari_tejari_entry.delete(0, tk.END)
+        mablagh_vadie_darkhast_edari_tejari_entry.insert(0, data[13])
+
+        mablagh_ejareh_darkhast_edari_tejari_entry.delete(0, tk.END)
+        mablagh_ejareh_darkhast_edari_tejari_entry.insert(0, data[14])
+
+        name_moshtari_darkhast_edari_tejari_entry.delete(0, tk.END)
+        name_moshtari_darkhast_edari_tejari_entry.insert(0, data[15])
+
+        shomareh_moshtari_darkhast_edari_tejari_entry.delete(0, tk.END)
+        shomareh_moshtari_darkhast_edari_tejari_entry.insert(0, data[16])
 
         cursor.close()
         db.close()
@@ -4377,6 +4593,103 @@ def update_ejareh_edari_tejari():
     refresh_after_edit()
 
     messagebox.showinfo("موفق","اطلاعات با موفقیت ویرایش شد.")
+def update_darkhast_edari_tejari():
+
+    db = get_connection()
+    cursor = db.cursor()
+    cursor.execute("USE state_agency")
+    if combo_darkhast_edari_tejari_entry.get() =="درخواست خرید اداری و تجاری":
+        sql = """
+        UPDATE sabt_darkhast_kharid_edari_tejari
+        SET
+        type_melk=%s,
+        metraj_melk=%s,
+        sal_sakht=%s,
+        address=%s,
+        tabaghe=%s,
+        vahed=%s,
+        parking=%s,
+        asansor=%s,
+        anbari=%s,
+        aab_va_gaz=%s,
+        system_sarmayesh=%s,
+        system_garmayesh=%s,
+        mablagh_kharid=%s,
+        name_moshtari=%s,
+        shomareh_moshtari=%s
+        WHERE id=%s
+        """
+
+        values = (
+            combo_darkhast_edari_tejari_entry.get(),
+            metraj_melk_darkhast_edari_tejari_entry.get(),
+            sal_sakht_darkhast_edari_tejari_entry.get(),
+            addrres_darkhast_edari_tejari_entry.get("1.0", tk.END),
+            tabaghe_darkhast_edari_tejari_entry.get(),
+            vahed_darkhast_edari_tejari_entry.get(),
+            parking_darkhast_edari_tejari_var.get(),
+            asansor_darkhast_edari_tejari_var.get(),
+            anbari_darkhast_edari_tejari_var.get(),
+            aab_va_gaz_combo_emkanat_darkhast_edari_tejari.get(),
+            sarmayesh_combo_emkanat_darkhast_edari_tejari.get(),
+            garmayesh_combo_emkanat_darkhast_edari_tejari.get(),
+            gheimat_kol_darkhast_edari_tejari_entry.get(),
+            name_moshtari_darkhast_edari_tejari_entry.get(),
+            shomareh_moshtari_darkhast_edari_tejari_entry.get(),
+            selected_id
+        )
+    else:
+        sql = """
+        UPDATE sabt_darkhast_ejareh_edari_tejari
+        SET
+        type_melk=%s,
+        metraj_melk=%s,
+        sal_sakht=%s,
+        address=%s,
+        tabaghe=%s,
+        vahed=%s,
+        parking=%s,
+        asansor=%s,
+        anbari=%s,
+        aab_va_gaz=%s,
+        system_sarmayesh=%s,
+        system_garmayesh=%s,
+        mablagh_vadie=%s,
+        mablagh_ejareh=%s,
+        name_moshtari=%s,
+        shomareh_moshtari=%s
+        WHERE id=%s
+        """
+
+        values = (
+            combo_darkhast_edari_tejari_entry.get(),
+            metraj_melk_darkhast_edari_tejari_entry.get(),
+            sal_sakht_darkhast_edari_tejari_entry.get(),
+            addrres_darkhast_edari_tejari_entry.get("1.0", tk.END),
+            tabaghe_darkhast_edari_tejari_entry.get(),
+            vahed_darkhast_edari_tejari_entry.get(),
+            parking_darkhast_edari_tejari_var.get(),
+            asansor_darkhast_edari_tejari_var.get(),
+            anbari_darkhast_edari_tejari_var.get(),
+            aab_va_gaz_combo_emkanat_darkhast_edari_tejari.get(),
+            sarmayesh_combo_emkanat_darkhast_edari_tejari.get(),
+            garmayesh_combo_emkanat_darkhast_edari_tejari.get(),
+            mablagh_vadie_darkhast_edari_tejari_entry.get(),
+            mablagh_ejareh_darkhast_edari_tejari_entry.get(),
+            name_moshtari_darkhast_edari_tejari_entry.get(),
+            shomareh_moshtari_darkhast_edari_tejari_entry.get(),
+            selected_id
+        )
+
+    cursor.execute(sql, values)
+    db.commit()
+
+    cursor.close()
+    db.close()
+
+    refresh_after_edit()
+
+    messagebox.showinfo("موفق", "اطلاعات با موفقیت ویرایش شد.")
 #endregion
 #-------------------------توابع حذف--------------------------
 #region
@@ -4499,6 +4812,37 @@ def delete_ejareh_edari_tejari():
     messagebox.showinfo("موفق","فایل حذف شد.")
 
     refresh_after_edit()
+def delete_darkhast_edari_tejari():
+
+    if not messagebox.askyesno("تأیید", "آیا از حذف این فایل مطمئن هستید؟"):
+        return
+
+    db = get_connection()
+    cursor = db.cursor()
+    cursor.execute("USE state_agency")
+
+    if selected_table == "sabt_darkhast_kharid_edari_tejari":
+
+        cursor.execute(
+            "DELETE FROM sabt_darkhast_kharid_edari_tejari WHERE id=%s",
+            (selected_id,)
+        )
+    elif selected_table == "sabt_darkhast_ejareh_edari_tejari":
+        cursor.execute(
+            "DELETE FROM sabt_darkhast_ejareh_edari_tejari WHERE id=%s",
+            (selected_id,)
+        )
+
+    db.commit()
+
+    cursor.close()
+    db.close()
+
+    messagebox.showinfo("موفق", "فایل حذف شد.")
+
+    refresh_after_edit()
+
+#------------------رفرش----------------
 def refresh_after_edit():
     clear_entry_forosh_maskoni()#پاک کردن صفحات
     clear_entry_ejareh_maskoni()
@@ -4515,6 +4859,9 @@ def refresh_after_edit():
     delete_btn_ejareh_edari_tejari.place_forget()
     zakhire_ejareh_edari_tejari.place(x=300,y=20)
 
+    edit_btn_darkhast_edari_tejari.place_forget()
+    delete_btn_darkhast_edari_tejari.place_forget()
+    zakhire_darkhast_edari_tejari.place(x=300,y=30)
     #------------------مسکونی---------
     zakhire_forosh_maskoni.place(x=300,y=30)
     edit_btn_forosh_maskoni.place_forget()
@@ -4553,7 +4900,6 @@ def refresh_after_edit():
     darkhast_edari_tejari_window.withdraw()
     root.deiconify()
 #endregion
-
 #---#----#----#----#----#----------  گرافیک   ----------#----#----#----#-----#-----------
 # ---------دکمه فایل با منوی کشویی ------------------
 #region 
@@ -7073,7 +7419,6 @@ label_down_darkhast_edari_tejari=tk.Label(darkhast_edari_tejari_window,text="ا�
 label_down_darkhast_edari_tejari.place(x=100,y=565)
 
 #-------------------------------------فریم بالا سمت راست------------------------------
-
 melk_type_darkhast_edari_tejari_lable=tk.Label(frame_up_right_darkhast_edari_tejari, text="نوع ملک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 melk_type_darkhast_edari_tejari_lable.place(x=465,y=40, anchor="e")
 
@@ -7081,7 +7426,7 @@ combo_darkhast_edari_tejari_entry=ttk.Combobox(frame_up_right_darkhast_edari_tej
 combo_darkhast_edari_tejari_entry["values"] = ("درخواست اجاره اداری و تجاری","درخواست خرید اداری و تجاری")
 combo_darkhast_edari_tejari_entry.set("درخواست خرید اداری و تجاری")
 combo_darkhast_edari_tejari_entry.configure(justify="center")
-combo_darkhast_edari_tejari_entry.bind("<<ComboboxSelected>>",sabt_darkhast_edari_tejari)
+combo_darkhast_edari_tejari_entry.bind("<<ComboboxSelected>>",change_darkhast_edari_tejari_type)
 combo_darkhast_edari_tejari_entry.place(x=18, y=30, width=350, height=25)
 
 sal_sakht_darkhast_edari_tejari_lable=tk.Label(frame_up_right_darkhast_edari_tejari,text="سال ساخت",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
@@ -7107,19 +7452,13 @@ vahed_darkhast_edari_tejari_lable.place(x=465, y=200, anchor="e")
 
 vahed_darkhast_edari_tejari_entry=tk.Entry(frame_up_right_darkhast_edari_tejari,bg="#ffffff", fg="#000000",font=("Shabnam", 10),)
 vahed_darkhast_edari_tejari_entry.place(x=18, y=190, width=350, height=25)
-
-
-
 #----------------------------فریم بالا سمت چپ----------------------------------
-
 photo_lbl2_darkhast_edari_tejari = tk.Label(frame_up_left_darkhast_edari_tejari, text="[تصویر ملک]", bg="#ffffff",width=79, height=15,relief="solid")
 photo_lbl2_darkhast_edari_tejari.place(x=40, y=10)
 
 add_img_btn_darkhast_edari_tejari = tk.Button(frame_up_left_darkhast_edari_tejari, text="افزودن تصویر", bg="#00BFFF", fg="black",command=open_file,height=2,width=13)
 add_img_btn_darkhast_edari_tejari.place(x=240, y=250)
-
 #---------------------------فریم وسط سمت راست----------------------------------------
-
 gheimat_kol_darkhast_edari_tejari_lable=tk.Label(frame_midde_right_darkhast_edari_tejari,text= "قیمت کل",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
 gheimat_kol_darkhast_edari_tejari_lable.place(x=465, y=20, anchor="e")
 
@@ -7145,7 +7484,6 @@ addrres_darkhast_edari_tejari_entry=tk.Text(frame_midde_right_darkhast_edari_tej
 addrres_darkhast_edari_tejari_entry.place(x=18, y=90, width=350, height=50)
 
 #---------------------------فریم سمت چپ وسط-----------------------------------
-
 name_moshtari_darkhast_edari_tejari_lable=tk.Label(frame_midde_left_darkhast_edari_tejari,text="نام مشتری",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
 name_moshtari_darkhast_edari_tejari_lable.place(x=600, y=30,anchor="e")
 
@@ -7157,9 +7495,7 @@ shomareh_moshtari_darkhast_edari_tejari_lable.place(x=600, y=80,anchor="e")
 
 shomareh_moshtari_darkhast_edari_tejari_entry=tk.Entry(frame_midde_left_darkhast_edari_tejari,bg="#FFFFFF", fg="#000000",font=("Shabnam", 10))
 shomareh_moshtari_darkhast_edari_tejari_entry.place(x=30, y=70, width=350, height=25)
-
 #-------------------------فریم پایین----------------------------------
-
 parking_darkhast_edari_tejari_var=tk.IntVar(value=0)
 anbari_darkhast_edari_tejari_var=tk.IntVar(value=0)
 asansor_darkhast_edari_tejari_var=tk.IntVar(value=0)
@@ -7207,10 +7543,16 @@ garmayesh_combo_emkanat_darkhast_edari_tejari["state"]=["readonly"]
 garmayesh_combo_emkanat_darkhast_edari_tejari.place(x=150, y=15)
 
 back_to_home_darkhast_edari_tejari=tk.Button(darkhast_edari_tejari_window,text="بازگشت",bg="#052340", fg="#ffffff",width=10,height=1,command=back_home_darkhast_edari_tejari)
-back_to_home_darkhast_edari_tejari.place(x=300,y=30)
+back_to_home_darkhast_edari_tejari.place(x=400,y=30)
 
 zakhire_darkhast_edari_tejari=tk.Button(darkhast_edari_tejari_window,text="ذخیره",bg="#00BFFF", fg="#ffffff",width=10,height=1,command=sabt_darkhast_edari_tejari)
-zakhire_darkhast_edari_tejari.place(x=200,y=30)
+zakhire_darkhast_edari_tejari.place(x=300,y=30)
+
+delete_btn_darkhast_edari_tejari=tk.Button(darkhast_edari_tejari_window,text="حذف",command=delete_darkhast_edari_tejari,bg="#8B0000",fg="#ffffff",height=1,width=10 )
+delete_btn_darkhast_edari_tejari.place_forget()
+
+edit_btn_darkhast_edari_tejari=tk.Button(darkhast_edari_tejari_window,text="ثبت ویرایش",command=update_darkhast_edari_tejari,bg="#00BFFF", fg="#ffffff",width=10,height=1,)
+edit_btn_darkhast_edari_tejari.place_forget()
 
 darkhast_edari_tejari_window.protocol("WM_DELETE_WINDOW", lambda: None)
 darkhast_edari_tejari_window.resizable(False, False)
