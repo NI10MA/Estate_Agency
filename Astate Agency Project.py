@@ -597,6 +597,7 @@ def clear_errors_labels_forosh_maskoni():
 #------------------------برگشت از صفحه اجاره اداری/تجاری---------------------
 def back_home_ejareh_edari_tejari():
     clear_entry_ejareh_edari_tejari()
+    refresh_after_edit()
     root.deiconify()
     ejareh_edari_tejari_window.withdraw()
     delete_root()
@@ -765,6 +766,7 @@ def clear_entry_forosh_bagh_zamin():
 #----------------------- برگشت از صفحه اجاره کارگاه--------------------
 def back_home_ejareh_karghah():
     clear_entry_ejareh_karghah()
+    refresh_after_edit()
     ejareh_karghah_window.withdraw()
     root.deiconify()
     delete_root()
@@ -789,6 +791,7 @@ def clear_entry_ejareh_karghah():
 #----------------------- برگشت از صفحه فروش کارگاه--------------------
 def back_home_forosh_karghah():
     clear_entry_forosh_kargah()
+    refresh_after_edit()
     forosh_karghah_window.withdraw()
     root.deiconify()
     delete_root()
@@ -853,6 +856,7 @@ def clear_errors_labels_darkhast_maskoni():
     #---------------------------برگشت از صفحه درخواست اداری/تجاری--------------------
 def back_home_darkhast_edari_tejari():
     clear_entry_darkhast_edari_tejari()
+    refresh_after_edit()
     darkhast_edari_tejari_window.withdraw()
     root.deiconify()
     delete_root()
@@ -950,6 +954,7 @@ def clear_entry_darkhast_bagh_zamin():
 #-----------------------------برگشت از صفحه درخواست کارگاه--------------------
 def back_home_darkhast_kargah():
     clear_entry_darkhast_kargah()
+    refresh_after_edit()
     darkhast_karghah_window.withdraw()   
     root.deiconify()
     delete_root()
@@ -1999,7 +2004,7 @@ def sabt_forosh_kargah():
             hamam VARCHAR(20),
             otagh VARCHAR(20),
             name_malek VARCHAR(20),
-            shomareh_malek INT,
+            shomareh_malek VARCHAR(11),
             gheimat_kol DECIMAL(15,2)
         )
         """
@@ -3474,7 +3479,7 @@ def search():
 
             elif melk == "کارگاه":
                 cursor.execute("""
-                    SELECT id,"sabt_forosh_kargah",address, gheimat_kol, type_melk, name_malek,'فروش' AS noe_file
+                    SELECT id,"sabt_forosh_kargah",address, gheimat_kol,karbari_zamin, name_malek,'فروش' AS noe_file
                     FROM sabt_forosh_kargah
                     WHERE address LIKE %s
                 """, (f"%{address_entry.get().strip()}%",))
@@ -3837,8 +3842,31 @@ def show_details(event):
         options_text_entry.delete("1.0", tk.END)
         options_text_entry.insert("1.0", "\n".join(options))
         options_text_entry.tag_add("right", "1.0", "end")
+#------------------------کارگاه------------------------
+    elif selected_table == "sabt_forosh_kargah":
 
+        entry_malek_phone_number.delete(0, tk.END)
+        entry_malek_phone_number.insert(0, data[14])
 
+        metraj_lable_right_entry.delete(0, tk.END)
+        metraj_lable_right_entry.insert(0, data[2])
+
+        options = []
+
+        options.append(f"کاربری : {data[1] if data[1] else 'ثبت نشده'}")
+        options.append(f"برق : {data[5] if data[5] else 'ثبت نشده'}")
+        options.append(f"گرمایش : {data[6] if data[6] else 'ثبت نشده'}")
+        options.append(f"سرمایش : {data[7] if data[7] else 'ثبت نشده'}")
+        options.append(f"آب : {data[8] if data[8] else 'ثبت نشده'}")
+        options.append(f"ابزار : {data[9] if data[9] else 'ثبت نشده'}")
+        options.append(f"سرویس : {data[10] if data[10] else 'ثبت نشده'}")
+        options.append(f"حمام : {data[11] if data[11] else 'ثبت نشده'}")
+        options.append(f"اتاق : {data[12] if data[12] else 'ثبت نشده'}")
+
+        options_text_entry.delete("1.0", tk.END)
+        options_text_entry.insert("1.0", "\n".join(options))
+        options_text_entry.tag_configure("right", justify="right")
+        options_text_entry.tag_add("right", "1.0", "end")
 
 
 
@@ -4321,6 +4349,57 @@ def open_edit():
 
         cursor.close()
         db.close()
+
+#----------------------------کارگاه---------------------
+    elif selected_table == "sabt_forosh_kargah":
+
+        root.withdraw()
+        forosh_karghah_window.deiconify()
+
+        edit_btn_forosh_kargah.place(x=300, y=30)
+        delete_btn_forosh_kargah.place(x=200, y=30)
+        zakhire_forosh_kargah.place_forget()
+
+        db = get_connection()
+        cursor = db.cursor()
+        cursor.execute("USE state_agency")
+
+        cursor.execute(
+            "SELECT * FROM sabt_forosh_kargah WHERE id=%s",
+            (selected_id,)
+        )
+
+        data = cursor.fetchone()
+
+        metraj_forosh_kargah_entry.delete(0, tk.END)
+        metraj_forosh_kargah_entry.insert(0, data[2])
+
+        loctaion_forosh_kargah_entry.delete("1.0", tk.END)
+        loctaion_forosh_kargah_entry.insert("1.0", data[3])
+
+        sal_sakht_forosh_kargah_entry.delete(0, tk.END)
+        sal_sakht_forosh_kargah_entry.insert(0, data[4])
+
+        vaziat_bargh_forosh_kargah_combo.set(data[5])
+        garmayesh_type_forosh_kargah_combo.set(data[6])
+        sarmayesh_forosh_kargah_combo.set(data[7])
+        vaziat_ab_forosh_kargah_combo.set(data[8])
+        abzar_forosh_kargah_combo.set(data[9])
+        toilet_forosh_kargah_combo.set(data[10])
+        hamam_forosh_kargah_combo.set(data[11])
+        otagh_forosh_kargah_combo.set(data[12])
+
+        name_malek_forosh_kargah_entry.delete(0, tk.END)
+        name_malek_forosh_kargah_entry.insert(0, data[13])
+
+        shomareh_malek_forosh_kargah_entry.delete(0, tk.END)
+        shomareh_malek_forosh_kargah_entry.insert(0, data[14])
+
+        gheimat_kol_forosh_kargah_entry.delete(0, tk.END)
+        gheimat_kol_forosh_kargah_entry.insert(0, data[15])
+
+        cursor.close()
+        db.close()
 #--------------------------------------توابع ویرایش صفحات---------------
 #------------مسکونی------------
 def update_forosh_maskoni():
@@ -4690,6 +4769,63 @@ def update_darkhast_edari_tejari():
     refresh_after_edit()
 
     messagebox.showinfo("موفق", "اطلاعات با موفقیت ویرایش شد.")
+
+#---------------------------------کارگاه----------------------
+def update_forosh_kargah():
+
+    db = get_connection()
+    cursor = db.cursor()
+    cursor.execute("USE state_agency")
+
+    sql = """
+    UPDATE sabt_forosh_kargah
+    SET
+        karbari_zamin=%s,
+        metraj=%s,
+        address=%s,
+        sal_sakht=%s,
+        vaziat_bargh=%s,
+        garmayesh=%s,
+        sarmayesh=%s,
+        vaziat_ab=%s,
+        abzar=%s,
+        toilet=%s,
+        hamam=%s,
+        otagh=%s,
+        name_malek=%s,
+        shomareh_malek=%s,
+        gheimat_kol=%s
+    WHERE id=%s
+    """
+
+    values = (
+        karbari_forosh_kargah_entry.get(),
+        metraj_forosh_kargah_entry.get(),
+        loctaion_forosh_kargah_entry.get("1.0", tk.END),
+        sal_sakht_forosh_kargah_entry.get(),
+        vaziat_bargh_forosh_kargah_combo.get(),
+        garmayesh_type_forosh_kargah_combo.get(),
+        sarmayesh_forosh_kargah_combo.get(),
+        vaziat_ab_forosh_kargah_combo.get(),
+        abzar_forosh_kargah_combo.get(),
+        toilet_forosh_kargah_combo.get(),
+        hamam_forosh_kargah_combo.get(),
+        otagh_forosh_kargah_combo.get(),
+        name_malek_forosh_kargah_entry.get(),
+        shomareh_malek_forosh_kargah_entry.get(),
+        float(gheimat_kol_forosh_kargah_entry.get()),
+        selected_id
+    )
+
+    cursor.execute(sql, values)
+    db.commit()
+
+    cursor.close()
+    db.close()
+
+    refresh_after_edit()
+
+    messagebox.showinfo("موفق", "اطلاعات با موفقیت ویرایش شد.")
 #endregion
 #-------------------------توابع حذف--------------------------
 #region
@@ -4841,7 +4977,29 @@ def delete_darkhast_edari_tejari():
     messagebox.showinfo("موفق", "فایل حذف شد.")
 
     refresh_after_edit()
+#-----------------------------کارگاه---------------
+def delete_forosh_kargah():
 
+    if not messagebox.askyesno("تأیید", "آیا از حذف این فایل مطمئن هستید؟"):
+        return
+
+    db = get_connection()
+    cursor = db.cursor()
+    cursor.execute("USE state_agency")
+
+    cursor.execute(
+        "DELETE FROM sabt_forosh_kargah WHERE id=%s",
+        (selected_id,)
+    )
+
+    db.commit()
+
+    cursor.close()
+    db.close()
+
+    messagebox.showinfo("موفق", "فایل با موفقیت حذف شد.")
+
+    refresh_after_edit()
 #------------------رفرش----------------
 def refresh_after_edit():
     clear_entry_forosh_maskoni()#پاک کردن صفحات
@@ -4850,6 +5008,12 @@ def refresh_after_edit():
     clear_entry_forosh_edari_tejari()
     clear_entry_darkhast_edari_tejari()
     clear_entry_ejareh_edari_tejari()
+    clear_entry_forosh_kargah()
+    clear_entry_ejareh_karghah()
+    clear_entry_darkhast_kargah()
+    clear_entry_forosh_bagh_zamin()
+    clear_entry_ejareh_bagh_zamin()
+    clear_entry_darkhast_bagh_zamin()
 
     edit_btn_forosh_edari_tejari.place_forget()#تنظیم دکمه ها
     delete_btn_forosh_edari_tejari.place_forget()
@@ -4874,6 +5038,11 @@ def refresh_after_edit():
     edit_btn_darkhast_maskoni.place_forget()
     delete_btn_darkhast_maskoni.place_forget()
     zakhire_darkhast_maskoni.place(x=300,y=30)
+    #---------------کارگاه-----------------
+    zakhire_forosh_kargah.place(x=300,y=30)
+    edit_btn_forosh_kargah.place_forget()
+    delete_btn_forosh_kargah.place_forget()
+
 
     for item in tree.get_children():
         tree.delete(item)
@@ -4898,6 +5067,9 @@ def refresh_after_edit():
     forosh_edari_tejari_window.withdraw()
     ejareh_edari_tejari_window.withdraw()
     darkhast_edari_tejari_window.withdraw()
+    forosh_karghah_window.withdraw()
+    ejareh_karghah_window.withdraw()
+    darkhast_karghah_window.withdraw()
     root.deiconify()
 #endregion
 #---#----#----#----#----#----------  گرافیک   ----------#----#----#----#-----#-----------
@@ -6606,7 +6778,6 @@ back_to_home_forosh_edari_tejari.place(x=400,y=30)
 zakhire_forosh_edari_tejari=tk.Button(forosh_edari_tejari_window,text="ذخیره",bg="#00BFFF", fg="#ffffff",width=10,height=1,command=sabt_forosh_edari_tejari)
 zakhire_forosh_edari_tejari.place(x=300,y=30)
 
-
 delete_btn_forosh_edari_tejari=tk.Button(forosh_edari_tejari_window,text="حذف",command=delete_forosh_edari_tejari,bg="#8B0000",fg="#ffffff",height=1,width=10 )
 delete_btn_forosh_edari_tejari.place_forget()
 
@@ -7115,10 +7286,16 @@ otagh_forosh_kargah_combo["state"]=["readonly"]
 otagh_forosh_kargah_combo.place(x=620, y=15)
 
 back_to_home_forosh_kargah=tk.Button(forosh_karghah_window,text="بازگشت",bg="#052340", fg="#ffffff",width=10,height=1,command=back_home_forosh_karghah)
-back_to_home_forosh_kargah.place(x=300,y=30)
+back_to_home_forosh_kargah.place(x=400,y=30)
 
 zakhire_forosh_kargah=tk.Button(forosh_karghah_window,text="ذخیره",bg="#00BFFF", fg="#ffffff",width=10,height=1,command=sabt_forosh_kargah)
-zakhire_forosh_kargah.place(x=200,y=30)
+zakhire_forosh_kargah.place(x=300,y=30)
+
+delete_btn_forosh_kargah=tk.Button(forosh_karghah_window,text="حذف",command=delete_forosh_kargah,bg="#8B0000",fg="#ffffff",height=1,width=10 )
+delete_btn_forosh_kargah.place_forget()
+
+edit_btn_forosh_kargah=tk.Button(forosh_karghah_window,text="ثبت ویرایش",command=update_forosh_kargah,bg="#00BFFF", fg="#ffffff",width=10,height=1,)
+edit_btn_forosh_kargah.place_forget()
 
 forosh_karghah_window.protocol("WM_DELETE_WINDOW", lambda: None)
 forosh_karghah_window.resizable(False, False)
