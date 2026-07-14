@@ -1285,7 +1285,7 @@ def sabt_radio_mosharekat():
 #=======================================================
 #region
 #---------------/جابه جایی کاربری باغ و زمین در قسمت های فروش/درخواست/اجاره-------------
-def change_bagh_zamin1(event):
+def change_bagh_zamin1(event=None):
     co=bagh_type_combo.get()
     if co=="باغ":
         frame_down_ejareh_zamin.place_forget()
@@ -1293,7 +1293,7 @@ def change_bagh_zamin1(event):
     else:
         frame_down_ejareh_bagh.place_forget()
         frame_down_ejareh_zamin.place(x=10,y=555)
-def change_bagh_zamin_forosh_bagh(event):
+def change_bagh_zamin_forosh_bagh(event=None):
     co=bagh_type_forosh_bagh_zamin_combo.get()
     frame_down_forosh_zamin.place_forget()
     if co=="باغ":
@@ -1302,7 +1302,7 @@ def change_bagh_zamin_forosh_bagh(event):
         frame_down_forosh_bagh.place_forget()
         frame_down_forosh_zamin.place(x=10,y=555)
 
-def change_bagh_zamin_darkhast_bagh(event):
+def change_bagh_zamin_darkhast_bagh(event=None):
     co=bagh_type_darkhast_bagh_zamin_combo.get()
     if co=="باغ":
         frame_down_darkhast_zamin.place_forget()
@@ -1531,7 +1531,6 @@ def change_darkhast_kargah_type(event=None):
 
         loctaion_darkhast_kargah.place(x=465, y=120, anchor="e")
         loctaion_darkhast_kargah_entry.place(x=18, y=110, width=350, height=25)
-
 
 #endregion
 
@@ -1859,7 +1858,7 @@ def sabt_forosh_bagh_zamin_main():
         gheimat_str = gheimat_har_metr_babagh_zamin_forosh_entry.get()
         if not gheimat_str or gheimat_str == "":
             gheimat_str = "0"
-        gheimat_value = float(gheimat_str)
+            gheimat_value = float(gheimat_str)
         
         if karbari == "باغ": 
             cursor.execute("""
@@ -1891,6 +1890,7 @@ def sabt_forosh_bagh_zamin_main():
                 sanad VARCHAR(20),
                 mohavate VARCHAR(10),
                 bargh VARCHAR (10),
+                gaz VARCHAR(10),
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         """) 
@@ -1904,10 +1904,10 @@ def sabt_forosh_bagh_zamin_main():
                     metraj_derakht, tedad_derakht, type_derakht,
                     system_ab, chah, estakhr, divar,sazeh, metraj_sazeh,
                     sal_sakht, type_sazeh, emkanat, WC, hamam,
-                    javaz_sakht, sanad, mohavate,bargh
+                    javaz_sakht, sanad, mohavate,bargh,gaz
                 )
                 VALUES( %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s
-                ,%s,%s,%s,%s,%s,%s,%s,%s)
+                ,%s,%s,%s,%s,%s,%s,%s,%s,%s)
             """
             
             values_bagh = (
@@ -1936,7 +1936,8 @@ def sabt_forosh_bagh_zamin_main():
                 mojavez_sakht_forosh_bagh_var.get(),
                 sanad_forosh_bagh_zamin_combo.get(),
                 mohavate_forosh_bagh_var.get(),
-                bargh_keshi_forosh_bagh_var.get()
+                bargh_keshi_forosh_bagh_var.get(),
+                gas_keshi_forosh_bagh_var.get()
             )
             cursor.execute(sql_bagh, values_bagh)
 
@@ -4015,7 +4016,65 @@ def show_details(event):
         options_text_entry.insert("1.0", "\n".join(options))
         options_text_entry.tag_configure("right", justify="right")
         options_text_entry.tag_add("right", "1.0", "end")
+#-------------------------باغ و زمین------------------
+    elif selected_table == "forosh_bagh":
 
+        entry_malek_phone_number.delete(0, tk.END)
+        entry_malek_phone_number.insert(0, data[7])
+
+        metraj_lable_right_entry.delete(0, tk.END)
+        metraj_lable_right_entry.insert(0, data[2])
+
+        options = []
+
+        options.append(f"کاربری : {data[3]}")
+        options.append(f"متراژ درخت : {data[9]}")
+        options.append(f"تعداد درخت : {data[10]}")
+        options.append(f"نوع درخت : {data[11]}")
+        options.append(f"سیستم آبیاری : {data[12]}")
+        options.append(f"چاه : {'دارد' if data[13]=='1' else 'ندارد'}")
+        options.append(f"استخر : {'دارد' if data[14]=='1' else 'ندارد'}")
+        options.append(f"دیوار : {'دارد' if data[15]=='1' else 'ندارد'}")
+        options.append(f"سازه : {'دارد' if data[16]=='1' else 'ندارد'}")
+        options.append(f"متراژ سازه : {data[17]}")
+        options.append(f"سال ساخت : {data[18]}")
+        options.append(f"نوع سازه : {data[19]}")
+        options.append(f"امکانات : {data[20]}")
+        options.append(f"سرویس : {data[21]}")
+        options.append(f"حمام : {data[22]}")
+        options.append(f"مجوز ساخت : {'دارد' if data[23]=='1' else 'ندارد'}")
+        options.append(f"سند : {data[24]}")
+        options.append(f"محوطه : {'دارد' if data[25]=='1' else 'ندارد'}")
+        options.append(f"برق : {'دارد' if data[26]=='1' else 'ندارد'}")
+
+        options_text_entry.delete("1.0", tk.END)
+        options_text_entry.insert("1.0", "\n".join(options))
+        options_text_entry.tag_add("right", "1.0", "end")
+
+    elif selected_table == "forosh_zamin":
+
+        entry_malek_phone_number.delete(0, tk.END)
+        entry_malek_phone_number.insert(0, data[7])
+
+        metraj_lable_right_entry.delete(0, tk.END)
+        metraj_lable_right_entry.insert(0, data[2])
+
+        options = []
+
+        options.append(f"کاربری : {data[3]}")
+        options.append(f"کاربری زمین : {data[9]}")
+        options.append(f"نوع خاک : {data[10]}")
+        options.append(f"منبع آب : {data[11]}")
+        options.append(f"نگهبانی : {'دارد' if data[12]=='1' else 'ندارد'}")
+        options.append(f"برق تک فاز : {'دارد' if data[13]=='1' else 'ندارد'}")
+        options.append(f"برق سه فاز : {'دارد' if data[14]=='1' else 'ندارد'}")
+        options.append(f"انبار : {'دارد' if data[15]=='1' else 'ندارد'}")
+        options.append(f"فنس : {'دارد' if data[16]=='1' else 'ندارد'}")
+        options.append(f"چاه : {'دارد' if data[17]=='1' else 'ندارد'}")
+
+        options_text_entry.delete("1.0", tk.END)
+        options_text_entry.insert("1.0", "\n".join(options))
+        options_text_entry.tag_add("right", "1.0", "end")
 
 
 
@@ -4708,6 +4767,165 @@ def open_edit():
 
         cursor.close()
         db.close()
+#-----------------باغ و زمین-------------------
+    elif selected_table == "forosh_bagh":
+
+        zakhire_forosh_bagh_zamin.place_forget()
+        edit_btn_forosh_bagh_zamin.place(x=300, y=30)
+        delete_btn_forosh_bagh_zamin.place(x=200, y=30)
+
+        root.withdraw()
+        forosh_bagh_zamin_window.deiconify()
+
+        db = get_connection()
+        cursor = db.cursor()
+        cursor.execute("USE state_agency")
+
+        cursor.execute(
+            "SELECT * FROM forosh_bagh WHERE id=%s",
+            (selected_id,)
+        )
+
+        data = cursor.fetchone()
+
+        bagh_type_forosh_bagh_zamin_combo.set("باغ")
+        change_bagh_zamin_forosh_bagh()
+
+        metraj_zamin_forosh_bagh_zamin_entry.delete(0, tk.END)
+        metraj_zamin_forosh_bagh_zamin_entry.insert(0, data[2])
+
+        bagh_loctaion_forosh_bagh_zamin_entry.delete("1.0", tk.END)
+        bagh_loctaion_forosh_bagh_zamin_entry.insert("1.0", data[4])
+
+        gheimat_har_metr_babagh_zamin_forosh_entry.delete(0, tk.END)
+        gheimat_har_metr_babagh_zamin_forosh_entry.insert(0, data[5])
+
+        name_malek_forosh_bagh_entry.delete(0, tk.END)
+        name_malek_forosh_bagh_entry.insert(0, data[6])
+
+        number_malek_forosh_bagh_entry.delete(0, tk.END)
+        number_malek_forosh_bagh_entry.insert(0, data[7])
+
+        gheimat_kol_forosh_bagh_zamin_entry.delete(0, tk.END)
+        gheimat_kol_forosh_bagh_zamin_entry.insert(0, data[8])
+
+        # متراژ و تعداد درخت
+        metraj_derakht_forosh_bagh_zamin_entry.delete(0, tk.END)
+        metraj_derakht_forosh_bagh_zamin_entry.insert(0, data[9])
+
+        tedad_derakht_forosh_bagh_zamin_entry.delete(0, tk.END)
+        tedad_derakht_forosh_bagh_zamin_entry.insert(0, data[10])
+
+        abyari_forosh_bagh_zamin_combo.set(data[12])
+
+        chah_forosh_bagh_var.set(int(data[13]))
+        estakhr_forosh_bagh_var.set(int(data[14]))
+        divar_forosh_bagh_var.set(int(data[15]))
+
+        # فعال شدن قسمت ویلا
+        var0_forosh_bagh_zamin.set(int(data[16]))
+        home_true_false2()
+
+        metraj_vila_forosh_bagh_zamin_entry.delete(0, tk.END)
+        metraj_vila_forosh_bagh_zamin_entry.insert(0, data[17])
+
+        sal_sakht_vila_forosh_bagh_zamin_entry.delete(0, tk.END)
+        sal_sakht_vila_forosh_bagh_zamin_entry.insert(0, data[18])
+
+        type_vila_forosh_bagh_zamin_combo.set(data[19])
+
+        toilet_forosh_bagh_zamin_combo.set(data[21])
+        hamam_forosh_bagh_zamin_combo.set(data[22])
+
+        mojavez_sakht_forosh_bagh_var.set(int(data[23]))
+        sanad_forosh_bagh_zamin_combo.set(data[24])
+        mohavate_forosh_bagh_var.set(int(data[25]))
+        bargh_keshi_forosh_bagh_var.set(int(data[26]))
+        gas_keshi_forosh_bagh_var.set(int(data[27]))
+
+        # ---------- درخت‌ها ----------
+        selected_trees2.clear()
+        label_natige_forosh_bagh_zamin.delete("1.0", tk.END)
+
+        if data[11]:
+            selected_trees2.extend(
+                [x.strip() for x in data[11].split(",") if x.strip()]
+            )
+
+            label_natige_forosh_bagh_zamin.insert(
+                "1.0",
+                ",".join(selected_trees2) + ","
+            )
+
+        # ---------- امکانات ----------
+        selected_option2.clear()
+
+        if data[20]:
+            selected_option2.extend(
+                [x.strip() for x in data[20].split(",") if x.strip()]
+            )
+
+        lable_natige_add_forosh_bagh_zamin.config(
+            text=",".join(selected_option2)
+        )
+
+        cursor.close()
+        db.close()
+    elif selected_table == "forosh_zamin":
+
+        root.withdraw()
+        forosh_bagh_zamin_window.deiconify()
+
+        zakhire_forosh_bagh_zamin.place_forget()
+        edit_btn_forosh_bagh_zamin.place(x=300, y=30)
+        delete_btn_forosh_bagh_zamin.place(x=200, y=30)
+
+        db = get_connection()
+        cursor = db.cursor()
+        cursor.execute("USE state_agency")
+
+        cursor.execute(
+            "SELECT * FROM forosh_zamin WHERE id=%s",
+            (selected_id,)
+        )
+
+        data = cursor.fetchone()
+
+        # انتخاب فرم زمین
+        bagh_type_forosh_bagh_zamin_combo.set("زمین کشاورزی")
+        change_bagh_zamin_forosh_bagh()
+
+
+        metraj_zamin_forosh_bagh_zamin_entry.delete(0, tk.END)
+        metraj_zamin_forosh_bagh_zamin_entry.insert(0, data[2])
+
+        bagh_loctaion_forosh_bagh_zamin_entry.delete("1.0", tk.END)
+        bagh_loctaion_forosh_bagh_zamin_entry.insert("1.0", data[4])
+
+        gheimat_har_metr_babagh_zamin_forosh_entry.delete(0, tk.END)
+        gheimat_har_metr_babagh_zamin_forosh_entry.insert(0, data[5])
+
+        name_malek_forosh_bagh_entry.delete(0, tk.END)
+        name_malek_forosh_bagh_entry.insert(0, data[6])
+
+        number_malek_forosh_bagh_entry.delete(0, tk.END)
+        number_malek_forosh_bagh_entry.insert(0, data[7])
+
+        gheimat_kol_forosh_bagh_zamin_entry.delete(0, tk.END)
+        gheimat_kol_forosh_bagh_zamin_entry.insert(0, data[8])
+        karbari_forosh_bagh_zamin_combo.set(data[9])
+        khak_forosh_bagh_zamin_combo.set(data[10])
+        ab_forosh_bagh_zamin_combo.set(data[11])
+
+        security_zamin_forosh_zamin_var.set(data[12])
+        bargh_kesi_zamin_forosh_zamin_var.set(data[13])
+        bargh_kesi_zamin_forosh_zamin2_var.set(data[14])
+        anbar_zamin_forosh_zamin_var.set(data[15])
+        fans_zamin_forosh_zamin_var.set(data[16])
+        javaz_chah_zamin_forosh_zamin_var.set(data[17])
+
+        cursor.close()
+        db.close()
 #--------------------------------------توابع ویرایش صفحات---------------
 #------------مسکونی------------
 def update_forosh_maskoni():
@@ -5296,6 +5514,136 @@ def update_darkhast_kargah():
     refresh_after_edit()
 
     messagebox.showinfo("موفق", "اطلاعات با موفقیت ویرایش شد.")
+#-----------------------------باغ و زمین----------
+def update_forosh_bagh_zamin():
+
+    db = get_connection()
+    cursor = db.cursor()
+    cursor.execute("USE state_agency")
+
+    if bagh_type_forosh_bagh_zamin_combo.get() == "باغ":
+
+        type_derakht_value = ",".join(selected_trees2) if selected_trees2 else ""
+        tedad_derakht_value = str(len(selected_trees2))
+        emkanat_value = ",".join(selected_option2) if selected_option2 else ""
+
+        sql = """
+        UPDATE forosh_bagh SET
+        type_melk=%s,
+        metraj=%s,
+        karbari=%s,
+        address=%s,
+        mablagh_metri=%s,
+        name_malek=%s,
+        shomareh_malek=%s,
+        gheimat_kol=%s,
+        metraj_derakht=%s,
+        tedad_derakht=%s,
+        type_derakht=%s,
+        system_ab=%s,
+        chah=%s,
+        estakhr=%s,
+        divar=%s,
+        sazeh=%s,
+        metraj_sazeh=%s,
+        sal_sakht=%s,
+        type_sazeh=%s,
+        emkanat=%s,
+        WC=%s,
+        hamam=%s,
+        javaz_sakht=%s,
+        sanad=%s,
+        mohavate=%s,
+        bargh=%s,
+        gaz=%s
+        WHERE id=%s
+        """
+
+        values = (
+            melk_type_forosh_bagh_zamin_entry.get(),
+            metraj_zamin_forosh_bagh_zamin_entry.get(),
+            bagh_type_forosh_bagh_zamin_combo.get(),
+            bagh_loctaion_forosh_bagh_zamin_entry.get("1.0", tk.END),
+            gheimat_har_metr_babagh_zamin_forosh_entry.get(),
+            name_malek_forosh_bagh_entry.get(),
+            number_malek_forosh_bagh_entry.get(),
+            float(gheimat_kol_forosh_bagh_zamin_entry.get()),
+            metraj_derakht_forosh_bagh_zamin_entry.get(),
+            tedad_derakht_value,
+            type_derakht_value,
+            abyari_forosh_bagh_zamin_combo.get(),
+            chah_forosh_bagh_var.get(),
+            estakhr_forosh_bagh_var.get(),
+            divar_forosh_bagh_var.get(),
+            var0_forosh_bagh_zamin.get(),
+            metraj_vila_forosh_bagh_zamin_entry.get(),
+            sal_sakht_vila_forosh_bagh_zamin_entry.get(),
+            type_vila_forosh_bagh_zamin_combo.get(),
+            emkanat_value,
+            toilet_forosh_bagh_zamin_combo.get(),
+            hamam_forosh_bagh_zamin_combo.get(),
+            mojavez_sakht_forosh_bagh_var.get(),
+            sanad_forosh_bagh_zamin_combo.get(),
+            mohavate_forosh_bagh_var.get(),
+            bargh_keshi_forosh_bagh_var.get(),
+            gas_keshi_forosh_bagh_var.get(),
+            selected_id
+        )
+
+    else:
+
+        sql = """
+        UPDATE forosh_zamin SET
+        type_melk=%s,
+        metraj=%s,
+        karbari=%s,
+        address=%s,
+        mablagh_metri=%s,
+        name_malek=%s,
+        shomareh_malek=%s,
+        gheimat_kol=%s,
+        karbari_zamin=%s,
+        type_khak=%s,
+        manba_ab=%s,
+        negahbani=%s,
+        bargh_takfaz=%s,
+        bargh_sefaz=%s,
+        anbar=%s,
+        fans=%s,
+        chah=%s
+        WHERE id=%s
+        """
+
+        values = (
+            melk_type_forosh_bagh_zamin_entry.get(),
+            metraj_zamin_forosh_bagh_zamin_entry.get(),
+            bagh_type_forosh_bagh_zamin_combo.get(),
+            bagh_loctaion_forosh_bagh_zamin_entry.get("1.0", tk.END),
+            gheimat_har_metr_babagh_zamin_forosh_entry.get(),
+            name_malek_forosh_bagh_entry.get(),
+            number_malek_forosh_bagh_entry.get(),
+            float(gheimat_kol_forosh_bagh_zamin_entry.get()),
+            karbari_forosh_bagh_zamin_combo.get(),
+            khak_forosh_bagh_zamin_combo.get(),
+            ab_forosh_bagh_zamin_combo.get(),
+            security_zamin_forosh_zamin_var.get(),
+            bargh_kesi_zamin_forosh_zamin_var.get(),
+            bargh_kesi_zamin_forosh_zamin2_var.get(),
+            anbar_zamin_forosh_zamin_var.get(),
+            fans_zamin_forosh_zamin_var.get(),
+            javaz_chah_zamin_forosh_zamin_var.get(),
+            selected_id
+        )
+
+    cursor.execute(sql, values)
+    db.commit()
+
+    cursor.close()
+    db.close()
+
+    refresh_after_edit()
+
+    messagebox.showinfo("موفق", "اطلاعات با موفقیت ویرایش شد.")
 #endregion
 #-------------------------توابع حذف--------------------------
 #region
@@ -5525,6 +5873,38 @@ def delete_darkhast_kargah():
     refresh_after_edit()
 
     messagebox.showinfo("موفق", "اطلاعات با موفقیت حذف شد.")
+#------------------------حذف-----------------------
+def delete_forosh_bagh_zamin():
+
+    if not messagebox.askyesno("تأیید", "آیا از حذف این فایل مطمئن هستید؟"):
+        return
+
+    db = get_connection()
+    cursor = db.cursor()
+    cursor.execute("USE state_agency")
+
+    if bagh_type_forosh_bagh_zamin_combo.get() == "باغ":
+
+        cursor.execute(
+            "DELETE FROM forosh_bagh WHERE id=%s",
+            (selected_id,)
+        )
+
+    else:
+
+        cursor.execute(
+            "DELETE FROM forosh_zamin WHERE id=%s",
+            (selected_id,)
+        )
+
+    db.commit()
+
+    cursor.close()
+    db.close()
+
+    refresh_after_edit()
+
+    messagebox.showinfo("موفق", "اطلاعات با موفقیت حذف شد.")
 #------------------رفرش----------------
 def refresh_after_edit():
     clear_entry_forosh_maskoni()#پاک کردن صفحات
@@ -5575,6 +5955,10 @@ def refresh_after_edit():
     edit_btn_darkhast_kargah.place_forget()
     delete_btn_darkhast_kargah.place_forget()
     zakhire_darkhast_kargah.place(x=300,y=30)
+    #----------------باغ زمین-------------
+    zakhire_forosh_bagh_zamin.place(x=300,y=30)
+    edit_btn_forosh_bagh_zamin.place_forget()
+    delete_btn_forosh_bagh_zamin.place_forget()
 
 
 
@@ -5609,6 +5993,9 @@ def refresh_after_edit():
     forosh_karghah_window.withdraw()
     ejareh_karghah_window.withdraw()
     darkhast_karghah_window.withdraw()
+    forosh_bagh_zamin_window.withdraw()
+    ejareh_bagh_zamin_window.withdraw()
+    darkhast_bagh_zamin_window.withdraw()
     root.deiconify()
 #endregion
 #---#----#----#----#----#----------  گرافیک   ----------#----#----#----#-----#-----------
@@ -7583,9 +7970,6 @@ mohavate_forosh_bagh_var=tk.IntVar(value=0)
 mohavate_sazi_check_btn_forosh_bagh_zamin=tk.Checkbutton(frame_down_forosh_bagh,variable=mohavate_forosh_bagh_var,text="محوطه سازی",background="#052340",fg="#00BFFF",font=("Shabnam",9),state="disabled")
 mohavate_sazi_check_btn_forosh_bagh_zamin.place(x=120, y=95)
 #-------------------------تعویض کاربری به زمین در قسمت فروش باغ/زمین-------------
-
-
-
 karbari_forosh_bagh_zamin_lable=tk.Label(frame_down_forosh_zamin,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="نوع کاربری")
 karbari_forosh_bagh_zamin_lable.place(x=1000,y=20)
 
@@ -7641,10 +8025,16 @@ mojavez_chah_zamin_forosh_bagh_zamin=tk.Checkbutton(frame_down_forosh_zamin,vari
 mojavez_chah_zamin_forosh_bagh_zamin.place(x=300,y=60)
 
 back_to_home_forosh_bagh_zamin=tk.Button(forosh_bagh_zamin_window,text="بازگشت",bg="#052340",fg="#ffffff",width=10,height=1,command=back_home_forosh_bagh_zamin)
-back_to_home_forosh_bagh_zamin.place(x=300,y=30)
+back_to_home_forosh_bagh_zamin.place(x=400,y=30)
 
 zakhire_forosh_bagh_zamin=tk.Button(forosh_bagh_zamin_window,text="ذخیره",bg="#00BFFF", fg="#ffffff",width=10,height=1,command=sabt_forosh_bagh_zamin_main)
-zakhire_forosh_bagh_zamin.place(x=200,y=30)
+zakhire_forosh_bagh_zamin.place(x=300,y=30)
+
+delete_btn_forosh_bagh_zamin=tk.Button(forosh_bagh_zamin_window,text="حذف",command=delete_forosh_bagh_zamin,bg="#8B0000",fg="#ffffff",height=1,width=10 )
+delete_btn_forosh_bagh_zamin.place_forget()
+
+edit_btn_forosh_bagh_zamin=tk.Button(forosh_bagh_zamin_window,text="ثبت ویرایش",command=update_forosh_bagh_zamin,bg="#00BFFF", fg="#ffffff",width=10,height=1,)
+edit_btn_forosh_bagh_zamin.place_forget()
 
 forosh_bagh_zamin_window.protocol("WM_DELETE_WINDOW", lambda: None)
 forosh_bagh_zamin_window.resizable(False, False)
