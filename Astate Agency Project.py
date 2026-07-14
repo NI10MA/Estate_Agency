@@ -1320,7 +1320,7 @@ def add_tree():# برای اضافه کردن درخت به صورت دستی
     if t and t not in selected_trees:
         selected_trees.append(t)
         label_result_add.config(state="normal")
-        label_result_add.insert(tk.END,t3+",")
+        label_result_add.insert(tk.END,t+",")
         #label_result_add.config(state="disabled")
 selected_option=[]
 def add_option():
@@ -2338,7 +2338,7 @@ def sabt_ejareh_bagh_zamin():
                 javaz_sakht VARCHAR(10),
                 sanad VARCHAR(20),
                 mohavate VARCHAR(10),
-                gaz VARCHAR(10)
+                gaz VARCHAR(10),
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         """)
@@ -2383,7 +2383,7 @@ def sabt_ejareh_bagh_zamin():
                 sanad_bagh_combo.get(),
                 mohavate_ejareh_bagh_var.get(),
                 bargh_bagh_var.get(),
-                gaz_bagh.get()
+                gaz_bagh_var.get()
             )
             cursor.execute(sql_bagh, values_bagh)
             last_id = cursor.lastrowid
@@ -3538,13 +3538,13 @@ def search():
                 """, (f"%{address_entry.get().strip()}%",))
             elif melk == "زمین":
                     cursor.execute("""
-                    SELECT id,"ejareh_zamin",address, gheimat_kol, type_melk, name_malek ,'اجاره' AS noe_file
+                    SELECT id,"ejareh_zamin",address,mablagh_pish, type_melk, name_malek ,'اجاره' AS noe_file
                     FROM ejareh_zamin
                     WHERE address LIKE %s
                 """, (f"%{address_entry.get().strip()}%",))
             elif melk == "باغ":
                     cursor.execute("""
-                    SELECT id,"ejareh_bagh",address, gheimat_kol, type_melk, name_malek ,'اجاره' AS noe_file
+                    SELECT id,"ejareh_bagh",address,mablagh_pish, type_melk, name_malek ,'اجاره' AS noe_file
                     FROM ejareh_bagh
                     WHERE address LIKE %s
                 """, (f"%{address_entry.get().strip()}%",))
@@ -4046,6 +4046,7 @@ def show_details(event):
         options.append(f"سند : {data[24]}")
         options.append(f"محوطه : {'دارد' if data[25]=='1' else 'ندارد'}")
         options.append(f"برق : {'دارد' if data[26]=='1' else 'ندارد'}")
+        options.append(f"گاز : {'دارد' if data[27]=='1' else 'ندارد'}")
 
         options_text_entry.delete("1.0", tk.END)
         options_text_entry.insert("1.0", "\n".join(options))
@@ -4071,6 +4072,72 @@ def show_details(event):
         options.append(f"انبار : {'دارد' if data[15]=='1' else 'ندارد'}")
         options.append(f"فنس : {'دارد' if data[16]=='1' else 'ندارد'}")
         options.append(f"چاه : {'دارد' if data[17]=='1' else 'ندارد'}")
+
+        options_text_entry.delete("1.0", tk.END)
+        options_text_entry.insert("1.0", "\n".join(options))
+        options_text_entry.tag_add("right", "1.0", "end")
+    elif selected_table == "ejareh_bagh":
+
+        entry_malek_phone_number.delete(0, tk.END)
+        entry_malek_phone_number.insert(0, data[9])
+
+        metraj_lable_right_entry.delete(0, tk.END)
+        metraj_lable_right_entry.insert(0, data[2])
+
+        options = []
+
+        options.append(f"کاربری : {data[3]}")
+        options.append(f"مبلغ پیش : {data[5]}")
+        options.append(f"اجاره ماهانه : {data[6]}")
+        options.append(f"مدت اجاره : {data[7]}")
+        options.append(f"متراژ درخت : {data[10]}")
+        options.append(f"تعداد درخت : {data[11]}")
+        options.append(f"نوع درخت : {data[12]}")
+        options.append(f"سیستم آبیاری : {data[13]}")
+        options.append(f"چاه : {'دارد' if data[14]=='1' else 'ندارد'}")
+        options.append(f"استخر : {'دارد' if data[15]=='1' else 'ندارد'}")
+        options.append(f"دیوار : {'دارد' if data[16]=='1' else 'ندارد'}")
+        options.append(f"برق : {'دارد' if data[17]=='1' else 'ندارد'}")
+        options.append(f"سازه : {'دارد' if data[18]=='1' else 'ندارد'}")
+        options.append(f"متراژ سازه : {data[19]}")
+        options.append(f"سال ساخت : {data[20]}")
+        options.append(f"نوع سازه : {data[21]}")
+        options.append(f"امکانات : {data[22]}")
+        options.append(f"سرویس : {data[23]}")
+        options.append(f"حمام : {data[24]}")
+        options.append(f"مجوز ساخت : {'دارد' if data[25]=='1' else 'ندارد'}")
+        options.append(f"سند : {data[26]}")
+        options.append(f"محوطه : {'دارد' if data[27]=='1' else 'ندارد'}")
+        options.append(f"گاز : {'دارد' if data[28]=='1' else 'ندارد'}")
+
+        options_text_entry.delete("1.0", tk.END)
+        options_text_entry.insert("1.0", "\n".join(options))
+        options_text_entry.tag_add("right", "1.0", "end")
+
+
+    elif selected_table == "ejareh_zamin":
+
+        entry_malek_phone_number.delete(0, tk.END)
+        entry_malek_phone_number.insert(0, data[9])
+
+        metraj_lable_right_entry.delete(0, tk.END)
+        metraj_lable_right_entry.insert(0, data[2])
+
+        options = []
+
+        options.append(f"کاربری : {data[3]}")
+        options.append(f"مبلغ پیش : {data[5]}")
+        options.append(f"اجاره متری : {data[6]}")
+        options.append(f"مدت اجاره : {data[7]}")
+        options.append(f"کاربری زمین : {data[10]}")
+        options.append(f"نوع خاک : {data[11]}")
+        options.append(f"منبع آب : {data[12]}")
+        options.append(f"نگهبانی : {'دارد' if data[13]=='1' else 'ندارد'}")
+        options.append(f"برق تک فاز : {'دارد' if data[14]=='1' else 'ندارد'}")
+        options.append(f"برق سه فاز : {'دارد' if data[15]=='1' else 'ندارد'}")
+        options.append(f"انبار : {'دارد' if data[16]=='1' else 'ندارد'}")
+        options.append(f"فنس : {'دارد' if data[17]=='1' else 'ندارد'}")
+        options.append(f"چاه : {'دارد' if data[18]=='1' else 'ندارد'}")
 
         options_text_entry.delete("1.0", tk.END)
         options_text_entry.insert("1.0", "\n".join(options))
@@ -4926,6 +4993,166 @@ def open_edit():
 
         cursor.close()
         db.close()
+    elif selected_table == "ejareh_bagh":
+
+        zakhire_ejareh_bagh_zamin.place_forget()
+        edit_btn_ejareh_bagh_zamin.place(x=300, y=30)
+        delete_btn_ejareh_bagh_zamin.place(x=200, y=30)
+
+        root.withdraw()
+        ejareh_bagh_zamin_window.deiconify()
+
+        db = get_connection()
+        cursor = db.cursor()
+        cursor.execute("USE state_agency")
+
+        cursor.execute(
+            "SELECT * FROM ejareh_bagh WHERE id=%s",
+            (selected_id,)
+        )
+
+        data = cursor.fetchone()
+
+        bagh_type_combo.set("باغ")
+        change_bagh_zamin1(None)
+
+        metraj_zamin_ejareh_bagh_zamin_entry.delete(0, tk.END)
+        metraj_zamin_ejareh_bagh_zamin_entry.insert(0, data[2])
+
+        bagh_loctaion_entry.delete("1.0", tk.END)
+        bagh_loctaion_entry.insert("1.0", data[4])
+
+        bagh_gheimat_ejareh_bagh_zamin_entry.delete(0, tk.END)
+        bagh_gheimat_ejareh_bagh_zamin_entry.insert(0, data[5])
+
+        bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.delete(0, tk.END)
+        bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.insert(0, data[6])
+
+        bagh_time_combo.set(data[7])
+
+        name_malek_bagh_zamin_entry.delete(0, tk.END)
+        name_malek_bagh_zamin_entry.insert(0, data[8])
+
+        number_malek_bagh_zamin_entry.delete(0, tk.END)
+        number_malek_bagh_zamin_entry.insert(0, data[9])
+
+        metraj_tree_entry.delete(0, tk.END)
+        metraj_tree_entry.insert(0, data[10])
+
+        tree_count_entry.delete(0, tk.END)
+        tree_count_entry.insert(0, data[11])
+
+        abyari_combo.set(data[13])
+
+        chah_bagh_ejareh_var.set(int(data[14]))
+        estakhr_bagh_var.set(int(data[15]))
+        divar_ejareh_bagh_var.set(int(data[16]))
+        bargh_bagh_var.set(int(data[17]))
+
+        var0.set(int(data[18]))
+        home_true_false1()
+
+        metraj_vila_bagh_entry.delete(0, tk.END)
+        metraj_vila_bagh_entry.insert(0, data[19])
+
+        sal_sakht_vila_bagh_entry.delete(0, tk.END)
+        sal_sakht_vila_bagh_entry.insert(0, data[20])
+
+        type_vila_ejareh_bagh_zamin_combo.set(data[21])
+
+        toilet_bagh_combo.set(data[23])
+        hamam_bagh_combo.set(data[24])
+
+        mojavez_sakht_ejareh_bagh_var.set(int(data[25]))
+        sanad_bagh_combo.set(data[26])
+        mohavate_ejareh_bagh_var.set(int(data[27]))
+        gaz_bagh_var.set(int(data[28]))
+
+        # ---------- درخت ها ----------
+        selected_trees.clear()
+        label_result_add.delete("1.0", tk.END)
+
+        if data[12]:
+            selected_trees.extend(
+                [x.strip() for x in data[12].split(",") if x.strip()]
+            )
+
+            label_result_add.insert(
+                "1.0",
+                ",".join(selected_trees) + ","
+            )
+
+        # ---------- امکانات ----------
+        selected_option.clear()
+
+        if data[22]:
+            selected_option.extend(
+                [x.strip() for x in data[22].split(",") if x.strip()]
+            )
+
+        label_result2_add.config(
+            text=",".join(selected_option)
+        )
+
+        cursor.close()
+        db.close()
+    elif selected_table == "ejareh_zamin":
+
+        zakhire_ejareh_bagh_zamin.place_forget()
+        edit_btn_ejareh_bagh_zamin.place(x=300, y=30)
+        delete_btn_ejareh_bagh_zamin.place(x=200, y=30)
+
+        root.withdraw()
+        ejareh_bagh_zamin_window.deiconify()
+
+        db = get_connection()
+        cursor = db.cursor()
+        cursor.execute("USE state_agency")
+
+        cursor.execute(
+            "SELECT * FROM ejareh_zamin WHERE id=%s",
+            (selected_id,)
+        )
+
+        data = cursor.fetchone()
+
+        # نمایش فرم زمین
+        bagh_type_combo.set("زمین کشاورزی")
+        change_bagh_zamin1(None)
+
+        metraj_zamin_ejareh_bagh_zamin_entry.delete(0, tk.END)
+        metraj_zamin_ejareh_bagh_zamin_entry.insert(0, data[2])
+
+        bagh_loctaion_entry.delete("1.0", tk.END)
+        bagh_loctaion_entry.insert("1.0", data[4])
+
+        bagh_gheimat_ejareh_bagh_zamin_entry.delete(0, tk.END)
+        bagh_gheimat_ejareh_bagh_zamin_entry.insert(0, data[5])
+
+        bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.delete(0, tk.END)
+        bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.insert(0, data[6])
+
+        bagh_time_combo.set(data[7])
+
+        name_malek_bagh_zamin_entry.delete(0, tk.END)
+        name_malek_bagh_zamin_entry.insert(0, data[8])
+
+        number_malek_bagh_zamin_entry.delete(0, tk.END)
+        number_malek_bagh_zamin_entry.insert(0, data[9])
+
+        karbari_ejareh_ejareh_bagh_zamin_combo.set(data[10])
+        khak_ejareh_ejareh_bagh_zamin_combo.set(data[11])
+        ab_ejareh_ejareh_bagh_zamin_combo.set(data[12])
+
+        security_zamin_ejareh_var.set(int(data[13]))
+        bargh_tak_ejareh_zamin_var.set(int(data[14]))
+        bargh_se_faz_ejareh_zamin_var.set(int(data[15]))
+        anbar_ejareh_zamin_var.set(int(data[16]))
+        fans_ejareh_zamin_var.set(int(data[17]))
+        mojavaz_chah_ejareh_zamin_var.set(int(data[18]))
+
+        cursor.close()
+        db.close()
 #--------------------------------------توابع ویرایش صفحات---------------
 #------------مسکونی------------
 def update_forosh_maskoni():
@@ -5644,6 +5871,139 @@ def update_forosh_bagh_zamin():
     refresh_after_edit()
 
     messagebox.showinfo("موفق", "اطلاعات با موفقیت ویرایش شد.")
+def update_ejareh_bagh_zamin():
+
+    db = get_connection()
+    cursor = db.cursor()
+    cursor.execute("USE state_agency")
+
+    if bagh_type_combo.get() == "باغ":
+
+        type_derakht_value = ",".join(selected_trees) if selected_trees else ""
+        tedad_derakht_value = str(len(selected_trees))
+        emkanat_value = ",".join(selected_option) if selected_option else ""
+
+        sql = """
+        UPDATE ejareh_bagh SET
+        type_melk=%s,
+        metraj=%s,
+        karbari=%s,
+        address=%s,
+        mablagh_pish=%s,
+        mablagh_ejareh=%s,
+        zaman_ejareh=%s,
+        name_malek=%s,
+        shomareh_malek=%s,
+        metraj_derakht=%s,
+        tedad_derakht=%s,
+        type_derakht=%s,
+        system_ab=%s,
+        chah=%s,
+        estakhr=%s,
+        divar=%s,
+        bargh=%s,
+        sazeh=%s,
+        metraj_sazeh=%s,
+        sal_sakht=%s,
+        type_sazeh=%s,
+        emkanat=%s,
+        WC=%s,
+        hamam=%s,
+        javaz_sakht=%s,
+        sanad=%s,
+        mohavate=%s,
+        gaz=%s
+        WHERE id=%s
+        """
+
+        values = (
+            melk_type_ejareh_bagh_zamin_entry.get(),
+            metraj_zamin_ejareh_bagh_zamin_entry.get(),
+            bagh_type_combo.get(),
+            bagh_loctaion_entry.get("1.0", tk.END),
+            bagh_gheimat_ejareh_bagh_zamin_entry.get(),
+            float(bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.get()),
+            bagh_time_combo.get(),
+            name_malek_bagh_zamin_entry.get(),
+            number_malek_bagh_zamin_entry.get(),
+            metraj_tree_entry.get(),
+            tedad_derakht_value,
+            type_derakht_value,
+            abyari_combo.get(),
+            chah_bagh_ejareh_var.get(),
+            estakhr_bagh_var.get(),
+            divar_ejareh_bagh_var.get(),
+            bargh_bagh_var.get(),
+            var0.get(),
+            metraj_vila_bagh_entry.get(),
+            sal_sakht_vila_bagh_entry.get(),
+            type_vila_ejareh_bagh_zamin_combo.get(),
+            emkanat_value,
+            toilet_bagh_combo.get(),
+            hamam_bagh_combo.get(),
+            mojavez_sakht_ejareh_bagh_var.get(),
+            sanad_bagh_combo.get(),
+            mohavate_ejareh_bagh_var.get(),
+            gaz_bagh_var.get(),
+            selected_id
+        )
+
+    else:
+
+        sql = """
+        UPDATE ejareh_zamin SET
+        type_melk=%s,
+        metraj=%s,
+        karbari=%s,
+        address=%s,
+        mablagh_pish=%s,
+        mablagh_metri=%s,
+        zaman_ejareh=%s,
+        name_malek=%s,
+        shomareh_malek=%s,
+        karbari_zamin=%s,
+        type_khak=%s,
+        manba_ab=%s,
+        negahbani=%s,
+        bargh_takfaz=%s,
+        bargh_sefaz=%s,
+        anbar=%s,
+        fans=%s,
+        chah=%s
+        WHERE id=%s
+        """
+
+        values = (
+            melk_type_ejareh_bagh_zamin_entry.get(),
+            metraj_zamin_ejareh_bagh_zamin_entry.get(),
+            bagh_type_combo.get(),
+            bagh_loctaion_entry.get("1.0", tk.END),
+            bagh_gheimat_ejareh_bagh_zamin_entry.get(),
+            float(bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.get()),
+            bagh_time_combo.get(),
+            name_malek_bagh_zamin_entry.get(),
+            number_malek_bagh_zamin_entry.get(),
+            karbari_ejareh_ejareh_bagh_zamin_combo.get(),
+            khak_ejareh_ejareh_bagh_zamin_combo.get(),
+            ab_ejareh_ejareh_bagh_zamin_combo.get(),
+            security_zamin_ejareh_var.get(),
+            bargh_tak_ejareh_zamin_var.get(),
+            bargh_se_faz_ejareh_zamin_var.get(),
+            anbar_ejareh_zamin_var.get(),
+            fans_ejareh_zamin_var.get(),
+            mojavaz_chah_ejareh_zamin_var.get(),
+            selected_id
+        )
+
+    cursor.execute(sql, values)
+    db.commit()
+
+    cursor.close()
+    db.close()
+
+    refresh_after_edit()
+
+    messagebox.showinfo("موفق", "اطلاعات با موفقیت ویرایش شد.")
 #endregion
 #-------------------------توابع حذف--------------------------
 #region
@@ -5905,6 +6265,35 @@ def delete_forosh_bagh_zamin():
     refresh_after_edit()
 
     messagebox.showinfo("موفق", "اطلاعات با موفقیت حذف شد.")
+def delete_ejareh_bagh_zamin():
+
+    if not messagebox.askyesno("تأیید", "آیا از حذف این فایل مطمئن هستید؟"):
+        return
+
+    db = get_connection()
+    cursor = db.cursor()
+    cursor.execute("USE state_agency")
+
+    if bagh_type_combo.get() == "باغ":
+
+        cursor.execute(
+            "DELETE FROM ejareh_bagh WHERE id=%s",
+            (selected_id,)
+        )
+
+    else:
+
+        cursor.execute(
+            "DELETE FROM ejareh_zamin WHERE id=%s",
+            (selected_id,)
+        )
+
+    db.commit()
+
+    cursor.close()
+    db.close()
+
+    refresh_after_edit()
 #------------------رفرش----------------
 def refresh_after_edit():
     clear_entry_forosh_maskoni()#پاک کردن صفحات
@@ -5959,6 +6348,10 @@ def refresh_after_edit():
     zakhire_forosh_bagh_zamin.place(x=300,y=30)
     edit_btn_forosh_bagh_zamin.place_forget()
     delete_btn_forosh_bagh_zamin.place_forget()
+
+    zakhire_ejareh_bagh_zamin.place(x=300,y=30)
+    edit_btn_ejareh_bagh_zamin.place_forget()
+    delete_btn_ejareh_bagh_zamin.place_forget()
 
 
 
@@ -7083,10 +7476,16 @@ mojavaz_chah_zamin_ejareh_bagh_zamin.place(x=300, y=60)
 
 
 back_to_home_ejareh_bagh_zamin=tk.Button(ejareh_bagh_zamin_window,text="بازگشت",bg="#052340",fg="#ffffff",width=10,height=1,command=back_home_ejareh_bagh_zamin)
-back_to_home_ejareh_bagh_zamin.place(x=300,y=30)
+back_to_home_ejareh_bagh_zamin.place(x=400,y=30)
 
 zakhire_ejareh_bagh_zamin=tk.Button(ejareh_bagh_zamin_window,text="ذخیره",bg="#00BFFF",fg="#ffffff",width=10,height=1,command=sabt_ejareh_bagh_zamin)
-zakhire_ejareh_bagh_zamin.place(x=200,y=30)
+zakhire_ejareh_bagh_zamin.place(x=300,y=30)
+
+delete_btn_ejareh_bagh_zamin=tk.Button(ejareh_bagh_zamin_window,text="حذف",command=delete_ejareh_bagh_zamin,bg="#8B0000",fg="#ffffff",height=1,width=10 )
+delete_btn_ejareh_bagh_zamin.place_forget()
+
+edit_btn_ejareh_bagh_zamin=tk.Button(ejareh_bagh_zamin_window,text="ثبت ویرایش",command=update_ejareh_bagh_zamin,bg="#00BFFF", fg="#ffffff",width=10,height=1,)
+edit_btn_ejareh_bagh_zamin.place_forget()
 
 ejareh_bagh_zamin_window.protocol("WM_DELETE_WINDOW", lambda: None)
 ejareh_bagh_zamin_window.resizable(False, False)
