@@ -649,6 +649,7 @@ def back_home_ejareh_bagh_zamin():
     frame_down_ejareh_zamin.place_forget()
     frame_down_ejareh_bagh.place(x=10,y=555)
     clear_entry_ejareh_bagh_zamin()
+    refresh_after_edit()
     ejareh_bagh_zamin_window.withdraw()
     root.deiconify()
     delete_root()
@@ -707,6 +708,7 @@ def back_home_forosh_bagh_zamin():
     bagh_type_forosh_bagh_zamin_combo.set("باغ")
     frame_down_forosh_zamin.place_forget()
     frame_down_forosh_bagh.place(x=10,y=555)
+    refresh_after_edit()
     clear_entry_forosh_bagh_zamin()
     forosh_bagh_zamin_window.withdraw()
     root.deiconify()    
@@ -881,20 +883,13 @@ def clear_entry_darkhast_edari_tejari():
     anbari_check_btn_darkhast_edari_tejari.deselect()
 #-----------------------------برگشت از صفحه درخواست باغ / زمین------------------
 def back_home_darkhast_bagh():
-    melk_type_darkhast_bagh_zamin_entry.set("درخواست خرید باغ و زمین")
+    melk_type_darkhast_bagh_zamin_entry.set("درخواست خرید باغ  زمین")
     karbari_darkhast_bagh_zamin_combo.set("باغ")
-    gheimat_har_matr_bagh_zamin_darkhast_lable.place(x=490, y=65, anchor="e")
-    gheimat_har_metr_bagh_zamin_darkhast_entry.place(x=28, y=55, width=350, height=25)
-    gheimat_kol_bagh_zamin_darkhast_lable.place(x=490, y=20, anchor="e")
-    gheimat_kol_bagh_zamin_darkhast_entry.place(x=28, y=13, width=350, height=25)
-    time_ejareh_bagh_darkhast_zamin_lable.place_forget()
-    mablagh_ejareh_mahaneh_darkhast_lable.place_forget()
-    mablagh_ejareh_mahaneh_darkhast_entry.place_forget()
-    gheimat_ejareh_bagh_darkhast_zamin_lable.place_forget()#ودیعه
-    gheimat_ejareh_bagh_darkhast_zamin_entry.place_forget()#
+    change_bagh_zamin_darkhast2()
     frame_down_darkhast_bagh.place(x=10,y=555)
     frame_down_darkhast_zamin.place_forget()
     clear_entry_darkhast_bagh_zamin()
+    refresh_after_edit()
     darkhast_bagh_zamin_window.withdraw()
     root.deiconify()  
     delete_root()
@@ -1310,6 +1305,41 @@ def change_bagh_zamin_darkhast_bagh(event=None):
     else:
         frame_down_darkhast_bagh.place_forget()
         frame_down_darkhast_zamin.place(x=10,y=555)
+def change_bagh_zamin_darkhast2(event=None):
+        change_type=melk_type_darkhast_bagh_zamin_entry.get()
+        karbari = bagh_type_darkhast_bagh_zamin_combo.get()
+        gheimat_str =gheimat_har_metr_bagh_zamin_darkhast_entry.get()
+        if not gheimat_str or gheimat_str == "":
+            gheimat_str = "0"
+        gheimat_value = float(gheimat_str)
+        gheimat_har_matr_bagh_zamin_darkhast_lable.place_forget()
+        gheimat_har_metr_bagh_zamin_darkhast_entry.place_forget()
+        gheimat_kol_bagh_zamin_darkhast_lable.place_forget()
+        gheimat_kol_bagh_zamin_darkhast_entry.place_forget()
+        time_ejareh_bagh_darkhast_zamin_lable.place_forget()
+        bagh_time_darkhast_combo.place_forget()
+        mablagh_ejareh_mahaneh_darkhast_lable.place_forget()
+        mablagh_ejareh_mahaneh_darkhast_entry.place_forget()
+        gheimat_ejareh_bagh_darkhast_zamin_lable.place_forget()#ودیعه
+        gheimat_ejareh_bagh_darkhast_zamin_entry.place_forget()#ودیعه
+        gheimat_har_matr_bagh_zamin_darkhast_lable.place_forget()
+        gheimat_har_metr_bagh_zamin_darkhast_entry.place_forget()
+        gheimat_kol_bagh_zamin_darkhast_lable.place_forget()#قیمت کل
+        gheimat_kol_bagh_zamin_darkhast_entry.place_forget()#قیمت کل
+        time_ejareh_bagh_darkhast_zamin_lable.place_forget()
+        bagh_time_darkhast_combo.place_forget()   
+        if change_type=="درخواست خرید باغ زمین":
+            gheimat_har_matr_bagh_zamin_darkhast_lable.place(x=490, y=65, anchor="e")
+            gheimat_har_metr_bagh_zamin_darkhast_entry.place(x=28, y=55, width=350, height=25)
+            gheimat_kol_bagh_zamin_darkhast_lable.place(x=490, y=20, anchor="e")
+            gheimat_kol_bagh_zamin_darkhast_entry.place(x=28, y=13, width=350, height=25)
+        elif change_type=="درخواست اجاره باغ زمین":
+           mablagh_ejareh_mahaneh_darkhast_lable.place(x=490, y=65,anchor="e")
+           mablagh_ejareh_mahaneh_darkhast_entry.place(x=28, y=55, width=350, height=25)
+           gheimat_ejareh_bagh_darkhast_zamin_lable.place(x=490, y=20, anchor="e")#ودیعه
+           gheimat_ejareh_bagh_darkhast_zamin_entry.place(x=28, y=13, width=350, height=25)#ودیعه
+           time_ejareh_bagh_darkhast_zamin_lable.place(x=490, y=160, anchor="e")
+           bagh_time_darkhast_combo.place(x=28, y=150, width=350, height=25)
 #endregion
 #=============================================================  
 #region
@@ -1895,7 +1925,7 @@ def sabt_forosh_bagh_zamin_main():
             )
         """) 
             type_derakht_value = ",".join(selected_trees2) if selected_trees2 else ""
-            tedad_derakht_value = str(len(selected_trees2)) if selected_trees2 else "0"
+            tedad_derakht_value = tedad_derakht_forosh_bagh_zamin_entry.get()
             emkanat_value = ",".join(selected_option2) if selected_option2 else ""
             
             sql_bagh = """
@@ -2305,7 +2335,7 @@ def sabt_ejareh_bagh_zamin():
         # ========== ساخت جدول اصلی ==========
         if karbari == "باغ":  
             type_derakht_value = ",".join(selected_trees) if selected_trees else ""
-            tedad_derakht_value = str(len(selected_trees)) if selected_trees else "0"
+            tedad_derakht_value = tree_count_entry.get()
             emkanat_value = ",".join(selected_option) if selected_option else ""
 
             cursor.execute("""
@@ -2898,134 +2928,135 @@ skip_save=False
 def sabt_darkhast_bagh_zamin(event=None):
     global skip_save
     db = None
-    
+    change_type=melk_type_darkhast_bagh_zamin_entry.get()
+    karbari = bagh_type_darkhast_bagh_zamin_combo.get()
+    gheimat_str =gheimat_har_metr_bagh_zamin_darkhast_entry.get()
+    if not gheimat_str or gheimat_str == "":
+            gheimat_str = "0"
     try:
         db = get_connection()
         cursor = db.cursor()
         cursor.execute("CREATE DATABASE IF NOT EXISTS state_agency")
         cursor.execute("USE state_agency")
-        change_type=melk_type_darkhast_bagh_zamin_entry.get()
-        karbari = bagh_type_darkhast_bagh_zamin_combo.get()
-        gheimat_str =gheimat_har_metr_bagh_zamin_darkhast_entry.get()
-        if not gheimat_str or gheimat_str == "":
-            gheimat_str = "0"
-        gheimat_value = float(gheimat_str)
-        gheimat_har_matr_bagh_zamin_darkhast_lable.place_forget()
-        gheimat_har_metr_bagh_zamin_darkhast_entry.place_forget()
-        gheimat_kol_bagh_zamin_darkhast_lable.place_forget()
-        gheimat_kol_bagh_zamin_darkhast_entry.place_forget()
-        time_ejareh_bagh_darkhast_zamin_lable.place_forget()
-        bagh_time_darkhast_combo.place_forget()
-        mablagh_ejareh_mahaneh_darkhast_lable.place_forget()
-        mablagh_ejareh_mahaneh_darkhast_entry.place_forget()
-        gheimat_ejareh_bagh_darkhast_zamin_lable.place_forget()#ودیعه
-        gheimat_ejareh_bagh_darkhast_zamin_entry.place_forget()#ودیعه
-        gheimat_har_matr_bagh_zamin_darkhast_lable.place_forget()
-        gheimat_har_metr_bagh_zamin_darkhast_entry.place_forget()
-        gheimat_kol_bagh_zamin_darkhast_lable.place_forget()#قیمت کل
-        gheimat_kol_bagh_zamin_darkhast_entry.place_forget()#قیمت کل
-        time_ejareh_bagh_darkhast_zamin_lable.place_forget()
-        bagh_time_darkhast_combo.place_forget()   
-        if change_type=="درخواست خرید باغ زمین":
-            gheimat_har_matr_bagh_zamin_darkhast_lable.place(x=490, y=65, anchor="e")
-            gheimat_har_metr_bagh_zamin_darkhast_entry.place(x=28, y=55, width=350, height=25)
-            gheimat_kol_bagh_zamin_darkhast_lable.place(x=490, y=20, anchor="e")
-            gheimat_kol_bagh_zamin_darkhast_entry.place(x=28, y=13, width=350, height=25)
-        elif change_type=="درخواست اجاره باغ زمین":
-           mablagh_ejareh_mahaneh_darkhast_lable.place(x=490, y=65,anchor="e")
-           mablagh_ejareh_mahaneh_darkhast_entry.place(x=28, y=55, width=350, height=25)
-           gheimat_ejareh_bagh_darkhast_zamin_lable.place(x=490, y=20, anchor="e")#ودیعه
-           gheimat_ejareh_bagh_darkhast_zamin_entry.place(x=28, y=13, width=350, height=25)#ودیعه
-           time_ejareh_bagh_darkhast_zamin_lable.place(x=490, y=160, anchor="e")
-           bagh_time_darkhast_combo.place(x=28, y=150, width=350, height=25)
+
         if event is not None:#خیلی مهم 
            return
-        
-
         if change_type=="درخواست خرید باغ زمین":
-            if karbari=="باغ":
+            if karbari == "باغ":
+
+                type_derakht_value = ",".join(selected_trees3) if selected_trees3 else ""
+                tedad_derakht_value = tedad_derakht_darkhast_bagh_zamin_entry.get()
+                emkanat_value = ",".join(selected_option3) if selected_option3 else ""
+
                 cursor.execute("""
                 CREATE TABLE IF NOT EXISTS darkhast_kharid_bagh(
-                id INT AUTO_INCREMENT PRIMARY KEY,
-                type_melk VARCHAR(50) NOT NULL,
-                metraj VARCHAR(20),
-                karbari VARCHAR(20),
-                address VARCHAR(255),
-                mablagh_metri DECIMAL(15,2),
-                gheimat_kol VARCHAR(30),
-                name_malek VARCHAR(50),
-                shomareh_malek VARCHAR(11),
-                metraj_derakht VARCHAR(10),
-                tedad_derakht VARCHAR(10),
-                type_derakht TEXT,
-                system_ab VARCHAR(25),
-                chah VARCHAR(10),
-                estakhr VARCHAR(10),
-                divar VARCHAR(10),
-                sazeh VARCHAR(10),
-                metraj_sazeh VARCHAR(10),
-                sal_sakht VARCHAR(10),
-                type_sazeh VARCHAR(20),
-                emkanat TEXT,
-                WC VARCHAR(10),
-                hamam VARCHAR(10),
-                javaz_sakht VARCHAR(10),
-                sanad VARCHAR(20),
-                mohavate VARCHAR(10),
-                bargh VARCHAR (10),
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-                 )
-               """) 
-                type_derakht_value = ",".join(selected_trees3) if selected_trees3 else ""
-                tedad_derakht_value = str(len(selected_trees3)) if selected_trees3 else "0"
-                emkanat_value = ",".join(selected_option3) if selected_option3 else ""
-            
-                sql_bagh = """
+                    id INT AUTO_INCREMENT PRIMARY KEY,
+                    type_melk VARCHAR(50),
+                    metraj VARCHAR(20),
+                    karbari VARCHAR(20),
+                    address VARCHAR(255),
+                    mablagh_metri VARCHAR(20),
+                    gheimat_kol VARCHAR(20),
+                    name_moshtari VARCHAR(50),
+                    shomareh_moshtari VARCHAR(20),
+                    metraj_derakht VARCHAR(10),
+                    tedad_derakht VARCHAR(10),
+                    type_derakht TEXT,
+                    system_ab VARCHAR(25),
+                    chah VARCHAR(10),
+                    estakhr VARCHAR(10),
+                    divar VARCHAR(10),
+                    sazeh VARCHAR(10),
+                    metraj_sazeh VARCHAR(10),
+                    sal_sakht VARCHAR(10),
+                    type_sazeh VARCHAR(20),
+                    emkanat TEXT,
+                    WC VARCHAR(10),
+                    hamam VARCHAR(10),
+                    javaz_sakht VARCHAR(10),
+                    sanad VARCHAR(20),
+                    mohavate VARCHAR(10),
+                    bargh VARCHAR(10),
+                    gaz VARCHAR(10)
+                )
+                """)
+
+                sql = """
                 INSERT INTO darkhast_kharid_bagh(
-                    type_melk,metraj,karbari,address,mablagh_metri,gheimat_kol,name_malek,shomareh_malek,
-                    metraj_derakht, tedad_derakht, type_derakht,
-                    system_ab, chah, estakhr, divar,sazeh, metraj_sazeh,
-                    sal_sakht, type_sazeh, emkanat, WC, hamam,
-                    javaz_sakht, sanad, mohavate,bargh,gaz
+                    type_melk,
+                    metraj,
+                    karbari,
+                    address,
+                    mablagh_metri,
+                    gheimat_kol,
+                    name_moshtari,
+                    shomareh_moshtari,
+                    metraj_derakht,
+                    tedad_derakht,
+                    type_derakht,
+                    system_ab,
+                    chah,
+                    estakhr,
+                    divar,
+                    sazeh,
+                    metraj_sazeh,
+                    sal_sakht,
+                    type_sazeh,
+                    emkanat,
+                    WC,
+                    hamam,
+                    javaz_sakht,
+                    sanad,
+                    mohavate,
+                    bargh,
+                    gaz
                 )
-                VALUES( %s, %s, %s, %s, %s, %s, %s, %s, %s,%s, %s, %s, %s, %s, %s, %s, %s,%s
-                ,%s,%s,%s,%s,%s,%s,%s,%s,%s)
-                 """
-                values_kharid=(
-                melk_type_darkhast_bagh_zamin_entry.get(),
-                metraj_zamin_darkhast_bagh_zamin_entry.get(),
-                karbari,
-                bagh_loctaion_darkhast_bagh_zamin_entry.get("1.0",tk.END),
-                gheimat_value,
-                name_moshtari_darkhast_bagh_entry.get(),
-                shomareh_moshtari_darkhast_bagh_entry.get(),
-                gheimat_kol_bagh_zamin_darkhast_entry.get(),
-                metraj_derakht_darkhast_bagh_zamin_entry.get(),
-                tedad_derakht_darkhast_bagh_zamin_entry.get(),
-                type_tree_darkhast_bagh_zamin_combo.get(),
-                abyari_darkhast_bagh_zamin_combo.get(),
-                chah_darkhast_bagh_zamin_var.get(),
-                estakhr_darkhast_bagh_zamin_var.get(),
-                divar_darkhast_bagh_zamin_var.get(),
-                var0_darkhast_bagh_zamin.get(),
-                metraj_vila_darkhast_bagh_zamin_entry.get(),
-                sal_sakht_vila_darkhast_bagh_zamin_entry.get(),
-                type_vila_darkhast_bagh_zamin_combo.get(),
-                toilet_darkhast_bagh_zamin_combo.get(),
-                hamam_darkhast_bagh_zamin_combo.get(),
-                sanad_darkhast_bagh_zamin_combo.get(),
-                option_darkhast_bagh_zamin_combo.get(),
-                mojavez_sakht_darkhast_bagh_zamin_var.get(),
-                mohavate_sazi_darkhast_bagh_zamin_var.get(),
-                bargh_keshi_darkhast_bagh_zamin_var.get(),
-                gaz_keshi_darkhast_bagh_zamin_var.get()
+                VALUES(
+                    %s,%s,%s,%s,%s,%s,%s,%s,
+                    %s,%s,%s,%s,%s,%s,%s,
+                    %s,%s,%s,%s,
+                    %s,%s,%s,
+                    %s,%s,%s,%s,%s
                 )
-                cursor.execute(sql_bagh, values_kharid)
+                """
+
+                values = (
+                    melk_type_darkhast_bagh_zamin_entry.get(),
+                    metraj_zamin_darkhast_bagh_zamin_entry.get(),
+                    bagh_type_darkhast_bagh_zamin_combo.get(),
+                    bagh_loctaion_darkhast_bagh_zamin_entry.get("1.0", tk.END),
+                    gheimat_har_metr_bagh_zamin_darkhast_entry.get(),
+                    gheimat_kol_bagh_zamin_darkhast_entry.get(),
+                    name_moshtari_darkhast_bagh_entry.get(),
+                    shomareh_moshtari_darkhast_bagh_entry.get(),
+                    metraj_derakht_darkhast_bagh_zamin_entry.get(),
+                    tedad_derakht_value,
+                    type_derakht_value,
+                    abyari_darkhast_bagh_zamin_combo.get(),
+                    chah_darkhast_bagh_zamin_var.get(),
+                    estakhr_darkhast_bagh_zamin_var.get(),
+                    divar_darkhast_bagh_zamin_var.get(),
+                    var0_darkhast_bagh_zamin.get(),
+                    metraj_vila_darkhast_bagh_zamin_entry.get(),
+                    sal_sakht_vila_darkhast_bagh_zamin_entry.get(),
+                    type_vila_darkhast_bagh_zamin_combo.get(),
+                    emkanat_value,
+                    toilet_darkhast_bagh_zamin_combo.get(),
+                    hamam_darkhast_bagh_zamin_combo.get(),
+                    mojavez_sakht_darkhast_bagh_zamin_var.get(),
+                    sanad_darkhast_bagh_zamin_combo.get(),
+                    mohavate_sazi_darkhast_bagh_zamin_var.get(),
+                    bargh_keshi_darkhast_bagh_zamin_var.get(),
+                    gaz_keshi_darkhast_bagh_zamin_var.get()
+                )
+
+                cursor.execute(sql, values)
 
                 last_id = cursor.lastrowid
-                if last_id is None or last_id == 0:
-                       messagebox.showerror("Error", "خطا: ثبت در جدول  انجام نشد")
-                       return
+
+                if not last_id:
+                    messagebox.showerror("Error", "ثبت انجام نشد.")
+                    return
             elif karbari=="زمین کشاورزی":
                 cursor.execute("""
                 CREATE TABLE IF NOT EXISTS darkhast_kharid_zamin(
@@ -3034,6 +3065,7 @@ def sabt_darkhast_bagh_zamin(event=None):
                 metraj VARCHAR(20),
                 karbari VARCHAR(20),
                 address VARCHAR(255),
+                mablagh_kol VARCHAR(20),
                 mablagh_metri DECIMAL(15,2),
                 name_moshtari VARCHAR(50),
                 shomareh_moshtari VARCHAR(30),
@@ -3052,22 +3084,22 @@ def sabt_darkhast_bagh_zamin(event=None):
 
                 sql_zamin = """
                 INSERT INTO darkhast_kharid_zamin(
-                    type_melk,metraj,karbari,address,mablagh_metri,name_moshtari,shomareh_moshtari,
+                    type_melk,metraj,karbari,address,mablagh_kol,mablagh_metri,name_moshtari,shomareh_moshtari,
                     karbari_zamin,type_khak,
                     manba_ab, negahbani, bargh_takfaz, bargh_sefaz,
                     anbar, fans, chah
                  )
-                 VALUES( %s, %s, %s, %s, %s, %s, %s,%s,%s, %s,%s,%s,%s,%s,%s,%s)
+                 VALUES( %s, %s, %s, %s, %s, %s, %s,%s,%s, %s,%s,%s,%s,%s,%s,%s,%s)
                  """
                 values_kharid_zamin=(
                    change_type,
                    metraj_zamin_darkhast_bagh_zamin_entry.get(),
                    karbari,
                    bagh_loctaion_darkhast_bagh_zamin_entry.get("1.0",tk.END),
-                   gheimat_value,
+                   gheimat_kol_bagh_zamin_darkhast_entry.get(),
+                   gheimat_har_metr_bagh_zamin_darkhast_entry.get(),
                    name_moshtari_darkhast_bagh_entry.get(),
                    shomareh_moshtari_darkhast_bagh_entry.get(),
-
                    karbari_darkhast_bagh_zamin_combo.get(),
                    khak_darkhast_bagh_zamin_combo.get(),
                    ab_darkhast_bagh_zamin_combo.get(),
@@ -3086,93 +3118,138 @@ def sabt_darkhast_bagh_zamin(event=None):
             
         
         elif change_type=="درخواست اجاره باغ زمین":
-            if karbari=="باغ":
+            
+            if karbari =="باغ":
+                type_derakht_value = ",".join(selected_trees3) if selected_trees3 else ""
+                tedad_derakht_value =tedad_derakht_darkhast_bagh_zamin_entry.get()
+                emkanat_value = ",".join(selected_option3) if selected_option3 else ""
+
                 cursor.execute("""
                 CREATE TABLE IF NOT EXISTS darkhast_ejareh_bagh(
-                id INT AUTO_INCREMENT PRIMARY KEY,
-                type_melk VARCHAR(50) NOT NULL,
-                metraj VARCHAR(20),
-                karbari VARCHAR(20),
-                address VARCHAR(255),
-                name_moshtari VARCHAR(50),
-                shomareh_moshtari VARCHAR(11),
-                zaman_ejareh VARCHAR(40),
-                mablagh_pish VARCHAR(30),
-                mablagh_ejareh VARCHAR(30),
-                metraj_derakht VARCHAR(10),
-                tedad_derakht VARCHAR(10),
-                type_derakht TEXT,
-                system_ab VARCHAR(25),
-                chah VARCHAR(10),
-                estakhr VARCHAR(10),
-                divar VARCHAR(10),
-                sazeh VARCHAR(10),
-                metraj_sazeh VARCHAR(10),
-                sal_sakht VARCHAR(10),
-                type_sazeh VARCHAR(20),
-                emkanat TEXT,
-                WC VARCHAR(10),
-                hamam VARCHAR(10),
-                javaz_sakht VARCHAR(10),
-                sanad VARCHAR(20),
-                mohavate VARCHAR(10),
-                bargh VARCHAR (10),
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-                 )
-               """) 
-                type_derakht_value = ",".join(selected_trees3) if selected_trees3 else ""
-                tedad_derakht_value = str(len(selected_trees3)) if selected_trees3 else "0"
-                emkanat_value = ",".join(selected_option3) if selected_option3 else ""
-            
-                sql_bagh = """
+                    id INT AUTO_INCREMENT PRIMARY KEY,
+                    type_melk VARCHAR(50),
+                    metraj VARCHAR(20),
+                    karbari VARCHAR(20),
+                    address VARCHAR(255),
+                    mablagh_pish VARCHAR(20),
+                    mablagh_ejareh VARCHAR(20),
+                    zaman_ejareh VARCHAR(30),
+                    name_moshtari VARCHAR(50),
+                    shomareh_moshtari VARCHAR(20),
+
+                    metraj_derakht VARCHAR(10),
+                    tedad_derakht VARCHAR(10),
+                    type_derakht TEXT,
+
+                    system_ab VARCHAR(25),
+                    chah VARCHAR(10),
+                    estakhr VARCHAR(10),
+                    divar VARCHAR(10),
+
+                    sazeh VARCHAR(10),
+                    metraj_sazeh VARCHAR(10),
+                    sal_sakht VARCHAR(10),
+                    type_sazeh VARCHAR(20),
+
+                    emkanat TEXT,
+                    WC VARCHAR(10),
+                    hamam VARCHAR(10),
+
+                    javaz_sakht VARCHAR(10),
+                    sanad VARCHAR(20),
+                    mohavate VARCHAR(10),
+                    bargh VARCHAR(10),
+                    gaz VARCHAR(10)
+                )
+                """)
+
+                sql = """
                 INSERT INTO darkhast_ejareh_bagh(
-                    type_melk,metraj,karbari,address,name_moshtari,shomareh_moshtari,
-                    zaman_ejareh,mablagh_pish,mablagh_ejareh,
-                    metraj_derakht, tedad_derakht, type_derakht,
-                    system_ab, chah, estakhr, divar,sazeh, metraj_sazeh,
-                    sal_sakht, type_sazeh, emkanat, WC, hamam,
-                    javaz_sakht, sanad, mohavate,bargh,gaz
+                    type_melk,
+                    metraj,
+                    karbari,
+                    address,
+                    mablagh_pish,
+                    mablagh_ejareh,
+                    zaman_ejareh,
+                    name_moshtari,
+                    shomareh_moshtari,
+
+                    metraj_derakht,
+                    tedad_derakht,
+                    type_derakht,
+
+                    system_ab,
+                    chah,
+                    estakhr,
+                    divar,
+
+                    sazeh,
+                    metraj_sazeh,
+                    sal_sakht,
+                    type_sazeh,
+
+                    emkanat,
+                    WC,
+                    hamam,
+
+                    javaz_sakht,
+                    sanad,
+                    mohavate,
+                    bargh,
+                    gaz
                 )
-                VALUES( %s, %s, %s, %s, %s, %s, %s, %s, %s,%s,%s, %s, %s, %s, %s, %s,%s
-                ,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
-                 """
-                values_ejareh=(
-                melk_type_darkhast_bagh_zamin_entry.get(),
-                metraj_zamin_darkhast_bagh_zamin_entry.get(),
-                karbari,
-                bagh_loctaion_darkhast_bagh_zamin_entry.get("1.0",tk.END),
-                name_moshtari_darkhast_bagh_entry.get(),
-                shomareh_moshtari_darkhast_bagh_entry.get(),
-                bagh_time_darkhast_combo.get(),
-                gheimat_ejareh_bagh_darkhast_zamin_entry.get(),
-                mablagh_ejareh_mahaneh_darkhast_entry.get(),
-                metraj_derakht_darkhast_bagh_zamin_entry.get(),
-                tedad_derakht_darkhast_bagh_zamin_entry.get(),
-                type_tree_darkhast_bagh_zamin_combo.get(),
-                abyari_darkhast_bagh_zamin_combo.get(),
-                chah_darkhast_bagh_zamin_var.get(),
-                estakhr_darkhast_bagh_zamin_var.get(),
-                divar_darkhast_bagh_zamin_var.get(),
-                var0_darkhast_bagh_zamin.get(),
-                metraj_vila_darkhast_bagh_zamin_entry.get(),
-                sal_sakht_vila_darkhast_bagh_zamin_entry.get(),
-                type_vila_darkhast_bagh_zamin_combo.get(),
-                toilet_darkhast_bagh_zamin_combo.get(),
-                hamam_darkhast_bagh_zamin_combo.get(),
-                sanad_darkhast_bagh_zamin_combo.get(),
-                option_darkhast_bagh_zamin_combo.get(),
-                mojavez_sakht_darkhast_bagh_zamin_var.get(),
-                mohavate_sazi_darkhast_bagh_zamin_var.get(),
-                bargh_keshi_darkhast_bagh_zamin_var.get(),
-                gaz_keshi_darkhast_bagh_zamin_var.get()
+                VALUES(
+                    %s,%s,%s,%s,%s,%s,%s,%s,%s,
+                    %s,%s,%s,
+                    %s,%s,%s,%s,
+                    %s,%s,%s,%s,
+                    %s,%s,%s,
+                    %s,%s,%s,%s,%s
                 )
-                cursor.execute(sql_bagh, values_ejareh)
+                """
+
+                values = (
+                    melk_type_darkhast_bagh_zamin_entry.get(),
+                    metraj_zamin_darkhast_bagh_zamin_entry.get(),
+                    bagh_type_darkhast_bagh_zamin_combo.get(),
+                    bagh_loctaion_darkhast_bagh_zamin_entry.get("1.0", tk.END),
+
+                    gheimat_ejareh_bagh_darkhast_zamin_entry.get(),
+                    mablagh_ejareh_mahaneh_darkhast_entry.get(),
+                    bagh_time_darkhast_combo.get(),
+                    name_moshtari_darkhast_bagh_entry.get(),
+                    shomareh_moshtari_darkhast_bagh_entry.get(),
+                    metraj_derakht_darkhast_bagh_zamin_entry.get(),
+                    tedad_derakht_value,
+                    type_derakht_value,
+                    abyari_darkhast_bagh_zamin_combo.get(),
+                    chah_darkhast_bagh_zamin_var.get(),
+                    estakhr_darkhast_bagh_zamin_var.get(),
+                    divar_darkhast_bagh_zamin_var.get(),
+                    var0_darkhast_bagh_zamin.get(),
+                    metraj_vila_darkhast_bagh_zamin_entry.get(),
+                    sal_sakht_vila_darkhast_bagh_zamin_entry.get(),
+                    type_vila_darkhast_bagh_zamin_combo.get(),
+                    emkanat_value,
+                    toilet_darkhast_bagh_zamin_combo.get(),
+                    hamam_darkhast_bagh_zamin_combo.get(),
+
+                    mojavez_sakht_darkhast_bagh_zamin_var.get(),
+                    sanad_darkhast_bagh_zamin_combo.get(),
+                    mohavate_sazi_darkhast_bagh_zamin_var.get(),
+                    bargh_keshi_darkhast_bagh_zamin_var.get(),
+                    gaz_keshi_darkhast_bagh_zamin_var.get()
+                )
+
+                cursor.execute(sql, values)
 
                 last_id = cursor.lastrowid
-                if last_id is None or last_id == 0:
-                       messagebox.showerror("Error", "خطا: ثبت در جدول")
-                       return
-            elif karbari=="زمین کشاورزی":
+
+                if not last_id:
+                    messagebox.showerror("Error", "ثبت انجام نشد.")
+                    return
+            elif karbari =="زمین کشاورزی":
                 cursor.execute("""
                 CREATE TABLE IF NOT EXISTS darkhast_ejareh_zamin(
                 id INT AUTO_INCREMENT PRIMARY KEY,
@@ -3611,34 +3688,87 @@ def search():
                 if queries:
                     sql = "\nUNION ALL\n".join(queries)
                     cursor.execute(sql, tuple(params))
-            elif melk=="باغ":
-                cursor.execute("""
-                SELECT id,"darkhast_kharid_bagh",address, gheimat_kol, type_melk, name_malk, 'درخواست خرید' AS noe_file
-                FROM darkhast_kharid_bagh
-                WHERE address LIKE %s
-                UNION ALL
-                SELECT id,"darkhast_ejareh_bagh",address, gheimat_kol, type_melk, name_malk, 'درخواست اجاره' AS noe_file
-                FROM darkhast_ejareh_bagh
-                WHERE address LIKE %s
-                """,
-                (
-                    f"%{address_entry.get().strip()}%",
-                    f"%{address_entry.get().strip()}%"
-                ))
-            elif melk=="زمین":
-                cursor.execute("""
-                SELECT id,"darkhast_kharid_zamin",address, gheimat_kol, type_melk, name_malk, 'درخواست خرید' AS noe_file
-                FROM darkhast_kharid_zamin
-                WHERE address LIKE %s
-                UNION ALL
-                SELECT id,"darkhast_ejareh_zamin",address, gheimat_kol, type_melk, name_malk, 'درخواست اجاره' AS noe_file
-                FROM darkhast_ejareh_zamin
-                WHERE address LIKE %s
-                """,
-                (
-                    f"%{address_entry.get().strip()}%",
-                    f"%{address_entry.get().strip()}%"
-                ))
+            elif melk == "باغ":
+
+                queries = []
+                params = []
+
+                cursor.execute("SHOW TABLES LIKE 'darkhast_kharid_bagh'")
+                if cursor.fetchone():
+                    queries.append("""
+                        SELECT
+                            id,
+                            'darkhast_kharid_bagh',
+                            address,
+                            gheimat_kol,
+                            type_melk,
+                            name_moshtari,
+                            'درخواست خرید' AS noe_file
+                        FROM darkhast_kharid_bagh
+                        WHERE address LIKE %s
+                    """)
+                    params.append(f"%{address_entry.get().strip()}%")
+
+                cursor.execute("SHOW TABLES LIKE 'darkhast_ejareh_bagh'")
+                if cursor.fetchone():
+                    queries.append("""
+                        SELECT
+                            id,
+                            'darkhast_ejareh_bagh',
+                            address,
+                            mablagh_pish,
+                            type_melk,
+                            name_moshtari,
+                            'درخواست اجاره' AS noe_file
+                        FROM darkhast_ejareh_bagh
+                        WHERE address LIKE %s
+                    """)
+                    params.append(f"%{address_entry.get().strip()}%")
+
+                if queries:
+                    sql = "\nUNION ALL\n".join(queries)
+                    cursor.execute(sql, tuple(params))
+
+            elif melk == "زمین":
+
+                queries = []
+                params = []
+
+                cursor.execute("SHOW TABLES LIKE 'darkhast_kharid_zamin'")
+                if cursor.fetchone():
+                    queries.append("""
+                        SELECT
+                            id,
+                            'darkhast_kharid_zamin',
+                            address,
+                            mablagh_kol,
+                            type_melk,
+                            name_moshtari,
+                            'درخواست خرید' AS noe_file
+                        FROM darkhast_kharid_zamin
+                        WHERE address LIKE %s
+                    """)
+                    params.append(f"%{address_entry.get().strip()}%")
+
+                cursor.execute("SHOW TABLES LIKE 'darkhast_ejareh_zamin'")
+                if cursor.fetchone():
+                    queries.append("""
+                        SELECT
+                            id,
+                            'darkhast_ejareh_zamin',
+                            address,
+                            mablagh_pish,
+                            type_melk,
+                            name_moshtari,
+                            'درخواست اجاره' AS noe_file
+                        FROM darkhast_ejareh_zamin
+                        WHERE address LIKE %s
+                    """)
+                    params.append(f"%{address_entry.get().strip()}%")
+
+                if queries:
+                    sql = "\nUNION ALL\n".join(queries)
+                    cursor.execute(sql, tuple(params))
             elif melk == "کارگاه":
 
                 queries = []
@@ -4114,7 +4244,6 @@ def show_details(event):
         options_text_entry.insert("1.0", "\n".join(options))
         options_text_entry.tag_add("right", "1.0", "end")
 
-
     elif selected_table == "ejareh_zamin":
 
         entry_malek_phone_number.delete(0, tk.END)
@@ -4143,7 +4272,134 @@ def show_details(event):
         options_text_entry.insert("1.0", "\n".join(options))
         options_text_entry.tag_add("right", "1.0", "end")
 
+    elif selected_table == "darkhast_kharid_bagh":
 
+        entry_malek_phone_number.delete(0, tk.END)
+        entry_malek_phone_number.insert(0, data[8])
+
+        metraj_lable_right_entry.delete(0, tk.END)
+        metraj_lable_right_entry.insert(0, data[2])
+
+        options = []
+
+        options.append(f"کاربری : {data[3]}")
+        options.append(f"قیمت متری : {data[5]}")
+        options.append(f"قیمت کل : {data[6]}")
+        options.append(f"متراژ درخت : {data[9]}")
+        options.append(f"تعداد درخت : {data[10]}")
+        options.append(f"نوع درخت : {data[11]}")
+        options.append(f"سیستم آبیاری : {data[12]}")
+        options.append(f"چاه : {'دارد' if data[13]=='1' else 'ندارد'}")
+        options.append(f"استخر : {'دارد' if data[14]=='1' else 'ندارد'}")
+        options.append(f"دیوار : {'دارد' if data[15]=='1' else 'ندارد'}")
+        options.append(f"سازه : {'دارد' if data[16]=='1' else 'ندارد'}")
+        options.append(f"متراژ سازه : {data[17]}")
+        options.append(f"سال ساخت : {data[18]}")
+        options.append(f"نوع سازه : {data[19]}")
+        options.append(f"امکانات : {data[20]}")
+        options.append(f"سرویس : {data[21]}")
+        options.append(f"حمام : {data[22]}")
+        options.append(f"مجوز ساخت : {'دارد' if data[23]=='1' else 'ندارد'}")
+        options.append(f"سند : {data[24]}")
+        options.append(f"محوطه : {'دارد' if data[25]=='1' else 'ندارد'}")
+        options.append(f"برق : {'دارد' if data[26]=='1' else 'ندارد'}")
+        options.append(f"گاز : {'دارد' if data[27]=='1' else 'ندارد'}")
+
+        options_text_entry.delete("1.0", tk.END)
+        options_text_entry.insert("1.0", "\n".join(options))
+        options_text_entry.tag_add("right", "1.0", "end")
+    elif selected_table == "darkhast_kharid_zamin":
+        entry_malek_phone_number.delete(0, tk.END)
+        entry_malek_phone_number.insert(0, data[8])
+
+        metraj_lable_right_entry.delete(0, tk.END)
+        metraj_lable_right_entry.insert(0, data[2])
+
+        options = []
+
+        options.append(f"کاربری : {data[3]}")
+        options.append(f"قیمت کل : {data[5]}")
+        options.append(f"قیمت متری : {data[6]}")
+        options.append(f"کاربری زمین : {data[9]}")
+        options.append(f"نوع خاک : {data[10]}")
+        options.append(f"منبع آب : {data[11]}")
+        options.append(f"نگهبانی : {'دارد' if str(data[12])=='1' else 'ندارد'}")
+        options.append(f"برق تک فاز : {'دارد' if str(data[13])=='1' else 'ندارد'}")
+        options.append(f"برق سه فاز : {'دارد' if str(data[14])=='1' else 'ندارد'}")
+        options.append(f"انبار : {'دارد' if str(data[15])=='1' else 'ندارد'}")
+        options.append(f"فنس : {'دارد' if str(data[16])=='1' else 'ندارد'}")
+        options.append(f"چاه : {'دارد' if str(data[17])=='1' else 'ندارد'}")
+
+        options_text_entry.delete("1.0", tk.END)
+        options_text_entry.insert("1.0", "\n".join(options))
+        options_text_entry.tag_add("right", "1.0", "end")
+
+    elif selected_table == "darkhast_ejareh_bagh":
+
+        entry_malek_phone_number.delete(0, tk.END)
+        entry_malek_phone_number.insert(0, data[9])
+
+        metraj_lable_right_entry.delete(0, tk.END)
+        metraj_lable_right_entry.insert(0, data[2])
+
+        options = []
+
+        options.append(f"کاربری : {data[3]}")
+        options.append(f"مدت اجاره : {data[7]}")
+        options.append(f"ودیعه : {data[5]}")
+        options.append(f"اجاره ماهانه : {data[6]}")
+        options.append(f"متراژ درخت : {data[10]}")
+        options.append(f"تعداد درخت : {data[11]}")
+        options.append(f"نوع درخت : {data[12]}")
+        options.append(f"سیستم آبیاری : {data[13]}")
+        options.append(f"چاه : {'دارد' if data[14]=='1' else 'ندارد'}")
+        options.append(f"استخر : {'دارد' if data[15]=='1' else 'ندارد'}")
+        options.append(f"دیوار : {'دارد' if data[16]=='1' else 'ندارد'}")
+        options.append(f"سازه : {'دارد' if data[17]=='1' else 'ندارد'}")
+        options.append(f"متراژ سازه : {data[18]}")
+        options.append(f"سال ساخت : {data[19]}")
+        options.append(f"نوع سازه : {data[20]}")
+        options.append(f"امکانات : {data[21]}")
+        options.append(f"سرویس : {data[22]}")
+        options.append(f"حمام : {data[23]}")
+        options.append(f"مجوز ساخت : {'دارد' if data[24]=='1' else 'ندارد'}")
+        options.append(f"سند : {data[25]}")
+        options.append(f"محوطه : {'دارد' if data[26]=='1' else 'ندارد'}")
+        options.append(f"برق : {'دارد' if data[27]=='1' else 'ندارد'}")
+        options.append(f"گاز : {'دارد' if data[28]=='1' else 'ندارد'}")
+
+        options_text_entry.delete("1.0", tk.END)
+        options_text_entry.insert("1.0", "\n".join(options))
+        options_text_entry.tag_add("right", "1.0", "end")
+
+
+    elif selected_table == "darkhast_ejareh_zamin":
+
+        entry_malek_phone_number.delete(0, tk.END)
+        entry_malek_phone_number.insert(0, data[9])
+
+        metraj_lable_right_entry.delete(0, tk.END)
+        metraj_lable_right_entry.insert(0, data[2])
+
+        options = []
+
+        options.append(f"کاربری : {data[3]}")
+        options.append(f"ودیعه : {data[5]}")
+        options.append(f"اجاره ماهانه : {data[6]}")
+        options.append(f"مدت اجاره : {data[7]}")
+        options.append(f"کاربری زمین : {data[10]}")
+        options.append(f"نوع خاک : {data[11]}")
+        options.append(f"منبع آب : {data[12]}")
+        options.append(f"نگهبانی : {'دارد' if data[13]=='1' else 'ندارد'}")
+        options.append(f"برق تک فاز : {'دارد' if data[14]=='1' else 'ندارد'}")
+        options.append(f"برق سه فاز : {'دارد' if data[15]=='1' else 'ندارد'}")
+        options.append(f"انبار : {'دارد' if data[16]=='1' else 'ندارد'}")
+        options.append(f"فنس : {'دارد' if data[17]=='1' else 'ندارد'}")
+        options.append(f"چاه : {'دارد' if data[18]=='1' else 'ندارد'}")
+
+        options_text_entry.delete("1.0", tk.END)
+        options_text_entry.insert("1.0", "\n".join(options))
+        options_text_entry.tag_add("right", "1.0", "end")
 
     cursor.close()
     db.close()
@@ -5153,6 +5409,334 @@ def open_edit():
 
         cursor.close()
         db.close()
+    elif selected_table == "darkhast_kharid_bagh":
+
+        root.withdraw()
+        darkhast_bagh_zamin_window.deiconify()
+
+        zakhire_darkhast_bagh_zamin.place_forget()
+        edit_btn_darkhast_bagh_zamin.place(x=300, y=30)
+        delete_btn_darkhast_bagh_zamin.place(x=200, y=30)
+
+        db = get_connection()
+        cursor = db.cursor()
+        cursor.execute("USE state_agency")
+
+        cursor.execute(
+            "SELECT * FROM darkhast_kharid_bagh WHERE id=%s",
+            (selected_id,)
+        )
+
+        data = cursor.fetchone()
+
+        melk_type_darkhast_bagh_zamin_entry.set("درخواست خرید باغ زمین")
+        bagh_type_darkhast_bagh_zamin_combo.set("باغ")
+
+
+        change_bagh_zamin_darkhast_bagh(event=None)#این برای تغیر فریم پایین
+        change_bagh_zamin_darkhast2(event=None)#برای تغیر بعضی ویجت ها
+
+        metraj_zamin_darkhast_bagh_zamin_entry.delete(0, tk.END)
+        metraj_zamin_darkhast_bagh_zamin_entry.insert(0, data[2])
+
+        bagh_loctaion_darkhast_bagh_zamin_entry.delete("1.0", tk.END)
+        bagh_loctaion_darkhast_bagh_zamin_entry.insert("1.0", data[4])
+
+        gheimat_har_metr_bagh_zamin_darkhast_entry.delete(0, tk.END)
+        gheimat_har_metr_bagh_zamin_darkhast_entry.insert(0, data[5])
+
+        gheimat_kol_bagh_zamin_darkhast_entry.delete(0, tk.END)
+        gheimat_kol_bagh_zamin_darkhast_entry.insert(0, data[6])
+
+        name_moshtari_darkhast_bagh_entry.delete(0, tk.END)
+        name_moshtari_darkhast_bagh_entry.insert(0, data[7])
+
+        shomareh_moshtari_darkhast_bagh_entry.delete(0, tk.END)
+        shomareh_moshtari_darkhast_bagh_entry.insert(0, data[8])
+
+        metraj_derakht_darkhast_bagh_zamin_entry.delete(0, tk.END)
+        metraj_derakht_darkhast_bagh_zamin_entry.insert(0, data[9])
+
+        tedad_derakht_darkhast_bagh_zamin_entry.delete(0, tk.END)
+        tedad_derakht_darkhast_bagh_zamin_entry.insert(0, data[10])
+
+        abyari_darkhast_bagh_zamin_combo.set(data[12])
+
+        chah_darkhast_bagh_zamin_var.set(int(data[13]))
+        estakhr_darkhast_bagh_zamin_var.set(int(data[14]))
+        divar_darkhast_bagh_zamin_var.set(int(data[15]))
+
+        var0_darkhast_bagh_zamin.set(int(data[16]))
+        home_true_false3()
+
+        metraj_vila_darkhast_bagh_zamin_entry.delete(0, tk.END)
+        metraj_vila_darkhast_bagh_zamin_entry.insert(0, data[17])
+
+        sal_sakht_vila_darkhast_bagh_zamin_entry.delete(0, tk.END)
+        sal_sakht_vila_darkhast_bagh_zamin_entry.insert(0, data[18])
+
+        type_vila_darkhast_bagh_zamin_combo.set(data[19])
+
+        toilet_darkhast_bagh_zamin_combo.set(data[21])
+        hamam_darkhast_bagh_zamin_combo.set(data[22])
+
+        mojavez_sakht_darkhast_bagh_zamin_var.set(int(data[23]))
+        sanad_darkhast_bagh_zamin_combo.set(data[24])
+        mohavate_sazi_darkhast_bagh_zamin_var.set(int(data[25]))
+        bargh_keshi_darkhast_bagh_zamin_var.set(int(data[26]))
+        gaz_keshi_darkhast_bagh_zamin_var.set(int(data[27]))
+
+        # درخت‌ها
+        selected_trees3.clear()
+        label_natige_darkhast_bagh_zamin.delete("1.0", tk.END)
+
+        if data[11]:
+            selected_trees3.extend(
+                [x.strip() for x in data[11].split(",") if x.strip()]
+            )
+            label_natige_darkhast_bagh_zamin.insert(
+                "1.0",
+                ",".join(selected_trees3) + ","
+            )
+
+        # امکانات
+        selected_option3.clear()
+
+        if data[20]:
+            selected_option3.extend(
+                [x.strip() for x in data[20].split(",") if x.strip()]
+            )
+
+        lable_natige_add_darkhast_bagh_zamin.config(
+            text=",".join(selected_option3)
+        )
+
+        cursor.close()
+        db.close()
+    elif selected_table == "darkhast_kharid_zamin":
+
+        root.withdraw()
+        darkhast_bagh_zamin_window.deiconify()
+
+        zakhire_darkhast_bagh_zamin.place_forget()
+        edit_btn_darkhast_bagh_zamin.place(x=300, y=30)
+        delete_btn_darkhast_bagh_zamin.place(x=200, y=30)
+
+        db = get_connection()
+        cursor = db.cursor()
+        cursor.execute("USE state_agency")
+
+        cursor.execute(
+            "SELECT * FROM darkhast_kharid_zamin WHERE id=%s",
+            (selected_id,)
+        )
+
+        data = cursor.fetchone()
+
+        melk_type_darkhast_bagh_zamin_entry.set("درخواست خرید باغ زمین")
+        bagh_type_darkhast_bagh_zamin_combo.set("زمین کشاورزی")
+
+        change_bagh_zamin_darkhast_bagh(event=None)#این برای تغیر فریم پایین
+        change_bagh_zamin_darkhast2(event=None)
+
+        metraj_zamin_darkhast_bagh_zamin_entry.delete(0, tk.END)
+        metraj_zamin_darkhast_bagh_zamin_entry.insert(0, data[2])
+
+        bagh_loctaion_darkhast_bagh_zamin_entry.delete("1.0", tk.END)
+        bagh_loctaion_darkhast_bagh_zamin_entry.insert("1.0", data[4])
+
+        gheimat_har_metr_bagh_zamin_darkhast_entry.delete(0, tk.END)
+        gheimat_har_metr_bagh_zamin_darkhast_entry.insert(0, data[6])
+
+        gheimat_kol_bagh_zamin_darkhast_entry.delete(0, tk.END)
+        gheimat_kol_bagh_zamin_darkhast_entry.insert(0, data[5])
+
+        name_moshtari_darkhast_bagh_entry.delete(0, tk.END)
+        name_moshtari_darkhast_bagh_entry.insert(0, data[7])
+
+        shomareh_moshtari_darkhast_bagh_entry.delete(0, tk.END)
+        shomareh_moshtari_darkhast_bagh_entry.insert(0, data[8])
+
+        karbari_darkhast_bagh_zamin_combo.set(data[9])
+        khak_darkhast_bagh_zamin_combo.set(data[10])
+        ab_darkhast_bagh_zamin_combo.set(data[11])
+
+        security_zamin_darkhast_bagh_zamin_var.set(int(data[12]))
+        bargh_kesi_zamin_darkhast_bagh_zamin_var.set(int(data[13]))
+        bargh_zamin_darkhast_bagh_zamin2_var.set(int(data[14]))
+        anbar_zamin_darkhast_bagh_zamin_var.set(int(data[15]))
+        fans_zamin_darkhast_bagh_zamin_var.set(int(data[16]))
+        mojavez_chah_zamin_darkhast_bagh_zamin_var.set(int(data[17]))
+
+        cursor.close()
+        db.close()
+    elif selected_table == "darkhast_ejareh_bagh":
+
+        root.withdraw()
+        darkhast_bagh_zamin_window.deiconify()
+
+        zakhire_darkhast_bagh_zamin.place_forget()
+        edit_btn_darkhast_bagh_zamin.place(x=300, y=30)
+        delete_btn_darkhast_bagh_zamin.place(x=200, y=30)
+
+        db = get_connection()
+        cursor = db.cursor()
+        cursor.execute("USE state_agency")
+
+        cursor.execute(
+            "SELECT * FROM darkhast_ejareh_bagh WHERE id=%s",
+            (selected_id,)
+        )
+
+        data = cursor.fetchone()
+
+        melk_type_darkhast_bagh_zamin_entry.set("درخواست اجاره باغ زمین")
+        bagh_type_darkhast_bagh_zamin_combo.set("باغ")
+
+        change_bagh_zamin_darkhast_bagh(event=None)#این برای تغیر فریم پایین
+
+        change_bagh_zamin_darkhast2(event=None)
+
+        metraj_zamin_darkhast_bagh_zamin_entry.delete(0, tk.END)
+        metraj_zamin_darkhast_bagh_zamin_entry.insert(0, data[2])
+
+        bagh_loctaion_darkhast_bagh_zamin_entry.delete("1.0", tk.END)
+        bagh_loctaion_darkhast_bagh_zamin_entry.insert("1.0", data[4])
+
+        gheimat_ejareh_bagh_darkhast_zamin_entry.delete(0, tk.END)
+        gheimat_ejareh_bagh_darkhast_zamin_entry.insert(0, data[5])
+
+        mablagh_ejareh_mahaneh_darkhast_entry.delete(0, tk.END)
+        mablagh_ejareh_mahaneh_darkhast_entry.insert(0, data[6])
+
+        bagh_time_darkhast_combo.set(data[7])
+
+        name_moshtari_darkhast_bagh_entry.delete(0, tk.END)
+        name_moshtari_darkhast_bagh_entry.insert(0, data[8])
+
+        shomareh_moshtari_darkhast_bagh_entry.delete(0, tk.END)
+        shomareh_moshtari_darkhast_bagh_entry.insert(0, data[9])
+
+        metraj_derakht_darkhast_bagh_zamin_entry.delete(0, tk.END)
+        metraj_derakht_darkhast_bagh_zamin_entry.insert(0, data[10])
+
+        tedad_derakht_darkhast_bagh_zamin_entry.delete(0, tk.END)
+        tedad_derakht_darkhast_bagh_zamin_entry.insert(0, data[11])
+
+        abyari_darkhast_bagh_zamin_combo.set(data[13])
+
+        chah_darkhast_bagh_zamin_var.set(int(data[14]))
+        estakhr_darkhast_bagh_zamin_var.set(int(data[15]))
+        divar_darkhast_bagh_zamin_var.set(int(data[16]))
+
+        var0_darkhast_bagh_zamin.set(int(data[17]))
+        home_true_false3()
+
+        metraj_vila_darkhast_bagh_zamin_entry.delete(0, tk.END)
+        metraj_vila_darkhast_bagh_zamin_entry.insert(0, data[18])
+
+        sal_sakht_vila_darkhast_bagh_zamin_entry.delete(0, tk.END)
+        sal_sakht_vila_darkhast_bagh_zamin_entry.insert(0, data[19])
+
+        type_vila_darkhast_bagh_zamin_combo.set(data[20])
+
+        toilet_darkhast_bagh_zamin_combo.set(data[22])
+        hamam_darkhast_bagh_zamin_combo.set(data[23])
+
+        mojavez_sakht_darkhast_bagh_zamin_var.set(int(data[24]))
+        sanad_darkhast_bagh_zamin_combo.set(data[25])
+        mohavate_sazi_darkhast_bagh_zamin_var.set(int(data[26]))
+        bargh_keshi_darkhast_bagh_zamin_var.set(int(data[27]))
+        gaz_keshi_darkhast_bagh_zamin_var.set(int(data[28]))
+
+        # ---------- درخت‌ها ----------
+        selected_trees3.clear()
+        label_natige_darkhast_bagh_zamin.delete("1.0", tk.END)
+
+        if data[12]:
+            selected_trees3.extend(
+                [x.strip() for x in data[12].split(",") if x.strip()]
+            )
+            label_natige_darkhast_bagh_zamin.insert(
+                "1.0",
+                ",".join(selected_trees3) + ","
+            )
+
+        # ---------- امکانات ----------
+        selected_option3.clear()
+
+        if data[21]:
+            selected_option3.extend(
+                [x.strip() for x in data[21].split(",") if x.strip()]
+            )
+
+        lable_natige_add_darkhast_bagh_zamin.config(
+            text=",".join(selected_option3)
+        )
+
+        cursor.close()
+        db.close()
+    elif selected_table == "darkhast_ejareh_zamin":
+
+        root.withdraw()
+        darkhast_bagh_zamin_window.deiconify()
+
+        zakhire_darkhast_bagh_zamin.place_forget()
+        edit_btn_darkhast_bagh_zamin.place(x=300, y=30)
+        delete_btn_darkhast_bagh_zamin.place(x=200, y=30)
+
+        db = get_connection()
+        cursor = db.cursor()
+        cursor.execute("USE state_agency")
+
+        cursor.execute(
+            "SELECT * FROM darkhast_ejareh_zamin WHERE id=%s",
+            (selected_id,)
+        )
+
+        data = cursor.fetchone()
+
+        melk_type_darkhast_bagh_zamin_entry.set("درخواست اجاره باغ زمین")
+        bagh_type_darkhast_bagh_zamin_combo.set("زمین کشاورزی")
+
+        change_bagh_zamin_darkhast_bagh(event=None)#این برای تغیر فریم پایین
+
+        change_bagh_zamin_darkhast2(event=None)
+
+        metraj_zamin_darkhast_bagh_zamin_entry.delete(0, tk.END)
+        metraj_zamin_darkhast_bagh_zamin_entry.insert(0, data[2])
+
+        bagh_loctaion_darkhast_bagh_zamin_entry.delete("1.0", tk.END)
+        bagh_loctaion_darkhast_bagh_zamin_entry.insert("1.0", data[4])
+
+        gheimat_ejareh_bagh_darkhast_zamin_entry.delete(0, tk.END)
+        gheimat_ejareh_bagh_darkhast_zamin_entry.insert(0, data[5])
+
+        mablagh_ejareh_mahaneh_darkhast_entry.delete(0, tk.END)
+        mablagh_ejareh_mahaneh_darkhast_entry.insert(0, data[6])
+
+        bagh_time_darkhast_combo.set(data[7])
+
+
+        name_moshtari_darkhast_bagh_entry.delete(0, tk.END)
+        name_moshtari_darkhast_bagh_entry.insert(0, data[8])
+
+        shomareh_moshtari_darkhast_bagh_entry.delete(0, tk.END)
+        shomareh_moshtari_darkhast_bagh_entry.insert(0, data[9])
+
+        karbari_darkhast_bagh_zamin_combo.set(data[10])
+        khak_darkhast_bagh_zamin_combo.set(data[11])
+        ab_darkhast_bagh_zamin_combo.set(data[12])
+
+        security_zamin_darkhast_bagh_zamin_var.set(int(data[13]))
+        bargh_kesi_zamin_darkhast_bagh_zamin_var.set(int(data[14]))
+        bargh_zamin_darkhast_bagh_zamin2_var.set(int(data[15]))
+        anbar_zamin_darkhast_bagh_zamin_var.set(int(data[16]))
+        fans_zamin_darkhast_bagh_zamin_var.set(int(data[17]))
+        mojavez_chah_zamin_darkhast_bagh_zamin_var.set(int(data[18]))
+
+        cursor.close()
+        db.close()
 #--------------------------------------توابع ویرایش صفحات---------------
 #------------مسکونی------------
 def update_forosh_maskoni():
@@ -5751,7 +6335,7 @@ def update_forosh_bagh_zamin():
     if bagh_type_forosh_bagh_zamin_combo.get() == "باغ":
 
         type_derakht_value = ",".join(selected_trees2) if selected_trees2 else ""
-        tedad_derakht_value = str(len(selected_trees2))
+        tedad_derakht_value = tedad_derakht_forosh_bagh_zamin_entry.get()
         emkanat_value = ",".join(selected_option2) if selected_option2 else ""
 
         sql = """
@@ -5880,7 +6464,7 @@ def update_ejareh_bagh_zamin():
     if bagh_type_combo.get() == "باغ":
 
         type_derakht_value = ",".join(selected_trees) if selected_trees else ""
-        tedad_derakht_value = str(len(selected_trees))
+        tedad_derakht_value = tree_count_entry.get()
         emkanat_value = ",".join(selected_option) if selected_option else ""
 
         sql = """
@@ -5996,6 +6580,260 @@ def update_ejareh_bagh_zamin():
         )
 
     cursor.execute(sql, values)
+    db.commit()
+
+    cursor.close()
+    db.close()
+
+    refresh_after_edit()
+
+    messagebox.showinfo("موفق", "اطلاعات با موفقیت ویرایش شد.")
+def update_darkhast_bagh_zamin():
+
+    db = get_connection()
+    cursor = db.cursor()
+    cursor.execute("USE state_agency")
+
+    if (
+        melk_type_darkhast_bagh_zamin_entry.get() == "درخواست خرید باغ زمین"
+        and
+        bagh_type_darkhast_bagh_zamin_combo.get() == "باغ"
+    ):
+
+        type_derakht_value = ",".join(selected_trees3) if selected_trees3 else ""
+        tedad_derakht_value =tedad_derakht_darkhast_bagh_zamin_entry.get()
+        emkanat_value = ",".join(selected_option3) if selected_option3 else ""
+
+        sql = """
+        UPDATE darkhast_kharid_bagh SET
+        type_melk=%s,
+        metraj=%s,
+        karbari=%s,
+        address=%s,
+        mablagh_metri=%s,
+        gheimat_kol=%s,
+        name_moshtari=%s,
+        shomareh_moshtari=%s,
+        metraj_derakht=%s,
+        tedad_derakht=%s,
+        type_derakht=%s,
+        system_ab=%s,
+        chah=%s,
+        estakhr=%s,
+        divar=%s,
+        sazeh=%s,
+        metraj_sazeh=%s,
+        sal_sakht=%s,
+        type_sazeh=%s,
+        emkanat=%s,
+        WC=%s,
+        hamam=%s,
+        javaz_sakht=%s,
+        sanad=%s,
+        mohavate=%s,
+        bargh=%s,
+        gaz=%s
+        WHERE id=%s
+        """
+
+        values = (
+            melk_type_darkhast_bagh_zamin_entry.get(),
+            metraj_zamin_darkhast_bagh_zamin_entry.get(),
+            bagh_type_darkhast_bagh_zamin_combo.get(),
+            bagh_loctaion_darkhast_bagh_zamin_entry.get("1.0", tk.END),
+            gheimat_har_metr_bagh_zamin_darkhast_entry.get(),
+            gheimat_kol_bagh_zamin_darkhast_entry.get(),
+            name_moshtari_darkhast_bagh_entry.get(),
+            shomareh_moshtari_darkhast_bagh_entry.get(),
+            metraj_derakht_darkhast_bagh_zamin_entry.get(),
+            tedad_derakht_value,
+            type_derakht_value,
+            abyari_darkhast_bagh_zamin_combo.get(),
+            chah_darkhast_bagh_zamin_var.get(),
+            estakhr_darkhast_bagh_zamin_var.get(),
+            divar_darkhast_bagh_zamin_var.get(),
+            var0_darkhast_bagh_zamin.get(),
+            metraj_vila_darkhast_bagh_zamin_entry.get(),
+            sal_sakht_vila_darkhast_bagh_zamin_entry.get(),
+            type_vila_darkhast_bagh_zamin_combo.get(),
+            emkanat_value,
+            toilet_darkhast_bagh_zamin_combo.get(),
+            hamam_darkhast_bagh_zamin_combo.get(),
+            mojavez_sakht_darkhast_bagh_zamin_var.get(),
+            sanad_darkhast_bagh_zamin_combo.get(),
+            mohavate_sazi_darkhast_bagh_zamin_var.get(),
+            bargh_keshi_darkhast_bagh_zamin_var.get(),
+            gaz_keshi_darkhast_bagh_zamin_var.get(),
+            selected_id)
+    elif (
+            melk_type_darkhast_bagh_zamin_entry.get() == "درخواست خرید باغ زمین"
+            and
+            bagh_type_darkhast_bagh_zamin_combo.get() == "زمین کشاورزی"):
+
+            sql = """
+            UPDATE darkhast_kharid_zamin SET
+            type_melk=%s,
+            metraj=%s,
+            karbari=%s,
+            address=%s,
+            mablagh_metri=%s,
+            name_moshtari=%s,
+            shomareh_moshtari=%s,
+            karbari_zamin=%s,
+            type_khak=%s,
+            manba_ab=%s,
+            negahbani=%s,
+            bargh_takfaz=%s,
+            bargh_sefaz=%s,
+            anbar=%s,
+            fans=%s,
+            chah=%s
+            WHERE id=%s
+            """
+
+            values = (
+                melk_type_darkhast_bagh_zamin_entry.get(),
+                metraj_zamin_darkhast_bagh_zamin_entry.get(),
+                bagh_type_darkhast_bagh_zamin_combo.get(),
+                bagh_loctaion_darkhast_bagh_zamin_entry.get("1.0", tk.END),
+                gheimat_har_metr_bagh_zamin_darkhast_entry.get(),
+                name_moshtari_darkhast_bagh_entry.get(),
+                shomareh_moshtari_darkhast_bagh_entry.get(),
+                karbari_darkhast_bagh_zamin_combo.get(),
+                khak_darkhast_bagh_zamin_combo.get(),
+                ab_darkhast_bagh_zamin_combo.get(),
+                security_zamin_darkhast_bagh_zamin_var.get(),
+                bargh_kesi_zamin_darkhast_bagh_zamin_var.get(),
+                bargh_zamin_darkhast_bagh_zamin2_var.get(),
+                anbar_zamin_darkhast_bagh_zamin_var.get(),
+                fans_zamin_darkhast_bagh_zamin_var.get(),
+                mojavez_chah_zamin_darkhast_bagh_zamin_var.get(),
+                selected_id
+            )
+    elif (
+            melk_type_darkhast_bagh_zamin_entry.get() == "درخواست اجاره باغ زمین"
+            and
+            bagh_type_darkhast_bagh_zamin_combo.get() == "باغ"
+        ):
+
+            type_derakht_value = ",".join(selected_trees3) if selected_trees3 else ""
+            tedad_derakht_value =tedad_derakht_darkhast_bagh_zamin_entry.get()
+            emkanat_value = ",".join(selected_option3) if selected_option3 else ""
+
+            sql = """
+            UPDATE darkhast_ejareh_bagh SET
+            type_melk=%s,
+            metraj=%s,
+            karbari=%s,
+            address=%s,
+            mablagh_pish=%s,
+            mablagh_ejareh=%s,
+            zaman_ejareh=%s,
+            name_moshtari=%s,
+            shomareh_moshtari=%s,
+            metraj_derakht=%s,
+            tedad_derakht=%s,
+            type_derakht=%s,
+            system_ab=%s,
+            chah=%s,
+            estakhr=%s,
+            divar=%s,
+            sazeh=%s,
+            metraj_sazeh=%s,
+            sal_sakht=%s,
+            type_sazeh=%s,
+            emkanat=%s,
+            WC=%s,
+            hamam=%s,
+            javaz_sakht=%s,
+            sanad=%s,
+            mohavate=%s,
+            bargh=%s,
+            gaz=%s
+            WHERE id=%s
+            """
+
+            values = (
+                melk_type_darkhast_bagh_zamin_entry.get(),
+                metraj_zamin_darkhast_bagh_zamin_entry.get(),
+                bagh_type_darkhast_bagh_zamin_combo.get(),
+                bagh_loctaion_darkhast_bagh_zamin_entry.get("1.0", tk.END),
+                gheimat_ejareh_bagh_darkhast_zamin_entry.get(),
+                mablagh_ejareh_mahaneh_darkhast_entry.get(),
+                bagh_time_darkhast_combo.get(),
+                name_moshtari_darkhast_bagh_entry.get(),
+                shomareh_moshtari_darkhast_bagh_entry.get(),
+                metraj_derakht_darkhast_bagh_zamin_entry.get(),
+                tedad_derakht_value,
+                type_derakht_value,
+                abyari_darkhast_bagh_zamin_combo.get(),
+                chah_darkhast_bagh_zamin_var.get(),
+                estakhr_darkhast_bagh_zamin_var.get(),
+                divar_darkhast_bagh_zamin_var.get(),
+                var0_darkhast_bagh_zamin.get(),
+                metraj_vila_darkhast_bagh_zamin_entry.get(),
+                sal_sakht_vila_darkhast_bagh_zamin_entry.get(),
+                type_vila_darkhast_bagh_zamin_combo.get(),
+                emkanat_value,
+                toilet_darkhast_bagh_zamin_combo.get(),
+                hamam_darkhast_bagh_zamin_combo.get(),
+                mojavez_sakht_darkhast_bagh_zamin_var.get(),
+                sanad_darkhast_bagh_zamin_combo.get(),
+                mohavate_sazi_darkhast_bagh_zamin_var.get(),
+                bargh_keshi_darkhast_bagh_zamin_var.get(),
+                gaz_keshi_darkhast_bagh_zamin_var.get(),
+                selected_id
+            )
+    elif (
+                melk_type_darkhast_bagh_zamin_entry.get() == "درخواست اجاره باغ زمین"
+                and
+                bagh_type_darkhast_bagh_zamin_combo.get() == "زمین کشاورزی"):
+
+            sql = """
+                UPDATE darkhast_ejareh_zamin SET
+                type_melk=%s,
+                metraj=%s,
+                karbari=%s,
+                address=%s,
+                mablagh_pish=%s,
+                mablagh_ejareh=%s,
+                zaman_ejareh=%s,
+                name_moshtari=%s,
+                shomareh_moshtari=%s,
+                karbari_zamin=%s,
+                type_khak=%s,
+                manba_ab=%s,
+                negahbani=%s,
+                bargh_takfaz=%s,
+                bargh_sefaz=%s,
+                anbar=%s,
+                fans=%s,
+                chah=%s
+                WHERE id=%s
+                """
+
+            values =(
+                    melk_type_darkhast_bagh_zamin_entry.get(),
+                    metraj_zamin_darkhast_bagh_zamin_entry.get(),
+                    bagh_type_darkhast_bagh_zamin_combo.get(),
+                    bagh_loctaion_darkhast_bagh_zamin_entry.get("1.0", tk.END),
+                    gheimat_ejareh_bagh_darkhast_zamin_entry.get(),
+                    mablagh_ejareh_mahaneh_darkhast_entry.get(),
+                    bagh_time_darkhast_combo.get(),
+                    name_moshtari_darkhast_bagh_entry.get(),
+                    shomareh_moshtari_darkhast_bagh_entry.get(),
+                    karbari_darkhast_bagh_zamin_combo.get(),
+                    khak_darkhast_bagh_zamin_combo.get(),
+                    ab_darkhast_bagh_zamin_combo.get(),
+                    security_zamin_darkhast_bagh_zamin_var.get(),
+                    bargh_kesi_zamin_darkhast_bagh_zamin_var.get(),
+                    bargh_zamin_darkhast_bagh_zamin2_var.get(),
+                    anbar_zamin_darkhast_bagh_zamin_var.get(),
+                    fans_zamin_darkhast_bagh_zamin_var.get(),
+                    mojavez_chah_zamin_darkhast_bagh_zamin_var.get(),
+                    selected_id)
+
+    cursor.execute(sql,values)
     db.commit()
 
     cursor.close()
@@ -6294,6 +7132,65 @@ def delete_ejareh_bagh_zamin():
     db.close()
 
     refresh_after_edit()
+def delete_darkhast_bagh_zamin():
+
+    if not messagebox.askyesno("تأیید", "آیا از حذف این فایل مطمئن هستید؟"):
+        return
+
+    db = get_connection()
+    cursor = db.cursor()
+    cursor.execute("USE state_agency")
+
+    if (
+        melk_type_darkhast_bagh_zamin_entry.get() == "درخواست خرید باغ زمین"
+        and
+        bagh_type_darkhast_bagh_zamin_combo.get() == "باغ"
+    ):
+
+        cursor.execute(
+            "DELETE FROM darkhast_kharid_bagh WHERE id=%s",
+            (selected_id,)
+        )
+
+    elif (
+        melk_type_darkhast_bagh_zamin_entry.get() == "درخواست خرید باغ زمین"
+        and
+        bagh_type_darkhast_bagh_zamin_combo.get() == "زمین کشاورزی"
+    ):
+
+        cursor.execute(
+            "DELETE FROM darkhast_kharid_zamin WHERE id=%s",
+            (selected_id,)
+        )
+
+    elif (
+        melk_type_darkhast_bagh_zamin_entry.get() == "درخواست اجاره باغ زمین"
+        and
+        bagh_type_darkhast_bagh_zamin_combo.get() == "باغ"
+    ):
+
+        cursor.execute(
+            "DELETE FROM darkhast_ejareh_bagh WHERE id=%s",
+            (selected_id,)
+        )
+
+    elif (
+        melk_type_darkhast_bagh_zamin_entry.get() == "درخواست اجاره باغ زمین"
+        and
+        bagh_type_darkhast_bagh_zamin_combo.get() == "زمین کشاورزی"
+    ):
+
+        cursor.execute(
+            "DELETE FROM darkhast_ejareh_zamin WHERE id=%s",
+            (selected_id,)
+        )
+
+    db.commit()
+
+    cursor.close()
+    db.close()
+
+    refresh_after_edit()
 #------------------رفرش----------------
 def refresh_after_edit():
     clear_entry_forosh_maskoni()#پاک کردن صفحات
@@ -6352,6 +7249,10 @@ def refresh_after_edit():
     zakhire_ejareh_bagh_zamin.place(x=300,y=30)
     edit_btn_ejareh_bagh_zamin.place_forget()
     delete_btn_ejareh_bagh_zamin.place_forget()
+
+    zakhire_darkhast_bagh_zamin.place(x=300,y=30)
+    edit_btn_darkhast_bagh_zamin.place_forget()
+    delete_btn_darkhast_bagh_zamin.place_forget()
 
 
 
@@ -9122,7 +10023,7 @@ melk_type_darkhast_bagh_zamin_entry=ttk.Combobox(frame_up_right_darkhast_bagh_za
 melk_type_darkhast_bagh_zamin_entry["values"]=("درخواست خرید باغ زمین","درخواست اجاره باغ زمین")
 melk_type_darkhast_bagh_zamin_entry.set("درخواست خرید باغ زمین")
 melk_type_darkhast_bagh_zamin_entry.configure(justify="center")
-melk_type_darkhast_bagh_zamin_entry.bind("<<ComboboxSelected>>",sabt_darkhast_bagh_zamin)
+melk_type_darkhast_bagh_zamin_entry.bind("<<ComboboxSelected>>",change_bagh_zamin_darkhast2)
 melk_type_darkhast_bagh_zamin_entry.place(x=28, y=30, width=350, height=25)
 
 metraj_zamin_darkhast_bagh_zamin_lable=tk.Label(frame_up_right_darkhast_bagh_zamin,text="متراژ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
@@ -9392,10 +10293,17 @@ mojavez_chah_zamin_darkhast_bagh_zamin=tk.Checkbutton(frame_down_darkhast_zamin,
 mojavez_chah_zamin_darkhast_bagh_zamin.place(x=300, y=60)
 
 back_to_home_darkhast_bagh_zamin=tk.Button(darkhast_bagh_zamin_window,text="بازگشت",bg="#052340", fg="#ffffff",width=10,height=1,command=back_home_darkhast_bagh)
-back_to_home_darkhast_bagh_zamin.place(x=300,y=30)
+back_to_home_darkhast_bagh_zamin.place(x=400,y=30)
 
 zakhire_darkhast_bagh_zamin=tk.Button(darkhast_bagh_zamin_window,text="ذخیره",bg="#00BFFF", fg="#ffffff",width=10,height=1,command=sabt_darkhast_bagh_zamin)
-zakhire_darkhast_bagh_zamin.place(x=200,y=30)
+zakhire_darkhast_bagh_zamin.place(x=300,y=30)
+
+
+delete_btn_darkhast_bagh_zamin=tk.Button(darkhast_bagh_zamin_window,text="حذف",command=delete_darkhast_bagh_zamin,bg="#8B0000",fg="#ffffff",height=1,width=10 )
+delete_btn_darkhast_bagh_zamin.place_forget()
+
+edit_btn_darkhast_bagh_zamin=tk.Button(darkhast_bagh_zamin_window,text="ثبت ویرایش",command=update_darkhast_bagh_zamin,bg="#00BFFF", fg="#ffffff",width=10,height=1,)
+edit_btn_darkhast_bagh_zamin.place_forget()
 
 darkhast_bagh_zamin_window.protocol("WM_DELETE_WINDOW", lambda: None)
 darkhast_bagh_zamin_window.resizable(False, False)
