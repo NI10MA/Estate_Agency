@@ -1797,21 +1797,6 @@ def chck_otagh_ejareh_maskoni(event=None):
         tabaghe_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
         vahed_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
 
-def chck_addrres_ejareh_maskoni(event=None):
-    addrres_ejareh_maskoni = addrres_ejareh_maskoni_entry.get("1.0", tk.END).strip()
-
-    if (re.fullmatch(r"[آ-ی0-9۰-۹\s]+", addrres_ejareh_maskoni) and re.search(r"[آ-ی]", addrres_ejareh_maskoni)):
-        addrres_ejareh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
-        error_lable_addrres_ejareh_maskoni.config(text="")
-        gheimat_ejareh_ejareh_maskoni_entry.config(state="normal")
-        gheimat_pish_ejareh_maskoni_entry.config(state="normal")
-
-    else:
-        addrres_ejareh_maskoni_entry.config(highlightcolor="red",highlightthickness=2)
-        error_lable_addrres_ejareh_maskoni.config(text="فیلد (آدرس) باید شامل حروف فارسی باشد")
-        gheimat_ejareh_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
-        gheimat_pish_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
-         
 def chck_gheimat_pish_ejareh_maskoni(event=None):
     gheimat_pish_ejareh_maskoni=gheimat_pish_ejareh_maskoni_entry.get().strip()
 
@@ -1840,6 +1825,24 @@ def chck_gheimat_ejareh_ejareh_maskoni(event=None):
         error_lable_gheimat_ejareh_ejareh_maskoni.config(text=" فیلد(قیمت اجاره) باید شامل اعداد باشد")
         addrres_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
         gheimat_pish_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+
+def chck_addrres_ejareh_maskoni(event=None):
+    addrres_ejareh_maskoni = addrres_ejareh_maskoni_entry.get("1.0", tk.END).strip()
+
+    if (re.fullmatch(r"[آ-ی0-9۰-۹\s]+", addrres_ejareh_maskoni) and re.search(r"[آ-ی]", addrres_ejareh_maskoni)):
+        addrres_ejareh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_addrres_ejareh_maskoni.config(text="")
+        gheimat_ejareh_ejareh_maskoni_entry.config(state="normal")
+        gheimat_pish_ejareh_maskoni_entry.config(state="normal")
+
+    else:
+        addrres_ejareh_maskoni_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_addrres_ejareh_maskoni.config(text="فیلد (آدرس) باید شامل حروف فارسی باشد")
+        gheimat_ejareh_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        gheimat_pish_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+         
+
+
 
 def chck_name_malek_ejareh_maskoni(event=None):
     name_malek_ejareh_maskoni = name_malek_ejareh_maskoni_entry.get().strip()
