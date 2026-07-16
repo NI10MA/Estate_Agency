@@ -19,7 +19,7 @@ def get_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="Mmmm9905",#   entry  در ادرس ها   تبدیل بهtext شود      entry==>text
+        password="Nima10.N10",#   entry  در ادرس ها   تبدیل بهtext شود      entry==>text
         #database="state_agency"
     )
 #endregion
@@ -530,8 +530,8 @@ def clear_entry_ejareh_maskoni():
     tabaghe_ejareh_maskoni_entry.delete(0,tk.END)
     vahed_ejareh_maskoni_entry.delete(0,tk.END)
     otagh_ejareh_maskoni_entry.delete(0,tk.END)
-    gheimat_ejare_ejare_maskoni_entry.delete(0,tk.END)
-    gheimat_pish_ejare_maskoni_entry.delete(0,tk.END)
+    gheimat_ejareh_ejareh_maskoni_entry.delete(0,tk.END)
+    gheimat_pish_ejareh_maskoni_entry.delete(0,tk.END)
     name_malek_ejareh_maskoni_entry.delete(0,tk.END)
     shomareh_malek_ejareh_maskoni_entry.delete(0,tk.END)
     #پنجره امکانات
@@ -1278,7 +1278,6 @@ def sabt_radio_mosharekat():
         box_mosharekat.grab_release()
 #endregion        
 #=======================================================
-#region
 #---------------/جابه جایی کاربری باغ و زمین در قسمت های فروش/درخواست/اجاره-------------
 def change_bagh_zamin1(event=None):
     co=bagh_type_combo.get()
@@ -1340,9 +1339,7 @@ def change_bagh_zamin_darkhast2(event=None):
            gheimat_ejareh_bagh_darkhast_zamin_entry.place(x=28, y=13, width=350, height=25)#ودیعه
            time_ejareh_bagh_darkhast_zamin_lable.place(x=490, y=160, anchor="e")
            bagh_time_darkhast_combo.place(x=28, y=150, width=350, height=25)
-#endregion
 #=============================================================  
-#region
 #---------------------قسمت اضافه کردن اپشن های تفریحی و درختان در قسمت باغ و زمین------------
 selected_trees=[]
 def add_tree():# برای اضافه کردن درخت به صورت دستی
@@ -1387,10 +1384,8 @@ def add_option3():
     if op3 and op3 not in selected_option3:
         selected_option3.append(op3)
         lable_natige_add_darkhast_bagh_zamin.config(text=','.join(selected_option3))
-#endregion
 #====================================================================================
 #=====================================================================================
-#region
 def home_true_false1(): # برای فعال یا غیر فعال کردن ویجت های خونه باغ در اجاره
     if var0.get()==1:
         metraj_vila_bagh_entry.config(state="normal")
@@ -1456,10 +1451,7 @@ def home_true_false3(): #برای فعال یا غیر فعال کردن ویج�
         option_darkhast_bagh_zamin_combo.config(state="disabled")
         mojavez_sakht_check_btn_darkhast_bagh_zamin.config(state="disabled")
         mohavate_sazi_check_btn_darkhast_bagh_zamin.config(state="disabled")
-#endregion
-#-------------
 #---------------------تابع تعویض ویجت درخواست ها-----------------
-#region
 def change_darkhast_maskoni_type(event=None):
 
     change_type = melk_type_darkhast_maskoni_entry.get()
@@ -1561,16 +1553,13 @@ def change_darkhast_kargah_type(event=None):
 
         loctaion_darkhast_kargah.place(x=465, y=120, anchor="e")
         loctaion_darkhast_kargah_entry.place(x=18, y=110, width=350, height=25)
-
-#endregion
-
 #=================================DataBase========================
 #--------------------------- اعتبارسنجی ورودی ها -------------------
 #---------------------اعتبارسنجی فروش مسکونی--------------------
-def chck_sal_sakht(event=None):
-    sal_sakht=sal_sakht_forosh_maskoni_entry.get().strip()
+def chck_sal_sakht_forosh_maskoni(event=None):
+    sal_sakht_forosh_maskoni=sal_sakht_forosh_maskoni_entry.get().strip()
 
-    if sal_sakht.isdigit() and len(sal_sakht) ==4:
+    if sal_sakht_forosh_maskoni.isdigit() and len(sal_sakht_forosh_maskoni) ==4:
         sal_sakht_forosh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_sal_sakht_forosh_maskoni.config(text="")
         metraj_forosh_maskoni_entry.config(state="normal")
@@ -1585,10 +1574,10 @@ def chck_sal_sakht(event=None):
         vahed_forosh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
         otagh_forosh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
 
-def chck_metraj(event=None):
-    metraj=metraj_forosh_maskoni_entry.get().strip()
+def chck_metraj_forosh_maskoni(event=None):
+    metraj_forosh_maskoni=metraj_forosh_maskoni_entry.get().strip()
 
-    if metraj.isdigit():
+    if metraj_forosh_maskoni.isdigit():
         metraj_forosh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_metraj_forosh_maskoni.config(text="")
         sal_sakht_forosh_maskoni_entry.config(state="normal")
@@ -1603,10 +1592,10 @@ def chck_metraj(event=None):
         vahed_forosh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
         otagh_forosh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
     
-def chck_tabaghe(event=None):
-    tabaghe=tabaghe_forosh_maskoni_entry.get().strip()
+def chck_tabaghe_forosh_maskoni(event=None):
+    tabaghe_forosh_maskoni=tabaghe_forosh_maskoni_entry.get().strip()
 
-    if tabaghe.isdigit():
+    if tabaghe_forosh_maskoni.isdigit():
         tabaghe_forosh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_tabaghe_forosh_maskoni.config(text="")
         sal_sakht_forosh_maskoni_entry.config(state="normal")
@@ -1622,10 +1611,10 @@ def chck_tabaghe(event=None):
         vahed_forosh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
         otagh_forosh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
 
-def chck_vahed(event=None):
-    vahed=vahed_forosh_maskoni_entry.get().strip()
+def chck_vahed_forosh_maskoni(event=None):
+    vahed_forosh_maskoni=vahed_forosh_maskoni_entry.get().strip()
 
-    if vahed.isdigit():
+    if vahed_forosh_maskoni.isdigit():
         vahed_forosh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_vahed_forosh_maskoni.config(text="")
         sal_sakht_forosh_maskoni_entry.config(state="normal")
@@ -1641,10 +1630,10 @@ def chck_vahed(event=None):
         tabaghe_forosh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
         otagh_forosh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
 
-def chck_otagh(event=None):
-    otagh=otagh_forosh_maskoni_entry.get().strip()
+def chck_otagh_forosh_maskoni(event=None):
+    otagh_forosh_maskoni=otagh_forosh_maskoni_entry.get().strip()
 
-    if otagh.isdigit():
+    if otagh_forosh_maskoni.isdigit():
         otagh_forosh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_otagh_forosh_maskoni.config(text="")
         sal_sakht_forosh_maskoni_entry.config(state="normal")
@@ -1660,10 +1649,10 @@ def chck_otagh(event=None):
         tabaghe_forosh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
         vahed_forosh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
 
-def chck_gheimat_kol(event=None):
-    gheimat_kol=gheimat_kol_forosh_maskoni_entry.get().strip()
+def chck_gheimat_kol_forosh_maskoni(event=None):
+    gheimat_kol_forosh_maskoni=gheimat_kol_forosh_maskoni_entry.get().strip()
 
-    if gheimat_kol.isdigit():
+    if gheimat_kol_forosh_maskoni.isdigit():
         gheimat_kol_forosh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_gheimat_kol_forosh_maskoni.config(text="")
         addrres_forosh_maskoni_entry.config(state="normal")
@@ -1675,10 +1664,10 @@ def chck_gheimat_kol(event=None):
         addrres_forosh_maskoni_entry.config(bg="#808080",fg="white")
         addrres_forosh_maskoni_entry.config(state="disabled")
 
-def chck_addrres(event=None):
-    addrres = addrres_forosh_maskoni_entry.get("1.0", tk.END).strip()
+def chck_addrres_forosh_maskoni(event=None):
+    addrres_forosh_maskoni = addrres_forosh_maskoni_entry.get("1.0", tk.END).strip()
 
-    if (re.fullmatch(r"[آ-ی0-9۰-۹\s]+", addrres) and re.search(r"[آ-ی]", addrres)):
+    if (re.fullmatch(r"[آ-ی0-9۰-۹\s]+", addrres_forosh_maskoni) and re.search(r"[آ-ی]", addrres_forosh_maskoni)):
         addrres_forosh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_addrres_forosh_maskoni.config(text="")
         gheimat_kol_forosh_maskoni_entry.config(state="normal")
@@ -1689,10 +1678,10 @@ def chck_addrres(event=None):
         error_lable_addrres_forosh_maskoni.config(text="فیلد (آدرس) باید شامل حروف فارسی باشد")
         gheimat_kol_forosh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
 
-def chck_name_malek(event=None):
-    name_malek = name_malek_forosh_maskoni_entry.get().strip()
+def chck_name_malek_forosh_maskoni(event=None):
+    name_malek_forosh_maskoni = name_malek_forosh_maskoni_entry.get().strip()
 
-    if re.fullmatch(r"[آ-ی\s]+", name_malek):
+    if re.fullmatch(r"[آ-ی\s]+", name_malek_forosh_maskoni):
         name_malek_forosh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_name_malek_forosh_maskoni.config(text="")
         shomareh_malek_forosh_maskoni_entry.config(state="normal")
@@ -1702,10 +1691,10 @@ def chck_name_malek(event=None):
         error_lable_name_malek_forosh_maskoni.config(text="فیلد (نام مالک) باید شامل حروف فارسی باشد")
         shomareh_malek_forosh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
 
-def chck_shomareh_malek(event=None):
-    shomareh_malek=shomareh_malek_forosh_maskoni_entry.get().strip()
+def chck_shomareh_malek_forosh_maskoni(event=None):
+    shomareh_malek_forosh_maskoni=shomareh_malek_forosh_maskoni_entry.get().strip()
 
-    if shomareh_malek.isdigit() and len(shomareh_malek) ==11:
+    if shomareh_malek_forosh_maskoni.isdigit() and len(shomareh_malek_forosh_maskoni) ==11:
         shomareh_malek_forosh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_name_malek_forosh_maskoni.config(text="")
         name_malek_forosh_maskoni_entry.config(state="normal")
@@ -1714,8 +1703,171 @@ def chck_shomareh_malek(event=None):
         shomareh_malek_forosh_maskoni_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_name_malek_forosh_maskoni.config(text=" فیلد(شماره مالک) باید شامل 11رقم باشد")
         name_malek_forosh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+#-------------------اعتبارسنجی اجاره مسکونی--------------------
+def chck_sal_sakht_ejareh_maskoni(event=None):
+    sal_sakht_ejareh_maskoni=sal_sakht_ejareh_maskoni_entry.get().strip()
 
-#region ============*توابع ثبتی دیتابیس*=============================
+    if sal_sakht_ejareh_maskoni.isdigit() and len(sal_sakht_ejareh_maskoni) ==4:
+        sal_sakht_ejareh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_sal_sakht_ejareh_maskoni.config(text="")
+        metraj_ejareh_maskoni_entry.config(state="normal")
+        tabaghe_ejareh_maskoni_entry.config(state="normal")
+        vahed_ejareh_maskoni_entry.config(state="normal")
+        otagh_ejareh_maskoni_entry.config(state="normal")
+    else:
+        sal_sakht_ejareh_maskoni_entry.config(highlightthickness=2,highlightcolor="red")
+        error_lable_sal_sakht_ejareh_maskoni.config(text="فیلد(سال ساخت) باید شامل چهار عدد باشد")
+        metraj_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        tabaghe_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        vahed_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        otagh_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+
+def chck_metraj_ejareh_maskoni(event=None):
+    metraj_ejareh_maskoni=metraj_ejareh_maskoni_entry.get().strip()
+
+    if metraj_ejareh_maskoni.isdigit():
+        metraj_ejareh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_metraj_ejareh_maskoni.config(text="")
+        sal_sakht_ejareh_maskoni_entry.config(state="normal")
+        tabaghe_ejareh_maskoni_entry.config(state="normal")
+        vahed_ejareh_maskoni_entry.config(state="normal")
+        otagh_ejareh_maskoni_entry.config(state="normal")
+    else:
+        metraj_ejareh_maskoni_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_metraj_ejareh_maskoni.config(text=" فیلد(متراژ) باید شامل اعداد باشد")
+        sal_sakht_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        tabaghe_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        vahed_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        otagh_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+    
+def chck_tabaghe_ejareh_maskoni(event=None):
+    tabaghe_ejareh_maskoni=tabaghe_ejareh_maskoni_entry.get().strip()
+
+    if tabaghe_ejareh_maskoni.isdigit():
+        tabaghe_ejareh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_tabaghe_ejareh_maskoni.config(text="")
+        sal_sakht_ejareh_maskoni_entry.config(state="normal")
+        metraj_ejareh_maskoni_entry.config(state="normal")
+        vahed_ejareh_maskoni_entry.config(state="normal")
+        otagh_ejareh_maskoni_entry.config(state="normal")
+
+    else:
+        tabaghe_ejareh_maskoni_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_tabaghe_ejareh_maskoni.config(text=" فیلد(طبقه) باید شامل اعداد باشد")
+        sal_sakht_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        metraj_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        vahed_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        otagh_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+
+def chck_vahed_ejareh_maskoni(event=None):
+    vahed_ejareh_maskoni=vahed_ejareh_maskoni_entry.get().strip()
+
+    if vahed_ejareh_maskoni.isdigit():
+        vahed_ejareh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_vahed_ejareh_maskoni.config(text="")
+        sal_sakht_ejareh_maskoni_entry.config(state="normal")
+        metraj_ejareh_maskoni_entry.config(state="normal")
+        tabaghe_ejareh_maskoni_entry.config(state="normal")
+        otagh_ejareh_maskoni_entry.config(state="normal")
+
+    else:
+        vahed_ejareh_maskoni_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_vahed_ejareh_maskoni.config(text=" فیلد(واحد) باید شامل اعداد باشد")
+        sal_sakht_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        metraj_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        tabaghe_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        otagh_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+
+def chck_otagh_ejareh_maskoni(event=None):
+    otagh_ejareh_maskoni=otagh_ejareh_maskoni_entry.get().strip()
+
+    if otagh_ejareh_maskoni.isdigit():
+        otagh_ejareh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_otagh_ejareh_maskoni.config(text="")
+        sal_sakht_ejareh_maskoni_entry.config(state="normal")
+        metraj_ejareh_maskoni_entry.config(state="normal")
+        tabaghe_ejareh_maskoni_entry.config(state="normal")
+        vahed_ejareh_maskoni_entry.config(state="normal")
+
+    else:
+        otagh_ejareh_maskoni_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_otagh_ejareh_maskoni.config(text=" فیلد(اتاق) باید شامل اعداد باشد")
+        sal_sakht_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        metraj_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        tabaghe_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        vahed_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+
+def chck_addrres_ejareh_maskoni(event=None):
+    addrres_ejareh_maskoni = addrres_ejareh_maskoni_entry.get("1.0", tk.END).strip()
+
+    if (re.fullmatch(r"[آ-ی0-9۰-۹\s]+", addrres_ejareh_maskoni) and re.search(r"[آ-ی]", addrres_ejareh_maskoni)):
+        addrres_ejareh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_addrres_ejareh_maskoni.config(text="")
+        gheimat_ejareh_ejareh_maskoni_entry.config(state="normal")
+        gheimat_pish_ejareh_maskoni_entry.config(state="normal")
+
+    else:
+        addrres_ejareh_maskoni_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_addrres_ejareh_maskoni.config(text="فیلد (آدرس) باید شامل حروف فارسی باشد")
+        gheimat_ejareh_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        gheimat_pish_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+         
+def chck_gheimat_pish_ejareh_maskoni(event=None):
+    gheimat_pish_ejareh_maskoni=gheimat_pish_ejareh_maskoni_entry.get().strip()
+
+    if gheimat_pish_ejareh_maskoni.isdigit():
+        gheimat_pish_ejareh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_gheimat_pish_ejareh_maskoni.config(text="")
+        addrres_ejareh_maskoni_entry.config(state="normal")
+        gheimat_ejareh_ejareh_maskoni_entry.config(state="normal")
+
+    else:
+        gheimat_pish_ejareh_maskoni_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_gheimat_pish_ejareh_maskoni.config(text=" فیلد(قیمت پیش) باید شامل اعداد باشد")
+        addrres_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        gheimat_ejareh_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        
+def chck_gheimat_ejareh_ejareh_maskoni(event=None):
+    gheimat_ejareh_ejareh_maskoni=gheimat_ejareh_ejareh_maskoni_entry.get().strip()
+
+    if gheimat_ejareh_ejareh_maskoni.isdigit():
+        gheimat_ejareh_ejareh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_gheimat_ejareh_ejareh_maskoni.config(text="")
+        addrres_ejareh_maskoni_entry.config(state="normal")
+        gheimat_pish_ejareh_maskoni_entry.config(state="normal")
+    else:
+        gheimat_ejareh_ejareh_maskoni_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_gheimat_ejareh_ejareh_maskoni.config(text=" فیلد(قیمت اجاره) باید شامل اعداد باشد")
+        addrres_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        gheimat_pish_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+
+def chck_name_malek_ejareh_maskoni(event=None):
+    name_malek_ejareh_maskoni = name_malek_ejareh_maskoni_entry.get().strip()
+
+    if re.fullmatch(r"[آ-ی\s]+", name_malek_ejareh_maskoni):
+        name_malek_ejareh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_name_malek_ejareh_maskoni.config(text="")
+        shomareh_malek_ejareh_maskoni_entry.config(state="normal")
+
+    else:
+        name_malek_ejareh_maskoni_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_name_malek_ejareh_maskoni.config(text="فیلد (نام مالک) باید شامل حروف فارسی باشد")
+        shomareh_malek_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+
+def chck_shomareh_malek_ejareh_maskoni(event=None):
+    shomareh_malek_ejareh_maskoni=shomareh_malek_ejareh_maskoni_entry.get().strip()
+
+    if shomareh_malek_ejareh_maskoni.isdigit() and len(shomareh_malek_ejareh_maskoni) ==11:
+        shomareh_malek_ejareh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_name_malek_ejareh_maskoni.config(text="")
+        name_malek_ejareh_maskoni_entry.config(state="normal")
+
+    else:
+        shomareh_malek_ejareh_maskoni_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_name_malek_ejareh_maskoni.config(text=" فیلد(شماره مالک) باید شامل 11رقم باشد")
+        name_malek_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+
+#============*توابع ثبتی دیتابیس*=============================
 #--------------------------------------تابع ثبت فروش---------------------------
 #---------------------------forosh_maskoni------------------------------
 def sabt_forosh_maskoni():
@@ -2116,51 +2268,6 @@ def sabt_forosh_kargah():
 #----------------------------تابع ثبت اجاره----------------------------------
 #----------------------- ejareh_maskoni Database -------------------------------
 def sabt_ejareh_maskoni():
-# اعتبارسنجی 
-    sal_sakht= sal_sakht_ejareh_maskoni_entry.get().strip()
-    metraj= metraj_ejareh_maskoni_entry.get().strip()
-    tabaghe= tabaghe_ejareh_maskoni_entry.get().strip()
-    vahed= vahed_ejareh_maskoni_entry.get().strip()
-    otagh= otagh_ejareh_maskoni_entry.get().strip()
-    gheimat_pish= gheimat_pish_ejare_maskoni_entry.get().strip()
-    gheimat_ejare= gheimat_ejare_ejare_maskoni_entry.get().strip()
-    addrres = addrres_ejareh_maskoni_entry.get("1.0", "end-1c").strip()
-    name_malek= name_malek_ejareh_maskoni_entry.get().strip()
-    shomareh_malek= shomareh_malek_ejareh_maskoni_entry.get().strip()
-
-    if len(sal_sakht) != 4 or not sal_sakht.isdigit():
-        error_lable_sal_sakht_ejareh_maskoni.config(text="فیلد (سال ساخت) باید 4 رقمی باشد ")
-        return
-    elif not metraj.isdigit():
-        error_lable_metraj_ejareh_maskoni.config(text="فیلد (متراژ) فقط باید شامل اعداد باشد ")
-        return
-    elif not tabaghe.isdigit():
-        error_lable_tabaghe_ejareh_maskoni.config(text="فیلد (طبقه) فقط باید شامل اعداد باشد ")
-        return
-    elif not vahed.isdigit():
-        error_lable_vahed_ejareh_maskoni.config(text="فیلد (واحد) فقط باید شامل اعداد باشد ")
-        return
-    elif not otagh.isdigit():
-        error_lable_otagh_ejareh_maskoni.config(text="فیلد (اتاق) فقط باید شامل اعداد باشد ")
-        return
-    elif not gheimat_pish.isdigit():
-        error_lable_gheimat_pish_ejareh_maskoni.config(text="فیلد (مبلغ پیش) فقط باید شامل اعداد باشد ")
-        return
-    elif not gheimat_ejare.isdigit():
-        error_lable_gheimat_ejareh_ejareh_maskoni.config(text="فیلد (مبلغ اجاره) فقط باید شامل اعداد باشد ")
-        return
-    elif not re.fullmatch(r"[آ-ی0-9۰-۹\s]+", addrres):
-        error_lable_addrres_ejareh_maskoni.config(text="فیلد (آدرس) فقط باید شامل حروف فارسی و اعداد باشد ")
-        return
-    elif not name_malek or not re.match("^[\u0600-\u06FF\s]+$", name_malek):
-        error_lable_addrres_ejareh_maskoni.config(text="")
-        error_lable_name_malek_ejareh_maskoni.config(text="فیلد (نام مالک) فقط باید شامل حروف فارسی باشد ")
-        return
-    elif len(shomareh_malek) != 11 or not shomareh_malek.isdigit():
-        error_lable_name_malek_ejareh_maskoni.config(text="")
-        error_lable_shomareh_malek_ejareh_maskoni.config(text="فیلد (شماره مالک) باید 11 رقمی باشد ")
-        return
-
     db = None
     try:
         db = get_connection()
@@ -2216,8 +2323,8 @@ def sabt_ejareh_maskoni():
             garmaesh_ejareh_maskoni_combo.get(),
             kaf_ejareh_maskoni_combo.get(),
             toilet_ejareh_maskoni_combo.get(),
-            float(gheimat_ejare_ejare_maskoni_entry.get()),
-            float(gheimat_pish_ejare_maskoni_entry.get()),
+            float(gheimat_ejareh_ejareh_maskoni_entry.get()),
+            float(gheimat_pish_ejareh_maskoni_entry.get()),
             name_malek_ejareh_maskoni_entry.get(),
             shomareh_malek_ejareh_maskoni_entry.get(),
             metraj_ejareh_maskoni_entry.get()
@@ -4507,11 +4614,11 @@ def open_edit():
         kaf_ejareh_maskoni_combo.set(data[12])
         toilet_ejareh_maskoni_combo.set(data[13])
 
-        gheimat_pish_ejare_maskoni_entry.delete(0, tk.END)
-        gheimat_pish_ejare_maskoni_entry.insert(0, data[14])
+        gheimat_pish_ejareh_maskoni_entry.delete(0, tk.END)
+        gheimat_pish_ejareh_maskoni_entry.insert(0, data[14])
 
-        gheimat_ejare_ejare_maskoni_entry.delete(0, tk.END)
-        gheimat_ejare_ejare_maskoni_entry.insert(0, data[15])
+        gheimat_ejare_ejareh_maskoni_entry.delete(0, tk.END)
+        gheimat_ejare_ejareh_maskoni_entry.insert(0, data[15])
 
 
         name_malek_ejareh_maskoni_entry.delete(0, tk.END)
@@ -5806,8 +5913,8 @@ def update_ejareh_maskoni():
         toilet_ejareh_maskoni_combo.get(),
         name_malek_ejareh_maskoni_entry.get(),
         shomareh_malek_ejareh_maskoni_entry.get(),
-        float(gheimat_pish_ejare_maskoni_entry.get()),
-        gheimat_ejare_ejare_maskoni_entry.get(),
+        float(gheimat_pish_ejareh_maskoni_entry.get()),
+        gheimat_ejareh_ejareh_maskoni_entry.get(),
         selected_id
     )
 
@@ -6867,7 +6974,6 @@ def delete_forosh_maskoni():
     refresh_after_edit()
     forosh_maskoni_window.withdraw()
     root.deiconify()
-
 def delete_ejareh_maskoni():
     if not messagebox.askyesno("تأیید", "آیا از حذف این فایل مطمئن هستید؟"):
         return
@@ -7016,7 +7122,6 @@ def delete_forosh_kargah():
     messagebox.showinfo("موفق", "فایل با موفقیت حذف شد.")
 
     refresh_after_edit()
-
 def delete_ejareh_kargah():
 
     if not messagebox.askyesno("تأیید", "آیا از حذف این فایل مطمئن هستید؟"):
@@ -7702,72 +7807,80 @@ sal_sakht_ejareh_maskoni_lable.place(x=465, y=80, anchor="e")
 
 sal_sakht_ejareh_maskoni_entry = tk.Entry(frame_up_right_ejareh_maskoni, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 sal_sakht_ejareh_maskoni_entry.place(x=18, y=70, width=350, height=25)
+sal_sakht_ejareh_maskoni_entry.bind("<KeyRelease>",chck_sal_sakht_ejareh_maskoni)
 
 metraj_ejareh_maskoni_lable = tk.Label(frame_up_right_ejareh_maskoni, text="متراژ", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 metraj_ejareh_maskoni_lable.place(x=465, y=120,anchor="e")
 
 metraj_ejareh_maskoni_entry = tk.Entry(frame_up_right_ejareh_maskoni, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 metraj_ejareh_maskoni_entry.place(x=18, y=110, width=350, height=25)
+metraj_ejareh_maskoni_entry.bind("<KeyRelease>",chck_metraj_ejareh_maskoni)
 
-tabaghe_ejare_maskoni_lable = tk.Label(frame_up_right_ejareh_maskoni, text="طبقه", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-tabaghe_ejare_maskoni_lable.place(x=465, y=160, anchor="e")
+tabaghe_ejareh_maskoni_lable = tk.Label(frame_up_right_ejareh_maskoni, text="طبقه", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+tabaghe_ejareh_maskoni_lable.place(x=465, y=160, anchor="e")
 
 tabaghe_ejareh_maskoni_entry = tk.Entry(frame_up_right_ejareh_maskoni, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 tabaghe_ejareh_maskoni_entry.place(x=18, y=150, width=350, height=25)
+tabaghe_ejareh_maskoni_entry.bind("<KeyRelease>",chck_tabaghe_ejareh_maskoni)
 
 vahed_ejareh_maskoni_lable = tk.Label(frame_up_right_ejareh_maskoni, text="واحد", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 vahed_ejareh_maskoni_lable.place(x=465, y=200, anchor="e")
 
 vahed_ejareh_maskoni_entry = tk.Entry(frame_up_right_ejareh_maskoni, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 vahed_ejareh_maskoni_entry.place(x=18, y=190, width=350, height=25)
+vahed_ejareh_maskoni_entry.bind("<KeyRelease>",chck_vahed_ejareh_maskoni)
 
-otagh_ejare_maskoni_lable = tk.Label(frame_up_right_ejareh_maskoni, text="اتاق", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-otagh_ejare_maskoni_lable.place(x=465, y=240, anchor="e")
+otagh_ejareh_maskoni_lable = tk.Label(frame_up_right_ejareh_maskoni, text="اتاق", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+otagh_ejareh_maskoni_lable.place(x=465, y=240, anchor="e")
 
 otagh_ejareh_maskoni_entry = tk.Entry(frame_up_right_ejareh_maskoni, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 otagh_ejareh_maskoni_entry.place(x=18 ,y=230, width=350, height=25)
-
+otagh_ejareh_maskoni_entry.bind("<KeyRelease>",chck_otagh_ejareh_maskoni)
 #--------------------فریم چپ بالا---------------------------
-photo_lbl2_ejare_maskoni = tk.Label(frame_up_left_ejareh_maskoni, text="[تصویر ملک]", bg="#FFFFFF", width=79, height=15,relief="solid")
-photo_lbl2_ejare_maskoni.place(x=40, y=10)
+photo_lbl2_ejareh_maskoni = tk.Label(frame_up_left_ejareh_maskoni, text="[تصویر ملک]", bg="#FFFFFF", width=79, height=15,relief="solid")
+photo_lbl2_ejareh_maskoni.place(x=40, y=10)
 
-add_img_btn_ejare_maskoni = tk.Button(frame_up_left_ejareh_maskoni, text="افزودن تصویر", bg="#00BFFF", fg="#ffffff",command=open_file, height=2,width=13)
-add_img_btn_ejare_maskoni.place(x=240, y=250)
+add_img_btn_ejareh_maskoni = tk.Button(frame_up_left_ejareh_maskoni, text="افزودن تصویر", bg="#00BFFF", fg="#ffffff",command=open_file, height=2,width=13)
+add_img_btn_ejareh_maskoni.place(x=240, y=250)
 #--------------------------فریم راست وسط---------------------
-gheimat_pish_ejare_maskoni_lable = tk.Label(frame_midde_right_ejareh_maskoni, text="مبلغ پیش", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-gheimat_pish_ejare_maskoni_lable.place(x=465, y=30, anchor="e")
+gheimat_pish_ejareh_maskoni_lable = tk.Label(frame_midde_right_ejareh_maskoni, text="مبلغ پیش", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+gheimat_pish_ejareh_maskoni_lable.place(x=465, y=30, anchor="e")
 
-gheimat_pish_ejare_maskoni_entry = tk.Entry(frame_midde_right_ejareh_maskoni, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
-gheimat_pish_ejare_maskoni_entry.place(x=18, y=20, width=350, height=25)
+gheimat_pish_ejareh_maskoni_entry = tk.Entry(frame_midde_right_ejareh_maskoni, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
+gheimat_pish_ejareh_maskoni_entry.place(x=18, y=20, width=350, height=25)
+gheimat_pish_ejareh_maskoni_entry.bind("<KeyRelease>",chck_gheimat_pish_ejareh_maskoni)
 
-gheimat_ejare_ejare_maskoni_lable = tk.Label(frame_midde_right_ejareh_maskoni, text="مبلغ اجاره", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-gheimat_ejare_ejare_maskoni_lable.place(x=465, y=80, anchor="e")
+gheimat_ejare_ejareh_maskoni_lable = tk.Label(frame_midde_right_ejareh_maskoni, text="مبلغ اجاره", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+gheimat_ejare_ejareh_maskoni_lable.place(x=465, y=80, anchor="e")
 
-gheimat_ejare_ejare_maskoni_entry = tk.Entry(frame_midde_right_ejareh_maskoni, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
-gheimat_ejare_ejare_maskoni_entry.place(x=18, y=70, width=350, height=25)
+gheimat_ejareh_ejareh_maskoni_entry = tk.Entry(frame_midde_right_ejareh_maskoni, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
+gheimat_ejareh_ejareh_maskoni_entry.place(x=18, y=70, width=350, height=25)
+gheimat_ejareh_ejareh_maskoni_entry.bind("<KeyRelease>",chck_gheimat_ejareh_ejareh_maskoni)
 
 addrres_ejareh_maskoni_lable = tk.Label(frame_midde_right_ejareh_maskoni, text="آدرس", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 addrres_ejareh_maskoni_lable.place(x=465, y=125, anchor="e")
 
 addrres_ejareh_maskoni_entry = tk.Text(frame_midde_right_ejareh_maskoni, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 addrres_ejareh_maskoni_entry.place(x=18, y=115, width=350, height=25)
+addrres_ejareh_maskoni_entry.bind("<KeyRelease>",chck_addrres_ejareh_maskoni)
 #------------------------------------فریم چپ وسط-----------------------
 name_malek_ejareh_maskoni_lable = tk.Label(frame_midde_left_ejareh_maskoni,text="نام مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 name_malek_ejareh_maskoni_lable.place(x=600, y=30,anchor="e")
 
 name_malek_ejareh_maskoni_entry = tk.Entry(frame_midde_left_ejareh_maskoni, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 name_malek_ejareh_maskoni_entry.place(x=30, y=20, width=350, height=25)
+name_malek_ejareh_maskoni_entry.bind("<KeyRelease>",chck_name_malek_ejareh_maskoni)
 
 shomareh_malek_ejareh_maskoni_lable = tk.Label(frame_midde_left_ejareh_maskoni, text="شماره مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 shomareh_malek_ejareh_maskoni_lable.place(x=600, y=80,anchor="e")
 
 shomareh_malek_ejareh_maskoni_entry = tk.Entry(frame_midde_left_ejareh_maskoni, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 shomareh_malek_ejareh_maskoni_entry.place(x=30, y=70, width=350, height=25)
+shomareh_malek_ejareh_maskoni_entry.bind("<KeyRelease>",chck_shomareh_malek_ejareh_maskoni)
 #---------------------------------فریم پایین--------------------------------
 parking_ejareh_maskoni_var=tk.IntVar(value=0)
 anbari_ejareh_maskoni_var=tk.IntVar(value=0)
 asansor_ejareh_maskoni_var=tk.IntVar(value=0)
-
 
 parking_checkbutton_btn_ejareh_maskoni = tk.Checkbutton(frame_down_ejareh_maskoni, image=parking_pic,variable=parking_ejareh_maskoni_var,bg="#052340")
 parking_checkbutton_btn_ejareh_maskoni.place(x=1050, y=10)
@@ -7778,7 +7891,6 @@ asansor_checkbutton_btn_ejareh_maskoni = tk.Checkbutton(frame_down_ejareh_maskon
 asansor_checkbutton_btn_ejareh_maskoni.place(x=950, y=10)
 asansor_ch_btn_ejareh_maskoni_label=tk.Label(frame_down_ejareh_maskoni,text="آسانسور", bg="#052340", fg="#ffffff", font=("Shabnam", 9), width=7)
 asansor_ch_btn_ejareh_maskoni_label.place(x=955,y=60)
-
 
 anbari_checkbutton_btn_ejareh_maskoni = tk.Checkbutton(frame_down_ejareh_maskoni, image=warehouse_pic,variable=anbari_ejareh_maskoni_var,bg="#052340")
 anbari_checkbutton_btn_ejareh_maskoni.place(x=850, y=10)
@@ -7809,7 +7921,6 @@ kaf_ejareh_maskoni_combo["state"] = "readonly"
 kaf_ejareh_maskoni_combo.configure(justify="center")
 kaf_ejareh_maskoni_combo.place(x=150, y=15)
 
-
 toilet_ejareh_maskoni = tk.Label(frame_down_ejareh_maskoni, text="سرویس بهداشتی", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
 toilet_ejareh_maskoni.place(x=330, y=45)
 toilet_ejareh_maskoni_combo = ttk.Combobox(frame_down_ejareh_maskoni)
@@ -7817,7 +7928,6 @@ toilet_ejareh_maskoni_combo["values"] = ("ایرانی", "فرنگی", "هردو
 toilet_ejareh_maskoni_combo["state"] = "readonly"
 toilet_ejareh_maskoni_combo.configure(justify="center")
 toilet_ejareh_maskoni_combo.place(x=150, y=45)
-
 
 back_to_home_ejareh_maskoni=tk.Button(ejareh_maskoni_window,text="بازگشت",bg="#052340", fg="#ffffff",width=10,height=1,command=back_home_ejareh_maskoni)
 back_to_home_ejareh_maskoni.place(x=400,y=30)
@@ -8660,35 +8770,35 @@ sal_sakht_forosh_maskoni.place(x=465, y=80, anchor="e")
 
 sal_sakht_forosh_maskoni_entry=tk.Entry(frame_up_right_forosh_maskoni, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 sal_sakht_forosh_maskoni_entry.place(x=18, y=70, width=350, height=25)
-sal_sakht_forosh_maskoni_entry.bind("<KeyRelease>",chck_sal_sakht)
+sal_sakht_forosh_maskoni_entry.bind("<KeyRelease>",chck_sal_sakht_forosh_maskoni)
 
 metraj_forosh_maskoni=tk.Label(frame_up_right_forosh_maskoni, text=" متراژ ", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 metraj_forosh_maskoni.place(x=465, y=120, anchor="e")
 
 metraj_forosh_maskoni_entry=tk.Entry(frame_up_right_forosh_maskoni, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 metraj_forosh_maskoni_entry.place(x=18, y=110, width=350, height=25)
-metraj_forosh_maskoni_entry.bind("<KeyRelease>",chck_metraj)
+metraj_forosh_maskoni_entry.bind("<KeyRelease>",chck_metraj_forosh_maskoni)
 
 tabaghe_forosh_maskoni= tk.Label(frame_up_right_forosh_maskoni, text="طبقه", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 tabaghe_forosh_maskoni.place(x=465, y=160, anchor="e")
 
 tabaghe_forosh_maskoni_entry=tk.Entry(frame_up_right_forosh_maskoni, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 tabaghe_forosh_maskoni_entry.place(x=18, y=150, width=350, height=25)
-tabaghe_forosh_maskoni_entry.bind("<KeyRelease>",chck_tabaghe)
+tabaghe_forosh_maskoni_entry.bind("<KeyRelease>",chck_tabaghe_forosh_maskoni)
 
 vahed_forosh_maskoni=tk.Label(frame_up_right_forosh_maskoni, text="واحد", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 vahed_forosh_maskoni.place(x=465, y=200, anchor="e")
 
 vahed_forosh_maskoni_entry=tk.Entry(frame_up_right_forosh_maskoni, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 vahed_forosh_maskoni_entry.place(x=18, y=190, width=350, height=25)
-vahed_forosh_maskoni_entry.bind("<KeyRelease>",chck_vahed)
+vahed_forosh_maskoni_entry.bind("<KeyRelease>",chck_vahed_forosh_maskoni)
 
 otagh_forosh_maskoni= tk.Label(frame_up_right_forosh_maskoni, text="اتاق", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 otagh_forosh_maskoni.place(x=465, y=240, anchor="e")
 
 otagh_forosh_maskoni_entry=tk.Entry(frame_up_right_forosh_maskoni, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 otagh_forosh_maskoni_entry.place(x=18, y=230, width=350, height=25)
-otagh_forosh_maskoni_entry.bind("<KeyRelease>",chck_otagh)
+otagh_forosh_maskoni_entry.bind("<KeyRelease>",chck_otagh_forosh_maskoni)
 
 #----------------------------فریم بالا سمت چپ----------------------------------
 photo_lbl2_forosh_maskoni = tk.Label(frame_up_left_forosh_maskoni, text="[تصویر ملک]", bg="#ffffff", width=79, height=15)
@@ -8702,28 +8812,28 @@ gheimat_kol_forosh_maskoni.place(x=465, y=30, anchor="e")
 
 gheimat_kol_forosh_maskoni_entry=tk.Entry(frame_midde_right_forosh_maskoni, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 gheimat_kol_forosh_maskoni_entry.place(x=18, y=20, width=350, height=25)
-gheimat_kol_forosh_maskoni_entry.bind("<KeyRelease>",chck_gheimat_kol)
+gheimat_kol_forosh_maskoni_entry.bind("<KeyRelease>",chck_gheimat_kol_forosh_maskoni)
 
 addrres_forosh_maskoni=tk.Label(frame_midde_right_forosh_maskoni, text="آدرس", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 addrres_forosh_maskoni.place(x=465, y=80, anchor="e")
 
 addrres_forosh_maskoni_entry=tk.Text(frame_midde_right_forosh_maskoni, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 addrres_forosh_maskoni_entry.place(x=18, y=70, width=350, height=50)
-addrres_forosh_maskoni_entry.bind("<KeyRelease>",chck_addrres)
+addrres_forosh_maskoni_entry.bind("<KeyRelease>",chck_addrres_forosh_maskoni)
 #-------------------------------------فریم وسط سمت چپ---------------------------
 name_malek_forosh_maskoni_lable = tk.Label(frame_midde_left_forosh_maskoni, text="نام مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 name_malek_forosh_maskoni_lable.place(x=600, y=30,anchor="e")
 
 name_malek_forosh_maskoni_entry = tk.Entry(frame_midde_left_forosh_maskoni, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 name_malek_forosh_maskoni_entry.place(x=30, y=20, width=350, height=25)
-name_malek_forosh_maskoni_entry.bind("<KeyRelease>",chck_name_malek)
+name_malek_forosh_maskoni_entry.bind("<KeyRelease>",chck_name_malek_forosh_maskoni)
 
 shomareh_malek_forosh_maskoni_lable = tk.Label(frame_midde_left_forosh_maskoni, text="شماره مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 shomareh_malek_forosh_maskoni_lable.place(x=600, y=80,anchor="e")
 
 shomareh_malek_forosh_maskoni_entry = tk.Entry(frame_midde_left_forosh_maskoni, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 shomareh_malek_forosh_maskoni_entry.place(x=30, y=70, width=350, height=25)
-shomareh_malek_forosh_maskoni_entry.bind("<KeyRelease>",chck_shomareh_malek)
+shomareh_malek_forosh_maskoni_entry.bind("<KeyRelease>",chck_shomareh_malek_forosh_maskoni)
 
 #-----------------------------------------فریم پایین--------------------------------
 
