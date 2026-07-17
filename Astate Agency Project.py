@@ -1809,8 +1809,8 @@ def chck_gheimat_pish_ejareh_maskoni(event=None):
     else:
         gheimat_pish_ejareh_maskoni_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_gheimat_pish_ejareh_maskoni.config(text=" فیلد(قیمت پیش) باید شامل اعداد باشد")
-        addrres_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
-        gheimat_ejareh_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        addrres_ejareh_maskoni_entry.config(state="disabled")
+        gheimat_ejareh_ejareh_maskoni_entry.config(state="disabled")
         
 def chck_gheimat_ejareh_ejareh_maskoni(event=None):
     gheimat_ejareh_ejareh_maskoni=gheimat_ejareh_ejareh_maskoni_entry.get().strip()
@@ -1823,8 +1823,8 @@ def chck_gheimat_ejareh_ejareh_maskoni(event=None):
     else:
         gheimat_ejareh_ejareh_maskoni_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_gheimat_ejareh_ejareh_maskoni.config(text=" فیلد(قیمت اجاره) باید شامل اعداد باشد")
-        addrres_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
-        gheimat_pish_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        addrres_ejareh_maskoni_entry.config(state="disabled")
+        gheimat_pish_ejareh_maskoni_entry.config(state="disabled")
 
 def chck_addrres_ejareh_maskoni(event=None):
     addrres_ejareh_maskoni = addrres_ejareh_maskoni_entry.get("1.0", tk.END).strip()
@@ -1838,11 +1838,9 @@ def chck_addrres_ejareh_maskoni(event=None):
     else:
         addrres_ejareh_maskoni_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_addrres_ejareh_maskoni.config(text="فیلد (آدرس) باید شامل حروف فارسی باشد")
-        gheimat_ejareh_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
-        gheimat_pish_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        gheimat_ejareh_ejareh_maskoni_entry.config(state="disabled")
+        gheimat_pish_ejareh_maskoni_entry.config(state="disabled")
          
-
-
 
 def chck_name_malek_ejareh_maskoni(event=None):
     name_malek_ejareh_maskoni = name_malek_ejareh_maskoni_entry.get().strip()
@@ -1870,6 +1868,86 @@ def chck_shomareh_malek_ejareh_maskoni(event=None):
         error_lable_name_malek_ejareh_maskoni.config(text=" فیلد(شماره مالک) باید شامل 11رقم باشد")
         name_malek_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
 
+#---------------------اعتبارسنجی فروش کارگاه--------------------
+def chck_sal_sakht_forosh_kargah(event=None):
+    sal_sakht_forosh_kargah=sal_sakht_forosh_kargah_entry.get().strip()
+
+    if sal_sakht_forosh_kargah.isdigit() and len(sal_sakht_forosh_kargah) ==4:
+        sal_sakht_forosh_kargah_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_sal_sakht_forosh_kargah.config(text="")
+        metraj_forosh_kargah_entry.config(state="normal")
+    else:
+        sal_sakht_forosh_kargah_entry.config(highlightthickness=2,highlightcolor="red")
+        error_lable_sal_sakht_forosh_kargah.config(text="فیلد(سال ساخت) باید شامل چهار عدد باشد")
+        metraj_forosh_kargah_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+
+def chck_metraj_forosh_kargah(event=None):
+    metraj_forosh_kargah=metraj_forosh_kargah_entry.get().strip()
+
+    if metraj_forosh_kargah.isdigit():
+        metraj_forosh_kargah_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_metraj_forosh_kargah.config(text="")
+        sal_sakht_forosh_kargah_entry.config(state="normal")
+    else:
+        metraj_forosh_kargah_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_metraj_forosh_kargah.config(text=" فیلد(متراژ) باید شامل اعداد باشد")
+        sal_sakht_forosh_kargah_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+
+def chck_gheimat_kol_forosh_kargah(event=None):
+    gheimat_kol_forosh_kargah=gheimat_kol_forosh_kargah_entry.get().strip()
+
+    if gheimat_kol_forosh_kargah.isdigit():
+        gheimat_kol_forosh_kargah_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_gheimat_kol_forosh_kargah.config(text="")
+        loctaion_forosh_kargah_entry.config(state="normal")
+        loctaion_forosh_kargah_entry.config(bg="#ffffff",fg="black")
+
+    else:
+        gheimat_kol_forosh_kargah_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_gheimat_kol_forosh_kargah.config(text=" فیلد(قیمت) باید شامل اعداد باشد")
+        loctaion_forosh_kargah_entry.config(bg="#808080",fg="white")
+        loctaion_forosh_kargah_entry.config(state="disabled")
+
+def chck_addrres_forosh_kargah(event=None):
+    addrres_forosh_kargah = loctaion_forosh_kargah_entry.get("1.0", tk.END).strip()
+
+    if (re.fullmatch(r"[آ-ی0-9۰-۹\s]+", addrres_forosh_kargah) and re.search(r"[آ-ی]", addrres_forosh_kargah)):
+        loctaion_forosh_kargah_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_addrres_forosh_kargah.config(text="")
+        gheimat_kol_forosh_kargah_entry.config(state="normal")
+        
+
+    else:
+        loctaion_forosh_kargah_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_addrres_forosh_kargah.config(text="فیلد (آدرس) باید شامل حروف فارسی باشد")
+        gheimat_kol_forosh_kargah_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+
+def chck_name_malek_forosh_kargah(event=None):
+    name_malek_forosh_kargah = name_malek_forosh_kargah_entry.get().strip()
+
+    if re.fullmatch(r"[آ-ی\s]+", name_malek_forosh_kargah):
+        name_malek_forosh_kargah_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_name_malek_forosh_kargah.config(text="")
+        
+        shomareh_malek_forosh_kargah_entry.config(state="normal")
+
+    else:
+        name_malek_forosh_kargah_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_name_malek_forosh_kargah.config(text="فیلد (نام مالک) باید شامل حروف فارسی باشد")
+        shomareh_malek_forosh_kargah_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+
+def chck_shomareh_malek_forosh_kargah(event=None):
+    shomareh_malek_forosh_kargah=shomareh_malek_forosh_kargah_entry.get().strip()
+
+    if shomareh_malek_forosh_kargah.isdigit() and len(shomareh_malek_forosh_kargah) ==11:
+        shomareh_malek_forosh_kargah_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_name_malek_forosh_kargah.config(text="")
+        name_malek_forosh_kargah_entry.config(state="normal")
+
+    else:
+        shomareh_malek_forosh_kargah_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_name_malek_forosh_kargah.config(text=" فیلد(شماره مالک) باید شامل 11رقم باشد")
+        name_malek_forosh_kargah_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
 #============*توابع ثبتی دیتابیس*=============================
 #--------------------------------------تابع ثبت فروش---------------------------
 #---------------------------forosh_maskoni------------------------------
@@ -9507,6 +9585,7 @@ sal_sakht_forosh_kargah_lable.place(x=465, y=80, anchor="e")
 
 sal_sakht_forosh_kargah_entry = tk.Entry(frame_up_right_forosh_karghah, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 sal_sakht_forosh_kargah_entry.place(x=18, y=70, width=350, height=25)
+sal_sakht_forosh_kargah_entry.bind("<KeyRelease>",chck_sal_sakht_forosh_kargah)
 
 karbari_forosh_kargah = tk.Label(frame_up_right_forosh_karghah, text="کاربری زمین", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 karbari_forosh_kargah.place(x=465, y=40, anchor="e")
@@ -9521,6 +9600,7 @@ metraj_forosh_kargah.place(x=465, y=120,anchor="e")
 
 metraj_forosh_kargah_entry = tk.Entry(frame_up_right_forosh_karghah, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 metraj_forosh_kargah_entry.place(x=18, y=110, width=350, height=25)
+metraj_forosh_kargah_entry.bind("<KeyRelease>",chck_metraj_forosh_kargah)
 
 #--------------------فریم چپ بالا---------------------------
 photo_lbl2_forosh_kargah = tk.Label(frame_up_left_forosh_karghah, text="[تصویر ملک]", bg="#FFFFFF", width=79, height=15,relief="solid")
@@ -9535,12 +9615,14 @@ loctaion_forosh_kargah.place(x=465, y=80, anchor="e")
 
 loctaion_forosh_kargah_entry = tk.Text(frame_midde_right_forosh_karghah, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 loctaion_forosh_kargah_entry.place(x=18, y=70, width=350, height=50)
+loctaion_forosh_kargah_entry.bind("<KeyRelease>",chck_addrres_forosh_kargah)
 
 gheimat_kol_forosh_kargah_lable=tk.Label(frame_midde_right_forosh_karghah,text="قیمت کل ",bg="#052340",fg="#ffffff",font=("Shabnam", 12),width=9)
 gheimat_kol_forosh_kargah_lable.place(x=465, y=30, anchor="e")
 
 gheimat_kol_forosh_kargah_entry=tk.Entry(frame_midde_right_forosh_karghah,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
 gheimat_kol_forosh_kargah_entry.place(x=18, y=20, width=350, height=25)
+gheimat_kol_forosh_kargah_entry.bind("<KeyRelease>",chck_gheimat_kol_forosh_kargah)
 
 #------------------------------------فریم چپ وسط-----------------------
 name_malek_forosh_kargah_lable = tk.Label(frame_midde_left_forosh_karghah,text="نام مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
@@ -9548,12 +9630,14 @@ name_malek_forosh_kargah_lable.place(x=600, y=30,anchor="e")
 
 name_malek_forosh_kargah_entry = tk.Entry(frame_midde_left_forosh_karghah, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 name_malek_forosh_kargah_entry.place(x=30, y=20, width=350, height=25)
+name_malek_forosh_kargah_entry.bind("<KeyRelease>",chck_name_malek_forosh_kargah)
 
 shomareh_malek_forosh_kargah_lable = tk.Label(frame_midde_left_forosh_karghah, text="شماره مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 shomareh_malek_forosh_kargah_lable.place(x=600, y=80,anchor="e")
 
 shomareh_malek_forosh_kargah_entry = tk.Entry(frame_midde_left_forosh_karghah, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 shomareh_malek_forosh_kargah_entry.place(x=30, y=70, width=350, height=25)
+shomareh_malek_forosh_kargah_entry.bind("<KeyRelease>",chck_shomareh_malek_forosh_kargah)
 
 #---------------------------------فریم پایین--------------------------------
 sarmayesh_forosh_kargah = tk.Label(frame_down_forosh_karghah, text="سیستم سرمایش", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
@@ -9637,6 +9721,34 @@ delete_btn_forosh_kargah.place_forget()
 
 edit_btn_forosh_kargah=tk.Button(forosh_karghah_window,text="ثبت ویرایش",command=update_forosh_kargah,bg="#00BFFF", fg="#ffffff",width=10,height=1,)
 edit_btn_forosh_kargah.place_forget()
+
+#------------------------------------ارور لیبل های فروش کارگاه--------------------
+error_lable_sal_sakht_forosh_kargah= tk.Label(forosh_karghah_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_sal_sakht_forosh_kargah.place(x=900 , y=20)
+
+error_lable_metraj_forosh_kargah= tk.Label(forosh_karghah_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_metraj_forosh_kargah.place(x=900 , y=20)
+
+error_lable_tabaghe_forosh_kargah= tk.Label(forosh_karghah_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_tabaghe_forosh_kargah.place(x=900 , y=20)
+
+error_lable_vahed_forosh_kargah= tk.Label(forosh_karghah_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_vahed_forosh_kargah.place(x=900 , y=20)
+
+error_lable_otagh_forosh_kargah= tk.Label(forosh_karghah_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_otagh_forosh_kargah.place(x=900 , y=20)
+
+error_lable_gheimat_kol_forosh_kargah= tk.Label(forosh_karghah_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_gheimat_kol_forosh_kargah.place(x=900 , y=20)
+
+error_lable_addrres_forosh_kargah= tk.Label(forosh_karghah_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_addrres_forosh_kargah.place(x=835 , y=20)
+
+error_lable_name_malek_forosh_kargah= tk.Label(forosh_karghah_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_name_malek_forosh_kargah.place(x=835 , y=20)
+
+error_lable_shomareh_malek_forosh_kargah= tk.Label(forosh_karghah_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_shomareh_malek_forosh_kargah.place(x=900 , y=20)
 
 forosh_karghah_window.protocol("WM_DELETE_WINDOW", lambda: None)
 forosh_karghah_window.resizable(False, False)
