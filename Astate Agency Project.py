@@ -717,7 +717,7 @@ def back_home_forosh_bagh_zamin():
 def clear_entry_forosh_bagh_zamin():
     metraj_zamin_forosh_bagh_zamin_entry.delete(0,tk.END)
     bagh_loctaion_forosh_bagh_zamin_entry.delete("1.0",tk.END)
-    gheimat_har_metr_babagh_zamin_forosh_entry.delete(0,tk.END)
+    gheimat_har_metr_bagh_zamin_forosh_entry.delete(0,tk.END)
     metraj_derakht_forosh_bagh_zamin_entry.delete(0,tk.END)
     tedad_derakht_forosh_bagh_zamin_entry.delete(0,tk.END)
     metraj_vila_forosh_bagh_zamin_entry.delete(0,tk.END)
@@ -2017,7 +2017,95 @@ def chck_shomareh_malek_forosh_edari_tejari(event=None):
         shomareh_malek_forosh_edari_tejari_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_shomareh_malek_forosh_edari_tejari.config(text=" فیلد(شماره مالک) باید شامل 11رقم باشد")
         name_malek_forosh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+#---------------------------------اعتبار سنجی فروش باغ زمین-------------
+def chck_metraj_forosh_bagh_zamin(event=None):
+    metraj_forosh_bagh_zamin=metraj_zamin_forosh_bagh_zamin_entry.get().strip()
 
+    if metraj_forosh_bagh_zamin.isdigit():
+        metraj_zamin_forosh_bagh_zamin_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_metraj_forosh_bagh_zamin.config(text="")
+        #bagh_type_forosh_bagh_zamin_combo.config(state="normal")
+    else:
+        metraj_zamin_forosh_bagh_zamin_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_metraj_forosh_bagh_zamin.config(text=" فیلد(متراژ) باید شامل اعداد باشد")
+        #bagh_type_forosh_bagh_zamin_combo.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+def chck_gheimat_metri_forosh_bagh_zamin(event=None):
+    gheimat_metri_forosh_bagh_zamin=gheimat_har_metr_bagh_zamin_forosh_entry.get().strip()
+
+    if gheimat_metri_forosh_bagh_zamin.isdigit():
+        gheimat_har_metr_bagh_zamin_forosh_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_gheimat_metri_forosh_bagh_zamin.config(text="")
+        gheimat_kol_forosh_bagh_zamin_entry.config(state="normal")
+        gheimat_kol_forosh_bagh_zamin_entry.config(bg="#ffffff",fg="black")
+        bagh_loctaion_forosh_bagh_zamin_entry.config(state="normal")
+        bagh_loctaion_forosh_bagh_zamin_entry.config(bg="#ffffff",fg="black")
+
+
+    else:
+        gheimat_har_metr_bagh_zamin_forosh_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_gheimat_metri_forosh_bagh_zamin.config(text=" فیلد(قیمت) باید شامل اعداد باشد")
+        gheimat_kol_forosh_bagh_zamin_entry.config(bg="#808080",fg="white")
+        gheimat_kol_forosh_bagh_zamin_entry.config(state="disabled")
+        bagh_loctaion_forosh_bagh_zamin_entry.config(bg="#808080",fg="white")
+        bagh_loctaion_forosh_bagh_zamin_entry.config(state="disabled")
+def chck_gheimat_kol_forosh_bagh_zamin(event=None):
+    gheimat_kol_forosh_bagh_zamin=gheimat_kol_forosh_bagh_zamin_entry.get().strip()
+
+    if gheimat_kol_forosh_bagh_zamin.isdigit():
+        gheimat_kol_forosh_bagh_zamin_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_gheimat_kol_forosh_bagh_zamin.config(text="")
+        gheimat_har_metr_bagh_zamin_forosh_entry.config(state="normal")
+        gheimat_har_metr_bagh_zamin_forosh_entry.config(bg="#ffffff",fg="black")
+        bagh_loctaion_forosh_bagh_zamin_entry.config(state="normal")
+        bagh_loctaion_forosh_bagh_zamin_entry.config(bg="#ffffff",fg="black")
+
+    else:
+        gheimat_kol_forosh_bagh_zamin_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_gheimat_kol_forosh_bagh_zamin.config(text=" فیلد(قیمت) باید شامل اعداد باشد")
+        gheimat_har_metr_bagh_zamin_forosh_entry.config(state="disabled")
+        gheimat_har_metr_bagh_zamin_forosh_entry.config(bg="#808080",fg="white")
+        bagh_loctaion_forosh_bagh_zamin_entry.config(bg="#808080",fg="white")
+        bagh_loctaion_forosh_bagh_zamin_entry.config(state="disabled")
+   
+def chck_addrres_forosh_bagh_zamin(event=None):
+    addrres_forosh_bagh_zamin = bagh_loctaion_forosh_bagh_zamin_entry.get("1.0", tk.END).strip()
+
+    if (re.fullmatch(r"[آ-ی0-9۰-۹\s]+", addrres_forosh_bagh_zamin) and re.search(r"[آ-ی]", addrres_forosh_bagh_zamin)):
+        bagh_loctaion_forosh_bagh_zamin_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_addrres_forosh_bagh_zamin.config(text="")
+        gheimat_kol_forosh_bagh_zamin_entry.config(state="normal")
+        gheimat_kol_forosh_bagh_zamin_entry.config(bg="#ffffff",fg="black")
+        gheimat_har_metr_bagh_zamin_forosh_entry.config(state="normal")
+        gheimat_har_metr_bagh_zamin_forosh_entry.config(bg="#ffffff",fg="black")
+    else:
+        bagh_loctaion_forosh_bagh_zamin_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_addrres_forosh_bagh_zamin.config(text="فیلد (آدرس) باید شامل حروف فارسی باشد")
+        gheimat_kol_forosh_bagh_zamin_entry.config(state="disabled")
+        gheimat_kol_forosh_bagh_zamin_entry.config(disabledbackground="#808080",disabledforeground="white")
+        gheimat_har_metr_bagh_zamin_forosh_entry.config(state="disabled")
+        gheimat_har_metr_bagh_zamin_forosh_entry.config(disabledbackground="#808080",disabledforeground="white")
+def chck_name_malek_forosh_bagh_zamin(event=None):
+    name_malek_forosh_bagh_zamin = name_malek_forosh_bagh_entry.get().strip() 
+    if re.fullmatch(r"[آ-ی\s]+", name_malek_forosh_bagh_zamin):
+        name_malek_forosh_bagh_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_name_malek_forosh_bagh_zamin.config(text="")
+        number_malek_forosh_bagh_entry.config(state="normal")
+    else:
+        name_malek_forosh_bagh_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_name_malek_forosh_bagh_zamin.config(text="فیلد (نام مالک) باید شامل حروف فارسی باشد")
+        number_malek_forosh_bagh_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")         
+def chck_shomareh_malek_forosh_bagh_zamin(event=None):
+    shomareh_malek_forosh_bagh_zamin=number_malek_forosh_bagh_entry.get().strip()
+
+    if shomareh_malek_forosh_bagh_zamin.isdigit() and len(shomareh_malek_forosh_bagh_zamin) ==11:
+        number_malek_forosh_bagh_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_shomareh_malek_forosh_bagh_zamin.config(text="")
+        name_malek_forosh_bagh_entry.config(state="normal")
+
+    else:
+        number_malek_forosh_bagh_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_shomareh_malek_forosh_bagh_zamin.config(text=" فیلد(شماره مالک) باید شامل 11رقم باشد")
+        name_malek_forosh_bagh_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")    
 #---------------------اعتبارسنجی فروش کارگاه--------------------
 def chck_sal_sakht_forosh_kargah(event=None):
     sal_sakht_forosh_kargah=sal_sakht_forosh_kargah_entry.get().strip()
@@ -2268,7 +2356,7 @@ def sabt_forosh_bagh_zamin_main():
 
                 # ========== دریافت مقادیر ==========
         karbari = bagh_type_forosh_bagh_zamin_combo.get()
-        gheimat_str = gheimat_har_metr_babagh_zamin_forosh_entry.get()
+        gheimat_str = gheimat_har_metr_bagh_zamin_forosh_entry.get()
         if not gheimat_str or gheimat_str == "":
             gheimat_str = "0"
             gheimat_value = float(gheimat_str)
@@ -2328,7 +2416,7 @@ def sabt_forosh_bagh_zamin_main():
                 metraj_zamin_forosh_bagh_zamin_entry.get(),
                 bagh_type_forosh_bagh_zamin_combo.get(),
                 bagh_loctaion_forosh_bagh_zamin_entry.get("1.0",tk.END),
-                gheimat_har_metr_babagh_zamin_forosh_entry.get(),
+                gheimat_har_metr_bagh_zamin_forosh_entry.get(),
                 name_malek_forosh_bagh_entry.get(),
                 number_malek_forosh_bagh_entry.get(),
                 gheimat_kol_forosh_bagh_zamin_entry.get(),
@@ -2398,7 +2486,7 @@ def sabt_forosh_bagh_zamin_main():
                 metraj_zamin_forosh_bagh_zamin_entry.get(),
                 bagh_type_forosh_bagh_zamin_combo.get(),
                 bagh_loctaion_forosh_bagh_zamin_entry.get("1.0",tk.END),
-                gheimat_har_metr_babagh_zamin_forosh_entry.get(),
+                gheimat_har_metr_bagh_zamin_forosh_entry.get(),
                 name_malek_forosh_bagh_entry.get(),
                 number_malek_forosh_bagh_entry.get(),
                 gheimat_kol_forosh_bagh_zamin_entry.get(),
@@ -5458,8 +5546,8 @@ def open_edit():
         bagh_loctaion_forosh_bagh_zamin_entry.delete("1.0", tk.END)
         bagh_loctaion_forosh_bagh_zamin_entry.insert("1.0", data[4])
 
-        gheimat_har_metr_babagh_zamin_forosh_entry.delete(0, tk.END)
-        gheimat_har_metr_babagh_zamin_forosh_entry.insert(0, data[5])
+        gheimat_har_metr_bagh_zamin_forosh_entry.delete(0, tk.END)
+        gheimat_har_metr_bagh_zamin_forosh_entry.insert(0, data[5])
 
         name_malek_forosh_bagh_entry.delete(0, tk.END)
         name_malek_forosh_bagh_entry.insert(0, data[6])
@@ -5563,8 +5651,8 @@ def open_edit():
         bagh_loctaion_forosh_bagh_zamin_entry.delete("1.0", tk.END)
         bagh_loctaion_forosh_bagh_zamin_entry.insert("1.0", data[4])
 
-        gheimat_har_metr_babagh_zamin_forosh_entry.delete(0, tk.END)
-        gheimat_har_metr_babagh_zamin_forosh_entry.insert(0, data[5])
+        gheimat_har_metr_bagh_zamin_forosh_entry.delete(0, tk.END)
+        gheimat_har_metr_bagh_zamin_forosh_entry.insert(0, data[5])
 
         name_malek_forosh_bagh_entry.delete(0, tk.END)
         name_malek_forosh_bagh_entry.insert(0, data[6])
@@ -6713,7 +6801,7 @@ def update_forosh_bagh_zamin():
             metraj_zamin_forosh_bagh_zamin_entry.get(),
             bagh_type_forosh_bagh_zamin_combo.get(),
             bagh_loctaion_forosh_bagh_zamin_entry.get("1.0", tk.END),
-            gheimat_har_metr_babagh_zamin_forosh_entry.get(),
+            gheimat_har_metr_bagh_zamin_forosh_entry.get(),
             name_malek_forosh_bagh_entry.get(),
             number_malek_forosh_bagh_entry.get(),
             float(gheimat_kol_forosh_bagh_zamin_entry.get()),
@@ -6768,7 +6856,7 @@ def update_forosh_bagh_zamin():
             metraj_zamin_forosh_bagh_zamin_entry.get(),
             bagh_type_forosh_bagh_zamin_combo.get(),
             bagh_loctaion_forosh_bagh_zamin_entry.get("1.0", tk.END),
-            gheimat_har_metr_babagh_zamin_forosh_entry.get(),
+            gheimat_har_metr_bagh_zamin_forosh_entry.get(),
             name_malek_forosh_bagh_entry.get(),
             number_malek_forosh_bagh_entry.get(),
             float(gheimat_kol_forosh_bagh_zamin_entry.get()),
@@ -9030,7 +9118,6 @@ otagh_forosh_maskoni.place(x=465, y=240, anchor="e")
 otagh_forosh_maskoni_entry=tk.Entry(frame_up_right_forosh_maskoni, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 otagh_forosh_maskoni_entry.place(x=18, y=230, width=350, height=25)
 otagh_forosh_maskoni_entry.bind("<KeyRelease>",chck_otagh_forosh_maskoni)
-
 #----------------------------فریم بالا سمت چپ----------------------------------
 photo_lbl2_forosh_maskoni = tk.Label(frame_up_left_forosh_maskoni, text="[تصویر ملک]", bg="#ffffff", width=79, height=15)
 photo_lbl2_forosh_maskoni.place(x=40 ,y=10)
@@ -9065,9 +9152,7 @@ shomareh_malek_forosh_maskoni_lable.place(x=600, y=80,anchor="e")
 shomareh_malek_forosh_maskoni_entry = tk.Entry(frame_midde_left_forosh_maskoni, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 shomareh_malek_forosh_maskoni_entry.place(x=30, y=70, width=350, height=25)
 shomareh_malek_forosh_maskoni_entry.bind("<KeyRelease>",chck_shomareh_malek_forosh_maskoni)
-
 #-----------------------------------------فریم پایین--------------------------------
-
 parking_forosh_maskoni_var=tk.IntVar(value=0)
 anbari_forosh_maskoni_var=tk.IntVar(value=0)
 asansor_forosh_maskoni_var=tk.IntVar(value=0)
@@ -9444,7 +9529,6 @@ label_midde_left_forosh_bagh_zamin.place(x=100,y=375)
 
 label_down_forosh_bagh_zamin=tk.Label(forosh_bagh_zamin_window,text="امکانات",bg="#052340",fg="#00BFFF",font=("Shabnam", 11))
 label_down_forosh_bagh_zamin.place(x=100,y=545)
-
 #-----------------------فریم بالا سمت راست---------------------------
 melk_type_forosh_bagh_zamin_lable=tk.Label(frame_up_right_forosh_bagh_zamin,text="نوع ملک",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
 melk_type_forosh_bagh_zamin_lable.place(x=490, y=40, anchor="e")
@@ -9457,8 +9541,10 @@ melk_type_forosh_bagh_zamin_entry.config(state="readonly",readonlybackground="#0
 metraj_zamin_forosh_bagh_zamin_lable=tk.Label(frame_up_right_forosh_bagh_zamin,text="متراژ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
 metraj_zamin_forosh_bagh_zamin_lable.place(x=490, y=80, anchor="e")
 
+
 metraj_zamin_forosh_bagh_zamin_entry=tk.Entry(frame_up_right_forosh_bagh_zamin,bg="#FFFFFF", fg="#000000",font=("Shabnam", 10),textvariable="متر مربع")
 metraj_zamin_forosh_bagh_zamin_entry.place(x=28, y=70, width=350, height=25)
+metraj_zamin_forosh_bagh_zamin_entry.bind("<KeyRelease>",chck_metraj_forosh_bagh_zamin)
 
 bagh_type_forosh_bagh_zamin_lable=tk.Label(frame_up_right_forosh_bagh_zamin,text="کاربری زمین",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
 bagh_type_forosh_bagh_zamin_lable.place(x=490, y=120, anchor="e")
@@ -9478,34 +9564,38 @@ add_img_btn_forosh_bagh_zamin.place(x=240, y=250)
 gheimat_har_matr_babagh_zamin_forosh_bagh_zamin_lable=tk.Label(frame_midde_right_forosh_bagh_zamin,text='قیمت هر متر',bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
 gheimat_har_matr_babagh_zamin_forosh_bagh_zamin_lable.place(x=490, y=20, anchor="e")
 
-gheimat_har_metr_babagh_zamin_forosh_entry=tk.Entry(frame_midde_right_forosh_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
-gheimat_har_metr_babagh_zamin_forosh_entry.place(x=28, y=13, width=350, height=25)
+gheimat_har_metr_bagh_zamin_forosh_entry=tk.Entry(frame_midde_right_forosh_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
+gheimat_har_metr_bagh_zamin_forosh_entry.place(x=28, y=13, width=350, height=25)
+gheimat_har_metr_bagh_zamin_forosh_entry.bind("<KeyRelease>",chck_gheimat_metri_forosh_bagh_zamin)
 
 gheimat_kol_forosh_bagh_zamin_lable=tk.Label(frame_midde_right_forosh_bagh_zamin,text='قیمت کل',bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
 gheimat_kol_forosh_bagh_zamin_lable.place(x=490, y=65, anchor="e")
 
 gheimat_kol_forosh_bagh_zamin_entry=tk.Entry(frame_midde_right_forosh_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
 gheimat_kol_forosh_bagh_zamin_entry.place(x=28,y=55, width=350, height=25)
+gheimat_kol_forosh_bagh_zamin_entry.bind("<KeyRelease>",chck_gheimat_kol_forosh_bagh_zamin)
 
 bagh_loctaion_forosh_bagh_zamin_lable=tk.Label(frame_midde_right_forosh_bagh_zamin,text="منطقه و ادرس ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
 bagh_loctaion_forosh_bagh_zamin_lable.place(x=490, y=110, anchor="e")
 
 bagh_loctaion_forosh_bagh_zamin_entry=tk.Text(frame_midde_right_forosh_bagh_zamin,bg="#FFFFFF", fg="#000000",font=("Shabnam", 10))
 bagh_loctaion_forosh_bagh_zamin_entry.place(x=28, y=90, width=350, height=25)
+bagh_loctaion_forosh_bagh_zamin_entry.bind("<KeyRelease>",chck_addrres_forosh_bagh_zamin)
 #----------------------------------------------فریم وسط سمت چپ---------------------------
 name_malek_forosh_bagh_lable=tk.Label(frame_midde_left_forosh_bagh_zamin,text="نام مالک",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
 name_malek_forosh_bagh_lable.place(x=600,y=30, anchor="e")
 
 name_malek_forosh_bagh_entry=tk.Entry(frame_midde_left_forosh_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
 name_malek_forosh_bagh_entry.place(x=30, y=20, width=350, height=25)
+name_malek_forosh_bagh_entry.bind("<KeyRelease>",chck_name_malek_forosh_bagh_zamin)
 
 number_malek_forosh_bagh_lable=tk.Label(frame_midde_left_forosh_bagh_zamin,text="شماره مالک",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
 number_malek_forosh_bagh_lable.place(x=600,y=80, anchor="e")
 
 number_malek_forosh_bagh_entry=tk.Entry(frame_midde_left_forosh_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
 number_malek_forosh_bagh_entry.place(x=30, y=70, width=350, height=25)
+number_malek_forosh_bagh_entry.bind("<KeyRelease>",chck_shomareh_malek_forosh_bagh_zamin)
 #-------------------------------------------فریم پایین-------------------------------------
-
 abyari_forosh_bagh_zamin_lable=tk.Label(frame_down_forosh_bagh,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="نوع آبیاری")
 abyari_forosh_bagh_zamin_lable.place(x=1080,y=20)
 
@@ -9564,7 +9654,6 @@ divar_forosh_bagh_var=tk.IntVar(value=0)
 divar_forosh_bagh_zamin=tk.Checkbutton(frame_down_forosh_bagh,variable=divar_forosh_bagh_var,text="دیوار کشی",background="#052340",fg="#00BFFF",font=("Shabnam",9))
 divar_forosh_bagh_zamin.place(x=600, y=50)
 #-----------------------------------------------
-
 var0_forosh_bagh_zamin=tk.IntVar(value=0)#چک باتن پیش فرض تیک نخورده باشه
 
 otagh_check_btn_forosh_bagh_zamin=tk.Checkbutton(frame_down_forosh_bagh,variable=var0_forosh_bagh_zamin,image=warehouse_pic,background="#052340",text="ساختمان",command=home_true_false2)
@@ -9713,6 +9802,25 @@ delete_btn_forosh_bagh_zamin.place_forget()
 
 edit_btn_forosh_bagh_zamin=tk.Button(forosh_bagh_zamin_window,text="ثبت ویرایش",command=update_forosh_bagh_zamin,bg="#00BFFF", fg="#ffffff",width=10,height=1,)
 edit_btn_forosh_bagh_zamin.place_forget()
+
+#------------------------------------ارور لیبل های فروش باغ زمین--------------------
+error_lable_metraj_forosh_bagh_zamin= tk.Label(forosh_bagh_zamin_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_metraj_forosh_bagh_zamin.place(x=900 , y=20)
+
+error_lable_gheimat_kol_forosh_bagh_zamin= tk.Label(forosh_bagh_zamin_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_gheimat_kol_forosh_bagh_zamin.place(x=900 , y=20)
+
+error_lable_gheimat_metri_forosh_bagh_zamin= tk.Label(forosh_bagh_zamin_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_gheimat_metri_forosh_bagh_zamin.place(x=900 , y=20)
+
+error_lable_addrres_forosh_bagh_zamin= tk.Label(forosh_bagh_zamin_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_addrres_forosh_bagh_zamin.place(x=835 , y=20)
+
+error_lable_name_malek_forosh_bagh_zamin= tk.Label(forosh_bagh_zamin_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_name_malek_forosh_bagh_zamin.place(x=835 , y=20)
+
+error_lable_shomareh_malek_forosh_bagh_zamin= tk.Label(forosh_bagh_zamin_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_shomareh_malek_forosh_bagh_zamin.place(x=900 , y=20)
 
 forosh_bagh_zamin_window.protocol("WM_DELETE_WINDOW", lambda: None)
 forosh_bagh_zamin_window.resizable(False, False)
