@@ -19,7 +19,7 @@ def get_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="Nima10.N10",#   entry  در ادرس ها   تبدیل بهtext شود      entry==>text
+        password="EmadAE7*",#   entry  در ادرس ها   تبدیل بهtext شود      entry==>text
         #database="state_agency"
     )
 #endregion
@@ -1696,12 +1696,12 @@ def chck_shomareh_malek_forosh_maskoni(event=None):
 
     if shomareh_malek_forosh_maskoni.isdigit() and len(shomareh_malek_forosh_maskoni) ==11:
         shomareh_malek_forosh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
-        error_lable_name_malek_forosh_maskoni.config(text="")
+        error_lable_shomareh_malek_forosh_maskoni.config(text="")
         name_malek_forosh_maskoni_entry.config(state="normal")
 
     else:
         shomareh_malek_forosh_maskoni_entry.config(highlightcolor="red",highlightthickness=2)
-        error_lable_name_malek_forosh_maskoni.config(text=" فیلد(شماره مالک) باید شامل 11رقم باشد")
+        error_lable_shomareh_malek_forosh_maskoni.config(text=" فیلد(شماره مالک) باید شامل 11رقم باشد")
         name_malek_forosh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
 #-------------------اعتبارسنجی اجاره مسکونی--------------------
 def chck_sal_sakht_ejareh_maskoni(event=None):
@@ -1867,6 +1867,156 @@ def chck_shomareh_malek_ejareh_maskoni(event=None):
         shomareh_malek_ejareh_maskoni_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_name_malek_ejareh_maskoni.config(text=" فیلد(شماره مالک) باید شامل 11رقم باشد")
         name_malek_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+
+#---------------------اعتبارسنجی فروش اداری/ تجاری--------------------
+def chck_sal_sakht_forosh_edari_tejari(event=None):
+    sal_sakht_forosh_edari_tejari=sal_sakht_forosh_edari_tejari_entry.get().strip()
+
+    if sal_sakht_forosh_edari_tejari.isdigit() and len(sal_sakht_forosh_edari_tejari) ==4:
+        sal_sakht_forosh_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_sal_sakht_forosh_edari_tejari.config(text="")
+        metraj_forosh_edari_tejari_entry.config(state="normal")
+        tabaghe_forosh_edari_tejari_entry.config(state="normal")
+        vahed_forosh_edari_tejari_entry.config(state="normal")
+        otagh_forosh_edari_tejari_entry.config(state="normal")
+
+    else:
+        sal_sakht_forosh_edari_tejari_entry.config(highlightthickness=2,highlightcolor="red")
+        error_lable_sal_sakht_forosh_edari_tejari.config(text="فیلد(سال ساخت) باید شامل چهار عدد باشد")
+        metraj_forosh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        tabaghe_forosh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        vahed_forosh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        otagh_forosh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+
+def chck_metraj_forosh_edari_tejari(event=None):
+    metraj_forosh_edari_tejari=metraj_forosh_edari_tejari_entry.get().strip()
+
+    if metraj_forosh_edari_tejari.isdigit():
+        metraj_forosh_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_metraj_forosh_edari_tejari.config(text="")
+        sal_sakht_forosh_edari_tejari_entry.config(state="normal")
+        tabaghe_forosh_edari_tejari_entry.config(state="normal")
+        vahed_forosh_edari_tejari_entry.config(state="normal")
+        otagh_forosh_edari_tejari_entry.config(state="normal")
+    else:
+        metraj_forosh_edari_tejari_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_metraj_forosh_edari_tejari.config(text=" فیلد(متراژ) باید شامل اعداد باشد")
+        sal_sakht_forosh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        tabaghe_forosh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        vahed_forosh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        otagh_forosh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+
+def chck_tabaghe_forosh_edari_tejari(event=None):
+    tabaghe_forosh_edari_tejari=tabaghe_forosh_edari_tejari_entry.get().strip()
+
+    if tabaghe_forosh_edari_tejari.isdigit():
+        tabaghe_forosh_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_tabaghe_forosh_edari_tejari.config(text="")
+        sal_sakht_forosh_edari_tejari_entry.config(state="normal")
+        metraj_forosh_edari_tejari_entry.config(state="normal")
+        vahed_forosh_edari_tejari_entry.config(state="normal")
+        otagh_forosh_edari_tejari_entry.config(state="normal")
+
+    else:
+        tabaghe_forosh_edari_tejari_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_tabaghe_forosh_edari_tejari.config(text=" فیلد(طبقه) باید شامل اعداد باشد")
+        sal_sakht_forosh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        metraj_forosh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        vahed_forosh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        otagh_forosh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+
+def chck_vahed_forosh_edari_tejari(event=None):
+    vahed_forosh_edari_tejari=vahed_forosh_edari_tejari_entry.get().strip()
+
+    if vahed_forosh_edari_tejari.isdigit():
+        vahed_forosh_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_vahed_forosh_edari_tejari.config(text="")
+        sal_sakht_forosh_edari_tejari_entry.config(state="normal")
+        metraj_forosh_edari_tejari_entry.config(state="normal")
+        tabaghe_forosh_edari_tejari_entry.config(state="normal")
+        otagh_forosh_edari_tejari_entry.config(state="normal")
+
+    else:
+        vahed_forosh_edari_tejari_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_vahed_forosh_edari_tejari.config(text=" فیلد(واحد) باید شامل اعداد باشد")
+        sal_sakht_forosh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        metraj_forosh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        tabaghe_forosh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        otagh_forosh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+
+def chck_otagh_forosh_edari_tejari(event=None):
+    otagh_forosh_edari_tejari=otagh_forosh_edari_tejari_entry.get().strip()
+
+    if otagh_forosh_edari_tejari.isdigit():
+        otagh_forosh_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_otagh_forosh_edari_tejari.config(text="")
+        sal_sakht_forosh_edari_tejari_entry.config(state="normal")
+        metraj_forosh_edari_tejari_entry.config(state="normal")
+        tabaghe_forosh_edari_tejari_entry.config(state="normal")
+        vahed_forosh_edari_tejari_entry.config(state="normal")
+
+    else:
+        otagh_forosh_edari_tejari_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_otagh_forosh_edari_tejari.config(text=" فیلد(اتاق) باید شامل اعداد باشد")
+        sal_sakht_forosh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        metraj_forosh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        tabaghe_forosh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        vahed_forosh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+
+def chck_gheimat_kol_forosh_edari_tejari(event=None):
+    gheimat_kol_forosh_edari_tejari=gheimat_kol_forosh_edari_tejari_entry.get().strip()
+
+    if gheimat_kol_forosh_edari_tejari.isdigit():
+        gheimat_kol_forosh_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_gheimat_kol_forosh_edari_tejari.config(text="")
+        addrres_forosh_edari_tejari_entry.config(state="normal")
+        addrres_forosh_edari_tejari_entry.config(bg="#ffffff",fg="black")
+
+    else:
+        gheimat_kol_forosh_edari_tejari_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_gheimat_kol_forosh_edari_tejari.config(text=" فیلد(قیمت) باید شامل اعداد باشد")
+        addrres_forosh_edari_tejari_entry.config(bg="#808080",fg="white")
+        addrres_forosh_edari_tejari_entry.config(state="disabled")
+
+def chck_addrres_forosh_edari_tejari(event=None):
+    addrres_forosh_edari_tejari = addrres_forosh_edari_tejari_entry.get("1.0", tk.END).strip()
+
+    if (re.fullmatch(r"[آ-ی0-9۰-۹\s]+", addrres_forosh_edari_tejari) and re.search(r"[آ-ی]", addrres_forosh_edari_tejari)):
+        addrres_forosh_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_addrres_forosh_edari_tejari.config(text="")
+        gheimat_kol_forosh_edari_tejari_entry.config(state="normal")
+        
+
+    else:
+        addrres_forosh_edari_tejari_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_addrres_forosh_edari_tejari.config(text="فیلد (آدرس) باید شامل حروف فارسی باشد")
+        gheimat_kol_forosh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+
+def chck_name_malek_forosh_edari_tejari(event=None):
+    name_malek_forosh_edari_tejari = name_malek_forosh_edari_tejari_entry.get().strip()
+
+    if re.fullmatch(r"[آ-ی\s]+", name_malek_forosh_edari_tejari):
+        name_malek_forosh_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_name_malek_forosh_edari_tejari.config(text="")
+        shomareh_malek_forosh_edari_tejari_entry.config(state="normal")
+
+    else:
+        name_malek_forosh_edari_tejari_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_name_malek_forosh_edari_tejari.config(text="فیلد (نام مالک) باید شامل حروف فارسی باشد")
+        shomareh_malek_forosh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+
+def chck_shomareh_malek_forosh_edari_tejari(event=None):
+    shomareh_malek_forosh_edari_tejari=shomareh_malek_forosh_edari_tejari_entry.get().strip()
+
+    if shomareh_malek_forosh_edari_tejari.isdigit() and len(shomareh_malek_forosh_edari_tejari) ==11:
+        shomareh_malek_forosh_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_shomareh_malek_forosh_edari_tejari.config(text="")
+        name_malek_forosh_edari_tejari_entry.config(state="normal")
+
+    else:
+        shomareh_malek_forosh_edari_tejari_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_shomareh_malek_forosh_edari_tejari.config(text=" فیلد(شماره مالک) باید شامل 11رقم باشد")
+        name_malek_forosh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
 
 #---------------------اعتبارسنجی فروش کارگاه--------------------
 def chck_sal_sakht_forosh_kargah(event=None):
@@ -9080,30 +9230,35 @@ sal_sakht_forosh_edari_tejari.place(x=465, y=80, anchor="e")
 
 sal_sakht_forosh_edari_tejari_entry=tk.Entry(frame_up_right_forosh_edari_tejari, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
 sal_sakht_forosh_edari_tejari_entry.place(x=18, y=70, width=350, height=25)
+sal_sakht_forosh_edari_tejari_entry.bind("<KeyRelease>",chck_sal_sakht_forosh_edari_tejari)
 
 metraj_forosh_edari_tejari=tk.Label(frame_up_right_forosh_edari_tejari, text=" متراژ ", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 metraj_forosh_edari_tejari.place(x=465, y=120, anchor="e")
 
 metraj_forosh_edari_tejari_entry=tk.Entry(frame_up_right_forosh_edari_tejari, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
 metraj_forosh_edari_tejari_entry.place(x=18, y=110, width=350, height=25)
+metraj_forosh_edari_tejari_entry.bind("<KeyRelease>",chck_metraj_forosh_edari_tejari)
 
 tabaghe_forosh_edari_tejari= tk.Label(frame_up_right_forosh_edari_tejari, text="طبقه", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 tabaghe_forosh_edari_tejari.place(x=465, y=160, anchor="e")
 
 tabaghe_forosh_edari_tejari_entry=tk.Entry(frame_up_right_forosh_edari_tejari, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
 tabaghe_forosh_edari_tejari_entry.place(x=18, y=150, width=350, height=25)
+tabaghe_forosh_edari_tejari_entry.bind("<KeyRelease>",chck_tabaghe_forosh_edari_tejari)
 
 vahed_forosh_edari_tejari=tk.Label(frame_up_right_forosh_edari_tejari, text="واحد", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 vahed_forosh_edari_tejari.place(x=465, y=200, anchor="e")
 
 vahed_forosh_edari_tejari_entry=tk.Entry(frame_up_right_forosh_edari_tejari, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
 vahed_forosh_edari_tejari_entry.place(x=18, y=190, width=350, height=25)
+vahed_forosh_edari_tejari_entry.bind("<KeyRelease>",chck_vahed_forosh_edari_tejari)
 
-#otagh_forosh_edari_tejari= tk.Label(frame_up_right_forosh_edari_tejari, text="اتاق", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
-#otagh_forosh_edari_tejari.place(x=465, y=240, anchor="e")
+otagh_forosh_edari_tejari= tk.Label(frame_up_right_forosh_edari_tejari, text="اتاق", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+otagh_forosh_edari_tejari.place(x=465, y=240, anchor="e")
 
-#otagh_forosh_edari_tejari_entry=tk.Entry(frame_up_right_forosh_edari_tejari, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
-#otagh_forosh_edari_tejari_entry.place(x=18, y=230, width=350, height=25)
+otagh_forosh_edari_tejari_entry=tk.Entry(frame_up_right_forosh_edari_tejari, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
+otagh_forosh_edari_tejari_entry.place(x=18, y=230, width=350, height=25)
+otagh_forosh_edari_tejari_entry.bind("<KeyRelease>",chck_otagh_forosh_edari_tejari)
 
 #----------------------------فریم بالا سمت چپ----------------------------------
 
@@ -9120,12 +9275,14 @@ gheimat_kol_forosh_edari_tejari.place(x=465, y=30, anchor="e")
 
 gheimat_kol_forosh_edari_tejari_entry=tk.Entry(frame_midde_right_forosh_edari_tejari, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 gheimat_kol_forosh_edari_tejari_entry.place(x=18, y=20, width=350, height=25)
+gheimat_kol_forosh_edari_tejari_entry.bind("<KeyRelease>",chck_gheimat_kol_forosh_edari_tejari)
 
 addrres_forosh_edari_tejari=tk.Label(frame_midde_right_forosh_edari_tejari, text="آدرس", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 addrres_forosh_edari_tejari.place(x=465, y=80, anchor="e")
 
 addrres_forosh_edari_tejari_entry=tk.Text(frame_midde_right_forosh_edari_tejari, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 addrres_forosh_edari_tejari_entry.place(x=18, y=70, width=350, height=50)
+addrres_forosh_edari_tejari_entry.bind("<KeyRelease>",chck_addrres_forosh_edari_tejari)
 
 #-------------------------------------فریم وسط سمت چپ---------------------------
 
@@ -9134,12 +9291,14 @@ name_malek_forosh_edari_tejari_lable.place(x=600, y=30,anchor="e")
 
 name_malek_forosh_edari_tejari_entry = tk.Entry(frame_midde_left_forosh_edari_tejari, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 name_malek_forosh_edari_tejari_entry.place(x=30, y=20, width=350, height=25)
+name_malek_forosh_edari_tejari_entry.bind("<KeyRelease>",chck_name_malek_forosh_edari_tejari)
 
 shomareh_malek_forosh_edari_tejari_lable = tk.Label(frame_midde_left_forosh_edari_tejari, text="شماره مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 shomareh_malek_forosh_edari_tejari_lable.place(x=600, y=80,anchor="e")
 
 shomareh_malek_forosh_edari_tejari_entry = tk.Entry(frame_midde_left_forosh_edari_tejari, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 shomareh_malek_forosh_edari_tejari_entry.place(x=30, y=70, width=350, height=25)
+shomareh_malek_forosh_edari_tejari_entry.bind("<KeyRelease>",chck_shomareh_malek_forosh_edari_tejari)
 
 #-----------------------------------------فریم پایین--------------------------------
 
@@ -9199,6 +9358,34 @@ delete_btn_forosh_edari_tejari.place_forget()
 
 edit_btn_forosh_edari_tejari=tk.Button(forosh_edari_tejari_window,text="ثبت ویرایش",command=update_forosh_edari_tejari,bg="#00BFFF", fg="#ffffff",width=10,height=1,)
 edit_btn_forosh_edari_tejari.place_forget()
+
+#------------------------------------ارور لیبل های فروش اداری/ تجاری--------------------
+error_lable_sal_sakht_forosh_edari_tejari= tk.Label(forosh_edari_tejari_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_sal_sakht_forosh_edari_tejari.place(x=900 , y=20)
+
+error_lable_metraj_forosh_edari_tejari= tk.Label(forosh_edari_tejari_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_metraj_forosh_edari_tejari.place(x=900 , y=20)
+
+error_lable_tabaghe_forosh_edari_tejari= tk.Label(forosh_edari_tejari_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_tabaghe_forosh_edari_tejari.place(x=900 , y=20)
+
+error_lable_vahed_forosh_edari_tejari= tk.Label(forosh_edari_tejari_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_vahed_forosh_edari_tejari.place(x=900 , y=20)
+
+error_lable_otagh_forosh_edari_tejari= tk.Label(forosh_edari_tejari_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_otagh_forosh_edari_tejari.place(x=900 , y=20)
+
+error_lable_gheimat_kol_forosh_edari_tejari= tk.Label(forosh_edari_tejari_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_gheimat_kol_forosh_edari_tejari.place(x=900 , y=20)
+
+error_lable_addrres_forosh_edari_tejari= tk.Label(forosh_edari_tejari_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_addrres_forosh_edari_tejari.place(x=835 , y=20)
+
+error_lable_name_malek_forosh_edari_tejari= tk.Label(forosh_edari_tejari_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_name_malek_forosh_edari_tejari.place(x=835 , y=20)
+
+error_lable_shomareh_malek_forosh_edari_tejari= tk.Label(forosh_edari_tejari_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_shomareh_malek_forosh_edari_tejari.place(x=900 , y=20)
 
 forosh_edari_tejari_window.protocol("WM_DELETE_WINDOW", lambda: None)
 forosh_edari_tejari_window.resizable(False, False)
