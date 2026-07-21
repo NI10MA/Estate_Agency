@@ -19,7 +19,7 @@ def get_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="EmadAE7*",#   entry  در ادرس ها   تبدیل بهtext شود      entry==>text
+        password="SobhanA2026",#   entry  در ادرس ها   تبدیل بهtext شود      entry==>text
         #database="state_agency"
     )
 #endregion
@@ -2066,7 +2066,6 @@ def chck_gheimat_kol_forosh_bagh_zamin(event=None):
         gheimat_har_metr_bagh_zamin_forosh_entry.config(bg="#808080",fg="white")
         bagh_loctaion_forosh_bagh_zamin_entry.config(bg="#808080",fg="white")
         bagh_loctaion_forosh_bagh_zamin_entry.config(state="disabled")
-   
 def chck_addrres_forosh_bagh_zamin(event=None):
     addrres_forosh_bagh_zamin = bagh_loctaion_forosh_bagh_zamin_entry.get("1.0", tk.END).strip()
 
@@ -2186,6 +2185,101 @@ def chck_shomareh_malek_forosh_kargah(event=None):
         shomareh_malek_forosh_kargah_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_name_malek_forosh_kargah.config(text=" فیلد(شماره مالک) باید شامل 11رقم باشد")
         name_malek_forosh_kargah_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+#-------------------اعتبارسنجی اجاره کارگاه--------------------
+def chck_sal_sakht_ejareh_karghah(event=None):
+    sal_sakht_ejareh_karghah=sal_sakht_ejareh_karghah_entry.get().strip()
+
+    if sal_sakht_ejareh_karghah.isdigit() and len(sal_sakht_ejareh_karghah) ==4:
+        sal_sakht_ejareh_karghah_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_sal_sakht_ejareh_karghah.config(text="")
+        metraj_ejareh_karghah_entry.config(state="normal")
+    else:
+        sal_sakht_ejareh_karghah_entry.config(highlightthickness=2,highlightcolor="red")
+        error_lable_sal_sakht_ejareh_karghah.config(text="فیلد(سال ساخت) باید شامل چهار عدد باشد")
+        metraj_ejareh_karghah_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+
+def chck_metraj_ejareh_karghah(event=None):
+    metraj_ejareh_karghah=metraj_ejareh_karghah_entry.get().strip()
+
+    if metraj_ejareh_karghah.isdigit():
+        metraj_ejareh_karghah_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_metraj_ejareh_karghah.config(text="")
+        sal_sakht_ejareh_karghah_entry.config(state="normal")
+    else:
+        metraj_ejareh_karghah_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_metraj_ejareh_karghah.config(text=" فیلد(متراژ) باید شامل اعداد باشد")
+        sal_sakht_ejareh_karghah_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+
+def chck_gheimat_pish_ejareh_karghah(event=None):
+    gheimat_pish_ejareh_karghah=vadie_ejare_karghah_entry.get().strip()
+
+    if gheimat_pish_ejareh_karghah.isdigit():
+        vadie_ejare_karghah_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_gheimat_pish_ejareh_karghah.config(text="")
+        addrres_ejareh_karghah_entry.config(state="normal")
+        gheimat_ejare_ejare_karghah_entry.config(state="normal")
+
+    else:
+        vadie_ejare_karghah_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_gheimat_pish_ejareh_karghah.config(text=" فیلد(قیمت پیش) باید شامل اعداد باشد")
+        addrres_ejareh_karghah_entry.config(state="disabled")
+        gheimat_ejare_ejare_karghah_entry.config(state="disabled")
+        
+def chck_gheimat_ejareh_ejareh_karghah(event=None):
+    gheimat_ejareh_ejareh_karghah=gheimat_ejare_ejare_karghah_entry.get().strip()
+
+    if gheimat_ejareh_ejareh_karghah.isdigit():
+        gheimat_ejare_ejare_karghah_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_gheimat_ejareh_ejareh_karghah.config(text="")
+        addrres_ejareh_karghah_entry.config(state="normal")
+        vadie_ejare_karghah_entry.config(state="normal")
+    else:
+        gheimat_ejare_ejare_karghah_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_gheimat_ejareh_ejareh_karghah.config(text=" فیلد(قیمت اجاره) باید شامل اعداد باشد")
+        addrres_ejareh_karghah_entry.config(state="disabled")
+        vadie_ejare_karghah_entry.config(state="disabled")
+
+def chck_addrres_ejareh_karghah(event=None):
+    addrres_ejareh_karghah= addrres_ejareh_karghah_entry.get("1.0", tk.END).strip()
+
+    if (re.fullmatch(r"[آ-ی0-9۰-۹\s]+", addrres_ejareh_karghah) and re.search(r"[آ-ی]", addrres_ejareh_karghah)):
+        addrres_ejareh_karghah_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_addrres_ejareh_karghah.config(text="")
+        gheimat_ejare_ejare_karghah_entry.config(state="normal")
+        vadie_ejare_karghah_entry.config(state="normal")
+
+    else:
+        addrres_ejareh_karghah_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_addrres_ejareh_karghah.config(text="فیلد (آدرس) باید شامل حروف فارسی باشد")
+        gheimat_ejare_ejare_karghah_entry.config(state="disabled")
+        vadie_ejare_karghah_entry.config(state="disabled")
+         
+
+def chck_name_malek_ejareh_karghah(event=None):
+    name_malek_ejareh_karghah = name_malek_ejareh_karghah_entry.get().strip()
+
+    if re.fullmatch(r"[آ-ی\s]+", name_malek_ejareh_karghah):
+        name_malek_ejareh_karghah_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_name_malek_ejareh_karghah.config(text="")
+        shomareh_malek_ejareh_karghah_entry.config(state="normal")
+
+    else:
+        name_malek_ejareh_karghah_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_name_malek_ejareh_karghah.config(text="فیلد (نام مالک) باید شامل حروف فارسی باشد")
+        shomareh_malek_ejareh_karghah_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+
+def chck_shomareh_malek_ejareh_karghah(event=None):
+    shomareh_malek_ejareh_karghah=shomareh_malek_ejareh_karghah_entry.get().strip()
+
+    if shomareh_malek_ejareh_karghah.isdigit() and len(shomareh_malek_ejareh_karghah) ==11:
+        shomareh_malek_ejareh_karghah_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_name_malek_ejareh_karghah.config(text="")
+        name_malek_ejareh_karghah_entry.config(state="normal")
+
+    else:
+        shomareh_malek_ejareh_karghah_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_name_malek_ejareh_karghah.config(text=" فیلد(شماره مالک) باید شامل 11رقم باشد")
+        name_malek_ejareh_karghah_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
 #============*توابع ثبتی دیتابیس*=============================
 #--------------------------------------تابع ثبت فروش---------------------------
 #---------------------------forosh_maskoni------------------------------
@@ -8875,6 +8969,7 @@ sal_sakht_ejareh_karghah_lable.place(x=465, y=80, anchor="e")
 
 sal_sakht_ejareh_karghah_entry = tk.Entry(frame_up_right_ejareh_karghah, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 sal_sakht_ejareh_karghah_entry.place(x=18, y=70, width=350, height=25)
+sal_sakht_ejareh_karghah_entry.bind("<KeyRelease>",chck_sal_sakht_ejareh_karghah)
 
 karbari_zamin_ejareh_karghah_lable = tk.Label(frame_up_right_ejareh_karghah, text="کاربری زمین", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 karbari_zamin_ejareh_karghah_lable.place(x=465, y=40, anchor="e")
@@ -8889,6 +8984,7 @@ metraj_ejareh_karghah_lable.place(x=465, y=120,anchor="e")
 
 metraj_ejareh_karghah_entry = tk.Entry(frame_up_right_ejareh_karghah, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 metraj_ejareh_karghah_entry.place(x=18, y=110, width=350, height=25)
+metraj_ejareh_karghah_entry.bind("<KeyRelease>",chck_metraj_ejareh_karghah)
 
 time_ejate_ejareh_kargah_lable=tk.Label(frame_up_right_ejareh_karghah, text="مدت اجاره", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 time_ejate_ejareh_kargah_lable.place(x=465, y=160, anchor="e")
@@ -8910,17 +9006,21 @@ vadie_ejare_karghah_lable.place(x=465, y=30, anchor="e")
 
 vadie_ejare_karghah_entry = tk.Entry(frame_midde_right_ejareh_karghah, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 vadie_ejare_karghah_entry.place(x=18, y=20, width=350, height=25)
+vadie_ejare_karghah_entry.bind("<KeyRelease>",chck_gheimat_pish_ejareh_karghah)
 
 gheimat_ejare_ejare_karghah_lable = tk.Label(frame_midde_right_ejareh_karghah, text="مبلغ اجاره", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 gheimat_ejare_ejare_karghah_lable.place(x=465, y=70, anchor="e")
 
 gheimat_ejare_ejare_karghah_entry = tk.Entry(frame_midde_right_ejareh_karghah, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 gheimat_ejare_ejare_karghah_entry.place(x=18, y=55, width=350, height=25)
+gheimat_ejare_ejare_karghah_entry.bind("<KeyRelease>",chck_gheimat_ejareh_ejareh_karghah)
 
 addrres_ejareh_karghah_lable = tk.Label(frame_midde_right_ejareh_karghah, text="آدرس", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=12)
 addrres_ejareh_karghah_lable.place(x=465, y=110, anchor="e")
+
 addrres_ejareh_karghah_entry = tk.Text(frame_midde_right_ejareh_karghah, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 addrres_ejareh_karghah_entry.place(x=18, y=90, width=350, height=50)
+addrres_ejareh_karghah_entry.bind("<KeyRelease>",chck_addrres_ejareh_karghah)
 
 #------------------------------------فریم چپ وسط-----------------------
 name_malek_ejareh_karghah_lable = tk.Label(frame_midde_left_ejareh_karghah,text="نام مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
@@ -8928,12 +9028,14 @@ name_malek_ejareh_karghah_lable.place(x=600, y=30,anchor="e")
 
 name_malek_ejareh_karghah_entry = tk.Entry(frame_midde_left_ejareh_karghah, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 name_malek_ejareh_karghah_entry.place(x=30, y=20, width=350, height=25)
+name_malek_ejareh_karghah_entry.bind("<KeyRelease>",chck_name_malek_ejareh_karghah)
 
 shomareh_malek_ejareh_karghah_lable = tk.Label(frame_midde_left_ejareh_karghah, text="شماره مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 shomareh_malek_ejareh_karghah_lable.place(x=600, y=80,anchor="e")
 
 shomareh_malek_ejareh_karghah_entry = tk.Entry(frame_midde_left_ejareh_karghah, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 shomareh_malek_ejareh_karghah_entry.place(x=30, y=70, width=350, height=25)
+shomareh_malek_ejareh_karghah_entry.bind("<KeyRelease>",chck_shomareh_malek_ejareh_karghah)
 #---------------------------------فریم پایین--------------------------------
 sarmaesh_ejareh_karghah = tk.Label(frame_down_ejareh_karghah, text="سیستم سرمایش", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
 sarmaesh_ejareh_karghah.place(x=485, y=15)
@@ -9020,6 +9122,37 @@ delete_btn_ejareh_kargah.place_forget()
 
 edit_btn_ejareh_kargah=tk.Button(ejareh_karghah_window,text="ثبت ویرایش",command=update_ejareh_kargah,bg="#00BFFF", fg="#ffffff",width=10,height=1,)
 edit_btn_ejareh_kargah.place_forget()
+
+#-----------------------ارور لیبل های اجاره کارگاه--------------------
+error_lable_sal_sakht_ejareh_karghah= tk.Label(ejareh_karghah_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_sal_sakht_ejareh_karghah.place(x=900 , y=20)
+
+error_lable_metraj_ejareh_karghah= tk.Label(ejareh_karghah_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_metraj_ejareh_karghah.place(x=900 , y=20)
+
+error_lable_tabaghe_ejareh_karghah= tk.Label(ejareh_karghah_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_tabaghe_ejareh_karghah.place(x=900 , y=20)
+
+error_lable_vahed_ejareh_karghah= tk.Label(ejareh_karghah_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_vahed_ejareh_karghah.place(x=900 , y=20)
+
+error_lable_otagh_ejareh_karghah= tk.Label(ejareh_karghah_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_otagh_ejareh_karghah.place(x=900 , y=20)
+
+error_lable_gheimat_pish_ejareh_karghah= tk.Label(ejareh_karghah_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_gheimat_pish_ejareh_karghah.place(x=900 , y=20)
+
+error_lable_gheimat_ejareh_ejareh_karghah= tk.Label(ejareh_karghah_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_gheimat_ejareh_ejareh_karghah.place(x=900 , y=20)
+
+error_lable_addrres_ejareh_karghah= tk.Label(ejareh_karghah_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_addrres_ejareh_karghah.place(x=850 , y=20)
+
+error_lable_name_malek_ejareh_karghah= tk.Label(ejareh_karghah_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_name_malek_ejareh_karghah.place(x=850 , y=20)
+
+error_lable_shomareh_malek_ejareh_karghah= tk.Label(ejareh_karghah_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_shomareh_malek_ejareh_karghah.place(x=850 , y=20)
 
 ejareh_karghah_window.protocol("WM_DELETE_WINDOW", lambda: None)
 ejareh_karghah_window.resizable(False, False)
