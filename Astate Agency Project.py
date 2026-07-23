@@ -19,7 +19,7 @@ def get_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="Mmmm9905",#   entry  در ادرس ها   تبدیل بهtext شود      entry==>text
+        password="EmadAE7*",#   entry  در ادرس ها   تبدیل بهtext شود      entry==>text
         #database="state_agency"
     )
 #endregion
@@ -1478,33 +1478,33 @@ def change_darkhast_edari_tejari_type(event=None):
     change_type = combo_darkhast_edari_tejari_entry.get()
 
     # فیلد خرید
-    gheimat_kol_darkhast_edari_tejari_lable.place_forget()
+    gheimat_kol_darkhast_edari_tejari.place_forget()
     gheimat_kol_darkhast_edari_tejari_entry.place_forget()
 
     # فیلد اجاره
-    mablagh_vadie_darkhast_edari_tejari_lable.place_forget()
+    mablagh_vadie_darkhast_edari_tejari.place_forget()
     mablagh_vadie_darkhast_edari_tejari_entry.place_forget()
 
-    mablagh_ejareh_darkhast_edari_tejari_lable.place_forget()
+    mablagh_ejareh_darkhast_edari_tejari.place_forget()
     mablagh_ejareh_darkhast_edari_tejari_entry.place_forget()
 
     if change_type == "درخواست خرید اداری و تجاری":
 
-        gheimat_kol_darkhast_edari_tejari_lable.place(x=465, y=30, anchor="e")
+        gheimat_kol_darkhast_edari_tejari.place(x=465, y=30, anchor="e")
         gheimat_kol_darkhast_edari_tejari_entry.place(x=18, y=20, width=350, height=25)
 
-        addrres_darkhast_edari_tejari_lable.place(x=465, y=80, anchor="e")
+        addrres_darkhast_edari_tejari.place(x=465, y=80, anchor="e")
         addrres_darkhast_edari_tejari_entry.place(x=18, y=70, width=350, height=50)
 
     elif change_type == "درخواست اجاره اداری و تجاری":
 
-        mablagh_vadie_darkhast_edari_tejari_lable.place(x=465, y=30, anchor="e")
+        mablagh_vadie_darkhast_edari_tejari.place(x=465, y=30, anchor="e")
         mablagh_vadie_darkhast_edari_tejari_entry.place(x=18, y=20, width=350, height=25)
 
-        mablagh_ejareh_darkhast_edari_tejari_lable.place(x=465, y=75, anchor="e")
+        mablagh_ejareh_darkhast_edari_tejari.place(x=465, y=75, anchor="e")
         mablagh_ejareh_darkhast_edari_tejari_entry.place(x=18, y=65, width=350, height=25)
 
-        addrres_darkhast_edari_tejari_lable.place(x=465, y=120, anchor="e")
+        addrres_darkhast_edari_tejari.place(x=465, y=120, anchor="e")
         addrres_darkhast_edari_tejari_entry.place(x=18, y=110, width=350, height=25)
 
 def change_darkhast_kargah_type(event=None):
@@ -2115,6 +2115,7 @@ def chck_mablagh_pish_ejareh_edari_tejari(event=None):
         mablagh_ejare_ejareh_edari_tejari_entry.config(state="disabled")
         addrres_ejareh_edari_tejari_entry.config(bg="#808080",fg="white")
         addrres_ejareh_edari_tejari_entry.config(state="disabled")
+
 def chck_mablagh_ejareh_ejareh_edari_tejari(event=None):
     mablagh_ejare_ejareh_edari_tejari=mablagh_ejare_ejareh_edari_tejari_entry.get().strip()
     if mablagh_ejare_ejareh_edari_tejari.isdigit():
@@ -2523,6 +2524,188 @@ def chck_shomareh_malek_ejareh_karghah(event=None):
         shomareh_malek_ejareh_karghah_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_name_malek_ejareh_karghah.config(text=" فیلد(شماره مالک) باید شامل 11رقم باشد")
         name_malek_ejareh_karghah_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+
+#-------------------اعتبارسنجی درخواست اداری/ تجاری--------------------
+def chck_sal_sakht_darkhast_edari_tejari(event=None):
+    sal_sakht_darkhast_edari_tejari=sal_sakht_darkhast_edari_tejari_entry.get().strip()
+
+    if sal_sakht_darkhast_edari_tejari.isdigit() and len(sal_sakht_darkhast_edari_tejari) ==4:
+        sal_sakht_darkhast_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_sal_sakht_darkhast_edari_tejari.config(text="")
+        metraj_melk_darkhast_edari_tejari_entry.config(state="normal")
+        tabaghe_darkhast_edari_tejari_entry.config(state="normal")
+        vahed_darkhast_edari_tejari_entry.config(state="normal")
+        #otagh_darkhast_edari_tejari_entry.config(state="normal")
+
+    else:
+        sal_sakht_darkhast_edari_tejari_entry.config(highlightthickness=2,highlightcolor="red")
+        error_lable_sal_sakht_darkhast_edari_tejari.config(text="فیلد(سال ساخت) باید شامل چهار عدد باشد")
+        metraj_melk_darkhast_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        tabaghe_darkhast_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        vahed_darkhast_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        #otagh_darkhast_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+
+def chck_metraj_melk_darkhast_edari_tejari(event=None):
+    metraj_melk_darkhast_edari_tejari=metraj_melk_darkhast_edari_tejari_entry.get().strip()
+
+    if metraj_melk_darkhast_edari_tejari.isdigit():
+        metraj_melk_darkhast_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_metraj_melk_darkhast_edari_tejari.config(text="")
+        sal_sakht_darkhast_edari_tejari_entry.config(state="normal")
+        tabaghe_darkhast_edari_tejari_entry.config(state="normal")
+        vahed_darkhast_edari_tejari_entry.config(state="normal")
+        #otagh_darkhast_edari_tejari_entry.config(state="normal")
+    else:
+        metraj_melk_darkhast_edari_tejari_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_metraj_melk_darkhast_edari_tejari.config(text=" فیلد(متراژ) باید شامل اعداد باشد")
+        sal_sakht_darkhast_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        tabaghe_darkhast_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        vahed_darkhast_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        #otagh_darkhast_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+
+def chck_tabaghe_darkhast_edari_tejari(event=None):
+    tabaghe_darkhast_edari_tejari=tabaghe_darkhast_edari_tejari_entry.get().strip()
+
+    if tabaghe_darkhast_edari_tejari.isdigit():
+        tabaghe_darkhast_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_tabaghe_darkhast_edari_tejari.config(text="")
+        sal_sakht_darkhast_edari_tejari_entry.config(state="normal")
+        metraj_melk_darkhast_edari_tejari_entry.config(state="normal")
+        vahed_darkhast_edari_tejari_entry.config(state="normal")
+        #otagh_darkhast_edari_tejari_entry.config(state="normal")
+
+    else:
+        tabaghe_darkhast_edari_tejari_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_tabaghe_darkhast_edari_tejari.config(text=" فیلد(طبقه) باید شامل اعداد باشد")
+        sal_sakht_darkhast_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        metraj_melk_darkhast_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        vahed_darkhast_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        #otagh_darkhast_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+
+def chck_vahed_darkhast_edari_tejari(event=None):
+    vahed_darkhast_edari_tejari=vahed_darkhast_edari_tejari_entry.get().strip()
+
+    if vahed_darkhast_edari_tejari.isdigit():
+        vahed_darkhast_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_vahed_darkhast_edari_tejari.config(text="")
+        sal_sakht_darkhast_edari_tejari_entry.config(state="normal")
+        metraj_melk_darkhast_edari_tejari_entry.config(state="normal")
+        tabaghe_darkhast_edari_tejari_entry.config(state="normal")
+        #otagh_darkhast_edari_tejari_entry.config(state="normal")
+
+    else:
+        vahed_darkhast_edari_tejari_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_vahed_darkhast_edari_tejari.config(text=" فیلد(واحد) باید شامل اعداد باشد")
+        sal_sakht_darkhast_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        metraj_melk_darkhast_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        tabaghe_darkhast_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        #otagh_darkhast_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+
+#def chck_otagh_darkhast_edari_tejari(event=None):
+    #otagh_darkhast_edari_tejari=otagh_darkhast_edari_tejari_entry.get().strip()
+
+    #if otagh_darkhast_edari_tejari.isdigit():
+        #otagh_darkhast_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
+        #error_lable_otagh_darkhast_edari_tejari.config(text="")
+        #sal_sakht_darkhast_edari_tejari_entry.config(state="normal")
+        #metraj_melk_darkhast_edari_tejari_entry.config(state="normal")
+        #tabaghe_darkhast_edari_tejari_entry.config(state="normal")
+        #vahed_darkhast_edari_tejari_entry.config(state="normal")
+
+    #else:
+        #otagh_darkhast_edari_tejari_entry.config(highlightcolor="red",highlightthickness=2)
+        #error_lable_otagh_darkhast_edari_tejari.config(text=" فیلد(اتاق) باید شامل اعداد باشد")
+        #sal_sakht_darkhast_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        #metraj_melk_darkhast_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        #tabaghe_darkhast_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        #vahed_darkhast_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+
+def chck_gheimat_kol_darkhast_edari_tejari(event=None):
+    gheimat_kol_darkhast_edari_tejari=gheimat_kol_darkhast_edari_tejari_entry.get().strip()
+
+    if gheimat_kol_darkhast_edari_tejari.isdigit():
+        gheimat_kol_darkhast_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_gheimat_kol_darkhast_edari_tejari.config(text="")
+        addrres_darkhast_edari_tejari_entry.config(state="normal")
+        addrres_darkhast_edari_tejari_entry.config(bg="#ffffff",fg="black")
+
+    else:
+        gheimat_kol_darkhast_edari_tejari_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_gheimat_kol_darkhast_edari_tejari.config(text=" فیلد(قیمت) باید شامل اعداد باشد")
+        addrres_darkhast_edari_tejari_entry.config(bg="#808080",fg="white")
+        addrres_darkhast_edari_tejari_entry.config(state="disabled")
+
+def chck_mablagh_vadie_darkhast_edari_tejari(event=None):
+    mablagh_vadie_darkhast_edari_tejari=mablagh_vadie_darkhast_edari_tejari_entry.get().strip()
+
+    if mablagh_vadie_darkhast_edari_tejari.isdigit():
+        mablagh_vadie_darkhast_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_mablagh_vadie_darkhast_edari_tejari.config(text="")
+        addrres_darkhast_edari_tejari_entry.config(state="normal")
+        mablagh_ejareh_darkhast_edari_tejari_entry.config(state="normal")
+    else:
+        mablagh_vadie_darkhast_edari_tejari_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_mablagh_vadie_darkhast_edari_tejari.config(text=" فیلد(مبلغ پیش) باید شامل اعداد باشد")
+        mablagh_ejareh_darkhast_edari_tejari_entry.config(disabledbackground="#808080",fg="white")
+        mablagh_ejareh_darkhast_edari_tejari_entry.config(state="disabled")
+        addrres_darkhast_edari_tejari_entry.config(bg="#808080",fg="white")
+        addrres_darkhast_edari_tejari_entry.config(state="disabled")
+        
+def chck_mablagh_ejareh_darkhast_edari_tejari(event=None):
+    mablagh_ejareh_darkhast_edari_tejari=mablagh_ejareh_darkhast_edari_tejari_entry.get().strip()
+    if mablagh_ejareh_darkhast_edari_tejari.isdigit():
+        mablagh_ejareh_darkhast_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_mablagh_ejareh_darkhast_edari_tejari.config(text="")
+        addrres_darkhast_edari_tejari_entry.config(state="normal")
+        mablagh_vadie_darkhast_edari_tejari_entry.config(state="normal")
+    else:
+        mablagh_ejareh_darkhast_edari_tejari_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_mablagh_ejareh_darkhast_edari_tejari.config(text=" فیلد(مبلغ اجاره) باید شامل اعداد باشد")
+        mablagh_vadie_darkhast_edari_tejari_entry.config(disabledbackground="#808080",fg="white")
+        mablagh_vadie_darkhast_edari_tejari_entry.config(state="disabled")
+        addrres_darkhast_edari_tejari_entry.config(bg="#808080",fg="white")
+        addrres_darkhast_edari_tejari_entry.config(state="disabled")
+
+def chck_addrres_darkhast_edari_tejari(event=None):
+    addrres_darkhast_edari_tejari = addrres_darkhast_edari_tejari_entry.get("1.0", tk.END).strip()
+
+    if (re.fullmatch(r"[آ-ی0-9۰-۹\s]+", addrres_darkhast_edari_tejari) and re.search(r"[آ-ی]", addrres_darkhast_edari_tejari)):
+        addrres_darkhast_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_addrres_darkhast_edari_tejari.config(text="")
+        gheimat_kol_darkhast_edari_tejari_entry.config(state="normal")
+        
+
+    else:
+        addrres_darkhast_edari_tejari_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_addrres_darkhast_edari_tejari.config(text="فیلد (آدرس) باید شامل حروف فارسی باشد")
+        gheimat_kol_darkhast_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+
+def chck_name_moshtari_darkhast_edari_tejari(event=None):
+    name_moshtari_darkhast_edari_tejari = name_moshtari_darkhast_edari_tejari_entry.get().strip()
+
+    if re.fullmatch(r"[آ-ی\s]+", name_moshtari_darkhast_edari_tejari):
+        name_moshtari_darkhast_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_name_moshtari_darkhast_edari_tejari.config(text="")
+        shomareh_moshtari_darkhast_edari_tejari_entry.config(state="normal")
+
+    else:
+        name_moshtari_darkhast_edari_tejari_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_name_moshtari_darkhast_edari_tejari.config(text="فیلد (نام مالک) باید شامل حروف فارسی باشد")
+        shomareh_moshtari_darkhast_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+
+def chck_shomareh_moshtari_darkhast_edari_tejari(event=None):
+    shomareh_moshtari_darkhast_edari_tejari=shomareh_moshtari_darkhast_edari_tejari_entry.get().strip()
+
+    if shomareh_moshtari_darkhast_edari_tejari.isdigit() and len(shomareh_moshtari_darkhast_edari_tejari) ==11:
+        shomareh_moshtari_darkhast_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_shomareh_moshtari_darkhast_edari_tejari.config(text="")
+        name_moshtari_darkhast_edari_tejari_entry.config(state="normal")
+
+    else:
+        shomareh_moshtari_darkhast_edari_tejari_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_shomareh_moshtari_darkhast_edari_tejari.config(text=" فیلد(شماره مالک) باید شامل 11رقم باشد")
+        name_moshtari_darkhast_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+
 #============*توابع ثبتی دیتابیس*=============================
 #--------------------------------------تابع ثبت فروش---------------------------
 #---------------------------forosh_maskoni------------------------------
@@ -3543,23 +3726,23 @@ def sabt_darkhast_edari_tejari(event=None):
         change_type= combo_darkhast_edari_tejari_entry.get()
         
         #فیلد های اجاره
-        mablagh_vadie_darkhast_edari_tejari_lable.place_forget()
+        mablagh_vadie_darkhast_edari_tejari.place_forget()
         mablagh_vadie_darkhast_edari_tejari_entry.place_forget()
-        mablagh_ejareh_darkhast_edari_tejari_lable.place_forget()
+        mablagh_ejareh_darkhast_edari_tejari.place_forget()
         mablagh_ejareh_darkhast_edari_tejari_entry.place_forget()
-        gheimat_kol_darkhast_edari_tejari_lable.place_forget()
+        gheimat_kol_darkhast_edari_tejari.place_forget()
 
         if change_type=="درخواست خرید اداری و تجاری":
-            gheimat_kol_darkhast_edari_tejari_lable.place(x=465, y=30, anchor="e")
+            gheimat_kol_darkhast_edari_tejari.place(x=465, y=30, anchor="e")
             gheimat_kol_darkhast_edari_tejari_entry.place(x=18, y=20, width=350, height=25)
-            addrres_darkhast_edari_tejari_lable.place(x=465, y=80, anchor="e")
+            addrres_darkhast_edari_tejari.place(x=465, y=80, anchor="e")
             addrres_darkhast_edari_tejari_entry.place(x=18, y=70, width=350, height=50)
         elif change_type=="درخواست اجاره اداری و تجاری":
-           mablagh_vadie_darkhast_edari_tejari_lable.place(x=465, y=30, anchor="e")
+           mablagh_vadie_darkhast_edari_tejari.place(x=465, y=30, anchor="e")
            mablagh_vadie_darkhast_edari_tejari_entry.place(x=18, y=20, width=350, height=25)
-           mablagh_ejareh_darkhast_edari_tejari_lable.place(x=465, y=75 ,anchor="e")
+           mablagh_ejareh_darkhast_edari_tejari.place(x=465, y=75 ,anchor="e")
            mablagh_ejareh_darkhast_edari_tejari_entry.place(x=18, y=65, width=350, height=25)
-           addrres_darkhast_edari_tejari_lable.place(x=465, y=120, anchor="e")
+           addrres_darkhast_edari_tejari.place(x=465, y=120, anchor="e")
            addrres_darkhast_edari_tejari_entry.place(x=18, y=110, width=350, height=25)
         if event is not None:#خیلی مهم 
            return
@@ -5273,8 +5456,8 @@ def open_edit():
         gheimat_pish_ejareh_maskoni_entry.delete(0, tk.END)
         gheimat_pish_ejareh_maskoni_entry.insert(0, data[14])
 
-        gheimat_ejare_ejareh_maskoni_entry.delete(0, tk.END)
-        gheimat_ejare_ejareh_maskoni_entry.insert(0, data[15])
+        gheimat_ejareh_ejareh_maskoni_entry.delete(0, tk.END)
+        gheimat_ejareh_ejareh_maskoni_entry.insert(0, data[15])
 
 
         name_malek_ejareh_maskoni_entry.delete(0, tk.END)
@@ -10802,29 +10985,41 @@ combo_darkhast_edari_tejari_entry.configure(justify="center")
 combo_darkhast_edari_tejari_entry.bind("<<ComboboxSelected>>",change_darkhast_edari_tejari_type)
 combo_darkhast_edari_tejari_entry.place(x=18, y=30, width=350, height=25)
 
-sal_sakht_darkhast_edari_tejari_lable=tk.Label(frame_up_right_darkhast_edari_tejari,text="سال ساخت",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-sal_sakht_darkhast_edari_tejari_lable.place(x=465, y=80, anchor="e")
+sal_sakht_darkhast_edari_tejari=tk.Label(frame_up_right_darkhast_edari_tejari,text="سال ساخت",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+sal_sakht_darkhast_edari_tejari.place(x=465, y=80, anchor="e")
 
 sal_sakht_darkhast_edari_tejari_entry=tk.Entry(frame_up_right_darkhast_edari_tejari,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
 sal_sakht_darkhast_edari_tejari_entry.place(x=18, y=70, width=350, height=25)
+sal_sakht_darkhast_edari_tejari_entry.bind("<KeyRelease>",chck_sal_sakht_darkhast_edari_tejari)
 
-metraj_melk_darkhast_edari_tejari_lable=tk.Label(frame_up_right_darkhast_edari_tejari,text="متراژ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-metraj_melk_darkhast_edari_tejari_lable.place(x=465, y=120, anchor="e")
+metraj_melk_darkhast_edari_tejari=tk.Label(frame_up_right_darkhast_edari_tejari,text="متراژ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+metraj_melk_darkhast_edari_tejari.place(x=465, y=120, anchor="e")
 
 metraj_melk_darkhast_edari_tejari_entry=tk.Entry(frame_up_right_darkhast_edari_tejari,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
 metraj_melk_darkhast_edari_tejari_entry.place(x=18, y=110, width=350, height=25)
+metraj_melk_darkhast_edari_tejari_entry.bind("<KeyRelease>",chck_metraj_melk_darkhast_edari_tejari)
 
-tabaghe_darkhast_edari_tejari_lable=tk.Label(frame_up_right_darkhast_edari_tejari,text="طبقه",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-tabaghe_darkhast_edari_tejari_lable.place(x=465, y=160, anchor="e")
+tabaghe_darkhast_edari_tejari=tk.Label(frame_up_right_darkhast_edari_tejari,text="طبقه",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+tabaghe_darkhast_edari_tejari.place(x=465, y=160, anchor="e")
 
 tabaghe_darkhast_edari_tejari_entry=tk.Entry(frame_up_right_darkhast_edari_tejari,bg="#ffffff", fg="#000000",font=("Shabnam", 10),)
 tabaghe_darkhast_edari_tejari_entry.place(x=18, y=150, width=350, height=25)
+tabaghe_darkhast_edari_tejari_entry.bind("<KeyRelease>",chck_tabaghe_darkhast_edari_tejari)
 
-vahed_darkhast_edari_tejari_lable=tk.Label(frame_up_right_darkhast_edari_tejari,text="واحد",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-vahed_darkhast_edari_tejari_lable.place(x=465, y=200, anchor="e")
+vahed_darkhast_edari_tejari=tk.Label(frame_up_right_darkhast_edari_tejari,text="واحد",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+vahed_darkhast_edari_tejari.place(x=465, y=200, anchor="e")
 
 vahed_darkhast_edari_tejari_entry=tk.Entry(frame_up_right_darkhast_edari_tejari,bg="#ffffff", fg="#000000",font=("Shabnam", 10),)
 vahed_darkhast_edari_tejari_entry.place(x=18, y=190, width=350, height=25)
+vahed_darkhast_edari_tejari_entry.bind("<KeyRelease>",chck_vahed_darkhast_edari_tejari)
+
+#otagh_darkhast_edari_tejari= tk.Label(frame_up_right_darkhast_edari_tejari, text="اتاق", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+#otagh_darkhast_edari_tejari.place(x=465, y=240, anchor="e")
+
+#otagh_darkhast_edari_tejari_entry=tk.Entry(frame_up_right_darkhast_edari_tejari, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
+#otagh_darkhast_edari_tejari_entry.place(x=18, y=230, width=350, height=25)
+#otagh_darkhast_edari_tejari_entry.bind("<KeyRelease>",chck_otagh_darkhast_edari_tejari)
+
 #----------------------------فریم بالا سمت چپ----------------------------------
 photo_lbl2_darkhast_edari_tejari = tk.Label(frame_up_left_darkhast_edari_tejari, text="[تصویر ملک]", bg="#ffffff",width=79, height=15,relief="solid")
 photo_lbl2_darkhast_edari_tejari.place(x=40, y=10)
@@ -10832,42 +11027,48 @@ photo_lbl2_darkhast_edari_tejari.place(x=40, y=10)
 add_img_btn_darkhast_edari_tejari = tk.Button(frame_up_left_darkhast_edari_tejari, text="افزودن تصویر", bg="#00BFFF", fg="black",command=open_file,height=2,width=13)
 add_img_btn_darkhast_edari_tejari.place(x=240, y=250)
 #---------------------------فریم وسط سمت راست----------------------------------------
-gheimat_kol_darkhast_edari_tejari_lable=tk.Label(frame_midde_right_darkhast_edari_tejari,text= "قیمت کل",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-gheimat_kol_darkhast_edari_tejari_lable.place(x=465, y=20, anchor="e")
+gheimat_kol_darkhast_edari_tejari=tk.Label(frame_midde_right_darkhast_edari_tejari,text= "قیمت کل",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+gheimat_kol_darkhast_edari_tejari.place(x=465, y=20, anchor="e")
 
 gheimat_kol_darkhast_edari_tejari_entry=tk.Entry(frame_midde_right_darkhast_edari_tejari,bg="#ffffff", fg="#000000",font=("Shabnam", 10),)
 gheimat_kol_darkhast_edari_tejari_entry.place(x=18, y=20, width=350, height=25)
+gheimat_kol_darkhast_edari_tejari_entry.bind("<KeyRelease>",chck_gheimat_kol_darkhast_edari_tejari)
 
-mablagh_ejareh_darkhast_edari_tejari_lable=tk.Label(frame_midde_right_darkhast_edari_tejari,text="مبلغ اجاره",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-mablagh_ejareh_darkhast_edari_tejari_lable.place_forget()
+mablagh_ejareh_darkhast_edari_tejari=tk.Label(frame_midde_right_darkhast_edari_tejari,text="مبلغ اجاره",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+mablagh_ejareh_darkhast_edari_tejari.place_forget()
 
 mablagh_ejareh_darkhast_edari_tejari_entry=tk.Entry(frame_midde_right_darkhast_edari_tejari,bg="#FFFFFF", fg="#000000",font=("Shabnam", 10),)
 mablagh_ejareh_darkhast_edari_tejari_entry.place_forget()
+mablagh_ejareh_darkhast_edari_tejari_entry.bind("<KeyRelease>",chck_mablagh_ejareh_darkhast_edari_tejari)
 
-mablagh_vadie_darkhast_edari_tejari_lable=tk.Label(frame_midde_right_darkhast_edari_tejari,text="مبلغ ودیعه",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-mablagh_vadie_darkhast_edari_tejari_lable.place_forget()
+mablagh_vadie_darkhast_edari_tejari=tk.Label(frame_midde_right_darkhast_edari_tejari,text="مبلغ پیش",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+mablagh_vadie_darkhast_edari_tejari.place_forget()
 
 mablagh_vadie_darkhast_edari_tejari_entry=tk.Entry(frame_midde_right_darkhast_edari_tejari,bg="#FFFFFF", fg="#000000",font=("Shabnam", 10),)
 mablagh_vadie_darkhast_edari_tejari_entry.place_forget()
+mablagh_vadie_darkhast_edari_tejari_entry.bind("<KeyRelease>",chck_mablagh_vadie_darkhast_edari_tejari)
 
-addrres_darkhast_edari_tejari_lable=tk.Label(frame_midde_right_darkhast_edari_tejari,text="آدرس",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-addrres_darkhast_edari_tejari_lable.place(x=465, y=110, anchor="e")
+addrres_darkhast_edari_tejari=tk.Label(frame_midde_right_darkhast_edari_tejari,text="آدرس",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+addrres_darkhast_edari_tejari.place(x=465, y=110, anchor="e")
 
 addrres_darkhast_edari_tejari_entry=tk.Text(frame_midde_right_darkhast_edari_tejari,bg="#ffffff", fg="#000000",font=("Shabnam", 10),)
 addrres_darkhast_edari_tejari_entry.place(x=18, y=90, width=350, height=50)
+addrres_darkhast_edari_tejari_entry.bind("<KeyRelease>",chck_addrres_darkhast_edari_tejari)
 
 #---------------------------فریم سمت چپ وسط-----------------------------------
-name_moshtari_darkhast_edari_tejari_lable=tk.Label(frame_midde_left_darkhast_edari_tejari,text="نام مشتری",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-name_moshtari_darkhast_edari_tejari_lable.place(x=600, y=30,anchor="e")
+name_moshtari_darkhast_edari_tejari=tk.Label(frame_midde_left_darkhast_edari_tejari,text="نام مشتری",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+name_moshtari_darkhast_edari_tejari.place(x=600, y=30,anchor="e")
 
 name_moshtari_darkhast_edari_tejari_entry=tk.Entry(frame_midde_left_darkhast_edari_tejari,bg="#FFFFFF", fg="#000000",font=("Shabnam", 10),)
 name_moshtari_darkhast_edari_tejari_entry.place(x=30, y=20, width=350, height=25)
+name_moshtari_darkhast_edari_tejari_entry.bind("<KeyRelease>",chck_name_moshtari_darkhast_edari_tejari)
 
-shomareh_moshtari_darkhast_edari_tejari_lable=tk.Label(frame_midde_left_darkhast_edari_tejari,text="شماره مشتری",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
-shomareh_moshtari_darkhast_edari_tejari_lable.place(x=600, y=80,anchor="e")
+shomareh_moshtari_darkhast_edari_tejari=tk.Label(frame_midde_left_darkhast_edari_tejari,text="شماره مشتری",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
+shomareh_moshtari_darkhast_edari_tejari.place(x=600, y=80,anchor="e")
 
 shomareh_moshtari_darkhast_edari_tejari_entry=tk.Entry(frame_midde_left_darkhast_edari_tejari,bg="#FFFFFF", fg="#000000",font=("Shabnam", 10))
 shomareh_moshtari_darkhast_edari_tejari_entry.place(x=30, y=70, width=350, height=25)
+shomareh_moshtari_darkhast_edari_tejari_entry.bind("<KeyRelease>",chck_shomareh_moshtari_darkhast_edari_tejari)
 #-------------------------فریم پایین----------------------------------
 parking_darkhast_edari_tejari_var=tk.IntVar(value=0)
 anbari_darkhast_edari_tejari_var=tk.IntVar(value=0)
@@ -10926,6 +11127,40 @@ delete_btn_darkhast_edari_tejari.place_forget()
 
 edit_btn_darkhast_edari_tejari=tk.Button(darkhast_edari_tejari_window,text="ثبت ویرایش",command=update_darkhast_edari_tejari,bg="#00BFFF", fg="#ffffff",width=10,height=1,)
 edit_btn_darkhast_edari_tejari.place_forget()
+
+#------------------------------------ارور لیبل های درخواست اداری/ تجاری--------------------
+error_lable_sal_sakht_darkhast_edari_tejari= tk.Label(darkhast_edari_tejari_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_sal_sakht_darkhast_edari_tejari.place(x=900 , y=20)
+
+error_lable_metraj_melk_darkhast_edari_tejari= tk.Label(darkhast_edari_tejari_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_metraj_melk_darkhast_edari_tejari.place(x=900 , y=20)
+
+error_lable_tabaghe_darkhast_edari_tejari= tk.Label(darkhast_edari_tejari_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_tabaghe_darkhast_edari_tejari.place(x=900 , y=20)
+
+error_lable_vahed_darkhast_edari_tejari= tk.Label(darkhast_edari_tejari_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_vahed_darkhast_edari_tejari.place(x=900 , y=20)
+
+#error_lable_otagh_darkhast_edari_tejari= tk.Label(darkhast_edari_tejari_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+#error_lable_otagh_darkhast_edari_tejari.place(x=900 , y=20)
+
+error_lable_gheimat_kol_darkhast_edari_tejari= tk.Label(darkhast_edari_tejari_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_gheimat_kol_darkhast_edari_tejari.place(x=900 , y=20)
+
+error_lable_mablagh_vadie_darkhast_edari_tejari= tk.Label(darkhast_edari_tejari_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_mablagh_vadie_darkhast_edari_tejari.place(x=900 , y=20)
+
+error_lable_mablagh_ejareh_darkhast_edari_tejari= tk.Label(darkhast_edari_tejari_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_mablagh_ejareh_darkhast_edari_tejari.place(x=900 , y=20)
+
+error_lable_addrres_darkhast_edari_tejari= tk.Label(darkhast_edari_tejari_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_addrres_darkhast_edari_tejari.place(x=835 , y=20)
+
+error_lable_name_moshtari_darkhast_edari_tejari= tk.Label(darkhast_edari_tejari_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_name_moshtari_darkhast_edari_tejari.place(x=835 , y=20)
+
+error_lable_shomareh_moshtari_darkhast_edari_tejari= tk.Label(darkhast_edari_tejari_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_shomareh_moshtari_darkhast_edari_tejari.place(x=900 , y=20)
 
 darkhast_edari_tejari_window.protocol("WM_DELETE_WINDOW", lambda: None)
 darkhast_edari_tejari_window.resizable(False, False)
