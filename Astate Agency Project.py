@@ -19,7 +19,7 @@ def get_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="EmadAE7*",#   entry  در ادرس ها   تبدیل بهtext شود      entry==>text
+        password="Mmmm9905",#   entry  در ادرس ها   تبدیل بهtext شود      entry==>text
         #database="state_agency"
     )
 #endregion
@@ -444,18 +444,6 @@ plus=tk.PhotoImage(file="Images/pluse.png")
 elvator_pic=tk.PhotoImage(file="Images/elvator.png")
 parking_pic=tk.PhotoImage(file="Images/parking.png")
 warehouse_pic=tk.PhotoImage(file="Images/anbari.png")
-#--------------------- تصاویر صفحه های اجاره -------------------------------
-
-#---------------------- تصاویر صفحه های فروش ------------------------------- 
-image_forosh_maskoni=Image.open("Images/forosh_maskoni.jpg")
-image_forosh_edari_tejari=Image.open("Images/forosh_edari_tejari.jpg")
-image_forosh_bagh_zamin=Image.open("Images/forosh_bagh_zamin.jpg")
-image_forosh_karghah=Image.open("Images/forosh_karghah.jpg")
-#---------------------- تصاویر صفحه های درخواست -------------------------------
-image_darkhast_maskoni=Image.open("Images/darkhast_maskoni.jpg")
-image_darkhast_edari_tejari=Image.open("Images/darkhast_edari_tejari.jpg")
-image_darkhast_bagh_zamin=Image.open("Images/darkhast_bagh_zamin.jpg")
-image_darkhast_kargah=Image.open("Images/darkhast_kargah.jpg")
 #---------------------- تصاویر صفحه های گزارش ---------------------------------
 image_gozaresh_maskoni=Image.open("Images/gozaresh_maskoni.jpg")
 image_gozaresh_edari_tejari=Image.open("Images/gozaresh_edari_tejari.jpg")
@@ -1809,9 +1797,11 @@ def chck_gheimat_pish_ejareh_maskoni(event=None):
     else:
         gheimat_pish_ejareh_maskoni_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_gheimat_pish_ejareh_maskoni.config(text=" فیلد(قیمت پیش) باید شامل اعداد باشد")
-        addrres_ejareh_maskoni_entry.config(state="disabled")
+        gheimat_ejareh_ejareh_maskoni_entry.config(disabledbackground="#808080",fg="white")
         gheimat_ejareh_ejareh_maskoni_entry.config(state="disabled")
-        
+        addrres_ejareh_maskoni_entry.config(bg="#808080",fg="white")
+        addrres_ejareh_maskoni_entry.config(state="disabled")
+
 def chck_gheimat_ejareh_ejareh_maskoni(event=None):
     gheimat_ejareh_ejareh_maskoni=gheimat_ejareh_ejareh_maskoni_entry.get().strip()
 
@@ -1823,8 +1813,10 @@ def chck_gheimat_ejareh_ejareh_maskoni(event=None):
     else:
         gheimat_ejareh_ejareh_maskoni_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_gheimat_ejareh_ejareh_maskoni.config(text=" فیلد(قیمت اجاره) باید شامل اعداد باشد")
-        addrres_ejareh_maskoni_entry.config(state="disabled")
+        gheimat_pish_ejareh_maskoni_entry.config(disabledbackground="#808080",fg="white")
         gheimat_pish_ejareh_maskoni_entry.config(state="disabled")
+        addrres_ejareh_maskoni_entry.config(bg="#808080",fg="white")
+        addrres_ejareh_maskoni_entry.config(state="disabled")
 
 def chck_addrres_ejareh_maskoni(event=None):
     addrres_ejareh_maskoni = addrres_ejareh_maskoni_entry.get("1.0", tk.END).strip()
@@ -1834,14 +1826,13 @@ def chck_addrres_ejareh_maskoni(event=None):
         error_lable_addrres_ejareh_maskoni.config(text="")
         gheimat_ejareh_ejareh_maskoni_entry.config(state="normal")
         gheimat_pish_ejareh_maskoni_entry.config(state="normal")
-
     else:
         addrres_ejareh_maskoni_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_addrres_ejareh_maskoni.config(text="فیلد (آدرس) باید شامل حروف فارسی باشد")
+        gheimat_ejareh_ejareh_maskoni_entry.config(disabledbackground="#808080",fg="white")
         gheimat_ejareh_ejareh_maskoni_entry.config(state="disabled")
+        gheimat_pish_ejareh_maskoni_entry.config(disabledbackground="#808080",fg="white")
         gheimat_pish_ejareh_maskoni_entry.config(state="disabled")
-         
-
 def chck_name_malek_ejareh_maskoni(event=None):
     name_malek_ejareh_maskoni = name_malek_ejareh_maskoni_entry.get().strip()
 
@@ -2120,12 +2111,12 @@ def chck_mablagh_pish_ejareh_edari_tejari(event=None):
     else:
         mablagh_pish_ejareh_edari_tejari_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_mablagh_pish_ejareh_edari_tejari.config(text=" فیلد(مبلغ پیش) باید شامل اعداد باشد")
-        addrres_ejareh_edari_tejari_entry.config(state="disabled")
+        mablagh_ejare_ejareh_edari_tejari_entry.config(disabledbackground="#808080",fg="white")
         mablagh_ejare_ejareh_edari_tejari_entry.config(state="disabled")
-
+        addrres_ejareh_edari_tejari_entry.config(bg="#808080",fg="white")
+        addrres_ejareh_edari_tejari_entry.config(state="disabled")
 def chck_mablagh_ejareh_ejareh_edari_tejari(event=None):
     mablagh_ejare_ejareh_edari_tejari=mablagh_ejare_ejareh_edari_tejari_entry.get().strip()
-
     if mablagh_ejare_ejareh_edari_tejari.isdigit():
         mablagh_ejare_ejareh_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_mablagh_ejareh_ejareh_edari_tejari.config(text="")
@@ -2134,8 +2125,10 @@ def chck_mablagh_ejareh_ejareh_edari_tejari(event=None):
     else:
         mablagh_ejare_ejareh_edari_tejari_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_mablagh_ejareh_ejareh_edari_tejari.config(text=" فیلد(مبلغ اجاره) باید شامل اعداد باشد")
-        addrres_ejareh_edari_tejari_entry.config(state="disabled")
+        mablagh_pish_ejareh_edari_tejari_entry.config(disabledbackground="#808080",fg="white")
         mablagh_pish_ejareh_edari_tejari_entry.config(state="disabled")
+        addrres_ejareh_edari_tejari_entry.config(bg="#808080",fg="white")
+        addrres_ejareh_edari_tejari_entry.config(state="disabled")
 
 def chck_addrres_ejareh_edari_tejari(event=None):
     addrres_ejareh_edari_tejari = addrres_ejareh_edari_tejari_entry.get("1.0", tk.END).strip()
@@ -2149,7 +2142,9 @@ def chck_addrres_ejareh_edari_tejari(event=None):
     else:
         addrres_ejareh_edari_tejari_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_addrres_ejareh_edari_tejari.config(text="فیلد (آدرس) باید شامل حروف فارسی باشد")
+        mablagh_ejare_ejareh_edari_tejari_entry.config(disabledbackground="#808080",fg="white")
         mablagh_ejare_ejareh_edari_tejari_entry.config(state="disabled")
+        mablagh_pish_ejareh_edari_tejari_entry.config(disabledbackground="#808080",fg="white")
         mablagh_pish_ejareh_edari_tejari_entry.config(state="disabled")
 
 def chck_name_malek_ejareh_edari_tejari(event=None):
@@ -2200,12 +2195,10 @@ def chck_gheimat_metri_forosh_bagh_zamin(event=None):
         gheimat_kol_forosh_bagh_zamin_entry.config(bg="#ffffff",fg="black")
         bagh_loctaion_forosh_bagh_zamin_entry.config(state="normal")
         bagh_loctaion_forosh_bagh_zamin_entry.config(bg="#ffffff",fg="black")
-
-
     else:
         gheimat_har_metr_bagh_zamin_forosh_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_gheimat_metri_forosh_bagh_zamin.config(text=" فیلد(قیمت) باید شامل اعداد باشد")
-        gheimat_kol_forosh_bagh_zamin_entry.config(bg="#808080",fg="white")
+        gheimat_kol_forosh_bagh_zamin_entry.config(disabledbackground="#808080",fg="white")
         gheimat_kol_forosh_bagh_zamin_entry.config(state="disabled")
         bagh_loctaion_forosh_bagh_zamin_entry.config(bg="#808080",fg="white")
         bagh_loctaion_forosh_bagh_zamin_entry.config(state="disabled")
@@ -2224,7 +2217,7 @@ def chck_gheimat_kol_forosh_bagh_zamin(event=None):
         gheimat_kol_forosh_bagh_zamin_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_gheimat_kol_forosh_bagh_zamin.config(text=" فیلد(قیمت) باید شامل اعداد باشد")
         gheimat_har_metr_bagh_zamin_forosh_entry.config(state="disabled")
-        gheimat_har_metr_bagh_zamin_forosh_entry.config(bg="#808080",fg="white")
+        gheimat_har_metr_bagh_zamin_forosh_entry.config(disabledbackground="#808080",fg="white")
         bagh_loctaion_forosh_bagh_zamin_entry.config(bg="#808080",fg="white")
         bagh_loctaion_forosh_bagh_zamin_entry.config(state="disabled")
 def chck_addrres_forosh_bagh_zamin(event=None):
@@ -2240,10 +2233,11 @@ def chck_addrres_forosh_bagh_zamin(event=None):
     else:
         bagh_loctaion_forosh_bagh_zamin_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_addrres_forosh_bagh_zamin.config(text="فیلد (آدرس) باید شامل حروف فارسی باشد")
-        gheimat_kol_forosh_bagh_zamin_entry.config(state="disabled")
         gheimat_kol_forosh_bagh_zamin_entry.config(disabledbackground="#808080",disabledforeground="white")
-        gheimat_har_metr_bagh_zamin_forosh_entry.config(state="disabled")
+        gheimat_kol_forosh_bagh_zamin_entry.config(state="disabled")
         gheimat_har_metr_bagh_zamin_forosh_entry.config(disabledbackground="#808080",disabledforeground="white")
+        gheimat_har_metr_bagh_zamin_forosh_entry.config(state="disabled")
+
 def chck_name_malek_forosh_bagh_zamin(event=None):
     name_malek_forosh_bagh_zamin = name_malek_forosh_bagh_entry.get().strip() 
     if re.fullmatch(r"[آ-ی\s]+", name_malek_forosh_bagh_zamin):
@@ -2265,7 +2259,95 @@ def chck_shomareh_malek_forosh_bagh_zamin(event=None):
     else:
         number_malek_forosh_bagh_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_shomareh_malek_forosh_bagh_zamin.config(text=" فیلد(شماره مالک) باید شامل 11رقم باشد")
-        name_malek_forosh_bagh_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")    
+        name_malek_forosh_bagh_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")   
+#---------------------------------اعتبار سنجی اجاره باغ زمین----------------
+def chck_metraj_ejareh_bagh_zamin(event=None):
+    metraj_zamin_ejareh_bagh_zamin=metraj_zamin_ejareh_bagh_zamin_entry.get().strip()
+
+    if metraj_zamin_ejareh_bagh_zamin.isdigit():
+        metraj_zamin_ejareh_bagh_zamin_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_metraj_ejareh_bagh_zamin.config(text="")
+       
+    else:
+        metraj_zamin_ejareh_bagh_zamin_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_metraj_ejareh_bagh_zamin.config(text=" فیلد(متراژ) باید شامل اعداد باشد")
+
+def chck_vadieh_ejareh_bagh_zamin(event=None):
+    vadieh_ejareh_bagh_zamin=bagh_gheimat_ejareh_bagh_zamin_entry.get().strip()
+
+    if vadieh_ejareh_bagh_zamin.isdigit():
+        bagh_gheimat_ejareh_bagh_zamin_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_vadieh_ejareh_bagh_zamin.config(text="")
+        bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.config(state="normal")
+        bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.config(bg="#ffffff",fg="black")
+        bagh_loctaion_entry.config(state="normal")
+        bagh_loctaion_entry.config(bg="#ffffff",fg="black")
+
+    else:
+        bagh_gheimat_ejareh_bagh_zamin_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_vadieh_ejareh_bagh_zamin.config(text=" فیلد(قیمت) باید شامل اعداد باشد")
+        bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.config(disabledbackground="#808080",fg="white")
+        bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.config(state="disabled")
+        bagh_loctaion_entry.config(bg="#808080",fg="white")
+        bagh_loctaion_entry.config(state="disabled")
+def chck_ejareh_mahaneh_bagh_zamin(event=None):
+    ejareh_mahaneh_bagh_zamin=bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.get().strip()
+
+    if ejareh_mahaneh_bagh_zamin.isdigit():
+        bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_ejareh_mahaneh_bagh_zamin.config(text="")
+        bagh_gheimat_ejareh_bagh_zamin_entry.config(state="normal")
+        bagh_gheimat_ejareh_bagh_zamin_entry.config(bg="#ffffff",fg="black")
+        bagh_loctaion_entry.config(state="normal")
+        bagh_loctaion_entry.config(bg="#ffffff",fg="black")
+
+    else:
+        bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_ejareh_mahaneh_bagh_zamin.config(text=" فیلد(قیمت) باید شامل اعداد باشد")
+        bagh_gheimat_ejareh_bagh_zamin_entry.config(disabledbackground="#808080",fg="white")
+        bagh_gheimat_ejareh_bagh_zamin_entry.config(state="disabled")
+        bagh_loctaion_entry.config(bg="#808080",fg="white")
+        bagh_loctaion_entry.config(state="disabled")
+
+def chck_addrres_ejareh_bagh_zamin(event=None):
+    addrres_ejareh_bagh_zamin =bagh_loctaion_entry.get("1.0", tk.END).strip()
+
+    if (re.fullmatch(r"[آ-ی0-9۰-۹\s]+", addrres_ejareh_bagh_zamin) and re.search(r"[آ-ی]", addrres_ejareh_bagh_zamin)):
+        bagh_loctaion_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_addrres_ejareh_bagh_zamin.config(text="")
+        bagh_gheimat_ejareh_bagh_zamin_entry.config(state="normal")
+        bagh_gheimat_ejareh_bagh_zamin_entry.config(bg="#ffffff",fg="black")
+        bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.config(state="normal")
+        bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.config(bg="#ffffff",fg="black")
+    else:
+        bagh_loctaion_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_addrres_ejareh_bagh_zamin.config(text="فیلد (آدرس) باید شامل حروف فارسی باشد")
+        bagh_gheimat_ejareh_bagh_zamin_entry.config(state="disabled")
+        bagh_gheimat_ejareh_bagh_zamin_entry.config(disabledbackground="#808080",disabledforeground="white")
+        bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.config(state="disabled")
+        bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.config(disabledbackground="#808080",disabledforeground="white")
+def chck_name_malek_ejareh_bagh_zamin(event=None):
+    name_malek_ehareh_bagh_zamin = name_malek_bagh_zamin_entry.get().strip() 
+    if re.fullmatch(r"[آ-ی\s]+",name_malek_ehareh_bagh_zamin):
+        name_malek_bagh_zamin_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_name_malek_ejareh_bagh_zamin.config(text="")
+        number_malek_bagh_zamin_entry.config(state="normal")
+    else:
+        name_malek_bagh_zamin_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_name_malek_ejareh_bagh_zamin.config(text="فیلد (نام مالک) باید شامل حروف فارسی باشد")
+        number_malek_bagh_zamin_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")  
+def chck_shomareh_malek_ejareh_bagh_zamin(event=None):
+    shomareh_malek_ejareh_bagh_zamin= number_malek_bagh_zamin_entry.get().strip()
+
+    if shomareh_malek_ejareh_bagh_zamin.isdigit() and len(shomareh_malek_ejareh_bagh_zamin) ==11:
+        number_malek_bagh_zamin_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_shomareh_malek_ejareh_bagh_zamin.config(text="")
+        name_malek_bagh_zamin_entry.config(state="normal")
+    else:
+        number_malek_bagh_zamin_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_shomareh_malek_ejareh_bagh_zamin.config(text=" فیلد(شماره مالک) باید شامل 11رقم باشد")
+        name_malek_bagh_zamin_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")   
+
 #---------------------اعتبارسنجی فروش کارگاه--------------------
 def chck_sal_sakht_forosh_kargah(event=None):
     sal_sakht_forosh_kargah=sal_sakht_forosh_kargah_entry.get().strip()
@@ -2370,21 +2452,20 @@ def chck_metraj_ejareh_karghah(event=None):
         metraj_ejareh_karghah_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_metraj_ejareh_karghah.config(text=" فیلد(متراژ) باید شامل اعداد باشد")
         sal_sakht_ejareh_karghah_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
-
 def chck_gheimat_pish_ejareh_karghah(event=None):
     gheimat_pish_ejareh_karghah=vadie_ejare_karghah_entry.get().strip()
-
     if gheimat_pish_ejareh_karghah.isdigit():
         vadie_ejare_karghah_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_gheimat_pish_ejareh_karghah.config(text="")
         addrres_ejareh_karghah_entry.config(state="normal")
         gheimat_ejare_ejare_karghah_entry.config(state="normal")
-
     else:
         vadie_ejare_karghah_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_gheimat_pish_ejareh_karghah.config(text=" فیلد(قیمت پیش) باید شامل اعداد باشد")
-        addrres_ejareh_karghah_entry.config(state="disabled")
+        gheimat_ejare_ejare_karghah_entry.config(disabledbackground="#808080",fg="white")
         gheimat_ejare_ejare_karghah_entry.config(state="disabled")
+        addrres_ejareh_karghah_entry.config(bg="#808080",fg="white")
+        addrres_ejareh_karghah_entry.config(state="disabled")
         
 def chck_gheimat_ejareh_ejareh_karghah(event=None):
     gheimat_ejareh_ejareh_karghah=gheimat_ejare_ejare_karghah_entry.get().strip()
@@ -2397,8 +2478,10 @@ def chck_gheimat_ejareh_ejareh_karghah(event=None):
     else:
         gheimat_ejare_ejare_karghah_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_gheimat_ejareh_ejareh_karghah.config(text=" فیلد(قیمت اجاره) باید شامل اعداد باشد")
-        addrres_ejareh_karghah_entry.config(state="disabled")
+        vadie_ejare_karghah_entry.config(disabledbackground="#808080",fg="white")
         vadie_ejare_karghah_entry.config(state="disabled")
+        addrres_ejareh_karghah_entry.config(bg="#808080",fg="white")
+        addrres_ejareh_karghah_entry.config(state="disabled")
 
 def chck_addrres_ejareh_karghah(event=None):
     addrres_ejareh_karghah= addrres_ejareh_karghah_entry.get("1.0", tk.END).strip()
@@ -2408,14 +2491,13 @@ def chck_addrres_ejareh_karghah(event=None):
         error_lable_addrres_ejareh_karghah.config(text="")
         gheimat_ejare_ejare_karghah_entry.config(state="normal")
         vadie_ejare_karghah_entry.config(state="normal")
-
     else:
         addrres_ejareh_karghah_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_addrres_ejareh_karghah.config(text="فیلد (آدرس) باید شامل حروف فارسی باشد")
+        gheimat_ejare_ejare_karghah_entry.config(disabledbackground="#808080",fg="white")
         gheimat_ejare_ejare_karghah_entry.config(state="disabled")
+        vadie_ejare_karghah_entry.config(disabledbackground="#808080",fg="white")
         vadie_ejare_karghah_entry.config(state="disabled")
-         
-
 def chck_name_malek_ejareh_karghah(event=None):
     name_malek_ejareh_karghah = name_malek_ejareh_karghah_entry.get().strip()
 
@@ -3027,7 +3109,7 @@ def sabt_ejareh_bagh_zamin():
                 karbari VARCHAR(20),
                 address VARCHAR(255),
                 mablagh_pish VARCHAR(20),
-                mablagh_ejareh DECIMAL(15,2),
+                mablagh_ejareh VARCHAR(20),
                 zaman_ejareh VARCHAR(30),
                 name_malek VARCHAR(50),
                 shomareh_malek VARCHAR(11),
@@ -3111,7 +3193,7 @@ def sabt_ejareh_bagh_zamin():
                 karbari VARCHAR(20),
                 address VARCHAR(255),
                 mablagh_pish VARCHAR(20),
-                mablagh_metri DECIMAL(15,2),
+                mablagh_metri VARCHAR(20),
                 zaman_ejareh VARCHAR(30),
                 name_malek VARCHAR(50),
                 shomareh_malek VARCHAR(11),
@@ -8853,6 +8935,7 @@ metraj_zamin_ejareh_bagh_zamin_lable.place(x=490, y=80, anchor="e")
 
 metraj_zamin_ejareh_bagh_zamin_entry=tk.Entry(frame_up_right_ejareh_bagh_zamin, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
 metraj_zamin_ejareh_bagh_zamin_entry.place(x=28, y=70, width=350, height=25)
+metraj_zamin_ejareh_bagh_zamin_entry.bind("<KeyRelease>",chck_metraj_ejareh_bagh_zamin)
 
 bagh_type_lable=tk.Label(frame_up_right_ejareh_bagh_zamin, text="کاربری زمین", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 bagh_type_lable.place(x=490, y=120, anchor="e")
@@ -8885,32 +8968,35 @@ bagh_gheimat_ejareh_bagh_zamin_lable.place(x=490, y=20, anchor="e")
 
 bagh_gheimat_ejareh_bagh_zamin_entry=tk.Entry(frame_midde_right_ejareh_bagh_zamin, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
 bagh_gheimat_ejareh_bagh_zamin_entry.place(x=28, y=13, width=350, height=25)
+bagh_gheimat_ejareh_bagh_zamin_entry.bind("<KeyRelease>",chck_vadieh_ejareh_bagh_zamin)
 
 bagh_gheimat_har_metr_ejareh_bagh_zamin_lable=tk.Label(frame_midde_right_ejareh_bagh_zamin, text="اجاره ماهانه", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 bagh_gheimat_har_metr_ejareh_bagh_zamin_lable.place(x=490, y=65, anchor="e")
 
 bagh_gheimat_har_metr_ejareh_bagh_zamin_entry=tk.Entry(frame_midde_right_ejareh_bagh_zamin, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
 bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.place(x=28, y=55, width=350, height=25)
+bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.bind("<KeyRelease>",chck_ejareh_mahaneh_bagh_zamin)
 
 bagh_loctaion_lable=tk.Label(frame_midde_right_ejareh_bagh_zamin, text=" منطقه و آدرس ", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 bagh_loctaion_lable.place(x=490, y=110, anchor="e")
 
 bagh_loctaion_entry=tk.Text(frame_midde_right_ejareh_bagh_zamin, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
 bagh_loctaion_entry.place(x=28, y=95, width=350, height=40)
-
+bagh_loctaion_entry.bind("<KeyRelease>",chck_addrres_ejareh_bagh_zamin)
 #-------------------------------------فریم وسط سمت چپ---------------------------
-
 name_malek_bagh_zamin_lable=tk.Label(frame_midde_left_ejareh_bagh_zamin, text="نام مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 name_malek_bagh_zamin_lable.place(x=600, y=30, anchor="e")
 
 name_malek_bagh_zamin_entry=tk.Entry(frame_midde_left_ejareh_bagh_zamin, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
 name_malek_bagh_zamin_entry.place(x=30, y=20, width=350, height=25)
+name_malek_bagh_zamin_entry.bind("<KeyRelease>",chck_name_malek_ejareh_bagh_zamin)
 
 number_malek_bagh_zamin_lable=tk.Label(frame_midde_left_ejareh_bagh_zamin, text="شماره مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 number_malek_bagh_zamin_lable.place(x=600, y=80 ,anchor="e")
 
 number_malek_bagh_zamin_entry=tk.Entry(frame_midde_left_ejareh_bagh_zamin, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
 number_malek_bagh_zamin_entry.place(x=30, y=70, width=350, height=25)
+number_malek_bagh_zamin_entry.bind("<KeyRelease>",chck_shomareh_malek_ejareh_bagh_zamin)
 #-----------------------------------فریم پایین------------------------------------------
 
 abyari=tk.Label(frame_down_ejareh_bagh,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="نوع آبیاری")
@@ -9118,6 +9204,24 @@ delete_btn_ejareh_bagh_zamin.place_forget()
 
 edit_btn_ejareh_bagh_zamin=tk.Button(ejareh_bagh_zamin_window,text="ثبت ویرایش",command=update_ejareh_bagh_zamin,bg="#00BFFF", fg="#ffffff",width=10,height=1,)
 edit_btn_ejareh_bagh_zamin.place_forget()
+#---------------------------------ارور لیبل ها----------------------
+error_lable_metraj_ejareh_bagh_zamin=tk.Label(ejareh_bagh_zamin_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_metraj_ejareh_bagh_zamin.place(x=900,y=20)
+
+error_lable_vadieh_ejareh_bagh_zamin=tk.Label(ejareh_bagh_zamin_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_vadieh_ejareh_bagh_zamin.place(x=900,y=20)
+
+error_lable_ejareh_mahaneh_bagh_zamin=tk.Label(ejareh_bagh_zamin_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_ejareh_mahaneh_bagh_zamin.place(x=900,y=20)
+
+error_lable_addrres_ejareh_bagh_zamin=tk.Label(ejareh_bagh_zamin_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_addrres_ejareh_bagh_zamin.place(x=835,y=20)
+
+error_lable_name_malek_ejareh_bagh_zamin=tk.Label(ejareh_bagh_zamin_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_name_malek_ejareh_bagh_zamin.place(x=835,y=20)
+
+error_lable_shomareh_malek_ejareh_bagh_zamin=tk.Label(ejareh_bagh_zamin_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_shomareh_malek_ejareh_bagh_zamin.place(x=900,y=20)
 
 ejareh_bagh_zamin_window.protocol("WM_DELETE_WINDOW", lambda: None)
 ejareh_bagh_zamin_window.resizable(False, False)
@@ -9529,7 +9633,6 @@ sarmaesh_combo_forosh_maskoni.place(x=475, y=15)
 
 garmaesh_forosh_maskoni=tk.Label(frame_down_forosh_maskoni, text="گرمایش", bg="#052340", fg="#ffffff", font=("Shabnam", 11))
 garmaesh_forosh_maskoni.place(x=650, y=45)
-
 
 garmaesh_combo_forosh_maskoni=ttk.Combobox(frame_down_forosh_maskoni)
 garmaesh_combo_forosh_maskoni["values"] = ("ندارد","بخاری"," شوفاژ","گرمایش از کف ")
