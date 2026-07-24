@@ -2348,7 +2348,135 @@ def chck_shomareh_malek_ejareh_bagh_zamin(event=None):
         number_malek_bagh_zamin_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_shomareh_malek_ejareh_bagh_zamin.config(text=" فیلد(شماره مالک) باید شامل 11رقم باشد")
         name_malek_bagh_zamin_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")   
+#----------------------اعتبار سنجی درخواست باغ زمین----------------
+def chck_metraj_darkhast_bagh_zamin(event=None):
+    metraj_zamin_darkhast_bagh_zamin=metraj_zamin_darkhast_bagh_zamin_entry.get().strip()
 
+    if metraj_zamin_darkhast_bagh_zamin.isdigit():
+        metraj_zamin_darkhast_bagh_zamin_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_metraj_darkhast_bagh_zamin.config(text="")
+       
+    else:
+        metraj_zamin_darkhast_bagh_zamin_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_metraj_darkhast_bagh_zamin.config(text=" فیلد(متراژ) باید شامل اعداد باشد")
+def chck_gheimat_kol_darkhast_bagh_zamin(event=None):
+    gheimat_kol_darkhast_bagh_zamin=gheimat_kol_bagh_zamin_darkhast_entry.get().strip()
+
+    if gheimat_kol_darkhast_bagh_zamin.isdigit():
+        gheimat_kol_bagh_zamin_darkhast_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_gheimat_kol_darkhast_bagh_zamin.config(text="")
+        gheimat_har_metr_bagh_zamin_darkhast_entry.config(state="normal")
+        gheimat_har_metr_bagh_zamin_darkhast_entry.config(bg="#ffffff",fg="black")
+        bagh_loctaion_darkhast_bagh_zamin_entry.config(state="normal")
+        bagh_loctaion_darkhast_bagh_zamin_entry.config(bg="#ffffff",fg="black")
+
+    else:
+        gheimat_kol_bagh_zamin_darkhast_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_gheimat_kol_darkhast_bagh_zamin.config(text=" فیلد(قیمت) باید شامل اعداد باشد")
+        gheimat_har_metr_bagh_zamin_darkhast_entry.config(state="disabled")
+        gheimat_har_metr_bagh_zamin_darkhast_entry.config(disabledbackground="#808080",fg="white")
+        bagh_loctaion_darkhast_bagh_zamin_entry.config(bg="#808080",fg="white")
+        bagh_loctaion_darkhast_bagh_zamin_entry.config(state="disabled")
+def chck_gheimat_metri_darkhast_bagh_zamin(event=None):
+    gheimat_metri_darkhast_bagh_zamin=gheimat_har_metr_bagh_zamin_darkhast_entry.get().strip()
+
+    if gheimat_metri_darkhast_bagh_zamin.isdigit():
+        gheimat_har_metr_bagh_zamin_darkhast_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_gheimat_metri_darkhast_bagh_zamin.config(text="")
+        gheimat_kol_bagh_zamin_darkhast_entry.config(state="normal")
+        gheimat_kol_bagh_zamin_darkhast_entry.config(bg="#ffffff",fg="black")
+        bagh_loctaion_darkhast_bagh_zamin_entry.config(state="normal")
+        bagh_loctaion_darkhast_bagh_zamin_entry.config(bg="#ffffff",fg="black")
+    else:
+        gheimat_har_metr_bagh_zamin_darkhast_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_gheimat_metri_darkhast_bagh_zamin.config(text=" فیلد(قیمت) باید شامل اعداد باشد")
+        gheimat_kol_bagh_zamin_darkhast_entry.config(disabledbackground="#808080",fg="white")
+        gheimat_kol_bagh_zamin_darkhast_entry.config(state="disabled")
+        bagh_loctaion_darkhast_bagh_zamin_entry.config(bg="#808080",fg="white")
+        bagh_loctaion_darkhast_bagh_zamin_entry.config(state="disabled")
+    
+def chck_vadieh_darkhast_bagh_zamin(event=None):
+    vadieh_darkhast_bagh_zamin=gheimat_ejareh_bagh_darkhast_zamin_entry.get().strip()
+
+    if vadieh_darkhast_bagh_zamin.isdigit():
+        gheimat_ejareh_bagh_darkhast_zamin_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_vadieh_darkhast_bagh_zamin.config(text="")
+        mablagh_ejareh_mahaneh_darkhast_entry.config(state="normal")
+        mablagh_ejareh_mahaneh_darkhast_entry.config(bg="#ffffff",fg="black")
+        bagh_loctaion_darkhast_bagh_zamin_entry.config(state="normal")
+        bagh_loctaion_darkhast_bagh_zamin_entry.config(bg="#ffffff",fg="black")
+    else:
+        gheimat_ejareh_bagh_darkhast_zamin_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_vadieh_darkhast_bagh_zamin.config(text=" فیلد(قیمت) باید شامل اعداد باشد")
+        mablagh_ejareh_mahaneh_darkhast_entry.config(disabledbackground="#808080",fg="white")
+        mablagh_ejareh_mahaneh_darkhast_entry.config(state="disabled")
+        bagh_loctaion_darkhast_bagh_zamin_entry.config(bg="#808080",fg="white")
+        bagh_loctaion_darkhast_bagh_zamin_entry.config(state="disabled")
+def chck_darkhast_ejareh_mahaneh_bagh_zamin(event=None):
+    darkhast_ejareh_mahaneh_bagh_zamin=mablagh_ejareh_mahaneh_darkhast_entry.get().strip()
+
+    if darkhast_ejareh_mahaneh_bagh_zamin.isdigit():
+        mablagh_ejareh_mahaneh_darkhast_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_darkhast_ejareh_mahaneh_bagh_zamin.config(text="")
+        gheimat_ejareh_bagh_darkhast_zamin_entry.config(state="normal")
+        gheimat_ejareh_bagh_darkhast_zamin_entry.config(bg="#ffffff",fg="black")
+        bagh_loctaion_darkhast_bagh_zamin_entry.config(state="normal")
+        bagh_loctaion_darkhast_bagh_zamin_entry.config(bg="#ffffff",fg="black")
+
+    else:
+        mablagh_ejareh_mahaneh_darkhast_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_darkhast_ejareh_mahaneh_bagh_zamin.config(text=" فیلد(قیمت) باید شامل اعداد باشد")
+        gheimat_ejareh_bagh_darkhast_zamin_entry.config(disabledbackground="#808080",fg="white")
+        gheimat_ejareh_bagh_darkhast_zamin_entry.config(state="disabled")
+        bagh_loctaion_darkhast_bagh_zamin_entry.config(bg="#808080",fg="white")
+        bagh_loctaion_darkhast_bagh_zamin_entry.config(state="disabled")
+def chck_addrres_darkhast_bagh_zamin(event=None):
+    bagh_loctaion_darkhast_bagh_zamin= bagh_loctaion_darkhast_bagh_zamin_entry.get("1.0", tk.END).strip()
+
+    if (re.fullmatch(r"[آ-ی0-9۰-۹\s]+",bagh_loctaion_darkhast_bagh_zamin) and re.search(r"[آ-ی]",bagh_loctaion_darkhast_bagh_zamin)):
+        bagh_loctaion_darkhast_bagh_zamin_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_darkhast_address_bagh_zamin.config(text="")
+        gheimat_ejareh_bagh_darkhast_zamin_entry.config(state="normal")
+        gheimat_ejareh_bagh_darkhast_zamin_entry.config(bg="#ffffff",fg="black")
+        mablagh_ejareh_mahaneh_darkhast_entry.config(state="normal")
+        mablagh_ejareh_mahaneh_darkhast_entry.config(bg="#ffffff",fg="black")
+        gheimat_kol_bagh_zamin_darkhast_entry.config(state="normal")
+        gheimat_kol_bagh_zamin_darkhast_entry.config(bg="#ffffff",fg="black")
+        gheimat_har_metr_bagh_zamin_darkhast_entry.config(state="normal")
+        gheimat_har_metr_bagh_zamin_darkhast_entry.config(bg="#ffffff",fg="black")
+
+    else:
+        bagh_loctaion_darkhast_bagh_zamin_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_darkhast_address_bagh_zamin.config(text="فیلد (آدرس) باید شامل حروف فارسی باشد")
+        gheimat_kol_bagh_zamin_darkhast_entry.config(disabledbackground="#808080",fg="white")
+        gheimat_kol_bagh_zamin_darkhast_entry.config(state="disabled")
+        gheimat_har_metr_bagh_zamin_darkhast_entry.config(disabledbackground="#808080",fg="white")
+        gheimat_har_metr_bagh_zamin_darkhast_entry.config(state="disabled")
+        gheimat_ejareh_bagh_darkhast_zamin_entry.config(disabledbackground="#808080",fg="white")
+        gheimat_ejareh_bagh_darkhast_zamin_entry.config(state="disabled")
+        mablagh_ejareh_mahaneh_darkhast_entry.config(disabledbackground="#808080",fg="white")
+        mablagh_ejareh_mahaneh_darkhast_entry.config(state="disabled")    
+def chck_name_malek_darkhast_bagh_zamin(event=None):
+    name_malek_darkhast_bagh_zamin =name_moshtari_darkhast_bagh_entry.get().strip() 
+    if re.fullmatch(r"[آ-ی\s]+",name_malek_darkhast_bagh_zamin):
+        name_moshtari_darkhast_bagh_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_name_malek_darkhast_bagh_zamin.config(text="")
+        shomareh_moshtari_darkhast_bagh_entry.config(state="normal")
+    else:
+        name_moshtari_darkhast_bagh_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_name_malek_darkhast_bagh_zamin.config(text="فیلد (نام مالک) باید شامل حروف فارسی باشد")
+        shomareh_moshtari_darkhast_bagh_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+def chck_shomareh_malek_darkhast_bagh_zamin(event=None):
+    shomareh_malek_darkhast_bagh_zamin= shomareh_moshtari_darkhast_bagh_entry.get().strip()
+
+    if shomareh_malek_darkhast_bagh_zamin.isdigit() and len(shomareh_malek_darkhast_bagh_zamin) ==11:
+        shomareh_moshtari_darkhast_bagh_entry.config(highlightcolor="white",highlightthickness=0)
+        error_lable_shomareh_malek_darkhast_bagh_zamin.config(text="")
+        name_moshtari_darkhast_bagh_entry.config(state="normal")
+    else:
+        shomareh_moshtari_darkhast_bagh_entry.config(highlightcolor="red",highlightthickness=2)
+        error_lable_shomareh_malek_darkhast_bagh_zamin.config(text=" فیلد(شماره مالک) باید شامل 11رقم باشد")
+        name_moshtari_darkhast_bagh_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white") 
 #---------------------اعتبارسنجی فروش کارگاه--------------------
 def chck_sal_sakht_forosh_kargah(event=None):
     sal_sakht_forosh_kargah=sal_sakht_forosh_kargah_entry.get().strip()
@@ -2524,7 +2652,6 @@ def chck_shomareh_malek_ejareh_karghah(event=None):
         shomareh_malek_ejareh_karghah_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_name_malek_ejareh_karghah.config(text=" فیلد(شماره مالک) باید شامل 11رقم باشد")
         name_malek_ejareh_karghah_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
-
 #-------------------اعتبارسنجی درخواست اداری/ تجاری--------------------
 def chck_sal_sakht_darkhast_edari_tejari(event=None):
     sal_sakht_darkhast_edari_tejari=sal_sakht_darkhast_edari_tejari_entry.get().strip()
@@ -2705,7 +2832,6 @@ def chck_shomareh_moshtari_darkhast_edari_tejari(event=None):
         shomareh_moshtari_darkhast_edari_tejari_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_shomareh_moshtari_darkhast_edari_tejari.config(text=" فیلد(شماره مالک) باید شامل 11رقم باشد")
         name_moshtari_darkhast_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
-
 #-------------------اعتبارسنجی درخواست کارگاه --------------------
 def chck_sal_sakht_darkhast_karghah(event=None):
     sal_sakht_darkhast_karghah=sal_sakht_darkhast_kargah_entry.get().strip()
@@ -2732,7 +2858,6 @@ def chck_metraj_melk_darkhast_karghah(event=None):
         metraj_darkhast_kargah_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_metraj_melk_darkhast_karghah.config(text=" فیلد(متراژ) باید شامل اعداد باشد")
         sal_sakht_darkhast_kargah_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
-
 
 def chck_gheimat_kol_darkhast_karghah(event=None):
     gheimat_kol_darkhast_karghah=gheimat_kol_darkhast_kargah_entry.get().strip()
@@ -11291,7 +11416,6 @@ frame_up_right_darkhast_bagh_zamin= tk.Frame(darkhast_bagh_zamin_window,bd=0,hig
 frame_up_right_darkhast_bagh_zamin.configure(bg="#052340")
 frame_up_right_darkhast_bagh_zamin.place(x=670,y=75)
 
-
 frame_up_left_darkhast_bagh_zamin= tk.Frame(darkhast_bagh_zamin_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=640,height=300)
 frame_up_left_darkhast_bagh_zamin.configure(bg="#052340")
 frame_up_left_darkhast_bagh_zamin.place(x=10,y=75)
@@ -11348,6 +11472,7 @@ metraj_zamin_darkhast_bagh_zamin_lable.place(x=490, y=80, anchor="e")
 
 metraj_zamin_darkhast_bagh_zamin_entry=tk.Entry(frame_up_right_darkhast_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10),textvariable="متر مربع")
 metraj_zamin_darkhast_bagh_zamin_entry.place(x=28, y=70, width=350, height=25)
+metraj_zamin_darkhast_bagh_zamin_entry.bind("<KeyRelease>",chck_metraj_darkhast_bagh_zamin)
 
 bagh_type_darkhast_bagh_zamin_lable=tk.Label(frame_up_right_darkhast_bagh_zamin,text="کاربری زمین",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
 bagh_type_darkhast_bagh_zamin_lable.place(x=490, y=120, anchor="e")
@@ -11379,23 +11504,27 @@ gheimat_kol_bagh_zamin_darkhast_lable.place(x=490, y=20, anchor="e")
 
 gheimat_kol_bagh_zamin_darkhast_entry=tk.Entry(frame_midde_right_darkhast_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
 gheimat_kol_bagh_zamin_darkhast_entry.place(x=28, y=13, width=350, height=25)
+gheimat_kol_bagh_zamin_darkhast_entry.bind("<KeyRelease>",chck_gheimat_kol_darkhast_bagh_zamin)
 
 gheimat_har_matr_bagh_zamin_darkhast_lable=tk.Label(frame_midde_right_darkhast_bagh_zamin,text='قیمت هر متر',bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
 gheimat_har_matr_bagh_zamin_darkhast_lable.place(x=490, y=65, anchor="e")
 
 gheimat_har_metr_bagh_zamin_darkhast_entry=tk.Entry(frame_midde_right_darkhast_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
 gheimat_har_metr_bagh_zamin_darkhast_entry.place(x=28, y=55, width=350, height=25)
+gheimat_har_metr_bagh_zamin_darkhast_entry.bind("<KeyRelease>",chck_gheimat_metri_darkhast_bagh_zamin)
 
 gheimat_ejareh_bagh_darkhast_zamin_lable=tk.Label(frame_midde_right_darkhast_bagh_zamin, text="ودیعه", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 gheimat_ejareh_bagh_darkhast_zamin_lable.place_forget()
 
 gheimat_ejareh_bagh_darkhast_zamin_entry=tk.Entry(frame_midde_right_darkhast_bagh_zamin, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
+gheimat_ejareh_bagh_darkhast_zamin_entry.bind("<KeyRelease>",chck_vadieh_darkhast_bagh_zamin)
 gheimat_ejareh_bagh_darkhast_zamin_entry.place_forget()
 
 mablagh_ejareh_mahaneh_darkhast_lable=tk.Label(frame_midde_right_darkhast_bagh_zamin,text='اجاره ماهانه',bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
 mablagh_ejareh_mahaneh_darkhast_lable.place_forget()
 
 mablagh_ejareh_mahaneh_darkhast_entry=tk.Entry(frame_midde_right_darkhast_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
+mablagh_ejareh_mahaneh_darkhast_entry.bind("<KeyRelease>",chck_darkhast_ejareh_mahaneh_bagh_zamin)
 mablagh_ejareh_mahaneh_darkhast_entry.place_forget()
 
 bagh_loctaion_darkhast_bagh_zamin_lable=tk.Label(frame_midde_right_darkhast_bagh_zamin,text="منطقه و آدرس ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
@@ -11403,18 +11532,21 @@ bagh_loctaion_darkhast_bagh_zamin_lable.place(x=490, y=110, anchor="e")
 
 bagh_loctaion_darkhast_bagh_zamin_entry=tk.Text(frame_midde_right_darkhast_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
 bagh_loctaion_darkhast_bagh_zamin_entry.place(x=28, y=95, width=350, height=40)
+bagh_loctaion_darkhast_bagh_zamin_entry.bind("<KeyRelease>",chck_addrres_darkhast_bagh_zamin)
 #----------------------------فریم وسط سمت چپ-------------------------------
 name_moshtari_darkhast_bagh_lable=tk.Label(frame_midde_left_darkhast_bagh_zamin,text="نام مشتری",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
 name_moshtari_darkhast_bagh_lable.place(x=600, y=30, anchor="e")
 
 name_moshtari_darkhast_bagh_entry=tk.Entry(frame_midde_left_darkhast_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
 name_moshtari_darkhast_bagh_entry.place(x=30, y=20, width=350, height=25)
+name_moshtari_darkhast_bagh_entry.bind("<KeyRelease>",chck_name_malek_darkhast_bagh_zamin)
 
 shomareh_moshtari_darkhast_bagh_lable=tk.Label(frame_midde_left_darkhast_bagh_zamin,text="شماره مشتری",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
 shomareh_moshtari_darkhast_bagh_lable.place(x=600, y=80, anchor="e")
 
 shomareh_moshtari_darkhast_bagh_entry=tk.Entry(frame_midde_left_darkhast_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
 shomareh_moshtari_darkhast_bagh_entry.place(x=30, y=70, width=350, height=25)
+shomareh_moshtari_darkhast_bagh_entry.bind("<KeyRelease>",chck_shomareh_malek_darkhast_bagh_zamin)
 #--------------------------فریم پایین-----------------------------
 abyari_darkhast_bagh_zamin_lable=tk.Label(frame_down_darkhast_bagh,bg="#052340",fg="#ffffff",font=("Shabnam",9),width=10,text="نوع آبیاری")
 abyari_darkhast_bagh_zamin_lable.place(x=1080, y=20)
@@ -11621,6 +11753,31 @@ delete_btn_darkhast_bagh_zamin.place_forget()
 
 edit_btn_darkhast_bagh_zamin=tk.Button(darkhast_bagh_zamin_window,text="ثبت ویرایش",command=update_darkhast_bagh_zamin,bg="#00BFFF", fg="#ffffff",width=10,height=1,)
 edit_btn_darkhast_bagh_zamin.place_forget()
+
+#---------------------------------------ارور لیبل های ذرخواست باغ زمبن---------------
+error_lable_metraj_darkhast_bagh_zamin= tk.Label(darkhast_bagh_zamin_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_metraj_darkhast_bagh_zamin.place(x=900 , y=20)
+
+error_lable_gheimat_kol_darkhast_bagh_zamin= tk.Label(darkhast_bagh_zamin_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_gheimat_kol_darkhast_bagh_zamin.place(x=900 ,y=20)
+
+error_lable_vadieh_darkhast_bagh_zamin= tk.Label(darkhast_bagh_zamin_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_vadieh_darkhast_bagh_zamin.place(x=900 ,y=20)
+
+error_lable_darkhast_ejareh_mahaneh_bagh_zamin= tk.Label(darkhast_bagh_zamin_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_darkhast_ejareh_mahaneh_bagh_zamin.place(x=900 ,y=20)
+
+error_lable_gheimat_metri_darkhast_bagh_zamin= tk.Label(darkhast_bagh_zamin_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_gheimat_metri_darkhast_bagh_zamin.place(x=900 ,y=20)
+
+error_lable_darkhast_address_bagh_zamin= tk.Label(darkhast_bagh_zamin_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_darkhast_address_bagh_zamin.place(x=835 , y=20)
+
+error_lable_name_malek_darkhast_bagh_zamin= tk.Label(darkhast_bagh_zamin_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_name_malek_darkhast_bagh_zamin.place(x=835 , y=20)
+
+error_lable_shomareh_malek_darkhast_bagh_zamin= tk.Label(forosh_bagh_zamin_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_shomareh_malek_darkhast_bagh_zamin.place(x=900 , y=20)
 
 darkhast_bagh_zamin_window.protocol("WM_DELETE_WINDOW", lambda: None)
 darkhast_bagh_zamin_window.resizable(False, False)
