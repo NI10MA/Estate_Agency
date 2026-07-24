@@ -2800,12 +2800,16 @@ def chck_addrres_darkhast_edari_tejari(event=None):
         addrres_darkhast_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_addrres_darkhast_edari_tejari.config(text="")
         gheimat_kol_darkhast_edari_tejari_entry.config(state="normal")
+        mablagh_vadie_darkhast_edari_tejari_entry.config(state="normal")
+        mablagh_ejareh_darkhast_edari_tejari_entry.config(state="normal")
         
 
     else:
         addrres_darkhast_edari_tejari_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_addrres_darkhast_edari_tejari.config(text="فیلد (آدرس) باید شامل حروف فارسی باشد")
         gheimat_kol_darkhast_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        mablagh_vadie_darkhast_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        mablagh_ejareh_darkhast_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
 
 def chck_name_moshtari_darkhast_edari_tejari(event=None):
     name_moshtari_darkhast_edari_tejari = name_moshtari_darkhast_edari_tejari_entry.get().strip()
@@ -2912,12 +2916,16 @@ def chck_addrres_darkhast_karghah(event=None):
         loctaion_darkhast_kargah_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_addrres_darkhast_karghah.config(text="")
         gheimat_kol_darkhast_kargah_entry.config(state="normal")
+        mablagh_pish_darkhast_kargah_entry.config(state="normal")
+        ejareh_mahaneh_darkhast_kargah_entry.config(state="normal")
         
 
     else:
         loctaion_darkhast_kargah_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_addrres_darkhast_karghah.config(text="فیلد (آدرس) باید شامل حروف فارسی باشد")
         gheimat_kol_darkhast_kargah_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        ejareh_mahaneh_darkhast_kargah_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
+        mablagh_pish_darkhast_kargah_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
 
 def chck_name_moshtari_darkhast_karghah(event=None):
     name_moshtari_darkhast_karghah = name_moshtari_darkhast_kargah_entry.get().strip()
