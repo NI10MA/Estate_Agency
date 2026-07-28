@@ -19,7 +19,7 @@ def get_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="Nima10.N10",#   entry  در ادرس ها   تبدیل بهtext شود      entry==>text
+        password="SobhanA2026",#   entry  در ادرس ها   تبدیل بهtext شود      entry==>text
         #database="state_agency"
     )
 #endregion
@@ -885,6 +885,8 @@ def clear_entry_darkhast_maskoni():
     shomareh_moshtari_darkhast_maskoni_entry.delete(0,tk.END)
     mablagh_ejare_darkhast_maskoni_entry.delete(0,tk.END)
     gheimat_pish_darkhast_maskoni_entry.delete(0,tk.END)
+    melk_type_darkhast_maskoni_entry.set("درخواست اجاره مسکونی")
+    change_darkhast_maskoni_type()
     #پنجره امکانات
     sarmaesh_combo_darkhast_maskoni.set("")
     garmaesh_combo_darkhast_maskoni.set("")
@@ -926,6 +928,8 @@ def clear_entry_darkhast_edari_tejari():
     name_moshtari_darkhast_edari_tejari_entry.delete(0,tk.END)
     mablagh_vadie_darkhast_edari_tejari_entry.delete(0,tk.END)
     mablagh_ejareh_darkhast_edari_tejari_entry.delete(0,tk.END)
+    combo_darkhast_edari_tejari_entry.set("درخواست اجاره اداری و تجاری")
+    change_darkhast_edari_tejari_type()
     #پنجره امکانات
     aab_va_gaz_combo_emkanat_darkhast_edari_tejari.set("")
     sarmayesh_combo_emkanat_darkhast_edari_tejari.set("")
@@ -1039,6 +1043,8 @@ def clear_entry_darkhast_kargah():
     name_moshtari_darkhast_kargah_entry.delete(0,tk.END)
     mablagh_pish_darkhast_kargah_entry.delete(0,tk.END)
     ejareh_mahaneh_darkhast_kargah_entry.delete(0,tk.END)
+    combo_darkhast_kargah.set("درخواست اجاره کارگاه")
+    change_darkhast_kargah_type()
     #پنجره امکانات
     sal_sakht_darkhast_kargah_entry.delete(0,tk.END)
     sarmayesh_darkhast_kargah_combo.set("")
@@ -1093,6 +1099,122 @@ def back_main_ghararadad():
     name_shakhs_dovom_gharardad_entry.delete(0,tk.END)
     tozih_gharardad_entry.delete(0,tk.END)
     code_label.config(text="")
+#endregion
+#========================================================
+#-----------------تابع پاک شدن اینتری ها برای سوییچ بین خرید و اجاره برای درخواست ها------------------
+#-----------------سوییچ خرید و اجاره در پنجره درخواست مسکونی-------------
+#region
+def switch_darkhast_maskoni():
+    sal_sakht_darkhast_maskoni_entry.delete(0,tk.END)
+    addrres_darkhast_maskoni_entry.delete("1.0",tk.END)
+    metraj_darkhast_maskoni_entry.delete(0,tk.END)
+    tabaghe_darkhast_maskoni_entry.delete(0,tk.END)
+    vahed_darkhast_maskoni_entry.delete(0,tk.END)
+    otagh_darkhast_maskoni_entry.delete(0,tk.END)
+    gheimat_kol_darkhast_maskoni_entry.delete(0,tk.END)
+    name_moshtari_darkhast_maskoni_entry.delete(0,tk.END)
+    shomareh_moshtari_darkhast_maskoni_entry.delete(0,tk.END)
+    mablagh_ejare_darkhast_maskoni_entry.delete(0,tk.END)
+    gheimat_pish_darkhast_maskoni_entry.delete(0,tk.END)
+    #پنجره امکانات
+    sarmaesh_combo_darkhast_maskoni.set("")
+    garmaesh_combo_darkhast_maskoni.set("")
+    kaf_combo_darkhast_maskoni.set("")
+    toilet_combo_darkhast_maskoni.set("")
+    parking_ch_btn_darkhast_maskoni.deselect()
+    asansor_ch_btn_darkhast_maskoni.deselect()
+    anbari_checkbuton_darkhast_maskoni.deselect()
+#-----------------سوییچ خرید و اجاره در پنجره درخواست اداری و تجاری-------------
+def switch_darkhast_edari_tejari():
+    sal_sakht_darkhast_edari_tejari_entry.delete(0,tk.END)
+    addrres_darkhast_edari_tejari_entry.delete("1.0",tk.END)
+    tabaghe_darkhast_edari_tejari_entry.delete(0,tk.END)
+    vahed_darkhast_edari_tejari_entry.delete(0,tk.END)
+    gheimat_kol_darkhast_edari_tejari_entry.delete(0,tk.END)
+    metraj_melk_darkhast_edari_tejari_entry.delete(0,tk.END)
+    shomareh_moshtari_darkhast_edari_tejari_entry.delete(0,tk.END)
+    name_moshtari_darkhast_edari_tejari_entry.delete(0,tk.END)
+    mablagh_vadie_darkhast_edari_tejari_entry.delete(0,tk.END)
+    mablagh_ejareh_darkhast_edari_tejari_entry.delete(0,tk.END)
+    #پنجره امکانات
+    aab_va_gaz_combo_emkanat_darkhast_edari_tejari.set("")
+    sarmayesh_combo_emkanat_darkhast_edari_tejari.set("")
+    garmayesh_combo_emkanat_darkhast_edari_tejari.set("")
+    parking_check_btn_darkhast_edari_tejari.deselect()
+    asansor_check_btn_darkhast_edari_tejari.deselect()
+    anbari_check_btn_darkhast_edari_tejari.deselect()
+#-----------------سوییچ خرید و اجاره در پنجره درخواست باغ و زمین-------------
+def switch_darkhast_bagh_zamin():
+    metraj_zamin_darkhast_bagh_zamin_entry.delete(0,tk.END)
+    bagh_loctaion_darkhast_bagh_zamin_entry.delete("1.0",tk.END)
+    gheimat_har_metr_bagh_zamin_darkhast_entry.delete(0,tk.END)
+    metraj_derakht_darkhast_bagh_zamin_entry.delete(0,tk.END)
+    tedad_derakht_darkhast_bagh_zamin_entry.delete(0,tk.END)
+    metraj_vila_darkhast_bagh_zamin_entry.delete(0,tk.END)
+    sal_sakht_vila_darkhast_bagh_zamin_entry.delete(0,tk.END)
+    shomareh_moshtari_darkhast_bagh_entry.delete(0,tk.END)
+    name_moshtari_darkhast_bagh_entry.delete(0,tk.END)
+    gheimat_kol_bagh_zamin_darkhast_entry.delete(0,tk.END)
+    gheimat_ejareh_bagh_darkhast_zamin_entry.delete(0,tk.END)
+    mablagh_ejareh_mahaneh_darkhast_entry.delete(0,tk.END)
+    # امکانات فروش باغ و زمین
+    metraj_derakht_darkhast_bagh_zamin_entry.delete(0,tk.END)
+    tedad_derakht_darkhast_bagh_zamin_entry.delete(0,tk.END)
+    abyari_darkhast_bagh_zamin_combo.set("")
+    type_tree_darkhast_bagh_zamin_combo.set("")
+    lable_natige_add_darkhast_bagh_zamin.config(text="")
+    label_natige_darkhast_bagh_zamin.delete("1.0",tk.END)
+    metraj_vila_darkhast_bagh_zamin_entry.delete(0,tk.END)
+    sal_sakht_vila_darkhast_bagh_zamin_entry.delete(0,tk.END)
+    type_vila_darkhast_bagh_zamin_combo.set("")
+    toilet_darkhast_bagh_zamin_combo.set("")
+    hamam_darkhast_bagh_zamin_combo.set("")
+    sanad_darkhast_bagh_zamin_combo.set("")
+    option_darkhast_bagh_zamin_combo.set("")
+    chah_darkhast_bagh_zamin.deselect()
+    estakhr_darkhast_bagh_zamin.deselect()
+    bargh_keshi_darkhast_bagh_zamin.deselect()
+    gaz_keshi_darkhast_bagh_zamin.deselect()
+    #تغییر کاربری
+    karbari_darkhast_bagh_zamin_combo.set("")
+    khak_darkhast_bagh_zamin_combo.set("")
+    ab_darkhast_bagh_zamin_combo.set("")
+    metraj_vila_darkhast_bagh_zamin_entry.config(state="disabled")
+    sal_sakht_vila_darkhast_bagh_zamin_entry.config(state="disabled")
+    type_vila_darkhast_bagh_zamin_combo.config(state="disabled")
+    toilet_darkhast_bagh_zamin_combo.config(state="disabled")
+    hamam_darkhast_bagh_zamin_combo.config(state="disabled")
+    sanad_darkhast_bagh_zamin_combo.config(state="disabled")
+    option_darkhast_bagh_zamin_combo.config(state="disabled")
+    mojavez_sakht_check_btn_darkhast_bagh_zamin.config(state="disabled")
+    mohavate_sazi_check_btn_darkhast_bagh_zamin.config(state="disabled")
+    otagh_check_btn_darkhast_bagh_zamin.deselect()
+    security_zamin_darkhast_bagh_zamin.deselect()
+    bargh_kesi_zamin_darkhast_bagh_zamin.deselect()
+    bargh_keshi_zamin_darkhast_bagh_zamin2.deselect()
+    anbar_zamin_darkhast_bagh_zamin.deselect()
+    fans_zamin_darkhast_bagh_zamin.deselect()
+    mojavez_chah_zamin_darkhast_bagh_zamin.deselect()
+    divar_darkhast_bagh_zamin.deselect()
+#-----------------سوییچ خرید و اجاره در پنجره درخواست کارگاه-------------
+def switch_darkhast_kargah():
+    metraj_darkhast_kargah_entry.delete(0,tk.END)
+    loctaion_darkhast_kargah_entry.delete("1.0",tk.END)
+    gheimat_kol_darkhast_kargah_entry.delete(0,tk.END)
+    shomareh_moshtari_darkhast_kargah_entry.delete(0,tk.END)
+    name_moshtari_darkhast_kargah_entry.delete(0,tk.END)
+    mablagh_pish_darkhast_kargah_entry.delete(0,tk.END)
+    ejareh_mahaneh_darkhast_kargah_entry.delete(0,tk.END)
+    #پنجره امکانات
+    sal_sakht_darkhast_kargah_entry.delete(0,tk.END)
+    sarmayesh_darkhast_kargah_combo.set("")
+    vaziat_bargh_darkhast_kargah_combo.set("")
+    garmayesh_type_darkhast_kargah_combo.set("")
+    vaziat_ab_darkhast_kargah_combo.set("")
+    abzar_darkhast_kargah_combo.set("")
+    toilet_darkhast_kargah_combo.set("")
+    hamam_darkhast_kargah_combo.set("")
+    otagh_darkhast_kargah_combo.set("")
 #endregion
 #=========================================================
 #----------برگشت باکس ها(نوع ملک)-------------
@@ -1538,6 +1660,7 @@ def home_true_false3(): #برای فعال یا غیر فعال کردن ویج�
 #---------------------تابع تعویض ویجت درخواست ها-----------------
 def change_darkhast_maskoni_type(event=None):
 
+    switch_darkhast_maskoni()
     change_type = melk_type_darkhast_maskoni_entry.get()
 
     # فیلدهای خرید
@@ -1571,6 +1694,7 @@ def change_darkhast_maskoni_type(event=None):
 
 def change_darkhast_edari_tejari_type(event=None):
 
+    switch_darkhast_edari_tejari()
     change_type = combo_darkhast_edari_tejari_entry.get()
 
     # فیلد خرید
@@ -1605,6 +1729,7 @@ def change_darkhast_edari_tejari_type(event=None):
 
 def change_darkhast_kargah_type(event=None):
 
+    switch_darkhast_kargah()
     change_type = combo_darkhast_kargah.get()
 
     # مخفی کردن همه فیلدهای متغیر
@@ -2071,7 +2196,9 @@ def chck_gheimat_pish_darkhast_maskoni(event=None):
         gheimat_pish_darkhast_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_gheimat_pish_darkhast_maskoni.config(text="")
         addrres_darkhast_maskoni_entry.config(state="normal")
+        addrres_darkhast_maskoni_entry.config(bg="#ffffff",fg="black")
         mablagh_ejare_darkhast_maskoni_entry.config(state="normal")
+        mablagh_ejare_darkhast_maskoni_entry.config(bg="#ffffff",fg="black")
 
     else:
         gheimat_pish_darkhast_maskoni_entry.config(highlightcolor="red",highlightthickness=2)
@@ -2088,6 +2215,8 @@ def chck_mablagh_ejare_darkhast_maskoni(event=None):
         mablagh_ejare_darkhast_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_mablagh_ejare_darkhast_maskoni.config(text="")
         addrres_darkhast_maskoni_entry.config(state="normal")
+        addrres_darkhast_maskoni_entry.config(bg="#ffffff",fg="black")
+        gheimat_pish_darkhast_maskoni_entry.config(bg="#ffffff",fg="black")
         gheimat_pish_darkhast_maskoni_entry.config(state="normal")
     else:
         mablagh_ejare_darkhast_maskoni_entry.config(highlightcolor="red",highlightthickness=2)
@@ -2567,7 +2696,9 @@ def chck_mablagh_vadie_darkhast_edari_tejari(event=None):
         mablagh_vadie_darkhast_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_mablagh_vadie_darkhast_edari_tejari.config(text="")
         addrres_darkhast_edari_tejari_entry.config(state="normal")
+        addrres_darkhast_edari_tejari_entry.config(bg="#ffffff",fg="black")
         mablagh_ejareh_darkhast_edari_tejari_entry.config(state="normal")
+        mablagh_ejareh_darkhast_edari_tejari_entry.config(bg="#ffffff",fg="black")
     else:
         mablagh_vadie_darkhast_edari_tejari_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_mablagh_vadie_darkhast_edari_tejari.config(text=" فیلد(مبلغ پیش) باید شامل اعداد باشد")
@@ -2582,7 +2713,9 @@ def chck_mablagh_ejareh_darkhast_edari_tejari(event=None):
         mablagh_ejareh_darkhast_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_mablagh_ejareh_darkhast_edari_tejari.config(text="")
         addrres_darkhast_edari_tejari_entry.config(state="normal")
+        addrres_darkhast_edari_tejari_entry.config(bg="#ffffff",fg="black")
         mablagh_vadie_darkhast_edari_tejari_entry.config(state="normal")
+        mablagh_vadie_darkhast_edari_tejari_entry.config(bg="#ffffff",fg="black")
     else:
         mablagh_ejareh_darkhast_edari_tejari_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_mablagh_ejareh_darkhast_edari_tejari.config(text=" فیلد(مبلغ اجاره) باید شامل اعداد باشد")
@@ -3174,7 +3307,9 @@ def chck_mablagh_vadie_darkhast_karghah(event=None):
         mablagh_pish_darkhast_kargah_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_mablagh_vadie_darkhast_karghah.config(text="")
         loctaion_darkhast_kargah_entry.config(state="normal")
+        loctaion_darkhast_kargah_entry.config(bg="#ffffff",fg="black")
         ejareh_mahaneh_darkhast_kargah_entry.config(state="normal")
+        ejareh_mahaneh_darkhast_kargah_entry.config(bg="#ffffff",fg="black")
     else:
         mablagh_pish_darkhast_kargah_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_mablagh_vadie_darkhast_karghah.config(text=" فیلد(مبلغ پیش) باید شامل اعداد باشد")
@@ -3189,7 +3324,9 @@ def chck_mablagh_ejareh_darkhast_karghah(event=None):
         ejareh_mahaneh_darkhast_kargah_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_mablagh_ejareh_darkhast_karghah.config(text="")
         loctaion_darkhast_kargah_entry.config(state="normal")
+        loctaion_darkhast_kargah_entry.config(bg="#ffffff",fg="black")
         mablagh_pish_darkhast_kargah_entry.config(state="normal")
+        mablagh_pish_darkhast_kargah_entry.config(bg="#ffffff",fg="black")
     else:
         ejareh_mahaneh_darkhast_kargah_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_mablagh_ejareh_darkhast_karghah.config(text=" فیلد(اجاره ماهانه) باید شامل اعداد باشد")
@@ -5011,24 +5148,24 @@ def open_file_forosh_edari_tejari():
     #photo_refresh_forosh_edari_tejari.clear()
 
     # نمایش تصاویر
-    for i, path in enumerate(selected_images_forosh_edari_tejari):
+    #for i, path in enumerate(selected_images_forosh_edari_tejari):
 
-        try:
+        #try:
 
-            img = Image.open(path)
+         #   img = Image.open(path)
 
-            img.thumbnail((150, 110))
+            #img.thumbnail((150, 110))
 
-            photo = ImageTk.PhotoImage(img)
+           # photo = ImageTk.PhotoImage(img)
 
-            photo_refs_forosh_edari_tejari.append(photo)
+            #photo_refs_forosh_edari_tejari.append(photo)
 
-            lbl = tk.Label(image_frame_forosh_edari_tejari,image=photo,bg="white",bd=1,relief="solid")
+            #lbl = tk.Label(image_frame_forosh_edari_tejari,image=photo,bg="white",bd=1,relief="solid")
 
-            lbl.grid(row=i // 2,column=i % 2,padx=5,pady=5)
+           # lbl.grid(row=i // 2,column=i % 2,padx=5,pady=5)
 
-        except Exception as e:
-            print("خطا در بارگذاری تصویر:", e)
+        #except Exception as e:
+           # print("خطا در بارگذاری تصویر:", e)
 #endregion
 #------------------------توابع سرچ--------------------
 #regoin
