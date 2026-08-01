@@ -19,7 +19,7 @@ def get_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="EmadAE7*",#   entry  در ادرس ها   تبدیل بهtext شود      entry==>text
+        password="SobhanA2026",#   entry  در ادرس ها   تبدیل بهtext شود      entry==>text
         #database="state_agency"
     )
 #endregion
@@ -500,7 +500,7 @@ def mosharecat():
 def back_home_ejareh_maskoni():
     clear_entry_ejareh_maskoni()
     refresh_after_edit()
-    clear_errors_labels_ejareh_maskoni()
+    back_chck_ejareh_maskoni()
     root.deiconify()
     ejareh_maskoni_window.withdraw()
     delete_root()
@@ -525,23 +525,11 @@ def clear_entry_ejareh_maskoni():
     parking_checkbutton_btn_ejareh_maskoni.deselect()
     asansor_checkbutton_btn_ejareh_maskoni.deselect()
     anbari_checkbutton_btn_ejareh_maskoni.deselect()
-
-def clear_errors_labels_ejareh_maskoni():
-    error_lable_sal_sakht_ejareh_maskoni.config(text="")
-    error_lable_metraj_ejareh_maskoni.config(text="")
-    error_lable_tabaghe_ejareh_maskoni.config(text="")
-    error_lable_vahed_ejareh_maskoni.config(text="")
-    error_lable_otagh_ejareh_maskoni.config(text="")
-    error_lable_gheimat_pish_ejareh_maskoni.config(text="")
-    error_lable_gheimat_ejareh_ejareh_maskoni.config(text="")
-    error_lable_addrres_ejareh_maskoni.config(text="")
-    error_lable_name_malek_ejareh_maskoni.config(text="")
-    error_lable_shomareh_malek_ejareh_maskoni.config(text="")
 #-----برگشت از صفحه فروش مسکونی-------------------------
 def back_home_forosh_maskoni():
     clear_entry_forosh_maskoni()
     refresh_after_edit()
-    clear_errors_labels_forosh_maskoni()
+    back_chck_forosh_maskoni()
     root.deiconify()
     forosh_maskoni_window.withdraw()
     delete_root()
@@ -565,22 +553,11 @@ def clear_entry_forosh_maskoni():
     parking_ch_btn_forosh_maskoni.deselect()
     asansor_ch_btn_forosh_maskoni.deselect()
     anbari_checkbuton_forosh_maskoni.deselect()
-
-def clear_errors_labels_forosh_maskoni():
-    error_lable_sal_sakht_forosh_maskoni.config(text="")
-    error_lable_metraj_forosh_maskoni.config(text="")
-    error_lable_tabaghe_forosh_maskoni.config(text="")
-    error_lable_vahed_forosh_maskoni.config(text="")
-    error_lable_otagh_forosh_maskoni.config(text="")
-    error_lable_gheimat_kol_forosh_maskoni.config(text="")
-    error_lable_addrres_forosh_maskoni.config(text="")
-    error_lable_name_malek_forosh_maskoni.config(text="")
-    error_lable_shomareh_malek_forosh_maskoni.config(text="")
 #------------------------برگشت از صفحه اجاره اداری/تجاری---------------------
 def back_home_ejareh_edari_tejari():
     clear_entry_ejareh_edari_tejari()
     refresh_after_edit()
-    clear_errors_labels_ejareh_edari_tejari()
+    back_chck_ejareh_edari_tejari()
     root.deiconify()
     ejareh_edari_tejari_window.withdraw()
     delete_root()
@@ -602,23 +579,11 @@ def clear_entry_ejareh_edari_tejari():
     parking_ch_btn_ejareh_edari_tejari.deselect()
     anbari_ch_btn_ejareh_edari_tejari.deselect()
     asansor_ch_btn_ejareh_edari_tejari.deselect()
-
-def clear_errors_labels_ejareh_edari_tejari():
-    error_lable_sal_sakht_ejareh_edari_tejari.config(text="")
-    error_lable_metraj_melk_ejareh_edari_tejari.config(text="")
-    error_lable_tabaghe_ejareh_edari_tejari.config(text="")
-    error_lable_vahed_ejareh_edari_tejari.config(text="")
-    #error_lable_otagh_ejareh_edari_tejari.config(text="")
-    error_lable_mablagh_pish_ejareh_edari_tejari.config(text="")
-    error_lable_mablagh_ejareh_ejareh_edari_tejari.config(text="")
-    error_lable_addrres_ejareh_edari_tejari.config(text="")
-    error_lable_name_malek_ejareh_edari_tejari.config(text="")
-    error_lable_shomareh_malek_ejareh_edari_tejari.config(text="")
 #---------------------------برگشت از صفحه فروش اداری/تجاری--------------------
 def back_home_forosh_edari_tejari():
     clear_entry_forosh_edari_tejari()
     refresh_after_edit()
-    clear_errors_labels_forosh_edari_tejari()
+    back_chck_forosh_edari_tejari()
     root.deiconify()
     forosh_edari_tejari_window.withdraw()
     delete_root()
@@ -639,17 +604,6 @@ def clear_entry_forosh_edari_tejari():
     asansor_ch_btn_forosh_edari_tejari.deselect()
     parking_ch_btn_forosh_edari_tejari.deselect()
     anbari_checkbuton_forosh_edari_tejari.deselect()
-
-def clear_errors_labels_forosh_edari_tejari():
-    error_lable_sal_sakht_forosh_edari_tejari.config(text="")
-    error_lable_metraj_forosh_edari_tejari.config(text="")
-    error_lable_tabaghe_forosh_edari_tejari.config(text="")
-    error_lable_vahed_forosh_edari_tejari.config(text="")
-    #error_lable_otagh_forosh_edari_tejari.config(text="")
-    error_lable_gheimat_kol_forosh_edari_tejari.config(text="")
-    error_lable_addrres_forosh_edari_tejari.config(text="")
-    error_lable_name_malek_forosh_edari_tejari.config(text="")
-    error_lable_shomareh_malek_forosh_edari_tejari.config(text="")
 #----------------------------برگشت از صفحه اجاره باغ / زمین------------------
 def back_home_ejareh_bagh_zamin():
     bagh_type_combo.set("باغ")
@@ -657,7 +611,7 @@ def back_home_ejareh_bagh_zamin():
     frame_down_ejareh_bagh.place(x=10,y=555)
     clear_entry_ejareh_bagh_zamin()
     refresh_after_edit()
-    clear_errors_labels_ejareh_bagh_zamin()
+    back_chck_ejareh_bagh_zamin()
     ejareh_bagh_zamin_window.withdraw()
     root.deiconify()
     delete_root()
@@ -712,21 +666,13 @@ def clear_entry_ejareh_bagh_zamin():
     anbar_zamin_ejareh_bagh_zamin.deselect()
     fans_zamin_ejareh_bagh_zamin.deselect()
     mojavaz_chah_zamin_ejareh_bagh_zamin.deselect()
-
-def clear_errors_labels_ejareh_bagh_zamin():
-    error_lable_metraj_ejareh_bagh_zamin.config(text="")
-    error_lable_vadieh_ejareh_bagh_zamin.config(text="")
-    error_lable_ejareh_mahaneh_bagh_zamin.config(text="")
-    error_lable_addrres_ejareh_bagh_zamin.config(text="")
-    error_lable_name_malek_ejareh_bagh_zamin.config(text="")
-    error_lable_shomareh_malek_ejareh_bagh_zamin.config(text="")
 #-----------------------------برگشت از صفحه فروش باغ / زمین------------------
 def back_home_forosh_bagh_zamin():
     bagh_type_forosh_bagh_zamin_combo.set("باغ")
     frame_down_forosh_zamin.place_forget()
     frame_down_forosh_bagh.place(x=10,y=555)
     refresh_after_edit()
-    clear_errors_labels_forosh_bagh_zamin()
+    back_chck_forosh_bagh_zamin()
     clear_entry_forosh_bagh_zamin()
     forosh_bagh_zamin_window.withdraw()
     root.deiconify()    
@@ -783,19 +729,11 @@ def clear_entry_forosh_bagh_zamin():
     divar_forosh_bagh_zamin.deselect()
     fans_zamin_forosh_bagh_zamin.deselect()
     mojavez_chah_zamin_forosh_bagh_zamin.deselect()
-
-def clear_errors_labels_forosh_bagh_zamin():
-    error_lable_metraj_forosh_bagh_zamin.config(text="")
-    error_lable_gheimat_metri_forosh_bagh_zamin.config(text="")
-    error_lable_gheimat_kol_forosh_bagh_zamin.config(text="")
-    error_lable_addrres_forosh_bagh_zamin.config(text="")
-    error_lable_name_malek_forosh_bagh_zamin.config(text="")
-    error_lable_shomareh_malek_forosh_bagh_zamin.config(text="")
 #----------------------- برگشت از صفحه اجاره کارگاه--------------------
 def back_home_ejareh_karghah():
     clear_entry_ejareh_karghah()
     refresh_after_edit()
-    clear_errors_labels_ejareh_karghah()
+    back_chck_ejareh_karghah()
     ejareh_karghah_window.withdraw()
     root.deiconify()
     delete_root()
@@ -817,20 +755,11 @@ def clear_entry_ejareh_karghah():
     toilet_ejareh_karghah_combo.set("")
     hamam_ejareh_karghah__combo.set("")
     otagh_ejareh_karghah_combo.set("")
-
-def clear_errors_labels_ejareh_karghah():
-    error_lable_sal_sakht_ejareh_karghah.config(text="")
-    error_lable_metraj_ejareh_karghah.config(text="")
-    error_lable_gheimat_pish_ejareh_karghah.config(text="")
-    error_lable_gheimat_ejareh_ejareh_karghah.config(text="")
-    error_lable_addrres_ejareh_karghah.config(text="")
-    error_lable_name_malek_ejareh_karghah.config(text="")
-    error_lable_shomareh_malek_ejareh_karghah.config(text="")
 #----------------------- برگشت از صفحه فروش کارگاه--------------------
 def back_home_forosh_karghah():
     clear_entry_forosh_kargah()
     refresh_after_edit()
-    clear_errors_labels_forosh_karghah()
+    back_chck_forosh_karghah()
     forosh_karghah_window.withdraw()
     root.deiconify()
     delete_root()
@@ -851,19 +780,11 @@ def clear_entry_forosh_kargah():
     toilet_forosh_kargah_combo.set("")
     hamam_forosh_kargah_combo.set("")
     otagh_forosh_kargah_combo.set("")
-
-def clear_errors_labels_forosh_karghah():
-    error_lable_sal_sakht_forosh_kargah.config(text="")
-    error_lable_metraj_forosh_kargah.config(text="")
-    error_lable_gheimat_kol_forosh_kargah.config(text="")
-    error_lable_addrres_forosh_kargah.config(text="")
-    error_lable_name_malek_forosh_kargah.config(text="")
-    error_lable_shomareh_malek_forosh_kargah.config(text="")
 #----------------------------برگشت از صفحه درخواست مسکونی-------------------
 def back_home_darkhast_maskoni():
     clear_entry_darkhast_maskoni()
     refresh_after_edit()
-    clear_errors_labels_darkhast_maskoni()
+    back_chck_darkhast_maskoni()
     darkhast_maskoni_window.withdraw()
     root.deiconify()
     delete_root()
@@ -880,7 +801,7 @@ def clear_entry_darkhast_maskoni():
     shomareh_moshtari_darkhast_maskoni_entry.delete(0,tk.END)
     mablagh_ejare_darkhast_maskoni_entry.delete(0,tk.END)
     gheimat_pish_darkhast_maskoni_entry.delete(0,tk.END)
-    melk_type_darkhast_maskoni_entry.set("درخواست اجاره مسکونی")
+    melk_type_darkhast_maskoni_entry.set("درخواست خرید مسکونی")
     change_darkhast_maskoni_type()
     #پنجره امکانات
     sarmaesh_combo_darkhast_maskoni.set("")
@@ -890,24 +811,11 @@ def clear_entry_darkhast_maskoni():
     parking_ch_btn_darkhast_maskoni.deselect()
     asansor_ch_btn_darkhast_maskoni.deselect()
     anbari_checkbuton_darkhast_maskoni.deselect()
-
-def clear_errors_labels_darkhast_maskoni():
-    error_lable_sal_sakht_darkhast_maskoni.config(text="")
-    error_lable_metraj_darkhast_maskoni.config(text="")
-    error_lable_tabaghe_darkhast_maskoni.config(text="")
-    error_lable_vahed_darkhast_maskoni.config(text="")
-    error_lable_otagh_darkhast_maskoni.config(text="")
-    error_lable_gheimat_kol_darkhast_maskoni.config(text="")
-    error_lable_addrres_darkhast_maskoni.config(text="")
-    error_lable_name_moshtari_darkhast_maskoni.config(text="")
-    error_lable_shomareh_moshtari_darkhast_maskoni.config(text="")
-    error_lable_mablagh_ejare_darkhast_maskoni.config(text="")
-    error_lable_gheimat_pish_darkhast_maskoni.config(text="")
 #---------------------------برگشت از صفحه درخواست اداری/تجاری--------------------
 def back_home_darkhast_edari_tejari():
     clear_entry_darkhast_edari_tejari()
     refresh_after_edit()
-    clear_errors_labels_darkhast_edari_tejari()
+    back_chck_darkhast_edari_tejari()
     darkhast_edari_tejari_window.withdraw()
     root.deiconify()
     delete_root()
@@ -923,7 +831,7 @@ def clear_entry_darkhast_edari_tejari():
     name_moshtari_darkhast_edari_tejari_entry.delete(0,tk.END)
     mablagh_vadie_darkhast_edari_tejari_entry.delete(0,tk.END)
     mablagh_ejareh_darkhast_edari_tejari_entry.delete(0,tk.END)
-    combo_darkhast_edari_tejari_entry.set("درخواست اجاره اداری و تجاری")
+    combo_darkhast_edari_tejari_entry.set("درخواست خرید اداری و تجاری")
     change_darkhast_edari_tejari_type()
     #پنجره امکانات
     aab_va_gaz_combo_emkanat_darkhast_edari_tejari.set("")
@@ -932,19 +840,6 @@ def clear_entry_darkhast_edari_tejari():
     parking_check_btn_darkhast_edari_tejari.deselect()
     asansor_check_btn_darkhast_edari_tejari.deselect()
     anbari_check_btn_darkhast_edari_tejari.deselect()
-
-def clear_errors_labels_darkhast_edari_tejari():
-    error_lable_sal_sakht_darkhast_edari_tejari.config(text="")
-    error_lable_metraj_melk_darkhast_edari_tejari.config(text="")
-    error_lable_tabaghe_darkhast_edari_tejari.config(text="")
-    error_lable_vahed_darkhast_edari_tejari.config(text="")
-    #error_lable_otagh_darkhast_edari_tejari.config(text="")
-    error_lable_gheimat_kol_darkhast_edari_tejari.config(text="")
-    error_lable_mablagh_vadie_darkhast_edari_tejari.config(text="")
-    error_lable_mablagh_ejareh_darkhast_edari_tejari.config(text="")
-    error_lable_addrres_darkhast_edari_tejari.config(text="")
-    error_lable_name_moshtari_darkhast_edari_tejari.config(text="")
-    error_lable_shomareh_moshtari_darkhast_edari_tejari.config(text="")
 #-----------------------------برگشت از صفحه درخواست باغ / زمین------------------
 def back_home_darkhast_bagh():
     melk_type_darkhast_bagh_zamin_entry.set("درخواست خرید باغ  زمین")
@@ -954,12 +849,13 @@ def back_home_darkhast_bagh():
     frame_down_darkhast_zamin.place_forget()
     clear_entry_darkhast_bagh_zamin()
     refresh_after_edit()
-    clear_errors_labels_darkhast_bagh_zamin()
+    back_chck_darkhast_bagh_zamin()
     darkhast_bagh_zamin_window.withdraw()
     root.deiconify()  
     delete_root()
 #-------------------------- پاک شدن Entry صفحه درخواست باغ/زمین-----------------------
 def clear_entry_darkhast_bagh_zamin():  
+    melk_type_darkhast_bagh_zamin_entry.set("درخواست خرید باغ زمین")
     metraj_zamin_darkhast_bagh_zamin_entry.delete(0,tk.END)
     bagh_loctaion_darkhast_bagh_zamin_entry.delete("1.0",tk.END)
     gheimat_har_metr_bagh_zamin_darkhast_entry.delete(0,tk.END)
@@ -1011,21 +907,11 @@ def clear_entry_darkhast_bagh_zamin():
     fans_zamin_darkhast_bagh_zamin.deselect()
     mojavez_chah_zamin_darkhast_bagh_zamin.deselect()
     divar_darkhast_bagh_zamin.deselect()
-
-def clear_errors_labels_darkhast_bagh_zamin():
-    error_lable_metraj_darkhast_bagh_zamin.config(text="")
-    error_lable_gheimat_kol_darkhast_bagh_zamin.config(text="")
-    error_lable_gheimat_metri_darkhast_bagh_zamin.config(text="")
-    error_lable_vadieh_darkhast_bagh_zamin.config(text="")
-    error_lable_darkhast_ejareh_mahaneh_bagh_zamin.config(text="")
-    error_lable_darkhast_address_bagh_zamin.config(text="")
-    error_lable_name_moshtari_darkhast_bagh_zamin.config(text="")
-    error_lable_shomareh_moshtari_darkhast_bagh_zamin.config(text="")
 #-----------------------------برگشت از صفحه درخواست کارگاه--------------------
 def back_home_darkhast_kargah():
     clear_entry_darkhast_kargah()
     refresh_after_edit()
-    clear_errors_labels_darkhast_kargah()
+    back_chck_darkhast_karghah()
     darkhast_karghah_window.withdraw()   
     root.deiconify()
     delete_root()
@@ -1038,7 +924,7 @@ def clear_entry_darkhast_kargah():
     name_moshtari_darkhast_kargah_entry.delete(0,tk.END)
     mablagh_pish_darkhast_kargah_entry.delete(0,tk.END)
     ejareh_mahaneh_darkhast_kargah_entry.delete(0,tk.END)
-    combo_darkhast_kargah.set("درخواست اجاره کارگاه")
+    combo_darkhast_kargah.set("درخواست خرید کارگاه")
     change_darkhast_kargah_type()
     #پنجره امکانات
     sal_sakht_darkhast_kargah_entry.delete(0,tk.END)
@@ -1050,16 +936,6 @@ def clear_entry_darkhast_kargah():
     toilet_darkhast_kargah_combo.set("")
     hamam_darkhast_kargah_combo.set("")
     otagh_darkhast_kargah_combo.set("")
-
-def clear_errors_labels_darkhast_kargah():
-    error_lable_sal_sakht_darkhast_karghah.config(text="")
-    error_lable_metraj_melk_darkhast_karghah.config(text="")
-    error_lable_gheimat_kol_darkhast_karghah.config(text="")
-    error_lable_mablagh_vadie_darkhast_karghah.config(text="")
-    error_lable_mablagh_ejareh_darkhast_karghah.config(text="")
-    error_lable_addrres_darkhast_karghah.config(text="")
-    error_lable_name_moshtari_darkhast_karghah.config(text="")
-    error_lable_shomareh_moshtari_darkhast_karghah.config(text="")
 #----------------------برگشت از گزارش مسکونی--------
 def back_home_gozaresh_maskoni():
     root.deiconify()
@@ -1097,8 +973,8 @@ def back_main_ghararadad():
 #endregion
 #========================================================
 #-----------------تابع پاک شدن اینتری ها برای سوییچ بین خرید و اجاره برای درخواست ها------------------
-#-----------------سوییچ خرید و اجاره در پنجره درخواست مسکونی-------------
 #region
+#-----------------سوییچ خرید و اجاره در پنجره درخواست مسکونی-------------
 def switch_darkhast_maskoni():
     sal_sakht_darkhast_maskoni_entry.delete(0,tk.END)
     addrres_darkhast_maskoni_entry.delete("1.0",tk.END)
@@ -1210,6 +1086,285 @@ def switch_darkhast_kargah():
     toilet_darkhast_kargah_combo.set("")
     hamam_darkhast_kargah_combo.set("")
     otagh_darkhast_kargah_combo.set("")
+#endregion
+#=========================================================
+#-------------------پاک شدن اعتبارسنجی در موقع بازگشت------------------------
+#region
+#--------------------------------------------پنجره مسکونی-------------------------------------------
+#---------------------بازگشت اعتبارسنجی فروش مسکونی--------------------------
+def back_chck_forosh_maskoni():
+    sal_sakht_forosh_maskoni_entry.config(state="normal")
+    metraj_forosh_maskoni_entry.config(state="normal")
+    tabaghe_forosh_maskoni_entry.config(state="normal")
+    vahed_forosh_maskoni_entry.config(state="normal")
+    otagh_forosh_maskoni_entry.config(state="normal")
+    gheimat_kol_forosh_maskoni_entry.config(state="normal")
+    gheimat_kol_forosh_maskoni_entry.config(bg="#ffffff",fg="black")
+    addrres_forosh_maskoni_entry.config(state="normal")
+    addrres_forosh_maskoni_entry.config(bg="#ffffff",fg="black")
+    name_malek_forosh_maskoni_entry.config(state="normal")
+    shomareh_malek_forosh_maskoni_entry.config(state="normal")
+    #پاک کردن ارور لیبل ها
+    error_lable_sal_sakht_forosh_maskoni.config(text="")
+    error_lable_metraj_forosh_maskoni.config(text="")
+    error_lable_tabaghe_forosh_maskoni.config(text="")
+    error_lable_vahed_forosh_maskoni.config(text="")
+    error_lable_otagh_forosh_maskoni.config(text="")
+    error_lable_gheimat_kol_forosh_maskoni.config(text="")
+    error_lable_addrres_forosh_maskoni.config(text="")
+    error_lable_name_malek_forosh_maskoni.config(text="")
+    error_lable_shomareh_malek_forosh_maskoni.config(text="")
+#---------------------بازگشت اعتبارسنجی اجاره مسکونی--------------------------
+def back_chck_ejareh_maskoni():
+    sal_sakht_ejareh_maskoni_entry.config(state="normal")
+    metraj_ejareh_maskoni_entry.config(state="normal")
+    tabaghe_ejareh_maskoni_entry.config(state="normal")
+    vahed_ejareh_maskoni_entry.config(state="normal")
+    gheimat_pish_ejareh_maskoni_entry.config(state="normal")
+    otagh_ejareh_maskoni_entry.config(state="normal")
+    gheimat_pish_ejareh_maskoni_entry.config(bg="#ffffff",fg="black")
+    gheimat_ejareh_ejareh_maskoni_entry.config(state="normal")
+    gheimat_ejareh_ejareh_maskoni_entry.config(bg="#ffffff",fg="black")
+    addrres_ejareh_maskoni_entry.config(state="normal")
+    addrres_ejareh_maskoni_entry.config(bg="#ffffff",fg="black")
+    name_malek_ejareh_maskoni_entry.config(state="normal")
+    shomareh_malek_ejareh_maskoni_entry.config(state="normal")
+    #پاک کردن ارور لیبل ها
+    error_lable_sal_sakht_ejareh_maskoni.config(text="")
+    error_lable_metraj_ejareh_maskoni.config(text="")
+    error_lable_tabaghe_ejareh_maskoni.config(text="")
+    error_lable_vahed_ejareh_maskoni.config(text="")
+    error_lable_otagh_ejareh_maskoni.config(text="")
+    error_lable_gheimat_pish_ejareh_maskoni.config(text="")
+    error_lable_gheimat_ejareh_ejareh_maskoni.config(text="")
+    error_lable_addrres_ejareh_maskoni.config(text="")
+    error_lable_name_malek_ejareh_maskoni.config(text="")
+    error_lable_shomareh_malek_ejareh_maskoni.config(text="")
+#---------------------بازگشت اعتبارسنجی درخواست مسکونی--------------------------
+def back_chck_darkhast_maskoni():
+    sal_sakht_darkhast_maskoni_entry.config(state="normal")
+    metraj_darkhast_maskoni_entry.config(state="normal")
+    tabaghe_darkhast_maskoni_entry.config(state="normal")
+    vahed_darkhast_maskoni_entry.config(state="normal")
+    otagh_darkhast_maskoni_entry.config(state="normal")
+    gheimat_kol_darkhast_maskoni_entry.config(state="normal")
+    gheimat_kol_darkhast_maskoni_entry.config(bg="#ffffff",fg="black")
+    gheimat_pish_darkhast_maskoni_entry.config(state="normal")
+    gheimat_pish_darkhast_maskoni_entry.config(bg="#ffffff",fg="black")
+    mablagh_ejare_darkhast_maskoni_entry.config(state="normal")
+    mablagh_ejare_darkhast_maskoni_entry.config(bg="#ffffff",fg="black")
+    addrres_darkhast_maskoni_entry.config(state="normal")
+    addrres_darkhast_maskoni_entry.config(bg="#ffffff",fg="black")
+    name_moshtari_darkhast_maskoni_entry.config(state="normal")
+    shomareh_moshtari_darkhast_maskoni_entry.config(state="normal")
+    #پاک کردن ارور لیبل ها
+    error_lable_sal_sakht_darkhast_maskoni.config(text="")
+    error_lable_metraj_darkhast_maskoni.config(text="")
+    error_lable_tabaghe_darkhast_maskoni.config(text="")
+    error_lable_vahed_darkhast_maskoni.config(text="")
+    error_lable_otagh_darkhast_maskoni.config(text="")
+    error_lable_gheimat_kol_darkhast_maskoni.config(text="")
+    error_lable_mablagh_ejare_darkhast_maskoni.config(text="")
+    error_lable_gheimat_pish_darkhast_maskoni.config(text="")
+    error_lable_addrres_darkhast_maskoni.config(text="")
+    error_lable_name_moshtari_darkhast_maskoni.config(text="")
+    error_lable_shomareh_moshtari_darkhast_maskoni.config(text="")
+#----------------------------------------پنجره اداری و تجاری---------------------------------
+#--------------------بازگشت فروش اداری و تجاری--------------------------------
+def back_chck_forosh_edari_tejari():
+    sal_sakht_forosh_edari_tejari_entry.config(state="normal")
+    metraj_forosh_edari_tejari_entry.config(state="normal")
+    tabaghe_forosh_edari_tejari_entry.config(state="normal")
+    vahed_forosh_edari_tejari_entry.config(state="normal")
+    gheimat_kol_forosh_edari_tejari_entry.config(state="normal")
+    gheimat_kol_forosh_edari_tejari_entry.config(bg="#ffffff",fg="black")
+    addrres_forosh_edari_tejari_entry.config(state="normal")
+    addrres_forosh_edari_tejari_entry.config(bg="#ffffff",fg="black")
+    name_malek_forosh_edari_tejari_entry.config(state="normal")
+    shomareh_malek_forosh_edari_tejari_entry.config(state="normal")
+    #پاک کردن ارور لیبل ها
+    error_lable_sal_sakht_forosh_edari_tejari.config(text="")
+    error_lable_metraj_forosh_edari_tejari.config(text="")
+    error_lable_tabaghe_forosh_edari_tejari.config(text="")
+    error_lable_vahed_forosh_edari_tejari.config(text="")
+    error_lable_gheimat_kol_forosh_edari_tejari.config(text="")
+    error_lable_addrres_forosh_edari_tejari.config(text="")
+    error_lable_name_malek_forosh_edari_tejari.config(text="")
+    error_lable_shomareh_malek_forosh_edari_tejari.config(text="")
+#--------------------بازگشت اجاره اداری و تجاری--------------------------------
+def back_chck_ejareh_edari_tejari():
+    sal_sakht_ejareh_edari_tejari_entry.config(state="normal")
+    metraj_melk_ejareh_edari_tejari_entry.config(state="normal")
+    tabaghe_ejareh_edari_tejari_entry.config(state="normal")
+    vahed_ejareh_edari_tejari_entry.config(state="normal")
+    mablagh_pish_ejareh_edari_tejari_entry.config(state="normal")
+    mablagh_pish_ejareh_edari_tejari_entry.config(bg="#ffffff",fg="black")
+    mablagh_ejare_ejareh_edari_tejari_entry.config(state="normal")
+    mablagh_ejare_ejareh_edari_tejari_entry.config(bg="#ffffff",fg="black")
+    addrres_ejareh_edari_tejari_entry.config(state="normal")
+    addrres_ejareh_edari_tejari_entry.config(bg="#ffffff",fg="black")
+    name_malek_ejareh_edari_tejari_entry.config(state="normal")
+    shomareh_malek_ejareh_edari_tejari_entry.config(state="normal")
+    #پاک کردن ارور لیبل ها
+    error_lable_sal_sakht_ejareh_edari_tejari.config(text="")
+    error_lable_metraj_melk_ejareh_edari_tejari.config(text="")
+    error_lable_tabaghe_ejareh_edari_tejari.config(text="")
+    error_lable_vahed_ejareh_edari_tejari.config(text="")
+    error_lable_mablagh_pish_ejareh_edari_tejari.config(text="")
+    error_lable_mablagh_ejareh_ejareh_edari_tejari.config(text="")
+    error_lable_addrres_ejareh_edari_tejari.config(text="")
+    error_lable_name_malek_ejareh_edari_tejari.config(text="")
+    error_lable_shomareh_malek_ejareh_edari_tejari.config(text="")
+#--------------------بازگشت درخواست اداری و تجاری--------------------------------
+def back_chck_darkhast_edari_tejari():
+    sal_sakht_darkhast_edari_tejari_entry.config(state="normal")
+    metraj_melk_darkhast_edari_tejari_entry.config(state="normal")
+    tabaghe_darkhast_edari_tejari_entry.config(state="normal")
+    vahed_darkhast_edari_tejari_entry.config(state="normal")
+    gheimat_kol_darkhast_edari_tejari_entry.config(state="normal")
+    gheimat_kol_darkhast_edari_tejari_entry.config(bg="#ffffff",fg="black")
+    mablagh_ejareh_darkhast_edari_tejari_entry.config(state="normal")
+    mablagh_ejareh_darkhast_edari_tejari_entry.config(bg="#ffffff",fg="black")
+    mablagh_vadie_darkhast_edari_tejari_entry.config(state="normal")
+    mablagh_vadie_darkhast_edari_tejari_entry.config(bg="#ffffff",fg="black")
+    addrres_darkhast_edari_tejari_entry.config(state="normal")
+    addrres_darkhast_edari_tejari_entry.config(bg="#ffffff",fg="black")
+    name_moshtari_darkhast_edari_tejari_entry.config(state="normal")
+    shomareh_moshtari_darkhast_edari_tejari_entry.config(state="normal")
+    #پاک کردن ارور لیبل ها
+    error_lable_sal_sakht_darkhast_edari_tejari.config(text="")
+    error_lable_metraj_melk_darkhast_edari_tejari.config(text="")
+    error_lable_tabaghe_darkhast_edari_tejari.config(text="")
+    error_lable_vahed_darkhast_edari_tejari.config(text="")
+    error_lable_gheimat_kol_darkhast_edari_tejari.config(text="")
+    error_lable_mablagh_vadie_darkhast_edari_tejari.config(text="")
+    error_lable_mablagh_ejareh_darkhast_edari_tejari.config(text="")
+    error_lable_addrres_darkhast_edari_tejari.config(text="")
+    error_lable_name_moshtari_darkhast_edari_tejari.config(text="")
+    error_lable_shomareh_moshtari_darkhast_edari_tejari.config(text="")
+#-------------------پنجره باغ و زمین----------------------------
+#-------------------بازگشت فروش باغ و زمین--------------------------------
+def back_chck_forosh_bagh_zamin():
+    metraj_zamin_forosh_bagh_zamin_entry.config(state="normal")
+    gheimat_har_metr_bagh_zamin_forosh_entry.config(state="normal")
+    gheimat_har_metr_bagh_zamin_forosh_entry.config(bg="#ffffff",fg="black")
+    gheimat_kol_forosh_bagh_zamin_entry.config(state="normal")
+    gheimat_kol_forosh_bagh_zamin_entry.config(bg="#ffffff",fg="black")
+    bagh_loctaion_forosh_bagh_zamin_entry.config(state="normal")
+    bagh_loctaion_forosh_bagh_zamin_entry.config(bg="#ffffff",fg="black")
+    name_malek_forosh_bagh_entry.config(state="normal")
+    number_malek_forosh_bagh_entry.config(state="normal")
+    #پاک کردن ارور لیبل ها
+    error_lable_metraj_forosh_bagh_zamin.config(text="")
+    error_lable_gheimat_metri_forosh_bagh_zamin.config(text="")
+    error_lable_gheimat_kol_forosh_bagh_zamin.config(text="")
+    error_lable_addrres_forosh_bagh_zamin.config(text="")
+    error_lable_name_malek_forosh_bagh_zamin.config(text="")
+    error_lable_shomareh_malek_forosh_bagh_zamin.config(text="")
+#-------------------بازگشت اجاره باغ و زمین--------------------------------
+def back_chck_ejareh_bagh_zamin():
+    metraj_zamin_ejareh_bagh_zamin_entry.config(state="normal")
+    bagh_gheimat_ejareh_bagh_zamin_entry.config(state="normal")
+    bagh_gheimat_ejareh_bagh_zamin_entry.config(bg="#ffffff",fg="black")
+    bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.config(state="normal")
+    bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.config(bg="#ffffff",fg="black")
+    bagh_loctaion_entry.config(state="normal")
+    bagh_loctaion_entry.config(bg="#ffffff",fg="black")
+    name_malek_bagh_zamin_entry.config(state="normal")
+    number_malek_bagh_zamin_entry.config(state="normal")
+    #پاک کردن ارور لیبل ها
+    error_lable_metraj_ejareh_bagh_zamin.config(text="")
+    error_lable_vadieh_ejareh_bagh_zamin.config(text="")
+    error_lable_ejareh_mahaneh_bagh_zamin.config(text="")
+    error_lable_addrres_ejareh_bagh_zamin.config(text="")
+    error_lable_name_malek_ejareh_bagh_zamin.config(text="")
+    error_lable_shomareh_malek_ejareh_bagh_zamin.config(text="")
+#-------------------بازگشت درخواست باغ و زمین--------------------------------
+def back_chck_darkhast_bagh_zamin():
+    metraj_zamin_darkhast_bagh_zamin_entry.config(state="normal")
+    gheimat_kol_bagh_zamin_darkhast_entry.config(state="normal")
+    gheimat_kol_bagh_zamin_darkhast_entry.config(bg="#ffffff",fg="black")
+    gheimat_har_metr_bagh_zamin_darkhast_entry.config(state="normal")
+    gheimat_har_metr_bagh_zamin_darkhast_entry.config(bg="#ffffff",fg="black")
+    gheimat_ejareh_bagh_darkhast_zamin_entry.config(state="normal")
+    gheimat_ejareh_bagh_darkhast_zamin_entry.config(bg="#ffffff",fg="black")
+    mablagh_ejareh_mahaneh_darkhast_entry.config(state="normal")
+    mablagh_ejareh_mahaneh_darkhast_entry.config(bg="#ffffff",fg="black")
+    bagh_loctaion_darkhast_bagh_zamin_entry.config(state="normal")
+    bagh_loctaion_darkhast_bagh_zamin_entry.config(bg="#ffffff",fg="black")
+    name_moshtari_darkhast_bagh_entry.config(state="normal")
+    shomareh_moshtari_darkhast_bagh_entry.config(state="normal")
+    #پاک کردن ارور لیبل ها
+    error_lable_metraj_darkhast_bagh_zamin.config(text="")
+    error_lable_gheimat_kol_darkhast_bagh_zamin.config(text="")
+    error_lable_gheimat_metri_darkhast_bagh_zamin.config(text="")
+    error_lable_vadieh_darkhast_bagh_zamin.config(text="")
+    error_lable_darkhast_ejareh_mahaneh_bagh_zamin.config(text="")
+    error_lable_darkhast_address_bagh_zamin.config(text="")
+    error_lable_name_moshtari_darkhast_bagh_zamin.config(text="")
+    error_lable_shomareh_moshtari_darkhast_bagh_zamin.config(text="")
+#-------------------پنجره کارگاه----------------------------
+#-------------------بازگشت فروش کارگاه--------------------------------
+def back_chck_forosh_karghah():
+    sal_sakht_forosh_kargah_entry.config(state="normal")
+    metraj_forosh_kargah_entry.config(state="normal")
+    loctaion_forosh_kargah_entry.config(state="normal")
+    loctaion_forosh_kargah_entry.config(bg="#ffffff",fg="black")
+    gheimat_kol_forosh_kargah_entry.config(state="normal")
+    gheimat_kol_forosh_kargah_entry.config(bg="#ffffff",fg="black")
+    name_malek_forosh_kargah_entry.config(state="normal")
+    shomareh_malek_forosh_kargah_entry.config(state="normal")
+    #پاک کردن ارور لیبل ها
+    error_lable_sal_sakht_forosh_kargah.config(text="")
+    error_lable_metraj_forosh_kargah.config(text="")
+    error_lable_gheimat_kol_forosh_kargah.config(text="")
+    error_lable_addrres_forosh_kargah.config(text="")
+    error_lable_name_malek_forosh_kargah.config(text="")
+    error_lable_shomareh_malek_forosh_kargah.config(text="")
+#-------------------بازگشت اجاره کارگاه--------------------------------
+def back_chck_ejareh_karghah():
+    sal_sakht_ejareh_karghah_entry.config(state="normal")
+    metraj_ejareh_karghah_entry.config(state="normal")
+    vadie_ejare_karghah_entry.config(state="normal")
+    vadie_ejare_karghah_entry.config(bg="#ffffff",fg="black")
+    gheimat_ejare_ejare_karghah_entry.config(state="normal")
+    gheimat_ejare_ejare_karghah_entry.config(bg="#ffffff",fg="black")
+    addrres_ejareh_karghah_entry.config(state="normal")
+    addrres_ejareh_karghah_entry.config(bg="#ffffff",fg="black")
+    name_malek_ejareh_karghah_entry.config(state="normal")
+    shomareh_malek_ejareh_karghah_entry.config(state="normal")
+    #پاک کردن ارور لیبل ها
+    error_lable_sal_sakht_ejareh_karghah.config(text="")
+    error_lable_metraj_ejareh_karghah.config(text="")
+    error_lable_gheimat_pish_ejareh_karghah.config(text="")
+    error_lable_gheimat_ejareh_ejareh_karghah.config(text="")
+    error_lable_addrres_ejareh_karghah.config(text="")
+    error_lable_name_malek_ejareh_karghah.config(text="")
+    error_lable_shomareh_malek_ejareh_karghah.config(text="")
+#-------------------بازگشت درخواست کارگاه--------------------------------
+def back_chck_darkhast_karghah():
+    sal_sakht_darkhast_kargah_entry.config(state="normal")
+    metraj_darkhast_kargah_entry.config(state="normal")
+    loctaion_darkhast_kargah_entry.config(state="normal")
+    loctaion_darkhast_kargah_entry.config(bg="#ffffff",fg="black")
+    ejareh_mahaneh_darkhast_kargah_entry.config(state="normal")
+    ejareh_mahaneh_darkhast_kargah_entry.config(bg="#ffffff",fg="black")
+    gheimat_kol_darkhast_kargah_entry.config(state="normal")
+    gheimat_kol_darkhast_kargah_entry.config(bg="#ffffff",fg="black")
+    mablagh_pish_darkhast_kargah_entry.config(state="normal")
+    mablagh_pish_darkhast_kargah_entry.config(bg="#ffffff",fg="black")
+    name_moshtari_darkhast_kargah_entry.config(state="normal")
+    shomareh_moshtari_darkhast_kargah_entry.config(state="normal")
+    #پاک کردن ارور لیبل ها
+    error_lable_sal_sakht_darkhast_karghah.config(text="")
+    error_lable_metraj_melk_darkhast_karghah.config(text="")
+    error_lable_gheimat_kol_darkhast_karghah.config(text="")
+    error_lable_mablagh_vadie_darkhast_karghah.config(text="")
+    error_lable_mablagh_ejareh_darkhast_karghah.config(text="")
+    error_lable_addrres_darkhast_karghah.config(text="")
+    error_lable_name_moshtari_darkhast_karghah.config(text="")
+    error_lable_shomareh_moshtari_darkhast_karghah.config(text="")
+#=========================================================
 #endregion
 #=========================================================
 #----------برگشت باکس ها(نوع ملک)-------------
@@ -1529,11 +1684,13 @@ def change_bagh_zamin_darkhast2(event=None):
         time_ejareh_bagh_darkhast_zamin_lable.place_forget()
         bagh_time_darkhast_combo.place_forget()   
         if change_type=="درخواست خرید باغ زمین":
+            switch_darkhast_bagh_zamin()
             gheimat_har_matr_bagh_zamin_darkhast_lable.place(x=490, y=65, anchor="e")
             gheimat_har_metr_bagh_zamin_darkhast_entry.place(x=28, y=55, width=350, height=25)
             gheimat_kol_bagh_zamin_darkhast_lable.place(x=490, y=20, anchor="e")
             gheimat_kol_bagh_zamin_darkhast_entry.place(x=28, y=13, width=350, height=25)
         elif change_type=="درخواست اجاره باغ زمین":
+           switch_darkhast_bagh_zamin()
            mablagh_ejareh_mahaneh_darkhast_lable.place(x=490, y=65,anchor="e")
            mablagh_ejareh_mahaneh_darkhast_entry.place(x=28, y=55, width=350, height=25)
            gheimat_ejareh_bagh_darkhast_zamin_lable.place(x=490, y=20, anchor="e")#ودیعه
@@ -1760,6 +1917,7 @@ def change_darkhast_kargah_type(event=None):
 #=================================DataBase========================
 #--------------------------- اعتبارسنجی ورودی ها -------------------
 #---------------------اعتبارسنجی فروش مسکونی--------------------
+#region
 def chck_sal_sakht_forosh_maskoni(event=None):
     sal_sakht_forosh_maskoni=sal_sakht_forosh_maskoni_entry.get().strip()
 
@@ -2008,7 +2166,9 @@ def chck_gheimat_pish_ejareh_maskoni(event=None):
         gheimat_pish_ejareh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_gheimat_pish_ejareh_maskoni.config(text="")
         addrres_ejareh_maskoni_entry.config(state="normal")
+        addrres_ejareh_maskoni_entry.config(bg="#ffffff",fg="black")
         gheimat_ejareh_ejareh_maskoni_entry.config(state="normal")
+        gheimat_ejareh_ejareh_maskoni_entry.config(bg="#ffffff",fg="black")
 
     else:
         gheimat_pish_ejareh_maskoni_entry.config(highlightcolor="red",highlightthickness=2)
@@ -2025,7 +2185,9 @@ def chck_gheimat_ejareh_ejareh_maskoni(event=None):
         gheimat_ejareh_ejareh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_gheimat_ejareh_ejareh_maskoni.config(text="")
         addrres_ejareh_maskoni_entry.config(state="normal")
+        addrres_ejareh_maskoni_entry.config(bg="#ffffff",fg="black")
         gheimat_pish_ejareh_maskoni_entry.config(state="normal")
+        gheimat_pish_ejareh_maskoni_entry.config(bg="#ffffff",fg="black")
     else:
         gheimat_ejareh_ejareh_maskoni_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_gheimat_ejareh_ejareh_maskoni.config(text=" فیلد(قیمت اجاره) باید شامل اعداد باشد")
@@ -2041,7 +2203,9 @@ def chck_addrres_ejareh_maskoni(event=None):
         addrres_ejareh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_addrres_ejareh_maskoni.config(text="")
         gheimat_ejareh_ejareh_maskoni_entry.config(state="normal")
+        gheimat_ejareh_ejareh_maskoni_entry.config(bg="#ffffff",fg="black")
         gheimat_pish_ejareh_maskoni_entry.config(state="normal")
+        gheimat_pish_ejareh_maskoni_entry.config(bg="#ffffff",fg="black")
     else:
         addrres_ejareh_maskoni_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_addrres_ejareh_maskoni.config(text="فیلد (آدرس) باید شامل حروف فارسی باشد")
@@ -2336,25 +2500,6 @@ def chck_vahed_forosh_edari_tejari(event=None):
         tabaghe_forosh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
         #otagh_forosh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
 
-#def chck_otagh_forosh_edari_tejari(event=None):
-    #otagh_forosh_edari_tejari=otagh_forosh_edari_tejari_entry.get().strip()
-
-    #if otagh_forosh_edari_tejari.isdigit():
-        #otagh_forosh_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
-        #error_lable_otagh_forosh_edari_tejari.config(text="")
-        #sal_sakht_forosh_edari_tejari_entry.config(state="normal")
-        #metraj_forosh_edari_tejari_entry.config(state="normal")
-        #tabaghe_forosh_edari_tejari_entry.config(state="normal")
-        #vahed_forosh_edari_tejari_entry.config(state="normal")
-
-    #else:
-        #otagh_forosh_edari_tejari_entry.config(highlightcolor="red",highlightthickness=2)
-        #error_lable_otagh_forosh_edari_tejari.config(text=" فیلد(اتاق) باید شامل اعداد باشد")
-        #sal_sakht_forosh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
-        #metraj_forosh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
-        #tabaghe_forosh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
-        #vahed_forosh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
-
 def chck_gheimat_kol_forosh_edari_tejari(event=None):
     gheimat_kol_forosh_edari_tejari=gheimat_kol_forosh_edari_tejari_entry.get().strip()
 
@@ -2483,24 +2628,6 @@ def chck_vahed_ejareh_edari_tejari(event=None):
         tabaghe_ejareh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
         #otagh_ejareh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
 
-#def chck_otagh_ejareh_edari_tejari(event=None):
-    #otagh_ejareh_edari_tejari=otagh_ejareh_edari_tejari_entry.get().strip()
-
-    #if otagh_ejareh_edari_tejari.isdigit():
-        #otagh_ejareh_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
-        #error_lable_otagh_ejareh_edari_tejari.config(text="")
-        #sal_sakht_ejareh_edari_tejari_entry.config(state="normal")
-        #metraj_melk_ejareh_edari_tejari_entry.config(state="normal")
-        #tabaghe_ejareh_edari_tejari_entry.config(state="normal")
-        #vahed_ejareh_edari_tejari_entry.config(state="normal")
-    #else:
-        #otagh_ejareh_edari_tejari_entry.config(highlightcolor="red",highlightthickness=2)
-        #error_lable_otagh_ejareh_edari_tejari.config(text=" فیلد(اتاق) باید شامل اعداد باشد")
-        #sal_sakht_ejareh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
-        #metraj_melk_ejareh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
-        #tabaghe_ejareh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
-        #vahed_ejareh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
-
 def chck_mablagh_pish_ejareh_edari_tejari(event=None):
     mablagh_pish_ejareh_edari_tejari=mablagh_pish_ejareh_edari_tejari_entry.get().strip()
 
@@ -2508,7 +2635,9 @@ def chck_mablagh_pish_ejareh_edari_tejari(event=None):
         mablagh_pish_ejareh_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_mablagh_pish_ejareh_edari_tejari.config(text="")
         addrres_ejareh_edari_tejari_entry.config(state="normal")
+        addrres_ejareh_edari_tejari_entry.config(bg="#ffffff",fg="black")
         mablagh_ejare_ejareh_edari_tejari_entry.config(state="normal")
+        mablagh_ejare_ejareh_edari_tejari_entry.config(bg="#ffffff",fg="black")
     else:
         mablagh_pish_ejareh_edari_tejari_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_mablagh_pish_ejareh_edari_tejari.config(text=" فیلد(مبلغ پیش) باید شامل اعداد باشد")
@@ -2523,7 +2652,9 @@ def chck_mablagh_ejareh_ejareh_edari_tejari(event=None):
         mablagh_ejare_ejareh_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_mablagh_ejareh_ejareh_edari_tejari.config(text="")
         addrres_ejareh_edari_tejari_entry.config(state="normal")
+        addrres_ejareh_edari_tejari_entry.config(bg="#ffffff",fg="black")
         mablagh_pish_ejareh_edari_tejari_entry.config(state="normal")
+        mablagh_pish_ejareh_edari_tejari_entry.config(bg="#ffffff",fg="black")
     else:
         mablagh_ejare_ejareh_edari_tejari_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_mablagh_ejareh_ejareh_edari_tejari.config(text=" فیلد(مبلغ اجاره) باید شامل اعداد باشد")
@@ -2539,7 +2670,9 @@ def chck_addrres_ejareh_edari_tejari(event=None):
         addrres_ejareh_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_addrres_ejareh_edari_tejari.config(text="")
         mablagh_ejare_ejareh_edari_tejari_entry.config(state="normal")
+        mablagh_ejare_ejareh_edari_tejari_entry.config(bg="#ffffff",fg="black")
         mablagh_pish_ejareh_edari_tejari_entry.config(state="normal")
+        mablagh_pish_ejareh_edari_tejari_entry.config(bg="#ffffff",fg="black")
 
     else:
         addrres_ejareh_edari_tejari_entry.config(highlightcolor="red",highlightthickness=2)
@@ -2649,25 +2782,6 @@ def chck_vahed_darkhast_edari_tejari(event=None):
         metraj_melk_darkhast_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
         tabaghe_darkhast_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
         #otagh_darkhast_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
-
-#def chck_otagh_darkhast_edari_tejari(event=None):
-    #otagh_darkhast_edari_tejari=otagh_darkhast_edari_tejari_entry.get().strip()
-
-    #if otagh_darkhast_edari_tejari.isdigit():
-        #otagh_darkhast_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
-        #error_lable_otagh_darkhast_edari_tejari.config(text="")
-        #sal_sakht_darkhast_edari_tejari_entry.config(state="normal")
-        #metraj_melk_darkhast_edari_tejari_entry.config(state="normal")
-        #tabaghe_darkhast_edari_tejari_entry.config(state="normal")
-        #vahed_darkhast_edari_tejari_entry.config(state="normal")
-
-    #else:
-        #otagh_darkhast_edari_tejari_entry.config(highlightcolor="red",highlightthickness=2)
-        #error_lable_otagh_darkhast_edari_tejari.config(text=" فیلد(اتاق) باید شامل اعداد باشد")
-        #sal_sakht_darkhast_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
-        #metraj_melk_darkhast_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
-        #tabaghe_darkhast_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
-        #vahed_darkhast_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
 
 def chck_gheimat_kol_darkhast_edari_tejari(event=None):
     gheimat_kol_darkhast_edari_tejari=gheimat_kol_darkhast_edari_tejari_entry.get().strip()
@@ -3187,7 +3301,9 @@ def chck_gheimat_pish_ejareh_karghah(event=None):
         vadie_ejare_karghah_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_gheimat_pish_ejareh_karghah.config(text="")
         addrres_ejareh_karghah_entry.config(state="normal")
+        addrres_ejareh_karghah_entry.config(bg="#ffffff",fg="black")
         gheimat_ejare_ejare_karghah_entry.config(state="normal")
+        gheimat_ejare_ejare_karghah_entry.config(bg="#ffffff",fg="black")
     else:
         vadie_ejare_karghah_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_gheimat_pish_ejareh_karghah.config(text=" فیلد(قیمت پیش) باید شامل اعداد باشد")
@@ -3203,7 +3319,9 @@ def chck_gheimat_ejareh_ejareh_karghah(event=None):
         gheimat_ejare_ejare_karghah_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_gheimat_ejareh_ejareh_karghah.config(text="")
         addrres_ejareh_karghah_entry.config(state="normal")
+        addrres_ejareh_karghah_entry.config(bg="#ffffff",fg="black")
         vadie_ejare_karghah_entry.config(state="normal")
+        vadie_ejare_karghah_entry.config(bg="#ffffff",fg="black")
     else:
         gheimat_ejare_ejare_karghah_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_gheimat_ejareh_ejareh_karghah.config(text=" فیلد(قیمت اجاره) باید شامل اعداد باشد")
@@ -3219,7 +3337,9 @@ def chck_addrres_ejareh_karghah(event=None):
         addrres_ejareh_karghah_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_addrres_ejareh_karghah.config(text="")
         gheimat_ejare_ejare_karghah_entry.config(state="normal")
+        gheimat_ejare_ejare_karghah_entry.config(bg="#ffffff",fg="black")
         vadie_ejare_karghah_entry.config(state="normal")
+        vadie_ejare_karghah_entry.config(bg="#ffffff",fg="black")
     else:
         addrres_ejareh_karghah_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_addrres_ejareh_karghah.config(text="فیلد (آدرس) باید شامل حروف فارسی باشد")
@@ -3373,8 +3493,7 @@ def chck_shomareh_moshtari_darkhast_karghah(event=None):
         shomareh_moshtari_darkhast_kargah_entry.config(highlightcolor="red",highlightthickness=2)
         error_lable_shomareh_moshtari_darkhast_karghah.config(text=" فیلد(شماره مشتری) باید شامل 11رقم باشد")
         name_moshtari_darkhast_kargah_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
-#============*توابع ثبتی دیتابیس*=============================
-#--------------------------------------تابع ثبت فروش---------------------------
+#endregion
 #---------------------------forosh_maskoni------------------------------
 def sabt_forosh_maskoni():
     db = None
@@ -5504,9 +5623,11 @@ def show_details(event):
     elif selected_table == "sabt_ejareh_maskoni":
         entry_malek_phone_number.delete(0, tk.END)
         entry_malek_phone_number.insert(0, data[17])
+        entry_malek_phone_number.config(state="readonly")
 
         metraj_lable_right_entry.delete(0, tk.END)
         metraj_lable_right_entry.insert(0, data[18])
+        metraj_lable_right_entry.config(state="readonly")
         options = []
 
         options.append(f"پارکینگ : {'دارد' if data[7] == '1' else 'ندارد'}")
@@ -5521,6 +5642,7 @@ def show_details(event):
         options_text_entry.delete("1.0", tk.END)
         options_text_entry.insert("1.0", "\n".join(options))
         options_text_entry.tag_add("right", "1.0", "end")
+        options_text_entry.config(state="readonly")
     elif selected_table == "sabt_darkhast_kharid_maskoni":
 
         entry_malek_phone_number.delete(0, tk.END)
@@ -8819,7 +8941,7 @@ def refresh_after_edit():
 
     edit_btn_forosh_edari_tejari.place_forget()#تنظیم دکمه ها
     delete_btn_forosh_edari_tejari.place_forget()
-    zakhire_forosh_edari_tejari.place(x=200, y=30)
+    zakhire_forosh_edari_tejari.place(x=300, y=30)
 
     edit_btn_ejareh_edari_tejari.place_forget()
     delete_btn_ejareh_edari_tejari.place_forget()
@@ -9692,9 +9814,6 @@ error_lable_tabaghe_ejareh_edari_tejari.place(x=900 , y=20)
 
 error_lable_vahed_ejareh_edari_tejari= tk.Label(ejareh_edari_tejari_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
 error_lable_vahed_ejareh_edari_tejari.place(x=900 , y=20)
-
-#error_lable_otagh_ejareh_edari_tejari= tk.Label(ejareh_edari_tejari_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
-#error_lable_otagh_ejareh_edari_tejari.place(x=900 , y=20)
 
 error_lable_mablagh_pish_ejareh_edari_tejari= tk.Label(ejareh_edari_tejari_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
 error_lable_mablagh_pish_ejareh_edari_tejari.place(x=900 , y=20)
