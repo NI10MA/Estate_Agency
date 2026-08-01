@@ -431,6 +431,10 @@ def delete_root():
     metraj_entry.delete(0,tk.END)
     combo_file_type.set("")
     melk_type_combo.set("")
+    entry_malek_phone_number.config(state="normal")
+    entry_malek_phone_number.delete(0,tk.END)
+    metraj_lable_right_entry.config(state="normal")
+    metraj_lable_right_entry.delete(0,tk.END)
 #endregion
 #===================================================
 #========================================================
@@ -5601,9 +5605,11 @@ def show_details(event):
     if selected_table == "sabt_forosh_maskoni":
         entry_malek_phone_number.delete(0, tk.END)
         entry_malek_phone_number.insert(0, data[15])
+        entry_malek_phone_number.config(state="readonly")
 
         metraj_lable_right_entry.delete(0, tk.END)
         metraj_lable_right_entry.insert(0, data[17])
+        metraj_lable_right_entry.config(state="readonly")
         options = []
 
         options.append(f"پارکینگ : {'دارد' if data[7] == '1' else 'ندارد'}")
@@ -5618,6 +5624,7 @@ def show_details(event):
         options_text_entry.delete("1.0", tk.END)
         options_text_entry.insert("1.0", "\n".join(options))
         options_text_entry.tag_add("right", "1.0", "end")
+        options_text_entry.config(state="disable")
         
 
     elif selected_table == "sabt_ejareh_maskoni":
@@ -5642,14 +5649,16 @@ def show_details(event):
         options_text_entry.delete("1.0", tk.END)
         options_text_entry.insert("1.0", "\n".join(options))
         options_text_entry.tag_add("right", "1.0", "end")
-        options_text_entry.config(state="readonly")
+        options_text_entry.config(state="disable")
     elif selected_table == "sabt_darkhast_kharid_maskoni":
 
         entry_malek_phone_number.delete(0, tk.END)
         entry_malek_phone_number.insert(0, data[16])
+        entry_malek_phone_number.config(state="readonly")
 
         metraj_lable_right_entry.delete(0, tk.END)
         metraj_lable_right_entry.insert(0, data[17])
+        metraj_lable_right_entry.config(state="readonly")
 
         options = []
 
@@ -5665,13 +5674,16 @@ def show_details(event):
         options_text_entry.delete("1.0", tk.END)
         options_text_entry.insert("1.0", "\n".join(options))
         options_text_entry.tag_add("right", "1.0", "end")
+        options_text_entry.config(state="disable")
     elif selected_table == "sabt_darkhast_ejareh_maskoni":
 
         entry_malek_phone_number.delete(0, tk.END)
         entry_malek_phone_number.insert(0, data[17])
+        entry_malek_phone_number.config(state="readonly")
 
         metraj_lable_right_entry.delete(0, tk.END)
         metraj_lable_right_entry.insert(0, data[18])
+        metraj_lable_right_entry.config(state="readonly")
 
         options = []
 
@@ -5687,14 +5699,17 @@ def show_details(event):
         options_text_entry.delete("1.0", tk.END)
         options_text_entry.insert("1.0", "\n".join(options))
         options_text_entry.tag_add("right", "1.0", "end")
+        options_text_entry.config(state="disable")
 #--------------------------اداری تجاری-----------------------------
     elif selected_table == "sabt_forosh_edari_tejari":
 
         entry_malek_phone_number.delete(0, tk.END)
         entry_malek_phone_number.insert(0, data[14])
+        entry_malek_phone_number.config(state="readonly")
 
         metraj_lable_right_entry.delete(0, tk.END)
         metraj_lable_right_entry.insert(0, data[2])
+        metraj_lable_right_entry.config(state="readonly")
 
         options = []
 
@@ -5708,13 +5723,16 @@ def show_details(event):
         options_text_entry.delete("1.0", tk.END)
         options_text_entry.insert("1.0", "\n".join(options))
         options_text_entry.tag_add("right", "1.0", "end")
+        options_text_entry.config(state="disable")
     elif selected_table == "sabt_ejareh_edari_tejari":
 
         entry_malek_phone_number.delete(0, tk.END)
         entry_malek_phone_number.insert(0, data[16])
+        entry_malek_phone_number.config(state="readonly")
 
         metraj_lable_right_entry.delete(0, tk.END)
         metraj_lable_right_entry.insert(0, data[2])
+        metraj_lable_right_entry.config(state="readonly")
 
         options = []
 
@@ -5730,13 +5748,16 @@ def show_details(event):
         options_text_entry.delete("1.0", tk.END)
         options_text_entry.insert("1.0", "\n".join(options))
         options_text_entry.tag_add("right", "1.0", "end")
+        options_text_entry.config(state="disable")
 
     elif selected_table == "sabt_darkhast_kharid_edari_tejari":
         entry_malek_phone_number.delete(0, tk.END)
         entry_malek_phone_number.insert(0, data[15])
+        entry_malek_phone_number.config(state="readonly")
 
         metraj_lable_right_entry.delete(0, tk.END)
         metraj_lable_right_entry.insert(0, data[2])
+        metraj_lable_right_entry.config(state="readonly")
 
         options = []
 
@@ -5751,13 +5772,16 @@ def show_details(event):
         options_text_entry.delete("1.0", tk.END)
         options_text_entry.insert("1.0", "\n".join(options))
         options_text_entry.tag_add("right", "1.0", "end")
+        options_text_entry.config(state="disable")
     
     elif selected_table == "sabt_darkhast_ejareh_edari_tejari":
         entry_malek_phone_number.delete(0, tk.END)
         entry_malek_phone_number.insert(0, data[16])
+        entry_malek_phone_number.config(state="readonly")
 
         metraj_lable_right_entry.delete(0, tk.END)
         metraj_lable_right_entry.insert(0, data[2])
+        metraj_lable_right_entry.config(state="readonly")
 
         options = []
 
@@ -5772,14 +5796,17 @@ def show_details(event):
         options_text_entry.delete("1.0", tk.END)
         options_text_entry.insert("1.0", "\n".join(options))
         options_text_entry.tag_add("right", "1.0", "end")
+        options_text_entry.config(state="disable")
 #------------------------کارگاه------------------------
     elif selected_table == "sabt_forosh_kargah":
 
         entry_malek_phone_number.delete(0, tk.END)
         entry_malek_phone_number.insert(0, data[14])
+        entry_malek_phone_number.config(state="readonly")
 
         metraj_lable_right_entry.delete(0, tk.END)
         metraj_lable_right_entry.insert(0, data[2])
+        metraj_lable_right_entry.config(state="readonly")
 
         options = []
 
@@ -5797,13 +5824,16 @@ def show_details(event):
         options_text_entry.insert("1.0", "\n".join(options))
         options_text_entry.tag_configure("right", justify="right")
         options_text_entry.tag_add("right", "1.0", "end")
+        options_text_entry.config(state="disable")
     elif selected_table == "sabt_ejareh_kargah":
 
         entry_malek_phone_number.delete(0, tk.END)
         entry_malek_phone_number.insert(0, data[17])
+        entry_malek_phone_number.config(state="readonly")
 
         metraj_lable_right_entry.delete(0, tk.END)
         metraj_lable_right_entry.insert(0, data[2])
+        metraj_lable_right_entry.config(state="readonly")
 
         options = []
 
@@ -5826,14 +5856,17 @@ def show_details(event):
         options_text_entry.insert("1.0", "\n".join(options))
         options_text_entry.tag_configure("right", justify="right")
         options_text_entry.tag_add("right", "1.0", "end")
+        options_text_entry.config(state="disable")
 
     elif selected_table == "sabt_darkhast_kharid_kargah":
 
         entry_malek_phone_number.delete(0, tk.END)
         entry_malek_phone_number.insert(0, data[5])
+        entry_malek_phone_number.config(state="readonly")
 
         metraj_lable_right_entry.delete(0, tk.END)
         metraj_lable_right_entry.insert(0, data[2])
+        metraj_lable_right_entry.config(state="readonly")
 
         options = []
 
@@ -5853,14 +5886,17 @@ def show_details(event):
         options_text_entry.insert("1.0", "\n".join(options))
         options_text_entry.tag_configure("right", justify="right")
         options_text_entry.tag_add("right", "1.0", "end")
+        options_text_entry.config(state="disable")
 
     elif selected_table == "sabt_darkhast_ejareh_kargah":
 
         entry_malek_phone_number.delete(0, tk.END)
         entry_malek_phone_number.insert(0, data[6])
+        entry_malek_phone_number.config(state="readonly")
 
         metraj_lable_right_entry.delete(0, tk.END)
         metraj_lable_right_entry.insert(0, data[2])
+        metraj_lable_right_entry.config(state="readonly")
 
         options = []
 
@@ -5881,14 +5917,17 @@ def show_details(event):
         options_text_entry.insert("1.0", "\n".join(options))
         options_text_entry.tag_configure("right", justify="right")
         options_text_entry.tag_add("right", "1.0", "end")
+        options_text_entry.config(state="disable")
 #-------------------------باغ و زمین------------------
     elif selected_table == "forosh_bagh":
 
         entry_malek_phone_number.delete(0, tk.END)
         entry_malek_phone_number.insert(0, data[7])
+        entry_malek_phone_number.config(state="readonly")
 
         metraj_lable_right_entry.delete(0, tk.END)
         metraj_lable_right_entry.insert(0, data[2])
+        metraj_lable_right_entry.config(state="readonly")
 
         options = []
 
@@ -5916,14 +5955,17 @@ def show_details(event):
         options_text_entry.delete("1.0", tk.END)
         options_text_entry.insert("1.0", "\n".join(options))
         options_text_entry.tag_add("right", "1.0", "end")
+        options_text_entry.config(state="disable")
 
     elif selected_table == "forosh_zamin":
 
         entry_malek_phone_number.delete(0, tk.END)
         entry_malek_phone_number.insert(0, data[7])
+        entry_malek_phone_number.config(state="readonly")
 
         metraj_lable_right_entry.delete(0, tk.END)
         metraj_lable_right_entry.insert(0, data[2])
+        metraj_lable_right_entry.config(state="readonly")
 
         options = []
 
@@ -5941,13 +5983,16 @@ def show_details(event):
         options_text_entry.delete("1.0", tk.END)
         options_text_entry.insert("1.0", "\n".join(options))
         options_text_entry.tag_add("right", "1.0", "end")
+        options_text_entry.config(state="disable")
     elif selected_table == "ejareh_bagh":
 
         entry_malek_phone_number.delete(0, tk.END)
         entry_malek_phone_number.insert(0, data[9])
+        entry_malek_phone_number.config(state="readonly")
 
         metraj_lable_right_entry.delete(0, tk.END)
         metraj_lable_right_entry.insert(0, data[2])
+        metraj_lable_right_entry.config(state="readonly")
 
         options = []
 
@@ -5978,14 +6023,17 @@ def show_details(event):
         options_text_entry.delete("1.0", tk.END)
         options_text_entry.insert("1.0", "\n".join(options))
         options_text_entry.tag_add("right", "1.0", "end")
+        options_text_entry.config(state="disable")
 
     elif selected_table == "ejareh_zamin":
 
         entry_malek_phone_number.delete(0, tk.END)
         entry_malek_phone_number.insert(0, data[9])
+        entry_malek_phone_number.config(state="readonly")
 
         metraj_lable_right_entry.delete(0, tk.END)
         metraj_lable_right_entry.insert(0, data[2])
+        metraj_lable_right_entry.config(state="readonly")
 
         options = []
 
@@ -6006,14 +6054,17 @@ def show_details(event):
         options_text_entry.delete("1.0", tk.END)
         options_text_entry.insert("1.0", "\n".join(options))
         options_text_entry.tag_add("right", "1.0", "end")
+        options_text_entry.config(state="disable")
 
     elif selected_table == "darkhast_kharid_bagh":
 
         entry_malek_phone_number.delete(0, tk.END)
         entry_malek_phone_number.insert(0, data[8])
+        entry_malek_phone_number.config(state="readonly")
 
         metraj_lable_right_entry.delete(0, tk.END)
         metraj_lable_right_entry.insert(0, data[2])
+        metraj_lable_right_entry.config(state="readonly")
 
         options = []
 
@@ -6043,12 +6094,15 @@ def show_details(event):
         options_text_entry.delete("1.0", tk.END)
         options_text_entry.insert("1.0", "\n".join(options))
         options_text_entry.tag_add("right", "1.0", "end")
+        options_text_entry.config(state="disable")
     elif selected_table == "darkhast_kharid_zamin":
         entry_malek_phone_number.delete(0, tk.END)
         entry_malek_phone_number.insert(0, data[8])
+        entry_malek_phone_number.config(state="readonly")
 
         metraj_lable_right_entry.delete(0, tk.END)
         metraj_lable_right_entry.insert(0, data[2])
+        metraj_lable_right_entry.config(state="readonly")
 
         options = []
 
@@ -6068,14 +6122,17 @@ def show_details(event):
         options_text_entry.delete("1.0", tk.END)
         options_text_entry.insert("1.0", "\n".join(options))
         options_text_entry.tag_add("right", "1.0", "end")
+        options_text_entry.config(state="disable")
 
     elif selected_table == "darkhast_ejareh_bagh":
 
         entry_malek_phone_number.delete(0, tk.END)
         entry_malek_phone_number.insert(0, data[9])
+        entry_malek_phone_number.config(state="readonly")
 
         metraj_lable_right_entry.delete(0, tk.END)
         metraj_lable_right_entry.insert(0, data[2])
+        metraj_lable_right_entry.config(state="readonly")
 
         options = []
 
@@ -6106,15 +6163,18 @@ def show_details(event):
         options_text_entry.delete("1.0", tk.END)
         options_text_entry.insert("1.0", "\n".join(options))
         options_text_entry.tag_add("right", "1.0", "end")
+        options_text_entry.config(state="disable")
 
 
     elif selected_table == "darkhast_ejareh_zamin":
 
         entry_malek_phone_number.delete(0, tk.END)
         entry_malek_phone_number.insert(0, data[9])
+        entry_malek_phone_number.config(state="readonly")
 
         metraj_lable_right_entry.delete(0, tk.END)
         metraj_lable_right_entry.insert(0, data[2])
+        metraj_lable_right_entry.config(state="readonly")
 
         options = []
 
@@ -6135,6 +6195,7 @@ def show_details(event):
         options_text_entry.delete("1.0", tk.END)
         options_text_entry.insert("1.0", "\n".join(options))
         options_text_entry.tag_add("right", "1.0", "end")
+        options_text_entry.config(state="disable")
 
     cursor.close()
     db.close()
@@ -7475,6 +7536,8 @@ def open_edit():
 #--------------------------------------توابع ویرایش صفحات---------------
 #------------مسکونی------------
 def update_forosh_maskoni():
+
+    delete_root()
     db = get_connection()
     cursor = db.cursor()
     cursor.execute("USE state_agency")
@@ -7515,6 +7578,8 @@ def update_forosh_maskoni():
 
     messagebox.showinfo("موفق", "اطلاعات با موفقیت ویرایش شد.")
 def update_ejareh_maskoni():
+
+    delete_root()
     db = get_connection()
     cursor = db.cursor()
     cursor.execute("USE state_agency")
@@ -7555,6 +7620,8 @@ def update_ejareh_maskoni():
 
     messagebox.showinfo("موفق", "اطلاعات با موفقیت ویرایش شد.")
 def update_darkhast_maskoni():
+
+    delete_root()
     db = get_connection()
     cursor = db.cursor()
     cursor.execute("USE state_agency")
@@ -7635,6 +7702,7 @@ def update_darkhast_maskoni():
 #----------------------اداری تجاری-----------------
 def update_forosh_edari_tejari():
 
+    delete_root()
     db=get_connection()
     cursor=db.cursor()
     cursor.execute("USE state_agency")
@@ -7689,6 +7757,7 @@ def update_forosh_edari_tejari():
     messagebox.showinfo("موفق","اطلاعات با موفقیت ویرایش شد.")
 def update_ejareh_edari_tejari():
 
+    delete_root()
     db=get_connection()
     cursor=db.cursor()
     cursor.execute("USE state_agency")
@@ -7746,6 +7815,7 @@ def update_ejareh_edari_tejari():
     messagebox.showinfo("موفق","اطلاعات با موفقیت ویرایش شد.")
 def update_darkhast_edari_tejari():
 
+    delete_root()
     db = get_connection()
     cursor = db.cursor()
     cursor.execute("USE state_agency")
@@ -7845,6 +7915,7 @@ def update_darkhast_edari_tejari():
 #---------------------------------کارگاه----------------------
 def update_forosh_kargah():
 
+    delete_root()
     db = get_connection()
     cursor = db.cursor()
     cursor.execute("USE state_agency")
@@ -7901,6 +7972,7 @@ def update_forosh_kargah():
 
 def update_ejareh_kargah():
 
+    delete_root()
     db = get_connection()
     cursor = db.cursor()
     cursor.execute("USE state_agency")
@@ -7961,6 +8033,7 @@ def update_ejareh_kargah():
 
 def update_darkhast_kargah():
 
+    delete_root()
     db = get_connection()
     cursor = db.cursor()
     cursor.execute("USE state_agency")
@@ -8063,6 +8136,7 @@ def update_darkhast_kargah():
 #-----------------------------باغ و زمین----------
 def update_forosh_bagh_zamin():
 
+    delete_root()
     db = get_connection()
     cursor = db.cursor()
     cursor.execute("USE state_agency")
@@ -8192,6 +8266,7 @@ def update_forosh_bagh_zamin():
     messagebox.showinfo("موفق", "اطلاعات با موفقیت ویرایش شد.")
 def update_ejareh_bagh_zamin():
 
+    delete_root()
     db = get_connection()
     cursor = db.cursor()
     cursor.execute("USE state_agency")
@@ -8325,6 +8400,7 @@ def update_ejareh_bagh_zamin():
     messagebox.showinfo("موفق", "اطلاعات با موفقیت ویرایش شد.")
 def update_darkhast_bagh_zamin():
 
+    delete_root()
     db = get_connection()
     cursor = db.cursor()
     cursor.execute("USE state_agency")
@@ -8945,7 +9021,7 @@ def refresh_after_edit():
 
     edit_btn_ejareh_edari_tejari.place_forget()
     delete_btn_ejareh_edari_tejari.place_forget()
-    zakhire_ejareh_edari_tejari.place(x=300,y=20)
+    zakhire_ejareh_edari_tejari.place(x=300,y=30)
 
     edit_btn_darkhast_edari_tejari.place_forget()
     delete_btn_darkhast_edari_tejari.place_forget()
@@ -9465,7 +9541,7 @@ otagh_ejareh_maskoni_entry.bind("<KeyRelease>",chck_otagh_ejareh_maskoni)
 photo_lbl2_ejareh_maskoni = tk.Label(frame_up_left_ejareh_maskoni, text="[تصویر ملک]", bg="#FFFFFF", width=79, height=15,relief="solid")
 photo_lbl2_ejareh_maskoni.place(x=40, y=10)
 
-add_img_btn_ejareh_maskoni = tk.Button(frame_up_left_ejareh_maskoni, text="📁افزودن تصویر", bg="#00BFFF", fg="#ffffff",command=open_file, height=2,width=13)
+add_img_btn_ejareh_maskoni = tk.Button(frame_up_left_ejareh_maskoni, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=open_file, height=2,width=13)
 add_img_btn_ejareh_maskoni.place(x=240, y=250)
 #--------------------------فریم راست وسط---------------------
 gheimat_pish_ejareh_maskoni_lable = tk.Label(frame_midde_right_ejareh_maskoni, text="مبلغ پیش", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
@@ -9700,7 +9776,7 @@ vahed_ejareh_edari_tejari_entry.bind("<KeyRelease>",chck_vahed_ejareh_edari_teja
 photo_lbl2_ejareh_edari_tejari =tk.Label(frame_up_left_ejareh_edari_tejari, text="[تصویر ملک]", bg="#ffffff", width=79, height=15)
 photo_lbl2_ejareh_edari_tejari.place(x=40 ,y=10)
 
-add_img_btn_ejareh_edari_tejari =tk.Button(frame_up_left_ejareh_edari_tejari, text="📁افزودن تصویر", bg="#00BFFF", fg="#ffffff",command=open_file,height=2,width=13)
+add_img_btn_ejareh_edari_tejari =tk.Button(frame_up_left_ejareh_edari_tejari, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=open_file,height=2,width=13)
 add_img_btn_ejareh_edari_tejari.place(x=240, y=250)
 
 #----------------------------------فریم وسط سمت راست--------------------------
@@ -10279,7 +10355,7 @@ time_ejare_ejareh_kargah_combo.place(x=18, y=152, width=350, height=25)
 photo_lbl2_ejareh_karghah = tk.Label(frame_up_left_ejareh_karghah, text="[تصویر ملک]", bg="#FFFFFF", width=79, height=15,relief="solid")
 photo_lbl2_ejareh_karghah.place(x=40, y=10)
 
-add_img_btn_ejareh_karghah = tk.Button(frame_up_left_ejareh_karghah, text="📁افزودن تصویر", bg="#00BFFF", fg="#ffffff",command=open_file, height=2,width=13)
+add_img_btn_ejareh_karghah = tk.Button(frame_up_left_ejareh_karghah, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=open_file, height=2,width=13)
 add_img_btn_ejareh_karghah.place(x=240, y=250)
 
 #--------------------------فریم راست وسط---------------------
@@ -10538,7 +10614,7 @@ otagh_forosh_maskoni_entry.bind("<KeyRelease>",chck_otagh_forosh_maskoni)
 photo_lbl2_forosh_maskoni = tk.Label(frame_up_left_forosh_maskoni, text="[تصویر ملک]", bg="#ffffff", width=79, height=15)
 photo_lbl2_forosh_maskoni.place(x=40 ,y=10)
 
-add_img_btn_forosh_maskoni = tk.Button(frame_up_left_forosh_maskoni, text="📁افزودن تصویر", bg="#00BFFF", fg="#ffffff",command=open_file,height=2,width=13)
+add_img_btn_forosh_maskoni = tk.Button(frame_up_left_forosh_maskoni, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=open_file,height=2,width=13)
 add_img_btn_forosh_maskoni.place(x=240, y=250)
 #----------------------------------فریم وسط سمت راست--------------------------
 gheimat_kol_forosh_maskoni=tk.Label(frame_midde_right_forosh_maskoni, text=" قیمت کل ", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
@@ -10768,7 +10844,7 @@ vahed_forosh_edari_tejari_entry.bind("<KeyRelease>",chck_vahed_forosh_edari_teja
 photo_lbl2_forosh_edari_tejari = tk.Label(frame_up_left_forosh_edari_tejari, text="[تصویر ملک]", bg="#ffffff", width=79, height=15)
 photo_lbl2_forosh_edari_tejari.place(x=40 ,y=10)
 
-add_img_btn_forosh_edari_tejari = tk.Button(frame_up_left_forosh_edari_tejari, text="📁افزودن تصویر", bg="#00BFFF", fg="#ffffff",command=open_file,height=2,width=13)
+add_img_btn_forosh_edari_tejari = tk.Button(frame_up_left_forosh_edari_tejari, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=open_file,height=2,width=13)
 add_img_btn_forosh_edari_tejari.place(x=240, y=250)
 
 #----------------------------------فریم وسط سمت راست--------------------------
@@ -11260,7 +11336,7 @@ frame_up_right_forosh_karghah.place(x=670,y=90)
 
 frame_up_left_forosh_karghah= tk.Frame(forosh_karghah_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=640,height=300)
 frame_up_left_forosh_karghah.configure(bg="#052340")
-frame_up_left_forosh_karghah.place(x=40,y=90)
+frame_up_left_forosh_karghah.place(x=10,y=90)
 
 frame_midde_right_forosh_karghah= tk.Frame(forosh_karghah_window,bd=0,highlightthickness=1,highlightbackground="#00BFFF",width=510,height=150)
 frame_midde_right_forosh_karghah.configure(bg="#052340")
@@ -11322,7 +11398,7 @@ metraj_forosh_kargah_entry.bind("<KeyRelease>",chck_metraj_forosh_kargah)
 photo_lbl2_forosh_kargah = tk.Label(frame_up_left_forosh_karghah, text="[تصویر ملک]", bg="#FFFFFF", width=79, height=15,relief="solid")
 photo_lbl2_forosh_kargah.place(x=40, y=10)
 
-add_img_btn_forosh_kargah = tk.Button(frame_up_left_forosh_karghah, text="📁افزودن تصویر", bg="#00BFFF", fg="#ffffff",command=open_file, height=2,width=13)
+add_img_btn_forosh_kargah = tk.Button(frame_up_left_forosh_karghah, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=open_file, height=2,width=13)
 add_img_btn_forosh_kargah.place(x=240, y=250)
 
 #--------------------------فریم راست وسط---------------------
@@ -12064,7 +12140,7 @@ bagh_time_darkhast_combo.place_forget()
 photo_darkhast_bagh_zamin_lable= tk.Label(frame_up_left_darkhast_bagh_zamin, text="[تصویر ملک]", bg="#ffffff", width=79, height=15)
 photo_darkhast_bagh_zamin_lable.place(x=40, y=10)
 
-add_img_btn_darkhast_bagh_zamin = tk.Button(frame_up_left_darkhast_bagh_zamin, text="افزودن تصویر", bg="#00BFFF", fg="#000000",command=open_file,height=2,width=13)
+add_img_btn_darkhast_bagh_zamin = tk.Button(frame_up_left_darkhast_bagh_zamin, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=open_file,height=2,width=13)
 add_img_btn_darkhast_bagh_zamin.place(x=240, y=250)
 #---------------------------------------فریم وسط سمت راست--------------------------
 gheimat_kol_bagh_zamin_darkhast_lable=tk.Label(frame_midde_right_darkhast_bagh_zamin,text='قیمت کل',bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
@@ -12431,7 +12507,7 @@ metraj_darkhast_kargah_entry.bind("<KeyRelease>",chck_metraj_melk_darkhast_kargh
 photo_lbl2_darkhast_kargah = tk.Label(frame_up_left_darkhast_karghah, text="[تصویر ملک]", bg="#FFFFFF", width=79, height=15,relief="solid")
 photo_lbl2_darkhast_kargah.place(x=40, y=10)
 
-add_img_btn_darkhast_kargah = tk.Button(frame_up_left_darkhast_karghah, text="📁افزودن تصویر", bg="#00BFFF", fg="#ffffff",command=open_file, height=2,width=13)
+add_img_btn_darkhast_kargah = tk.Button(frame_up_left_darkhast_karghah, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=open_file, height=2,width=13)
 add_img_btn_darkhast_kargah.place(x=240, y=250)
 
 #--------------------------فریم راست وسط---------------------
