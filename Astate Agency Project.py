@@ -43,10 +43,10 @@ def open_file_folder():
 #endregion
 #  ------------------------------------------تابع انتخاب فایل عکس------------
 #region
-def open_file():
-    file_path = filedialog.askopenfilename()
-    if file_path:
-        os.startfile(file_path)
+#def open_file():
+ #   file_path = filedialog.askopenfilename()
+ #   if file_path:
+   #     os.startfile(file_path)
 #endregion
 #---------------------------تابع خروجی گزارش اکسل-----------
 #region
@@ -437,6 +437,8 @@ def delete_root():
     metraj_lable_right_entry.delete(0,tk.END)
 #endregion
 #===================================================
+def add_photo():
+    messagebox.showwarning("Error", f"این قابلیت در آپدیت بعدی فعال میشود")
 #========================================================
 # ------------پنجره اصلی-------------------------------
 #region
@@ -1370,6 +1372,13 @@ def back_chck_darkhast_karghah():
     error_lable_shomareh_moshtari_darkhast_karghah.config(text="")
 #=========================================================
 #endregion
+#=========================================================
+#------------------پاک شدن اطلاعات ملک در جستجو------------------
+def delete_box_search():
+    item = tree.focus()
+    options_text_entry.delete("1.0",tk.END)
+    entry_malek_phone_number.delete(0,tk.END)
+    metraj_lable_right_entry.delete(0,tk.END)
 #=========================================================
 #----------برگشت باکس ها(نوع ملک)-------------
 def back_forosh_exit():
@@ -3564,6 +3573,7 @@ def sabt_forosh_maskoni():
         cursor.execute(sql_insert, values)
         last_id = cursor.lastrowid
         user_idcode = f"ID-{last_id}"
+        clear_entry_forosh_maskoni()
         messagebox.showinfo("Success", f"ثبت با کد {user_idcode} انجام شد.")
         error_lable_sal_sakht_forosh_maskoni.config(text="")
         error_lable_metraj_forosh_maskoni.config(text="")
@@ -3577,10 +3587,9 @@ def sabt_forosh_maskoni():
         db.commit()
 
     except Exception as e:
-        messagebox.showerror("Error", f"خطا: {e}")
+        messagebox.showerror("Error", f"لطفا تمام فیلد ها را به درستی وارد کنید ")
     finally:
         if db and db.is_connected():
-            clear_entry_forosh_maskoni()
             db.close()
 #------------------- forosh_edari_tejari database -----------------------------------
 def sabt_forosh_edari_tejari():
@@ -3641,13 +3650,13 @@ def sabt_forosh_edari_tejari():
         last_id = cursor.lastrowid
         user_idcode = f"ID-{last_id}"
         messagebox.showinfo("Success", f"ثبت با کد {user_idcode} انجام شد.")
+        clear_entry_forosh_edari_tejari()
         db.commit()
 
     except Exception as e:
-        messagebox.showerror("Error", f"خطا: {e}")
+        messagebox.showerror("Error", f"لطفا تمام فیلد ها را به درستی وارد کنید ")
     finally:
         if db and db.is_connected():
-            clear_entry_forosh_edari_tejari()
             db.close()
 #---------------------------forosh_bagh/zamin Database-------------------------
 #region
@@ -3819,13 +3828,13 @@ def sabt_forosh_bagh_zamin_main():
         db.commit()
         user_idcode = f"ID-{last_id}"
         messagebox.showinfo("Success", f"ثبت با کد {user_idcode} انجام شد.")      
+        clear_entry_forosh_bagh_zamin()
         
     except Exception as e:
-        messagebox.showerror("Error", f"خطا در ثبت داده: {e}")
+        messagebox.showerror("Error", f"لطفا تمام فیلد ها را به درستی وارد کنید ")
         
     finally:
         if db and db.is_connected():
-            clear_entry_forosh_bagh_zamin()
             db.close()
 #---------------------------- forosh_karghah Database ------------------------
 def sabt_forosh_kargah():
@@ -3885,13 +3894,13 @@ def sabt_forosh_kargah():
         last_id = cursor.lastrowid
         user_idcode = f"ID-{last_id}"
         messagebox.showinfo("Success", f"ثبت با کد {user_idcode} انجام شد.")
+        clear_entry_forosh_kargah()
         db.commit()
 
     except Exception as e:
-        messagebox.showerror("Error", f"خطا: {e}")
+        messagebox.showerror("Error", f"لطفا تمام فیلد ها را به درستی وارد کنید ")
     finally:
         if db and db.is_connected():
-            clear_entry_forosh_kargah()
             db.close()
 #------------------------------------پایان ثبت فروش-----------------------------
 #----------------------------تابع ثبت اجاره----------------------------------
@@ -3974,13 +3983,13 @@ def sabt_ejareh_maskoni():
         error_lable_addrres_ejareh_maskoni.config(text="")
         error_lable_name_malek_ejareh_maskoni.config(text="")
         error_lable_shomareh_malek_ejareh_maskoni.config(text="")
+        clear_entry_ejareh_maskoni()
         db.commit()
 
     except Exception as e:
-        messagebox.showerror("Error", f"خطا: {e}")
+        messagebox.showerror("Error", f"لطفا تمام فیلد ها را به درستی وارد کنید ")
     finally:
         if db and db.is_connected():
-            clear_entry_ejareh_maskoni()
             db.close()
 #---------------------ejareh_edari/tejari Database------------------------------
 def sabt_ejareh_edari_tejari():
@@ -4045,13 +4054,13 @@ def sabt_ejareh_edari_tejari():
         last_id = cursor.lastrowid
         user_idcode = f"ID-{last_id}"
         messagebox.showinfo("Success", f"ثبت با کد {user_idcode} انجام شد.")
+        clear_entry_ejareh_edari_tejari()
         db.commit()
 
     except Exception as e:
-        messagebox.showerror("Error", f"خطا: {e}")
+        messagebox.showerror("Error", f"لطفا تمام فیلد ها را به درستی وارد کنید ")
     finally:
         if db and db.is_connected():
-            clear_entry_ejareh_edari_tejari()
             db.close()
 #-----------------ejareh_bagh/zamin Database------------------------------------
 selected_option=[]
@@ -4223,12 +4232,12 @@ def sabt_ejareh_bagh_zamin():
         db.commit()
         user_idcode = f"ID-{last_id}"
         messagebox.showinfo("Success", f"ثبت با کد {user_idcode} انجام شد")
+        clear_entry_ejareh_bagh_zamin()
  
     except Exception as e:
-        messagebox.showerror("Error", f"خطا: {e}")
+        messagebox.showerror("Error", f"لطفا تمام فیلد ها را به درستی وارد کنید ")
     finally:
         if db and db.is_connected():
-            clear_entry_ejareh_bagh_zamin()
             db.close()
 #-----------------ejareh_kargah Database----------------------------------------
 def sabt_ejareh_kargah():
@@ -4294,13 +4303,13 @@ def sabt_ejareh_kargah():
         last_id = cursor.lastrowid
         user_idcode = f"ID-{last_id}"
         messagebox.showinfo("Success", f"ثبت با کد {user_idcode} انجام شد.")
+        clear_entry_ejareh_karghah()
         db.commit()
 
     except Exception as e:
-        messagebox.showerror("Error", f"خطا: {e}")
+        messagebox.showerror("Error", f"لطفا تمام فیلد ها را به درستی وارد کنید ")
     finally:
         if db and db.is_connected():
-            clear_entry_ejareh_karghah()
             db.close()
 #------------------------پایان تابع اجاره-----------------------------------
 #endregion
@@ -4493,12 +4502,12 @@ def sabt_darkhast_maskoni():
         db.commit()
         user_idcode = f"ID-{last_id}"
         messagebox.showinfo("Success", f"ثبت با کد {user_idcode} انجام شد.")      
+        clear_entry_darkhast_maskoni()
     except Exception as e:
-        messagebox.showerror("Error", f"خطا در ثبت داده: {e}")
+        messagebox.showerror("Error", f"لطفا تمام فیلد ها را به درستی وارد کنید ")
         
     finally:
         if db and db.is_connected():
-            clear_entry_darkhast_maskoni()
             db.close()
 
 #---------------darkhast_edari/tejari Database--------------------
@@ -4650,12 +4659,12 @@ def sabt_darkhast_edari_tejari(event=None):
         db.commit()
         user_idcode = f"ID-{last_id}"
         messagebox.showinfo("Success", f"ثبت با کد {user_idcode} انجام شد.")      
+        clear_entry_darkhast_edari_tejari()
     except Exception as e:
-        messagebox.showerror("Error", f"خطا در ثبت داده: {e}")
+        messagebox.showerror("Error", f"لطفا تمام فیلد ها را به درستی وارد کنید ")
         
     finally:
         if db and db.is_connected():
-            clear_entry_darkhast_edari_tejari()
             db.close()
 #--------------darkhast_bagh/zamin Database-----------------------
 selected_option3=[]
@@ -5048,13 +5057,13 @@ def sabt_darkhast_bagh_zamin(event=None):
                         
         db.commit()
         user_idcode = f"ID-{last_id}"
-        messagebox.showinfo("Success", f"ثبت با کد {user_idcode} انجام شد.")      
+        messagebox.showinfo("Success", f"ثبت با کد {user_idcode} انجام شد.")   
+        clear_entry_darkhast_bagh_zamin()   
     except Exception as e:
-        messagebox.showerror("Error", f"خطا در ثبت داده: {e}")
+        messagebox.showerror("Error", f"لطفا تمام فیلد ها را به درستی وارد کنید ")
         
     finally:
         if db and db.is_connected():
-            clear_entry_darkhast_bagh_zamin()
             db.close()
                 
 #------------darkhast_kargah Database--------------------------
@@ -5209,13 +5218,13 @@ def sabt_darkhast_kargah(event=None):
 
         db.commit()
         user_idcode = f"ID-{last_id}"
-        messagebox.showinfo("Success", f"ثبت با کد {user_idcode} انجام شد.")      
+        messagebox.showinfo("Success", f"ثبت با کد {user_idcode} انجام شد.")   
+        clear_entry_darkhast_kargah()   
     except Exception as e:
-        messagebox.showerror("Error", f"خطا در ثبت داده: {e}")
+        messagebox.showerror("Error", f"لطفا تمام فیلد ها را به درستی وارد کنید ")
         
     finally:
         if db and db.is_connected():
-            clear_entry_darkhast_kargah()
             db.close()
 #--------------------پایان تابع ثبت درخواست----------------
 #endregion
@@ -5297,6 +5306,9 @@ def search():
     cursor = db.cursor()
     cursor.execute("CREATE DATABASE IF NOT EXISTS state_agency") 
     cursor.execute("USE state_agency")
+    def table_exists(table_name):
+        cursor.execute("SHOW TABLES LIKE %s", (table_name,))
+        return cursor.fetchone() is not None
 
     try:
         if file == "فروش":
@@ -5389,9 +5401,14 @@ def search():
                     """)
                     params.append(f"%{address_entry.get().strip()}%")
 
-                if queries:
-                    sql = "\nUNION ALL\n".join(queries)
-                    cursor.execute(sql, tuple(params))
+
+                if not queries:
+                    messagebox.showerror("خطا", "این فایل وجود ندارد")
+                    return
+
+                sql = "\nUNION ALL\n".join(queries)
+                cursor.execute(sql, tuple(params))
+                
             elif melk == "اداری_تجاری":
 
                 queries = []
@@ -5421,10 +5438,13 @@ def search():
                     """)
                     params.append(f"%{address_entry.get().strip()}%")
 
-                if queries:
-                    sql = "\nUNION ALL\n".join(queries)
-                    cursor.execute(sql, tuple(params))
-            elif melk == "باغ":
+
+                if not queries:
+                    messagebox.showerror("خطا", "این فایل وجود ندارد")
+                    return
+
+                sql = "\nUNION ALL\n".join(queries)
+                cursor.execute(sql, tuple(params))
 
                 queries = []
                 params = []
@@ -5461,9 +5481,13 @@ def search():
                     """)
                     params.append(f"%{address_entry.get().strip()}%")
 
-                if queries:
-                    sql = "\nUNION ALL\n".join(queries)
-                    cursor.execute(sql, tuple(params))
+
+                if not queries:
+                    messagebox.showerror("خطا", "این فایل وجود ندارد")
+                    return
+
+                sql = "\nUNION ALL\n".join(queries)
+                cursor.execute(sql, tuple(params))
 
             elif melk == "زمین":
 
@@ -5502,9 +5526,13 @@ def search():
                     """)
                     params.append(f"%{address_entry.get().strip()}%")
 
-                if queries:
-                    sql = "\nUNION ALL\n".join(queries)
-                    cursor.execute(sql, tuple(params))
+
+                if not queries:
+                    messagebox.showerror("خطا", "این فایل وجود ندارد")
+                    return
+
+                sql = "\nUNION ALL\n".join(queries)
+                cursor.execute(sql, tuple(params))
             elif melk == "کارگاه":
 
                 queries = []
@@ -5542,9 +5570,12 @@ def search():
                     """)
                     params.append(f"%{address_entry.get().strip()}%")
 
-                if queries:
-                    sql = "\nUNION ALL\n".join(queries)
-                    cursor.execute(sql, tuple(params))
+                if not queries:
+                    messagebox.showerror("خطا", "این فایل وجود ندارد")
+                    return
+
+                sql = "\nUNION ALL\n".join(queries)
+                cursor.execute(sql, tuple(params))
 
         else:
             messagebox.showerror("خطا", "نوع ملک نامعتبر است")
@@ -5554,7 +5585,7 @@ def search():
 
         # پاک کردن نتایج قبلی
         for item in tree.get_children():
-            tree.delete(item)
+            tree.delete(item) 
 
         if results:
         # پاک کردن نتایج قبلی
@@ -5565,8 +5596,14 @@ def search():
 
         else:
             messagebox.showinfo("یافت نشد", "هیچ موردی پیدا نشد")
+    except mysql.connector.Error as e:
+            if e.errno == 1146:
+                messagebox.showerror("خطا", "این فایل وجود ندارد")
+            else:
+                messagebox.showerror("خطا", str(e))
+
     except Exception as e:
-        messagebox.showerror("Error", f"خطا: {e}")
+            messagebox.showerror("خطا", str(e))
 
     finally:
         cursor.close()
@@ -5580,7 +5617,7 @@ selected_table = None
 
 def show_details(event):
     global selected_id, selected_table
-
+    delete_box_search()
     item = tree.focus()
 
     if item == "":
@@ -9541,7 +9578,7 @@ otagh_ejareh_maskoni_entry.bind("<KeyRelease>",chck_otagh_ejareh_maskoni)
 photo_lbl2_ejareh_maskoni = tk.Label(frame_up_left_ejareh_maskoni, text="[تصویر ملک]", bg="#FFFFFF", width=79, height=15,relief="solid")
 photo_lbl2_ejareh_maskoni.place(x=40, y=10)
 
-add_img_btn_ejareh_maskoni = tk.Button(frame_up_left_ejareh_maskoni, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=open_file, height=2,width=13)
+add_img_btn_ejareh_maskoni = tk.Button(frame_up_left_ejareh_maskoni, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=add_photo, height=2,width=13)
 add_img_btn_ejareh_maskoni.place(x=240, y=250)
 #--------------------------فریم راست وسط---------------------
 gheimat_pish_ejareh_maskoni_lable = tk.Label(frame_midde_right_ejareh_maskoni, text="مبلغ پیش", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
@@ -9776,7 +9813,7 @@ vahed_ejareh_edari_tejari_entry.bind("<KeyRelease>",chck_vahed_ejareh_edari_teja
 photo_lbl2_ejareh_edari_tejari =tk.Label(frame_up_left_ejareh_edari_tejari, text="[تصویر ملک]", bg="#ffffff", width=79, height=15)
 photo_lbl2_ejareh_edari_tejari.place(x=40 ,y=10)
 
-add_img_btn_ejareh_edari_tejari =tk.Button(frame_up_left_ejareh_edari_tejari, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=open_file,height=2,width=13)
+add_img_btn_ejareh_edari_tejari =tk.Button(frame_up_left_ejareh_edari_tejari, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=add_photo,height=2,width=13)
 add_img_btn_ejareh_edari_tejari.place(x=240, y=250)
 
 #----------------------------------فریم وسط سمت راست--------------------------
@@ -10002,7 +10039,7 @@ bagh_time_combo.place(x=28, y=170, width=350, height=25)
 photo_lbl2_ejareh_bagh_zamin = tk.Label(frame_up_left_ejareh_bagh_zamin, text="[تصویر ملک]", bg="#FFFFFF", width=79, height=15)
 photo_lbl2_ejareh_bagh_zamin.place(x=40, y=10)
 
-add_img_btn_ejareh_bagh_zamin = tk.Button(frame_up_left_ejareh_bagh_zamin, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=open_file,height=2,width=13)
+add_img_btn_ejareh_bagh_zamin = tk.Button(frame_up_left_ejareh_bagh_zamin, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=add_photo,height=2,width=13)
 add_img_btn_ejareh_bagh_zamin.place(x=240, y=250)
 #-----------------------------فریم وسط سمت راست-------------------------------
 
@@ -10355,7 +10392,7 @@ time_ejare_ejareh_kargah_combo.place(x=18, y=152, width=350, height=25)
 photo_lbl2_ejareh_karghah = tk.Label(frame_up_left_ejareh_karghah, text="[تصویر ملک]", bg="#FFFFFF", width=79, height=15,relief="solid")
 photo_lbl2_ejareh_karghah.place(x=40, y=10)
 
-add_img_btn_ejareh_karghah = tk.Button(frame_up_left_ejareh_karghah, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=open_file, height=2,width=13)
+add_img_btn_ejareh_karghah = tk.Button(frame_up_left_ejareh_karghah, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=add_photo, height=2,width=13)
 add_img_btn_ejareh_karghah.place(x=240, y=250)
 
 #--------------------------فریم راست وسط---------------------
@@ -10614,7 +10651,7 @@ otagh_forosh_maskoni_entry.bind("<KeyRelease>",chck_otagh_forosh_maskoni)
 photo_lbl2_forosh_maskoni = tk.Label(frame_up_left_forosh_maskoni, text="[تصویر ملک]", bg="#ffffff", width=79, height=15)
 photo_lbl2_forosh_maskoni.place(x=40 ,y=10)
 
-add_img_btn_forosh_maskoni = tk.Button(frame_up_left_forosh_maskoni, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=open_file,height=2,width=13)
+add_img_btn_forosh_maskoni = tk.Button(frame_up_left_forosh_maskoni, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=add_photo,height=2,width=13)
 add_img_btn_forosh_maskoni.place(x=240, y=250)
 #----------------------------------فریم وسط سمت راست--------------------------
 gheimat_kol_forosh_maskoni=tk.Label(frame_midde_right_forosh_maskoni, text=" قیمت کل ", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
@@ -10844,7 +10881,7 @@ vahed_forosh_edari_tejari_entry.bind("<KeyRelease>",chck_vahed_forosh_edari_teja
 photo_lbl2_forosh_edari_tejari = tk.Label(frame_up_left_forosh_edari_tejari, text="[تصویر ملک]", bg="#ffffff", width=79, height=15)
 photo_lbl2_forosh_edari_tejari.place(x=40 ,y=10)
 
-add_img_btn_forosh_edari_tejari = tk.Button(frame_up_left_forosh_edari_tejari, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=open_file,height=2,width=13)
+add_img_btn_forosh_edari_tejari = tk.Button(frame_up_left_forosh_edari_tejari, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=add_photo,height=2,width=13)
 add_img_btn_forosh_edari_tejari.place(x=240, y=250)
 
 #----------------------------------فریم وسط سمت راست--------------------------
@@ -11054,7 +11091,7 @@ bagh_type_forosh_bagh_zamin_combo.bind("<<ComboboxSelected>>",change_bagh_zamin_
 #------------------------------------فریم بالا سمت چپ-------------------------------
 photo_forosh_bagh_zamin_lable= tk.Label(frame_up_left_forosh_bagh_zamin, text="[تصویر ملک]", bg="#ffffff", width=79, height=15)
 photo_forosh_bagh_zamin_lable.place(x=40, y=10)
-add_img_btn_forosh_bagh_zamin = tk.Button(frame_up_left_forosh_bagh_zamin, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=open_file,height=2,width=13)
+add_img_btn_forosh_bagh_zamin = tk.Button(frame_up_left_forosh_bagh_zamin, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=add_photo,height=2,width=13)
 add_img_btn_forosh_bagh_zamin.place(x=240, y=250)
 #-------------------------فریم وسط سمت راست-----------------------------------------
 gheimat_har_matr_babagh_zamin_forosh_bagh_zamin_lable=tk.Label(frame_midde_right_forosh_bagh_zamin,text='قیمت هر متر',bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
@@ -11398,7 +11435,7 @@ metraj_forosh_kargah_entry.bind("<KeyRelease>",chck_metraj_forosh_kargah)
 photo_lbl2_forosh_kargah = tk.Label(frame_up_left_forosh_karghah, text="[تصویر ملک]", bg="#FFFFFF", width=79, height=15,relief="solid")
 photo_lbl2_forosh_kargah.place(x=40, y=10)
 
-add_img_btn_forosh_kargah = tk.Button(frame_up_left_forosh_karghah, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=open_file, height=2,width=13)
+add_img_btn_forosh_kargah = tk.Button(frame_up_left_forosh_karghah, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=add_photo, height=2,width=13)
 add_img_btn_forosh_kargah.place(x=240, y=250)
 
 #--------------------------فریم راست وسط---------------------
@@ -11651,7 +11688,7 @@ otagh_darkhast_maskoni_entry.bind("<KeyRelease>",chck_otagh_darkhast_maskoni)
 photo_lbl2_darkhast_maskoni = tk.Label(frame_up_left_darkhast_maskoni, text="[تصویر ملک]", bg="#ffffff",width=79, height=15,relief="solid")
 photo_lbl2_darkhast_maskoni.place(x=40, y=10)
 
-add_img_btn_darkhast_maskoni = tk.Button(frame_up_left_ejareh_maskoni, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=open_file,height=2,width=13)
+add_img_btn_darkhast_maskoni = tk.Button(frame_up_left_ejareh_maskoni, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=add_photo,height=2,width=13)
 add_img_btn_darkhast_maskoni.place(x=240, y=250)
 #---------------------------فریم وسط سمت راست----------------------------------------
 
@@ -11904,7 +11941,7 @@ vahed_darkhast_edari_tejari_entry.bind("<KeyRelease>",chck_vahed_darkhast_edari_
 photo_lbl2_darkhast_edari_tejari = tk.Label(frame_up_left_darkhast_edari_tejari, text="[تصویر ملک]", bg="#ffffff",width=79, height=15,relief="solid")
 photo_lbl2_darkhast_edari_tejari.place(x=40, y=10)
 
-add_img_btn_darkhast_edari_tejari = tk.Button(frame_up_left_darkhast_edari_tejari, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=open_file,height=2,width=13)
+add_img_btn_darkhast_edari_tejari = tk.Button(frame_up_left_darkhast_edari_tejari, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=add_photo,height=2,width=13)
 add_img_btn_darkhast_edari_tejari.place(x=240, y=250)
 #---------------------------فریم وسط سمت راست----------------------------------------
 gheimat_kol_darkhast_edari_tejari=tk.Label(frame_midde_right_darkhast_edari_tejari,text= "قیمت کل",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
@@ -12140,7 +12177,7 @@ bagh_time_darkhast_combo.place_forget()
 photo_darkhast_bagh_zamin_lable= tk.Label(frame_up_left_darkhast_bagh_zamin, text="[تصویر ملک]", bg="#ffffff", width=79, height=15)
 photo_darkhast_bagh_zamin_lable.place(x=40, y=10)
 
-add_img_btn_darkhast_bagh_zamin = tk.Button(frame_up_left_darkhast_bagh_zamin, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=open_file,height=2,width=13)
+add_img_btn_darkhast_bagh_zamin = tk.Button(frame_up_left_darkhast_bagh_zamin, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=add_photo,height=2,width=13)
 add_img_btn_darkhast_bagh_zamin.place(x=240, y=250)
 #---------------------------------------فریم وسط سمت راست--------------------------
 gheimat_kol_bagh_zamin_darkhast_lable=tk.Label(frame_midde_right_darkhast_bagh_zamin,text='قیمت کل',bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
@@ -12507,7 +12544,7 @@ metraj_darkhast_kargah_entry.bind("<KeyRelease>",chck_metraj_melk_darkhast_kargh
 photo_lbl2_darkhast_kargah = tk.Label(frame_up_left_darkhast_karghah, text="[تصویر ملک]", bg="#FFFFFF", width=79, height=15,relief="solid")
 photo_lbl2_darkhast_kargah.place(x=40, y=10)
 
-add_img_btn_darkhast_kargah = tk.Button(frame_up_left_darkhast_karghah, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=open_file, height=2,width=13)
+add_img_btn_darkhast_kargah = tk.Button(frame_up_left_darkhast_karghah, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=add_photo, height=2,width=13)
 add_img_btn_darkhast_kargah.place(x=240, y=250)
 
 #--------------------------فریم راست وسط---------------------
