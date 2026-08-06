@@ -11619,7 +11619,7 @@ frame_down_darkhast_maskoni.place(x=10,y=580)
 
 
 title_label_up1_darkhast_maskoni = tk.Label(darkhast_maskoni_window,text="درخواست خرید و اجاره مسکونی",bg="#052340",fg="#00BFFF",font=("Shabnam", 16))
-title_label_up1_darkhast_maskoni.place(x=570, y=17)   
+title_label_up1_darkhast_maskoni.place(x=555, y=17)   
 
 title_label_up2_darkhast_maskoni = tk.Label(darkhast_maskoni_window,text="ثبت درخواست های خرید و اجاره مسکونی",bg="#052340",fg="#ffffff",font=("Shabnam", 11))
 title_label_up2_darkhast_maskoni.place(x=555, y=45)
