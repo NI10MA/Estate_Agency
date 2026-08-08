@@ -1375,7 +1375,6 @@ def back_chck_darkhast_karghah():
 #=========================================================
 #------------------پاک شدن اطلاعات ملک در جستجو------------------
 def delete_box_search():
-    item = tree.focus()
     options_text_entry.delete("1.0",tk.END)
     entry_malek_phone_number.delete(0,tk.END)
     metraj_lable_right_entry.delete(0,tk.END)
@@ -5616,8 +5615,8 @@ selected_id = None
 selected_table = None
 
 def show_details(event):
+    
     global selected_id, selected_table
-    delete_box_search()
     item = tree.focus()
 
     if item == "":
@@ -5662,7 +5661,14 @@ def show_details(event):
         options_text_entry.insert("1.0", "\n".join(options))
         options_text_entry.tag_add("right", "1.0", "end")
         options_text_entry.config(state="disable")
+        def onluck_box_right:
+        entry_malk_phone_number.config(state="normal")
+        metraj_label_right_entry.config(state="normal")
+        options_text_entry.config(state="normal")
         
+        
+
+
 
     elif selected_table == "sabt_ejareh_maskoni":
         entry_malek_phone_number.delete(0, tk.END)
