@@ -19,7 +19,7 @@ def get_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="SobhanA2026",#   entry  در ادرس ها   تبدیل بهtext شود      entry==>text
+        password="EmadAE7*",#   entry  در ادرس ها   تبدیل بهtext شود      entry==>text
         #database="state_agency"
     )
 #endregion
@@ -664,7 +664,9 @@ def clear_entry_ejareh_bagh_zamin():
     hamam_bagh_combo.config(state="disabled")
     sanad_bagh_combo.config(state="disabled")
     option_ejareh_bagh_zamin_combo.config(state="disabled")
+    mojavez_sakht_ejareh_bagh_zamin.deselect()
     mojavez_sakht_ejareh_bagh_zamin.config(state="disabled")
+    mohavate_ejareh_bagh_zamin.deselect()
     mohavate_ejareh_bagh_zamin.config(state="disabled")
     security_room_zamin_ejareh_bagh_zamin.deselect()
     bargh_tak_faz_zamin_ejareh_bagh_zamin.deselect()
@@ -724,9 +726,10 @@ def clear_entry_forosh_bagh_zamin():
     hamam_forosh_bagh_zamin_combo.config(state="disabled")
     sanad_forosh_bagh_zamin_combo.config(state="disabled")
     option_forosh_bagh_zamin_combo.config(state="disabled")
-    
     lable_natige_add_forosh_bagh_zamin.config(text="")
+    mojavez_sakht_check_btn_forosh_bagh_zamin.deselect()
     mojavez_sakht_check_btn_forosh_bagh_zamin.config(state="disabled")
+    mohavate_sazi_check_btn_forosh_bagh_zamin.deselect()
     mohavate_sazi_check_btn_forosh_bagh_zamin.config(state="disabled")
     security_zamin_forosh_bagh_zamin.deselect()
     bargh_kesi_zamin_forosh_bagh_zamin.deselect()
@@ -848,7 +851,6 @@ def clear_entry_darkhast_edari_tejari():
     anbari_check_btn_darkhast_edari_tejari.deselect()
 #-----------------------------برگشت از صفحه درخواست باغ / زمین------------------
 def back_home_darkhast_bagh():
-    melk_type_darkhast_bagh_zamin_entry.set("درخواست خرید باغ  زمین")
     karbari_darkhast_bagh_zamin_combo.set("باغ")
     change_bagh_zamin_darkhast2()
     frame_down_darkhast_bagh.place(x=10,y=555)
@@ -903,7 +905,9 @@ def clear_entry_darkhast_bagh_zamin():
     hamam_darkhast_bagh_zamin_combo.config(state="disabled")
     sanad_darkhast_bagh_zamin_combo.config(state="disabled")
     option_darkhast_bagh_zamin_combo.config(state="disabled")
+    mojavez_sakht_check_btn_darkhast_bagh_zamin.deselect()
     mojavez_sakht_check_btn_darkhast_bagh_zamin.config(state="disabled")
+    mohavate_sazi_check_btn_darkhast_bagh_zamin.deselect()
     mohavate_sazi_check_btn_darkhast_bagh_zamin.config(state="disabled")
     otagh_check_btn_darkhast_bagh_zamin.deselect()
     security_zamin_darkhast_bagh_zamin.deselect()
@@ -5615,6 +5619,9 @@ selected_id = None
 selected_table = None
 
 def show_details(event):
+    entry_malek_phone_number.config(state="normal")
+    metraj_lable_right_entry.config(state="normal")
+    options_text_entry.config(state="normal")
     
     global selected_id, selected_table
     item = tree.focus()
@@ -5661,14 +5668,8 @@ def show_details(event):
         options_text_entry.insert("1.0", "\n".join(options))
         options_text_entry.tag_add("right", "1.0", "end")
         options_text_entry.config(state="disable")
-        def onluck_box_right:
-        entry_malk_phone_number.config(state="normal")
-        metraj_label_right_entry.config(state="normal")
-        options_text_entry.config(state="normal")
         
         
-
-
 
     elif selected_table == "sabt_ejareh_maskoni":
         entry_malek_phone_number.delete(0, tk.END)
