@@ -10821,7 +10821,7 @@ gheimat_kol_forosh_edari_tejari.place(x=465, y=30, anchor="e")
 
 gheimat_kol_forosh_edari_tejari_entry=tk.Entry(frame_midde_right_forosh_edari_tejari, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 gheimat_kol_forosh_edari_tejari_entry.place(x=18, y=20, width=350, height=25)
-gheimat_kol_forosh_edari_tejari_entry.bind("<KeyRelease>",chck_gheimat_kol_forosh_edari_tejari)
+gheimat_kol_forosh_edari_tejari_entry.bind("<KeyRelease>", chck_gheimat_kol_forosh_edari_tejari)
 
 addrres_forosh_edari_tejari=tk.Label(frame_midde_right_forosh_edari_tejari, text="آدرس", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 addrres_forosh_edari_tejari.place(x=465, y=80, anchor="e")
