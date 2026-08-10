@@ -19,7 +19,7 @@ def get_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="Nima10.N10",#   entry  در ادرس ها   تبدیل بهtext شود      entry==>text
+        password="EmadAE7*",#   entry  در ادرس ها   تبدیل بهtext شود      entry==>text
         #database="state_agency"
     )
 #endregion
@@ -331,9 +331,6 @@ def creat_word_gharardad():
 
         elif contract_type == "اجاره":
             template_path = "docx files/قرارداد خام اجاره.docx"
-
-        elif contract_type == "مشارکت":
-            template_path = "docx files/قرارداد خام مشارکت.docx"
 
         else:
             messagebox.showerror(
@@ -1379,10 +1376,6 @@ def back_darkhast_exit():
 def back_gozaresh_exit():
     box_gozaresh.withdraw()
     box_gozaresh.grab_release()
-
-def back_mosharekat_exit():
-    box_mosharekat.withdraw()
-    box_mosharekat.grab_release()
 #endregion
 #============================================
 #--------باز و بسته کردن بین باکس ها----------------
@@ -1605,29 +1598,6 @@ def sabt_radio_gozaresh():
         root.withdraw()
         gozaresh_kargah.deiconify()
         box_gozaresh.grab_release()
-
-#تابع رادیو باتن باز و بسته کردن صفحات مشارکت
-def sabt_radio_mosharekat():
-    selected = mosharekat_radio_value.get()
-
-    if selected == 0:
-        box_mosharekat.withdraw()
-        box_mosharekat.grab_release()
-
-        #root.withdraw()
-        #mosharecat_window.deiconify()
-
-        #for f in frames:
-         #   f.grid_forget()
-
-        #frames[0].grid(row=0, column=0, padx=20, pady=20, sticky="nsew")
-
-        
-    elif selected==2:
-        box_mosharekat.withdraw()
-        root.withdraw()
-        #pishforosh_page.deiconify()
-        box_mosharekat.grab_release()
 #endregion        
 #=======================================================
 #---------------/جابه جایی کاربری باغ و زمین در قسمت های فروش/درخواست/اجاره-------------
@@ -9134,7 +9104,6 @@ menubar = tk.Menu(root, font=("Shabnam", 10))
 file_menu_sabt_file = tk.Menu(menubar, tearoff=0, font=("Shabnam", 10))
 file_menu_sabt_file.add_command(label="فروش", command=forosh)
 file_menu_sabt_file.add_command(label="رهن/اجاره", command=rahn)
-file_menu_sabt_file.add_command(label="مشارکت", command=mosharecat)
 
 # اضافه کردن منوی "ثبت فایل ها" به منوبار
 menubar.add_cascade(label="ثبت فایل ها", menu=file_menu_sabt_file)
@@ -9436,33 +9405,6 @@ zakhire_radio_box_gozaresh.place(x=50,y=210)
 box_gozaresh.protocol("WM_DELETE_WINDOW", lambda: None)
 box_gozaresh.resizable(False, False)
 #endregion
-#----------------------------------نوع انتخاب ثبتی فایل برای پنجره های مشارکت-----------------
-#region
-box_mosharekat=tk.Toplevel(root)
-box_mosharekat.title("انتخاب نوع ملک مشارکت")
-box_mosharekat.geometry("350x300")
-box_mosharekat.withdraw()
-box_mosharekat.configure(bg="#052340")
-
-# یک متغیر مشترک برای همه رادیوباتن‌ها
-mosharekat_radio_value = tk.IntVar(value=0)  # مقدار پیش‌فرض -1 یعنی هیچکدام انتخاب نشده
-
-mosharekat_sakht_radio = tk.Radiobutton(box_mosharekat, value=0, text="مشارکت در ساخت", background="#052340",fg="#00BFFF", variable=mosharekat_radio_value, font=("Shabnam",11))
-mosharekat_sakht_radio.place(x=200,y=50)
-
-mosharekat_pishforosh_radio = tk.Radiobutton(box_mosharekat, value=2, text="پیش فروش",
-bg="#052340",fg="#00BFFF", variable=mosharekat_radio_value, font=("Shabnam",11))
-mosharekat_pishforosh_radio.place(x=200,y=90)
-
-back_to_home_box_mosharekat=tk.Button(box_mosharekat,text="🔙بازگشت",bg="#00BFFF",fg="#000000",width=10,height=2,command=back_mosharekat_exit)
-back_to_home_box_mosharekat.place(x=190,y=210)
-
-zakhire_radio_box_mosharekat=tk.Button(box_mosharekat,text="📥ادامه",bg="#00BFFF",fg="#000000",width=10,height=2,command=sabt_radio_mosharekat)
-zakhire_radio_box_mosharekat.place(x=50,y=210)
-
-box_mosharekat.protocol("WM_DELETE_WINDOW", lambda: None)
-box_mosharekat.resizable(False, False)
-#endregion
 #===================پنجره های ثبتی بخش رهن و اجاره=============================
 #--------------------------پنجره اجاره مسکونی----------------
 #region
@@ -9567,7 +9509,7 @@ photo_lbl2_ejareh_maskoni = tk.Label(frame_up_left_ejareh_maskoni, text="[تصو
 photo_lbl2_ejareh_maskoni.place(x=40, y=10)
 
 add_img_btn_ejareh_maskoni = tk.Button(frame_up_left_ejareh_maskoni, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=add_photo, height=2,width=13)
-add_img_btn_ejareh_maskoni.place(x=240, y=250)
+add_img_btn_ejareh_maskoni.place(x=270, y=250)
 #--------------------------فریم راست وسط---------------------
 gheimat_pish_ejareh_maskoni_lable = tk.Label(frame_midde_right_ejareh_maskoni, text="مبلغ پیش", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 gheimat_pish_ejareh_maskoni_lable.place(x=465, y=30, anchor="e")
@@ -9802,7 +9744,7 @@ photo_lbl2_ejareh_edari_tejari =tk.Label(frame_up_left_ejareh_edari_tejari, text
 photo_lbl2_ejareh_edari_tejari.place(x=40 ,y=10)
 
 add_img_btn_ejareh_edari_tejari =tk.Button(frame_up_left_ejareh_edari_tejari, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=add_photo,height=2,width=13)
-add_img_btn_ejareh_edari_tejari.place(x=240, y=250)
+add_img_btn_ejareh_edari_tejari.place(x=270, y=250)
 
 #----------------------------------فریم وسط سمت راست--------------------------
 
@@ -10028,7 +9970,7 @@ photo_lbl2_ejareh_bagh_zamin = tk.Label(frame_up_left_ejareh_bagh_zamin, text="[
 photo_lbl2_ejareh_bagh_zamin.place(x=40, y=10)
 
 add_img_btn_ejareh_bagh_zamin = tk.Button(frame_up_left_ejareh_bagh_zamin, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=add_photo,height=2,width=13)
-add_img_btn_ejareh_bagh_zamin.place(x=240, y=250)
+add_img_btn_ejareh_bagh_zamin.place(x=270, y=250)
 #-----------------------------فریم وسط سمت راست-------------------------------
 
 bagh_gheimat_ejareh_bagh_zamin_lable=tk.Label(frame_midde_right_ejareh_bagh_zamin, text="ودیعه", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
@@ -10381,7 +10323,7 @@ photo_lbl2_ejareh_karghah = tk.Label(frame_up_left_ejareh_karghah, text="[تصو
 photo_lbl2_ejareh_karghah.place(x=40, y=10)
 
 add_img_btn_ejareh_karghah = tk.Button(frame_up_left_ejareh_karghah, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=add_photo, height=2,width=13)
-add_img_btn_ejareh_karghah.place(x=240, y=250)
+add_img_btn_ejareh_karghah.place(x=270, y=250)
 
 #--------------------------فریم راست وسط---------------------
 vadie_ejare_karghah_lable = tk.Label(frame_midde_right_ejareh_karghah, text="مبلغ پیش", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
@@ -10640,7 +10582,7 @@ photo_lbl2_forosh_maskoni = tk.Label(frame_up_left_forosh_maskoni, text="[تصو
 photo_lbl2_forosh_maskoni.place(x=40 ,y=10)
 
 add_img_btn_forosh_maskoni = tk.Button(frame_up_left_forosh_maskoni, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=add_photo,height=2,width=13)
-add_img_btn_forosh_maskoni.place(x=240, y=250)
+add_img_btn_forosh_maskoni.place(x=270, y=250)
 #----------------------------------فریم وسط سمت راست--------------------------
 gheimat_kol_forosh_maskoni=tk.Label(frame_midde_right_forosh_maskoni, text=" قیمت کل ", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 gheimat_kol_forosh_maskoni.place(x=465, y=30, anchor="e")
@@ -10870,7 +10812,7 @@ photo_lbl2_forosh_edari_tejari = tk.Label(frame_up_left_forosh_edari_tejari, tex
 photo_lbl2_forosh_edari_tejari.place(x=40 ,y=10)
 
 add_img_btn_forosh_edari_tejari = tk.Button(frame_up_left_forosh_edari_tejari, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=add_photo,height=2,width=13)
-add_img_btn_forosh_edari_tejari.place(x=240, y=250)
+add_img_btn_forosh_edari_tejari.place(x=270, y=250)
 
 #----------------------------------فریم وسط سمت راست--------------------------
 
@@ -11080,7 +11022,7 @@ bagh_type_forosh_bagh_zamin_combo.bind("<<ComboboxSelected>>",change_bagh_zamin_
 photo_forosh_bagh_zamin_lable= tk.Label(frame_up_left_forosh_bagh_zamin, text="[تصویر ملک]", bg="#ffffff", width=79, height=15)
 photo_forosh_bagh_zamin_lable.place(x=40, y=10)
 add_img_btn_forosh_bagh_zamin = tk.Button(frame_up_left_forosh_bagh_zamin, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=add_photo,height=2,width=13)
-add_img_btn_forosh_bagh_zamin.place(x=240, y=250)
+add_img_btn_forosh_bagh_zamin.place(x=270, y=250)
 #-------------------------فریم وسط سمت راست-----------------------------------------
 gheimat_har_matr_babagh_zamin_forosh_bagh_zamin_lable=tk.Label(frame_midde_right_forosh_bagh_zamin,text='قیمت هر متر',bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
 gheimat_har_matr_babagh_zamin_forosh_bagh_zamin_lable.place(x=490, y=20, anchor="e")
@@ -11424,7 +11366,7 @@ photo_lbl2_forosh_kargah = tk.Label(frame_up_left_forosh_karghah, text="[تصو�
 photo_lbl2_forosh_kargah.place(x=40, y=10)
 
 add_img_btn_forosh_kargah = tk.Button(frame_up_left_forosh_karghah, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=add_photo, height=2,width=13)
-add_img_btn_forosh_kargah.place(x=240, y=250)
+add_img_btn_forosh_kargah.place(x=270, y=250)
 
 #--------------------------فریم راست وسط---------------------
 loctaion_forosh_kargah = tk.Label(frame_midde_right_forosh_karghah, text="آدرس", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=12)
@@ -11677,7 +11619,7 @@ photo_lbl2_darkhast_maskoni = tk.Label(frame_up_left_darkhast_maskoni, text="[ت
 photo_lbl2_darkhast_maskoni.place(x=40, y=10)
 
 add_img_btn_darkhast_maskoni = tk.Button(frame_up_left_ejareh_maskoni, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=add_photo,height=2,width=13)
-add_img_btn_darkhast_maskoni.place(x=240, y=250)
+add_img_btn_darkhast_maskoni.place(x=270, y=250)
 #---------------------------فریم وسط سمت راست----------------------------------------
 
 gheimat_kol_darkhast_maskoni_lable=tk.Label(frame_midde_right_darkhast_maskoni,text="قیمت کل",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
@@ -11930,7 +11872,7 @@ photo_lbl2_darkhast_edari_tejari = tk.Label(frame_up_left_darkhast_edari_tejari,
 photo_lbl2_darkhast_edari_tejari.place(x=40, y=10)
 
 add_img_btn_darkhast_edari_tejari = tk.Button(frame_up_left_darkhast_edari_tejari, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=add_photo,height=2,width=13)
-add_img_btn_darkhast_edari_tejari.place(x=240, y=250)
+add_img_btn_darkhast_edari_tejari.place(x=270, y=250)
 #---------------------------فریم وسط سمت راست----------------------------------------
 gheimat_kol_darkhast_edari_tejari=tk.Label(frame_midde_right_darkhast_edari_tejari,text= "قیمت کل",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
 gheimat_kol_darkhast_edari_tejari.place(x=465, y=20, anchor="e")
@@ -12166,7 +12108,7 @@ photo_darkhast_bagh_zamin_lable= tk.Label(frame_up_left_darkhast_bagh_zamin, tex
 photo_darkhast_bagh_zamin_lable.place(x=40, y=10)
 
 add_img_btn_darkhast_bagh_zamin = tk.Button(frame_up_left_darkhast_bagh_zamin, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=add_photo,height=2,width=13)
-add_img_btn_darkhast_bagh_zamin.place(x=240, y=250)
+add_img_btn_darkhast_bagh_zamin.place(x=270, y=250)
 #---------------------------------------فریم وسط سمت راست--------------------------
 gheimat_kol_bagh_zamin_darkhast_lable=tk.Label(frame_midde_right_darkhast_bagh_zamin,text='قیمت کل',bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
 gheimat_kol_bagh_zamin_darkhast_lable.place(x=490, y=20, anchor="e")
@@ -12533,7 +12475,7 @@ photo_lbl2_darkhast_kargah = tk.Label(frame_up_left_darkhast_karghah, text="[ت�
 photo_lbl2_darkhast_kargah.place(x=40, y=10)
 
 add_img_btn_darkhast_kargah = tk.Button(frame_up_left_darkhast_karghah, text="📁افزودن تصویر", bg="#00BFFF", fg="black",command=add_photo, height=2,width=13)
-add_img_btn_darkhast_kargah.place(x=240, y=250)
+add_img_btn_darkhast_kargah.place(x=270, y=250)
 
 #--------------------------فریم راست وسط---------------------
 loctaion_darkhast_kargah = tk.Label(frame_midde_right_darkhast_karghah, text="آدرس", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=12)
@@ -12916,7 +12858,7 @@ type_melk_gharardad_combo.place(x=25,y=50)
 type_gharardad=tk.Label(main_frame,text="نوع قرارداد",bg="#052340",fg="#FFFFFF",font=("Shabnam",8))
 type_gharardad.place(x=346,y=105)
 type_gharardad_combo=ttk.Combobox(main_frame)
-type_gharardad_combo["values"]=("خرید و فروش ","اجاره","مشارکت")
+type_gharardad_combo["values"]=("خرید و فروش ","اجاره")
 type_gharardad_combo["state"]=["readonly"]
 type_gharardad_combo.config(width=40)
 type_gharardad_combo.configure(justify="center")
