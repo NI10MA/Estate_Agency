@@ -19,7 +19,7 @@ def get_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="EmadAE7*",#   entry  در ادرس ها   تبدیل بهtext شود      entry==>text
+        password="Nima10.N10K",#   entry  در ادرس ها   تبدیل بهtext شود      entry==>text
         #database="state_agency"
     )
 #endregion
@@ -3530,16 +3530,6 @@ def sabt_forosh_maskoni():
         user_idcode = f"ID-{last_id}"
         clear_entry_forosh_maskoni()
         messagebox.showinfo("Success", f"ثبت با کد {user_idcode} انجام شد.")
-        error_lable_sal_sakht_forosh_maskoni.config(text="")
-        error_lable_metraj_forosh_maskoni.config(text="")
-        error_lable_tabaghe_forosh_maskoni.config(text="")
-        error_lable_vahed_forosh_maskoni.config(text="")
-        error_lable_otagh_forosh_maskoni.config(text="")
-        error_lable_gheimat_kol_forosh_maskoni.config(text="")
-        error_lable_addrres_forosh_maskoni.config(text="")
-        error_lable_name_malek_forosh_maskoni.config(text="")
-        error_lable_shomareh_malek_forosh_maskoni.config(text="")
-        db.commit()
 
     except Exception as e:
         messagebox.showerror("Error", f"لطفا تمام فیلد ها را به درستی وارد کنید ")
