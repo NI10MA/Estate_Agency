@@ -955,7 +955,7 @@ def back_main_ghararadad():
     type_melk_gharardad_combo.set("")
     name_shakhs_aval_gharardad_entry.delete(0,tk.END)
     name_shakhs_dovom_gharardad_entry.delete(0,tk.END)
-    tozih_gharardad_entry.delete(0,tk.END)
+    tozih_gharardad_entry.delete("1.0",tk.END)
     code_label.config(text="")
 #endregion
 #========================================================
