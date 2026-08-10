@@ -19,7 +19,7 @@ def get_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="EmadAE7*",#   entry  در ادرس ها   تبدیل بهtext شود      entry==>text
+        password="Nima10.N10",#   entry  در ادرس ها   تبدیل بهtext شود      entry==>text
         #database="state_agency"
     )
 #endregion
@@ -32,21 +32,6 @@ def close_window():#این تابع بعد از اتصال دیتابیس تکم
         root.destroy()
     else:
         return
-#endregion
-# -------------------------------------تابع فراخوانی ادرس با دکمه-----------
-#region
-def open_file_folder():
-    file_path = filedialog.askopenfilename()
-    if file_path:
-        folder_path = os.path.dirname(file_path)
-        subprocess.run(['explorer', '/select,', file_path])
-#endregion
-#  ------------------------------------------تابع انتخاب فایل عکس------------
-#region
-#def open_file():
- #   file_path = filedialog.askopenfilename()
- #   if file_path:
-   #     os.startfile(file_path)
 #endregion
 #---------------------------تابع خروجی گزارش اکسل-----------
 #region
@@ -435,7 +420,6 @@ def delete_root():
     entry_malek_phone_number.delete(0,tk.END)
     metraj_lable_right_entry.config(state="normal")
     metraj_lable_right_entry.delete(0,tk.END)
-#endregion
 #===================================================
 def add_photo():
     messagebox.showwarning("Error", f"این قابلیت در آپدیت بعدی فعال میشود")
@@ -494,10 +478,6 @@ def rahn():
     box_rehn_ejareh.deiconify()
     box_rehn_ejareh.grab_set()
 
-def mosharecat():
-    box_mosharekat.deiconify()
-    box_mosharekat.grab_set()
-#endregion
 #endregion
 #=======================================================
 #-----------توابع برگشت صفحات ثبتی به فرم اصلی----------
@@ -1932,8 +1912,8 @@ def change_darkhast_kargah_type(event=None):
         loctaion_darkhast_kargah_entry.place(x=18, y=110, width=350, height=25)
 #=================================DataBase========================
 #--------------------------- اعتبارسنجی ورودی ها -------------------
-#---------------------اعتبارسنجی فروش مسکونی--------------------
 #region
+#---------------------اعتبارسنجی فروش مسکونی--------------------
 def chck_sal_sakht_forosh_maskoni(event=None):
     sal_sakht_forosh_maskoni=sal_sakht_forosh_maskoni_entry.get().strip()
 
@@ -3510,6 +3490,8 @@ def chck_shomareh_moshtari_darkhast_karghah(event=None):
         error_lable_shomareh_moshtari_darkhast_karghah.config(text=" فیلد(شماره مشتری) باید شامل 11رقم باشد")
         name_moshtari_darkhast_kargah_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
 #endregion
+#-------------------------تابع ثبت فروش------------------------------
+#region
 #---------------------------forosh_maskoni------------------------------
 def sabt_forosh_maskoni():
     db = None
@@ -3905,8 +3887,10 @@ def sabt_forosh_kargah():
     finally:
         if db and db.is_connected():
             db.close()
+#endregion
 #------------------------------------پایان ثبت فروش-----------------------------
 #----------------------------تابع ثبت اجاره----------------------------------
+#region
 #----------------------- ejareh_maskoni Database -------------------------------
 def sabt_ejareh_maskoni():
     db = None
@@ -5231,7 +5215,6 @@ def sabt_darkhast_kargah(event=None):
             db.close()
 #--------------------پایان تابع ثبت درخواست----------------
 #endregion
-#----------------------------سیو تصاویر--------------------------
 #===================سیو تصاویر در پنجره فروش اداری و تجاری================
 #region
 def open_file_forosh_edari_tejari():
@@ -5298,7 +5281,6 @@ def open_file_forosh_edari_tejari():
            # print("خطا در بارگذاری تصویر:", e)
 #endregion
 #------------------------توابع سرچ--------------------
-#regoin
 def search():
     for item in tree.get_children():
         tree.delete(item)
@@ -5611,7 +5593,6 @@ def search():
     finally:
         cursor.close()
         db.close()
-#endregion
 #-----------------------توابع ویرایش---------------------------
 #region
 #---------------تابع وارد کردن جزییات به باکس سوم----------
@@ -9311,7 +9292,7 @@ edit_btn=tk.Button(frame_joziat_amlack,text="📝ویرایش",command=open_edit
 edit_btn.pack(padx=20,pady=4)
 #=======================================================
 #endregion
-#-------------------------باکس های نوع ثبتی فایل ها----------------------
+#==================باکس های نوع ثبتی فایل ها============================
 #-------------------نوع انتخاب ثبتی فایل برای پنجره های رهن و اجاره--------------
 #region
 box_rehn_ejareh=tk.Toplevel(root)
@@ -9482,7 +9463,7 @@ zakhire_radio_box_mosharekat.place(x=50,y=210)
 box_mosharekat.protocol("WM_DELETE_WINDOW", lambda: None)
 box_mosharekat.resizable(False, False)
 #endregion
-#-----------------پنجره های ثبتی بخش رهن و اجاره----------------------------
+#===================پنجره های ثبتی بخش رهن و اجاره=============================
 #--------------------------پنجره اجاره مسکونی----------------
 #region
 ejareh_maskoni_window = tk.Toplevel(root)
@@ -10560,7 +10541,7 @@ error_lable_shomareh_malek_ejareh_karghah.place(x=850 , y=20)
 ejareh_karghah_window.protocol("WM_DELETE_WINDOW", lambda: None)
 ejareh_karghah_window.resizable(False, False)
 #endregion
-#---------------------------پنجره های ثبتی بخش فروش--------------------
+#==================پنجره های ثبتی بخش فروش=================================
 #-------------------پنجره فروش مسکونی----------------------
 #region
 forosh_maskoni_window = tk.Toplevel(root)
@@ -11594,7 +11575,7 @@ error_lable_shomareh_malek_forosh_kargah.place(x=900 , y=20)
 forosh_karghah_window.protocol("WM_DELETE_WINDOW", lambda: None)
 forosh_karghah_window.resizable(False, False)
 #endregion
-#--------------------پنجره های ثبتی بخش درخواست-----------------------
+#=========================پنجره های ثبتی بخش درخواست=============================
 #----------------------پنجره درخواست مسکونی--------------------------
 #region
 darkhast_maskoni_window = tk.Toplevel(root)
