@@ -3524,6 +3524,34 @@ def chck_shomareh_moshtari_darkhast_karghah(event=None):
 #region
 #---------------------------forosh_maskoni------------------------------
 def sabt_forosh_maskoni():
+    required_fields_forosh_maskoni={
+        "نوع ملک":melk_type_forosh_maskoni_entry.get(),
+        "سال ساخت":sal_sakht_forosh_maskoni_entry.get(),
+        "متراژ":metraj_forosh_maskoni_entry.get(),
+        "طبقه":tabaghe_forosh_maskoni_entry.get(),
+        "واحد":vahed_forosh_maskoni_entry.get(),
+        "اتاق":otagh_forosh_maskoni_entry.get(),
+        "قیمت کل":gheimat_kol_forosh_maskoni_entry.get(),
+        "آدرس":addrres_forosh_maskoni_entry.get("1.0",tk.END).strip(),
+        "نام مالک":name_malek_forosh_maskoni_entry.get(),
+        "شماره مالک":shomareh_malek_forosh_maskoni_entry.get(),
+    }
+
+    #پیدا کردن فیلد های خالی
+    tohi_fields_forosh_maskoni=[
+        name for name,value in required_fields_forosh_maskoni.items()
+        if not value.strip()
+    ]
+
+    #اگر حتی یک فیلد خالی بود ارور  بده
+    if tohi_fields_forosh_maskoni:
+        messagebox.showwarning(
+            "هشدار",
+            "لطفا فیلد های زیر را پر کنید:\n\n" +
+            "\n".join(tohi_fields_forosh_maskoni)
+        )
+        return
+
     db = None
     try:
         db = get_connection()
@@ -3598,6 +3626,34 @@ def sabt_forosh_maskoni():
             db.close()
 #------------------- forosh_edari_tejari database -----------------------------------
 def sabt_forosh_edari_tejari():
+    required_fields_forosh_edari_tejari={
+        "نوع ملک":melk_type_forosh_edari_tejari_entry.get(),
+        "سال ساخت":sal_sakht_forosh_edari_tejari_entry.get(),
+        "متراژ":metraj_forosh_edari_tejari_entry.get(),
+        "طبقه":tabaghe_forosh_edari_tejari_entry.get(),
+        "واحد":vahed_forosh_edari_tejari_entry.get(),
+        "اتاق":otagh_forosh_edari_tejari_entry.get(),
+        "قیمت کل":gheimat_kol_forosh_edari_tejari_entry.get(),
+        "آدرس":addrres_forosh_edari_tejari_entry.get("1.0",tk.END).strip(),
+        "نام مالک":name_malek_forosh_edari_tejari_entry.get(),
+        "شماره مالک":shomareh_malek_forosh_edari_tejari_entry.get(),
+    }
+
+    #پیدا کردن فیلد های خالی
+    tohi_fields_forosh_edari_tejari=[
+        name for name,value in required_fields_forosh_edari_tejari.items()
+        if not value.strip()
+    ]
+
+    #اگر حتی یک فیلد خالی بود ارور  بده
+    if tohi_fields_forosh_edari_tejari:
+        messagebox.showwarning(
+            "هشدار",
+            "لطفا فیلد های زیر را پر کنید:\n\n" +
+            "\n".join(tohi_fields_forosh_edari_tejari)
+        )
+        return
+
     db = None
     try:
         db = get_connection()
@@ -3672,6 +3728,31 @@ selected_option2=[]
 selected_trees2=[]
 #endregion
 def sabt_forosh_bagh_zamin_main():
+    required_fields_forosh_bagh_zamin_main={
+        "نوع ملک":melk_type_forosh_bagh_zamin_entry.get(),
+        "متراژ":metraj_zamin_forosh_bagh_zamin_entry.get(),
+        "قیمت هر متر":gheimat_har_metr_bagh_zamin_forosh_entry.get(),
+        "قیمت کل":gheimat_kol_forosh_bagh_zamin_entry.get(),
+        "آدرس":bagh_loctaion_forosh_bagh_zamin_entry.get("1.0",tk.END).strip(),
+        "نام مالک":name_malek_forosh_bagh_entry.get(),
+        "شماره مالک":number_malek_forosh_bagh_entry.get(),
+    }
+
+    #پیدا کردن فیلد های خالی
+    tohi_fields_forosh_bagh_zamin=[
+        name for name,value in required_fields_forosh_bagh_zamin_main.items()
+        if not value.strip()
+    ]
+
+    #اگر حتی یک فیلد خالی بود ارور  بده
+    if tohi_fields_forosh_bagh_zamin:
+        messagebox.showwarning(
+            "هشدار",
+            "لطفا فیلد های زیر را پر کنید:\n\n" +
+            "\n".join(tohi_fields_forosh_bagh_zamin)
+        )
+        return
+
     db = None
     
     try:
@@ -3845,6 +3926,31 @@ def sabt_forosh_bagh_zamin_main():
             db.close()
 #---------------------------- forosh_karghah Database ------------------------
 def sabt_forosh_kargah():
+    required_fields_forosh_kargah={
+        "نوع ملک":karbari_forosh_kargah_entry.get(),
+        "سال ساخت":sal_sakht_forosh_kargah_entry.get(),
+        "متراژ":metraj_forosh_kargah_entry.get(),
+        "قیمت کل":gheimat_kol_forosh_kargah_entry.get(),
+        "آدرس":loctaion_forosh_kargah_entry.get("1.0",tk.END).strip(),
+        "نام مالک":name_malek_forosh_kargah_entry.get(),
+        "شماره مالک":shomareh_malek_forosh_kargah_entry.get(),
+    }
+
+    #پیدا کردن فیلد های خالی
+    tohi_fields_forosh_kargah=[
+        name for name,value in required_fields_forosh_kargah.items()
+        if not value.strip()
+    ]
+
+    #اگر حتی یک فیلد خالی بود ارور  بده
+    if tohi_fields_forosh_kargah:
+        messagebox.showwarning(
+            "هشدار",
+            "لطفا فیلد های زیر را پر کنید:\n\n" +
+            "\n".join(tohi_fields_forosh_kargah)
+        )
+        return
+
     db = None
     try:
         db = get_connection()
@@ -3915,6 +4021,35 @@ def sabt_forosh_kargah():
 #region
 #----------------------- ejareh_maskoni Database -------------------------------
 def sabt_ejareh_maskoni():
+    required_fields_ejareh_maskoni={
+        "نوع ملک":melk_type_ejareh_maskoni_entry.get(),
+        "سال ساخت":sal_sakht_ejareh_maskoni_entry.get(),
+        "متراژ":metraj_ejareh_maskoni_entry.get(),
+        "طبقه":tabaghe_ejareh_maskoni_entry.get(),
+        "واحد":vahed_ejareh_maskoni_entry.get(),
+        "اتاق":otagh_ejareh_maskoni_entry.get(),
+        "قیمت اجاره":gheimat_ejareh_ejareh_maskoni_entry.get(),
+        "قیمت پیش":gheimat_pish_ejareh_maskoni_entry.get(),
+        "آدرس":addrres_ejareh_maskoni_entry.get("1.0",tk.END).strip(),
+        "نام مالک":name_malek_ejareh_maskoni_entry.get(),
+        "شماره مالک":shomareh_malek_ejareh_maskoni_entry.get(),
+    }
+
+    #پیدا کردن فیلد های خالی
+    tohi_fields_ejareh_maskoni=[
+        name for name,value in required_fields_ejareh_maskoni.items()
+        if not value.strip()
+    ]
+
+    #اگر حتی یک فیلد خالی بود ارور  بده
+    if tohi_fields_ejareh_maskoni:
+        messagebox.showwarning(
+            "هشدار",
+            "لطفا فیلد های زیر را پر کنید:\n\n" +
+            "\n".join(tohi_fields_ejareh_maskoni)
+        )
+        return
+
     db = None
     try:
         db = get_connection()
@@ -4002,6 +4137,43 @@ def sabt_ejareh_maskoni():
             db.close()
 #---------------------ejareh_edari/tejari Database------------------------------
 def sabt_ejareh_edari_tejari():
+    required_fields_ejareh_edari_tejari={
+        "نوع ملک":melk_type_ejareh_edari_tejari_entry.get(),
+        "سال ساخت":sal_sakht_ejareh_edari_tejari_entry.get(),
+        "متراژ":metraj_melk_ejareh_edari_tejari_entry.get(),
+        "طبقه":tabaghe_ejareh_edari_tejari_entry.get(),
+        "واحد":vahed_ejareh_edari_tejari_entry.get(),
+        "اتاق":otagh_ejareh_edari_tejari_entry.get(),
+        "قیمت پیش":mablagh_pish_ejareh_edari_tejari_entry.get(),
+        "قیمت اجاره":mablagh_ejare_ejareh_edari_tejari_entry.get(),
+        "آدرس":addrres_ejareh_edari_tejari_entry.get("1.0",tk.END).strip(),
+        "نام مالک":name_malek_ejareh_edari_tejari_entry.get(),
+        "شماره مالک":shomareh_malek_ejareh_edari_tejari_entry.get(),
+    }
+
+    #پیدا کردن فیلد های خالی
+    tohi_fields_ejareh_edari_tejari=[
+        name for name,value in required_fields_ejareh_edari_tejari.items()
+        if not value.strip()
+    ]
+
+    #اگر حتی یک فیلد خالی بود ارور  بده
+    if tohi_fields_ejareh_edari_tejari:
+        messagebox.showwarning(
+            "هشدار",
+            "لطفا فیلد های زیر را پر کنید:\n\n" +
+            "\n".join(tohi_fields_ejareh_edari_tejari)
+        )
+        return
+
+
+
+
+
+
+
+
+
     db = None
     try:
         db = get_connection()
@@ -4077,6 +4249,34 @@ def sabt_ejareh_edari_tejari():
 selected_option=[]
 selected_trees=[]
 def sabt_ejareh_bagh_zamin():
+    required_fields_ejareh_bagh_zamin={
+        "نوع ملک":melk_type_ejareh_bagh_zamin_entry.get(),
+        "متراژ":metraj_zamin_ejareh_bagh_zamin_entry.get(),
+        "ودیعه":bagh_gheimat_ejareh_bagh_zamin_entry.get(),
+        "اجاره ماهانه":bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.get(),
+        "آدرس":bagh_loctaion_entry.get("1.0",tk.END).strip(),
+        "نام مالک":name_malek_bagh_zamin_entry.get(),
+        "شماره مالک":number_malek_bagh_zamin_entry.get(),
+    }
+
+    #پیدا کردن فیلد های خالی
+    tohi_fields_ejareh_bagh_zamin=[
+        name for name,value in required_fields_ejareh_bagh_zamin.items()
+        if not value.strip()
+    ]
+
+    #اگر حتی یک فیلد خالی بود ارور  بده
+    if tohi_fields_ejareh_bagh_zamin:
+        messagebox.showwarning(
+            "هشدار",
+            "لطفا فیلد های زیر را پر کنید:\n\n" +
+            "\n".join(tohi_fields_ejareh_bagh_zamin)
+        )
+        return
+
+
+
+
     db = None
     try:
         db = get_connection()
@@ -4252,6 +4452,36 @@ def sabt_ejareh_bagh_zamin():
             db.close()
 #-----------------ejareh_kargah Database----------------------------------------
 def sabt_ejareh_kargah():
+    required_fields_ejareh_kargah={
+        "نوع ملک":karbari_zamin_ejareh_karghah_entry.get(),
+        "سال ساخت":sal_sakht_ejareh_karghah_entry.get(),
+        "متراژ":metraj_ejareh_karghah_entry.get(),
+        "مبلغ پیش":vadie_ejare_karghah_entry.get(),
+        "مبلغ اجاره":gheimat_ejare_ejare_karghah_entry.get(),
+        "آدرس":addrres_ejareh_karghah_entry.get("1.0",tk.END).strip(),
+        "نام مالک":name_malek_ejareh_karghah_entry.get(),
+        "شماره مالک":shomareh_malek_ejareh_karghah_entry.get(),
+    }
+
+    #پیدا کردن فیلد های خالی
+    tohi_fields_ejareh_kargah=[
+        name for name,value in required_fields_ejareh_kargah.items()
+        if not value.strip()
+    ]
+
+    #اگر حتی یک فیلد خالی بود ارور  بده
+    if tohi_fields_ejareh_kargah:
+        messagebox.showwarning(
+            "هشدار",
+            "لطفا فیلد های زیر را پر کنید:\n\n" +
+            "\n".join(tohi_fields_ejareh_kargah)
+        )
+        return
+
+
+
+
+
     db = None
     try:
         db = get_connection()
@@ -4327,60 +4557,36 @@ def sabt_ejareh_kargah():
 #----------------------تابع ثبت درخواست--------------------------------
 #region
 #---------------darkhast_maskoni Database------------------------
-def sabt_darkhast_maskoni():
+skip_save=False
+def sabt_darkhast_maskoni(event=None):
+    required_fields_darkhast_maskoni={
+        "نوع ملک":melk_type_darkhast_maskoni_entry.get(),
+        "سال ساخت":sal_sakht_darkhast_maskoni_entry.get(),
+        "متراژ":metraj_darkhast_maskoni_entry.get(),
+        "طبقه":tabaghe_darkhast_maskoni_entry.get(),
+        "واحد":vahed_darkhast_maskoni_entry.get(),
+        "اتاق":otagh_darkhast_maskoni_entry.get(),
+        "قیمت کل":gheimat_kol_darkhast_maskoni_entry.get(),
+        "آدرس":addrres_darkhast_maskoni_entry.get("1.0",tk.END).strip(),
+        "نام مشتری":name_moshtari_darkhast_maskoni_entry.get(),
+        "شماره مشتری":shomareh_moshtari_darkhast_maskoni_entry.get(),
+    }
 
-    change_type = melk_type_darkhast_maskoni_entry.get()
-# اعتبارسنجی 
-    skip_save=False
-    sal_sakht= sal_sakht_darkhast_maskoni_entry.get().strip()
-    metraj= metraj_darkhast_maskoni_entry.get().strip()
-    tabaghe= tabaghe_darkhast_maskoni_entry.get().strip()
-    vahed= vahed_darkhast_maskoni_entry.get().strip()
-    otagh= otagh_darkhast_maskoni_entry.get().strip()
-    gheimat_kol= gheimat_kol_darkhast_maskoni_entry.get().strip()
-    addrres = addrres_darkhast_maskoni_entry.get("1.0", "end-1c").strip()
-    name_moshtari= name_moshtari_darkhast_maskoni_entry.get().strip()
-    shomareh_moshtari= shomareh_moshtari_darkhast_maskoni_entry.get().strip()
-    mablagh_ejare= mablagh_ejare_darkhast_maskoni_entry.get().strip()
-    gheimat_pish= gheimat_pish_darkhast_maskoni_entry.get().strip()
-    
-    #if len(sal_sakht) != 4 or not sal_sakht.isdigit():
-        #error_lable_sal_sakht_darkhast_maskoni.config(text="فیلد (سال ساخت) باید 4 رقمی باشد ")
-        #return
-    #elif not metraj.isdigit():
-        #error_lable_metraj_darkhast_maskoni.config(text="فیلد (متراژ) فقط باید شامل اعداد باشد ")
-        #return
-    #elif not tabaghe.isdigit():
-        #error_lable_tabaghe_darkhast_maskoni.config(text="فیلد (طبقه) فقط باید شامل اعداد باشد ")
-        #return
-    #elif not vahed.isdigit():
-        #error_lable_vahed_darkhast_maskoni.config(text="فیلد (واحد) فقط باید شامل اعداد باشد ")
-        #return
-    #elif not otagh.isdigit():
-        #error_lable_otagh_darkhast_maskoni.config(text="فیلد (اتاق) فقط باید شامل اعداد باشد ")
-        #return
-    #elif not gheimat_kol.isdigit():
-        #error_lable_gheimat_kol_darkhast_maskoni.config(text="فیلد (قیمت کل) فقط باید شامل اعداد باشد ")
-        #return
-    #elif not re.fullmatch(r"[آ-ی0-9۰-۹\s]+", addrres):
-        #error_lable_addrres_darkhast_maskoni.config(text="فیلد (آدرس) فقط باید شامل حروف فارسی و اعداد باشد ")
-        #return
-    #elif not name_moshtari or not re.match("^[\u0600-\u06FF\s]+$", name_moshtari):
-        #error_lable_addrres_darkhast_maskoni.config(text="")
-        #error_lable_name_moshtari_darkhast_maskoni.config(text="فیلد (نام مشتری) فقط باید شامل حروف فارسی باشد ")
-        #return
-    #elif len(shomareh_moshtari) != 11 or not shomareh_moshtari.isdigit():
-        #error_lable_name_moshtari_darkhast_maskoni.config(text="")
-        #error_lable_shomareh_moshtari_darkhast_maskoni.config(text="فیلد (شماره مشتری) باید 11 رقمی باشد ")
-        #return
-    #elif not  mablagh_ejare.isdigit():
-        #error_lable_mablagh_ejare_darkhast_maskoni.config(text="فیلد (مبلغ اجاره) فقط باید شامل اعداد باشد ")
-        #return
+    #پیدا کردن فیلد های خالی
+    tohi_fields_darkhast_maskoni=[
+        name for name,value in required_fields_darkhast_maskoni.items()
+        if not value.strip()
+    ]
 
-    #elif not  gheimat_pish.isdigit():
-        #error_lable_gheimat_pish_darkhast_maskoni.config(text="فیلد (مبلغ پیش) فقط باید شامل اعداد باشد ")
-        #return
-    
+    #اگر حتی یک فیلد خالی بود ارور  بده
+    if tohi_fields_darkhast_maskoni:
+        messagebox.showwarning(
+            "هشدار",
+            "لطفا فیلد های زیر را پر کنید:\n\n" +
+            "\n".join(tohi_fields_darkhast_maskoni)
+        )
+        return
+    global skip_save
     db = None
     try:
         db = get_connection()
