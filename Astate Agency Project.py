@@ -4574,7 +4574,7 @@ def sabt_darkhast_maskoni(event=None):
         
         
         if change_type=="درخواست خرید مسکونی":
-            required_fields_darkhast_maskoni={
+            required_fields_darkhast_kharid_maskoni={
                 "نوع ملک":melk_type_darkhast_maskoni_entry.get(),
                 "سال ساخت":sal_sakht_darkhast_maskoni_entry.get(),
                 "متراژ":metraj_darkhast_maskoni_entry.get(),
@@ -4588,17 +4588,17 @@ def sabt_darkhast_maskoni(event=None):
                 }
             
             #پیدا کردن فیلد های خالی
-            tohi_fields_darkhast_maskoni=[
-                name for name,value in required_fields_darkhast_maskoni.items()
+            tohi_fields_darkhast_kharid_maskoni=[
+                name for name,value in required_fields_darkhast_kharid_maskoni.items()
                 if not value.strip()
             ]
         
             #اگر حتی یک فیلد خالی بود ارور  بده
-            if tohi_fields_darkhast_maskoni:
+            if tohi_fields_darkhast_kharid_maskoni:
                 messagebox.showwarning(
                     "هشدار",
                     "لطفا فیلد های زیر را پر کنید:\n\n" +
-                    "\n".join(tohi_fields_darkhast_maskoni)
+                    "\n".join(tohi_fields_darkhast_kharid_maskoni)
                 )
                 return
             cursor.execute( """
@@ -4941,7 +4941,7 @@ def sabt_darkhast_bagh_zamin(event=None):
         if event is not None:#خیلی مهم 
            return
         if change_type=="درخواست خرید باغ زمین":
-            required_fields_darkhast_bagh_zamin={
+            required_fields_darkhast_kharid_bagh_zamin={
                     "متراژ":metraj_zamin_darkhast_bagh_zamin_entry.get(),
                     "قیمت هرمتر":gheimat_har_metr_bagh_zamin_darkhast_entry.get(),
                     "قیمت کل":gheimat_kol_bagh_zamin_darkhast_entry.get(),
@@ -4951,17 +4951,17 @@ def sabt_darkhast_bagh_zamin(event=None):
                     }
                         
             #پیدا کردن فیلد های خالی
-            tohi_fields_darkhast_bagh_zamin=[
-                name for name,value in required_fields_darkhast_bagh_zamin.items()
+            tohi_fields_darkhast_kharid_bagh_zamin=[
+                name for name,value in required_fields_darkhast_kharid_bagh_zamin.items()
                 if not value.strip()
             ]
         
             #اگر حتی یک فیلد خالی بود ارور  بده
-            if tohi_fields_darkhast_bagh_zamin:
+            if tohi_fields_darkhast_kharid_bagh_zamin:
                 messagebox.showwarning(
                     "هشدار",
                     "لطفا فیلد های زیر را پر کنید:\n\n" +
-                    "\n".join(tohi_fields_darkhast_bagh_zamin)
+                    "\n".join(tohi_fields_darkhast_kharid_bagh_zamin)
                 )
                 return
             if karbari == "باغ":
@@ -5407,6 +5407,31 @@ def sabt_darkhast_kargah(event=None):
            return
         
         if change_type=="درخواست خرید کارگاه":
+            required_fields_darkhast_kharid_karghah={
+            "نوع ملک":combo_darkhast_kargah.get(),
+            "سال ساخت":sal_sakht_darkhast_kargah_entry.get(),
+            "متراژ":metraj_darkhast_kargah_entry.get(),
+            "قیمت کل":gheimat_kol_darkhast_kargah_entry.get(),
+            "آدرس":loctaion_darkhast_kargah_entry.get("1.0",tk.END).strip(),
+            "نام مشتری":name_moshtari_darkhast_kargah_entry.get(),
+            "شماره مشتری":shomareh_moshtari_darkhast_kargah_entry.get(),
+            }
+                
+                #پیدا کردن فیلد های خالی
+            tohi_fields_darkhast_kharid_karghah=[
+                name for name,value in required_fields_darkhast_kharid_karghah.items()
+                if not value.strip()
+            ]
+            
+                #اگر حتی یک فیلد خالی بود ارور  بده
+            if tohi_fields_darkhast_kharid_karghah:
+                messagebox.showwarning(
+                    "هشدار",
+                    "لطفا فیلد های زیر را پر کنید:\n\n" +
+                    "\n".join(tohi_fields_darkhast_kharid_karghah)
+                )
+                return
+
             cursor.execute("""
             CREATE TABLE IF NOT EXISTS sabt_darkhast_kharid_kargah(
             id INT AUTO_INCREMENT PRIMARY KEY,
@@ -5461,6 +5486,31 @@ def sabt_darkhast_kargah(event=None):
                 return
             
         elif change_type=="درخواست اجاره کارگاه":
+            required_fields_darkhast_ejareh_karghah={
+                "نوع ملک":combo_darkhast_kargah.get(),
+                "سال ساخت":sal_sakht_darkhast_kargah_entry.get(),
+                "متراژ":metraj_darkhast_kargah_entry.get(),
+                "اجاره ماهانه":ejareh_mahaneh_darkhast_kargah_entry.get(),
+                "مبلغ پیش":mablagh_pish_darkhast_kargah_entry.get(),
+                "آدرس":loctaion_darkhast_kargah_entry.get("1.0",tk.END).strip(),
+                "نام مشتری":name_moshtari_darkhast_kargah_entry.get(),
+                "شماره مشتری":shomareh_moshtari_darkhast_kargah_entry.get(),
+                }
+                
+                #پیدا کردن فیلد های خالی
+            tohi_fields_darkhast_ejareh_karghah=[
+                name for name,value in required_fields_darkhast_ejareh_karghah.items()
+                if not value.strip()
+            ]
+            
+                #اگر حتی یک فیلد خالی بود ارور  بده
+            if tohi_fields_darkhast_ejareh_karghah:
+                messagebox.showwarning(
+                    "هشدار",
+                    "لطفا فیلد های زیر را پر کنید:\n\n" +
+                    "\n".join(tohi_fields_darkhast_ejareh_karghah)
+                )
+                return
             cursor.execute("""
             CREATE TABLE IF NOT EXISTS sabt_darkhast_ejareh_kargah(
             id INT AUTO_INCREMENT PRIMARY KEY,
@@ -12872,14 +12922,14 @@ mablagh_pish_darkhast_kargah_entry = tk.Entry(frame_midde_right_darkhast_karghah
 mablagh_pish_darkhast_kargah_entry.place_forget()
 mablagh_pish_darkhast_kargah_entry.bind("<KeyRelease>",chck_mablagh_vadie_darkhast_karghah)
 #------------------------------------فریم چپ وسط-----------------------
-name_moshtari_darkhast_kargah_lable = tk.Label(frame_midde_left_darkhast_karghah,text="نام مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+name_moshtari_darkhast_kargah_lable = tk.Label(frame_midde_left_darkhast_karghah,text="نام مشتری", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 name_moshtari_darkhast_kargah_lable.place(x=600, y=30,anchor="e")
 
 name_moshtari_darkhast_kargah_entry = tk.Entry(frame_midde_left_darkhast_karghah, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 name_moshtari_darkhast_kargah_entry.place(x=30, y=20, width=350, height=25)
 name_moshtari_darkhast_kargah_entry.bind("<KeyRelease>",chck_name_moshtari_darkhast_karghah)
 
-shomareh_moshtari_darkhast_kargah_lable = tk.Label(frame_midde_left_darkhast_karghah, text="شماره مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
+shomareh_moshtari_darkhast_kargah_lable = tk.Label(frame_midde_left_darkhast_karghah, text="شماره مشتری", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 shomareh_moshtari_darkhast_kargah_lable.place(x=600, y=80,anchor="e")
 
 shomareh_moshtari_darkhast_kargah_entry = tk.Entry(frame_midde_left_darkhast_karghah, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
