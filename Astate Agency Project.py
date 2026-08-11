@@ -19,7 +19,7 @@ def get_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="Nima10.N10",#   entry  در ادرس ها   تبدیل بهtext شود      entry==>text
+        password="EmadAE7*",#   entry  در ادرس ها   تبدیل بهtext شود      entry==>text
         #database="state_agency"
     )
 #endregion
@@ -4559,33 +4559,9 @@ def sabt_ejareh_kargah():
 #---------------darkhast_maskoni Database------------------------
 skip_save=False
 def sabt_darkhast_maskoni(event=None):
-    required_fields_darkhast_maskoni={
-        "نوع ملک":melk_type_darkhast_maskoni_entry.get(),
-        "سال ساخت":sal_sakht_darkhast_maskoni_entry.get(),
-        "متراژ":metraj_darkhast_maskoni_entry.get(),
-        "طبقه":tabaghe_darkhast_maskoni_entry.get(),
-        "واحد":vahed_darkhast_maskoni_entry.get(),
-        "اتاق":otagh_darkhast_maskoni_entry.get(),
-        "قیمت کل":gheimat_kol_darkhast_maskoni_entry.get(),
-        "آدرس":addrres_darkhast_maskoni_entry.get("1.0",tk.END).strip(),
-        "نام مشتری":name_moshtari_darkhast_maskoni_entry.get(),
-        "شماره مشتری":shomareh_moshtari_darkhast_maskoni_entry.get(),
-    }
+    change_type=melk_type_darkhast_maskoni_entry.get()
 
-    #پیدا کردن فیلد های خالی
-    tohi_fields_darkhast_maskoni=[
-        name for name,value in required_fields_darkhast_maskoni.items()
-        if not value.strip()
-    ]
-
-    #اگر حتی یک فیلد خالی بود ارور  بده
-    if tohi_fields_darkhast_maskoni:
-        messagebox.showwarning(
-            "هشدار",
-            "لطفا فیلد های زیر را پر کنید:\n\n" +
-            "\n".join(tohi_fields_darkhast_maskoni)
-        )
-        return
+    
     global skip_save
     db = None
     try:
@@ -4598,6 +4574,33 @@ def sabt_darkhast_maskoni(event=None):
         
         
         if change_type=="درخواست خرید مسکونی":
+            required_fields_darkhast_maskoni={
+                "نوع ملک":melk_type_darkhast_maskoni_entry.get(),
+                "سال ساخت":sal_sakht_darkhast_maskoni_entry.get(),
+                "متراژ":metraj_darkhast_maskoni_entry.get(),
+                "طبقه":tabaghe_darkhast_maskoni_entry.get(),
+                "واحد":vahed_darkhast_maskoni_entry.get(),
+                "اتاق":otagh_darkhast_maskoni_entry.get(),
+                "قیمت کل":gheimat_kol_darkhast_maskoni_entry.get(),
+                "آدرس":addrres_darkhast_maskoni_entry.get("1.0",tk.END).strip(),
+                "نام مشتری":name_moshtari_darkhast_maskoni_entry.get(),
+                "شماره مشتری":shomareh_moshtari_darkhast_maskoni_entry.get(),
+                }
+            
+            #پیدا کردن فیلد های خالی
+            tohi_fields_darkhast_maskoni=[
+                name for name,value in required_fields_darkhast_maskoni.items()
+                if not value.strip()
+            ]
+        
+            #اگر حتی یک فیلد خالی بود ارور  بده
+            if tohi_fields_darkhast_maskoni:
+                messagebox.showwarning(
+                    "هشدار",
+                    "لطفا فیلد های زیر را پر کنید:\n\n" +
+                    "\n".join(tohi_fields_darkhast_maskoni)
+                )
+                return
             cursor.execute( """
             CREATE TABLE IF NOT EXISTS sabt_darkhast_kharid_maskoni (
             id INT AUTO_INCREMENT PRIMARY KEY,
@@ -4655,7 +4658,36 @@ def sabt_darkhast_maskoni(event=None):
                 messagebox.showerror("Error", "خطا: ثبت در جدول  انجام نشد")
                 return
 
+
         elif change_type=="درخواست اجاره مسکونی":
+            required_fields_darkhast_ejareh_maskoni={
+                "نوع ملک":melk_type_darkhast_maskoni_entry.get(),
+                "سال ساخت":sal_sakht_darkhast_maskoni_entry.get(),
+                "متراژ":metraj_darkhast_maskoni_entry.get(),
+                "طبقه":tabaghe_darkhast_maskoni_entry.get(),
+                "واحد":vahed_darkhast_maskoni_entry.get(),
+                "اتاق":otagh_darkhast_maskoni_entry.get(),
+                "مبلغ اجاره":mablagh_ejare_darkhast_maskoni_entry.get(),
+                "مبلغ پیش":gheimat_pish_darkhast_maskoni_entry.get(),
+                "آدرس":addrres_darkhast_maskoni_entry.get("1.0",tk.END).strip(),
+                "نام مشتری":name_moshtari_darkhast_maskoni_entry.get(),
+                "شماره مشتری":shomareh_moshtari_darkhast_maskoni_entry.get(),
+            }
+            
+            #پیدا کردن فیلد های خالی
+            tohi_fields_darkhast_ejareh_maskoni=[
+                name for name,value in required_fields_darkhast_ejareh_maskoni.items()
+                if not value.strip()
+            ]
+        
+            #اگر حتی یک فیلد خالی بود ارور  بده
+            if tohi_fields_darkhast_ejareh_maskoni:
+                messagebox.showwarning(
+                    "هشدار",
+                    "لطفا فیلد های زیر را پر کنید:\n\n" +
+                    "\n".join(tohi_fields_darkhast_ejareh_maskoni)
+                )
+                return
 
             cursor.execute( """
             CREATE TABLE IF NOT EXISTS sabt_darkhast_ejareh_maskoni (
@@ -4714,6 +4746,7 @@ def sabt_darkhast_maskoni(event=None):
             if last_id is None or last_id == 0:
                 messagebox.showerror("Error", "خطا: ثبت در جدول  انجام نشد")
                 return
+
 
 
         db.commit()
