@@ -4941,6 +4941,29 @@ def sabt_darkhast_bagh_zamin(event=None):
         if event is not None:#خیلی مهم 
            return
         if change_type=="درخواست خرید باغ زمین":
+            required_fields_darkhast_bagh_zamin={
+                    "متراژ":metraj_zamin_darkhast_bagh_zamin_entry.get(),
+                    "قیمت هرمتر":gheimat_har_metr_bagh_zamin_darkhast_entry.get(),
+                    "قیمت کل":gheimat_kol_bagh_zamin_darkhast_entry.get(),
+                    "آدرس":bagh_loctaion_darkhast_bagh_zamin_entry.get("1.0",tk.END).strip(),
+                    "نام مشتری":name_moshtari_darkhast_bagh_entry.get(),
+                    "شماره مشتری":shomareh_moshtari_darkhast_bagh_entry.get(),
+                    }
+                        
+            #پیدا کردن فیلد های خالی
+            tohi_fields_darkhast_bagh_zamin=[
+                name for name,value in required_fields_darkhast_bagh_zamin.items()
+                if not value.strip()
+            ]
+        
+            #اگر حتی یک فیلد خالی بود ارور  بده
+            if tohi_fields_darkhast_bagh_zamin:
+                messagebox.showwarning(
+                    "هشدار",
+                    "لطفا فیلد های زیر را پر کنید:\n\n" +
+                    "\n".join(tohi_fields_darkhast_bagh_zamin)
+                )
+                return
             if karbari == "باغ":
 
                 type_derakht_value = ",".join(selected_trees3) if selected_trees3 else ""
@@ -5117,6 +5140,29 @@ def sabt_darkhast_bagh_zamin(event=None):
             
         
         elif change_type=="درخواست اجاره باغ زمین":
+            required_fields_darkhast_ejareh_bagh_zamin={
+                "متراژ":metraj_zamin_darkhast_bagh_zamin_entry.get(),
+                "اجاره ماهانه":mablagh_ejareh_mahaneh_darkhast_entry.get(),
+                "ودیعه":gheimat_ejareh_bagh_darkhast_zamin_entry.get(),
+                "آدرس":bagh_loctaion_darkhast_bagh_zamin_entry.get("1.0",tk.END).strip(),
+                "نام مشتری":name_moshtari_darkhast_bagh_entry.get(),
+                "شماره مشتری":shomareh_moshtari_darkhast_bagh_entry.get(),
+                }
+                        
+            #پیدا کردن فیلد های خالی
+            tohi_fields_darkhast_ejareh_bagh_zamin=[
+                name for name,value in required_fields_darkhast_ejareh_bagh_zamin.items()
+                if not value.strip()
+            ]
+        
+            #اگر حتی یک فیلد خالی بود ارور  بده
+            if tohi_fields_darkhast_ejareh_bagh_zamin:
+                messagebox.showwarning(
+                    "هشدار",
+                    "لطفا فیلد های زیر را پر کنید:\n\n" +
+                    "\n".join(tohi_fields_darkhast_ejareh_bagh_zamin)
+                )
+                return
             
             if karbari =="باغ":
                 type_derakht_value = ",".join(selected_trees3) if selected_trees3 else ""
