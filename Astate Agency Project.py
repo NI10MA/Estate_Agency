@@ -4797,6 +4797,33 @@ def sabt_darkhast_edari_tejari(event=None):
            return
         
         if change_type=="درخواست خرید اداری و تجاری":
+            required_fields_darkhast_kharid_edari_tejari={
+            "سال ساخت":sal_sakht_darkhast_edari_tejari_entry.get(),
+            "متراژ":metraj_melk_darkhast_edari_tejari_entry.get(),
+            "طبقه":tabaghe_darkhast_edari_tejari_entry.get(),
+            "واحد":vahed_darkhast_edari_tejari_entry.get(),
+            "اتاق":otagh_darkhast_edari_tejari_entry.get(),
+            "قیمت کل":gheimat_kol_darkhast_edari_tejari_entry.get(),
+            "آدرس":addrres_darkhast_edari_tejari_entry.get("1.0",tk.END).strip(),
+            "نام مشتری":name_moshtari_darkhast_edari_tejari_entry.get(),
+            "شماره مشتری":shomareh_moshtari_darkhast_edari_tejari_entry.get(),
+            }
+        
+            #پیدا کردن فیلد های خالی
+            tohi_fields_darkhast_kharid_edari_tejari=[
+                name for name,value in required_fields_darkhast_kharid_edari_tejari.items()
+                if not value.strip()
+            ]
+        
+            #اگر حتی یک فیلد خالی بود ارور  بده
+            if tohi_fields_darkhast_kharid_edari_tejari:
+                messagebox.showwarning(
+                    "هشدار",
+                    "لطفا فیلد های زیر را پر کنید:\n\n" +
+                    "\n".join(tohi_fields_darkhast_kharid_edari_tejari)
+                )
+                return
+
             cursor.execute("""
             CREATE TABLE IF NOT EXISTS sabt_darkhast_kharid_edari_tejari (
             id INT AUTO_INCREMENT PRIMARY KEY,
@@ -4853,6 +4880,35 @@ def sabt_darkhast_edari_tejari(event=None):
                 return
             
         elif change_type=="درخواست اجاره اداری و تجاری":
+            required_fields_darkhast_ejareh_edari_tejari={
+            "سال ساخت":sal_sakht_darkhast_edari_tejari_entry.get(),
+            "متراژ":metraj_melk_darkhast_edari_tejari_entry.get(),
+            "طبقه":tabaghe_darkhast_edari_tejari_entry.get(),
+            "واحد":vahed_darkhast_edari_tejari_entry.get(),
+            "اتاق":otagh_darkhast_edari_tejari_entry.get(),
+            "مبلغ پیش":gheimat_kol_darkhast_edari_tejari_entry.get(),
+            "مبلغ اجاره":mablagh_vadie_darkhast_edari_tejari_entry.get(),
+            "آدرس":addrres_darkhast_edari_tejari_entry.get("1.0",tk.END).strip(),
+            "نام مشتری":name_moshtari_darkhast_edari_tejari_entry.get(),
+            "شماره مشتری":shomareh_moshtari_darkhast_edari_tejari_entry.get(),
+            }
+        
+            #پیدا کردن فیلد های خالی
+            tohi_fields_darkhast_ejareh_edari_tejari=[
+                name for name,value in required_fields_darkhast_ejareh_edari_tejari.items()
+                if not value.strip()
+            ]
+        
+            #اگر حتی یک فیلد خالی بود ارور  بده
+            if tohi_fields_darkhast_ejareh_edari_tejari:
+                messagebox.showwarning(
+                    "هشدار",
+                    "لطفا فیلد های زیر را پر کنید:\n\n" +
+                    "\n".join(tohi_fields_darkhast_ejareh_edari_tejari)
+                )
+                return
+            
+
             cursor.execute( """
             CREATE TABLE IF NOT EXISTS sabt_darkhast_ejareh_edari_tejari (
             id INT AUTO_INCREMENT PRIMARY KEY,
