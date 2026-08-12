@@ -19,7 +19,7 @@ def get_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="EmadAE7*",#   entry  در ادرس ها   تبدیل بهtext شود      entry==>text
+        password="Nima10.N10",#   entry  در ادرس ها   تبدیل بهtext شود      entry==>text
         #database="state_agency"
     )
 #endregion
@@ -12859,7 +12859,7 @@ error_lable_darkhast_address_bagh_zamin.place(x=835 , y=20)
 error_lable_name_moshtari_darkhast_bagh_zamin= tk.Label(darkhast_bagh_zamin_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
 error_lable_name_moshtari_darkhast_bagh_zamin.place(x=835 , y=20)
 
-error_lable_shomareh_moshtari_darkhast_bagh_zamin= tk.Label(forosh_bagh_zamin_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
+error_lable_shomareh_moshtari_darkhast_bagh_zamin= tk.Label(darkhast_bagh_zamin_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
 error_lable_shomareh_moshtari_darkhast_bagh_zamin.place(x=900 , y=20)
 
 darkhast_bagh_zamin_window.protocol("WM_DELETE_WINDOW", lambda: None)
