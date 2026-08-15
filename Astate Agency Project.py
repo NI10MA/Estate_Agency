@@ -20,7 +20,7 @@ def get_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="EmadAE7*",#   entry  در ادرس ها   تبدیل بهtext شود      entry==>text
+        password="Nima10.N10",
         #database="state_agency"
     )
 #endregion
@@ -2040,14 +2040,14 @@ def chck_name_malek_forosh_maskoni(event=None):
 def chck_shomareh_malek_forosh_maskoni(event=None):
     shomareh_malek_forosh_maskoni=shomareh_malek_forosh_maskoni_entry.get().strip()
 
-    if shomareh_malek_forosh_maskoni.isdigit() and len(shomareh_malek_forosh_maskoni) ==11:
+    if shomareh_malek_forosh_maskoni.isdigit() and len(shomareh_malek_forosh_maskoni) ==11 and shomareh_malek_forosh_maskoni.startswith("09"):
         shomareh_malek_forosh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_shomareh_malek_forosh_maskoni.config(text="")
         name_malek_forosh_maskoni_entry.config(state="normal")
 
     else:
         shomareh_malek_forosh_maskoni_entry.config(highlightcolor="red",highlightthickness=2)
-        error_lable_shomareh_malek_forosh_maskoni.config(text=" فیلد(شماره مالک) باید شامل 11رقم باشد")
+        error_lable_shomareh_malek_forosh_maskoni.config(text=" فیلد(شماره مالک) باید شامل 11رقم وبا(09) شروع شود ")
         name_malek_forosh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
 #-------------------اعتبارسنجی اجاره مسکونی--------------------
 def chck_sal_sakht_ejareh_maskoni(event=None):
@@ -2214,14 +2214,14 @@ def chck_name_malek_ejareh_maskoni(event=None):
 def chck_shomareh_malek_ejareh_maskoni(event=None):
     shomareh_malek_ejareh_maskoni=shomareh_malek_ejareh_maskoni_entry.get().strip()
 
-    if shomareh_malek_ejareh_maskoni.isdigit() and len(shomareh_malek_ejareh_maskoni) ==11:
+    if shomareh_malek_ejareh_maskoni.isdigit() and len(shomareh_malek_ejareh_maskoni) ==11 and shomareh_malek_ejareh_maskoni.startswith("09"):
         shomareh_malek_ejareh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_name_malek_ejareh_maskoni.config(text="")
         name_malek_ejareh_maskoni_entry.config(state="normal")
 
     else:
         shomareh_malek_ejareh_maskoni_entry.config(highlightcolor="red",highlightthickness=2)
-        error_lable_name_malek_ejareh_maskoni.config(text=" فیلد(شماره مالک) باید شامل 11رقم باشد")
+        error_lable_name_malek_ejareh_maskoni.config(text=" فیلد(شماره مالک) باید شامل 11رقم وبا(09) شروع شود ")
         name_malek_ejareh_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
 #---------------------اعتبارسنجی درخواست مسکونی--------------------
 def chck_sal_sakht_darkhast_maskoni(event=None):
@@ -2400,13 +2400,13 @@ def chck_name_moshtari_darkhast_maskoni(event=None):
 def chck_shomareh_moshtari_darkhast_maskoni(event=None):
     shomareh_moshtari_darkhast_maskoni=shomareh_moshtari_darkhast_maskoni_entry.get().strip()
 
-    if shomareh_moshtari_darkhast_maskoni.isdigit() and len(shomareh_moshtari_darkhast_maskoni) ==11:
+    if shomareh_moshtari_darkhast_maskoni.isdigit() and len(shomareh_moshtari_darkhast_maskoni) ==11 and shomareh_moshtari_darkhast_maskoni.startswith("09"):
         shomareh_moshtari_darkhast_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_shomareh_moshtari_darkhast_maskoni.config(text="")
         name_moshtari_darkhast_maskoni_entry.config(state="normal")
     else:
         shomareh_moshtari_darkhast_maskoni_entry.config(highlightcolor="red",highlightthickness=2)
-        error_lable_shomareh_moshtari_darkhast_maskoni.config(text=" فیلد(شماره مشتری) باید شامل 11رقم باشد")
+        error_lable_shomareh_moshtari_darkhast_maskoni.config(text=" فیلد(شماره مشتری) باید شامل 11رقم وبا(09) شروع شود ")
         name_moshtari_darkhast_maskoni_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
 #---------------------اعتبارسنجی فروش اداری/ تجاری--------------------
 def chck_sal_sakht_forosh_edari_tejari(event=None):
@@ -2546,14 +2546,14 @@ def chck_name_malek_forosh_edari_tejari(event=None):
 def chck_shomareh_malek_forosh_edari_tejari(event=None):
     shomareh_malek_forosh_edari_tejari=shomareh_malek_forosh_edari_tejari_entry.get().strip()
 
-    if shomareh_malek_forosh_edari_tejari.isdigit() and len(shomareh_malek_forosh_edari_tejari) ==11:
+    if shomareh_malek_forosh_edari_tejari.isdigit() and len(shomareh_malek_forosh_edari_tejari) ==11 and shomareh_malek_forosh_edari_tejari.startswith("09"):
         shomareh_malek_forosh_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_shomareh_malek_forosh_edari_tejari.config(text="")
         name_malek_forosh_edari_tejari_entry.config(state="normal")
 
     else:
         shomareh_malek_forosh_edari_tejari_entry.config(highlightcolor="red",highlightthickness=2)
-        error_lable_shomareh_malek_forosh_edari_tejari.config(text=" فیلد(شماره مالک) باید شامل 11رقم باشد")
+        error_lable_shomareh_malek_forosh_edari_tejari.config(text=" فیلد(شماره مالک) باید شامل 11رقم وبا(09) شروع شود ")
         name_malek_forosh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
 
 #---------------------اعتبارسنجی اجاره اداری/ تجاری--------------------
@@ -2717,14 +2717,14 @@ def chck_name_malek_ejareh_edari_tejari(event=None):
 def chck_shomareh_malek_ejareh_edari_tejari(event=None):
     shomareh_malek_ejareh_edari_tejari=shomareh_malek_ejareh_edari_tejari_entry.get().strip()
 
-    if shomareh_malek_ejareh_edari_tejari.isdigit() and len(shomareh_malek_ejareh_edari_tejari) ==11:
+    if shomareh_malek_ejareh_edari_tejari.isdigit() and len(shomareh_malek_ejareh_edari_tejari) ==11 and shomareh_malek_ejareh_edari_tejari.startswith("09"):
         shomareh_malek_ejareh_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_shomareh_malek_ejareh_edari_tejari.config(text="")
         name_malek_ejareh_edari_tejari_entry.config(state="normal")
 
     else:
         shomareh_malek_ejareh_edari_tejari_entry.config(highlightcolor="red",highlightthickness=2)
-        error_lable_shomareh_malek_ejareh_edari_tejari.config(text=" فیلد(شماره مالک) باید شامل 11رقم باشد")
+        error_lable_shomareh_malek_ejareh_edari_tejari.config(text=" فیلد(شماره مالک) باید شامل 11رقم وبا(09) شروع شود ")
         name_malek_ejareh_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
 #-------------------اعتبارسنجی درخواست اداری/ تجاری--------------------
 def chck_sal_sakht_darkhast_edari_tejari(event=None):
@@ -2900,14 +2900,14 @@ def chck_name_moshtari_darkhast_edari_tejari(event=None):
 def chck_shomareh_moshtari_darkhast_edari_tejari(event=None):
     shomareh_moshtari_darkhast_edari_tejari=shomareh_moshtari_darkhast_edari_tejari_entry.get().strip()
 
-    if shomareh_moshtari_darkhast_edari_tejari.isdigit() and len(shomareh_moshtari_darkhast_edari_tejari) ==11:
+    if shomareh_moshtari_darkhast_edari_tejari.isdigit() and len(shomareh_moshtari_darkhast_edari_tejari) ==11 and shomareh_moshtari_darkhast_edari_tejari.startswith("09"):
         shomareh_moshtari_darkhast_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_shomareh_moshtari_darkhast_edari_tejari.config(text="")
         name_moshtari_darkhast_edari_tejari_entry.config(state="normal")
 
     else:
         shomareh_moshtari_darkhast_edari_tejari_entry.config(highlightcolor="red",highlightthickness=2)
-        error_lable_shomareh_moshtari_darkhast_edari_tejari.config(text=" فیلد(شماره مشتری) باید شامل 11رقم باشد")
+        error_lable_shomareh_moshtari_darkhast_edari_tejari.config(text=" فیلد(شماره مشتری) باید شامل 11رقم وبا(09) شروع شود ")
         name_moshtari_darkhast_edari_tejari_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")        
 #---------------------------------اعتبار سنجی فروش باغ زمین-------------
 def chck_metraj_forosh_bagh_zamin(event=None):
@@ -2991,14 +2991,14 @@ def chck_name_malek_forosh_bagh_zamin(event=None):
 def chck_shomareh_malek_forosh_bagh_zamin(event=None):
     shomareh_malek_forosh_bagh_zamin=number_malek_forosh_bagh_entry.get().strip()
 
-    if shomareh_malek_forosh_bagh_zamin.isdigit() and len(shomareh_malek_forosh_bagh_zamin) ==11:
+    if shomareh_malek_forosh_bagh_zamin.isdigit() and len(shomareh_malek_forosh_bagh_zamin) ==11 and shomareh_malek_forosh_bagh_zamin.startswith("09"):
         number_malek_forosh_bagh_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_shomareh_malek_forosh_bagh_zamin.config(text="")
         name_malek_forosh_bagh_entry.config(state="normal")
 
     else:
         number_malek_forosh_bagh_entry.config(highlightcolor="red",highlightthickness=2)
-        error_lable_shomareh_malek_forosh_bagh_zamin.config(text=" فیلد(شماره مالک) باید شامل 11رقم باشد")
+        error_lable_shomareh_malek_forosh_bagh_zamin.config(text=" فیلد(شماره مالک) باید شامل 11رقم وبا(09) شروع شود ")
         name_malek_forosh_bagh_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")   
 #---------------------------------اعتبار سنجی اجاره باغ زمین----------------
 def chck_metraj_ejareh_bagh_zamin(event=None):
@@ -3083,13 +3083,13 @@ def chck_name_malek_ejareh_bagh_zamin(event=None):
 def chck_shomareh_malek_ejareh_bagh_zamin(event=None):
     shomareh_malek_ejareh_bagh_zamin= number_malek_bagh_zamin_entry.get().strip()
 
-    if shomareh_malek_ejareh_bagh_zamin.isdigit() and len(shomareh_malek_ejareh_bagh_zamin) ==11:
+    if shomareh_malek_ejareh_bagh_zamin.isdigit() and len(shomareh_malek_ejareh_bagh_zamin) ==11 and shomareh_malek_ejareh_bagh_zamin.startswith("09"):
         number_malek_bagh_zamin_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_shomareh_malek_ejareh_bagh_zamin.config(text="")
         name_malek_bagh_zamin_entry.config(state="normal")
     else:
         number_malek_bagh_zamin_entry.config(highlightcolor="red",highlightthickness=2)
-        error_lable_shomareh_malek_ejareh_bagh_zamin.config(text=" فیلد(شماره مالک) باید شامل 11رقم باشد")
+        error_lable_shomareh_malek_ejareh_bagh_zamin.config(text=" فیلد(شماره مالک) باید شامل 11رقم وبا(09) شروع شود ")
         name_malek_bagh_zamin_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")   
 #----------------------اعتبار سنجی درخواست باغ زمین----------------
 def chck_metraj_darkhast_bagh_zamin(event=None):
@@ -3217,13 +3217,13 @@ def chck_name_moshtari_darkhast_bagh_zamin(event=None):
 def chck_shomareh_moshtari_darkhast_bagh_zamin(event=None):
     shomareh_moshtari_darkhast_bagh_zamin= shomareh_moshtari_darkhast_bagh_entry.get().strip()
 
-    if shomareh_moshtari_darkhast_bagh_zamin.isdigit() and len(shomareh_moshtari_darkhast_bagh_zamin) ==11:
+    if shomareh_moshtari_darkhast_bagh_zamin.isdigit() and len(shomareh_moshtari_darkhast_bagh_zamin) ==11 and shomareh_moshtari_darkhast_bagh_zamin.startswith("09"):
         shomareh_moshtari_darkhast_bagh_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_shomareh_moshtari_darkhast_bagh_zamin.config(text="")
         name_moshtari_darkhast_bagh_entry.config(state="normal")
     else:
         shomareh_moshtari_darkhast_bagh_entry.config(highlightcolor="red",highlightthickness=2)
-        error_lable_shomareh_moshtari_darkhast_bagh_zamin.config(text=" فیلد(شماره مشتری) باید شامل 11رقم باشد")
+        error_lable_shomareh_moshtari_darkhast_bagh_zamin.config(text=" فیلد(شماره مشتری) باید شامل 11رقم وبا(09) شروع شود ")
         name_moshtari_darkhast_bagh_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white") 
 #---------------------اعتبارسنجی فروش کارگاه--------------------
 def chck_sal_sakht_forosh_kargah(event=None):
@@ -3296,14 +3296,14 @@ def chck_name_malek_forosh_kargah(event=None):
 def chck_shomareh_malek_forosh_kargah(event=None):
     shomareh_malek_forosh_kargah=shomareh_malek_forosh_kargah_entry.get().strip()
 
-    if shomareh_malek_forosh_kargah.isdigit() and len(shomareh_malek_forosh_kargah) ==11:
+    if shomareh_malek_forosh_kargah.isdigit() and len(shomareh_malek_forosh_kargah) ==11 and shomareh_malek_forosh_kargah.startswith("09"):
         shomareh_malek_forosh_kargah_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_shomareh_malek_forosh_kargah.config(text="")
         name_malek_forosh_kargah_entry.config(state="normal")
 
     else:
         shomareh_malek_forosh_kargah_entry.config(highlightcolor="red",highlightthickness=2)
-        error_lable_shomareh_malek_forosh_kargah.config(text=" فیلد(شماره مالک) باید شامل 11رقم باشد")
+        error_lable_shomareh_malek_forosh_kargah.config(text=" فیلد(شماره مالک) باید شامل 11رقم وبا(09) شروع شود ")
         name_malek_forosh_kargah_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
 #-------------------اعتبارسنجی اجاره کارگاه--------------------
 def chck_sal_sakht_ejareh_karghah(event=None):
@@ -3399,14 +3399,14 @@ def chck_name_malek_ejareh_karghah(event=None):
 def chck_shomareh_malek_ejareh_karghah(event=None):
     shomareh_malek_ejareh_karghah=shomareh_malek_ejareh_karghah_entry.get().strip()
 
-    if shomareh_malek_ejareh_karghah.isdigit() and len(shomareh_malek_ejareh_karghah) ==11:
+    if shomareh_malek_ejareh_karghah.isdigit() and len(shomareh_malek_ejareh_karghah) ==11 and shomareh_malek_ejareh_karghah.startswith("09"):
         shomareh_malek_ejareh_karghah_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_shomareh_malek_ejareh_karghah.config(text="")
         name_malek_ejareh_karghah_entry.config(state="normal")
 
     else:
         shomareh_malek_ejareh_karghah_entry.config(highlightcolor="red",highlightthickness=2)
-        error_lable_shomareh_malek_ejareh_karghah.config(text=" فیلد(شماره مالک) باید شامل 11رقم باشد")
+        error_lable_shomareh_malek_ejareh_karghah.config(text=" فیلد(شماره مالک) باید شامل 11رقم وبا(09) شروع شود ")
         name_malek_ejareh_karghah_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
 #-------------------اعتبارسنجی درخواست کارگاه --------------------
 def chck_sal_sakht_darkhast_karghah(event=None):
@@ -3519,14 +3519,14 @@ def chck_name_moshtari_darkhast_karghah(event=None):
 def chck_shomareh_moshtari_darkhast_karghah(event=None):
     shomareh_moshtari_darkhast_karghah=shomareh_moshtari_darkhast_kargah_entry.get().strip()
 
-    if shomareh_moshtari_darkhast_karghah.isdigit() and len(shomareh_moshtari_darkhast_karghah) ==11:
+    if shomareh_moshtari_darkhast_karghah.isdigit() and len(shomareh_moshtari_darkhast_karghah) ==11 and shomareh_moshtari_darkhast_karghah.startswith("09"):
         shomareh_moshtari_darkhast_kargah_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_shomareh_moshtari_darkhast_karghah.config(text="")
         name_moshtari_darkhast_kargah_entry.config(state="normal")
 
     else:
         shomareh_moshtari_darkhast_kargah_entry.config(highlightcolor="red",highlightthickness=2)
-        error_lable_shomareh_moshtari_darkhast_karghah.config(text=" فیلد(شماره مشتری) باید شامل 11رقم باشد")
+        error_lable_shomareh_moshtari_darkhast_karghah.config(text=" فیلد(شماره مشتری) باید شامل 11رقم وبا(09) شروع شود ")
         name_moshtari_darkhast_kargah_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
 #endregion
 #-------------------------تابع ثبت فروش------------------------------
@@ -10162,7 +10162,7 @@ error_lable_address_ejareh_maskoni= tk.Label(ejareh_maskoni_window, text="",fg="
 error_lable_address_ejareh_maskoni.place(x=850 , y=20)
 
 error_lable_name_malek_ejareh_maskoni= tk.Label(ejareh_maskoni_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
-error_lable_name_malek_ejareh_maskoni.place(x=850 , y=20)
+error_lable_name_malek_ejareh_maskoni.place(x=835 , y=20)
 
 error_lable_shomareh_malek_ejareh_maskoni= tk.Label(ejareh_maskoni_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
 error_lable_shomareh_malek_ejareh_maskoni.place(x=850 , y=20)
@@ -10404,7 +10404,7 @@ error_lable_name_malek_ejareh_edari_tejari= tk.Label(ejareh_edari_tejari_window,
 error_lable_name_malek_ejareh_edari_tejari.place(x=835 , y=20)
 
 error_lable_shomareh_malek_ejareh_edari_tejari= tk.Label(ejareh_edari_tejari_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
-error_lable_shomareh_malek_ejareh_edari_tejari.place(x=900 , y=20)
+error_lable_shomareh_malek_ejareh_edari_tejari.place(x=835 , y=20)
 
 ejareh_edari_tejari_window.protocol("WM_DELETE_WINDOW", lambda: None)
 ejareh_edari_tejari_window.resizable(False, False)
@@ -10766,7 +10766,7 @@ error_lable_name_malek_ejareh_bagh_zamin=tk.Label(ejareh_bagh_zamin_window, text
 error_lable_name_malek_ejareh_bagh_zamin.place(x=835,y=20)
 
 error_lable_shomareh_malek_ejareh_bagh_zamin=tk.Label(ejareh_bagh_zamin_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
-error_lable_shomareh_malek_ejareh_bagh_zamin.place(x=900,y=20)
+error_lable_shomareh_malek_ejareh_bagh_zamin.place(x=835,y=20)
 
 ejareh_bagh_zamin_window.protocol("WM_DELETE_WINDOW", lambda: None)
 ejareh_bagh_zamin_window.resizable(False, False)
@@ -11015,7 +11015,7 @@ error_lable_name_malek_ejareh_karghah= tk.Label(ejareh_karghah_window, text="",f
 error_lable_name_malek_ejareh_karghah.place(x=850 , y=20)
 
 error_lable_shomareh_malek_ejareh_karghah= tk.Label(ejareh_karghah_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
-error_lable_shomareh_malek_ejareh_karghah.place(x=850 , y=20)
+error_lable_shomareh_malek_ejareh_karghah.place(x=835 , y=20)
 
 ejareh_karghah_window.protocol("WM_DELETE_WINDOW", lambda: None)
 ejareh_karghah_window.resizable(False, False)
@@ -11244,7 +11244,7 @@ error_lable_name_malek_forosh_maskoni= tk.Label(forosh_maskoni_window, text="",f
 error_lable_name_malek_forosh_maskoni.place(x=835 , y=20)
 
 error_lable_shomareh_malek_forosh_maskoni= tk.Label(forosh_maskoni_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
-error_lable_shomareh_malek_forosh_maskoni.place(x=900 , y=20)
+error_lable_shomareh_malek_forosh_maskoni.place(x=835 , y=20)
 
 forosh_maskoni_window.protocol("WM_DELETE_WINDOW", lambda: None)
 forosh_maskoni_window.resizable(False, False)
@@ -11472,7 +11472,7 @@ error_lable_name_malek_forosh_edari_tejari= tk.Label(forosh_edari_tejari_window,
 error_lable_name_malek_forosh_edari_tejari.place(x=835 , y=20)
 
 error_lable_shomareh_malek_forosh_edari_tejari= tk.Label(forosh_edari_tejari_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
-error_lable_shomareh_malek_forosh_edari_tejari.place(x=900 , y=20)
+error_lable_shomareh_malek_forosh_edari_tejari.place(x=835 , y=20)
 
 forosh_edari_tejari_window.protocol("WM_DELETE_WINDOW", lambda: None)
 forosh_edari_tejari_window.resizable(False, False)
@@ -11826,7 +11826,7 @@ error_lable_name_malek_forosh_bagh_zamin= tk.Label(forosh_bagh_zamin_window, tex
 error_lable_name_malek_forosh_bagh_zamin.place(x=835 , y=20)
 
 error_lable_shomareh_malek_forosh_bagh_zamin= tk.Label(forosh_bagh_zamin_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
-error_lable_shomareh_malek_forosh_bagh_zamin.place(x=900 , y=20)
+error_lable_shomareh_malek_forosh_bagh_zamin.place(x=835 , y=20)
 
 forosh_bagh_zamin_window.protocol("WM_DELETE_WINDOW", lambda: None)
 forosh_bagh_zamin_window.resizable(False, False)
@@ -12055,7 +12055,7 @@ error_lable_name_malek_forosh_kargah= tk.Label(forosh_karghah_window, text="",fg
 error_lable_name_malek_forosh_kargah.place(x=835 , y=20)
 
 error_lable_shomareh_malek_forosh_kargah= tk.Label(forosh_karghah_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
-error_lable_shomareh_malek_forosh_kargah.place(x=900 , y=20)
+error_lable_shomareh_malek_forosh_kargah.place(x=835 , y=20)
 
 forosh_karghah_window.protocol("WM_DELETE_WINDOW", lambda: None)
 forosh_karghah_window.resizable(False, False)
@@ -12311,7 +12311,7 @@ error_lable_name_moshtari_darkhast_maskoni= tk.Label(darkhast_maskoni_window, te
 error_lable_name_moshtari_darkhast_maskoni.place(x=835 , y=20)
 
 error_lable_shomareh_moshtari_darkhast_maskoni= tk.Label(darkhast_maskoni_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
-error_lable_shomareh_moshtari_darkhast_maskoni.place(x=900 , y=20)
+error_lable_shomareh_moshtari_darkhast_maskoni.place(x=835 , y=20)
 
 darkhast_maskoni_window.protocol("WM_DELETE_WINDOW", lambda: None)
 darkhast_maskoni_window.resizable(False, False)
@@ -12559,7 +12559,7 @@ error_lable_name_moshtari_darkhast_edari_tejari= tk.Label(darkhast_edari_tejari_
 error_lable_name_moshtari_darkhast_edari_tejari.place(x=835 , y=20)
 
 error_lable_shomareh_moshtari_darkhast_edari_tejari= tk.Label(darkhast_edari_tejari_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
-error_lable_shomareh_moshtari_darkhast_edari_tejari.place(x=900 , y=20)
+error_lable_shomareh_moshtari_darkhast_edari_tejari.place(x=835 , y=20)
 
 darkhast_edari_tejari_window.protocol("WM_DELETE_WINDOW", lambda: None)
 darkhast_edari_tejari_window.resizable(False, False)
@@ -12941,7 +12941,7 @@ error_lable_name_moshtari_darkhast_bagh_zamin= tk.Label(darkhast_bagh_zamin_wind
 error_lable_name_moshtari_darkhast_bagh_zamin.place(x=835 , y=20)
 
 error_lable_shomareh_moshtari_darkhast_bagh_zamin= tk.Label(darkhast_bagh_zamin_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
-error_lable_shomareh_moshtari_darkhast_bagh_zamin.place(x=900 , y=20)
+error_lable_shomareh_moshtari_darkhast_bagh_zamin.place(x=835 , y=20)
 
 darkhast_bagh_zamin_window.protocol("WM_DELETE_WINDOW", lambda: None)
 darkhast_bagh_zamin_window.resizable(False, False)
@@ -13194,7 +13194,7 @@ error_lable_name_moshtari_darkhast_karghah= tk.Label(darkhast_karghah_window, te
 error_lable_name_moshtari_darkhast_karghah.place(x=835 , y=20)
 
 error_lable_shomareh_moshtari_darkhast_karghah= tk.Label(darkhast_karghah_window, text="",fg="red",bg="#052340",font=("Shabnam",11))
-error_lable_shomareh_moshtari_darkhast_karghah.place(x=900 , y=20)
+error_lable_shomareh_moshtari_darkhast_karghah.place(x=835 , y=20)
 
 
 darkhast_karghah_window.protocol("WM_DELETE_WINDOW", lambda: None)
