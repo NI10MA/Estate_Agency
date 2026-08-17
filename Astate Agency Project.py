@@ -22,7 +22,7 @@ def get_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="SobhanA2026",
+        password="Nima10.N10",
         #database="state_agency"
     )
 #endregion
