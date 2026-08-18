@@ -15,14 +15,14 @@ from docxtpl import DocxTemplate
 from tkinter import filedialog
 import shutil
 import re
-
+import jdatetime
 from zope import event
 
 def get_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="Nima10.N10",
+        password="Mmmm9905",
         #database="state_agency"
     )
 #endregion
@@ -254,8 +254,873 @@ def excel_gozaresh_kargah():
             "گزارش درخواست خرید کارگاه",
             error_label_kargah
         )
-def gharardadeha():
-    pass
+def excel_gozaresh_gharardad_maskoni():
+    contract_type = gozaresh_type_gharardad_maskoni.get().strip()
+    az_tarikh = entry_az_tarikh_gharardad_maskoni.get().strip()
+    ta_tarikh = entry_ta_tarikh_gharardad_maskoni.get().strip()
+    # ---------------- بررسی نوع قرارداد ----------------
+    if contract_type == "":
+        messagebox.showwarning(
+            "هشدار",
+            "لطفاً نوع قرارداد را انتخاب کنید"
+        )
+        return
+    # ---------------- بررسی تاریخ ----------------
+    if az_tarikh == "" or ta_tarikh == "":
+        messagebox.showwarning("هشدار","لطفاً بازه زمانی را وارد کنید"
+        )
+        return
+    # ---------------- تبدیل اعداد فارسی به انگلیسی ----------------
+    translate_digits = str.maketrans("۰۱۲۳۴۵۶۷۸۹","0123456789"
+    )
+    az_tarikh = az_tarikh.translate(translate_digits)
+    ta_tarikh = ta_tarikh.translate(translate_digits)
+    # ---------------- تبدیل شمسی به میلادی ----------------
+    try:
+        az_jdate = jdatetime.datetime.strptime(az_tarikh,"%Y/%m/%d"
+        )
+        ta_jdate = jdatetime.datetime.strptime(ta_tarikh,"%Y/%m/%d"
+        )
+        az_date = az_jdate.togregorian()
+        ta_date = ta_jdate.togregorian()
+        # شروع روز اول
+        az_date = az_date.replace(hour=0,minute=0,second=0,microsecond=0
+        )
+        # پایان بازه = شروع روز بعد
+        ta_date = (ta_date + datetime.timedelta(days=1)
+        ).replace(hour=0,minute=0,second=0,microsecond=0
+        )
+    except Exception as e:
+        messagebox.showerror("خطای تاریخ",f"فرمت تاریخ صحیح نیست.\n\n"f"مثال صحیح:\n1405/05/01\n\n"f"جزئیات خطا:\n{e}"
+        )
+        return
+    # ---------------- بررسی بازه ----------------
+    if az_date >= ta_date:
+        messagebox.showwarning("خطا","تاریخ شروع نمی‌تواند بعد از تاریخ پایان باشد"
+        )
+        return
+    # ---------------- اتصال دیتابیس ----------------
+    db = None
+    cursor = None
+    try:
+        db = get_connection()
+        cursor = db.cursor()
+        cursor.execute("USE state_agency")
+        # ==================================================
+        # ساخت Query
+        # ==================================================
+        if contract_type == "همه قراردادها":
+            query = """
+            SELECT
+                tracking_code,
+                property_type,
+                contract_type,
+                party_one,
+                party_two,
+                description,
+                created_at
+            FROM gharardad
+            WHERE property_type = %s
+            AND created_at >= %s
+            AND created_at < %s
+            ORDER BY created_at DESC
+            """
+            params = ("مسکونی",az_date,ta_date
+            )
+        elif contract_type == "اجاره":
+            query = """
+            SELECT
+                tracking_code,
+                property_type,
+                contract_type,
+                party_one,
+                party_two,
+                description,
+                created_at
+            FROM gharardad
+            WHERE property_type = %s
+            AND contract_type IN (%s, %s)
+            AND created_at >= %s
+            AND created_at < %s
+            ORDER BY created_at DESC
+            """
+            params = ("مسکونی","رهن","اجاره",az_date,ta_date
+            )
+        elif contract_type == "خرید و فروش":
+            query = """
+            SELECT
+                tracking_code,
+                property_type,
+                contract_type,
+                party_one,
+                party_two,
+                description,
+                created_at
+            FROM gharardad
+            WHERE property_type = %s
+            AND contract_type = %s
+            AND created_at >= %s
+            AND created_at < %s
+            ORDER BY created_at DESC
+            """
+            params = ("مسکونی","خرید و فروش ",az_date,ta_date
+            )
+        else:
+
+            messagebox.showwarning("هشدار","نوع قرارداد نامعتبر است"
+            )
+            return
+        # ================================================
+        # اجرای Query
+        # ==================================================
+        cursor.execute(query, params)
+        rows = cursor.fetchall()
+        # ==================================================
+        # اگر نتیجه‌ای پیدا نشد
+        # ==================================================
+        if not rows:
+            messagebox.showinfo(
+                "نتیجه",
+                "هیچ قراردادی در این بازه زمانی پیدا نشد."
+            )
+            return
+        # ==================================================
+        # ساخت Excel
+        # ==================================================
+        wb = Workbook()
+        ws = wb.active
+        ws.title = "گزارش قراردادها"
+        columns = [
+            "کد رهگیری",
+            "نوع ملک",
+            "نوع قرارداد",
+            "طرف اول",
+            "طرف دوم",
+            "توضیحات",
+            "تاریخ ثبت"
+        ]
+
+        for col_num, column_name in enumerate(columns, 1):
+
+            ws.cell(
+                row=1,
+                column=col_num,
+                value=column_name
+            )
+        # ==================================================
+        # وارد کردن اطلاعات
+        # ==================================================
+        for row_num, row_data in enumerate(rows, 2):
+
+            row_data = list(row_data)
+            # ---------------- تبدیل تاریخ میلادی به شمسی ----------------
+            if row_data[6]:
+
+                created_date = row_data[6]
+
+                shamsi_date = jdatetime.datetime.fromgregorian(
+                    datetime=created_date
+                )
+
+                row_data[6] = shamsi_date.strftime(
+                    "%Y/%m/%d %H:%M:%S"
+                )
+            # ---------------- نوشتن در Excel ----------------
+            for col_num, value in enumerate(row_data, 1):
+
+                ws.cell(
+                    row=row_num,
+                    column=col_num,
+                    value=value
+                )
+        # ==================================================
+        # عرض ستون‌ها
+        # ==================================================
+        ws.column_dimensions["A"].width = 18
+        ws.column_dimensions["B"].width = 18
+        ws.column_dimensions["C"].width = 20
+        ws.column_dimensions["D"].width = 25
+        ws.column_dimensions["E"].width = 25
+        ws.column_dimensions["F"].width = 40
+        ws.column_dimensions["G"].width = 25
+        # ==================================================
+        # ذخیره فایل
+        # ==================================================
+        file_path = filedialog.asksaveasfilename(
+            title="ذخیره گزارش قراردادها",
+            defaultextension=".xlsx",
+            filetypes=[
+                ("Excel Files", "*.xlsx")
+            ],
+            initialfile="گزارش قراردادهای مسکونی.xlsx"
+        )
+        if not file_path:
+            return
+
+        wb.save(file_path)
+        messagebox.showinfo(
+            "موفق",
+            f"گزارش با موفقیت ذخیره شد.\n\n"
+            f"تعداد قراردادها: {len(rows)}"
+        )
+    except Exception as e:
+
+        messagebox.showerror(
+            "خطا",
+            f"خطا در تهیه گزارش:\n\n{e}"
+        )
+    finally:
+        if cursor:
+            cursor.close()
+        if db and db.is_connected():
+            db.close()
+
+def excel_gozaresh_gharardad_edari_tejari():
+    contract_type = gozaresh_file_combo_ghrardad_edari_tejari.get().strip()
+    az_tarikh = entry_az_tarikh_gharardad_edari_tejari.get().strip()
+    ta_tarikh = entry_ta_tarikh_gharardad_edari_tejari.get().strip()
+    # ---------------- بررسی نوع قرارداد ----------------
+    if contract_type == "":
+        messagebox.showwarning(
+            "هشدار",
+            "لطفاً نوع قرارداد را انتخاب کنید")
+        return
+    # ---------------- بررسی تاریخ ----------------
+    if az_tarikh == "" or ta_tarikh == "":
+        messagebox.showwarning("هشدار","لطفاً بازه زمانی را وارد کنید")
+        return
+    # ---------------- تبدیل اعداد فارسی به انگلیسی ----------------
+    translate_digits = str.maketrans("۰۱۲۳۴۵۶۷۸۹","0123456789"
+    )
+    az_tarikh = az_tarikh.translate(translate_digits)
+    ta_tarikh = ta_tarikh.translate(translate_digits)
+    # ---------------- تبدیل شمسی به میلادی ----------------
+    try:
+        az_jdate = jdatetime.datetime.strptime(az_tarikh,"%Y/%m/%d")
+        ta_jdate = jdatetime.datetime.strptime(ta_tarikh,"%Y/%m/%d")
+        az_date = az_jdate.togregorian()
+        ta_date = ta_jdate.togregorian()
+        # شروع روز اول
+        az_date = az_date.replace(hour=0,minute=0,second=0,microsecond=0
+        )
+        # پایان بازه = شروع روز بعد
+        ta_date = (ta_date + datetime.timedelta(days=1)
+        ).replace(hour=0,minute=0,second=0,microsecond=0)
+    except Exception as e:
+        messagebox.showerror("خطای تاریخ",f"فرمت تاریخ صحیح نیست.\n\n"f"مثال صحیح:\n1405/05/01\n\n"f"جزئیات خطا:\n{e}")
+        return
+    # ---------------- بررسی بازه ----------------
+    if az_date >= ta_date:
+        messagebox.showwarning("خطا","تاریخ شروع نمی‌تواند بعد از تاریخ پایان باشد")
+        return
+    # ---------------- اتصال دیتابیس ----------------
+    db = None
+    cursor = None
+    try:
+        db = get_connection()
+        cursor = db.cursor()
+        cursor.execute("USE state_agency")
+        # ==================================================
+        # ساخت Query
+        # ==================================================
+        if contract_type == "همه قرارداد ها":
+            query = """
+            SELECT
+                tracking_code,
+                property_type,
+                contract_type,
+                party_one,
+                party_two,
+                description,
+                created_at
+            FROM gharardad
+            WHERE property_type = %s
+            AND created_at >= %s
+            AND created_at < %s
+            ORDER BY created_at DESC
+            """
+            params = ("اداری_تجاری",az_date,ta_date
+            )
+        elif contract_type == "اجاره":
+            query = """
+            SELECT
+                tracking_code,
+                property_type,
+                contract_type,
+                party_one,
+                party_two,
+                description,
+                created_at
+            FROM gharardad
+            WHERE property_type = %s
+            AND contract_type IN (%s, %s)
+            AND created_at >= %s
+            AND created_at < %s
+            ORDER BY created_at DESC
+            """
+            params = ("اداری_تجاری","رهن","اجاره",az_date,ta_date
+            )
+        elif contract_type == "خرید و فروش":
+            query = """
+            SELECT
+                tracking_code,
+                property_type,
+                contract_type,
+                party_one,
+                party_two,
+                description,
+                created_at
+            FROM gharardad
+            WHERE property_type = %s
+            AND contract_type = %s
+            AND created_at >= %s
+            AND created_at < %s
+            ORDER BY created_at DESC
+            """
+            params = ("اداری_تجاری","خرید و فروش ",az_date,ta_date
+            )
+        else:
+            messagebox.showwarning("هشدار","نوع قرارداد نامعتبر است")
+            return
+        # ================================================
+        # اجرای Query
+        # ==================================================
+        cursor.execute(query, params)
+        rows = cursor.fetchall()
+        # ==================================================
+        # اگر نتیجه‌ای پیدا نشد
+        # ==================================================
+        if not rows:
+            messagebox.showinfo(
+                "نتیجه",
+                "هیچ قراردادی در این بازه زمانی پیدا نشد.")
+            return
+        # ==================================================
+        # ساخت Excel
+        # ==================================================
+        wb = Workbook()
+        ws = wb.active
+        ws.title = "گزارش قراردادها"
+        columns = [
+            "کد رهگیری",
+            "نوع ملک",
+            "نوع قرارداد",
+            "طرف اول",
+            "طرف دوم",
+            "توضیحات",
+            "تاریخ ثبت"]
+        for col_num, column_name in enumerate(columns, 1):
+            ws.cell(
+                row=1,
+                column=col_num,
+                value=column_name)
+        # ==================================================
+        # وارد کردن اطلاعات
+        # ==================================================
+        for row_num, row_data in enumerate(rows, 2):
+            row_data = list(row_data)
+            # ---------------- تبدیل تاریخ میلادی به شمسی ----------------
+            if row_data[6]:
+
+                created_date = row_data[6]
+
+                shamsi_date = jdatetime.datetime.fromgregorian(
+                    datetime=created_date
+                )
+
+                row_data[6] = shamsi_date.strftime(
+                    "%Y/%m/%d %H:%M:%S"
+                )
+            # ---------------- نوشتن در Excel ----------------
+            for col_num, value in enumerate(row_data, 1):
+
+                ws.cell(
+                    row=row_num,
+                    column=col_num,
+                    value=value
+                )
+        # ==================================================
+        # عرض ستون‌ها
+        # ==================================================
+        ws.column_dimensions["A"].width = 18
+        ws.column_dimensions["B"].width = 18
+        ws.column_dimensions["C"].width = 20
+        ws.column_dimensions["D"].width = 25
+        ws.column_dimensions["E"].width = 25
+        ws.column_dimensions["F"].width = 40
+        ws.column_dimensions["G"].width = 25
+        # ==================================================
+        # ذخیره فایل
+        # ==================================================
+        file_path = filedialog.asksaveasfilename(
+            title="ذخیره گزارش قراردادها",
+            defaultextension=".xlsx",
+            filetypes=[
+                ("Excel Files", "*.xlsx")
+            ],
+            initialfile="گزارش قراردادهای اداری_تجاری.xlsx"
+        )
+        if not file_path:
+            return
+        wb.save(file_path)
+        messagebox.showinfo(
+            "موفق",
+            f"گزارش با موفقیت ذخیره شد.\n\n"
+            f"تعداد قراردادها: {len(rows)}")
+    except Exception as e:
+        messagebox.showerror(
+            "خطا",
+            f"خطا در تهیه گزارش:\n\n{e}"
+        )
+    finally:
+        if cursor:
+            cursor.close()
+        if db and db.is_connected():
+            db.close()
+def excel_gozaresh_gharardad_bagh_zamin():
+    contract_type =gozaresh_gharardad_file_combo_bagh_zamin.get().strip()
+    az_tarikh = entry_az_tarikh_gharardad_bagh_zamin.get().strip()
+    ta_tarikh = entry_ta_tarikh_gharardad_bagh_zamin.get().strip()
+    # ---------------- بررسی نوع قرارداد ----------------
+    if contract_type == "":
+        messagebox.showwarning(
+            "هشدار",
+            "لطفاً نوع قرارداد را انتخاب کنید")
+        return
+    # ---------------- بررسی تاریخ ----------------
+    if az_tarikh == "" or ta_tarikh == "":
+        messagebox.showwarning("هشدار","لطفاً بازه زمانی را وارد کنید")
+        return
+    # ---------------- تبدیل اعداد فارسی به انگلیسی ----------------
+    translate_digits = str.maketrans("۰۱۲۳۴۵۶۷۸۹","0123456789"
+    )
+    az_tarikh = az_tarikh.translate(translate_digits)
+    ta_tarikh = ta_tarikh.translate(translate_digits)
+    # ---------------- تبدیل شمسی به میلادی ----------------
+    try:
+        az_jdate = jdatetime.datetime.strptime(az_tarikh,"%Y/%m/%d")
+        ta_jdate = jdatetime.datetime.strptime(ta_tarikh,"%Y/%m/%d")
+        az_date = az_jdate.togregorian()
+        ta_date = ta_jdate.togregorian()
+        # شروع روز اول
+        az_date = az_date.replace(hour=0,minute=0,second=0,microsecond=0
+        )
+        # پایان بازه = شروع روز بعد
+        ta_date = (ta_date + datetime.timedelta(days=1)
+        ).replace(hour=0,minute=0,second=0,microsecond=0)
+    except Exception as e:
+        messagebox.showerror("خطای تاریخ",f"فرمت تاریخ صحیح نیست.\n\n"f"مثال صحیح:\n1405/05/01\n\n"f"جزئیات خطا:\n{e}")
+        return
+    # ---------------- بررسی بازه ----------------
+    if az_date >= ta_date:
+        messagebox.showwarning("خطا","تاریخ شروع نمی‌تواند بعد از تاریخ پایان باشد")
+        return
+    # ---------------- اتصال دیتابیس ----------------
+    db = None
+    cursor = None
+    try:
+        db = get_connection()
+        cursor = db.cursor()
+        cursor.execute("USE state_agency")
+        # ==================================================
+        # ساخت Query
+        # ==================================================
+        if contract_type == "همه قرارداد ها":
+
+            query = """
+            SELECT
+                tracking_code,
+                property_type,
+                contract_type,
+                party_one,
+                party_two,
+                description,
+                created_at
+            FROM gharardad
+            WHERE property_type IN (%s, %s)
+            AND created_at >= %s
+            AND created_at < %s
+            ORDER BY created_at DESC
+            """
+
+            params = (
+                "باغ",
+                "زمین",
+                az_date,
+                ta_date)
+        elif contract_type == "اجاره باغ و زمین":
+            query = """
+            SELECT
+                tracking_code,
+                property_type,
+                contract_type,
+                party_one,
+                party_two,
+                description,
+                created_at
+            FROM gharardad
+            WHERE property_type IN (%s, %s)
+            AND contract_type IN (%s, %s)
+            AND created_at >= %s
+            AND created_at < %s
+            ORDER BY created_at DESC
+            """
+            params = (
+                "باغ",
+                "زمین",
+                "رهن",
+                "اجاره",
+                az_date,
+                ta_date)
+        elif contract_type == "خرید و فروش باغ و زمین":
+            query = """
+            SELECT
+                tracking_code,
+                property_type,
+                contract_type,
+                party_one,
+                party_two,
+                description,
+                created_at
+            FROM gharardad
+            WHERE property_type IN (%s, %s)
+            AND contract_type = %s
+            AND created_at >= %s
+            AND created_at < %s
+            ORDER BY created_at DESC
+            """
+            params = (
+                "باغ",
+                "زمین",
+                "خرید و فروش ",
+                az_date,
+                ta_date)
+        else:
+            messagebox.showwarning(
+                "هشدار",
+                "نوع قرارداد نامعتبر است")
+            return
+        # ================================================
+        # اجرای Query
+        # ==================================================
+        cursor.execute(query, params)
+        rows = cursor.fetchall()
+        # ==================================================
+        # اگر نتیجه‌ای پیدا نشد
+        # ==================================================
+        if not rows:
+            messagebox.showinfo(
+                "نتیجه",
+                "هیچ قراردادی در این بازه زمانی پیدا نشد.")
+            return
+        # ==================================================
+        # ساخت Excel
+        # ==================================================
+        wb = Workbook()
+        ws = wb.active
+        ws.title = "گزارش قراردادها"
+        columns = [
+            "کد رهگیری",
+            "نوع ملک",
+            "نوع قرارداد",
+            "طرف اول",
+            "طرف دوم",
+            "توضیحات",
+            "تاریخ ثبت"]
+        for col_num, column_name in enumerate(columns, 1):
+            ws.cell(
+                row=1,
+                column=col_num,
+                value=column_name)
+        # ==================================================
+        # وارد کردن اطلاعات
+        # ==================================================
+        for row_num, row_data in enumerate(rows, 2):
+            row_data = list(row_data)
+            # ---------------- تبدیل تاریخ میلادی به شمسی ----------------
+            if row_data[6]:
+
+                created_date = row_data[6]
+
+                shamsi_date = jdatetime.datetime.fromgregorian(
+                    datetime=created_date
+                )
+
+                row_data[6] = shamsi_date.strftime(
+                    "%Y/%m/%d %H:%M:%S"
+                )
+            # ---------------- نوشتن در Excel ----------------
+            for col_num, value in enumerate(row_data, 1):
+
+                ws.cell(
+                    row=row_num,
+                    column=col_num,
+                    value=value
+                )
+        # ==================================================
+        # عرض ستون‌ها
+        # ==================================================
+        ws.column_dimensions["A"].width = 18
+        ws.column_dimensions["B"].width = 18
+        ws.column_dimensions["C"].width = 20
+        ws.column_dimensions["D"].width = 25
+        ws.column_dimensions["E"].width = 25
+        ws.column_dimensions["F"].width = 40
+        ws.column_dimensions["G"].width = 25
+        # ==================================================
+        # ذخیره فایل
+        # ==================================================
+        file_path = filedialog.asksaveasfilename(
+            title="ذخیره گزارش قراردادها",
+            defaultextension=".xlsx",
+            filetypes=[
+                ("Excel Files", "*.xlsx")
+            ],
+            initialfile="گزارش قراردادهای باغ و زمین.xlsx"
+        )
+        if not file_path:
+            return
+        wb.save(file_path)
+        messagebox.showinfo(
+            "موفق",
+            f"گزارش با موفقیت ذخیره شد.\n\n"
+            f"تعداد قراردادها: {len(rows)}")
+    except Exception as e:
+        messagebox.showerror(
+            "خطا",
+            f"خطا در تهیه گزارش:\n\n{e}"
+        )
+    finally:
+        if cursor:
+            cursor.close()
+        if db and db.is_connected():
+            db.close()
+    
+def  excel_gozaresh_gharardad_kargah():
+    contract_type = gozaresh_gharardad_file_combo_kargah.get().strip()
+    az_tarikh = entry_az_tarikh_gharardad_kargah.get().strip()
+    ta_tarikh = entry_ta_tarikh_gharardad_kargah.get().strip()
+    # ---------------- بررسی نوع قرارداد ----------------
+    if contract_type == "":
+        messagebox.showwarning(
+            "هشدار",
+            "لطفاً نوع قرارداد را انتخاب کنید")
+        return
+    # ---------------- بررسی تاریخ ----------------
+    if az_tarikh == "" or ta_tarikh == "":
+        messagebox.showwarning("هشدار","لطفاً بازه زمانی را وارد کنید")
+        return
+    # ---------------- تبدیل اعداد فارسی به انگلیسی ----------------
+    translate_digits = str.maketrans("۰۱۲۳۴۵۶۷۸۹","0123456789"
+    )
+    az_tarikh = az_tarikh.translate(translate_digits)
+    ta_tarikh = ta_tarikh.translate(translate_digits)
+    # ---------------- تبدیل شمسی به میلادی ----------------
+    try:
+        az_jdate = jdatetime.datetime.strptime(az_tarikh,"%Y/%m/%d")
+        ta_jdate = jdatetime.datetime.strptime(ta_tarikh,"%Y/%m/%d")
+        az_date = az_jdate.togregorian()
+        ta_date = ta_jdate.togregorian()
+        # شروع روز اول
+        az_date = az_date.replace(hour=0,minute=0,second=0,microsecond=0
+        )
+        # پایان بازه = شروع روز بعد
+        ta_date = (ta_date + datetime.timedelta(days=1)
+        ).replace(hour=0,minute=0,second=0,microsecond=0)
+    except Exception as e:
+        messagebox.showerror("خطای تاریخ",f"فرمت تاریخ صحیح نیست.\n\n"f"مثال صحیح:\n1405/05/01\n\n"f"جزئیات خطا:\n{e}")
+        return
+    # ---------------- بررسی بازه ----------------
+    if az_date >= ta_date:
+        messagebox.showwarning("خطا","تاریخ شروع نمی‌تواند بعد از تاریخ پایان باشد")
+        return
+    # ---------------- اتصال دیتابیس ----------------
+    db = None
+    cursor = None
+    try:
+        db = get_connection()
+        cursor = db.cursor()
+        cursor.execute("USE state_agency")
+        # ==================================================
+        # ساخت Query
+        # ==================================================
+        if contract_type == "همه قرارداد ها":
+            query = """
+            SELECT
+                tracking_code,
+                property_type,
+                contract_type,
+                party_one,
+                party_two,
+                description,
+                created_at
+            FROM gharardad
+            WHERE property_type = %s
+            AND created_at >= %s
+            AND created_at < %s
+            ORDER BY created_at DESC
+            """
+            params = ("اداری_تجاری",az_date,ta_date
+            )
+        elif contract_type == "اجاره":
+            query = """
+            SELECT
+                tracking_code,
+                property_type,
+                contract_type,
+                party_one,
+                party_two,
+                description,
+                created_at
+            FROM gharardad
+            WHERE property_type = %s
+            AND contract_type IN (%s, %s)
+            AND created_at >= %s
+            AND created_at < %s
+            ORDER BY created_at DESC
+            """
+            params = ("کارگاه","رهن","اجاره",az_date,ta_date
+            )
+        elif contract_type == "خرید و فروش":
+            query = """
+            SELECT
+                tracking_code,
+                property_type,
+                contract_type,
+                party_one,
+                party_two,
+                description,
+                created_at
+            FROM gharardad
+            WHERE property_type = %s
+            AND contract_type = %s
+            AND created_at >= %s
+            AND created_at < %s
+            ORDER BY created_at DESC
+            """
+            params = ("کارگاه","خرید و فروش ",az_date,ta_date
+            )
+        else:
+            messagebox.showwarning("هشدار","نوع قرارداد نامعتبر است")
+            return
+        # ================================================
+        # اجرای Query
+        # ==================================================
+        cursor.execute(query, params)
+        rows = cursor.fetchall()
+        # ==================================================
+        # اگر نتیجه‌ای پیدا نشد
+        # ==================================================
+        if not rows:
+            messagebox.showinfo(
+                "نتیجه",
+                "هیچ قراردادی در این بازه زمانی پیدا نشد.")
+            return
+        # ==================================================
+        # ساخت Excel
+        # ==================================================
+        wb = Workbook()
+        ws = wb.active
+        ws.title = "گزارش قراردادها"
+        columns = [
+            "کد رهگیری",
+            "نوع ملک",
+            "نوع قرارداد",
+            "طرف اول",
+            "طرف دوم",
+            "توضیحات",
+            "تاریخ ثبت"]
+        for col_num, column_name in enumerate(columns, 1):
+            ws.cell(
+                row=1,
+                column=col_num,
+                value=column_name)
+        # ==================================================
+        # وارد کردن اطلاعات
+        # ==================================================
+        for row_num, row_data in enumerate(rows, 2):
+            row_data = list(row_data)
+            # ---------------- تبدیل تاریخ میلادی به شمسی ----------------
+            if row_data[6]:
+
+                created_date = row_data[6]
+
+                shamsi_date = jdatetime.datetime.fromgregorian(
+                    datetime=created_date
+                )
+
+                row_data[6] = shamsi_date.strftime(
+                    "%Y/%m/%d %H:%M:%S"
+                )
+            # ---------------- نوشتن در Excel ----------------
+            for col_num, value in enumerate(row_data, 1):
+
+                ws.cell(
+                    row=row_num,
+                    column=col_num,
+                    value=value
+                )
+        # ==================================================
+        # عرض ستون‌ها
+        # ==================================================
+        ws.column_dimensions["A"].width = 18
+        ws.column_dimensions["B"].width = 18
+        ws.column_dimensions["C"].width = 20
+        ws.column_dimensions["D"].width = 25
+        ws.column_dimensions["E"].width = 25
+        ws.column_dimensions["F"].width = 40
+        ws.column_dimensions["G"].width = 25
+        # ==================================================
+        # ذخیره فایل
+        # ==================================================
+        file_path = filedialog.asksaveasfilename(
+            title="ذخیره گزارش قراردادها",
+            defaultextension=".xlsx",
+            filetypes=[
+                ("Excel Files", "*.xlsx")
+            ],
+            initialfile="گزارش قراردادهای کارگاه.xlsx"
+        )
+        if not file_path:
+            return
+        wb.save(file_path)
+        messagebox.showinfo(
+            "موفق",
+            f"گزارش با موفقیت ذخیره شد.\n\n"
+            f"تعداد قراردادها: {len(rows)}")
+    except Exception as e:
+        messagebox.showerror(
+            "خطا",
+            f"خطا در تهیه گزارش:\n\n{e}"
+        )
+    finally:
+        if cursor:
+            cursor.close()
+        if db and db.is_connected():
+            db.close()
+#endregion
+#---------------برگشت از صفخه گزارشاتا قراردادها به باکس-------
+#region
+def back_gozaresh_gharardad_maskoni():
+    gozaresh_gharardad_maskoni.withdraw()
+    box_gozaresh_gharardad.deiconify()
+    entry_az_tarikh_gharardad_maskoni.delete(0,tk.END)
+    entry_ta_tarikh_gharardad_maskoni.delete(0,tk.END)
+def back_gozaresh_gharardad_edari_tejari():
+    gozaresh_gharardad_edari_tejari.withdraw()
+    box_gozaresh_gharardad.deiconify()
+    entry_az_tarikh_gharardad_edari_tejari.delete(0,tk.END)
+    entry_ta_tarikh_gharardad_edari_tejari.delete(0,tk.END)
+def back_gozaresh_gharardad_bagh_zamin():
+    gozaresh_gharardad_bagh_zamin.withdraw()
+    box_gozaresh_gharardad.deiconify()
+    entry_az_tarikh_gharardad_bagh_zamin.delete(0,tk.END)
+    entry_ta_tarikh_gharardad_bagh_zamin.delete(0,tk.END)
+def back_gozaresh_gharardad_kargah():
+    gozaresh_gharardad_kargah.withdraw()
+    box_gozaresh_gharardad.deiconify()
+    entry_az_tarikh_gharardad_kargah.delete(0,tk.END)
+    entry_ta_tarikh_gharardad_kargah.delete(0,tk.END)
 #endregion
 #------------------------------تابع خروجی فایل ورد قرارداد-----------------
 #region
@@ -408,7 +1273,7 @@ def creat_word_gharardad():
             "خطا",
             str(e)
         )
-#endregion
+
 #---------تابع پاک کردن فرم اصلی----------------
 #region
 def delete_root():
@@ -470,7 +1335,9 @@ def darkhast():
 def gozaresh():
     box_gozaresh.deiconify()
     box_gozaresh.grab_set()
-
+def gozaresh_gharardad():
+    box_gozaresh_gharardad.deiconify()
+    box_gozaresh_gharardad.grab_set()
 def forosh():
     box_forosh.deiconify()
     box_forosh.grab_set()
@@ -963,7 +1830,8 @@ def back_main_ghararadad():
     name_shakhs_aval_gharardad_entry.delete(0,tk.END)
     name_shakhs_dovom_gharardad_entry.delete(0,tk.END)
     tozih_gharardad_entry.delete("1.0",tk.END)
-    code_label.config(text="")
+    if code_label.winfo_exists():
+        code_label.config(text="")
 #endregion
 #========================================================
 #-----------------تابع پاک شدن اینتری ها برای سوییچ بین خرید و اجاره برای درخواست ها------------------
@@ -1389,6 +2257,10 @@ def back_darkhast_exit():
 def back_gozaresh_exit():
     box_gozaresh.withdraw()
     box_gozaresh.grab_release()
+def back_gozaresh_gharardad_exit():
+    root.deiconify()
+    box_gozaresh_gharardad.withdraw()
+    box_gozaresh_gharardad.grab_release()
 #endregion
 #============================================
 #--------باز و بسته کردن بین باکس ها----------------
@@ -1611,6 +2483,46 @@ def sabt_radio_gozaresh():
         root.withdraw()
         gozaresh_kargah.deiconify()
         box_gozaresh.grab_release()
+def sabt_radio_gozaresh_gharardad():
+
+    selected = gozaresh_gharardad_radio_value.get()
+
+    if selected == 0:
+
+        box_gozaresh_gharardad.withdraw()
+        box_gozaresh_gharardad.grab_release()
+
+        root.withdraw()
+
+        gozaresh_gharardad_maskoni.deiconify()
+
+    elif selected == 2:
+
+        box_gozaresh_gharardad.withdraw()
+        box_gozaresh_gharardad.grab_release()
+
+        root.withdraw()
+
+        gozaresh_gharardad_edari_tejari.deiconify()
+
+    elif selected == 4:
+
+        box_gozaresh_gharardad.withdraw()
+        box_gozaresh_gharardad.grab_release()
+
+        root.withdraw()
+
+        gozaresh_gharardad_bagh_zamin.deiconify()
+
+    elif selected == 6:
+
+        box_gozaresh_gharardad.withdraw()
+        box_gozaresh_gharardad.grab_release()
+
+        root.withdraw()
+
+        gozaresh_gharardad_kargah.deiconify()
+
 #endregion        
 #=======================================================
 #---------------/جابه جایی کاربری باغ و زمین در قسمت های فروش/درخواست/اجاره-------------
@@ -9716,7 +10628,7 @@ menubar.add_cascade(label="قراردادها", menu=file_menu_gharardad)
 # ----------لیست کشویی فیلد گزارش ها-----------------
 file_menu_gozaresh = tk.Menu(menubar, tearoff=0, font=("Shabnam", 10))
 file_menu_gozaresh.add_command(label="خروجی اکسل", command=gozaresh)
-file_menu_gozaresh.add_command(label="قراردادها", command=None)
+file_menu_gozaresh.add_command(label="قراردادها", command=gozaresh_gharardad)
 # اضافه کردن منوی گزارش ها به منوبار
 menubar.add_cascade(label="گزارش ها", menu=file_menu_gozaresh)
 #endregion
@@ -9997,6 +10909,38 @@ zakhire_radio_box_gozaresh.place(x=50,y=210)
 
 box_gozaresh.protocol("WM_DELETE_WINDOW", lambda: None)
 box_gozaresh.resizable(False, False)
+#endregion
+#------------------پنجره انتخابی گزارش قراردادها-----------
+#region
+box_gozaresh_gharardad=tk.Toplevel(root)
+box_gozaresh_gharardad.title("انتخاب نوع ملکی گزارش")
+box_gozaresh_gharardad.geometry("500x270")
+box_gozaresh_gharardad.withdraw()
+box_gozaresh_gharardad.configure(bg="#052340")
+
+# یک متغیر مشترک برای همه رادیوباتن‌ها
+gozaresh_gharardad_radio_value = tk.IntVar(value=0)  # مقدار پیش‌فرض -1 یعنی هیچکدام انتخاب نشده
+
+gozaresh_gharardad_maskoni_radio = tk.Radiobutton(box_gozaresh_gharardad, value=0, text="گزارش مسکونی", background="#052340",fg="#00BFFF", variable=gozaresh_gharardad_radio_value, font=("Shabnam",11))
+gozaresh_gharardad_maskoni_radio.place(x=295,y=50)
+
+gozaresh_gharardad_edari_radio = tk.Radiobutton(box_gozaresh_gharardad, value=2, text="گزارش اداری/تجاری",bg="#052340",fg="#00BFFF", variable=gozaresh_gharardad_radio_value, font=("Shabnam",11))
+gozaresh_gharardad_edari_radio.place(x=295,y=90)
+
+gozaresh_gharardad_bagh_radio = tk.Radiobutton(box_gozaresh_gharardad, value=4, text="گزارش باغ/زمین",bg="#052340",fg="#00BFFF", variable=gozaresh_gharardad_radio_value, font=("Shabnam",11))
+gozaresh_gharardad_bagh_radio.place(x=295,y=130)
+
+gozaresh_gharardad_kargah_radio = tk.Radiobutton(box_gozaresh_gharardad, value=6, text="گزارش کارگاه",bg="#052340",fg="#00BFFF", variable=gozaresh_gharardad_radio_value, font=("Shabnam",11))
+gozaresh_gharardad_kargah_radio.place(x=295,y=170)
+
+back_to_home_box_gozaresh_gharardad=tk.Button(box_gozaresh_gharardad,text="🔙بازگشت",bg="#00BFFF",fg="#000000",width=12,height=2,command=back_gozaresh_gharardad_exit)
+back_to_home_box_gozaresh_gharardad.place(x=190,y=210)
+
+zakhire_radio_box_gozaresh_gharardad=tk.Button(box_gozaresh_gharardad,text="📥ادامه",bg="#00BFFF",fg="#000000",width=12,height=2,command=sabt_radio_gozaresh_gharardad)
+zakhire_radio_box_gozaresh_gharardad.place(x=50,y=210)
+
+box_gozaresh_gharardad.protocol("WM_DELETE_WINDOW", lambda: None)
+box_gozaresh_gharardad.resizable(False, False)
 #endregion
 #===================پنجره های ثبتی بخش رهن و اجاره=============================
 #--------------------------پنجره اجاره مسکونی----------------
@@ -13432,7 +14376,200 @@ back_to_home_gozaresh_kargah.place(x=215, y=320)
 
 gozaresh_kargah.protocol("WM_DELETE_WINDOW", lambda: None)
 gozaresh_kargah.resizable(False, False)
+#endregion
+#-----------------گزارشات و خروجی قراردادها -------------
+#----قرارداد مسکونی---------
+#region
+gozaresh_gharardad_maskoni = tk.Toplevel(root)
+gozaresh_gharardad_maskoni.title("گزارش  قرارداد مسکونی")
+gozaresh_gharardad_maskoni.geometry("600x380")
+gozaresh_gharardad_maskoni.configure(bg="#052340")
+gozaresh_gharardad_maskoni.withdraw()
 
+label_type_gharardad_maskoni = tk.Label(gozaresh_gharardad_maskoni,text="نوع قرارداد",bg="#052340",fg="#FFFFFF",font=("Shabnam", 11)
+)
+label_type_gharardad_maskoni.place(x=440, y=120)
+gozaresh_type_gharardad_maskoni = ttk.Combobox(gozaresh_gharardad_maskoni,state="readonly")
+gozaresh_type_gharardad_maskoni["values"] = ("همه قراردادها","خرید و فروش","اجاره")
+gozaresh_type_gharardad_maskoni.configure(width=28,justify="center")
+gozaresh_type_gharardad_maskoni.place(x=150, y=120)
+
+# ---------------- از تاریخ ----------------
+label_az_tarikh_gharardad_maskoni = tk.Label(
+    gozaresh_gharardad_maskoni,
+    text="از تاریخ",
+    bg="#052340",
+    fg="#FFFFFF",
+    font=("Shabnam", 11)
+)
+label_az_tarikh_gharardad_maskoni.place(x=440, y=165)
+
+entry_az_tarikh_gharardad_maskoni = tk.Entry(gozaresh_gharardad_maskoni,font=("Shabnam", 10), justify="center"
+)
+entry_az_tarikh_gharardad_maskoni.place(x=150,y=165,width=220
+)
+entry_az_tarikh_gharardad_maskoni.place(x=150,y=165,width=220
+)
+# ---------------- تا تاریخ ----------------
+label_ta_tarikh_gharardad_maskoni = tk.Label(gozaresh_gharardad_maskoni,text="تا تاریخ",bg="#052340",fg="#FFFFFF",font=("Shabnam", 11)
+)
+label_ta_tarikh_gharardad_maskoni.place(x=440, y=205)
+entry_ta_tarikh_gharardad_maskoni = tk.Entry(gozaresh_gharardad_maskoni,font=("Shabnam", 10),justify="center"
+)
+entry_ta_tarikh_gharardad_maskoni.place(x=150,y=205,width=220
+)
+# ---------------- دکمه تایید ----------------
+save_gozaresh_gharardad_maskoni = tk.Button(gozaresh_gharardad_maskoni,text="✅ دریافت فایل اکسل",command=excel_gozaresh_gharardad_maskoni,bg="#00BFFF",fg="#FFFFFF",
+    width=18,
+    height=1
+)
+save_gozaresh_gharardad_maskoni.place(x=95, y=300)
+back_gozaresh_gharardad_maskoni_btn = tk.Button(gozaresh_gharardad_maskoni,text="بازگشت",command=back_gozaresh_gharardad_maskoni,bg="#00BFFF",fg="#FFFFFF",
+    width=10,height=1)
+back_gozaresh_gharardad_maskoni_btn.place(x=250, y=300)
+
+gozaresh_gharardad_maskoni.protocol("WM_DELETE_WINDOW", lambda: None)
+gozaresh_gharardad_maskoni.resizable(False, False)
+#endregion
+#-----------قراداد اداری تجاری گزارش-----------
+gozaresh_gharardad_edari_tejari = tk.Toplevel(root)
+gozaresh_gharardad_edari_tejari.title("گزارش  قرارداد اداری_تجاری")
+gozaresh_gharardad_edari_tejari.geometry("600x380")
+gozaresh_gharardad_edari_tejari.configure(bg="#052340")
+gozaresh_gharardad_edari_tejari.withdraw()
+
+noe_gozaresh_gharardad_edari_tejari=tk.Label(gozaresh_gharardad_edari_tejari,text=" نوع گزارش ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
+noe_gozaresh_gharardad_edari_tejari.place(x=437, y=120)
+
+gozaresh_file_combo_ghrardad_edari_tejari=ttk.Combobox(gozaresh_gharardad_edari_tejari)
+gozaresh_file_combo_ghrardad_edari_tejari["values"] = ("همه قرارداد ها","خرید و فروش","اجاره")
+gozaresh_file_combo_ghrardad_edari_tejari["state"]="readonly"
+gozaresh_file_combo_ghrardad_edari_tejari.config(width=40)
+gozaresh_file_combo_ghrardad_edari_tejari.configure(justify="center")
+gozaresh_file_combo_ghrardad_edari_tejari.place(x=150, y=122)
+# ---------------- از تاریخ ----------------
+label_az_tarikh_gharardad_edari_tejari = tk.Label(gozaresh_gharardad_edari_tejari,text="از تاریخ",bg="#052340",fg="#FFFFFF",font=("Shabnam", 11)
+)
+label_az_tarikh_gharardad_edari_tejari.place(x=440, y=165)
+entry_az_tarikh_gharardad_edari_tejari = tk.Entry(gozaresh_gharardad_edari_tejari,font=("Shabnam", 10), justify="center"
+)
+entry_az_tarikh_gharardad_edari_tejari.place(x=150,y=165,width=220
+)
+entry_az_tarikh_gharardad_edari_tejari.place(x=150,y=165,width=220
+)
+# ---------------- تا تاریخ ----------------
+label_ta_tarikh_gharardad_edari_tejari = tk.Label(gozaresh_gharardad_edari_tejari,text="تا تاریخ",bg="#052340",fg="#FFFFFF",font=("Shabnam", 11)
+)
+label_ta_tarikh_gharardad_edari_tejari.place(x=440, y=205)
+entry_ta_tarikh_gharardad_edari_tejari = tk.Entry(gozaresh_gharardad_edari_tejari,font=("Shabnam", 10),justify="center"
+)
+entry_ta_tarikh_gharardad_edari_tejari.place(x=150,y=205,width=220
+)
+# ---------------- دکمه تایید ----------------
+save_gozaresh_gharardad_edari_tejari = tk.Button(gozaresh_gharardad_edari_tejari,text="✅ دریافت فایل اکسل",command=excel_gozaresh_gharardad_edari_tejari,bg="#00BFFF",fg="#FFFFFF",
+    width=18,
+    height=1)
+save_gozaresh_gharardad_edari_tejari.place(x=95, y=300)
+back_gozaresh_gharardad_edari_tejari_btn = tk.Button(gozaresh_gharardad_edari_tejari,text="بازگشت",command=back_gozaresh_gharardad_edari_tejari,bg="#00BFFF",fg="#FFFFFF",
+    width=10,
+    height=1)
+back_gozaresh_gharardad_edari_tejari_btn.place(x=250, y=300)
+
+gozaresh_gharardad_edari_tejari.protocol("WM_DELETE_WINDOW", lambda: None)
+gozaresh_gharardad_edari_tejari.resizable(False, False)
+#---------------گزارش قرارداد های باغ و زمین----------------------
+gozaresh_gharardad_bagh_zamin = tk.Toplevel(root)
+gozaresh_gharardad_bagh_zamin.title("گزارش  قرارداد باغ/زمین")
+gozaresh_gharardad_bagh_zamin.geometry("600x380")
+gozaresh_gharardad_bagh_zamin.configure(bg="#052340")
+gozaresh_gharardad_bagh_zamin.withdraw()
+
+noe_gozaresh_gharardad_bagh_zamin=tk.Label(gozaresh_gharardad_bagh_zamin,text=" نوع گزارش ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
+noe_gozaresh_gharardad_bagh_zamin.place(x=460, y=120)
+
+gozaresh_gharardad_file_combo_bagh_zamin=ttk.Combobox(gozaresh_gharardad_bagh_zamin)
+gozaresh_gharardad_file_combo_bagh_zamin["values"] = ("همه قرارداد ها"," خرید و فروش باغ و زمین","اجاره باغ و زمین")
+gozaresh_gharardad_file_combo_bagh_zamin["state"]="readonly"
+gozaresh_gharardad_file_combo_bagh_zamin.config(width=60)
+gozaresh_gharardad_file_combo_bagh_zamin.configure(justify="center")
+gozaresh_gharardad_file_combo_bagh_zamin.place(x=70 ,y=122)
+# ---------------- از تاریخ ----------------
+label_az_tarikh_gharardad_bagh_zamin = tk.Label(
+    gozaresh_gharardad_bagh_zamin,text="از تاریخ",bg="#052340",fg="#FFFFFF",font=("Shabnam", 11)
+)
+label_az_tarikh_gharardad_bagh_zamin.place(x=440, y=165)
+entry_az_tarikh_gharardad_bagh_zamin = tk.Entry(gozaresh_gharardad_bagh_zamin,font=("Shabnam", 10), justify="center"
+)
+entry_az_tarikh_gharardad_bagh_zamin.place(x=150,y=165,width=220)
+# ---------------- تا تاریخ ----------------
+label_ta_tarikh_gharardad_bagh_zamin = tk.Label(gozaresh_gharardad_bagh_zamin,text="تا تاریخ",bg="#052340",fg="#FFFFFF",font=("Shabnam", 11)
+)
+label_ta_tarikh_gharardad_bagh_zamin.place(x=440, y=205)
+entry_ta_tarikh_gharardad_bagh_zamin = tk.Entry(gozaresh_gharardad_bagh_zamin,font=("Shabnam", 10),justify="center"
+)
+entry_ta_tarikh_gharardad_bagh_zamin.place(x=150,y=205,width=220
+)
+# ---------------- دکمه تایید ----------------
+save_gozaresh_gharardad_bagh_zamin = tk.Button(gozaresh_gharardad_bagh_zamin,text="✅ دریافت فایل اکسل",command=excel_gozaresh_gharardad_bagh_zamin,bg="#00BFFF",fg="#FFFFFF",
+    width=18,
+    height=1
+)
+save_gozaresh_gharardad_bagh_zamin.place(x=95, y=300)
+back_gozaresh_gharardad_bagh_zamin_btn = tk.Button(gozaresh_gharardad_bagh_zamin,text="بازگشت",command=back_gozaresh_gharardad_bagh_zamin,bg="#00BFFF",fg="#FFFFFF",
+    width=10,
+    height=1)
+back_gozaresh_gharardad_bagh_zamin_btn.place(x=250, y=300)
+
+gozaresh_gharardad_bagh_zamin.protocol("WM_DELETE_WINDOW", lambda: None)
+gozaresh_gharardad_bagh_zamin.resizable(False, False)
+#-----------------------------گزارش قرارداد کارگاه-----------
+gozaresh_gharardad_kargah = tk.Toplevel(root)
+gozaresh_gharardad_kargah.title("گزارش قرارداد کارگاه")
+gozaresh_gharardad_kargah.geometry("600x380")
+gozaresh_gharardad_kargah.configure(bg="#052340")
+gozaresh_gharardad_kargah.withdraw()
+
+noe_gozaresh_gharardad_kargah=tk.Label(gozaresh_gharardad_kargah,text=" نوع گزارش ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
+noe_gozaresh_gharardad_kargah.place(x=437, y=120)
+
+gozaresh_gharardad_file_combo_kargah=ttk.Combobox(gozaresh_gharardad_kargah)
+gozaresh_gharardad_file_combo_kargah["values"] = ("همه قرارداد ها","اجاره","خرید و فروش")
+gozaresh_gharardad_file_combo_kargah["state"]="readonly"
+gozaresh_gharardad_file_combo_kargah.config(width=40)
+gozaresh_gharardad_file_combo_kargah.configure(justify="center")
+gozaresh_gharardad_file_combo_kargah.place(x=150, y=122)
+
+# ---------------- از تاریخ ----------------
+label_az_tarikh_gharardad_kargah = tk.Label(
+    gozaresh_gharardad_kargah,text="از تاریخ",bg="#052340",fg="#FFFFFF",font=("Shabnam", 11)
+)
+label_az_tarikh_gharardad_kargah.place(x=440, y=165)
+entry_az_tarikh_gharardad_kargah = tk.Entry(gozaresh_gharardad_kargah,font=("Shabnam", 10), justify="center"
+)
+entry_az_tarikh_gharardad_kargah.place(x=150,y=165,width=220
+)
+entry_az_tarikh_gharardad_kargah.place(x=150,y=165,width=220
+)
+# ---------------- تا تاریخ ----------------
+label_ta_tarikh_gharardad_kargah = tk.Label(gozaresh_gharardad_kargah,text="تا تاریخ",bg="#052340",fg="#FFFFFF",font=("Shabnam", 11)
+)
+label_ta_tarikh_gharardad_kargah.place(x=440, y=205)
+entry_ta_tarikh_gharardad_kargah = tk.Entry(gozaresh_gharardad_kargah,font=("Shabnam", 10),justify="center"
+)
+entry_ta_tarikh_gharardad_kargah.place(x=150,y=205,width=220
+)
+# ---------------- دکمه تایید ----------------
+save_gozaresh_gharardad_kargah= tk.Button(gozaresh_gharardad_kargah,text="✅ دریافت فایل اکسل",command=excel_gozaresh_gharardad_kargah,bg="#00BFFF",fg="#FFFFFF",
+    width=18,
+    height=1
+)
+save_gozaresh_gharardad_kargah.place(x=95, y=300)
+back_gozaresh_gharardad_kargah_btn= tk.Button(gozaresh_gharardad_kargah,text="بازگشت",command=back_gozaresh_gharardad_kargah,bg="#00BFFF",fg="#FFFFFF",
+    width=10,
+    height=1)
+back_gozaresh_gharardad_kargah_btn.place(x=250, y=300)
+gozaresh_kargah.protocol("WM_DELETE_WINDOW", lambda: None)
+gozaresh_kargah.resizable(False, False)
 #endregion
 #-------------------------------------پنجره قرارداد ------------------------------
 #region
