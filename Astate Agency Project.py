@@ -21,7 +21,7 @@ def get_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="Mmmm9905",
+        password="SobhanA2026",
         #database="state_agency"
     )
 #endregion
@@ -1156,7 +1156,8 @@ def creat_word_gharardad():
             contract_type VARCHAR(40),
             party_one VARCHAR(40),
             party_two VARCHAR(40),
-            description VARCHAR(225)
+            description VARCHAR(225),
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )
         """)
         # ثبت اولیه قرارداد
@@ -2553,7 +2554,7 @@ def change_bagh_zamin_darkhast_bagh(event=None):
 def change_bagh_zamin_darkhast2(event=None):
         change_type=melk_type_darkhast_bagh_zamin_entry.get()
         karbari = bagh_type_darkhast_bagh_zamin_combo.get()
-        gheimat_str =gheimat_har_metr_bagh_zamin_darkhast_entry.get()
+        gheimat_str =gheimat_har_metr_bagh_zamin_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip()
         if not gheimat_str or gheimat_str == "":
             gheimat_str = "0"
         gheimat_value = float(gheimat_str)
@@ -2910,7 +2911,8 @@ def chck_otagh_forosh_maskoni(event=None):
 
 def chck_gheimat_kol_forosh_maskoni(event=None):
     format_number(event=None)
-    gheimat_kol_forosh_maskoni=gheimat_kol_forosh_maskoni_entry.get().replace(",", "").strip()
+    add_number_toman(event)
+    gheimat_kol_forosh_maskoni=gheimat_kol_forosh_maskoni_entry.get().replace(",", "").replace("تومان", "").strip()
 
     if gheimat_kol_forosh_maskoni.isdigit():
         gheimat_kol_forosh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
@@ -3059,7 +3061,8 @@ def chck_otagh_ejareh_maskoni(event=None):
 
 def chck_gheimat_pish_ejareh_maskoni(event=None):
     format_number(event=None)
-    gheimat_pish_ejareh_maskoni=gheimat_pish_ejareh_maskoni_entry.get().replace(",", "").strip()
+    add_number_toman(event)
+    gheimat_pish_ejareh_maskoni=gheimat_pish_ejareh_maskoni_entry.get().replace(",", "").replace("تومان", "").strip()
 
     if gheimat_pish_ejareh_maskoni.isdigit():
         gheimat_pish_ejareh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
@@ -3079,7 +3082,8 @@ def chck_gheimat_pish_ejareh_maskoni(event=None):
 
 def chck_gheimat_ejareh_ejareh_maskoni(event=None):
     format_number(event=None)
-    gheimat_ejareh_ejareh_maskoni=gheimat_ejareh_ejareh_maskoni_entry.get().strip().replace(",", "").strip()
+    add_number_toman(event)
+    gheimat_ejareh_ejareh_maskoni=gheimat_ejareh_ejareh_maskoni_entry.get().strip().replace(",", "").replace("تومان", "").strip()
 
     if gheimat_ejareh_ejareh_maskoni.isdigit():
         gheimat_ejareh_ejareh_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
@@ -3235,7 +3239,8 @@ def chck_otagh_darkhast_maskoni(event=None):
 
 def chck_gheimat_kol_darkhast_maskoni(event=None):
     format_number(event=None)
-    gheimat_kol_darkhast_maskoni=gheimat_kol_darkhast_maskoni_entry.get().replace(",", "").strip()
+    add_number_toman(event)
+    gheimat_kol_darkhast_maskoni=gheimat_kol_darkhast_maskoni_entry.get().replace(",", "").replace("تومان", "").strip()
 
     if gheimat_kol_darkhast_maskoni.isdigit():
         gheimat_kol_darkhast_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
@@ -3251,7 +3256,8 @@ def chck_gheimat_kol_darkhast_maskoni(event=None):
 
 def chck_gheimat_pish_darkhast_maskoni(event=None):
     format_number(event=None)
-    gheimat_pish_darkhast_maskoni=gheimat_pish_darkhast_maskoni_entry.get().replace(",", "").strip()
+    add_number_toman(event)
+    gheimat_pish_darkhast_maskoni=gheimat_pish_darkhast_maskoni_entry.get().replace(",", "").replace("تومان", "").strip()
 
     if gheimat_pish_darkhast_maskoni.isdigit():
         gheimat_pish_darkhast_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
@@ -3271,7 +3277,8 @@ def chck_gheimat_pish_darkhast_maskoni(event=None):
 
 def chck_mablagh_ejare_darkhast_maskoni(event=None):
     format_number(event=None)
-    mablagh_ejare_darkhast_maskoni=mablagh_ejare_darkhast_maskoni_entry.get().replace(",", "").strip()
+    add_number_toman(event)
+    mablagh_ejare_darkhast_maskoni=mablagh_ejare_darkhast_maskoni_entry.get().replace(",", "").replace("تومان", "").strip()
 
     if mablagh_ejare_darkhast_maskoni.isdigit():
         mablagh_ejare_darkhast_maskoni_entry.config(highlightcolor="white",highlightthickness=0)
@@ -3422,7 +3429,8 @@ def chck_otagh_forosh_edari_tejari(event=None):
 
 def chck_gheimat_kol_forosh_edari_tejari(event=None):
     format_number(event=None)
-    gheimat_kol_forosh_edari_tejari=gheimat_kol_forosh_edari_tejari_entry.get().replace(",", "").strip()
+    add_number_toman(event)
+    gheimat_kol_forosh_edari_tejari=gheimat_kol_forosh_edari_tejari_entry.get().replace(",", "").replace("تومان", "").strip()
 
     if gheimat_kol_forosh_edari_tejari.isdigit():
         gheimat_kol_forosh_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
@@ -3569,7 +3577,8 @@ def chck_otagh_ejareh_edari_tejari(event=None):
 
 def chck_mablagh_pish_ejareh_edari_tejari(event=None):
     format_number(event=None)
-    mablagh_pish_ejareh_edari_tejari=mablagh_pish_ejareh_edari_tejari_entry.get().replace(",", "").strip()
+    add_number_toman(event)
+    mablagh_pish_ejareh_edari_tejari=mablagh_pish_ejareh_edari_tejari_entry.get().replace(",", "").replace("تومان", "").strip()
 
     if mablagh_pish_ejareh_edari_tejari.isdigit():
         mablagh_pish_ejareh_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
@@ -3588,7 +3597,8 @@ def chck_mablagh_pish_ejareh_edari_tejari(event=None):
 
 def chck_mablagh_ejareh_ejareh_edari_tejari(event=None):
     format_number(event=None)
-    mablagh_ejare_ejareh_edari_tejari=mablagh_ejare_ejareh_edari_tejari_entry.get().replace(",", "").strip()
+    add_number_toman(event)
+    mablagh_ejare_ejareh_edari_tejari=mablagh_ejare_ejareh_edari_tejari_entry.get().replace(",", "").replace("تومان", "").strip()
     if mablagh_ejare_ejareh_edari_tejari.isdigit():
         mablagh_ejare_ejareh_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_mablagh_ejareh_ejareh_edari_tejari.config(text="")
@@ -3742,7 +3752,8 @@ def chck_otagh_darkhast_edari_tejari(event=None):
 
 def chck_gheimat_kol_darkhast_edari_tejari(event=None):
     format_number(event=None)
-    value = gheimat_kol_darkhast_edari_tejari_entry.get().replace(",", "").strip()
+    add_number_toman(event)
+    value = gheimat_kol_darkhast_edari_tejari_entry.get().replace(",", "").replace("تومان", "").strip()
 
     if value == "":
         # خالی بودن فیلد
@@ -3784,7 +3795,8 @@ def chck_gheimat_kol_darkhast_edari_tejari(event=None):
 
 def chck_mablagh_vadie_darkhast_edari_tejari(event=None):
     format_number(event=None)
-    mablagh_vadie_darkhast_edari_tejari=mablagh_vadie_darkhast_edari_tejari_entry.get().replace(",", "").strip()
+    add_number_toman(event)
+    mablagh_vadie_darkhast_edari_tejari=mablagh_vadie_darkhast_edari_tejari_entry.get().replace(",", "").replace("تومان", "").strip()
 
     if mablagh_vadie_darkhast_edari_tejari.isdigit():
         mablagh_vadie_darkhast_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
@@ -3803,7 +3815,8 @@ def chck_mablagh_vadie_darkhast_edari_tejari(event=None):
         
 def chck_mablagh_ejareh_darkhast_edari_tejari(event=None):
     format_number(event=None)
-    mablagh_ejareh_darkhast_edari_tejari=mablagh_ejareh_darkhast_edari_tejari_entry.get().replace(",", "").strip()
+    add_number_toman(event)
+    mablagh_ejareh_darkhast_edari_tejari=mablagh_ejareh_darkhast_edari_tejari_entry.get().replace(",", "").replace("تومان", "").strip()
     if mablagh_ejareh_darkhast_edari_tejari.isdigit():
         mablagh_ejareh_darkhast_edari_tejari_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_mablagh_ejareh_darkhast_edari_tejari.config(text="")
@@ -3875,7 +3888,8 @@ def chck_metraj_forosh_bagh_zamin(event=None):
 
 def chck_gheimat_metri_forosh_bagh_zamin(event=None):
     format_number(event=None)
-    gheimat_metri_forosh_bagh_zamin=gheimat_har_metr_bagh_zamin_forosh_entry.get().replace(",", "").strip()
+    add_number_toman(event)
+    gheimat_metri_forosh_bagh_zamin=gheimat_har_metr_bagh_zamin_forosh_entry.get().replace(",", "").replace("تومان", "").strip()
 
     if gheimat_metri_forosh_bagh_zamin.isdigit():
         gheimat_har_metr_bagh_zamin_forosh_entry.config(highlightcolor="white",highlightthickness=0)
@@ -3894,7 +3908,8 @@ def chck_gheimat_metri_forosh_bagh_zamin(event=None):
 
 def chck_gheimat_kol_forosh_bagh_zamin(event=None):
     format_number(event=None)
-    gheimat_kol_forosh_bagh_zamin=gheimat_kol_forosh_bagh_zamin_entry.get().replace(",", "").strip()
+    add_number_toman(event)
+    gheimat_kol_forosh_bagh_zamin=gheimat_kol_forosh_bagh_zamin_entry.get().replace(",", "").replace("تومان", "").strip()
 
     if gheimat_kol_forosh_bagh_zamin.isdigit():
         gheimat_kol_forosh_bagh_zamin_entry.config(highlightcolor="white",highlightthickness=0)
@@ -3967,7 +3982,8 @@ def chck_metraj_ejareh_bagh_zamin(event=None):
 
 def chck_vadieh_ejareh_bagh_zamin(event=None):
     format_number(event=None)
-    vadieh_ejareh_bagh_zamin=bagh_gheimat_ejareh_bagh_zamin_entry.get().replace(",", "").strip()
+    add_number_toman(event)
+    vadieh_ejareh_bagh_zamin=bagh_gheimat_ejareh_bagh_zamin_entry.get().replace(",", "").replace("تومان", "").strip()
 
     if vadieh_ejareh_bagh_zamin.isdigit():
         bagh_gheimat_ejareh_bagh_zamin_entry.config(highlightcolor="white",highlightthickness=0)
@@ -3987,7 +4003,8 @@ def chck_vadieh_ejareh_bagh_zamin(event=None):
 
 def chck_ejareh_mahaneh_bagh_zamin(event=None):
     format_number(event=None)
-    ejareh_mahaneh_bagh_zamin=bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.get().replace(",", "").strip()
+    add_number_toman(event)
+    ejareh_mahaneh_bagh_zamin=bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.get().replace(",", "").replace("تومان", "").strip()
 
     if ejareh_mahaneh_bagh_zamin.isdigit():
         bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.config(highlightcolor="white",highlightthickness=0)
@@ -4060,7 +4077,8 @@ def chck_metraj_darkhast_bagh_zamin(event=None):
 
 def chck_gheimat_kol_darkhast_bagh_zamin(event=None):
     format_number(event=None)
-    gheimat_kol_darkhast_bagh_zamin=gheimat_kol_bagh_zamin_darkhast_entry.get().replace(",", "").strip()
+    add_number_toman(event)
+    gheimat_kol_darkhast_bagh_zamin=gheimat_kol_bagh_zamin_darkhast_entry.get().replace(",", "").replace("تومان", "").strip()
 
     if gheimat_kol_darkhast_bagh_zamin.isdigit():
         gheimat_kol_bagh_zamin_darkhast_entry.config(highlightcolor="white",highlightthickness=0)
@@ -4080,7 +4098,8 @@ def chck_gheimat_kol_darkhast_bagh_zamin(event=None):
 
 def chck_gheimat_metri_darkhast_bagh_zamin(event=None):
     format_number(event=None)
-    gheimat_metri_darkhast_bagh_zamin=gheimat_har_metr_bagh_zamin_darkhast_entry.get().replace(",", "").strip()
+    add_number_toman(event)
+    gheimat_metri_darkhast_bagh_zamin=gheimat_har_metr_bagh_zamin_darkhast_entry.get().replace(",", "").replace("تومان", "").strip()
 
     if gheimat_metri_darkhast_bagh_zamin.isdigit():
         gheimat_har_metr_bagh_zamin_darkhast_entry.config(highlightcolor="white",highlightthickness=0)
@@ -4099,7 +4118,8 @@ def chck_gheimat_metri_darkhast_bagh_zamin(event=None):
     
 def chck_vadieh_darkhast_bagh_zamin(event=None):
     format_number(event=None)
-    vadieh_darkhast_bagh_zamin=gheimat_ejareh_bagh_darkhast_zamin_entry.get().replace(",", "").strip()
+    add_number_toman(event)
+    vadieh_darkhast_bagh_zamin=gheimat_ejareh_bagh_darkhast_zamin_entry.get().replace(",", "").replace("تومان", "").strip()
 
     if vadieh_darkhast_bagh_zamin.isdigit():
         gheimat_ejareh_bagh_darkhast_zamin_entry.config(highlightcolor="white",highlightthickness=0)
@@ -4118,7 +4138,8 @@ def chck_vadieh_darkhast_bagh_zamin(event=None):
 
 def chck_darkhast_ejareh_mahaneh_bagh_zamin(event=None):
     format_number(event=None)
-    darkhast_ejareh_mahaneh_bagh_zamin=mablagh_ejareh_mahaneh_darkhast_entry.get().replace(",", "").strip()
+    add_number_toman(event)
+    darkhast_ejareh_mahaneh_bagh_zamin=mablagh_ejareh_mahaneh_darkhast_entry.get().replace(",", "").replace("تومان", "").strip()
 
     if darkhast_ejareh_mahaneh_bagh_zamin.isdigit():
         mablagh_ejareh_mahaneh_darkhast_entry.config(highlightcolor="white",highlightthickness=0)
@@ -4211,7 +4232,8 @@ def chck_metraj_forosh_kargah(event=None):
 
 def chck_gheimat_kol_forosh_kargah(event=None):
     format_number(event=None)
-    gheimat_kol_forosh_kargah=gheimat_kol_forosh_kargah_entry.get().replace(",", "").strip()
+    add_number_toman(event)
+    gheimat_kol_forosh_kargah=gheimat_kol_forosh_kargah_entry.get().replace(",", "").replace("تومان", "").strip()
 
     if gheimat_kol_forosh_kargah.isdigit():
         gheimat_kol_forosh_kargah_entry.config(highlightcolor="white",highlightthickness=0)
@@ -4292,7 +4314,8 @@ def chck_metraj_ejareh_karghah(event=None):
 
 def chck_gheimat_pish_ejareh_karghah(event=None):
     format_number(event=None)
-    gheimat_pish_ejareh_karghah=vadie_ejare_karghah_entry.get().replace(",", "").strip()
+    add_number_toman(event)
+    gheimat_pish_ejareh_karghah=vadie_ejare_karghah_entry.get().replace(",", "").replace("تومان", "").strip()
     if gheimat_pish_ejareh_karghah.isdigit():
         vadie_ejare_karghah_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_gheimat_pish_ejareh_karghah.config(text="")
@@ -4310,7 +4333,8 @@ def chck_gheimat_pish_ejareh_karghah(event=None):
         
 def chck_gheimat_ejareh_ejareh_karghah(event=None):
     format_number(event=None)
-    gheimat_ejareh_ejareh_karghah=gheimat_ejare_ejare_karghah_entry.get().replace(",", "").strip()
+    add_number_toman(event)
+    gheimat_ejareh_ejareh_karghah=gheimat_ejare_ejare_karghah_entry.get().replace(",", "").replace("تومان", "").strip()
 
     if gheimat_ejareh_ejareh_karghah.isdigit():
         gheimat_ejare_ejare_karghah_entry.config(highlightcolor="white",highlightthickness=0)
@@ -4399,7 +4423,8 @@ def chck_metraj_melk_darkhast_karghah(event=None):
 
 def chck_gheimat_kol_darkhast_karghah(event=None):
     format_number(event=None)
-    gheimat_kol_darkhast_karghah=gheimat_kol_darkhast_kargah_entry.get().replace(",", "").strip()
+    add_number_toman(event)
+    gheimat_kol_darkhast_karghah=gheimat_kol_darkhast_kargah_entry.get().replace(",", "").replace("تومان", "").strip()
 
     if gheimat_kol_darkhast_karghah.isdigit():
         gheimat_kol_darkhast_kargah_entry.config(highlightcolor="white",highlightthickness=0)
@@ -4415,7 +4440,8 @@ def chck_gheimat_kol_darkhast_karghah(event=None):
 
 def chck_mablagh_vadie_darkhast_karghah(event=None):
     format_number(event=None)
-    mablagh_vadie_darkhast_karghah=mablagh_pish_darkhast_kargah_entry.get().replace(",", "").strip()
+    add_number_toman(event)
+    mablagh_vadie_darkhast_karghah=mablagh_pish_darkhast_kargah_entry.get().replace(",", "").replace("تومان", "").strip()
 
     if mablagh_vadie_darkhast_karghah.isdigit():
         mablagh_pish_darkhast_kargah_entry.config(highlightcolor="white",highlightthickness=0)
@@ -4434,7 +4460,8 @@ def chck_mablagh_vadie_darkhast_karghah(event=None):
         
 def chck_mablagh_ejareh_darkhast_karghah(event=None):
     format_number(event=None)
-    mablagh_ejareh_darkhast_karghah=ejareh_mahaneh_darkhast_kargah_entry.get().replace(",", "").strip()
+    add_number_toman(event)
+    mablagh_ejareh_darkhast_karghah=ejareh_mahaneh_darkhast_kargah_entry.get().replace(",", "").replace("تومان", "").strip()
     if mablagh_ejareh_darkhast_karghah.isdigit():
         ejareh_mahaneh_darkhast_kargah_entry.config(highlightcolor="white",highlightthickness=0)
         error_lable_mablagh_ejareh_darkhast_karghah.config(text="")
@@ -4496,14 +4523,24 @@ def chck_shomareh_moshtari_darkhast_karghah(event=None):
 #endregion
 #-----------اضافه کردن تومان به فیلد های قیمت----------------------
 #region
-def format_number_toman(event):
+def add_number_toman(event):
     entry = event.widget
 
-    value = gheimat_kol_forosh_kargah_entry.get().replace(",", "").replace(" تومان", "")
+    value = entry.get().replace(",", "").replace(" تومان", "").strip()
 
     if value.isdigit():
-        gheimat_kol_forosh_kargah_entry.delete(0, tk.END)
-        gheimat_kol_forosh_kargah_entry.insert(0, f"{int(value):,} تومان")
+        entry.delete(0, tk.END)
+        entry.insert(0, f"{int(value):,}")
+
+        entry.after(150, add_toman, entry)
+
+
+def add_toman(entry):
+    value = entry.get().replace(",", "").replace(" تومان", "").strip()
+
+    if value.isdigit():
+        entry.delete(0, tk.END)
+        entry.insert(0, f"{int(value):,} تومان")
 #endregion
 #---------------------------------------------------------------------
 #-------------------------تابع ثبت فروش------------------------------
@@ -4595,7 +4632,7 @@ def sabt_forosh_maskoni():
             parking_forosh_maskoni_var.get(),
             asansor_forosh_maskoni_var.get(),
             anbari_forosh_maskoni_var.get(),
-            float(gheimat_kol_forosh_maskoni_entry.get())
+            float(gheimat_kol_forosh_maskoni_entry.get().replace(",", "").replace(" تومان", "").strip())
 
         )
 
@@ -4694,7 +4731,8 @@ def sabt_forosh_edari_tejari():
             parking_forosh_edari_tejari_var.get(),
             asansor_forosh_edari_tejari_var.get(),
             anbari_forosh_edari_tejari_var.get(),
-            float(gheimat_kol_forosh_edari_tejari_entry.get()))
+            float(gheimat_kol_forosh_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip())
+        )
         
         cursor.execute(sql_insert, values)
         last_id = cursor.lastrowid
@@ -4810,10 +4848,10 @@ def sabt_forosh_bagh_zamin_main():
                 metraj_zamin_forosh_bagh_zamin_entry.get(),
                 bagh_type_forosh_bagh_zamin_combo.get(),
                 bagh_loctaion_forosh_bagh_zamin_entry.get("1.0",tk.END),
-                gheimat_har_metr_bagh_zamin_forosh_entry.get(),
+                float(gheimat_har_metr_bagh_zamin_forosh_entry.get().replace(",", "").replace(" تومان", "").strip()),
                 name_malek_forosh_bagh_entry.get(),
                 number_malek_forosh_bagh_entry.get(),
-                gheimat_kol_forosh_bagh_zamin_entry.get(),
+                float(gheimat_kol_forosh_bagh_zamin_entry.get().replace(",", "").replace(" تومان", "").strip()),
                 metraj_derakht_forosh_bagh_zamin_entry.get(),
                 tedad_derakht_value,
                 type_derakht_value,
@@ -4880,10 +4918,10 @@ def sabt_forosh_bagh_zamin_main():
                 metraj_zamin_forosh_bagh_zamin_entry.get(),
                 bagh_type_forosh_bagh_zamin_combo.get(),
                 bagh_loctaion_forosh_bagh_zamin_entry.get("1.0",tk.END),
-                gheimat_har_metr_bagh_zamin_forosh_entry.get(),
+                float(gheimat_har_metr_bagh_zamin_forosh_entry.get().replace(",", "").replace(" تومان", "").strip()),
                 name_malek_forosh_bagh_entry.get(),
                 number_malek_forosh_bagh_entry.get(),
-                gheimat_kol_forosh_bagh_zamin_entry.get(),
+                float(gheimat_kol_forosh_bagh_zamin_entry.get().replace(",", "").replace(" تومان", "").strip()),
                 bagh_type_forosh_bagh_zamin_combo.get(),
                 khak_forosh_bagh_zamin_combo.get(),
                 ab_forosh_bagh_zamin_combo.get(),
@@ -4988,7 +5026,7 @@ def sabt_forosh_kargah():
             garmayesh_type_forosh_kargah_combo.get(),
             vaziat_bargh_forosh_kargah_combo.get(),
             toilet_forosh_kargah_combo.get(),
-            float(gheimat_kol_forosh_kargah_entry.get())
+            float(gheimat_kol_forosh_kargah_entry.get().replace(",", "").replace(" تومان", "").strip())
         )
         cursor.execute(sql_insert, values)
         last_id = cursor.lastrowid
@@ -5095,8 +5133,8 @@ def sabt_ejareh_maskoni():
             parking_ejareh_maskoni_var.get(),
             asansor_ejareh_maskoni_var.get(),
             anbari_ejareh_maskoni_var.get(),
-            float(gheimat_pish_ejareh_maskoni_entry.get()),
-            float(gheimat_ejareh_ejareh_maskoni_entry.get())
+            float(gheimat_pish_ejareh_maskoni_entry.get().replace(",", "").replace(" تومان", "").strip()),
+            float(gheimat_ejareh_ejareh_maskoni_entry.get().replace(",", "").replace(" تومان", "").strip())
 
         )
 
@@ -5208,8 +5246,8 @@ def sabt_ejareh_edari_tejari():
             parking_ejareh_edari_tejari_var.get(),
             asansor_ejareh_edari_tejari_var.get(),
             anbari_ejareh_edari_tejari_var.get(),
-            float(mablagh_pish_ejareh_edari_tejari_entry.get()),
-            float(mablagh_ejare_ejareh_edari_tejari_entry.get())
+            float(mablagh_pish_ejareh_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip()),
+            float(mablagh_ejare_ejareh_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip())
 
         )
 
@@ -5513,8 +5551,8 @@ def sabt_ejareh_kargah():
             garmaesh_ejareh_karghah_combo.get(),
             vaziat_bargh_ejareh_karghah_combo.get(),
             toilet_ejareh_karghah_combo.get(),
-            float(vadie_ejare_karghah_entry.get()),
-            float((gheimat_ejare_ejare_karghah_entry).get())
+            float(vadie_ejare_karghah_entry.get().replace(",", "").replace(" تومان", "").strip()),
+            float((gheimat_ejare_ejare_karghah_entry.get().replace(",", "").replace(" تومان", "").strip()))
         )
         cursor.execute(sql_insert, values)
         last_id = cursor.lastrowid
@@ -5624,7 +5662,7 @@ def sabt_darkhast_maskoni(event=None):
             parking_darkhast_maskoni_var.get(),
             asansor_darkhast_maskoni_var.get(),
             anbari_darkhast_maskoni_var.get(),
-            gheimat_kol_darkhast_maskoni_entry.get()    
+            float(gheimat_kol_darkhast_maskoni_entry.get().replace(",", "").replace(" تومان", "").strip())    
             )
 
             cursor.execute(sql_kharid, values_darkhast_kharid_maskoni)
@@ -5713,8 +5751,8 @@ def sabt_darkhast_maskoni(event=None):
             parking_darkhast_maskoni_var.get(),
             asansor_darkhast_maskoni_var.get(),
             anbari_darkhast_maskoni_var.get(),
-            gheimat_pish_darkhast_maskoni_entry.get(),
-            mablagh_ejare_darkhast_maskoni_entry.get()
+            float(gheimat_pish_darkhast_maskoni_entry.get().replace(",", "").replace(" تومان", "").strip()),
+            float(mablagh_ejare_darkhast_maskoni_entry.get().replace(",", "").replace(" تومان", "").strip())
             )
 
             cursor.execute(sql_ejareh, values_darkhast_ejareh_maskoni)
@@ -5845,7 +5883,7 @@ def sabt_darkhast_edari_tejari(event=None):
             parking_darkhast_edari_tejari_var.get(),
             asansor_darkhast_edari_tejari_var.get(),
             anbari_darkhast_edari_tejari_var.get(),
-            gheimat_kol_darkhast_edari_tejari_entry.get()
+            float(gheimat_kol_darkhast_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip())
             )
             
             cursor.execute(sql_kharid,values_darkhast_kharid_edari_tejari)
@@ -5931,8 +5969,8 @@ def sabt_darkhast_edari_tejari(event=None):
             parking_darkhast_edari_tejari_var.get(),
             asansor_darkhast_edari_tejari_var.get(),
             anbari_darkhast_edari_tejari_var.get(),
-            mablagh_vadie_darkhast_edari_tejari_entry.get(),
-            mablagh_ejareh_darkhast_edari_tejari_entry.get()
+            float(mablagh_vadie_darkhast_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip()),
+            float(mablagh_ejareh_darkhast_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip())
             )
             
             cursor.execute(sql_ejareh,values_darkhast_ejareh_edari_tejari)
@@ -6079,8 +6117,8 @@ def sabt_darkhast_bagh_zamin(event=None):
                     metraj_zamin_darkhast_bagh_zamin_entry.get(),
                     bagh_type_darkhast_bagh_zamin_combo.get(),
                     bagh_loctaion_darkhast_bagh_zamin_entry.get("1.0", tk.END),
-                    gheimat_har_metr_bagh_zamin_darkhast_entry.get(),
-                    gheimat_kol_bagh_zamin_darkhast_entry.get(),
+                    float(gheimat_har_metr_bagh_zamin_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip()),
+                    float(gheimat_kol_bagh_zamin_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip()),
                     name_moshtari_darkhast_bagh_entry.get(),
                     shomareh_moshtari_darkhast_bagh_entry.get(),
                     metraj_derakht_darkhast_bagh_zamin_entry.get(),
@@ -6150,8 +6188,8 @@ def sabt_darkhast_bagh_zamin(event=None):
                    metraj_zamin_darkhast_bagh_zamin_entry.get(),
                    karbari,
                    bagh_loctaion_darkhast_bagh_zamin_entry.get("1.0",tk.END),
-                   gheimat_kol_bagh_zamin_darkhast_entry.get(),
-                   gheimat_har_metr_bagh_zamin_darkhast_entry.get(),
+                   float(gheimat_kol_bagh_zamin_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip()),
+                   float(gheimat_har_metr_bagh_zamin_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip()),
                    name_moshtari_darkhast_bagh_entry.get(),
                    shomareh_moshtari_darkhast_bagh_entry.get(),
                    karbari_darkhast_bagh_zamin_combo.get(),
@@ -6292,8 +6330,8 @@ def sabt_darkhast_bagh_zamin(event=None):
                     bagh_type_darkhast_bagh_zamin_combo.get(),
                     bagh_loctaion_darkhast_bagh_zamin_entry.get("1.0", tk.END),
 
-                    gheimat_ejareh_bagh_darkhast_zamin_entry.get(),
-                    mablagh_ejareh_mahaneh_darkhast_entry.get(),
+                    float(gheimat_ejareh_bagh_darkhast_zamin_entry.get().replace(",", "").replace(" تومان", "").strip()),
+                    float(mablagh_ejareh_mahaneh_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip()),
                     bagh_time_darkhast_combo.get(),
                     name_moshtari_darkhast_bagh_entry.get(),
                     shomareh_moshtari_darkhast_bagh_entry.get(),
@@ -6366,8 +6404,8 @@ def sabt_darkhast_bagh_zamin(event=None):
                    metraj_zamin_darkhast_bagh_zamin_entry.get(),
                    karbari,
                    bagh_loctaion_darkhast_bagh_zamin_entry.get("1.0",tk.END),
-                   gheimat_ejareh_bagh_darkhast_zamin_entry.get(),
-                   mablagh_ejareh_mahaneh_darkhast_entry.get(),
+                   float(gheimat_ejareh_bagh_darkhast_zamin_entry.get().replace(",", "").replace(" تومان", "").strip()),
+                   float(mablagh_ejareh_mahaneh_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip()),
                    bagh_time_darkhast_combo.get(),
                    name_moshtari_darkhast_bagh_entry.get(),
                    shomareh_moshtari_darkhast_bagh_entry.get(),
@@ -6511,7 +6549,7 @@ def sabt_darkhast_kargah(event=None):
             garmayesh_type_darkhast_kargah_combo.get(),
             vaziat_bargh_darkhast_kargah_combo.get(),
             toilet_darkhast_kargah_combo.get(),
-            gheimat_kol_darkhast_kargah_entry.get()
+            float(gheimat_kol_darkhast_kargah_entry.get().replace(",", "").replace(" تومان", "").strip())
             )
             
             cursor.execute(sql_kharid,values_darkhast_kharid_kargah)
@@ -6593,8 +6631,8 @@ def sabt_darkhast_kargah(event=None):
             garmayesh_type_darkhast_kargah_combo.get(),
             vaziat_bargh_darkhast_kargah_combo.get(),
             toilet_darkhast_kargah_combo.get(),
-            mablagh_pish_darkhast_kargah_entry.get(),
-            ejareh_mahaneh_darkhast_kargah_entry.get()
+            float(mablagh_pish_darkhast_kargah_entry.get().replace(",", "").replace(" تومان", "").strip()),
+            float(ejareh_mahaneh_darkhast_kargah_entry.get().replace(",", "").replace(" تومان", "").strip())
             )
             
             cursor.execute(sql_ejareh,values_darkhast_ejareh_kargah)
@@ -10987,15 +11025,16 @@ gheimat_pish_ejareh_maskoni_lable.place(x=465, y=30, anchor="e")
 
 gheimat_pish_ejareh_maskoni_entry = tk.Entry(frame_midde_right_ejareh_maskoni, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 gheimat_pish_ejareh_maskoni_entry.place(x=18, y=20, width=350, height=25)
-gheimat_pish_ejareh_maskoni_entry.bind("<KeyRelease>",chck_gheimat_pish_ejareh_maskoni,format_number)
-#gheimat_pish_ejareh_maskoni_entry.bind("<KeyRelease>", format_number)
+gheimat_pish_ejareh_maskoni_entry.bind("<KeyRelease>",chck_gheimat_pish_ejareh_maskoni)
+gheimat_pish_ejareh_maskoni_entry.bind("<KeyRelease>",add_number_toman,add="+")
 
 gheimat_ejare_ejareh_maskoni_lable = tk.Label(frame_midde_right_ejareh_maskoni, text="مبلغ اجاره", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 gheimat_ejare_ejareh_maskoni_lable.place(x=465, y=80, anchor="e")
 
 gheimat_ejareh_ejareh_maskoni_entry = tk.Entry(frame_midde_right_ejareh_maskoni, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 gheimat_ejareh_ejareh_maskoni_entry.place(x=18, y=70, width=350, height=25)
-gheimat_ejareh_ejareh_maskoni_entry.bind("<KeyRelease>",chck_gheimat_ejareh_ejareh_maskoni,format_number)
+gheimat_ejareh_ejareh_maskoni_entry.bind("<KeyRelease>",chck_gheimat_ejareh_ejareh_maskoni)
+gheimat_ejareh_ejareh_maskoni_entry.bind("<KeyRelease>",add_number_toman,add="+")
 
 
 address_ejareh_maskoni_lable = tk.Label(frame_midde_right_ejareh_maskoni, text="آدرس", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
@@ -11226,7 +11265,8 @@ mablagh_pish_ejareh_edari_tejari.place(x=465, y=30, anchor="e")
 
 mablagh_pish_ejareh_edari_tejari_entry=tk.Entry(frame_midde_right_ejareh_edari_tejari, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 mablagh_pish_ejareh_edari_tejari_entry.place(x=18, y=20, width=350, height=25)
-mablagh_pish_ejareh_edari_tejari_entry.bind("<KeyRelease>",chck_mablagh_pish_ejareh_edari_tejari,format_number)
+mablagh_pish_ejareh_edari_tejari_entry.bind("<KeyRelease>",chck_mablagh_pish_ejareh_edari_tejari)
+mablagh_pish_ejareh_edari_tejari_entry.bind("<KeyRelease>",add_number_toman,add="+")
 
 
 mablagh_ejare_ejareh_edari_tejari=tk.Label(frame_midde_right_ejareh_edari_tejari, text=" مبلغ اجاره ", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
@@ -11234,8 +11274,8 @@ mablagh_ejare_ejareh_edari_tejari.place(x=465, y=70, anchor="e")
 
 mablagh_ejare_ejareh_edari_tejari_entry=tk.Entry(frame_midde_right_ejareh_edari_tejari, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 mablagh_ejare_ejareh_edari_tejari_entry.place(x=18, y=55, width=350, height=25)
-mablagh_ejare_ejareh_edari_tejari_entry.bind("<KeyRelease>",chck_mablagh_ejareh_ejareh_edari_tejari,format_number)
-
+mablagh_ejare_ejareh_edari_tejari_entry.bind("<KeyRelease>",chck_mablagh_ejareh_ejareh_edari_tejari)
+mablagh_ejare_ejareh_edari_tejari_entry.bind("<KeyRelease>",add_number_toman,add="+")
 
 address_ejareh_edari_tejari=tk.Label(frame_midde_right_ejareh_edari_tejari, text="آدرس", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 address_ejareh_edari_tejari.place(x=465, y=110, anchor="e")
@@ -11456,14 +11496,16 @@ bagh_gheimat_ejareh_bagh_zamin_lable.place(x=490, y=20, anchor="e")
 
 bagh_gheimat_ejareh_bagh_zamin_entry=tk.Entry(frame_midde_right_ejareh_bagh_zamin, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
 bagh_gheimat_ejareh_bagh_zamin_entry.place(x=28, y=13, width=350, height=25)
-bagh_gheimat_ejareh_bagh_zamin_entry.bind("<KeyRelease>",chck_vadieh_ejareh_bagh_zamin,format_number)
+bagh_gheimat_ejareh_bagh_zamin_entry.bind("<KeyRelease>",chck_vadieh_ejareh_bagh_zamin)
+bagh_gheimat_ejareh_bagh_zamin_entry.bind("<KeyRelease>",add_number_toman,add="+")
 
 bagh_gheimat_har_metr_ejareh_bagh_zamin_lable=tk.Label(frame_midde_right_ejareh_bagh_zamin, text="اجاره ماهانه", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 bagh_gheimat_har_metr_ejareh_bagh_zamin_lable.place(x=490, y=65, anchor="e")
 
 bagh_gheimat_har_metr_ejareh_bagh_zamin_entry=tk.Entry(frame_midde_right_ejareh_bagh_zamin, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
 bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.place(x=28, y=55, width=350, height=25)
-bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.bind("<KeyRelease>",chck_ejareh_mahaneh_bagh_zamin,format_number)
+bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.bind("<KeyRelease>",chck_ejareh_mahaneh_bagh_zamin)
+bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.bind("<KeyRelease>",add_number_toman,add="+")
 
 
 bagh_loctaion_lable=tk.Label(frame_midde_right_ejareh_bagh_zamin, text=" منطقه و آدرس ", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
@@ -11810,7 +11852,8 @@ vadie_ejare_karghah_lable.place(x=465, y=30, anchor="e")
 
 vadie_ejare_karghah_entry = tk.Entry(frame_midde_right_ejareh_karghah, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 vadie_ejare_karghah_entry.place(x=18, y=20, width=350, height=25)
-vadie_ejare_karghah_entry.bind("<KeyRelease>",chck_gheimat_pish_ejareh_karghah,format_number)
+vadie_ejare_karghah_entry.bind("<KeyRelease>",chck_gheimat_pish_ejareh_karghah)
+vadie_ejare_karghah_entry.bind("<KeyRelease>",add_number_toman,add="+")
 
 
 gheimat_ejare_ejare_karghah_lable = tk.Label(frame_midde_right_ejareh_karghah, text="مبلغ اجاره", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
@@ -11818,7 +11861,8 @@ gheimat_ejare_ejare_karghah_lable.place(x=465, y=70, anchor="e")
 
 gheimat_ejare_ejare_karghah_entry = tk.Entry(frame_midde_right_ejareh_karghah, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 gheimat_ejare_ejare_karghah_entry.place(x=18, y=55, width=350, height=25)
-gheimat_ejare_ejare_karghah_entry.bind("<KeyRelease>",chck_gheimat_ejareh_ejareh_karghah,format_number)
+gheimat_ejare_ejare_karghah_entry.bind("<KeyRelease>",chck_gheimat_ejareh_ejareh_karghah)
+gheimat_ejare_ejare_karghah_entry.bind("<KeyRelease>",add_number_toman,add="+")
 
 
 address_ejareh_karghah_lable = tk.Label(frame_midde_right_ejareh_karghah, text="آدرس", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=12)
@@ -12069,9 +12113,12 @@ add_img_btn_forosh_maskoni.place(x=270, y=250)
 gheimat_kol_forosh_maskoni=tk.Label(frame_midde_right_forosh_maskoni, text=" قیمت کل ", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9,textvariable=var)
 gheimat_kol_forosh_maskoni.place(x=465, y=30, anchor="e")
 
+
 gheimat_kol_forosh_maskoni_entry=tk.Entry(frame_midde_right_forosh_maskoni, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 gheimat_kol_forosh_maskoni_entry.place(x=18, y=20, width=350, height=25)
-gheimat_kol_forosh_maskoni_entry.bind("<KeyRelease>",chck_gheimat_kol_forosh_maskoni,format_number)
+gheimat_kol_forosh_maskoni_entry.bind("<KeyRelease>",chck_gheimat_kol_forosh_maskoni)
+gheimat_kol_forosh_maskoni_entry.bind("<KeyRelease>",add_number_toman,add="+")
+
 
 
 address_forosh_maskoni=tk.Label(frame_midde_right_forosh_maskoni, text="آدرس", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
@@ -12304,7 +12351,8 @@ gheimat_kol_forosh_edari_tejari.place(x=465, y=30, anchor="e")
 
 gheimat_kol_forosh_edari_tejari_entry=tk.Entry(frame_midde_right_forosh_edari_tejari, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 gheimat_kol_forosh_edari_tejari_entry.place(x=18, y=20, width=350, height=25)
-gheimat_kol_forosh_edari_tejari_entry.bind("<KeyRelease>", chck_gheimat_kol_forosh_edari_tejari,format_number)
+gheimat_kol_forosh_edari_tejari_entry.bind("<KeyRelease>", chck_gheimat_kol_forosh_edari_tejari)
+gheimat_kol_forosh_edari_tejari_entry.bind("<KeyRelease>",add_number_toman,add="+")
 
 address_forosh_edari_tejari=tk.Label(frame_midde_right_forosh_edari_tejari, text="آدرس", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 address_forosh_edari_tejari.place(x=465, y=80, anchor="e")
@@ -12512,7 +12560,8 @@ gheimat_har_matr_babagh_zamin_forosh_bagh_zamin_lable.place(x=490, y=20, anchor=
 
 gheimat_har_metr_bagh_zamin_forosh_entry=tk.Entry(frame_midde_right_forosh_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
 gheimat_har_metr_bagh_zamin_forosh_entry.place(x=28, y=13, width=350, height=25)
-gheimat_har_metr_bagh_zamin_forosh_entry.bind("<KeyRelease>",chck_gheimat_metri_forosh_bagh_zamin,format_number)
+gheimat_har_metr_bagh_zamin_forosh_entry.bind("<KeyRelease>",chck_gheimat_metri_forosh_bagh_zamin)
+gheimat_har_metr_bagh_zamin_forosh_entry.bind("<KeyRelease>",add_number_toman,add="+")
 
 
 gheimat_kol_forosh_bagh_zamin_lable=tk.Label(frame_midde_right_forosh_bagh_zamin,text='قیمت کل',bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
@@ -12520,7 +12569,8 @@ gheimat_kol_forosh_bagh_zamin_lable.place(x=490, y=65, anchor="e")
 
 gheimat_kol_forosh_bagh_zamin_entry=tk.Entry(frame_midde_right_forosh_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
 gheimat_kol_forosh_bagh_zamin_entry.place(x=28,y=55, width=350, height=25)
-gheimat_kol_forosh_bagh_zamin_entry.bind("<KeyRelease>",chck_gheimat_kol_forosh_bagh_zamin,format_number)
+gheimat_kol_forosh_bagh_zamin_entry.bind("<KeyRelease>",chck_gheimat_kol_forosh_bagh_zamin)
+gheimat_kol_forosh_bagh_zamin_entry.bind("<KeyRelease>",add_number_toman,add="+")
 
 
 bagh_loctaion_forosh_bagh_zamin_lable=tk.Label(frame_midde_right_forosh_bagh_zamin,text="منطقه و ادرس ",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
@@ -12861,20 +12911,13 @@ loctaion_forosh_kargah_entry = tk.Text(frame_midde_right_forosh_karghah, bg="#ff
 loctaion_forosh_kargah_entry.place(x=18, y=70, width=350, height=50)
 loctaion_forosh_kargah_entry.bind("<KeyRelease>",chck_address_forosh_kargah)
 
-loctaion_forosh_kargah_entry.tag_configure("right", justify="right")
-loctaion_forosh_kargah_entry.tag_add("right", "1.0", "end")
-
-loctaion_forosh_kargah_entry.tag_configure("right", justify="right")
-loctaion_forosh_kargah_entry.tag_add("right", "1.0", "end")
-loctaion_forosh_kargah_entry.bind("<KeyRelease>",lambda event: loctaion_forosh_kargah_entry.tag_add("right", "1.0", "end"))
-
 gheimat_kol_forosh_kargah_lable=tk.Label(frame_midde_right_forosh_karghah,text="قیمت کل ",bg="#052340",fg="#ffffff",font=("Shabnam", 12),width=9)
 gheimat_kol_forosh_kargah_lable.place(x=465, y=30, anchor="e")
 
 gheimat_kol_forosh_kargah_entry=tk.Entry(frame_midde_right_forosh_karghah,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
 gheimat_kol_forosh_kargah_entry.place(x=18, y=20, width=350, height=25)
-gheimat_kol_forosh_kargah_entry.bind("<KeyRelease>",chck_gheimat_kol_forosh_kargah , format_number)
-#gheimat_kol_forosh_kargah_entry.bind("<KeyRelease>", format_number_toman)
+gheimat_kol_forosh_kargah_entry.bind("<KeyRelease>",chck_gheimat_kol_forosh_kargah)
+gheimat_kol_forosh_kargah_entry.bind("<KeyRelease>",add_number_toman,add="+")
 
 #------------------------------------فریم چپ وسط-----------------------
 name_malek_forosh_kargah_lable = tk.Label(frame_midde_left_forosh_karghah,text="نام مالک", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
@@ -13120,7 +13163,8 @@ gheimat_kol_darkhast_maskoni_lable.place(x=465, y=30, anchor="e")
 
 gheimat_kol_darkhast_maskoni_entry=tk.Entry(frame_midde_right_darkhast_maskoni,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
 gheimat_kol_darkhast_maskoni_entry.place(x=18, y=20, width=350, height=25)
-gheimat_kol_darkhast_maskoni_entry.bind("<KeyRelease>",chck_gheimat_kol_darkhast_maskoni,format_number)
+gheimat_kol_darkhast_maskoni_entry.bind("<KeyRelease>",chck_gheimat_kol_darkhast_maskoni)
+gheimat_kol_darkhast_maskoni_entry.bind("<KeyRelease>",add_number_toman,add="+")
 
 
 gheimat_pish_darkhast_maskoni_lable = tk.Label(frame_midde_right_darkhast_maskoni, text="مبلغ پیش", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
@@ -13128,7 +13172,8 @@ gheimat_pish_darkhast_maskoni_lable.place_forget()
 
 gheimat_pish_darkhast_maskoni_entry = tk.Entry(frame_midde_right_darkhast_maskoni, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
 gheimat_pish_darkhast_maskoni_entry.place_forget()
-gheimat_pish_darkhast_maskoni_entry.bind("<KeyRelease>",chck_gheimat_pish_darkhast_maskoni,format_number)
+gheimat_pish_darkhast_maskoni_entry.bind("<KeyRelease>",chck_gheimat_pish_darkhast_maskoni)
+gheimat_pish_darkhast_maskoni_entry.bind("<KeyRelease>",add_number_toman,add="+")
 
 
 mablagh_ejare_darkhast_maskoni_lable = tk.Label(frame_midde_right_darkhast_maskoni, text="مبلغ اجاره", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
@@ -13136,7 +13181,8 @@ mablagh_ejare_darkhast_maskoni_lable.place_forget()
 
 mablagh_ejare_darkhast_maskoni_entry = tk.Entry(frame_midde_right_darkhast_maskoni, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
 mablagh_ejare_darkhast_maskoni_entry.place_forget()
-mablagh_ejare_darkhast_maskoni_entry.bind("<KeyRelease>",chck_mablagh_ejare_darkhast_maskoni,format_number)
+mablagh_ejare_darkhast_maskoni_entry.bind("<KeyRelease>",chck_mablagh_ejare_darkhast_maskoni)
+mablagh_ejare_darkhast_maskoni_entry.bind("<KeyRelease>",add_number_toman,add="+")
 
 
 address_darkhast_maskoni=tk.Label(frame_midde_right_darkhast_maskoni,text="آدرس",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
@@ -13375,7 +13421,8 @@ gheimat_kol_darkhast_edari_tejari.place(x=465, y=20, anchor="e")
 
 gheimat_kol_darkhast_edari_tejari_entry=tk.Entry(frame_midde_right_darkhast_edari_tejari,bg="#ffffff", fg="#000000",font=("Shabnam", 10),)
 gheimat_kol_darkhast_edari_tejari_entry.place(x=18, y=20, width=350, height=25)
-gheimat_kol_darkhast_edari_tejari_entry.bind("<KeyRelease>",chck_gheimat_kol_darkhast_edari_tejari,format_number)
+gheimat_kol_darkhast_edari_tejari_entry.bind("<KeyRelease>",chck_gheimat_kol_darkhast_edari_tejari)
+gheimat_kol_darkhast_edari_tejari_entry.bind("<KeyRelease>",add_number_toman,add="+")
 
 
 mablagh_ejareh_darkhast_edari_tejari=tk.Label(frame_midde_right_darkhast_edari_tejari,text="مبلغ اجاره",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
@@ -13383,14 +13430,16 @@ mablagh_ejareh_darkhast_edari_tejari.place_forget()
 
 mablagh_ejareh_darkhast_edari_tejari_entry=tk.Entry(frame_midde_right_darkhast_edari_tejari,bg="#FFFFFF", fg="#000000",font=("Shabnam", 10),)
 mablagh_ejareh_darkhast_edari_tejari_entry.place_forget()
-mablagh_ejareh_darkhast_edari_tejari_entry.bind("<KeyRelease>",chck_mablagh_ejareh_darkhast_edari_tejari,format_number)
+mablagh_ejareh_darkhast_edari_tejari_entry.bind("<KeyRelease>",chck_mablagh_ejareh_darkhast_edari_tejari)
+mablagh_ejareh_darkhast_edari_tejari_entry.bind("<KeyRelease>",add_number_toman,add="+")
 
 mablagh_vadie_darkhast_edari_tejari=tk.Label(frame_midde_right_darkhast_edari_tejari,text="مبلغ پیش",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
 mablagh_vadie_darkhast_edari_tejari.place_forget()
 
 mablagh_vadie_darkhast_edari_tejari_entry=tk.Entry(frame_midde_right_darkhast_edari_tejari,bg="#FFFFFF", fg="#000000",font=("Shabnam", 10),)
 mablagh_vadie_darkhast_edari_tejari_entry.place_forget()
-mablagh_vadie_darkhast_edari_tejari_entry.bind("<KeyRelease>",chck_mablagh_vadie_darkhast_edari_tejari,format_number)
+mablagh_vadie_darkhast_edari_tejari_entry.bind("<KeyRelease>",chck_mablagh_vadie_darkhast_edari_tejari)
+mablagh_vadie_darkhast_edari_tejari_entry.bind("<KeyRelease>",add_number_toman,add="+")
 
 
 address_darkhast_edari_tejari=tk.Label(frame_midde_right_darkhast_edari_tejari,text="آدرس",bg="#052340",fg="#ffffff",font=("Shabnam",12),width=9)
@@ -13613,7 +13662,8 @@ gheimat_kol_bagh_zamin_darkhast_lable.place(x=490, y=20, anchor="e")
 
 gheimat_kol_bagh_zamin_darkhast_entry=tk.Entry(frame_midde_right_darkhast_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
 gheimat_kol_bagh_zamin_darkhast_entry.place(x=28, y=13, width=350, height=25)
-gheimat_kol_bagh_zamin_darkhast_entry.bind("<KeyRelease>",chck_gheimat_kol_darkhast_bagh_zamin,format_number)
+gheimat_kol_bagh_zamin_darkhast_entry.bind("<KeyRelease>",chck_gheimat_kol_darkhast_bagh_zamin)
+gheimat_kol_bagh_zamin_darkhast_entry.bind("<KeyRelease>",add_number_toman,add="+")
 
 
 gheimat_har_matr_bagh_zamin_darkhast_lable=tk.Label(frame_midde_right_darkhast_bagh_zamin,text='قیمت هر متر',bg="#052340",fg="#ffffff",font=("Shabnam",12),width=10)
@@ -13621,14 +13671,16 @@ gheimat_har_matr_bagh_zamin_darkhast_lable.place(x=490, y=65, anchor="e")
 
 gheimat_har_metr_bagh_zamin_darkhast_entry=tk.Entry(frame_midde_right_darkhast_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
 gheimat_har_metr_bagh_zamin_darkhast_entry.place(x=28, y=55, width=350, height=25)
-gheimat_har_metr_bagh_zamin_darkhast_entry.bind("<KeyRelease>",chck_gheimat_metri_darkhast_bagh_zamin,format_number)
+gheimat_har_metr_bagh_zamin_darkhast_entry.bind("<KeyRelease>",chck_gheimat_metri_darkhast_bagh_zamin)
+gheimat_har_metr_bagh_zamin_darkhast_entry.bind("<KeyRelease>",add_number_toman,add="+")
 
 
 gheimat_ejareh_bagh_darkhast_zamin_lable=tk.Label(frame_midde_right_darkhast_bagh_zamin, text="ودیعه", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
 gheimat_ejareh_bagh_darkhast_zamin_lable.place_forget()
 
 gheimat_ejareh_bagh_darkhast_zamin_entry=tk.Entry(frame_midde_right_darkhast_bagh_zamin, bg="#FFFFFF", fg="#000000", font=("Shabnam", 10))
-gheimat_ejareh_bagh_darkhast_zamin_entry.bind("<KeyRelease>",chck_vadieh_darkhast_bagh_zamin,format_number)
+gheimat_ejareh_bagh_darkhast_zamin_entry.bind("<KeyRelease>",chck_vadieh_darkhast_bagh_zamin)
+gheimat_ejareh_bagh_darkhast_zamin_entry.bind("<KeyRelease>",add_number_toman,add="+")
 gheimat_ejareh_bagh_darkhast_zamin_entry.place_forget()
 
 
@@ -13636,7 +13688,8 @@ mablagh_ejareh_mahaneh_darkhast_lable=tk.Label(frame_midde_right_darkhast_bagh_z
 mablagh_ejareh_mahaneh_darkhast_lable.place_forget()
 
 mablagh_ejareh_mahaneh_darkhast_entry=tk.Entry(frame_midde_right_darkhast_bagh_zamin,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
-mablagh_ejareh_mahaneh_darkhast_entry.bind("<KeyRelease>",chck_darkhast_ejareh_mahaneh_bagh_zamin,format_number)
+mablagh_ejareh_mahaneh_darkhast_entry.bind("<KeyRelease>",chck_darkhast_ejareh_mahaneh_bagh_zamin)
+mablagh_ejareh_mahaneh_darkhast_entry.bind("<KeyRelease>",add_number_toman,add="+")
 mablagh_ejareh_mahaneh_darkhast_entry.place_forget()
 
 
@@ -14001,14 +14054,16 @@ ejareh_mahaneh_darkhast_kargah_lable.place_forget()
 
 ejareh_mahaneh_darkhast_kargah_entry=tk.Entry(frame_midde_right_darkhast_karghah,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
 ejareh_mahaneh_darkhast_kargah_entry.place_forget()
-ejareh_mahaneh_darkhast_kargah_entry.bind("<KeyRelease>",chck_mablagh_ejareh_darkhast_karghah,format_number)
+ejareh_mahaneh_darkhast_kargah_entry.bind("<KeyRelease>",chck_mablagh_ejareh_darkhast_karghah)
+ejareh_mahaneh_darkhast_kargah_entry.bind("<KeyRelease>",add_number_toman,add="+")
 
 gheimat_kol_darkhast_kargah_lable=tk.Label(frame_midde_right_darkhast_karghah,text="قیمت کل",bg="#052340",fg="#ffffff",font=("Shabnam", 12),width=9)
 gheimat_kol_darkhast_kargah_lable.place(x=465, y=30, anchor="e")
 
 gheimat_kol_darkhast_kargah_entry=tk.Entry(frame_midde_right_darkhast_karghah,bg="#ffffff", fg="#000000",font=("Shabnam", 10))
 gheimat_kol_darkhast_kargah_entry.place(x=18, y=20, width=350, height=25)
-gheimat_kol_darkhast_kargah_entry.bind("<KeyRelease>",chck_gheimat_kol_darkhast_karghah,format_number)
+gheimat_kol_darkhast_kargah_entry.bind("<KeyRelease>",chck_gheimat_kol_darkhast_karghah)
+gheimat_kol_darkhast_kargah_entry.bind("<KeyRelease>",add_number_toman,add="+")
 
 
 mablagh_pish_darkhast_kargah_lable = tk.Label(frame_midde_right_darkhast_karghah, text="مبلغ پیش", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
@@ -14016,7 +14071,8 @@ mablagh_pish_darkhast_kargah_lable.place_forget()
 
 mablagh_pish_darkhast_kargah_entry = tk.Entry(frame_midde_right_darkhast_karghah, bg="#ffffff", fg="#000000", font=("Shabnam", 10))
 mablagh_pish_darkhast_kargah_entry.place_forget()
-mablagh_pish_darkhast_kargah_entry.bind("<KeyRelease>",chck_mablagh_vadie_darkhast_karghah,format_number)
+mablagh_pish_darkhast_kargah_entry.bind("<KeyRelease>",chck_mablagh_vadie_darkhast_karghah)
+mablagh_pish_darkhast_kargah_entry.bind("<KeyRelease>",add_number_toman,add="+")
 
 #------------------------------------فریم چپ وسط-----------------------
 name_moshtari_darkhast_kargah_lable = tk.Label(frame_midde_left_darkhast_karghah,text="نام مشتری", bg="#052340", fg="#ffffff", font=("Shabnam", 12), width=9)
@@ -14366,6 +14422,7 @@ gozaresh_gharardad_maskoni.protocol("WM_DELETE_WINDOW", lambda: None)
 gozaresh_gharardad_maskoni.resizable(False, False)
 #endregion
 #-----------قراداد اداری تجاری گزارش-----------
+#region
 gozaresh_gharardad_edari_tejari = tk.Toplevel(root)
 gozaresh_gharardad_edari_tejari.title("گزارش  قرارداد اداری_تجاری")
 gozaresh_gharardad_edari_tejari.geometry("600x380")
