@@ -21,7 +21,7 @@ def get_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="Nima10.N10",
+        password="SobhanA2026",
         #database="state_agency"
     )
 #endregion
@@ -1306,7 +1306,6 @@ image_massage=tk.PhotoImage(file="Images/massage.png")
 image_melk=tk.PhotoImage(file="Images/melk_image.png")
 image_person=tk.PhotoImage(file="Images/person.png")
 image_type_gharardad=tk.PhotoImage(file="Images/type_gharardad.png")
-image_word=tk.PhotoImage(file="Images/word.png")
 # root.attributes("-fullscreen", True) <<<-----  App فول اسکرین شدن
 root.configure(bg="#052340")
 main_frame=tk.Frame(root)
@@ -8978,7 +8977,7 @@ def update_forosh_maskoni():
         parking_forosh_maskoni_var.get(),
         asansor_forosh_maskoni_var.get(),
         anbari_forosh_maskoni_var.get(),
-        float(gheimat_kol_forosh_maskoni_entry.get()),
+        float(gheimat_kol_forosh_maskoni_entry.get().replace(",", "").replace(" تومان", "").strip()),
         selected_id
     )
 
@@ -9021,8 +9020,8 @@ def update_ejareh_maskoni():
         parking_ejareh_maskoni_var.get(),
         asansor_ejareh_maskoni_var.get(),
         anbari_ejareh_maskoni_var.get(),
-        float(gheimat_pish_ejareh_maskoni_entry.get()),
-        float(gheimat_ejareh_ejareh_maskoni_entry.get()),
+        float(gheimat_pish_ejareh_maskoni_entry.get().replace(",", "").replace(" تومان", "").strip()),
+        float(gheimat_ejareh_ejareh_maskoni_entry.get().replace(",", "").replace(" تومان", "").strip()),
         selected_id
     )
 
@@ -9102,8 +9101,8 @@ def update_darkhast_maskoni():
             parking_darkhast_maskoni_var.get(),
             asansor_darkhast_maskoni_var.get(),
             anbari_darkhast_maskoni_var.get(),
-            gheimat_pish_darkhast_maskoni_entry.get(),
-            mablagh_ejare_darkhast_maskoni_entry.get(),
+            float(gheimat_pish_darkhast_maskoni_entry.get().replace(",", "").replace(" تومان", "").strip()),
+            float(mablagh_ejare_darkhast_maskoni_entry.get().replace(",", "").replace(" تومان", "").strip()),
             selected_id
         )
 
@@ -9160,7 +9159,7 @@ def update_forosh_edari_tejari():
         parking_forosh_edari_tejari_var.get(),
         asansor_forosh_edari_tejari_var.get(),
         anbari_forosh_edari_tejari_var.get(),
-        float(gheimat_kol_forosh_edari_tejari_entry.get()),
+        float(gheimat_kol_forosh_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip()),
         selected_id
     )
 
@@ -9219,8 +9218,8 @@ def update_ejareh_edari_tejari():
         parking_ejareh_edari_tejari_var.get(),
         asansor_ejareh_edari_tejari_var.get(),
         anbari_ejareh_edari_tejari_var.get(),
-        float(mablagh_pish_ejareh_edari_tejari_entry.get()),
-        float(mablagh_ejare_ejareh_edari_tejari_entry.get()),
+        float(mablagh_pish_ejareh_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip()),
+        float(mablagh_ejare_ejareh_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip()),
         selected_id
     )
 
@@ -9278,7 +9277,7 @@ def update_darkhast_edari_tejari():
             parking_darkhast_edari_tejari_var.get(),
             asansor_darkhast_edari_tejari_var.get(),
             anbari_darkhast_edari_tejari_var.get(),
-            gheimat_kol_darkhast_edari_tejari_entry.get(),
+            float(gheimat_kol_darkhast_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip()),
             selected_id
         )
     else:
@@ -9321,8 +9320,8 @@ def update_darkhast_edari_tejari():
             parking_darkhast_edari_tejari_var.get(),
             asansor_darkhast_edari_tejari_var.get(),
             anbari_darkhast_edari_tejari_var.get(),
-            mablagh_vadie_darkhast_edari_tejari_entry.get(),
-            mablagh_ejareh_darkhast_edari_tejari_entry.get(),
+            float(mablagh_vadie_darkhast_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip()),
+            float(mablagh_ejareh_darkhast_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip()),
             selected_id
         )
 
@@ -9380,7 +9379,7 @@ def update_forosh_kargah():
         garmayesh_type_forosh_kargah_combo.get(),
         vaziat_bargh_forosh_kargah_combo.get(),
         toilet_forosh_kargah_combo.get(),
-        float(gheimat_kol_forosh_kargah_entry.get()),
+        float(gheimat_kol_forosh_kargah_entry.get().replace(",", "").replace(" تومان", "").strip()),
         selected_id
     )
 
@@ -9440,8 +9439,8 @@ def update_ejareh_kargah():
         garmaesh_ejareh_karghah_combo.get(),
         vaziat_bargh_ejareh_karghah_combo.get(),
         toilet_ejareh_karghah_combo.get(),
-        float(vadie_ejare_karghah_entry.get()),
-        float((gheimat_ejare_ejare_karghah_entry).get()),
+        float(vadie_ejare_karghah_entry.get().replace(",", "").replace(" تومان", "").strip()),
+        float((gheimat_ejare_ejare_karghah_entry).get().replace(",", "").replace(" تومان", "").strip()),
         selected_id
     )
 
@@ -9500,7 +9499,7 @@ def update_darkhast_kargah():
             garmayesh_type_darkhast_kargah_combo.get(),
             vaziat_bargh_darkhast_kargah_combo.get(),
             toilet_darkhast_kargah_combo.get(),
-            gheimat_kol_darkhast_kargah_entry.get(),
+            float(gheimat_kol_darkhast_kargah_entry.get().replace(",", "").replace(" تومان", "").strip()),
             selected_id
         )
 
@@ -9545,8 +9544,8 @@ def update_darkhast_kargah():
             garmayesh_type_darkhast_kargah_combo.get(),
             vaziat_bargh_darkhast_kargah_combo.get(),
             toilet_darkhast_kargah_combo.get(),
-            mablagh_pish_darkhast_kargah_entry.get(),
-            ejareh_mahaneh_darkhast_kargah_entry.get(),
+            float(mablagh_pish_darkhast_kargah_entry.get().replace(",", "").replace(" تومان", "").strip()),
+            float(ejareh_mahaneh_darkhast_kargah_entry.get().replace(",", "").replace(" تومان", "").strip()),
             selected_id
         )
 
@@ -9613,7 +9612,7 @@ def update_forosh_bagh_zamin():
             gheimat_har_metr_bagh_zamin_forosh_entry.get(),
             name_malek_forosh_bagh_entry.get(),
             number_malek_forosh_bagh_entry.get(),
-            float(gheimat_kol_forosh_bagh_zamin_entry.get()),
+            float(gheimat_kol_forosh_bagh_zamin_entry.get().replace(",", "").replace(" تومان", "").strip()),
             metraj_derakht_forosh_bagh_zamin_entry.get(),
             tedad_derakht_value,
             type_derakht_value,
@@ -9668,7 +9667,7 @@ def update_forosh_bagh_zamin():
             gheimat_har_metr_bagh_zamin_forosh_entry.get(),
             name_malek_forosh_bagh_entry.get(),
             number_malek_forosh_bagh_entry.get(),
-            float(gheimat_kol_forosh_bagh_zamin_entry.get()),
+            float(gheimat_kol_forosh_bagh_zamin_entry.get().replace(",", "").replace(" تومان", "").strip()),
             karbari_forosh_bagh_zamin_combo.get(),
             khak_forosh_bagh_zamin_combo.get(),
             ab_forosh_bagh_zamin_combo.get(),
@@ -9741,8 +9740,8 @@ def update_ejareh_bagh_zamin():
             metraj_zamin_ejareh_bagh_zamin_entry.get(),
             bagh_type_combo.get(),
             bagh_loctaion_entry.get("1.0", tk.END),
-            bagh_gheimat_ejareh_bagh_zamin_entry.get(),
-            float(bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.get()),
+            float(bagh_gheimat_ejareh_bagh_zamin_entry.get().replace(",", "").replace(" تومان", "").strip()),
+            float(bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.get().replace(",", "").replace(" تومان", "").strip()),
             bagh_time_combo.get(),
             name_malek_bagh_zamin_entry.get(),
             number_malek_bagh_zamin_entry.get(),
@@ -9798,8 +9797,8 @@ def update_ejareh_bagh_zamin():
             metraj_zamin_ejareh_bagh_zamin_entry.get(),
             bagh_type_combo.get(),
             bagh_loctaion_entry.get("1.0", tk.END),
-            bagh_gheimat_ejareh_bagh_zamin_entry.get(),
-            float(bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.get()),
+            float(bagh_gheimat_ejareh_bagh_zamin_entry.get().replace(",", "").replace(" تومان", "").strip()),
+            float(bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.get().replace(",", "").replace(" تومان", "").strip()),
             bagh_time_combo.get(),
             name_malek_bagh_zamin_entry.get(),
             number_malek_bagh_zamin_entry.get(),
@@ -9878,8 +9877,8 @@ def update_darkhast_bagh_zamin():
             metraj_zamin_darkhast_bagh_zamin_entry.get(),
             bagh_type_darkhast_bagh_zamin_combo.get(),
             bagh_loctaion_darkhast_bagh_zamin_entry.get("1.0", tk.END),
-            gheimat_har_metr_bagh_zamin_darkhast_entry.get(),
-            gheimat_kol_bagh_zamin_darkhast_entry.get(),
+            float(gheimat_har_metr_bagh_zamin_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip()),
+            float(gheimat_kol_bagh_zamin_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip()),
             name_moshtari_darkhast_bagh_entry.get(),
             shomareh_moshtari_darkhast_bagh_entry.get(),
             metraj_derakht_darkhast_bagh_zamin_entry.get(),
@@ -9933,7 +9932,7 @@ def update_darkhast_bagh_zamin():
                 metraj_zamin_darkhast_bagh_zamin_entry.get(),
                 bagh_type_darkhast_bagh_zamin_combo.get(),
                 bagh_loctaion_darkhast_bagh_zamin_entry.get("1.0", tk.END),
-                gheimat_har_metr_bagh_zamin_darkhast_entry.get(),
+                float(gheimat_har_metr_bagh_zamin_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip()),
                 name_moshtari_darkhast_bagh_entry.get(),
                 shomareh_moshtari_darkhast_bagh_entry.get(),
                 karbari_darkhast_bagh_zamin_combo.get(),
@@ -9995,8 +9994,8 @@ def update_darkhast_bagh_zamin():
                 metraj_zamin_darkhast_bagh_zamin_entry.get(),
                 bagh_type_darkhast_bagh_zamin_combo.get(),
                 bagh_loctaion_darkhast_bagh_zamin_entry.get("1.0", tk.END),
-                gheimat_ejareh_bagh_darkhast_zamin_entry.get(),
-                mablagh_ejareh_mahaneh_darkhast_entry.get(),
+                float(gheimat_ejareh_bagh_darkhast_zamin_entry.get().replace(",", "").replace(" تومان", "").strip()),
+                float(mablagh_ejareh_mahaneh_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip()),
                 bagh_time_darkhast_combo.get(),
                 name_moshtari_darkhast_bagh_entry.get(),
                 shomareh_moshtari_darkhast_bagh_entry.get(),
@@ -10054,8 +10053,8 @@ def update_darkhast_bagh_zamin():
                     metraj_zamin_darkhast_bagh_zamin_entry.get(),
                     bagh_type_darkhast_bagh_zamin_combo.get(),
                     bagh_loctaion_darkhast_bagh_zamin_entry.get("1.0", tk.END),
-                    gheimat_ejareh_bagh_darkhast_zamin_entry.get(),
-                    mablagh_ejareh_mahaneh_darkhast_entry.get(),
+                    float(gheimat_ejareh_bagh_darkhast_zamin_entry.get().replace(",", "").replace(" تومان", "").strip()),
+                    float(mablagh_ejareh_mahaneh_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip()),
                     bagh_time_darkhast_combo.get(),
                     name_moshtari_darkhast_bagh_entry.get(),
                     shomareh_moshtari_darkhast_bagh_entry.get(),
@@ -14646,7 +14645,7 @@ tozih_gharardad_entry.place(x=25,y=315,width=260,height=45)
 khat_vasat=tk.Frame(main_frame, bg="#3A6EA5",height=1)
 khat_vasat.place(x=25,y=370,width=450)
 
-word_btn=tk.Button(main_frame,bg="#0096D6",text="دریافت فایل ورد قرارداد",fg="#ffffff",image=image_word,compound="left",command=creat_word_gharardad)
+word_btn=tk.Button(main_frame,bg="#0096D6",text=" 📋دریافت فایل ورد قرارداد ",fg="#ffffff",compound="left",command=creat_word_gharardad)
 word_btn.place(x=160,y=385,width=200)
 
 label_titr_vasat1 = tk.Label(main_frame,text="با کلیک بر دکمه بالا، فایل قرارداد مورد نظر در قالب",fg="white",bg="#052340",font=("Shabnam", 8))
