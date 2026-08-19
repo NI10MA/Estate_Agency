@@ -13,10 +13,9 @@ import datetime
 from tkinter import filedialog
 from docxtpl import DocxTemplate
 from tkinter import filedialog
-import shutil
 import re
 import jdatetime
-from zope import event
+
 
 def get_connection():
     return mysql.connector.connect(
@@ -2812,7 +2811,7 @@ def change_darkhast_kargah_type(event=None):
         time_ejare_darkhast_kargah_lable.place(x=465, y=160, anchor="e")
         time_ejare_darkhast_kargah_combo.place(x=18, y=152, width=350, height=25)
 
-#=================================DataBase========================
+#=================================DataBase===========================
 #--------------------------- اعتبارسنجی ورودی ها -------------------
 #region
 #---------------------اعتبارسنجی فروش مسکونی--------------------
@@ -4495,7 +4494,7 @@ def chck_shomareh_moshtari_darkhast_karghah(event=None):
         error_lable_shomareh_moshtari_darkhast_karghah.config(text=" فیلد(شماره مشتری) باید شامل 11رقم وبا(09) شروع شود ")
         name_moshtari_darkhast_kargah_entry.config(state="disabled",disabledbackground="#808080",disabledforeground="white")
 #endregion
-#-----------اضافه کردن تومان به فیلد های قیمت---------------
+#-----------اضافه کردن تومان به فیلد های قیمت----------------------
 #region
 def format_number_toman(event):
     entry = event.widget
@@ -4506,7 +4505,7 @@ def format_number_toman(event):
         gheimat_kol_forosh_kargah_entry.delete(0, tk.END)
         gheimat_kol_forosh_kargah_entry.insert(0, f"{int(value):,} تومان")
 #endregion
-#----------------------------------------------------------------
+#---------------------------------------------------------------------
 #-------------------------تابع ثبت فروش------------------------------
 #region
 #---------------------------forosh_maskoni------------------------------
@@ -4607,8 +4606,8 @@ def sabt_forosh_maskoni():
         clear_entry_forosh_maskoni()
         db.commit()
 
-    except Exception as e:
-        messagebox.showerror("Error", f"لطفا تمام فیلد ها را به درستی وارد کنید ")
+    #except Exception as e:
+        #messagebox.showerror("Error", f"لطفا تمام فیلد ها را به درستی وارد کنید ")
     finally:
         if db and db.is_connected():
             db.close()
@@ -5004,8 +5003,8 @@ def sabt_forosh_kargah():
         if db and db.is_connected():
             db.close()
 #endregion
-#------------------------------------پایان ثبت فروش-----------------------------
-#----------------------------تابع ثبت اجاره----------------------------------
+#------------------------------------پایان ثبت فروش------------------
+#----------------------------تابع ثبت اجاره--------------------------
 #region
 #----------------------- ejareh_maskoni Database -------------------------------
 def sabt_ejareh_maskoni():
@@ -6486,7 +6485,7 @@ def sabt_darkhast_kargah(event=None):
             garmayesh VARCHAR(20),
             vaziat_bargh VARCHAR(20),
             toilet VARCHAR(20),
-            gheimat_kol DECIMAL(15,2)
+            gheimat_kol VARCHAR(20)
             )
             """)
 
@@ -6553,7 +6552,7 @@ def sabt_darkhast_kargah(event=None):
             id INT AUTO_INCREMENT PRIMARY KEY,
             type_melk VARCHAR(50) NOT NULL,
             sal_sakht VARCHAR(20),
-            metraj_melk VARCHAR(20),
+            metraj VARCHAR(20),
             time_ejare VARCHAR(20),
             address VARCHAR(225),
             name_moshtari VARCHAR(20),
@@ -6566,14 +6565,14 @@ def sabt_darkhast_kargah(event=None):
             garmayesh VARCHAR(20),
             vaziat_bargh VARCHAR(30),
             toilet VARCHAR(20),
-            mablagh_pish DECIMAL(15,2),
-            mablagh_ejareh DECIMAL(15,2)
+            mablagh_pish VARCHAR (20),
+            mablagh_ejareh VARCHAR(20)
             )
             """)
 
             sql_ejareh = """
             INSERT INTO sabt_darkhast_ejareh_kargah
-            (type_melk,sal_sakht,metraj_melk,time_ejare,address,name_moshtari,shomareh_moshtari,
+            (type_melk,sal_sakht,metraj,time_ejare,address,name_moshtari,shomareh_moshtari,
             vaziat_ab,hamam,otagh,abzar,sarmayesh,garmayesh,
             vaziat_bargh,toilet,mablagh_pish,mablagh_ejareh)
             VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
@@ -6609,78 +6608,13 @@ def sabt_darkhast_kargah(event=None):
         user_idcode = f"ID-{last_id}"
         messagebox.showinfo("Success", f"ثبت با کد {user_idcode} انجام شد.")   
         clear_entry_darkhast_kargah()
-    except Exception as e:
-        messagebox.showerror("Error", f"لطفا تمام فیلد ها را به درستی وارد کنید ")
+    #except Exception as e:
+        #messagebox.showerror("Error", f"لطفا تمام فیلد ها را به درستی وارد کنید ")
         
     finally:
         if db and db.is_connected():
             db.close()
 #--------------------پایان تابع ثبت درخواست----------------
-#endregion
-#===================سیو تصاویر در پنجره فروش اداری و تجاری================
-#region
-def open_file_forosh_edari_tejari():
-
-    global selected_images_forosh_edari_tejari
-    global photo_refs_forosh_edari_tejari
-
-    file_paths = filedialog.askopenfilenames(
-        title="انتخاب تصاویر ملک",
-        filetypes=[
-            ("Image Files", "*.png *.jpg *.jpeg *.bmp *.webp")
-        ]
-    )
-
-    # حداکثر 4 تصویر
-    file_paths = list(file_paths[:4])
-
-    # ساخت پوشه روی دسکتاپ
-    desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
-    save_folder = os.path.join(desktop_path, "Forosh_Edari_Tejari")
-
-    os.makedirs(save_folder, exist_ok=True)
-
-    new_paths = []
-
-    # کپی تصاویر به پوشه پروژه
-    for path in file_paths:
-
-        filename = os.path.basename(path)
-
-        destination = os.path.join(save_folder, filename)
-
-        shutil.copy2(path, destination)
-
-        new_paths.append(destination)
-
-    # ذخیره مسیرهای جدید
-    selected_images_forosh_edari_tejari = new_paths
-
-    # پاک کردن تصاویر قبلی
-    #for widget in image_frame_forosh_edari_tejari.winfo_children():
-        #widget.destroy()
-
-    #photo_refresh_forosh_edari_tejari.clear()
-
-    # نمایش تصاویر
-    #for i, path in enumerate(selected_images_forosh_edari_tejari):
-
-        #try:
-
-         #   img = Image.open(path)
-
-            #img.thumbnail((150, 110))
-
-           # photo = ImageTk.PhotoImage(img)
-
-            #photo_refs_forosh_edari_tejari.append(photo)
-
-            #lbl = tk.Label(image_frame_forosh_edari_tejari,image=photo,bg="white",bd=1,relief="solid")
-
-           # lbl.grid(row=i // 2,column=i % 2,padx=5,pady=5)
-
-        #except Exception as e:
-           # print("خطا در بارگذاری تصویر:", e)
 #endregion
 #------------------------توابع سرچ--------------------
 def search():
