@@ -2556,7 +2556,7 @@ def change_bagh_zamin_darkhast2(event=None):
         gheimat_str =gheimat_har_metr_bagh_zamin_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip()
         if not gheimat_str or gheimat_str == "":
             gheimat_str = "0"
-        gheimat_value = float(gheimat_str)
+        gheimat_value = int(gheimat_str)
         gheimat_har_matr_bagh_zamin_darkhast_lable.place_forget()
         gheimat_har_metr_bagh_zamin_darkhast_entry.place_forget()
         gheimat_kol_bagh_zamin_darkhast_lable.place_forget()
@@ -4602,7 +4602,7 @@ def sabt_forosh_maskoni():
             parking VARCHAR(20),
             asansor VARCHAR(20),
             anbari VARCHAR(20),
-            gheimat_kol INT
+            gheimat_kol INT(15)
 
         )
         """
@@ -4702,7 +4702,7 @@ def sabt_forosh_edari_tejari():
             parking VARCHAR(20),
             asansor VARCHAR(20),
             anbari VARCHAR(20),
-            gheimat_kol DECIMAL(15,2)
+            gheimat_kol INT(15)
 
         )
         """
@@ -4730,7 +4730,7 @@ def sabt_forosh_edari_tejari():
             parking_forosh_edari_tejari_var.get(),
             asansor_forosh_edari_tejari_var.get(),
             anbari_forosh_edari_tejari_var.get(),
-            float(gheimat_kol_forosh_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip())
+            gheimat_kol_forosh_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip()
         )
         
         cursor.execute(sql_insert, values)
@@ -4787,10 +4787,10 @@ def sabt_forosh_bagh_zamin_main():
 
                 # ========== دریافت مقادیر ==========
         karbari = bagh_type_forosh_bagh_zamin_combo.get()
-        gheimat_str = gheimat_har_metr_bagh_zamin_forosh_entry.get()
+        gheimat_str = gheimat_har_metr_bagh_zamin_forosh_entry.get().replace(",", "").replace(" تومان", "").strip()
         if not gheimat_str or gheimat_str == "":
             gheimat_str = "0"
-            gheimat_value = float(gheimat_str)
+            gheimat_value = int(gheimat_str)
         
         if karbari == "باغ": 
             cursor.execute("""
@@ -4800,10 +4800,10 @@ def sabt_forosh_bagh_zamin_main():
                 metraj VARCHAR(20),
                 karbari VARCHAR(20),
                 address VARCHAR(255),
-                mablagh_metri DECIMAL(15,2),
+                mablagh_metri INT(15),
                 name_malek VARCHAR(50),
                 shomareh_malek VARCHAR(30),
-                gheimat_kol DECIMAL(15,2),
+                gheimat_kol INT(15),
                 metraj_derakht VARCHAR(10),
                 tedad_derakht VARCHAR(10),
                 type_derakht TEXT,
@@ -4847,10 +4847,10 @@ def sabt_forosh_bagh_zamin_main():
                 metraj_zamin_forosh_bagh_zamin_entry.get(),
                 bagh_type_forosh_bagh_zamin_combo.get(),
                 bagh_loctaion_forosh_bagh_zamin_entry.get("1.0",tk.END),
-                float(gheimat_har_metr_bagh_zamin_forosh_entry.get().replace(",", "").replace(" تومان", "").strip()),
+                gheimat_har_metr_bagh_zamin_forosh_entry.get().replace(",", "").replace(" تومان", "").strip(),
                 name_malek_forosh_bagh_entry.get(),
                 number_malek_forosh_bagh_entry.get(),
-                float(gheimat_kol_forosh_bagh_zamin_entry.get().replace(",", "").replace(" تومان", "").strip()),
+                gheimat_kol_forosh_bagh_zamin_entry.get().replace(",", "").replace(" تومان", "").strip(),
                 metraj_derakht_forosh_bagh_zamin_entry.get(),
                 tedad_derakht_value,
                 type_derakht_value,
@@ -4885,10 +4885,10 @@ def sabt_forosh_bagh_zamin_main():
                 metraj VARCHAR(20),
                 karbari VARCHAR(20),
                 address VARCHAR(255),
-                mablagh_metri DECIMAL(15,2),
+                mablagh_metri INT(15),
                 name_malek VARCHAR(50),
                 shomareh_malek VARCHAR(30),
-                gheimat_kol DECIMAL(15,2),
+                gheimat_kol INT(15),
                 karbari_zamin VARCHAR(50),
                 type_khak VARCHAR(20),
                 manba_ab VARCHAR(20),
@@ -4917,10 +4917,10 @@ def sabt_forosh_bagh_zamin_main():
                 metraj_zamin_forosh_bagh_zamin_entry.get(),
                 bagh_type_forosh_bagh_zamin_combo.get(),
                 bagh_loctaion_forosh_bagh_zamin_entry.get("1.0",tk.END),
-                float(gheimat_har_metr_bagh_zamin_forosh_entry.get().replace(",", "").replace(" تومان", "").strip()),
+                gheimat_har_metr_bagh_zamin_forosh_entry.get().replace(",", "").replace(" تومان", "").strip(),
                 name_malek_forosh_bagh_entry.get(),
                 number_malek_forosh_bagh_entry.get(),
-                float(gheimat_kol_forosh_bagh_zamin_entry.get().replace(",", "").replace(" تومان", "").strip()),
+                gheimat_kol_forosh_bagh_zamin_entry.get().replace(",", "").replace(" تومان", "").strip(),
                 bagh_type_forosh_bagh_zamin_combo.get(),
                 khak_forosh_bagh_zamin_combo.get(),
                 ab_forosh_bagh_zamin_combo.get(),
@@ -5000,7 +5000,7 @@ def sabt_forosh_kargah():
             garmayesh VARCHAR(20),
             vaziat_bargh VARCHAR(20),
             toilet VARCHAR(20),
-            gheimat_kol DECIMAL(15,2)
+            gheimat_kol INT(15)
         )
         """
         cursor.execute(sql_create)
@@ -5025,7 +5025,7 @@ def sabt_forosh_kargah():
             garmayesh_type_forosh_kargah_combo.get(),
             vaziat_bargh_forosh_kargah_combo.get(),
             toilet_forosh_kargah_combo.get(),
-            float(gheimat_kol_forosh_kargah_entry.get().replace(",", "").replace(" تومان", "").strip())
+            gheimat_kol_forosh_kargah_entry.get().replace(",", "").replace(" تومان", "").strip()
         )
         cursor.execute(sql_insert, values)
         last_id = cursor.lastrowid
@@ -5101,8 +5101,8 @@ def sabt_ejareh_maskoni():
             parking VARCHAR(20),
             asansor VARCHAR(20),
             anbari VARCHAR(20),
-            pish VARCHAR(20),
-            ejareh VARCHAR(20)
+            pish INT(15),
+            ejareh INT(15)
         )
         """
 
@@ -5132,8 +5132,8 @@ def sabt_ejareh_maskoni():
             parking_ejareh_maskoni_var.get(),
             asansor_ejareh_maskoni_var.get(),
             anbari_ejareh_maskoni_var.get(),
-            float(gheimat_pish_ejareh_maskoni_entry.get().replace(",", "").replace(" تومان", "").strip()),
-            float(gheimat_ejareh_ejareh_maskoni_entry.get().replace(",", "").replace(" تومان", "").strip())
+            gheimat_pish_ejareh_maskoni_entry.get().replace(",", "").replace(" تومان", "").strip(),
+            gheimat_ejareh_ejareh_maskoni_entry.get().replace(",", "").replace(" تومان", "").strip()
 
         )
 
@@ -5216,8 +5216,8 @@ def sabt_ejareh_edari_tejari():
             parking VARCHAR(20),
             asansor VARCHAR(20),
             anbari VARCHAR(20),
-            gheimat_vadie DECIMAL(15,2),
-            gheimat_ejareh DECIMAL(15,2)
+            gheimat_vadie INT(15),
+            gheimat_ejareh INT(15)
         )
         """
         cursor.execute(sql_create)
@@ -5245,8 +5245,8 @@ def sabt_ejareh_edari_tejari():
             parking_ejareh_edari_tejari_var.get(),
             asansor_ejareh_edari_tejari_var.get(),
             anbari_ejareh_edari_tejari_var.get(),
-            float(mablagh_pish_ejareh_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip()),
-            float(mablagh_ejare_ejareh_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip())
+            mablagh_pish_ejareh_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip(),
+            mablagh_ejare_ejareh_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip()
 
         )
 
@@ -5301,10 +5301,10 @@ def sabt_ejareh_bagh_zamin():
         cursor.execute("CREATE DATABASE IF NOT EXISTS state_agency")
         cursor.execute("USE state_agency")
         karbari = bagh_type_combo.get()
-        gheimat_str =bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.get()
+        gheimat_str =bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.get().replace(",", "").replace(" تومان", "").strip()
         if not gheimat_str or gheimat_str == "":
             gheimat_str = "0"
-        gheimat_value = float(gheimat_str)
+        gheimat_value = int(gheimat_str)
         # ========== ساخت جدول اصلی ==========
         if karbari == "باغ":  
             type_derakht_value = ",".join(selected_trees) if selected_trees else ""
@@ -5318,8 +5318,8 @@ def sabt_ejareh_bagh_zamin():
                 metraj VARCHAR(20),
                 karbari VARCHAR(20),
                 address VARCHAR(255),
-                mablagh_pish VARCHAR(20),
-                mablagh_ejareh VARCHAR(20),
+                mablagh_pish INT(15),
+                mablagh_ejareh INT(15),
                 zaman_ejareh VARCHAR(30),
                 name_malek VARCHAR(50),
                 shomareh_malek VARCHAR(11),
@@ -5363,7 +5363,7 @@ def sabt_ejareh_bagh_zamin():
                 metraj_zamin_ejareh_bagh_zamin_entry.get(),
                 karbari,
                 bagh_loctaion_entry.get("1.0",tk.END),
-                bagh_gheimat_ejareh_bagh_zamin_entry.get(),
+                bagh_gheimat_ejareh_bagh_zamin_entry.get().replace(",", "").replace(" تومان", "").strip(),
                 gheimat_value,
                 bagh_time_combo.get(),
                 name_malek_bagh_zamin_entry.get(),
@@ -5402,8 +5402,8 @@ def sabt_ejareh_bagh_zamin():
                 metraj VARCHAR(20),
                 karbari VARCHAR(20),
                 address VARCHAR(255),
-                mablagh_pish VARCHAR(20),
-                mablagh_metri VARCHAR(20),
+                mablagh_pish INT(15),
+                mablagh_metri INT(15),
                 zaman_ejareh VARCHAR(30),
                 name_malek VARCHAR(50),
                 shomareh_malek VARCHAR(11),
@@ -5435,7 +5435,7 @@ def sabt_ejareh_bagh_zamin():
                 metraj_zamin_ejareh_bagh_zamin_entry.get(),
                 karbari,
                 bagh_loctaion_entry.get("1.0",tk.END),
-                bagh_gheimat_ejareh_bagh_zamin_entry.get(),
+                bagh_gheimat_ejareh_bagh_zamin_entry.get().replace(",", "").replace(" تومان", "").strip(),
                 gheimat_value,
                 bagh_time_combo.get(),
                 name_malek_bagh_zamin_entry.get(),
@@ -5462,8 +5462,8 @@ def sabt_ejareh_bagh_zamin():
         messagebox.showinfo("Success", f"ثبت با کد {user_idcode} انجام شد")
         clear_entry_ejareh_bagh_zamin()
  
-    except Exception as e:
-        messagebox.showerror("Error", f"لطفا تمام فیلد ها را به درستی وارد کنید ")
+    #except Exception as e:
+        #messagebox.showerror("Error", f"لطفا تمام فیلد ها را به درستی وارد کنید ")
     finally:
         if db and db.is_connected():
             db.close()
@@ -5521,8 +5521,8 @@ def sabt_ejareh_kargah():
             garmayesh VARCHAR(20),
             vaziat_bargh VARCHAR(30),
             toilet VARCHAR(20),
-            gheimat_vadie DECIMAL(15,2),
-            mablagh_ejareh DECIMAL(15,2)
+            gheimat_vadie INT(15),
+            mablagh_ejareh INT(15)
 
         )
         """
@@ -5550,8 +5550,8 @@ def sabt_ejareh_kargah():
             garmaesh_ejareh_karghah_combo.get(),
             vaziat_bargh_ejareh_karghah_combo.get(),
             toilet_ejareh_karghah_combo.get(),
-            float(vadie_ejare_karghah_entry.get().replace(",", "").replace(" تومان", "").strip()),
-            float((gheimat_ejare_ejare_karghah_entry.get().replace(",", "").replace(" تومان", "").strip()))
+            vadie_ejare_karghah_entry.get().replace(",", "").replace(" تومان", "").strip(),
+            gheimat_ejare_ejare_karghah_entry.get().replace(",", "").replace(" تومان", "").strip()
         )
         cursor.execute(sql_insert, values)
         last_id = cursor.lastrowid
@@ -5633,7 +5633,7 @@ def sabt_darkhast_maskoni(event=None):
             parking VARCHAR(20),
             asansor VARCHAR(20),
             anbari VARCHAR(20),
-            gheimat_kol VARCHAR(20)
+            gheimat_kol INT(15)
             )
             """)
 
@@ -5661,7 +5661,7 @@ def sabt_darkhast_maskoni(event=None):
             parking_darkhast_maskoni_var.get(),
             asansor_darkhast_maskoni_var.get(),
             anbari_darkhast_maskoni_var.get(),
-            float(gheimat_kol_darkhast_maskoni_entry.get().replace(",", "").replace(" تومان", "").strip())    
+            gheimat_kol_darkhast_maskoni_entry.get().replace(",", "").replace(" تومان", "").strip()
             )
 
             cursor.execute(sql_kharid, values_darkhast_kharid_maskoni)
@@ -5721,8 +5721,8 @@ def sabt_darkhast_maskoni(event=None):
             parking VARCHAR(20),
             asansor VARCHAR(20),
             anbari VARCHAR(20),
-            pish VARCHAR(20),
-            ejareh VARCHAR(20)
+            pish INT(15),
+            ejareh INT(15)
             )
              """)
 
@@ -5750,8 +5750,8 @@ def sabt_darkhast_maskoni(event=None):
             parking_darkhast_maskoni_var.get(),
             asansor_darkhast_maskoni_var.get(),
             anbari_darkhast_maskoni_var.get(),
-            float(gheimat_pish_darkhast_maskoni_entry.get().replace(",", "").replace(" تومان", "").strip()),
-            float(mablagh_ejare_darkhast_maskoni_entry.get().replace(",", "").replace(" تومان", "").strip())
+            gheimat_pish_darkhast_maskoni_entry.get().replace(",", "").replace(" تومان", "").strip(),
+            mablagh_ejare_darkhast_maskoni_entry.get().replace(",", "").replace(" تومان", "").strip()
             )
 
             cursor.execute(sql_ejareh, values_darkhast_ejareh_maskoni)
@@ -5855,7 +5855,7 @@ def sabt_darkhast_edari_tejari(event=None):
             parking VARCHAR(20),
             asansor VARCHAR(20),
             anbari VARCHAR(20),
-            gheimat_kol DECIMAL(15,2)
+            gheimat_kol INT(15)
             )
             """)
 
@@ -5882,7 +5882,7 @@ def sabt_darkhast_edari_tejari(event=None):
             parking_darkhast_edari_tejari_var.get(),
             asansor_darkhast_edari_tejari_var.get(),
             anbari_darkhast_edari_tejari_var.get(),
-            float(gheimat_kol_darkhast_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip())
+            gheimat_kol_darkhast_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip()
             )
             
             cursor.execute(sql_kharid,values_darkhast_kharid_edari_tejari)
@@ -5940,8 +5940,8 @@ def sabt_darkhast_edari_tejari(event=None):
             parking VARCHAR(20),
             asansor VARCHAR(20),
             anbari VARCHAR(20),
-            mablagh_vadie DECIMAL(15,2),
-            mablagh_ejareh DECIMAL(15,2)
+            mablagh_vadie INT(15),
+            mablagh_ejareh INT(15)
             )
             """)
 
@@ -5968,8 +5968,8 @@ def sabt_darkhast_edari_tejari(event=None):
             parking_darkhast_edari_tejari_var.get(),
             asansor_darkhast_edari_tejari_var.get(),
             anbari_darkhast_edari_tejari_var.get(),
-            float(mablagh_vadie_darkhast_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip()),
-            float(mablagh_ejareh_darkhast_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip())
+            mablagh_vadie_darkhast_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip(),
+            mablagh_ejareh_darkhast_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip()
             )
             
             cursor.execute(sql_ejareh,values_darkhast_ejareh_edari_tejari)
@@ -5998,7 +5998,7 @@ def sabt_darkhast_bagh_zamin(event=None):
     db = None
     change_type=melk_type_darkhast_bagh_zamin_entry.get()
     karbari = bagh_type_darkhast_bagh_zamin_combo.get()
-    gheimat_str =gheimat_har_metr_bagh_zamin_darkhast_entry.get()
+    gheimat_str =gheimat_har_metr_bagh_zamin_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip()
     if not gheimat_str or gheimat_str == "":
             gheimat_str = "0"
     try:
@@ -6046,8 +6046,8 @@ def sabt_darkhast_bagh_zamin(event=None):
                     metraj VARCHAR(20),
                     karbari VARCHAR(20),
                     address VARCHAR(255),
-                    mablagh_metri VARCHAR(20),
-                    gheimat_kol VARCHAR(20),
+                    mablagh_metri INT(15),
+                    gheimat_kol INT(15),
                     name_moshtari VARCHAR(50),
                     shomareh_moshtari VARCHAR(20),
                     metraj_derakht VARCHAR(10),
@@ -6116,8 +6116,8 @@ def sabt_darkhast_bagh_zamin(event=None):
                     metraj_zamin_darkhast_bagh_zamin_entry.get(),
                     bagh_type_darkhast_bagh_zamin_combo.get(),
                     bagh_loctaion_darkhast_bagh_zamin_entry.get("1.0", tk.END),
-                    float(gheimat_har_metr_bagh_zamin_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip()),
-                    float(gheimat_kol_bagh_zamin_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip()),
+                    gheimat_har_metr_bagh_zamin_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip(),
+                    gheimat_kol_bagh_zamin_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip(),
                     name_moshtari_darkhast_bagh_entry.get(),
                     shomareh_moshtari_darkhast_bagh_entry.get(),
                     metraj_derakht_darkhast_bagh_zamin_entry.get(),
@@ -6156,8 +6156,8 @@ def sabt_darkhast_bagh_zamin(event=None):
                 metraj VARCHAR(20),
                 karbari VARCHAR(20),
                 address VARCHAR(255),
-                mablagh_kol VARCHAR(20),
-                mablagh_metri DECIMAL(15,2),
+                mablagh_kol INT(15),
+                mablagh_metri INT(15),
                 name_moshtari VARCHAR(50),
                 shomareh_moshtari VARCHAR(30),
                 karbari_zamin VARCHAR(50),
@@ -6187,8 +6187,8 @@ def sabt_darkhast_bagh_zamin(event=None):
                    metraj_zamin_darkhast_bagh_zamin_entry.get(),
                    karbari,
                    bagh_loctaion_darkhast_bagh_zamin_entry.get("1.0",tk.END),
-                   float(gheimat_kol_bagh_zamin_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip()),
-                   float(gheimat_har_metr_bagh_zamin_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip()),
+                   gheimat_kol_bagh_zamin_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip(),
+                   gheimat_har_metr_bagh_zamin_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip(),
                    name_moshtari_darkhast_bagh_entry.get(),
                    shomareh_moshtari_darkhast_bagh_entry.get(),
                    karbari_darkhast_bagh_zamin_combo.get(),
@@ -6245,8 +6245,8 @@ def sabt_darkhast_bagh_zamin(event=None):
                     metraj VARCHAR(20),
                     karbari VARCHAR(20),
                     address VARCHAR(255),
-                    mablagh_pish VARCHAR(20),
-                    mablagh_ejareh VARCHAR(20),
+                    mablagh_pish INT(15),
+                    mablagh_ejareh INT(15),
                     zaman_ejareh VARCHAR(30),
                     name_moshtari VARCHAR(50),
                     shomareh_moshtari VARCHAR(20),
@@ -6329,8 +6329,8 @@ def sabt_darkhast_bagh_zamin(event=None):
                     bagh_type_darkhast_bagh_zamin_combo.get(),
                     bagh_loctaion_darkhast_bagh_zamin_entry.get("1.0", tk.END),
 
-                    float(gheimat_ejareh_bagh_darkhast_zamin_entry.get().replace(",", "").replace(" تومان", "").strip()),
-                    float(mablagh_ejareh_mahaneh_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip()),
+                    gheimat_ejareh_bagh_darkhast_zamin_entry.get().replace(",", "").replace(" تومان", "").strip(),
+                    mablagh_ejareh_mahaneh_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip(),
                     bagh_time_darkhast_combo.get(),
                     name_moshtari_darkhast_bagh_entry.get(),
                     shomareh_moshtari_darkhast_bagh_entry.get(),
@@ -6371,8 +6371,8 @@ def sabt_darkhast_bagh_zamin(event=None):
                 metraj VARCHAR(20),
                 karbari VARCHAR(20),
                 address VARCHAR(255),
-                mablagh_pish VARCHAR(30),
-                mablagh_ejareh VARCHAR(30),
+                mablagh_pish INT(15),
+                mablagh_ejareh INT(15),
                 zaman_ejareh VARCHAR(40),
                 name_moshtari VARCHAR(50),
                 shomareh_moshtari VARCHAR(11),
@@ -6403,8 +6403,8 @@ def sabt_darkhast_bagh_zamin(event=None):
                    metraj_zamin_darkhast_bagh_zamin_entry.get(),
                    karbari,
                    bagh_loctaion_darkhast_bagh_zamin_entry.get("1.0",tk.END),
-                   float(gheimat_ejareh_bagh_darkhast_zamin_entry.get().replace(",", "").replace(" تومان", "").strip()),
-                   float(mablagh_ejareh_mahaneh_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip()),
+                   gheimat_ejareh_bagh_darkhast_zamin_entry.get().replace(",", "").replace(" تومان", "").strip(),
+                   mablagh_ejareh_mahaneh_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip(),
                    bagh_time_darkhast_combo.get(),
                    name_moshtari_darkhast_bagh_entry.get(),
                    shomareh_moshtari_darkhast_bagh_entry.get(),
@@ -6522,7 +6522,7 @@ def sabt_darkhast_kargah(event=None):
             garmayesh VARCHAR(20),
             vaziat_bargh VARCHAR(20),
             toilet VARCHAR(20),
-            gheimat_kol VARCHAR(20)
+            gheimat_kol INT(15)
             )
             """)
 
@@ -6548,7 +6548,7 @@ def sabt_darkhast_kargah(event=None):
             garmayesh_type_darkhast_kargah_combo.get(),
             vaziat_bargh_darkhast_kargah_combo.get(),
             toilet_darkhast_kargah_combo.get(),
-            float(gheimat_kol_darkhast_kargah_entry.get().replace(",", "").replace(" تومان", "").strip())
+            gheimat_kol_darkhast_kargah_entry.get().replace(",", "").replace(" تومان", "").strip()
             )
             
             cursor.execute(sql_kharid,values_darkhast_kharid_kargah)
@@ -6602,8 +6602,8 @@ def sabt_darkhast_kargah(event=None):
             garmayesh VARCHAR(20),
             vaziat_bargh VARCHAR(30),
             toilet VARCHAR(20),
-            mablagh_pish VARCHAR (20),
-            mablagh_ejareh VARCHAR(20)
+            mablagh_pish INT(15),
+            mablagh_ejareh INT(15)
             )
             """)
 
@@ -6630,8 +6630,8 @@ def sabt_darkhast_kargah(event=None):
             garmayesh_type_darkhast_kargah_combo.get(),
             vaziat_bargh_darkhast_kargah_combo.get(),
             toilet_darkhast_kargah_combo.get(),
-            float(mablagh_pish_darkhast_kargah_entry.get().replace(",", "").replace(" تومان", "").strip()),
-            float(ejareh_mahaneh_darkhast_kargah_entry.get().replace(",", "").replace(" تومان", "").strip())
+            mablagh_pish_darkhast_kargah_entry.get().replace(",", "").replace(" تومان", "").strip(),
+            ejareh_mahaneh_darkhast_kargah_entry.get().replace(",", "").replace(" تومان", "").strip()
             )
             
             cursor.execute(sql_ejareh,values_darkhast_ejareh_kargah)
@@ -6953,11 +6953,16 @@ def search():
             tree.delete(item) 
 
         if results:
-        # پاک کردن نتایج قبلی
             for item in tree.get_children():
                 tree.delete(item)
+
             for row in results:
-                tree.insert("",tk.END,values=row)
+                row = list(row)
+
+                if row[3] is not None:
+                    row[3] = f"{int(row[3]):,} تومان"
+
+                tree.insert("", tk.END, values=row)
 
         else:
             messagebox.showinfo("یافت نشد", "هیچ موردی پیدا نشد")
@@ -7244,14 +7249,14 @@ def show_details(event):
 
         options = []
 
-        options.append(f"برق : {data[14]}")
-        options.append(f"گرمایش : {data[13]}")
-        options.append(f"سرمایش : {data[12]}")
-        options.append(f"آب : {data[8]}")
-        options.append(f"ابزار : {data[11]}")
-        options.append(f"سرویس : {data[15]}")
-        options.append(f"حمام : {data[9]}")
-        options.append(f"اتاق : {data[10]}")
+        options.append(f"برق : {data[14] if data[14] else 'ثبت نشده'}")
+        options.append(f"گرمایش : {data[13] if data[13] else 'ثبت نشده'}")
+        options.append(f"سرمایش : {data[12] if data[12] else 'ثبت نشده'}")
+        options.append(f"آب :{data[8] if data[8] else 'ثبت نشده'}")
+        options.append(f"ابزار : {data[11] if data[11] else 'ثبت نشده'}")
+        options.append(f"سرویس : {data[15] if data[15] else 'ثبت نشده'}")
+        options.append(f"حمام :{data[9] if data[9] else 'ثبت نشده'}")
+        options.append(f"اتاق : {data[10] if data[10] else 'ثبت نشده'}")
 
         options_text_entry.delete("1.0", tk.END)
         options_text_entry.insert("1.0", "\n".join(options))
@@ -7271,14 +7276,14 @@ def show_details(event):
 
         options = []
 
-        options.append(f"برق : {data[13]}")
-        options.append(f"گرمایش : {data[12]}")
-        options.append(f"سرمایش : {data[11]}")
-        options.append(f"آب : {data[7]}")
-        options.append(f"ابزار : {data[10]}")
-        options.append(f"سرویس : {data[14]}")
-        options.append(f"حمام : {data[8]}")
-        options.append(f"اتاق : {data[9]}")
+        options.append(f"برق : {data[13] if data[13] else 'ثبت نشده'}")
+        options.append(f"گرمایش : {data[12] if data[12] else 'ثبت نشده'}")
+        options.append(f"سرمایش : {data[11] if data[11] else 'ثبت نشده'}")
+        options.append(f"آب : {data[7] if data[7] else 'ثبت نشده'}")
+        options.append(f"ابزار : {data[10] if data[10] else 'ثبت نشده'}")
+        options.append(f"سرویس : {data[14] if data[14] else 'ثبت نشده'}")
+        options.append(f"حمام : {data[8] if data[8] else 'ثبت نشده'}")
+        options.append(f"اتاق : {data[9] if data[9] else 'ثبت نشده'}")
 
         options_text_entry.delete("1.0", tk.END)
         options_text_entry.insert("1.0", "\n".join(options))
@@ -7298,14 +7303,14 @@ def show_details(event):
 
         options = []
 
-        options.append(f"برق : {data[14]}")
-        options.append(f"گرمایش : {data[13]}")
-        options.append(f"سرمایش : {data[12]}")
-        options.append(f"آب : {data[8]}")
-        options.append(f"ابزار : {data[11]}")
-        options.append(f"سرویس : {data[15]}")
-        options.append(f"حمام : {data[9]}")
-        options.append(f"اتاق : {data[10]}")
+        options.append(f"برق : {data[14] if data[14] else 'ثبت نشده'}")
+        options.append(f"گرمایش : {data[13] if data[13] else 'ثبت نشده'}")
+        options.append(f"سرمایش : {data[12] if data[12] else 'ثبت نشده'}")
+        options.append(f"آب : {data[8] if data[8] else 'ثبت نشده'}")
+        options.append(f"ابزار : {data[11] if data[11] else 'ثبت نشده'}")
+        options.append(f"سرویس : {data[15] if data[15] else 'ثبت نشده'}")
+        options.append(f"حمام : {data[9] if data[9] else 'ثبت نشده'}")
+        options.append(f"اتاق : {data[10] if data[10] else 'ثبت نشده'}")
 
         options_text_entry.delete("1.0", tk.END)
         options_text_entry.insert("1.0", "\n".join(options))
@@ -7325,23 +7330,23 @@ def show_details(event):
 
         options = []
 
-        options.append(f"کاربری : {data[3]}")
-        options.append(f"متراژ درخت : {data[9]}")
-        options.append(f"تعداد درخت : {data[10]}")
-        options.append(f"نوع درخت : {data[11]}")
-        options.append(f"سیستم آبیاری : {data[12]}")
+        options.append(f"کاربری : {data[3] if data[3] else 'ثبت نشده'}")
+        options.append(f"متراژ درخت : {data[9] if data[9] else 'ثبت نشده'}")
+        options.append(f"تعداد درخت : {data[10] if data[10] else 'ثبت نشده'}")
+        options.append(f"نوع درخت : {data[11] if data[11] else 'ثبت نشده'}")
+        options.append(f"سیستم آبیاری : {data[12] if data[12] else 'ثبت نشده'}")
         options.append(f"چاه : {'دارد' if data[13]=='1' else 'ندارد'}")
         options.append(f"استخر : {'دارد' if data[14]=='1' else 'ندارد'}")
         options.append(f"دیوار : {'دارد' if data[15]=='1' else 'ندارد'}")
         options.append(f"سازه : {'دارد' if data[16]=='1' else 'ندارد'}")
-        options.append(f"متراژ سازه : {data[17]}")
-        options.append(f"سال ساخت : {data[18]}")
-        options.append(f"نوع سازه : {data[19]}")
-        options.append(f"امکانات : {data[20]}")
-        options.append(f"سرویس : {data[21]}")
-        options.append(f"حمام : {data[22]}")
+        options.append(f"متراژ سازه : {data[17] if data[17] else 'ثبت نشده'}")
+        options.append(f"سال ساخت : {data[18] if data[18] else 'ثبت نشده'}")
+        options.append(f"نوع سازه : {data[19] if data[19] else 'ثبت نشده'}")
+        options.append(f"امکانات : {data[20] if data[20] else 'ثبت نشده'}")
+        options.append(f"سرویس : {data[21] if data[21] else 'ثبت نشده'}")
+        options.append(f"حمام : {data[22] if data[22] else 'ثبت نشده'}")
         options.append(f"مجوز ساخت : {'دارد' if data[23]=='1' else 'ندارد'}")
-        options.append(f"سند : {data[24]}")
+        options.append(f"سند : {data[24] if data[24] else 'ثبت نشده'}")
         options.append(f"محوطه : {'دارد' if data[25]=='1' else 'ندارد'}")
         options.append(f"برق : {'دارد' if data[26]=='1' else 'ندارد'}")
         options.append(f"گاز : {'دارد' if data[27]=='1' else 'ندارد'}")
@@ -7363,10 +7368,10 @@ def show_details(event):
 
         options = []
 
-        options.append(f"کاربری : {data[3]}")
-        options.append(f"کاربری زمین : {data[9]}")
-        options.append(f"نوع خاک : {data[10]}")
-        options.append(f"منبع آب : {data[11]}")
+        options.append(f"کاربری : {'دارد' if data[3]=='1' else 'ندارد'}")
+        options.append(f"کاربری زمین : {data[9] if data[9] else 'ثبت نشده'}")
+        options.append(f"نوع خاک : {data[10] if data[10] else 'ثبت نشده'}")
+        options.append(f"منبع آب : {data[11] if data[11] else 'ثبت نشده'}")
         options.append(f"نگهبانی : {'دارد' if data[12]=='1' else 'ندارد'}")
         options.append(f"برق تک فاز : {'دارد' if data[13]=='1' else 'ندارد'}")
         options.append(f"برق سه فاز : {'دارد' if data[14]=='1' else 'ندارد'}")
@@ -7390,27 +7395,27 @@ def show_details(event):
 
         options = []
 
-        options.append(f"کاربری : {data[3]}")
-        options.append(f"مبلغ پیش : {data[5]}")
-        options.append(f"اجاره ماهانه : {data[6]}")
-        options.append(f"مدت اجاره : {data[7]}")
-        options.append(f"متراژ درخت : {data[10]}")
-        options.append(f"تعداد درخت : {data[11]}")
-        options.append(f"نوع درخت : {data[12]}")
-        options.append(f"سیستم آبیاری : {data[13]}")
+        options.append(f"کاربری : {data[3] if data[3] else 'ثبت نشده'}")
+        options.append(f"مبلغ پیش : {data[5] if data[5] else 'ثبت نشده'}")
+        options.append(f"اجاره ماهانه : {data[6] if data[6] else 'ثبت نشده'}")
+        options.append(f"مدت اجاره : {data[7] if data[7] else 'ثبت نشده'}")
+        options.append(f"متراژ درخت : {data[10] if data[10] else 'ثبت نشده'}")
+        options.append(f"تعداد درخت : {data[11] if data[11] else 'ثبت نشده'}")
+        options.append(f"نوع درخت : {data[12] if data[12] else 'ثبت نشده'}")
+        options.append(f"سیستم آبیاری : {data[13] if data[13] else 'ثبت نشده'}")
         options.append(f"چاه : {'دارد' if data[14]=='1' else 'ندارد'}")
         options.append(f"استخر : {'دارد' if data[15]=='1' else 'ندارد'}")
         options.append(f"دیوار : {'دارد' if data[16]=='1' else 'ندارد'}")
         options.append(f"برق : {'دارد' if data[17]=='1' else 'ندارد'}")
         options.append(f"سازه : {'دارد' if data[18]=='1' else 'ندارد'}")
-        options.append(f"متراژ سازه : {data[19]}")
-        options.append(f"سال ساخت : {data[20]}")
-        options.append(f"نوع سازه : {data[21]}")
-        options.append(f"امکانات : {data[22]}")
-        options.append(f"سرویس : {data[23]}")
-        options.append(f"حمام : {data[24]}")
+        options.append(f"متراژ سازه : {data[19] if data[19] else 'ثبت نشده'}")
+        options.append(f"سال ساخت : {data[20] if data[20] else 'ثبت نشده'}")
+        options.append(f"نوع سازه : {data[21] if data[21] else 'ثبت نشده'}")
+        options.append(f"امکانات : {data[22] if data[22] else 'ثبت نشده'}")
+        options.append(f"سرویس : {data[23] if data[23] else 'ثبت نشده'}")
+        options.append(f"حمام : {data[24] if data[24] else 'ثبت نشده'}")
         options.append(f"مجوز ساخت : {'دارد' if data[25]=='1' else 'ندارد'}")
-        options.append(f"سند : {data[26]}")
+        options.append(f"سند : {data[26] if data[26] else 'ثبت نشده'}")
         options.append(f"محوطه : {'دارد' if data[27]=='1' else 'ندارد'}")
         options.append(f"گاز : {'دارد' if data[28]=='1' else 'ندارد'}")
 
@@ -7431,13 +7436,13 @@ def show_details(event):
 
         options = []
 
-        options.append(f"کاربری : {data[3]}")
-        options.append(f"مبلغ پیش : {data[5]}")
-        options.append(f"اجاره متری : {data[6]}")
-        options.append(f"مدت اجاره : {data[7]}")
-        options.append(f"کاربری زمین : {data[10]}")
-        options.append(f"نوع خاک : {data[11]}")
-        options.append(f"منبع آب : {data[12]}")
+        options.append(f"کاربری : {data[3] if data[3] else 'ثبت نشده'}")
+        options.append(f"مبلغ پیش : {data[5] if data[5] else 'ثبت نشده'}")
+        options.append(f"اجاره متری : {data[6] if data[6] else 'ثبت نشده'}")
+        options.append(f"مدت اجاره : {data[7] if data[7] else 'ثبت نشده'}")
+        options.append(f"کاربری زمین : {data[10] if data[10] else 'ثبت نشده'}")
+        options.append(f"نوع خاک : {data[11] if data[11] else 'ثبت نشده'}")
+        options.append(f"منبع آب : {data[12] if data[12] else 'ثبت نشده'}")
         options.append(f"نگهبانی : {'دارد' if data[13]=='1' else 'ندارد'}")
         options.append(f"برق تک فاز : {'دارد' if data[14]=='1' else 'ندارد'}")
         options.append(f"برق سه فاز : {'دارد' if data[15]=='1' else 'ندارد'}")
@@ -7462,25 +7467,25 @@ def show_details(event):
 
         options = []
 
-        options.append(f"کاربری : {data[3]}")
-        options.append(f"قیمت متری : {data[5]}")
-        options.append(f"قیمت کل : {data[6]}")
-        options.append(f"متراژ درخت : {data[9]}")
-        options.append(f"تعداد درخت : {data[10]}")
-        options.append(f"نوع درخت : {data[11]}")
-        options.append(f"سیستم آبیاری : {data[12]}")
+        options.append(f"کاربری : {data[3] if data[3] else 'ثبت نشده'}")
+        options.append(f"قیمت متری : {data[5] if data[5] else 'ثبت نشده'}")
+        options.append(f"قیمت کل : {data[6] if data[6] else 'ثبت نشده'}")
+        options.append(f"متراژ درخت : {data[9] if data[9] else 'ثبت نشده'}")
+        options.append(f"تعداد درخت : {data[10] if data[10] else 'ثبت نشده'}")
+        options.append(f"نوع درخت : {data[11] if data[11] else 'ثبت نشده'}")
+        options.append(f"سیستم آبیاری : {data[12] if data[12] else 'ثبت نشده'}")
         options.append(f"چاه : {'دارد' if data[13]=='1' else 'ندارد'}")
         options.append(f"استخر : {'دارد' if data[14]=='1' else 'ندارد'}")
         options.append(f"دیوار : {'دارد' if data[15]=='1' else 'ندارد'}")
         options.append(f"سازه : {'دارد' if data[16]=='1' else 'ندارد'}")
-        options.append(f"متراژ سازه : {data[17]}")
-        options.append(f"سال ساخت : {data[18]}")
-        options.append(f"نوع سازه : {data[19]}")
-        options.append(f"امکانات : {data[20]}")
-        options.append(f"سرویس : {data[21]}")
-        options.append(f"حمام : {data[22]}")
+        options.append(f"متراژ سازه : {data[17] if data[17] else 'ثبت نشده'}")
+        options.append(f"سال ساخت : {data[18] if data[18] else 'ثبت نشده'}")
+        options.append(f"نوع سازه : {data[19] if data[19] else 'ثبت نشده'}")
+        options.append(f"امکانات : {data[20] if data[20] else 'ثبت نشده'}")
+        options.append(f"سرویس : {data[21] if data[21] else 'ثبت نشده'}")
+        options.append(f"حمام : {data[22] if data[22] else 'ثبت نشده'}")
         options.append(f"مجوز ساخت : {'دارد' if data[23]=='1' else 'ندارد'}")
-        options.append(f"سند : {data[24]}")
+        options.append(f"سند : {data[24] if data[24] else 'ثبت نشده'}")
         options.append(f"محوطه : {'دارد' if data[25]=='1' else 'ندارد'}")
         options.append(f"برق : {'دارد' if data[26]=='1' else 'ندارد'}")
         options.append(f"گاز : {'دارد' if data[27]=='1' else 'ندارد'}")
@@ -7500,12 +7505,12 @@ def show_details(event):
 
         options = []
 
-        options.append(f"کاربری : {data[3]}")
-        options.append(f"قیمت کل : {data[5]}")
-        options.append(f"قیمت متری : {data[6]}")
-        options.append(f"کاربری زمین : {data[9]}")
-        options.append(f"نوع خاک : {data[10]}")
-        options.append(f"منبع آب : {data[11]}")
+        options.append(f"کاربری : {data[3] if data[3] else 'ثبت نشده'}")
+        options.append(f"قیمت کل : {data[5] if data[5] else 'ثبت نشده'}")
+        options.append(f"قیمت متری : {data[6] if data[6] else 'ثبت نشده'}")
+        options.append(f"کاربری زمین : {data[9] if data[9] else 'ثبت نشده'}")
+        options.append(f"نوع خاک : {data[10] if data[10] else 'ثبت نشده'}")
+        options.append(f"منبع آب : {data[11] if data[11] else 'ثبت نشده'}")
         options.append(f"نگهبانی : {'دارد' if str(data[12])=='1' else 'ندارد'}")
         options.append(f"برق تک فاز : {'دارد' if str(data[13])=='1' else 'ندارد'}")
         options.append(f"برق سه فاز : {'دارد' if str(data[14])=='1' else 'ندارد'}")
@@ -7530,26 +7535,26 @@ def show_details(event):
 
         options = []
 
-        options.append(f"کاربری : {data[3]}")
-        options.append(f"مدت اجاره : {data[7]}")
-        options.append(f"ودیعه : {data[5]}")
-        options.append(f"اجاره ماهانه : {data[6]}")
-        options.append(f"متراژ درخت : {data[10]}")
-        options.append(f"تعداد درخت : {data[11]}")
-        options.append(f"نوع درخت : {data[12]}")
-        options.append(f"سیستم آبیاری : {data[13]}")
-        options.append(f"چاه : {'دارد' if data[14]=='1' else 'ندارد'}")
-        options.append(f"استخر : {'دارد' if data[15]=='1' else 'ندارد'}")
-        options.append(f"دیوار : {'دارد' if data[16]=='1' else 'ندارد'}")
+        options.append(f"کاربری : {data[3] if data[3] else 'ثبت نشده'}")
+        options.append(f"مدت اجاره : {data[7] if data[7] else 'ثبت نشده'}")
+        options.append(f"ودیعه : {data[5] if data[5] else 'ثبت نشده'}")
+        options.append(f"اجاره ماهانه : {data[6] if data[6] else 'ثبت نشده'}")
+        options.append(f"متراژ درخت : {data[10] if data[10] else 'ثبت نشده'}")
+        options.append(f"تعداد درخت : {data[11] if data[11] else 'ثبت نشده'}")
+        options.append(f"نوع درخت : {data[12] if data[12] else 'ثبت نشده'}")
+        options.append(f"سیستم آبیاری : {data[13] if data[13] else 'ثبت نشده'}")
+        options.append(f"چاه : {'دارد' if str(data[14])=='1' else 'ندارد'}")
+        options.append(f"استخر : {'دارد' if str(data[15])=='1' else 'ندارد'}")
+        options.append(f"دیوار : {'دارد' if str(data[16])=='1' else 'ندارد'}")
         options.append(f"سازه : {'دارد' if data[17]=='1' else 'ندارد'}")
-        options.append(f"متراژ سازه : {data[18]}")
-        options.append(f"سال ساخت : {data[19]}")
-        options.append(f"نوع سازه : {data[20]}")
-        options.append(f"امکانات : {data[21]}")
-        options.append(f"سرویس : {data[22]}")
-        options.append(f"حمام : {data[23]}")
+        options.append(f"متراژ سازه : {data[18] if data[18] else 'ثبت نشده'}")
+        options.append(f"سال ساخت : {data[19] if data[19] else 'ثبت نشده'}")
+        options.append(f"نوع سازه : {data[20] if data[20] else 'ثبت نشده'}")
+        options.append(f"امکانات : {data[21] if data[21] else 'ثبت نشده'}")
+        options.append(f"سرویس : {data[22] if data[22] else 'ثبت نشده'}")
+        options.append(f"حمام : {data[23] if data[23] else 'ثبت نشده'}")
         options.append(f"مجوز ساخت : {'دارد' if data[24]=='1' else 'ندارد'}")
-        options.append(f"سند : {data[25]}")
+        options.append(f"سند : {data[25] if data[25] else 'ثبت نشده'}")
         options.append(f"محوطه : {'دارد' if data[26]=='1' else 'ندارد'}")
         options.append(f"برق : {'دارد' if data[27]=='1' else 'ندارد'}")
         options.append(f"گاز : {'دارد' if data[28]=='1' else 'ندارد'}")
@@ -7572,17 +7577,17 @@ def show_details(event):
 
         options = []
 
-        options.append(f"کاربری : {data[3]}")
-        options.append(f"ودیعه : {data[5]}")
-        options.append(f"اجاره ماهانه : {data[6]}")
-        options.append(f"مدت اجاره : {data[7]}")
-        options.append(f"کاربری زمین : {data[10]}")
-        options.append(f"نوع خاک : {data[11]}")
-        options.append(f"منبع آب : {data[12]}")
-        options.append(f"نگهبانی : {'دارد' if data[13]=='1' else 'ندارد'}")
-        options.append(f"برق تک فاز : {'دارد' if data[14]=='1' else 'ندارد'}")
-        options.append(f"برق سه فاز : {'دارد' if data[15]=='1' else 'ندارد'}")
-        options.append(f"انبار : {'دارد' if data[16]=='1' else 'ندارد'}")
+        options.append(f"کاربری : {data[3] if data[3] else 'ثبت نشده'}")
+        options.append(f"ودیعه : {data[5] if data[5] else 'ثبت نشده'}")
+        options.append(f"اجاره ماهانه : {data[6] if data[6] else 'ثبت نشده'}")
+        options.append(f"مدت اجاره : {data[7] if data[7] else 'ثبت نشده'}")
+        options.append(f"کاربری زمین : {data[10] if data[10] else 'ثبت نشده'}")
+        options.append(f"نوع خاک : {data[11] if data[11] else 'ثبت نشده'}")
+        options.append(f"منبع آب : {data[12] if data[12] else 'ثبت نشده'}")
+        options.append(f"نگهبانی : {'دارد' if str(data[13])=='1' else 'ندارد'}")
+        options.append(f"برق تک فاز : {'دارد' if str(data[14])=='1' else 'ندارد'}")
+        options.append(f"برق سه فاز : {'دارد' if str(data[15])=='1' else 'ندارد'}")
+        options.append(f"انبار : {'دارد' if str(data[16])=='1' else 'ندارد'}")
         options.append(f"فنس : {'دارد' if data[17]=='1' else 'ندارد'}")
         options.append(f"چاه : {'دارد' if data[18]=='1' else 'ندارد'}")
 
@@ -8977,7 +8982,7 @@ def update_forosh_maskoni():
         parking_forosh_maskoni_var.get(),
         asansor_forosh_maskoni_var.get(),
         anbari_forosh_maskoni_var.get(),
-        float(gheimat_kol_forosh_maskoni_entry.get().replace(",", "").replace(" تومان", "").strip()),
+        gheimat_kol_forosh_maskoni_entry.get().replace(",", "").replace(" تومان", "").strip(),
         selected_id
     )
 
@@ -9020,8 +9025,8 @@ def update_ejareh_maskoni():
         parking_ejareh_maskoni_var.get(),
         asansor_ejareh_maskoni_var.get(),
         anbari_ejareh_maskoni_var.get(),
-        float(gheimat_pish_ejareh_maskoni_entry.get().replace(",", "").replace(" تومان", "").strip()),
-        float(gheimat_ejareh_ejareh_maskoni_entry.get().replace(",", "").replace(" تومان", "").strip()),
+        gheimat_pish_ejareh_maskoni_entry.get().replace(",", "").replace(" تومان", "").strip(),
+        gheimat_ejareh_ejareh_maskoni_entry.get().replace(",", "").replace(" تومان", "").strip(),
         selected_id
     )
 
@@ -9101,8 +9106,8 @@ def update_darkhast_maskoni():
             parking_darkhast_maskoni_var.get(),
             asansor_darkhast_maskoni_var.get(),
             anbari_darkhast_maskoni_var.get(),
-            float(gheimat_pish_darkhast_maskoni_entry.get().replace(",", "").replace(" تومان", "").strip()),
-            float(mablagh_ejare_darkhast_maskoni_entry.get().replace(",", "").replace(" تومان", "").strip()),
+            gheimat_pish_darkhast_maskoni_entry.get().replace(",", "").replace(" تومان", "").strip(),
+            mablagh_ejare_darkhast_maskoni_entry.get().replace(",", "").replace(" تومان", "").strip(),
             selected_id
         )
 
@@ -9159,7 +9164,7 @@ def update_forosh_edari_tejari():
         parking_forosh_edari_tejari_var.get(),
         asansor_forosh_edari_tejari_var.get(),
         anbari_forosh_edari_tejari_var.get(),
-        float(gheimat_kol_forosh_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip()),
+        gheimat_kol_forosh_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip(),
         selected_id
     )
 
@@ -9218,8 +9223,8 @@ def update_ejareh_edari_tejari():
         parking_ejareh_edari_tejari_var.get(),
         asansor_ejareh_edari_tejari_var.get(),
         anbari_ejareh_edari_tejari_var.get(),
-        float(mablagh_pish_ejareh_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip()),
-        float(mablagh_ejare_ejareh_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip()),
+        mablagh_pish_ejareh_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip(),
+        mablagh_ejare_ejareh_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip(),
         selected_id
     )
 
@@ -9277,7 +9282,7 @@ def update_darkhast_edari_tejari():
             parking_darkhast_edari_tejari_var.get(),
             asansor_darkhast_edari_tejari_var.get(),
             anbari_darkhast_edari_tejari_var.get(),
-            float(gheimat_kol_darkhast_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip()),
+            gheimat_kol_darkhast_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip(),
             selected_id
         )
     else:
@@ -9320,8 +9325,8 @@ def update_darkhast_edari_tejari():
             parking_darkhast_edari_tejari_var.get(),
             asansor_darkhast_edari_tejari_var.get(),
             anbari_darkhast_edari_tejari_var.get(),
-            float(mablagh_vadie_darkhast_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip()),
-            float(mablagh_ejareh_darkhast_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip()),
+            mablagh_vadie_darkhast_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip(),
+            mablagh_ejareh_darkhast_edari_tejari_entry.get().replace(",", "").replace(" تومان", "").strip(),
             selected_id
         )
 
@@ -9379,7 +9384,7 @@ def update_forosh_kargah():
         garmayesh_type_forosh_kargah_combo.get(),
         vaziat_bargh_forosh_kargah_combo.get(),
         toilet_forosh_kargah_combo.get(),
-        float(gheimat_kol_forosh_kargah_entry.get().replace(",", "").replace(" تومان", "").strip()),
+        gheimat_kol_forosh_kargah_entry.get().replace(",", "").replace(" تومان", "").strip(),
         selected_id
     )
 
@@ -9439,8 +9444,8 @@ def update_ejareh_kargah():
         garmaesh_ejareh_karghah_combo.get(),
         vaziat_bargh_ejareh_karghah_combo.get(),
         toilet_ejareh_karghah_combo.get(),
-        float(vadie_ejare_karghah_entry.get().replace(",", "").replace(" تومان", "").strip()),
-        float((gheimat_ejare_ejare_karghah_entry).get().replace(",", "").replace(" تومان", "").strip()),
+        vadie_ejare_karghah_entry.get().replace(",", "").replace(" تومان", "").strip(),
+        gheimat_ejare_ejare_karghah_entry.get().replace(",", "").replace(" تومان", "").strip(),
         selected_id
     )
 
@@ -9499,7 +9504,7 @@ def update_darkhast_kargah():
             garmayesh_type_darkhast_kargah_combo.get(),
             vaziat_bargh_darkhast_kargah_combo.get(),
             toilet_darkhast_kargah_combo.get(),
-            float(gheimat_kol_darkhast_kargah_entry.get().replace(",", "").replace(" تومان", "").strip()),
+            gheimat_kol_darkhast_kargah_entry.get().replace(",", "").replace(" تومان", "").strip(),
             selected_id
         )
 
@@ -9544,8 +9549,8 @@ def update_darkhast_kargah():
             garmayesh_type_darkhast_kargah_combo.get(),
             vaziat_bargh_darkhast_kargah_combo.get(),
             toilet_darkhast_kargah_combo.get(),
-            float(mablagh_pish_darkhast_kargah_entry.get().replace(",", "").replace(" تومان", "").strip()),
-            float(ejareh_mahaneh_darkhast_kargah_entry.get().replace(",", "").replace(" تومان", "").strip()),
+            mablagh_pish_darkhast_kargah_entry.get().replace(",", "").replace(" تومان", "").strip(),
+            ejareh_mahaneh_darkhast_kargah_entry.get().replace(",", "").replace(" تومان", "").strip(),
             selected_id
         )
 
@@ -9612,7 +9617,7 @@ def update_forosh_bagh_zamin():
             gheimat_har_metr_bagh_zamin_forosh_entry.get(),
             name_malek_forosh_bagh_entry.get(),
             number_malek_forosh_bagh_entry.get(),
-            float(gheimat_kol_forosh_bagh_zamin_entry.get().replace(",", "").replace(" تومان", "").strip()),
+            gheimat_kol_forosh_bagh_zamin_entry.get().replace(",", "").replace(" تومان", "").strip(),
             metraj_derakht_forosh_bagh_zamin_entry.get(),
             tedad_derakht_value,
             type_derakht_value,
@@ -9667,7 +9672,7 @@ def update_forosh_bagh_zamin():
             gheimat_har_metr_bagh_zamin_forosh_entry.get(),
             name_malek_forosh_bagh_entry.get(),
             number_malek_forosh_bagh_entry.get(),
-            float(gheimat_kol_forosh_bagh_zamin_entry.get().replace(",", "").replace(" تومان", "").strip()),
+            gheimat_kol_forosh_bagh_zamin_entry.get().replace(",", "").replace(" تومان", "").strip(),
             karbari_forosh_bagh_zamin_combo.get(),
             khak_forosh_bagh_zamin_combo.get(),
             ab_forosh_bagh_zamin_combo.get(),
@@ -9740,8 +9745,8 @@ def update_ejareh_bagh_zamin():
             metraj_zamin_ejareh_bagh_zamin_entry.get(),
             bagh_type_combo.get(),
             bagh_loctaion_entry.get("1.0", tk.END),
-            float(bagh_gheimat_ejareh_bagh_zamin_entry.get().replace(",", "").replace(" تومان", "").strip()),
-            float(bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.get().replace(",", "").replace(" تومان", "").strip()),
+            bagh_gheimat_ejareh_bagh_zamin_entry.get().replace(",", "").replace(" تومان", "").strip(),
+            bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.get().replace(",", "").replace(" تومان", "").strip(),
             bagh_time_combo.get(),
             name_malek_bagh_zamin_entry.get(),
             number_malek_bagh_zamin_entry.get(),
@@ -9797,8 +9802,8 @@ def update_ejareh_bagh_zamin():
             metraj_zamin_ejareh_bagh_zamin_entry.get(),
             bagh_type_combo.get(),
             bagh_loctaion_entry.get("1.0", tk.END),
-            float(bagh_gheimat_ejareh_bagh_zamin_entry.get().replace(",", "").replace(" تومان", "").strip()),
-            float(bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.get().replace(",", "").replace(" تومان", "").strip()),
+            bagh_gheimat_ejareh_bagh_zamin_entry.get().replace(",", "").replace(" تومان", "").strip(),
+            bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.get().replace(",", "").replace(" تومان", "").strip(),
             bagh_time_combo.get(),
             name_malek_bagh_zamin_entry.get(),
             number_malek_bagh_zamin_entry.get(),
@@ -9877,8 +9882,8 @@ def update_darkhast_bagh_zamin():
             metraj_zamin_darkhast_bagh_zamin_entry.get(),
             bagh_type_darkhast_bagh_zamin_combo.get(),
             bagh_loctaion_darkhast_bagh_zamin_entry.get("1.0", tk.END),
-            float(gheimat_har_metr_bagh_zamin_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip()),
-            float(gheimat_kol_bagh_zamin_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip()),
+            gheimat_har_metr_bagh_zamin_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip(),
+            gheimat_kol_bagh_zamin_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip(),
             name_moshtari_darkhast_bagh_entry.get(),
             shomareh_moshtari_darkhast_bagh_entry.get(),
             metraj_derakht_darkhast_bagh_zamin_entry.get(),
@@ -9932,7 +9937,7 @@ def update_darkhast_bagh_zamin():
                 metraj_zamin_darkhast_bagh_zamin_entry.get(),
                 bagh_type_darkhast_bagh_zamin_combo.get(),
                 bagh_loctaion_darkhast_bagh_zamin_entry.get("1.0", tk.END),
-                float(gheimat_har_metr_bagh_zamin_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip()),
+                gheimat_har_metr_bagh_zamin_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip(),
                 name_moshtari_darkhast_bagh_entry.get(),
                 shomareh_moshtari_darkhast_bagh_entry.get(),
                 karbari_darkhast_bagh_zamin_combo.get(),
@@ -9994,8 +9999,8 @@ def update_darkhast_bagh_zamin():
                 metraj_zamin_darkhast_bagh_zamin_entry.get(),
                 bagh_type_darkhast_bagh_zamin_combo.get(),
                 bagh_loctaion_darkhast_bagh_zamin_entry.get("1.0", tk.END),
-                float(gheimat_ejareh_bagh_darkhast_zamin_entry.get().replace(",", "").replace(" تومان", "").strip()),
-                float(mablagh_ejareh_mahaneh_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip()),
+                gheimat_ejareh_bagh_darkhast_zamin_entry.get().replace(",", "").replace(" تومان", "").strip(),
+                mablagh_ejareh_mahaneh_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip(),
                 bagh_time_darkhast_combo.get(),
                 name_moshtari_darkhast_bagh_entry.get(),
                 shomareh_moshtari_darkhast_bagh_entry.get(),
@@ -10053,8 +10058,8 @@ def update_darkhast_bagh_zamin():
                     metraj_zamin_darkhast_bagh_zamin_entry.get(),
                     bagh_type_darkhast_bagh_zamin_combo.get(),
                     bagh_loctaion_darkhast_bagh_zamin_entry.get("1.0", tk.END),
-                    float(gheimat_ejareh_bagh_darkhast_zamin_entry.get().replace(",", "").replace(" تومان", "").strip()),
-                    float(mablagh_ejareh_mahaneh_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip()),
+                    gheimat_ejareh_bagh_darkhast_zamin_entry.get().replace(",", "").replace(" تومان", "").strip(),
+                    mablagh_ejareh_mahaneh_darkhast_entry.get().replace(",", "").replace(" تومان", "").strip(),
                     bagh_time_darkhast_combo.get(),
                     name_moshtari_darkhast_bagh_entry.get(),
                     shomareh_moshtari_darkhast_bagh_entry.get(),
