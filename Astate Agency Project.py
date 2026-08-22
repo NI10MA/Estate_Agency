@@ -4602,7 +4602,7 @@ def sabt_forosh_maskoni():
             parking VARCHAR(20),
             asansor VARCHAR(20),
             anbari VARCHAR(20),
-            gheimat_kol DECIMAL(15,2)
+            gheimat_kol INT
 
         )
         """
@@ -4631,7 +4631,7 @@ def sabt_forosh_maskoni():
             parking_forosh_maskoni_var.get(),
             asansor_forosh_maskoni_var.get(),
             anbari_forosh_maskoni_var.get(),
-            float(gheimat_kol_forosh_maskoni_entry.get().replace(",", "").replace(" تومان", "").strip())
+            gheimat_kol_forosh_maskoni_entry.get().replace(",", "").replace(" تومان", "").strip()
 
         )
 
@@ -7649,7 +7649,7 @@ def open_edit():
         anbari_forosh_maskoni_var.set(data[16])
 
         gheimat_kol_forosh_maskoni_entry.delete(0, tk.END)
-        gheimat_kol_forosh_maskoni_entry.insert(0, data[17])
+        gheimat_kol_forosh_maskoni_entry.insert(0, f"{int(data[17]):,} تومان")
 
 
         cursor.close()
@@ -7707,10 +7707,10 @@ def open_edit():
         anbari_ejareh_maskoni_var.set(data[16])
 
         gheimat_pish_ejareh_maskoni_entry.delete(0, tk.END)
-        gheimat_pish_ejareh_maskoni_entry.insert(0, data[17])
+        gheimat_pish_ejareh_maskoni_entry.insert(0, f"{int(data[17]):,} تومان")
 
         gheimat_ejareh_ejareh_maskoni_entry.delete(0, tk.END)
-        gheimat_ejareh_ejareh_maskoni_entry.insert(0, data[18])
+        gheimat_ejareh_ejareh_maskoni_entry.insert(0, f"{int(data[18]):,} تومان")
 
 
         cursor.close()
@@ -7774,7 +7774,7 @@ def open_edit():
         anbari_darkhast_maskoni_var.set(data[16])
 
         gheimat_kol_darkhast_maskoni_entry.delete(0, tk.END)
-        gheimat_kol_darkhast_maskoni_entry.insert(0, data[17])
+        gheimat_kol_darkhast_maskoni_entry.insert(0, f"{int(data[17]):,} تومان")
 
         cursor.close()
         db.close()
@@ -7835,10 +7835,10 @@ def open_edit():
         anbari_darkhast_maskoni_var.set(data[16])
 
         gheimat_pish_darkhast_maskoni_entry.delete(0, tk.END)
-        gheimat_pish_darkhast_maskoni_entry.insert(0, data[17])
+        gheimat_pish_darkhast_maskoni_entry.insert(0, f"{int(data[17]):,} تومان")
 
         mablagh_ejare_darkhast_maskoni_entry.delete(0, tk.END)
-        mablagh_ejare_darkhast_maskoni_entry.insert(0, data[18])
+        mablagh_ejare_darkhast_maskoni_entry.insert(0, f"{int(data[18]):,} تومان")
 
         cursor.close()
         db.close()
@@ -7894,7 +7894,7 @@ def open_edit():
         anbari_forosh_edari_tejari_var.set(data[15])
 
         gheimat_kol_forosh_edari_tejari_entry.delete(0,tk.END)
-        gheimat_kol_forosh_edari_tejari_entry.insert(0,data[16])
+        gheimat_kol_forosh_edari_tejari_entry.insert(0, f"{int(data[16]):,} تومان")
 
         cursor.close()
         db.close()
@@ -7950,10 +7950,10 @@ def open_edit():
         anbari_ejareh_edari_tejari_var.set(data[15])
 
         mablagh_pish_ejareh_edari_tejari_entry.delete(0,tk.END)
-        mablagh_pish_ejareh_edari_tejari_entry.insert(0,data[16])
+        mablagh_pish_ejareh_edari_tejari_entry.insert(0, f"{int(data[16]):,} تومان")
 
         mablagh_ejare_ejareh_edari_tejari_entry.delete(0,tk.END)
-        mablagh_ejare_ejareh_edari_tejari_entry.insert(0,data[17])
+        mablagh_ejare_ejareh_edari_tejari_entry.insert(0, f"{int(data[17]):,} تومان")
 
         cursor.close()
         db.close()
@@ -8014,7 +8014,7 @@ def open_edit():
         anbari_darkhast_edari_tejari_var.set(data[15])
 
         gheimat_kol_darkhast_edari_tejari_entry.delete(0, tk.END)
-        gheimat_kol_darkhast_edari_tejari_entry.insert(0, data[16])
+        gheimat_kol_darkhast_edari_tejari_entry.insert(0, f"{int(data[16]):,} تومان")
 
         cursor.close()
         db.close()
@@ -8075,10 +8075,10 @@ def open_edit():
         anbari_darkhast_edari_tejari_var.set(data[15])
 
         mablagh_vadie_darkhast_edari_tejari_entry.delete(0, tk.END)
-        mablagh_vadie_darkhast_edari_tejari_entry.insert(0, data[16])
+        mablagh_vadie_darkhast_edari_tejari_entry.insert(0, f"{int(data[16]):,} تومان")
 
         mablagh_ejareh_darkhast_edari_tejari_entry.delete(0, tk.END)
-        mablagh_ejareh_darkhast_edari_tejari_entry.insert(0, data[17])
+        mablagh_ejareh_darkhast_edari_tejari_entry.insert(0, f"{int(data[17]):,} تومان")
 
         cursor.close()
         db.close()
@@ -8128,7 +8128,7 @@ def open_edit():
         toilet_forosh_kargah_combo.set(data[14])
 
         gheimat_kol_forosh_kargah_entry.delete(0, tk.END)
-        gheimat_kol_forosh_kargah_entry.insert(0, data[15])
+        gheimat_kol_forosh_kargah_entry.insert(0, f"{int(data[15]):,} تومان")
 
         cursor.close()
         db.close()
@@ -8180,10 +8180,10 @@ def open_edit():
         toilet_ejareh_karghah_combo.set(data[15])
 
         vadie_ejare_karghah_entry.delete(0, tk.END)
-        vadie_ejare_karghah_entry.insert(0, data[16])
+        vadie_ejare_karghah_entry.insert(0, f"{int(data[16]):,} تومان")
         
         gheimat_ejare_ejare_karghah_entry.delete(0, tk.END)
-        gheimat_ejare_ejare_karghah_entry.insert(0, data[17])
+        gheimat_ejare_ejare_karghah_entry.insert(0, f"{int(data[17]):,} تومان")
 
         cursor.close()
         db.close()
@@ -8236,7 +8236,7 @@ def open_edit():
         toilet_darkhast_kargah_combo.set(data[14])
 
         gheimat_kol_darkhast_kargah_entry.delete(0, tk.END)
-        gheimat_kol_darkhast_kargah_entry.insert(0, data[15])
+        gheimat_kol_darkhast_kargah_entry.insert(0, f"{int(data[15]):,} تومان")
 
         cursor.close()
         db.close()
@@ -8291,10 +8291,10 @@ def open_edit():
         toilet_darkhast_kargah_combo.set(data[15])
 
         mablagh_pish_darkhast_kargah_entry.delete(0, tk.END)
-        mablagh_pish_darkhast_kargah_entry.insert(0, data[16])
+        mablagh_pish_darkhast_kargah_entry.insert(0, f"{int(data[16]):,} تومان")
         
         ejareh_mahaneh_darkhast_kargah_entry.delete(0, tk.END)
-        ejareh_mahaneh_darkhast_kargah_entry.insert(0, data[17])
+        ejareh_mahaneh_darkhast_kargah_entry.insert(0, f"{int(data[17]):,} تومان")
 
         cursor.close()
         db.close()
@@ -8329,7 +8329,7 @@ def open_edit():
         bagh_loctaion_forosh_bagh_zamin_entry.insert("1.0", data[4])
 
         gheimat_har_metr_bagh_zamin_forosh_entry.delete(0, tk.END)
-        gheimat_har_metr_bagh_zamin_forosh_entry.insert(0, data[5])
+        gheimat_har_metr_bagh_zamin_forosh_entry.insert(0, f"{int(data[5]):,} تومان")
 
         name_malek_forosh_bagh_entry.delete(0, tk.END)
         name_malek_forosh_bagh_entry.insert(0, data[6])
@@ -8338,7 +8338,7 @@ def open_edit():
         number_malek_forosh_bagh_entry.insert(0, data[7])
 
         gheimat_kol_forosh_bagh_zamin_entry.delete(0, tk.END)
-        gheimat_kol_forosh_bagh_zamin_entry.insert(0, data[8])
+        gheimat_kol_forosh_bagh_zamin_entry.insert(0, f"{int(data[8]):,} تومان")
 
         # متراژ و تعداد درخت
         metraj_derakht_forosh_bagh_zamin_entry.delete(0, tk.END)
@@ -8434,7 +8434,7 @@ def open_edit():
         bagh_loctaion_forosh_bagh_zamin_entry.insert("1.0", data[4])
 
         gheimat_har_metr_bagh_zamin_forosh_entry.delete(0, tk.END)
-        gheimat_har_metr_bagh_zamin_forosh_entry.insert(0, data[5])
+        gheimat_har_metr_bagh_zamin_forosh_entry.insert(0, f"{int(data[5]):,} تومان")
 
         name_malek_forosh_bagh_entry.delete(0, tk.END)
         name_malek_forosh_bagh_entry.insert(0, data[6])
@@ -8443,7 +8443,7 @@ def open_edit():
         number_malek_forosh_bagh_entry.insert(0, data[7])
 
         gheimat_kol_forosh_bagh_zamin_entry.delete(0, tk.END)
-        gheimat_kol_forosh_bagh_zamin_entry.insert(0, data[8])
+        gheimat_kol_forosh_bagh_zamin_entry.insert(0, f"{int(data[8]):,} تومان")
         karbari_forosh_bagh_zamin_combo.set(data[9])
         khak_forosh_bagh_zamin_combo.set(data[10])
         ab_forosh_bagh_zamin_combo.set(data[11])
@@ -8487,10 +8487,10 @@ def open_edit():
         bagh_loctaion_entry.insert("1.0", data[4])
 
         bagh_gheimat_ejareh_bagh_zamin_entry.delete(0, tk.END)
-        bagh_gheimat_ejareh_bagh_zamin_entry.insert(0, data[5])
+        bagh_gheimat_ejareh_bagh_zamin_entry.insert(0, f"{int(data[5]):,} تومان")
 
         bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.delete(0, tk.END)
-        bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.insert(0, data[6])
+        bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.insert(0, f"{int(data[6]):,} تومان")
 
         bagh_time_combo.set(data[7])
 
@@ -8591,10 +8591,10 @@ def open_edit():
         bagh_loctaion_entry.insert("1.0", data[4])
 
         bagh_gheimat_ejareh_bagh_zamin_entry.delete(0, tk.END)
-        bagh_gheimat_ejareh_bagh_zamin_entry.insert(0, data[5])
+        bagh_gheimat_ejareh_bagh_zamin_entry.insert(0, f"{int(data[5]):,} تومان")
 
         bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.delete(0, tk.END)
-        bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.insert(0, data[6])
+        bagh_gheimat_har_metr_ejareh_bagh_zamin_entry.insert(0, f"{int(data[6]):,} تومان")
 
         bagh_time_combo.set(data[7])
 
@@ -8651,10 +8651,10 @@ def open_edit():
         bagh_loctaion_darkhast_bagh_zamin_entry.insert("1.0", data[4])
 
         gheimat_har_metr_bagh_zamin_darkhast_entry.delete(0, tk.END)
-        gheimat_har_metr_bagh_zamin_darkhast_entry.insert(0, data[5])
+        gheimat_har_metr_bagh_zamin_darkhast_entry.insert(0, f"{int(data[5]):,} تومان")
 
         gheimat_kol_bagh_zamin_darkhast_entry.delete(0, tk.END)
-        gheimat_kol_bagh_zamin_darkhast_entry.insert(0, data[6])
+        gheimat_kol_bagh_zamin_darkhast_entry.insert(0, f"{int(data[6]):,} تومان")
 
         name_moshtari_darkhast_bagh_entry.delete(0, tk.END)
         name_moshtari_darkhast_bagh_entry.insert(0, data[7])
@@ -8754,10 +8754,10 @@ def open_edit():
         bagh_loctaion_darkhast_bagh_zamin_entry.insert("1.0", data[4])
 
         gheimat_har_metr_bagh_zamin_darkhast_entry.delete(0, tk.END)
-        gheimat_har_metr_bagh_zamin_darkhast_entry.insert(0, data[6])
+        gheimat_har_metr_bagh_zamin_darkhast_entry.insert(0, f"{int(data[5]):,} تومان")
 
         gheimat_kol_bagh_zamin_darkhast_entry.delete(0, tk.END)
-        gheimat_kol_bagh_zamin_darkhast_entry.insert(0, data[5])
+        gheimat_kol_bagh_zamin_darkhast_entry.insert(0, f"{int(data[6]):,} تومان")
 
         name_moshtari_darkhast_bagh_entry.delete(0, tk.END)
         name_moshtari_darkhast_bagh_entry.insert(0, data[7])
@@ -8812,10 +8812,10 @@ def open_edit():
         bagh_loctaion_darkhast_bagh_zamin_entry.insert("1.0", data[4])
 
         gheimat_ejareh_bagh_darkhast_zamin_entry.delete(0, tk.END)
-        gheimat_ejareh_bagh_darkhast_zamin_entry.insert(0, data[5])
+        gheimat_ejareh_bagh_darkhast_zamin_entry.insert(0, f"{int(data[5]):,} تومان")
 
         mablagh_ejareh_mahaneh_darkhast_entry.delete(0, tk.END)
-        mablagh_ejareh_mahaneh_darkhast_entry.insert(0, data[6])
+        mablagh_ejareh_mahaneh_darkhast_entry.insert(0, f"{int(data[6]):,} تومان")
 
         bagh_time_darkhast_combo.set(data[7])
 
@@ -8918,10 +8918,10 @@ def open_edit():
         bagh_loctaion_darkhast_bagh_zamin_entry.insert("1.0", data[4])
 
         gheimat_ejareh_bagh_darkhast_zamin_entry.delete(0, tk.END)
-        gheimat_ejareh_bagh_darkhast_zamin_entry.insert(0, data[5])
+        gheimat_ejareh_bagh_darkhast_zamin_entry.insert(0, f"{int(data[5]):,} تومان")
 
         mablagh_ejareh_mahaneh_darkhast_entry.delete(0, tk.END)
-        mablagh_ejareh_mahaneh_darkhast_entry.insert(0, data[6])
+        mablagh_ejareh_mahaneh_darkhast_entry.insert(0, f"{int(data[6]):,} تومان")
 
         bagh_time_darkhast_combo.set(data[7])
 
